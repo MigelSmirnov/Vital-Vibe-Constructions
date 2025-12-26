@@ -30,11 +30,48 @@
       padding: 20px;
     }
 
-    .hero img {
-      width: 100%;
+    .hero {
+      position: relative;
+      height: 380px;                    /* можно менять высоту */
       border-radius: 8px;
-      display: block;
+      overflow: hidden;
+      margin-bottom: 20px;
+      background: url('images/fabula-ai.png') center/cover no-repeat;
     }
+    
+    /* затемнение, чтобы текст читался */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+    }
+    
+    /* контейнер с текстом */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 15px;
+    }
+    
+    .hero-overlay h1 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      max-width: 90%;
+    }
+    
+    .hero-overlay p {
+      margin: 0;
+      font-size: 16px;
+      max-width: 90%;
+    }
+
 
     h2 { margin-top: 25px; }
 
@@ -96,10 +133,12 @@
 
 <div class="container">
 
-  <!-- ТВОЯ КАРТИНКА ЗДЕСЬ -->
-  <div class="hero">
-    <img src="images/fabula-ai.png" alt="Reformas en Barcelona">
+<div class="hero">
+  <div class="hero-overlay">
+    <h1>Reformas y Construcción en Barcelona</h1>
+    <p>Servicios completos de reforma — rápido, accesible y con garantía</p>
   </div>
+</div>
 
   <section>
     <h2>Sobre Nosotros</h2>
@@ -206,3 +245,4 @@
 
 </body>
 </html>
+
