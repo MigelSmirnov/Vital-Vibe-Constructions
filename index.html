@@ -36,9 +36,7 @@
       display: block;
     }
 
-    h2 {
-      margin-top: 25px;
-    }
+    h2 { margin-top: 25px; }
 
     .cards {
       display: grid;
@@ -74,27 +72,23 @@
       padding: 20px;
       margin-top: 40px;
     }
-	.gallery-btn {
-	  display: inline-block;
-	  background: #2b6cb0;
-	  color: white;
-	  padding: 12px 18px;
-	  border-radius: 10px;
-	  text-decoration: none;
-	  font-weight: bold;
-	  margin-top: 20px;
-	}
 
-	.gallery-btn:hover {
-	  opacity: 0.9;
-	}
+    .gallery-btn {
+      display: inline-block;
+      background: #2b6cb0;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+    }
 
+    .gallery-btn:hover { opacity: 0.9; }
   </style>
 </head>
-<body>	
-  <div class="hero">
-    <img src="images/hero-barcelona.jpg" alt="Ремонт и отделка в Барселоне">
-  </div>
+
+<body>
 
 <header>
   Vital Vibe Constructions
@@ -102,9 +96,10 @@
 
 <div class="container">
 
-  <section class="hero">
-    <img src="https://via.placeholder.com/1200x400?text=Tu+Imagen+Aqui" alt="Reformas">
-  </section>
+  <!-- ТВОЯ КАРТИНКА ЗДЕСЬ -->
+  <div class="hero">
+    <img src="images/fabula-ai.png" alt="Reformas en Barcelona">
+  </div>
 
   <section>
     <h2>Sobre Nosotros</h2>
@@ -150,24 +145,34 @@
       <p><strong>Premium (1500 €/m²):</strong> <span id="pre">—</span></p>
     </div>
   </section>
-<a href="projects.html" class="gallery-btn">
-  📸 ver todos los proyectos
-</a>
+
+  <a href="projects.html" class="gallery-btn">
+    📸 ver todos los proyectos
+  </a>
 
 <section>
   <h2>Contacto</h2>
- <p>
-  Teléfono: +34&nbsp;691&nbsp;07&nbsp;46&nbsp;18
-</p>
 
+  <p id="phone"></p>
 
-  <a href="https://wa.me/34691074618?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20reforma"
-     target="_blank"
-     class="whatsapp-btn">
-     💬 Escribir por WhatsApp
+  <a id="wa" target="_blank" class="whatsapp-btn">
+    💬 Escribir por WhatsApp
   </a>
-</section>
 
+  <script>
+    const p1 = "+34";
+    const p2 = "691";
+    const p3 = "07";
+    const p4 = "46";
+    const p5 = "18";
+
+    const full = `${p1} ${p2} ${p3} ${p4} ${p5}`;
+    const waLink = `https://wa.me/${p1.replace('+','')}${p2}${p3}${p4}${p5}`;
+
+    document.getElementById("phone").innerText = "Teléfono: " + full;
+    document.getElementById("wa").href = waLink;
+  </script>
+</section>
 
 </div>
 
@@ -201,5 +206,3 @@
 
 </body>
 </html>
-
-
