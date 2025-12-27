@@ -89,13 +89,40 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     }
 
-    .calculator {
+    /* общий контейнер — делаем 2 колонки */
+    .calculator-wrap{
       margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    
+    /* сам калькулятор — как был */
+    .calculator{
       background: #ffffff;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     }
+    
+    /* блок с пояснением */
+    .calculator-note{
+      background:#fffbe8;
+      padding: 15px;
+      border-left:4px solid #f4b400;
+      border-radius:8px;
+      color:#444;
+      font-size:15px;
+      line-height:1.5;
+    }
+    
+    /* на телефонах — в одну колонку */
+    @media(max-width: 768px){
+      .calculator-wrap{
+        grid-template-columns: 1fr;
+      }
+    }
+
 
     input {
       padding: 8px;
@@ -197,8 +224,11 @@
     </div>
   </section>
 
-  <section class="calculator">
+<section class="calculator-wrap">
+
+  <div class="calculator">
     <h2>Calculadora Rápida</h2>
+
     <p>Introduce la superficie del piso o vivienda:</p>
 
     <input type="number" id="area" placeholder="m²" min="0">
@@ -208,7 +238,17 @@
       <p><strong>Estándar (1200 €/m²):</strong> <span id="std">—</span></p>
       <p><strong>Premium (1500 €/m²):</strong> <span id="pre">—</span></p>
     </div>
-  </section>
+  </div>
+
+  <div class="calculator-note">
+    <strong>Importante:</strong><br>
+    Los cálculos mostrados son valores aproximados basados en precios medios
+    de materiales y mano de obra. No constituyen una oferta comercial.
+    El presupuesto final puede variar según las condiciones del proyecto.
+  </div>
+
+</section>
+
 
   <a href="projects.html" class="gallery-btn">
     📸 ver todos los proyectos
@@ -270,5 +310,6 @@
 
 </body>
 </html>
+
 
 
