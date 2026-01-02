@@ -276,6 +276,16 @@
     document.getElementById("phone").innerText = "Teléfono: " + full;
     document.getElementById("wa").href = waLink;
   </script>
+  <p>Email: <span id="email"></span></p>
+
+<script>
+  const e1 = "info";
+  const e2 = "vitalvibeconstruction";
+  const e3 = "com";
+  document.getElementById("email").innerHTML =
+    `<a href="mailto:${e1}@${e2}.${e3}">${e1}@${e2}.${e3}</a>`;
+</script>
+
 </section>
 
 </div>
