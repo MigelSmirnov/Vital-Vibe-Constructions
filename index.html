@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Reformas en Barcelona. Cocinas, baños, electricidad y pintura. Hablamos Español, English y Русский. Presupuesto sin compromiso.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
-  <title>Vital Vibe Construction — Reformas en Barcelona | Cocinas, Baños, Electricidad</title>
-
+  <title>Vital Vibe Construction – Reformas en Barcelona | Cocinas, Baños, Electricidad</title>
 
   <style>
     * { box-sizing: border-box; }
@@ -35,14 +34,13 @@
 
     .hero {
       position: relative;
-      height: 380px;                    /* можно менять высоту */
+      height: 380px;
       border-radius: 8px;
       overflow: hidden;
       margin-bottom: 20px;
       background: url('images/fabula-ai.png') center/cover no-repeat;
     }
     
-    /* затемнение, чтобы текст читался */
     .hero::before {
       content: "";
       position: absolute;
@@ -50,7 +48,6 @@
       background: rgba(0,0,0,0.35);
     }
     
-    /* контейнер с текстом */
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -75,7 +72,6 @@
       max-width: 90%;
     }
 
-
     h2 { margin-top: 25px; }
 
     .cards {
@@ -92,44 +88,47 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     }
 
-    /* общий контейнер — делаем 2 колонки */
-    .calculator-wrap{
+    .calculator-wrap {
       margin-top: 30px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
     }
     
-    /* сам калькулятор — как был */
-    .calculator{
+    .calculator {
       background: #ffffff;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     }
     
-    /* блок с пояснением */
-    .calculator-note{
-      background:#fffbe8;
+    .calculator-note {
+      background: #fffbe8;
       padding: 15px;
-      border-left:4px solid #f4b400;
-      border-radius:8px;
-      color:#444;
-      font-size:15px;
-      line-height:1.5;
+      border-left: 4px solid #f4b400;
+      border-radius: 8px;
+      color: #444;
+      font-size: 15px;
+      line-height: 1.5;
     }
     
-    /* на телефонах — в одну колонку */
-    @media(max-width: 768px){
-      .calculator-wrap{
+    @media(max-width: 768px) {
+      .calculator-wrap {
         grid-template-columns: 1fr;
       }
     }
 
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
 
     input {
       padding: 8px;
       width: 120px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
 
     footer {
@@ -140,7 +139,7 @@
       margin-top: 40px;
     }
 
-    .gallery-btn {
+    .gallery-btn, .whatsapp-btn {
       display: inline-block;
       background: #2b6cb0;
       color: white;
@@ -149,128 +148,176 @@
       text-decoration: none;
       font-weight: bold;
       margin-top: 20px;
-    }
-    .langs{
-      background:#f1f5ff;
-      color:#1f2c48;
-      text-align:center;
-      padding:10px 8px;
-      font-size:15px;
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
+      transition: opacity 0.2s;
     }
     
-    .langs span:first-child{
-      font-weight:600;
+    .gallery-btn:hover, .whatsapp-btn:hover { 
+      opacity: 0.9; 
     }
 
-    .gallery-btn:hover { opacity: 0.9; }
+    .whatsapp-btn {
+      background: #25D366;
+    }
 
-.langs span {
-  margin-right: 10px;
-}
+    .langs {
+      background: #f1f5ff;
+      color: #1f2c48;
+      text-align: center;
+      padding: 10px 8px;
+      font-size: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
+    .langs span:first-child {
+      font-weight: 600;
+    }
+
+    .langs button {
+      border: none;
+      background: white;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .langs button:hover {
+      background: #e5edff;
+    }
+
+    .langs button.active {
+      background: #2b6cb0;
+      color: white;
+      font-weight: bold;
+    }
   </style>
 </head>
 
 <body>
   <div class="langs">
-  <span>Hablamos:</span>
-  <span><span class="fi fi-es"></span> Español</span>
-  <span><span class="fi fi-gb"></span> English</span>
-  <span><span class="fi fi-ru"></span> Русский</span>
-</div>
+    <span>Hablamos:</span>
 
-<header>
-  Vital Vibe Constructions
-</header>
-<main>
+    <button onclick="setLang('es')" data-lang="es" aria-label="Cambiar a Español">
+      <span class="fi fi-es"></span> Español
+    </button>
 
-<div class="container">
+    <button onclick="setLang('en')" data-lang="en" aria-label="Switch to English">
+      <span class="fi fi-gb"></span> English
+    </button>
 
-<div class="hero">
-  <div class="hero-overlay">
-    <h1>Reformas y Construcción en Barcelona</h1>
-    <p>Servicios completos de reforma — rápido, accesible y con garantía</p>
+    <button onclick="setLang('ru')" data-lang="ru" aria-label="Переключить на Русский">
+      <span class="fi fi-ru"></span> Русский
+    </button>
   </div>
-</div>
 
-  <section>
-    <h2>Sobre Nosotros</h2>
-    <p>
-      Ofrecemos servicios completos de reforma y construcción en toda la región.
-      Trabajamos con calidad, seriedad y precios transparentes. Podemos ayudarte
-      con reformas integrales, cocinas, baños, pintura, electricidad y más.
-    </p>
-    <p>
-  Atendemos a nuestros clientes en Español, English y Русский — será cómodo comunicarse en su idioma.
-</p>
+  <header>
+    Vital Vibe Constructions
+  </header>
 
-  </section>
+  <main>
+    <div class="container">
 
-  <section>
-    <h2>Tipos de Reforma</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Económica</h3>
-        <p>Precio aproximado: <strong>800 € / m²</strong></p>
-        <p>Soluciones básicas y funcionales.</p>
+      <div class="hero">
+        <div class="hero-overlay">
+          <h1 data-i18n="hero_title">Reformas integrales en Barcelona</h1>
+          <p data-i18n="hero_subtitle">Cocinas, baños, electricidad y pintura</p>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Estándar</h3>
-        <p>Precio aproximado: <strong>1200 € / m²</strong></p>
-        <p>Mejor relación calidad / precio.</p>
+      <section>
+        <h2 data-i18n="about_title">Sobre nosotros</h2>
+        <p data-i18n="about_p1">Somos una empresa de reformas con experiencia en Barcelona.</p>
+        <p data-i18n="about_p2">Ofrecemos servicios de calidad con presupuesto sin compromiso.</p>
+      </section>
+
+      <section>
+        <h2 data-i18n="types_title">Tipos de reforma</h2>
+
+        <div class="cards">
+          <div class="card">
+            <h3 data-i18n="types_econ_title">Económica</h3>
+            <p>
+              <span data-i18n="types_price_label">Precio:</span>
+              <strong>800 € / m²</strong>
+            </p>
+            <p data-i18n="types_econ_text">Materiales básicos de calidad.</p>
+          </div>
+
+          <div class="card">
+            <h3 data-i18n="types_std_title">Estándar</h3>
+            <p>
+              <span data-i18n="types_price_label">Precio:</span>
+              <strong>1200 € / m²</strong>
+            </p>
+            <p data-i18n="types_std_text">Materiales de gama media.</p>
+          </div>
+
+          <div class="card">
+            <h3 data-i18n="types_prem_title">Premium</h3>
+            <p>
+              <span data-i18n="types_price_label">Precio:</span>
+              <strong>1500 € / m²</strong>
+            </p>
+            <p data-i18n="types_prem_text">Materiales de alta gama.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="calculator-wrap">
+        <form class="calculator" onsubmit="return false;">
+          <h2 data-i18n="calc_title">Calculadora de presupuesto</h2>
+          <label for="area" data-i18n="calc_intro">Introduce los m² de tu reforma:</label>
+          <input id="area" type="number" placeholder="0" min="0" step="0.1" aria-label="Metros cuadrados">
+          
+          <p>
+            <span data-i18n="calc_econ">Económica</span>
+            <span>(<strong>800 € / m²</strong>)</span>
+            <strong><span id="eco">—</span></strong>
+          </p>
+
+          <p>
+            <span data-i18n="calc_std">Estándar</span>
+            <span>(<strong>1200 € / m²</strong>)</span>
+            <strong><span id="std">—</span></strong>
+          </p>
+
+          <p>
+            <span data-i18n="calc_pre">Premium</span>
+            <span>(<strong>1500 € / m²</strong>)</span>
+            <strong><span id="pre">—</span></strong>
+          </p>
+        </form>
+
+        <div class="calculator-note">
+          <strong data-i18n="calc_note_title">Nota:</strong><br>
+          <span data-i18n="calc_note_text">Los precios son aproximados. El presupuesto final dependerá del proyecto específico.</span>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Premium</h3>
-        <p>Precio aproximado: <strong>1500 € / m²</strong></p>
-        <p>Materiales y acabados de alta calidad.</p>
-      </div>
+      <a href="projects.html" class="gallery-btn" data-i18n="projects_button">
+        📸 Ver todos los proyectos
+      </a>
+
+      <section>
+        <h2 data-i18n="contact_title">Contacto</h2>
+        <p id="phone"></p>
+        <a id="wa" target="_blank" rel="noopener" class="whatsapp-btn" data-i18n="contact_whatsapp">
+          💬 Escribir por WhatsApp
+        </a>
+        <p>Email: <span id="email"></span></p>
+      </section>
+
     </div>
-  </section>
+  </main>
 
-<section class="calculator-wrap">
-
-  <div class="calculator">
-    <h2>Calculadora Rápida</h2>
-
-    <p>Introduce la superficie del piso o vivienda:</p>
-
-    <input type="number" id="area" placeholder="m²" min="0">
-
-    <div id="resultados" style="margin-top:15px;">
-      <p><strong>Económica (800 €/m²):</strong> <span id="eco">—</span></p>
-      <p><strong>Estándar (1200 €/m²):</strong> <span id="std">—</span></p>
-      <p><strong>Premium (1500 €/m²):</strong> <span id="pre">—</span></p>
-    </div>
-  </div>
-
-  <div class="calculator-note">
-    <strong>Importante:</strong><br>
-    Los cálculos mostrados son valores aproximados basados en precios medios
-    de materiales y mano de obra. No constituyen una oferta comercial.
-    El presupuesto final puede variar según las condiciones del proyecto.
-  </div>
-
-</section>
-
-
-  <a href="projects.html" class="gallery-btn">
-    📸 ver todos los proyectos
-  </a>
-
-<section>
-  <h2>Contacto</h2>
-
-  <p id="phone"></p>
-
-  <a id="wa" target="_blank" rel="noopener" class="whatsapp-btn">
-  💬 Escribir por WhatsApp
-</a>
+  <footer>
+    © 2025 Reformas y Construcción
+  </footer>
 
   <script>
     const p1 = "+34";
@@ -283,54 +330,77 @@
     const waLink = `https://wa.me/${p1.replace('+','')}${p2}${p3}${p4}${p5}`;
 
     document.getElementById("phone").innerHTML =
-  `Teléfono: <a href="tel:+34691074618">${full}</a>`;
+      `Teléfono: <a href="tel:+34691074618">${full}</a>`;
     document.getElementById("wa").href = waLink;
+
+    const e1 = "info";
+    const e2 = "vitalvibeconstruction";
+    const e3 = "com";
+    document.getElementById("email").innerHTML =
+      `<a href="mailto:${e1}@${e2}.${e3}">${e1}@${e2}.${e3}</a>`;
   </script>
-  <p>Email: <span id="email"></span></p>
 
-<script>
-  const e1 = "info";
-  const e2 = "vitalvibeconstruction";
-  const e3 = "com";
-  document.getElementById("email").innerHTML =
-    `<a href="mailto:${e1}@${e2}.${e3}">${e1}@${e2}.${e3}</a>`;
-</script>
+  <script>
+    const areaInput = document.getElementById('area');
+    const eco = document.getElementById('eco');
+    const std = document.getElementById('std');
+    const pre = document.getElementById('pre');
 
-</section>
-
-</div>
-</main>
-
-<footer>
-  © 2025 Reformas y Construcción
-</footer>
-
-<script>
-  const areaInput = document.getElementById('area');
-  const eco = document.getElementById('eco');
-  const std = document.getElementById('std');
-  const pre = document.getElementById('pre');
-
-  function formatEuro(num) {
-    return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(num);
-  }
-
-  areaInput.addEventListener('input', () => {
-    const m2 = parseFloat(areaInput.value);
-
-    if (isNaN(m2) || m2 <= 0) {
-      eco.textContent = std.textContent = pre.textContent = '—';
-      return;
+    function formatEuro(num) {
+      return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(num);
     }
 
-    eco.textContent = formatEuro(m2 * 800);
-    std.textContent = formatEuro(m2 * 1200);
-    pre.textContent = formatEuro(m2 * 1500);
-  });
-</script>
+    areaInput.addEventListener('input', () => {
+      const m2 = parseFloat(areaInput.value);
+
+      if (isNaN(m2) || m2 <= 0) {
+        eco.textContent = std.textContent = pre.textContent = '—';
+        return;
+      }
+
+      eco.textContent = formatEuro(m2 * 800);
+      std.textContent = formatEuro(m2 * 1200);
+      pre.textContent = formatEuro(m2 * 1500);
+    });
+  </script>
+
+  <script>
+    let translations = {};
+    let currentLang = localStorage.getItem("lang") || "es";
+
+    function applyTranslations(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('.langs button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem("lang", lang);
+      applyTranslations(lang);
+    }
+
+    fetch("translations.json")
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
+        return r.json();
+      })
+      .then(data => {
+        translations = data;
+        applyTranslations(currentLang);
+      })
+      .catch(err => {
+        console.error("Translation load error:", err);
+        applyTranslations("es");
+      });
+  </script>
 
 </body>
 </html>
-
-
-

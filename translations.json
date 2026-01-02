@@ -1,0 +1,94 @@
+{
+  "es": {
+    "hero_title": "Reformas y Construcción en Barcelona",
+    "hero_subtitle": "Servicios completos de reforma — rápido, accesible y con garantía",
+
+    "about_title": "Sobre Nosotros",
+    "about_p1": "Ofrecemos servicios completos de reforma y construcción en toda la región. Trabajamos con calidad, seriedad y precios transparentes. Podemos ayudarte con reformas integrales, cocinas, baños, pintura, electricidad y más.",
+    "about_p2": "Atendemos a nuestros clientes en Español, English y Русский — será cómodo comunicarse en su idioma.",
+
+    "types_title": "Tipos de Reforma",
+    "types_price_label": "Precio aproximado:",
+    "types_econ_title": "Económica",
+    "types_econ_text": "Soluciones básicas y funcionales.",
+    "types_std_title": "Estándar",
+    "types_std_text": "Mejor relación calidad / precio.",
+    "types_prem_title": "Premium",
+    "types_prem_text": "Materiales y acabados de alta calidad.",
+
+    "calc_title": "Calculadora de reforma",
+    "calc_intro": "Introduce la superficie en m²:",
+    "calc_econ": "Económica:",
+    "calc_std": "Estándar:",
+    "calc_pre": "Premium:",
+    "calc_note_title": "Importante:",
+    "calc_note_text": "Los cálculos mostrados son valores aproximados basados en precios medios de materiales y mano de obra. No constituyen una oferta comercial. El presupuesto final puede variar según las condiciones del proyecto.",
+
+    "projects_button": "📸 Ver todos los proyectos",
+
+    "contact_title": "Contacto",
+    "contact_whatsapp": "💬 Escribir por WhatsApp"
+  },
+
+  "en": {
+    "hero_title": "Renovation and Construction in Barcelona",
+    "hero_subtitle": "Full renovation services — fast, affordable and guaranteed",
+
+    "about_title": "About Us",
+    "about_p1": "We offer full renovation and construction services across the region. We work with quality, reliability and transparent pricing. We can help with full renovations, kitchens, bathrooms, painting, electricity and more.",
+    "about_p2": "We serve our clients in Spanish, English and Russian — so it will be comfortable to communicate in your language.",
+
+    "types_title": "Types of Renovation",
+    "types_price_label": "Approximate price:",
+    "types_econ_title": "Economy",
+    "types_econ_text": "Basic and functional solutions.",
+    "types_std_title": "Standard",
+    "types_std_text": "Best balance between quality and price.",
+    "types_prem_title": "Premium",
+    "types_prem_text": "High–quality materials and finishes.",
+
+    "calc_title": "Renovation cost calculator",
+    "calc_intro": "Enter the area in m²:",
+    "calc_econ": "Economy:",
+    "calc_std": "Standard:",
+    "calc_pre": "Premium:",
+    "calc_note_title": "Important:",
+    "calc_note_text": "The shown calculations are approximate values based on average material and labour costs. They do not represent a commercial offer. The final quotation may vary depending on the project conditions.",
+
+    "projects_button": "📸 View all projects",
+
+    "contact_title": "Contact us",
+    "contact_whatsapp": "💬 Message on WhatsApp"
+  },
+
+  "ru": {
+    "hero_title": "Ремонт и строительство в Барселоне",
+    "hero_subtitle": "Полный комплекс ремонтных услуг — быстро, доступно и с гарантией",
+
+    "about_title": "О нас",
+    "about_p1": "Мы предлагаем полный спектр услуг по ремонту и строительству по всему региону. Работаем качественно, надёжно и с прозрачными ценами. Поможем с комплексным ремонтом, кухнями, ванными, покраской, электрикой и многим другим.",
+    "about_p2": "Мы общаемся с клиентами на испанском, английском и русском — вам будет удобно.",
+
+    "types_title": "Виды ремонта",
+    "types_price_label": "Примерная стоимость:",
+    "types_econ_title": "Эконом",
+    "types_econ_text": "Базовые и функциональные решения.",
+    "types_std_title": "Стандарт",
+    "types_std_text": "Лучшее соотношение цены и качества.",
+    "types_prem_title": "Премиум",
+    "types_prem_text": "Материалы и отделка высокого уровня.",
+
+    "calc_title": "Калькулятор стоимости ремонта",
+    "calc_intro": "Введите площадь в м²:",
+    "calc_econ": "Эконом:",
+    "calc_std": "Стандарт:",
+    "calc_pre": "Премиум:",
+    "calc_note_title": "Важно:",
+    "calc_note_text": "Приведённые расчёты являются ориентировочными и основаны на средних ценах на материалы и работы. Это не коммерческое предложение. Итоговая стоимость может отличаться в зависимости от условий проекта.",
+
+    "projects_button": "📸 Посмотреть все проекты",
+
+    "contact_title": "Контакты",
+    "contact_whatsapp": "💬 Написать в WhatsApp"
+  }
+}
