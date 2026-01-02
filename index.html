@@ -174,15 +174,14 @@
 
   </style>
 </head>
-<div class="langs">
+
+<body>
+  <div class="langs">
   <span>Hablamos:</span>
   <span><span class="fi fi-es"></span> Español</span>
   <span><span class="fi fi-gb"></span> English</span>
   <span><span class="fi fi-ru"></span> Русский</span>
 </div>
-
-
-<body>
 
 <header>
   Vital Vibe Constructions
@@ -269,9 +268,9 @@
 
   <p id="phone"></p>
 
-  <a id="wa" target="_blank" class="whatsapp-btn">
-    💬 Escribir por WhatsApp
-  </a>
+  <a id="wa" target="_blank" rel="noopener" class="whatsapp-btn">
+  💬 Escribir por WhatsApp
+</a>
 
   <script>
     const p1 = "+34";
@@ -283,7 +282,8 @@
     const full = `${p1} ${p2} ${p3} ${p4} ${p5}`;
     const waLink = `https://wa.me/${p1.replace('+','')}${p2}${p3}${p4}${p5}`;
 
-    document.getElementById("phone").innerText = "Teléfono: " + full;
+    document.getElementById("phone").innerHTML =
+  `Teléfono: <a href="tel:+34691074618">${full}</a>`;
     document.getElementById("wa").href = waLink;
   </script>
   <p>Email: <span id="email"></span></p>
