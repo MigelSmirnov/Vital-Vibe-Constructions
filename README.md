@@ -5,6 +5,7 @@ Sitio estático listo para desplegar (GitHub Pages, Netlify, Vercel, etc.).
 ## Estructura
 - `index.html` — página principal
 - `galeria-economica.dc.html`, `galeria-estandar.dc.html`, `galeria-premium.dc.html` — galerías
+- `aviso-legal.dc.html` — aviso legal (enlazado desde el footer)
 - `support.js` — runtime necesario (no borrar)
 - `VVC_primary_logo.svg` — logo
 - `estandar/`, `premium/`, `proyecto-1/`, `proyecto-2/`, `smart/` — imágenes
@@ -17,8 +18,3 @@ Sitio estático listo para desplegar (GitHub Pages, Netlify, Vercel, etc.).
 El archivo `.nojekyll` evita que GitHub Pages procese los archivos con Jekyll.
 
 Idiomas: español, inglés y ruso (selector en la cabecera). El formulario de contacto está oculto hasta que el backend esté listo; los botones de WhatsApp ya funcionan.
-
-
-## Legal
-Se añadieron `aviso-legal.html` y `privacidad.html`, y enlaces a ambas páginas en el footer.
-Datos legales insertados. Revisa el texto final con tu gestor/asesor antes de publicar.
