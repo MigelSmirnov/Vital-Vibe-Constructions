@@ -1,63 +1,24 @@
-# Vital Vibe Constructions
+# Vital Vibe Constructions — sitio web
 
-Sitio web de la empresa de reformas y construcción en Barcelona.
+Sitio estático listo para desplegar (GitHub Pages, Netlify, Vercel, etc.).
 
-👉 **Demo (GitHub Pages):**
-https://migelsmirnov.github.io/Vital-Vibe-Constructions/
+## Estructura
+- `index.html` — página principal
+- `galeria-economica.dc.html`, `galeria-estandar.dc.html`, `galeria-premium.dc.html` — galerías
+- `support.js` — runtime necesario (no borrar)
+- `VVC_primary_logo.svg` — logo
+- `estandar/`, `premium/`, `proyecto-1/`, `proyecto-2/`, `smart/` — imágenes
 
----
+## Desplegar en GitHub Pages
+1. Crea un repositorio y sube **el contenido de esta carpeta** a la raíz (o a `/docs`).
+2. En **Settings → Pages**, elige la rama y la carpeta (`/root` o `/docs`).
+3. El sitio se publica en `https://<usuario>.github.io/<repo>/`.
 
-## 🌍 Idiomas
+El archivo `.nojekyll` evita que GitHub Pages procese los archivos con Jekyll.
 
-- 🇪🇸 Español  
-- 🇬🇧 English  
-- 🇷🇺 Русский  
-
-También atendemos a clientes en estos idiomas.
-
----
-
-## 🏗 Servicios principales
-
-- Reformas integrales
-- Reparación y acabado
-- Reformas de baño y cocina
-- Electricidad, fontanería, pintura
-
----
-
-## 📸 Proyectos realizados
-
-Ejemplos reales de nuestro trabajo se puede ver aquí:
+Idiomas: español, inglés y ruso (selector en la cabecera). El formulario de contacto está oculto hasta que el backend esté listo; los botones de WhatsApp ya funcionan.
 
 
----
-
-## 🧮 Calculadora
-
-En la página principal hay una calculadora rápida para estimar el coste aproximado de reforma.
-
-> ⚠️ Los cálculos son orientativos y **no constituyen una oferta comercial**.
-
----
-
-## 💻 Tecnologías usadas
-
-- HTML
-- CSS
-- JavaScript
-- GitHub Pages
-
----
-
-## 📬 Contacto
-
-Barcelona, España  
-(скроем номер от ботов 😉)
-
----
-
-### ✨ Autor
-
-Proyecto creado por **Vital Vibe Constructions**  
-con ayuda y soporte técnico 💪
+## Legal
+Se añadieron `aviso-legal.html` y `privacidad.html`, y enlaces a ambas páginas en el footer.
+Datos legales insertados. Revisa el texto final con tu gestor/asesor antes de publicar.

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #14171b; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  img { display: block; max-width: 100%; }
+  ::selection { background: #e0a33b; color: #1a1206; }
+  @keyframes vvfade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 860px) {
+    html, body { overflow-x: hidden; }
+    [style*="max-width: 1240px"] { padding-left: 18px !important; padding-right: 18px !important; }
+    [style*="1.1fr 0.9fr"] { grid-template-columns: 1fr !important; }
+    [style*="repeat(2, 1fr)"] { grid-template-columns: 1fr !important; }
+    [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
+    [style*="font-size: 56px"] { font-size: 33px !important; }
+    [style*="font-size: 42px"] { font-size: 27px !important; }
+    [style*="gap: 30px"] { gap: 18px !important; }
+    [data-langwrap] span { display: none !important; }
+  }
+</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',sans-serif;color:#edebe6;line-height:1.55;min-height:100vh;">
+
+  <!-- nav -->
+  <header style="position:sticky;top:0;z-index:500;background:rgba(20,23,27,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.09);">
+    <nav style="max-width:1240px;margin:0 auto;padding:16px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;">
+      <a href="index.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;">
+        <span style="width:34px;height:34px;border-radius:8px;background:#e0a33b;display:flex;align-items:center;justify-content:center;color:#1a1206;font-weight:800;font-size:16px;font-family:'Space Grotesk',sans-serif;">V</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.01em;color:#fff;">VITAL VIBE</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div data-langwrap style="display:flex;align-items:center;gap:4px;">
+          <button type="button" data-lang="es" style="background:none;border:none;border-bottom:2px solid transparent;padding:2px 3px;cursor:pointer;font-family:inherit;font-size:13px;color:#9aa1a8;">ES</button>
+          <button type="button" data-lang="en" style="background:none;border:none;border-bottom:2px solid transparent;padding:2px 3px;cursor:pointer;font-family:inherit;font-size:13px;color:#9aa1a8;">EN</button>
+          <button type="button" data-lang="ru" style="background:none;border:none;border-bottom:2px solid transparent;padding:2px 3px;cursor:pointer;font-family:inherit;font-size:13px;color:#9aa1a8;">RU</button>
+        </div>
+        <a href="index.html" data-i18n="g_back" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:9px;white-space:nowrap;">← Volver al inicio</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- hero -->
+  <section style="border-bottom:1px solid rgba(255,255,255,.07);">
+    <div style="max-width:1240px;margin:0 auto;padding:64px 30px 48px;animation:vvfade .6s ease both;">
+      <div data-i18n="g_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">Galería · Premium · Trabajos de contrata</div>
+      <h1 data-i18n="g_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:56px;line-height:1.03;letter-spacing:-.025em;margin:18px 0 0;color:#fff;max-width:15em;text-wrap:balance;">Obra y acabados en villas premium</h1>
+      <p data-i18n="g_sub" style="font-size:17px;color:#9aa1a8;margin:18px 0 0;max-width:44em;text-wrap:pretty;">Como contratistas especializados ejecutamos pladur, enlucido, pintura a pistola, iluminación LED integrada y domótica en viviendas de alta gama. Pulsa cualquier foto para ampliarla.</p>
+      <div style="display:flex;align-items:flex-start;gap:11px;margin-top:24px;background:#1b1f24;border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:15px 17px;max-width:48em;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#e0a33b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <p data-i18n="g_note" style="font-size:14px;color:#9aa1a8;margin:0;line-height:1.5;">No mostramos el proyecto completo: aportamos la parte de obra y acabados como contratistas de confianza.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- block 1 : pladur -->
+  <section style="background:#14171b;">
+    <div style="max-width:1240px;margin:0 auto;padding:56px 30px;">
+      <div style="margin-bottom:28px;">
+        <div data-i18n="b1_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">01 · Pladur y estructura</div>
+        <h2 data-i18n="b1_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:12px 0 0;color:#fff;">Tabiquería, preinstalaciones y trazado</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:30px;align-items:stretch;">
+        <div data-zoom style="position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;min-height:420px;">
+          <img src="premium/pladur-instalacion.jpeg" alt="Pladur y preinstalación en villa premium" style="width:100%;height:100%;object-fit:cover;">
+          <span data-i18n="c_pladur1" style="position:absolute;left:14px;bottom:14px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:6px 11px;border-radius:6px;">Obra · Pladur y preinstalación</span>
+        </div>
+        <div style="display:grid;grid-template-rows:1fr 1fr;gap:30px;">
+          <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;min-height:195px;">
+            <img src="premium/pladur-obra.jpeg" alt="Tabiquería de pladur en obra" style="width:100%;height:100%;object-fit:cover;">
+            <span data-i18n="c_pladur2" style="position:absolute;left:12px;bottom:12px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Obra · Tabiquería</span>
+          </div>
+          <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;min-height:195px;">
+            <img src="premium/instalacion.jpeg" alt="Trazado de instalaciones y canalizaciones" style="width:100%;height:100%;object-fit:cover;">
+            <span data-i18n="c_instal" style="position:absolute;left:12px;bottom:12px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Obra · Canalizaciones</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- block 2 : techos - preparacion y pintura -->
+  <section style="background:#1b1f24;">
+    <div style="max-width:1240px;margin:0 auto;padding:56px 30px;">
+      <div style="margin-bottom:28px;">
+        <div data-i18n="b2_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">02 · Techos · preparación y pintura</div>
+        <h2 data-i18n="b2_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:12px 0 0;color:#fff;">Del enmasillado al acabado a pistola</h2>
+        <p data-i18n="b2_sub" style="font-size:16px;color:#9aa1a8;margin:14px 0 0;max-width:44em;text-wrap:pretty;">Plastecido y lijado de juntas, imprimación por zonas, protección integral de paredes y LED lineal, y pintura final a pistola con acabado uniforme.</p>
+      </div>
+
+      <!-- step labels -->
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:#9aa1a8;">
+        <span data-i18n="step_prep" style="background:rgba(224,163,59,.14);color:#e0a33b;border:1px solid rgba(224,163,59,.4);padding:6px 12px;border-radius:20px;">1 · Preparación</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5f666e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <span data-i18n="step_paint" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:6px 12px;border-radius:20px;">2 · Pintura final</span>
+      </div>
+
+      <!-- preparacion : 4 photos -->
+      <div data-i18n="grp_prep" style="font-family:'Space Mono',monospace;font-size:12.5px;color:#e0a33b;letter-spacing:.04em;margin-bottom:14px;">— Preparación del techo</div>
+      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:14px;margin-bottom:32px;">
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/prep-techo-1.jpeg" alt="Imprimación del techo por zonas junto a registro" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="c_prep1" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Imprimación por zonas</span></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/prep-techo-2.jpeg" alt="Enmasillado de juntas y cajas en techo y pared" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="c_prep2" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Plastecido de juntas</span></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/prep-techo-3.jpeg" alt="Protección con plástico y enmasillado alrededor del LED" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="c_prep3" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Protección y enmasillado</span></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/prep-techo-4.jpeg" alt="Techo preparado con LED lineal y protección" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="c_prep4" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Techo listo para pintar</span></div>
+      </div>
+
+      <!-- pintura final : 2 photos -->
+      <div data-i18n="grp_paint" style="font-family:'Space Mono',monospace;font-size:12.5px;color:#e0a33b;letter-spacing:.04em;margin-bottom:14px;">— Pintura final a pistola</div>
+      <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:30px;">
+        <div data-zoom style="position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;min-height:360px;">
+          <img src="premium/pintura-techo.jpeg" alt="Pintura de techo a pistola con acabado uniforme" style="width:100%;height:100%;object-fit:cover;">
+          <span data-i18n="c_ptecho" style="position:absolute;left:14px;bottom:14px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:6px 11px;border-radius:6px;">Techo · acabado a pistola</span>
+        </div>
+        <div data-zoom style="position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;min-height:360px;">
+          <img src="premium/pintura-pared.jpeg" alt="Pintura de pared a pistola en tono oscuro" style="width:100%;height:100%;object-fit:cover;">
+          <span data-i18n="c_ppared" style="position:absolute;left:14px;bottom:14px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:6px 11px;border-radius:6px;">Pared · tono oscuro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- block 3 : iluminacion LED y techos -->
+  <section style="background:#14171b;">
+    <div style="max-width:1240px;margin:0 auto;padding:56px 30px;">
+      <div style="margin-bottom:28px;">
+        <div data-i18n="b3_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">03 · Iluminación LED integrada</div>
+        <h2 data-i18n="b3_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:12px 0 0;color:#fff;">Líneas de luz y techos técnicos</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:14px;">
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/techo-1.jpeg" alt="Techo con iluminación LED lineal" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/techo-2.jpeg" alt="Detalle de techo técnico" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/techo-3.jpeg" alt="Iluminación lineal integrada en techo" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/techo-4.jpeg" alt="Composición de techos con luz" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/led-escalera.jpeg" alt="Iluminación LED en escalera" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="c_led" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">LED · escalera</span></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/panel-marmol.jpeg" alt="Panel de mármol retroiluminado" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="c_marmol" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Panel de mármol</span></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/apple-home.jpeg" alt="Domótica integrada" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="c_domotica" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Domótica</span></div>
+        <div data-zoom style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.1);cursor:zoom-in;"><img src="premium/cuadro-villa.jpeg" alt="Resultado final de la villa" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="c_villa" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Villa terminada</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- cta -->
+  <section style="background:#f6f3ee;color:#15181c;">
+    <div style="max-width:1240px;margin:0 auto;padding:64px 30px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;">
+      <div>
+        <h2 data-i18n="cta_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:36px;line-height:1.05;letter-spacing:-.02em;margin:0;">¿Buscas un contratista para tu villa?</h2>
+        <p data-i18n="cta_text" style="font-size:17px;color:#5c636b;margin:12px 0 0;">Ejecutamos la parte de obra y acabados con presupuesto claro.</p>
+      </div>
+      <a href="index.html#calcB" data-i18n="cta_btn" style="background:#15181c;color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:15px 26px;border-radius:11px;white-space:nowrap;">Pedir presupuesto gratis</a>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer style="background:#0f1216;color:#9aa1a8;border-top:1px solid rgba(255,255,255,.07);">
+    <div style="max-width:1240px;margin:0 auto;padding:34px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <a href="index.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;">
+        <span style="width:32px;height:32px;border-radius:8px;background:#e0a33b;display:flex;align-items:center;justify-content:center;color:#1a1206;font-weight:800;font-family:'Space Grotesk',sans-serif;">V</span>
+        <span style="font-family:'Space Grotesk',sans-serif;color:#fff;font-size:15px;font-weight:600;">VITAL VIBE CONSTRUCTIONS</span>
+      </a>
+      <div style="font-family:'Space Mono',monospace;font-size:12.5px;">© 2025 Vital Vibe Constructions</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12.5px;"><a href="aviso-legal.html" style="color:#9aa1a8;text-decoration:none;">Aviso legal</a><a href="privacidad.html" style="color:#9aa1a8;text-decoration:none;">Privacidad</a></div>
+    </div>
+  </footer>
+
+  <!-- lightbox -->
+  <div data-lightbox style="position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(8,10,13,.93);padding:30px;cursor:zoom-out;">
+    <img data-lightbox-img alt="" style="max-width:92vw;max-height:88vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.6);">
+    <button data-lightbox-close type="button" aria-label="Cerrar" style="position:absolute;top:22px;right:26px;width:44px;height:44px;border-radius:10px;border:none;background:rgba(255,255,255,.12);color:#fff;font-size:20px;line-height:1;cursor:pointer;">✕</button>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  renderVals() { return {}; }
+  componentDidMount() {
+    const T = {
+      es: { g_back:"← Volver al inicio", g_eyebrow:"Galería · Premium · Trabajos de contrata", g_title:"Obra y acabados en villas premium", g_sub:"Como contratistas especializados ejecutamos pladur, enlucido, pintura a pistola, iluminación LED integrada y domótica en viviendas de alta gama. Pulsa cualquier foto para ampliarla.", g_note:"No mostramos el proyecto completo: aportamos la parte de obra y acabados como contratistas de confianza.", b1_eyebrow:"01 · Pladur y estructura", b1_title:"Tabiquería, preinstalaciones y trazado", c_pladur1:"Obra · Pladur y preinstalación", c_pladur2:"Obra · Tabiquería", c_instal:"Obra · Canalizaciones", b2_eyebrow:"02 · Techos · preparación y pintura", b2_title:"Del enmasillado al acabado a pistola", b2_sub:"Plastecido y lijado de juntas, imprimación por zonas, protección integral de paredes y LED lineal, y pintura final a pistola con acabado uniforme.", step_prep:"1 · Preparación", step_paint:"2 · Pintura final", grp_prep:"— Preparación del techo", c_prep1:"Imprimación por zonas", c_prep2:"Plastecido de juntas", c_prep3:"Protección y enmasillado", c_prep4:"Techo listo para pintar", grp_paint:"— Pintura final a pistola", c_ptecho:"Techo · acabado a pistola", c_ppared:"Pared · tono oscuro", b3_eyebrow:"03 · Iluminación LED integrada", b3_title:"Líneas de luz y techos técnicos", c_led:"LED · escalera", c_marmol:"Panel de mármol", c_domotica:"Domótica", c_villa:"Villa terminada", cta_title:"¿Buscas un contratista para tu villa?", cta_text:"Ejecutamos la parte de obra y acabados con presupuesto claro.", cta_btn:"Pedir presupuesto gratis" },
+      en: { g_back:"← Back to home", g_eyebrow:"Gallery · Premium · Contract works", g_title:"Construction & finishes in premium villas", g_sub:"As specialist contractors we carry out drywall, plastering, spray painting, integrated LED lighting and home automation in high-end homes. Tap any photo to enlarge it.", g_note:"We don't show the full project: we deliver the construction and finishing work as a trusted contractor.", b1_eyebrow:"01 · Drywall & structure", b1_title:"Partitions, pre-installations and routing", c_pladur1:"Works · Drywall & pre-install", c_pladur2:"Works · Partitions", c_instal:"Works · Conduits", b2_eyebrow:"02 · Ceilings · prep & paint", b2_title:"From filling to a sprayed finish", b2_sub:"Filling and sanding of joints, zone priming, full protection of walls and LED channels, and a final spray coat with a uniform finish.", step_prep:"1 · Preparation", step_paint:"2 · Final paint", grp_prep:"— Ceiling preparation", c_prep1:"Zone priming", c_prep2:"Joint filling", c_prep3:"Protection & filling", c_prep4:"Ceiling ready to paint", grp_paint:"— Final spray painting", c_ptecho:"Ceiling · sprayed finish", c_ppared:"Wall · dark tone", b3_eyebrow:"03 · Integrated LED lighting", b3_title:"Light lines and technical ceilings", c_led:"LED · staircase", c_marmol:"Marble panel", c_domotica:"Home automation", c_villa:"Finished villa", cta_title:"Looking for a contractor for your villa?", cta_text:"We handle construction and finishes with a clear quote.", cta_btn:"Get a free quote" },
+      ru: { g_back:"← На главную", g_eyebrow:"Галерея · Премиум · Подрядные работы", g_title:"Строительство и отделка в премиум-виллах", g_sub:"Как специализированные подрядчики мы выполняем гипсокартон, штукатурку, покраску распылением, встроенное LED-освещение и умный дом в домах высокого класса. Нажмите на любое фото, чтобы увеличить.", g_note:"Мы не показываем проект целиком: мы выполняем строительную и отделочную часть как надёжный подрядчик.", b1_eyebrow:"01 · Гипсокартон и структура", b1_title:"Перегородки, преинсталляции и разводка", c_pladur1:"Работы · Гипсокартон и преинсталляция", c_pladur2:"Работы · Перегородки", c_instal:"Работы · Каналы и трассы", b2_eyebrow:"02 · Потолки · подготовка и покраска", b2_title:"От шпаклёвки до покраски распылением", b2_sub:"Шпаклёвка и шлифовка швов, грунтование по зонам, полная защита стен и LED-линий, финишная покраска распылением с ровным покрытием.", step_prep:"1 · Подготовка", step_paint:"2 · Финишная покраска", grp_prep:"— Подготовка потолка", c_prep1:"Грунтование по зонам", c_prep2:"Шпаклёвка швов", c_prep3:"Защита и шпаклёвка", c_prep4:"Потолок готов к покраске", grp_paint:"— Финишная покраска распылением", c_ptecho:"Потолок · покраска распылением", c_ppared:"Стена · тёмный тон", b3_eyebrow:"03 · Встроенное LED-освещение", b3_title:"Линии света и технические потолки", c_led:"LED · лестница", c_marmol:"Мраморная панель", c_domotica:"Умный дом", c_villa:"Готовая вилла", cta_title:"Ищете подрядчика для вашей виллы?", cta_text:"Выполняем строительную и отделочную часть с понятной сметой.", cta_btn:"Получить бесплатную смету" }
+    };
+    const $$ = (s) => Array.from(document.querySelectorAll(s));
+    let lang = localStorage.getItem('vv_lang') || 'es';
+
+    const styleLangs = () => {
+      $$('[data-lang]').forEach(b => { const on = b.dataset.lang === lang; b.style.color = on ? '#e0a33b' : '#9aa1a8'; b.style.fontWeight = on ? '700' : '500'; b.style.borderBottomColor = on ? '#e0a33b' : 'transparent'; });
+    };
+    const applyLang = (l) => {
+      lang = l; localStorage.setItem('vv_lang', l);
+      const dict = T[l] || T.es;
+      $$('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (dict[k] != null) el.textContent = dict[k]; });
+      document.documentElement.lang = l;
+      styleLangs();
+    };
+    $$('[data-lang]').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+    // lightbox
+    const lb = document.querySelector('[data-lightbox]');
+    const lbImg = document.querySelector('[data-lightbox-img]');
+    const openLb = (src, alt) => { if (!lb || !lbImg) return; lbImg.src = src; lbImg.alt = alt || ''; lb.style.display = 'flex'; };
+    const closeLb = () => { if (!lb) return; lb.style.display = 'none'; if (lbImg) lbImg.removeAttribute('src'); };
+    $$('[data-zoom]').forEach(z => z.addEventListener('click', () => { const img = z.querySelector('img'); if (img) openLb(img.currentSrc || img.src, img.alt); }));
+    if (lb) lb.addEventListener('click', (e) => { if (e.target === lb || e.target.hasAttribute('data-lightbox-close')) closeLb(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+
+    applyLang(lang);
+  }
+}
+</script>
+</body>
+</html>

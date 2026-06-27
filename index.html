@@ -1,406 +1,708 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Reformas en Barcelona. Cocinas, baños, electricidad y pintura. Hablamos Español, English y Русский. Presupuesto sin compromiso.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
-  <title>Vital Vibe Construction – Reformas en Barcelona | Cocinas, Baños, Electricidad</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
-
-    header {
-      background: #2b6cb0;
-      color: white;
-      padding: 25px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .hero {
-      position: relative;
-      height: 380px;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      background: url('images/fabula-ai.png') center/cover no-repeat;
-    }
-    
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-    }
-    
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      padding: 15px;
-    }
-    
-    .hero-overlay h1 {
-      margin: 0 0 10px;
-      font-size: 26px;
-      max-width: 90%;
-    }
-    
-    .hero-overlay p {
-      margin: 0;
-      font-size: 16px;
-      max-width: 90%;
-    }
-
-    h2 { margin-top: 25px; }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    }
-
-    .calculator-wrap {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-    
-    .calculator {
-      background: #ffffff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    }
-    
-    .calculator-note {
-      background: #fffbe8;
-      padding: 15px;
-      border-left: 4px solid #f4b400;
-      border-radius: 8px;
-      color: #444;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-    
-    @media(max-width: 768px) {
-      .calculator-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    input {
-      padding: 8px;
-      width: 120px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    footer {
-      background: #1a202c;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-
-    .gallery-btn, .whatsapp-btn {
-      display: inline-block;
-      background: #2b6cb0;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 20px;
-      transition: opacity 0.2s;
-    }
-    
-    .gallery-btn:hover, .whatsapp-btn:hover { 
-      opacity: 0.9; 
-    }
-
-    .whatsapp-btn {
-      background: #25D366;
-    }
-
-    .langs {
-      background: #f1f5ff;
-      color: #1f2c48;
-      text-align: center;
-      padding: 10px 8px;
-      font-size: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .langs span:first-child {
-      font-weight: 600;
-    }
-
-    .langs button {
-      border: none;
-      background: white;
-      padding: 6px 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.2s;
-    }
-
-    .langs button:hover {
-      background: #e5edff;
-    }
-
-    .langs button.active {
-      background: #2b6cb0;
-      color: white;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-
 <body>
-  <div class="langs">
-    <span>Hablamos:</span>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #e9e9ea; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  img { display: block; max-width: 100%; }
+  ::selection { background: #be5b3c; color: #fff; }
+  @keyframes vvfade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-    <button onclick="setLang('es')" data-lang="es" aria-label="Cambiar a Español">
-      <span class="fi fi-es"></span> Español
-    </button>
+  /* ============ RESPONSIVE / MOBILE (selectors match React-serialized inline styles) ============ */
+  @media (max-width: 860px) {
+    html, body { overflow-x: hidden; }
+    #vv-root { overflow-x: hidden; }
+    /* tighten horizontal padding on every section wrapper */
+    [style*="max-width: 1200px"], [style*="max-width: 1240px"] { padding-left: 18px !important; padding-right: 18px !important; }
+    /* collapse all multi-column grids to a single column by default */
+    [style*="1.05fr 0.95fr"],
+    [style*="0.95fr 1.05fr"],
+    [style*="1.1fr 0.9fr"],
+    [style*="grid-template-columns: 1fr 1fr"],
+    [style*="grid-template-columns: repeat(3, 1fr)"],
+    [style*="grid-template-columns: repeat(4, 1fr)"] { grid-template-columns: 1fr !important; }
+    /* keep image galleries + small stat grids 2-up (declared AFTER, so they win) */
+    [style*="repeat(3, 1fr); gap: 16px"],
+    [style*="repeat(3, 1fr); gap: 14px"],
+    [style*="repeat(4, 1fr); gap: 18px"],
+    [style*="repeat(4, 1fr); gap: 20px"],
+    [style*="repeat(4, 1fr); gap: 1px"],
+    [style*="repeat(4, 1fr); gap: 0px"] { grid-template-columns: 1fr 1fr !important; }
+    [style*="repeat(3, auto)"] { grid-template-columns: repeat(3, 1fr) !important; gap: 16px !important; }
+    /* tighten big gaps */
+    [style*="gap: 56px"] { gap: 28px !important; }
+    [style*="gap: 48px"] { gap: 28px !important; }
+    /* shrink display headings */
+    [style*="font-size: 58px"], [style*="font-size: 62px"] { font-size: 34px !important; }
+    [style*="font-size: 46px"], [style*="font-size: 44px"] { font-size: 34px !important; }
+    [style*="font-size: 42px"] { font-size: 28px !important; }
+    [style*="font-size: 40px"] { font-size: 27px !important; }
+    [style*="font-size: 38px"] { font-size: 26px !important; }
+    [style*="font-size: 33px"], [style*="font-size: 32px"] { font-size: 25px !important; }
+    [style*="font-size: 18.5px"], [style*="font-size: 19px"] { font-size: 16px !important; }
+    /* hide desktop nav link clusters (CTA stays) */
+    [style*="gap: 30px; font-size: 15px"], [style*="gap: 30px; font-size: 14.5px"] { display: none !important; }
+    /* contact band inner padding (variant A) */
+    [style*="padding: 54px 48px"] { padding: 30px 22px !important; }
+    /* variant B hero top padding */
+    [style*="padding: 96px 30px 64px"] { padding-top: 56px !important; padding-bottom: 44px !important; }
+    /* reposition the floating price card so it never overflows */
+    [style*="left: -22px"] { left: 12px !important; bottom: 12px !important; }
+    /* compact top switcher bar */
+    #vv-bar { padding: 0 10px !important; }
+    #vv-bar span[style*="color: rgb(154, 154, 154)"] { display: none !important; }
+    #tab-a, #tab-b { padding: 6px 9px !important; font-size: 11px !important; }
+  }
+  @media (max-width: 520px) {
+    /* stack the bordered stat/value grids fully on small phones */
+    [style*="repeat(4, 1fr); gap: 1px"] { grid-template-columns: 1fr !important; }
+    [style*="repeat(3, auto)"] { grid-template-columns: 1fr 1fr !important; }
+    /* reduce very tall section padding */
+    [style*="padding: 72px 30px"] { padding-top: 48px !important; padding-bottom: 48px !important; }
+  }
+</style>
+</helmet>
 
-    <button onclick="setLang('en')" data-lang="en" aria-label="Switch to English">
-      <span class="fi fi-gb"></span> English
-    </button>
+<div id="vv-root">
 
-    <button onclick="setLang('ru')" data-lang="ru" aria-label="Переключить на Русский">
-      <span class="fi fi-ru"></span> Русский
-    </button>
-  </div>
+<!-- ============================= VARIANT B : ESTRUCTURA SÓLIDA ============================= -->
+<div id="variantB" style="display:block;background:#14171b;color:#edebe6;font-family:'Hanken Grotesk',sans-serif;line-height:1.55;">
 
-  <header>
-    Vital Vibe Constructions
+  <!-- nav -->
+  <header data-header style="position:sticky;top:0;z-index:500;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:background .25s ease,border-color .25s ease;">
+    <nav style="max-width:1240px;margin:0 auto;padding:16px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <div style="display:flex;align-items:center;gap:11px;">
+        <img src="VVC_primary_logo.svg" alt="Vital Vibe Construcción" style="height:40px;width:auto;display:block;">
+      </div>
+      <div style="display:flex;align-items:center;gap:30px;font-size:14.5px;font-weight:500;">
+        <a data-i18n="nav_services" href="#serviciosB" style="color:#cdd2d8;text-decoration:none;">Servicios</a>
+        <a data-i18n="nav_projects" href="#proyectosB" style="color:#cdd2d8;text-decoration:none;">Proyectos</a>
+        <a data-i18n="nav_premium" href="#premiumB" style="color:#cdd2d8;text-decoration:none;">Premium</a>
+        <a data-i18n="nav_smart" href="#smartB" style="color:#cdd2d8;text-decoration:none;">Domótica</a>
+        <a data-i18n="nav_calc" href="#calcB" style="color:#cdd2d8;text-decoration:none;">Calculadora</a>
+        <a data-i18n="nav_contact" href="#contactoB" style="color:#cdd2d8;text-decoration:none;">Contacto</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="display:flex;align-items:center;gap:4px;">
+          <button type="button" data-lang="es" style="background:none;border:none;border-bottom:2px solid transparent;padding:2px 3px;cursor:pointer;font-family:inherit;font-size:13px;color:#9aa1a8;">ES</button>
+          <button type="button" data-lang="en" style="background:none;border:none;border-bottom:2px solid transparent;padding:2px 3px;cursor:pointer;font-family:inherit;font-size:13px;color:#9aa1a8;">EN</button>
+          <button type="button" data-lang="ru" style="background:none;border:none;border-bottom:2px solid transparent;padding:2px 3px;cursor:pointer;font-family:inherit;font-size:13px;color:#9aa1a8;">RU</button>
+        </div>
+        <a data-wa href="#" target="_blank" rel="noopener" data-i18n="nav_cta" style="display:none;background:#e0a33b;color:#1a1206;text-decoration:none;font-weight:700;font-size:14px;padding:11px 18px;border-radius:9px;white-space:nowrap;">Presupuesto gratis</a>
+      </div>
+    </nav>
   </header>
 
-  <main>
-    <div class="container">
-
-      <div class="hero">
-        <div class="hero-overlay">
-          <h1 data-i18n="hero_title">Reformas integrales en Barcelona</h1>
-          <p data-i18n="hero_subtitle">Cocinas, baños, electricidad y pintura</p>
+  <!-- hero -->
+  <section style="position:relative;overflow:hidden;">
+    <img src="proyecto-2/b8.jpeg" alt="Cocina reformada en Barcelona" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,23,27,.94) 0%,rgba(20,23,27,.8) 40%,rgba(20,23,27,.32) 100%);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,23,27,.85) 0%,rgba(20,23,27,0) 22%);"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:96px 30px 64px;">
+      <div style="max-width:680px;animation:vvfade .7s ease both;">
+        <div style="display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#e0a33b;border:1px solid rgba(224,163,59,.4);padding:7px 13px;border-radius:6px;">
+          <span style="width:6px;height:6px;background:#e0a33b;border-radius:1px;"></span>
+          <span data-i18n="hero_eyebrow">Reformas en Barcelona</span>
+        </div>
+        <h1 data-i18n="hero_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:62px;line-height:1.02;letter-spacing:-.025em;margin:24px 0 0;color:#fff;text-wrap:balance;">Reformas integrales que dan nueva vida a tu hogar</h1>
+        <p data-i18n="hero_sub" style="font-size:19px;color:#c2c8cf;margin:22px 0 0;max-width:32em;text-wrap:pretty;">Cocinas, baños, electricidad y pintura. Trabajo serio, precios transparentes y atención en tu idioma.</p>
+        <div style="display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;">
+          <a href="#calcB" data-i18n="hero_cta1" style="display:none;background:#e0a33b;color:#1a1206;text-decoration:none;font-weight:700;font-size:16px;padding:15px 26px;border-radius:11px;">Pedir presupuesto gratis</a>
+          <a data-wa href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:15px 24px;border-radius:11px;border:1px solid rgba(255,255,255,.16);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm4.6 10.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5 0a6.5 6.5 0 0 1-3-2.6c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.8.5 2.2.5a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.1c-.1-.2-.3-.2-.5-.3z"/></svg>
+            <span data-i18n="hero_cta2">Escribir por WhatsApp</span>
+          </a>
         </div>
       </div>
-
-      <section>
-        <h2 data-i18n="about_title">Sobre nosotros</h2>
-        <p data-i18n="about_p1">Somos una empresa de reformas con experiencia en Barcelona.</p>
-        <p data-i18n="about_p2">Ofrecemos servicios de calidad con presupuesto sin compromiso.</p>
-      </section>
-
-      <section>
-        <h2 data-i18n="types_title">Tipos de reforma</h2>
-
-        <div class="cards">
-          <div class="card">
-            <h3 data-i18n="types_econ_title">Económica</h3>
-            <p>
-              <span data-i18n="types_price_label">Precio:</span>
-              <strong>800 € / m²</strong>
-            </p>
-            <p data-i18n="types_econ_text">Materiales básicos de calidad.</p>
-          </div>
-
-          <div class="card">
-            <h3 data-i18n="types_std_title">Estándar</h3>
-            <p>
-              <span data-i18n="types_price_label">Precio:</span>
-              <strong>1200 € / m²</strong>
-            </p>
-            <p data-i18n="types_std_text">Materiales de gama media.</p>
-          </div>
-
-          <div class="card">
-            <h3 data-i18n="types_prem_title">Premium</h3>
-            <p>
-              <span data-i18n="types_price_label">Precio:</span>
-              <strong>1500 € / m²</strong>
-            </p>
-            <p data-i18n="types_prem_text">Materiales de alta gama.</p>
-          </div>
+      <div style="display:grid;grid-template-columns:repeat(3,auto);gap:48px;margin-top:64px;padding-top:30px;border-top:1px solid rgba(255,255,255,.14);">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;color:#e0a33b;">800<span style="font-size:16px;color:#9aa1a8;"> €/m²</span></div>
+          <div data-i18n="chip_2" style="font-size:13.5px;color:#9aa1a8;margin-top:3px;">Garantía por escrito</div>
         </div>
-      </section>
-
-      <div class="calculator-wrap">
-        <form class="calculator" onsubmit="return false;">
-          <h2 data-i18n="calc_title">Calculadora de presupuesto</h2>
-          <label for="area" data-i18n="calc_intro">Introduce los m² de tu reforma:</label>
-          <input id="area" type="number" placeholder="0" min="0" step="0.1" aria-label="Metros cuadrados">
-          
-          <p>
-            <span data-i18n="calc_econ">Económica</span>
-            <span>(<strong>800 € / m²</strong>)</span>
-            <strong><span id="eco">—</span></strong>
-          </p>
-
-          <p>
-            <span data-i18n="calc_std">Estándar</span>
-            <span>(<strong>1200 € / m²</strong>)</span>
-            <strong><span id="std">—</span></strong>
-          </p>
-
-          <p>
-            <span data-i18n="calc_pre">Premium</span>
-            <span>(<strong>1500 € / m²</strong>)</span>
-            <strong><span id="pre">—</span></strong>
-          </p>
-        </form>
-
-        <div class="calculator-note">
-          <strong data-i18n="calc_note_title">Nota:</strong><br>
-          <span data-i18n="calc_note_text">Los precios son aproximados. El presupuesto final dependerá del proyecto específico.</span>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;color:#fff;">3</div>
+          <div data-i18n="chip_3" style="font-size:13.5px;color:#9aa1a8;margin-top:3px;">Atención en 3 idiomas</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;color:#fff;">0€</div>
+          <div data-i18n="chip_1" style="font-size:13.5px;color:#9aa1a8;margin-top:3px;">Presupuesto sin compromiso</div>
         </div>
       </div>
-
-      <a href="projects.html" class="gallery-btn" data-i18n="projects_button">
-        📸 Ver todos los proyectos
-      </a>
-
-      <section>
-        <h2 data-i18n="contact_title">Contacto</h2>
-        <p id="phone"></p>
-        <a id="wa" target="_blank" rel="noopener" class="whatsapp-btn" data-i18n="contact_whatsapp">
-          💬 Escribir por WhatsApp
-        </a>
-        <p>Email: <span id="email"></span></p>
-      </section>
-
     </div>
-  </main>
+  </section>
 
-  <footer>
-    © 2025 Reformas y Construcción
+  <!-- values -->
+  <section style="background:#14171b;border-bottom:1px solid rgba(255,255,255,.07);">
+    <div style="max-width:1240px;margin:0 auto;padding:56px 30px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;">
+      <div style="background:#1b1f24;padding:28px 24px;">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">01</span>
+        <h3 data-i18n="val1_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:12px 0 7px;color:#fff;">Presupuesto sin compromiso</h3>
+        <p data-i18n="val1_d" style="font-size:14px;color:#9aa1a8;margin:0;">Te damos un precio claro antes de empezar, sin sorpresas.</p>
+      </div>
+      <div style="background:#1b1f24;padding:28px 24px;">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">02</span>
+        <h3 data-i18n="val2_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:12px 0 7px;color:#fff;">Precios transparentes</h3>
+        <p data-i18n="val2_d" style="font-size:14px;color:#9aa1a8;margin:0;">Desde 800 €/m². Sabes lo que pagas y por qué.</p>
+      </div>
+      <div style="background:#1b1f24;padding:28px 24px;">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">03</span>
+        <h3 data-i18n="val3_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:12px 0 7px;color:#fff;">Hablamos tu idioma</h3>
+        <p data-i18n="val3_d" style="font-size:14px;color:#9aa1a8;margin:0;">Español · English · Русский.</p>
+      </div>
+      <div style="background:#1b1f24;padding:28px 24px;">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">04</span>
+        <h3 data-i18n="val4_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:12px 0 7px;color:#fff;">Garantía de calidad</h3>
+        <p data-i18n="val4_d" style="font-size:14px;color:#9aa1a8;margin:0;">Materiales y acabados con garantía.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- services -->
+  <section id="serviciosB" style="background:#f6f3ee;color:#15181c;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px;">
+        <div style="max-width:34em;">
+          <div data-i18n="services_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#b97f1f;">Servicios</div>
+          <h2 data-i18n="services_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:14px 0 0;">Todo lo que tu reforma necesita</h2>
+        </div>
+        <p data-i18n="services_sub" style="font-size:16.5px;color:#5c636b;margin:0;max-width:24em;">De la demolición a la última capa de pintura, nos encargamos de todo.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e6e0d5;border:1px solid #e6e0d5;border-radius:16px;overflow:hidden;">
+        <div style="background:#fff;padding:30px 28px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15181c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12h-6v-7H9v7z"/></svg><span style="font-family:'Space Mono',monospace;font-size:12px;color:#b97f1f;">01</span></div>
+          <h3 data-i18n="srv1_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:18px 0 7px;">Reformas integrales</h3>
+          <p data-i18n="srv1_d" style="font-size:14.5px;color:#5c636b;margin:0;">Proyectos completos de principio a fin.</p>
+        </div>
+        <div style="background:#fff;padding:30px 28px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15181c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12M7 6h.01M11 6h.01"/></svg><span style="font-family:'Space Mono',monospace;font-size:12px;color:#b97f1f;">02</span></div>
+          <h3 data-i18n="srv2_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:18px 0 7px;">Cocinas</h3>
+          <p data-i18n="srv2_d" style="font-size:14.5px;color:#5c636b;margin:0;">Diseño, muebles e instalación.</p>
+        </div>
+        <div style="background:#fff;padding:30px 28px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15181c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12V5a2 2 0 0 1 4 0v1M2 12h20v3a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4zM6 19l-1 2M18 19l1 2"/></svg><span style="font-family:'Space Mono',monospace;font-size:12px;color:#b97f1f;">03</span></div>
+          <h3 data-i18n="srv3_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:18px 0 7px;">Baños</h3>
+          <p data-i18n="srv3_d" style="font-size:14.5px;color:#5c636b;margin:0;">Alicatado, sanitarios y fontanería.</p>
+        </div>
+        <div style="background:#fff;padding:30px 28px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15181c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg><span style="font-family:'Space Mono',monospace;font-size:12px;color:#b97f1f;">04</span></div>
+          <h3 data-i18n="srv4_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:18px 0 7px;">Electricidad</h3>
+          <p data-i18n="srv4_d" style="font-size:14.5px;color:#5c636b;margin:0;">Instalaciones seguras y a norma.</p>
+        </div>
+        <div style="background:#fff;padding:30px 28px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15181c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5a2 2 0 0 0-2 2v6h18V5a2 2 0 0 0-2-2zM21 11v2a2 2 0 0 1-2 2h-7v6M12 15H9"/></svg><span style="font-family:'Space Mono',monospace;font-size:12px;color:#b97f1f;">05</span></div>
+          <h3 data-i18n="srv5_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:18px 0 7px;">Pintura</h3>
+          <p data-i18n="srv5_d" style="font-size:14.5px;color:#5c636b;margin:0;">Acabados limpios y duraderos.</p>
+        </div>
+        <div style="background:#fff;padding:30px 28px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15181c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="5"/><rect x="3" y="9" width="18" height="5"/><rect x="3" y="14" width="18" height="5"/><path d="M7 4v5M14 9v5M9 14v5"/></svg><span style="font-family:'Space Mono',monospace;font-size:12px;color:#b97f1f;">06</span></div>
+          <h3 data-i18n="srv6_t" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:18px 0 7px;">Albañilería</h3>
+          <p data-i18n="srv6_d" style="font-size:14.5px;color:#5c636b;margin:0;">Tabiques, suelos y alicatados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- before / after · entrada a proyectos -->
+  <section id="proyectosB" style="background:#14171b;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;">
+      <div style="margin-bottom:36px;">
+        <div data-i18n="ba_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">Antes y después</div>
+        <h2 data-i18n="ba_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:14px 0 0;color:#fff;">Resultados reales en Barcelona</h2>
+        <p data-i18n="ba_sub" style="font-size:16px;color:#9aa1a8;margin:12px 0 0;">Pasa el cursor sobre la imagen para ver la transformación.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:24px;align-items:stretch;">
+        <div>
+          <div data-ba style="position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;cursor:ew-resize;user-select:none;border:1px solid rgba(255,255,255,.1);">
+            <img src="proyecto-2/b1.jpeg" alt="Cocina antes" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <span data-i18n="ba_before" style="position:absolute;top:14px;right:14px;background:rgba(20,23,27,.78);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border-radius:5px;">Antes</span>
+            <div data-ba-after style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);">
+              <img src="proyecto-2/b8.jpeg" alt="Cocina después" draggable="false" style="width:100%;height:100%;object-fit:cover;">
+              <span data-i18n="ba_after" style="position:absolute;top:14px;left:14px;background:#e0a33b;color:#1a1206;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border-radius:5px;font-weight:700;">Después</span>
+            </div>
+            <div data-ba-handle style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e0a33b;transform:translateX(-1px);pointer-events:none;">
+              <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:7px;background:#e0a33b;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.4);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a1206" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+          <div data-i18n="ba1_label" style="font-family:'Space Mono',monospace;font-size:13px;color:#9aa1a8;margin-top:14px;letter-spacing:.04em;">Cocina · Reforma integral</div>
+        </div>
+        <div style="background:#1b1f24;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:34px;display:flex;flex-direction:column;justify-content:center;">
+          <div data-i18n="gal_kicker" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">Galería</div>
+          <p data-i18n="gal_text" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:24px;line-height:1.18;color:#fff;margin:14px 0 0;text-wrap:balance;">Mira todas las reformas económicas, antes y después, en la galería completa.</p>
+          <a href="galeria-economica.dc.html" data-i18n="gal_btn" style="display:inline-flex;align-items:center;gap:9px;align-self:flex-start;margin-top:24px;background:#e0a33b;color:#1a1206;text-decoration:none;font-weight:700;font-size:15px;padding:13px 22px;border-radius:11px;">Ver galería completa <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a1206" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- featured standard project -->
+  <section id="estandarB" style="background:#f6f3ee;color:#15181c;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px;">
+        <div style="max-width:36em;">
+          <div data-i18n="std_case_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#b97f1f;">Proyecto destacado · Estándar</div>
+          <h2 data-i18n="std_case_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:14px 0 0;text-wrap:balance;">De la obra al resultado final</h2>
+          <p data-i18n="std_case_sub" style="font-size:16.5px;color:#5c636b;margin:13px 0 0;max-width:30em;text-wrap:pretty;">Reforma integral de un piso en Barcelona: redistribución, instalaciones, suelo de roble y cocina a medida.</p>
+        </div>
+        <span data-i18n="std_case_badge" style="background:#15181c;color:#e0a33b;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:9px 15px;border-radius:7px;white-space:nowrap;">Nivel Estándar</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:24px;align-items:stretch;">
+        <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid #e6e0d5;min-height:340px;">
+          <img src="estandar/cocina.jpeg" alt="Cocina a medida terminada con suelo de roble" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span data-i18n="std_c_kitchen" style="position:absolute;left:14px;bottom:14px;background:#e0a33b;color:#1a1206;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;font-weight:700;padding:6px 11px;border-radius:6px;">Cocina a medida</span>
+        </div>
+        <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid #e6e0d5;min-height:340px;">
+          <img src="estandar/obra.jpeg" alt="Estructura e instalaciones en obra" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span data-i18n="std_c1" style="position:absolute;left:14px;bottom:14px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:6px 11px;border-radius:6px;">Estructura e instalaciones</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px;">
+      <button data-toggle="std-more" type="button" style="display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #e6e0d5;color:#15181c;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;padding:12px 20px;border-radius:10px;cursor:pointer;">
+        <span data-show="closed" data-i18n="see_more">Ver más fotos</span>
+        <span data-show="open" data-i18n="see_less" style="display:none;">Ocultar fotos</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <a href="galeria-estandar.dc.html" data-i18n="std_gal_btn" style="display:inline-flex;align-items:center;gap:8px;background:#15181c;color:#fff;text-decoration:none;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;">Ver galería completa →</a>
+      </div>
+      <div data-more id="std-more" style="display:none;margin-top:16px;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid #e6e0d5;aspect-ratio:4/3;"><img src="estandar/suelo-base.jpeg" alt="Base de suelo antes del parquet" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="std_c2" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Base de suelo</span></div>
+          <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid #e6e0d5;aspect-ratio:4/3;"><img src="estandar/parquet.jpeg" alt="Instalación de suelo de roble" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="std_c3" style="position:absolute;left:11px;bottom:11px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;">Suelo de roble</span></div>
+          <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid #e6e0d5;aspect-ratio:4/3;"><img src="estandar/pasillo.jpeg" alt="Pasillo terminado con suelo de roble" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="std_c4" style="position:absolute;left:11px;bottom:11px;background:#e0a33b;color:#1a1206;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;padding:5px 9px;border-radius:6px;font-weight:700;">Resultado final</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- premium contract work -->
+  <section id="premiumB" style="background:#14171b;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px;">
+        <div style="max-width:38em;">
+          <div data-i18n="prem_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">Premium · Trabajos de contrata</div>
+          <h2 data-i18n="prem_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:14px 0 0;color:#fff;text-wrap:balance;">Trabajos de contrata en obras premium</h2>
+          <p data-i18n="prem_intro" style="font-size:16.5px;color:#9aa1a8;margin:13px 0 0;max-width:34em;text-wrap:pretty;">Como contratistas especializados ejecutamos trabajos de obra y acabado en viviendas y villas de alta gama: pladur, enlucido, pintura e iluminación LED integrada, junto a los equipos de proyecto del cliente.</p>
+        </div>
+        <span data-i18n="prem_badge" style="background:#e0a33b;color:#1a1206;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:9px 15px;border-radius:7px;white-space:nowrap;">Como contratistas</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:24px;align-items:stretch;">
+        <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);min-height:340px;">
+          <img src="premium/pintura-techo.jpeg" alt="Enlucido y pintura de techo a pistola en obra premium" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span data-i18n="prem_g1" style="position:absolute;left:14px;bottom:14px;background:#e0a33b;color:#1a1206;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;font-weight:700;padding:6px 11px;border-radius:6px;">Enlucido y pintura de techo</span>
+        </div>
+        <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;">
+          <div style="position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);min-height:160px;">
+            <img src="premium/pintura-pared.jpeg" alt="Pintura de pared a pistola con acabado uniforme" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <span data-i18n="prem_g2" style="position:absolute;left:13px;bottom:13px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Acabado uniforme</span>
+          </div>
+          <div style="position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);min-height:160px;">
+            <img src="premium/led-escalera.jpeg" alt="Escalera con iluminación LED integrada en villa premium" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <span data-i18n="prem_g3" style="position:absolute;left:13px;bottom:13px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Iluminación LED integrada</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span data-i18n="prem_tag1" style="font-family:'Space Mono',monospace;font-size:12px;color:#edebe6;background:#1b1f24;border:1px solid rgba(255,255,255,.1);padding:8px 13px;border-radius:7px;">Pladur</span>
+          <span data-i18n="prem_tag2" style="font-family:'Space Mono',monospace;font-size:12px;color:#edebe6;background:#1b1f24;border:1px solid rgba(255,255,255,.1);padding:8px 13px;border-radius:7px;">Enlucido</span>
+          <span data-i18n="prem_tag3" style="font-family:'Space Mono',monospace;font-size:12px;color:#edebe6;background:#1b1f24;border:1px solid rgba(255,255,255,.1);padding:8px 13px;border-radius:7px;">Pintura</span>
+          <span data-i18n="prem_tag4" style="font-family:'Space Mono',monospace;font-size:12px;color:#edebe6;background:#1b1f24;border:1px solid rgba(255,255,255,.1);padding:8px 13px;border-radius:7px;">Iluminación LED</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-top:22px;background:#1b1f24;border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:15px 17px;max-width:48em;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#e0a33b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <p data-i18n="prem_note" style="font-size:14px;color:#9aa1a8;margin:0;line-height:1.5;">No mostramos el proyecto completo: aportamos la parte de obra y acabados como contratistas de confianza.</p>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px;">
+      <button data-toggle="prem-more" type="button" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:#fff;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;padding:12px 20px;border-radius:10px;cursor:pointer;">
+        <span data-show="closed" data-i18n="see_more">Ver más fotos</span>
+        <span data-show="open" data-i18n="see_less" style="display:none;">Ocultar fotos</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <a href="galeria-premium.dc.html" data-i18n="prem_gal_btn" style="display:inline-flex;align-items:center;gap:8px;background:#e0a33b;color:#1a1206;text-decoration:none;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;">Ver galería completa →</a>
+      </div>
+      <div data-more id="prem-more" style="display:none;margin-top:16px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,.1);"><img src="premium/pladur-instalacion.jpeg" alt="Pladur y preinstalación en obra premium" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="prem_g4" style="position:absolute;left:12px;bottom:12px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Pladur y preinstalación</span></div>
+          <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,.1);"><img src="premium/pladur-obra.jpeg" alt="Enlucido y acabados en obra premium" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="prem_g5" style="position:absolute;left:12px;bottom:12px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Enlucido y acabados</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- smart home -->
+  <section id="smartB" style="background:#1b1f24;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;">
+      <div style="max-width:48em;margin-bottom:44px;">
+        <div data-i18n="smart_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">Domótica · Junto a nuestros partners</div>
+        <h2 data-i18n="smart_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:14px 0 0;color:#fff;text-wrap:balance;">Reformas listas para el hogar inteligente</h2>
+        <p data-i18n="smart_intro" style="font-size:16.5px;color:#9aa1a8;margin:16px 0 0;text-wrap:pretty;">Dejamos tu reforma preparada para la domótica: ejecutamos el montaje en obra —cableado, canalizaciones y cuadros eléctricos—. La instalación y programación del sistema inteligente la realizan nuestros partners especializados.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+        <div>
+          <div data-i18n="smart_our_label" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#e0a33b;">Nuestra parte</div>
+          <h3 data-i18n="smart_our_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:26px;line-height:1.1;margin:10px 0 0;color:#fff;">Montaje en obra y preinstalación</h3>
+          <div style="display:flex;flex-direction:column;gap:0;margin-top:22px;border-top:1px solid rgba(255,255,255,.1);">
+            <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);"><span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">01</span><span data-i18n="smart_cap1" style="font-size:15.5px;color:#edebe6;">Cableado estructurado y canalizaciones</span></div>
+            <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);"><span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">02</span><span data-i18n="smart_cap2" style="font-size:15.5px;color:#edebe6;">Cuadros eléctricos y regletas</span></div>
+            <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);"><span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">03</span><span data-i18n="smart_cap3" style="font-size:15.5px;color:#edebe6;">Preinstalación de mecanismos KNX</span></div>
+            <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);"><span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">04</span><span data-i18n="smart_cap4" style="font-size:15.5px;color:#edebe6;">Puntos para clima, luz y persianas</span></div>
+            <div style="display:flex;align-items:center;gap:13px;padding:13px 0;"><span style="font-family:'Space Mono',monospace;font-size:12px;color:#e0a33b;">05</span><span data-i18n="smart_cap5" style="font-size:15.5px;color:#edebe6;">Obra coordinada con los partners de domótica</span></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-top:22px;background:#14171b;border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:15px 17px;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#e0a33b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <p data-i18n="smart_note" style="font-size:14px;color:#9aa1a8;margin:0;line-height:1.5;">Tú tratas con un único equipo: nosotros nos encargamos de la obra y coordinamos con los partners el sistema inteligente.</p>
+          </div>
+        </div>
+        <div style="position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);aspect-ratio:4/5;">
+          <img src="smart/gira.jpeg" alt="Panel de control del hogar inteligente" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+
+      <div style="margin-top:56px;padding-top:36px;border-top:1px solid rgba(255,255,255,.1);">
+        <p data-i18n="smart_partners_sub" style="font-size:17px;color:#edebe6;margin:0 0 26px;max-width:34em;text-wrap:pretty;">Ejemplos de sistemas de hogar inteligente de nuestros partners.</p>
+        <button data-toggle="smart-more" type="button" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:#fff;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;padding:12px 20px;border-radius:10px;cursor:pointer;">
+          <span data-show="closed" data-i18n="see_more">Ver más fotos</span>
+          <span data-show="open" data-i18n="see_less" style="display:none;">Ocultar fotos</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div data-more id="smart-more" style="display:none;margin-top:18px;">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+            <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.1);"><img src="premium/panel-marmol.jpeg" alt="Panel de clima de diseño" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="smart_g6" style="position:absolute;left:12px;bottom:12px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Control de clima</span></div>
+          <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.1);"><img src="premium/gira.jpeg" alt="Panel de control de la vivienda" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="smart_g3" style="position:absolute;left:12px;bottom:12px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Panel de control</span></div>
+          <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.1);"><img src="premium/apple-home.jpeg" alt="Integración con Apple Home" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="smart_g5" style="position:absolute;left:12px;bottom:12px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Integración Apple Home</span></div>
+          <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.1);"><img src="smart/escenas.jpeg" alt="Escenas de iluminación" style="width:100%;height:100%;object-fit:cover;"><span data-i18n="smart_g4" style="position:absolute;left:12px;bottom:12px;background:rgba(20,23,27,.82);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;padding:5px 10px;border-radius:6px;">Escenas de iluminación</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- types / pricing -->
+  <section style="background:#f6f3ee;color:#15181c;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;">
+      <div style="margin-bottom:38px;">
+        <div data-i18n="types_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;">Tipos de reforma</div>
+        <p data-i18n="types_sub" style="font-size:16.5px;color:#5c636b;margin:13px 0 0;max-width:34em;">Elige el nivel que encaja con tu proyecto y presupuesto.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+        <div style="background:#fff;border:1px solid #e6e0d5;border-radius:14px;padding:30px 28px;">
+          <div data-i18n="econ_t" style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#5c636b;">Económica</div>
+          <div style="margin:18px 0 6px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:46px;font-weight:600;">800</span><span style="font-size:18px;color:#5c636b;font-weight:600;"> €/m²</span></div>
+          <p data-i18n="econ_d" style="font-size:14.5px;color:#5c636b;margin:14px 0 0;border-top:1px solid #ece6db;padding-top:16px;">Soluciones básicas y funcionales.</p>
+        </div>
+        <div style="background:#15181c;color:#fff;border-radius:14px;padding:30px 28px;position:relative;">
+          <span data-i18n="popular" style="position:absolute;top:-11px;left:28px;background:#e0a33b;color:#1a1206;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:5px;">Más elegida</span>
+          <div data-i18n="std_t" style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#e0a33b;">Estándar</div>
+          <div style="margin:18px 0 6px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:46px;font-weight:600;color:#fff;">1200</span><span style="font-size:18px;color:#9aa1a8;font-weight:600;"> €/m²</span></div>
+          <p data-i18n="std_d" style="font-size:14.5px;color:#9aa1a8;margin:14px 0 20px;border-top:1px solid rgba(255,255,255,.12);padding-top:16px;">La mejor relación calidad-precio.</p>
+          <a href="#calcB" data-i18n="get_quote" style="display:block;text-align:center;background:#e0a33b;color:#1a1206;text-decoration:none;font-weight:700;padding:13px;border-radius:10px;">Pedir presupuesto</a>
+        </div>
+        <div style="background:#fff;border:1px solid #e6e0d5;border-radius:14px;padding:30px 28px;">
+          <div data-i18n="prem_t" style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#5c636b;">Premium</div>
+          <div style="margin:18px 0 6px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:46px;font-weight:600;">1500</span><span style="font-size:18px;color:#5c636b;font-weight:600;"> €/m²</span></div>
+          <p data-i18n="prem_d" style="font-size:14.5px;color:#5c636b;margin:14px 0 0;border-top:1px solid #ece6db;padding-top:16px;">Materiales y acabados de alta gama.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- calculator -->
+  <section id="calcB" style="background:#14171b;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;">
+      <div data-calc style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;">
+        <div style="background:#1b1f24;padding:44px 40px;">
+          <div data-i18n="calc_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#e0a33b;">Calculadora</div>
+          <h2 data-i18n="calc_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:32px;line-height:1.08;margin:14px 0 24px;color:#fff;">Calcula tu reforma en segundos</h2>
+          <label data-i18n="calc_intro" style="display:block;font-size:15px;font-weight:600;color:#cdd2d8;margin-bottom:10px;">Superficie de tu reforma (m²)</label>
+          <div style="position:relative;max-width:280px;">
+            <input data-calc-input type="number" min="0" step="1" placeholder="65" style="width:100%;font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;padding:15px 52px 15px 18px;border:1.5px solid rgba(255,255,255,.16);border-radius:11px;background:#14171b;color:#fff;outline:none;">
+            <span style="position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:16px;color:#9aa1a8;font-weight:600;">m²</span>
+          </div>
+        </div>
+        <div style="background:#1b1f24;padding:44px 40px;display:flex;flex-direction:column;gap:14px;justify-content:center;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.1);">
+            <div><div data-i18n="calc_econ" style="font-weight:600;font-size:16px;color:#fff;">Económica</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#9aa1a8;">800 €/m²</div></div>
+            <div data-eco style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:#fff;">—</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.1);">
+            <div><div data-i18n="calc_std" style="font-weight:600;font-size:16px;color:#fff;">Estándar</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#9aa1a8;">1200 €/m²</div></div>
+            <div data-std style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:#e0a33b;">—</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div><div data-i18n="calc_pre" style="font-weight:600;font-size:16px;color:#fff;">Premium</div><div style="font-family:'Space Mono',monospace;font-size:12px;color:#9aa1a8;">1500 €/m²</div></div>
+            <div data-pre style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:#fff;">—</div>
+          </div>
+          <p style="font-size:12.5px;color:#7e858d;margin:8px 0 0;line-height:1.45;"><strong data-i18n="calc_note_title" style="color:#9aa1a8;">Importante</strong>: <span data-i18n="calc_note_text">Los cálculos son orientativos, basados en precios medios. No constituyen una oferta. El presupuesto final depende del proyecto.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- process -->
+  <section style="background:#f6f3ee;color:#15181c;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;">
+      <div data-i18n="process_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#b97f1f;">Cómo trabajamos</div>
+      <h2 data-i18n="process_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:40px;line-height:1.05;letter-spacing:-.02em;margin:14px 0 38px;">Un proceso claro, de principio a fin</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;">
+        <div style="padding:0 24px 0 0;border-right:1px solid #e2dccf;">
+          <div style="font-family:'Space Mono',monospace;font-size:13px;color:#b97f1f;">STEP 01</div>
+          <h3 data-i18n="step1_t" style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin:12px 0 6px;">Visita y presupuesto</h3>
+          <p data-i18n="step1_d" style="font-size:14.5px;color:#5c636b;margin:0;">Vamos a tu casa, medimos y te damos un precio claro.</p>
+        </div>
+        <div style="padding:0 24px;border-right:1px solid #e2dccf;">
+          <div style="font-family:'Space Mono',monospace;font-size:13px;color:#b97f1f;">STEP 02</div>
+          <h3 data-i18n="step2_t" style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin:12px 0 6px;">Planificación</h3>
+          <p data-i18n="step2_d" style="font-size:14.5px;color:#5c636b;margin:0;">Definimos materiales, plazos y cada detalle.</p>
+        </div>
+        <div style="padding:0 24px;border-right:1px solid #e2dccf;">
+          <div style="font-family:'Space Mono',monospace;font-size:13px;color:#b97f1f;">STEP 03</div>
+          <h3 data-i18n="step3_t" style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin:12px 0 6px;">Ejecución</h3>
+          <p data-i18n="step3_d" style="font-size:14.5px;color:#5c636b;margin:0;">Ejecutamos la obra con orden y limpieza.</p>
+        </div>
+        <div style="padding:0 0 0 24px;">
+          <div style="font-family:'Space Mono',monospace;font-size:13px;color:#b97f1f;">STEP 04</div>
+          <h3 data-i18n="step4_t" style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin:12px 0 6px;">Entrega con garantía</h3>
+          <p data-i18n="step4_d" style="font-size:14.5px;color:#5c636b;margin:0;">Revisamos juntos y respondemos por el trabajo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section id="contactoB" style="background:#f6f3ee;color:#15181c;">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 30px;display:grid;grid-template-columns:1fr;gap:48px;align-items:center;">
+      <div>
+        <div data-i18n="contact_eyebrow" style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#b97f1f;">Contacto</div>
+        <h2 data-i18n="contact_title" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:42px;line-height:1.05;letter-spacing:-.02em;margin:14px 0 0;">Hablemos de tu proyecto</h2>
+        <p data-i18n="contact_sub" style="font-size:16.5px;color:#5c636b;margin:14px 0 28px;max-width:28em;">Escríbenos por WhatsApp o déjanos tus datos y te llamamos.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;align-items:center;gap:13px;">
+            <span style="width:42px;height:42px;border-radius:10px;background:#15181c;display:flex;align-items:center;justify-content:center;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#e0a33b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+            <div><div data-i18n="contact_phone_label" style="font-family:'Space Mono',monospace;font-size:11.5px;color:#8a8f96;text-transform:uppercase;letter-spacing:.08em;">Teléfono</div><a data-phone href="#" style="color:#15181c;text-decoration:none;font-size:17px;font-weight:600;">+34 691 07 46 18</a></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:13px;">
+            <span style="width:42px;height:42px;border-radius:10px;background:#15181c;display:flex;align-items:center;justify-content:center;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#e0a33b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <div><div data-i18n="contact_email_label" style="font-family:'Space Mono',monospace;font-size:11.5px;color:#8a8f96;text-transform:uppercase;letter-spacing:.08em;">Email</div><a data-email href="#" style="color:#15181c;text-decoration:none;font-size:17px;font-weight:600;">info@vitalvibeconstruction.com</a></div>
+          </div>
+          <a href="https://maps.app.goo.gl/9LcztAtyft5EzsqJ6?g_st=iw" target="_blank" rel="noopener" data-i18n="contact_maps" style="display:inline-flex;align-items:center;gap:8px;color:#b97f1f;font-size:15px;font-weight:600;margin-top:4px;">📍 Ver en Google Maps</a>
+          <a data-wa href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:#25D366;color:#0a2818;text-decoration:none;font-weight:700;font-size:16px;padding:14px 24px;border-radius:11px;margin-top:14px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#0a2818"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm4.6 10.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5 0a6.5 6.5 0 0 1-3-2.6c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.8.5 2.2.5a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.1c-.1-.2-.3-.2-.5-.3z"/></svg>
+            <span data-i18n="hero_cta2">Escribir por WhatsApp</span>
+          </a>
+        </div>
+      </div>
+      <form data-form novalidate style="display:none;background:#fff;border:1px solid #e6e0d5;border-radius:16px;padding:30px;flex-direction:column;gap:13px;">
+        <input name="name" data-i18n-ph="form_name" type="text" required autocomplete="name" maxlength="80" placeholder="Nombre" style="font-family:inherit;font-size:15px;padding:13px 15px;border:1.5px solid #e6e0d5;border-radius:10px;background:#faf8f3;color:#15181c;outline:none;">
+        <input name="phone" data-i18n-ph="form_phone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="24" placeholder="Teléfono" style="font-family:inherit;font-size:15px;padding:13px 15px;border:1.5px solid #e6e0d5;border-radius:10px;background:#faf8f3;color:#15181c;outline:none;">
+        <textarea name="message" data-i18n-ph="form_msg" rows="3" maxlength="1000" placeholder="Cuéntanos qué necesitas" style="font-family:inherit;font-size:15px;padding:13px 15px;border:1.5px solid #e6e0d5;border-radius:10px;background:#faf8f3;color:#15181c;outline:none;resize:vertical;"></textarea>
+        <div data-hp aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"><label>No rellenar<input name="company" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <input type="hidden" name="form_id" value="contact_main">
+        <input type="hidden" name="page_url">
+        <input type="hidden" name="source" value="landing_b">
+        <input type="hidden" name="locale">
+        <input type="hidden" name="form_started_at">
+        <input type="hidden" name="captcha_token">
+        <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;margin-top:2px;">
+          <input data-consent name="consent" type="checkbox" required style="width:17px;height:17px;margin-top:2px;accent-color:#e0a33b;flex-shrink:0;cursor:pointer;">
+          <span style="font-size:12.5px;color:#5c636b;line-height:1.5;"><span data-i18n="form_consent">He leído y acepto la</span> <a data-i18n="form_privacy" href="privacidad.html" style="color:#b97f1f;font-weight:600;text-decoration:underline;">Política de Privacidad</a> <span data-i18n="form_consent_end">y el tratamiento de mis datos para gestionar mi solicitud.</span></span>
+        </label>
+        <button data-i18n="form_send" type="submit" style="background:#15181c;color:#fff;border:none;font-family:inherit;font-weight:600;font-size:16px;padding:14px;border-radius:11px;cursor:pointer;">Enviar solicitud</button>
+        <p data-i18n="form_legal" style="font-size:11.5px;color:#8a8f96;line-height:1.5;margin:2px 0 0;">Responsable: Vital Vibe Constructions. Finalidad: atender tu solicitud de presupuesto y contacto. Legitimación: tu consentimiento. No cedemos tus datos a terceros; puedes ejercer tus derechos de acceso, rectificación y supresión en info@vitalvibeconstruction.com.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer style="background:#0f1216;color:#9aa1a8;border-top:1px solid rgba(255,255,255,.07);">
+    <div style="max-width:1240px;margin:0 auto;padding:40px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:11px;">
+        <span style="width:32px;height:32px;border-radius:8px;background:#e0a33b;display:flex;align-items:center;justify-content:center;color:#1a1206;font-weight:800;font-family:'Space Grotesk',sans-serif;">V</span>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;color:#fff;font-size:16px;font-weight:600;">VITAL VIBE CONSTRUCTIONS</div>
+          <div data-i18n="footer_tagline" style="font-size:13px;">Reformas y construcción en Barcelona.</div>
+        </div>
+      </div>
+      <div data-i18n="footer_rights" style="font-family:'Space Mono',monospace;font-size:12.5px;">© 2025 Vital Vibe Constructions</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12.5px;"><a href="aviso-legal.html" style="color:#9aa1a8;text-decoration:none;">Aviso legal</a><a href="privacidad.html" style="color:#9aa1a8;text-decoration:none;">Privacidad</a></div>
+    </div>
   </footer>
+</div>
 
-  <script>
-    const p1 = "+34";
-    const p2 = "691";
-    const p3 = "07";
-    const p4 = "46";
-    const p5 = "18";
-
-    const full = `${p1} ${p2} ${p3} ${p4} ${p5}`;
-    const waLink = `https://wa.me/${p1.replace('+','')}${p2}${p3}${p4}${p5}`;
-
-    document.getElementById("phone").innerHTML =
-      `Teléfono: <a href="tel:+34691074618">${full}</a>`;
-    document.getElementById("wa").href = waLink;
-
-    const e1 = "info";
-    const e2 = "vitalvibeconstruction";
-    const e3 = "com";
-    document.getElementById("email").innerHTML =
-      `<a href="mailto:${e1}@${e2}.${e3}">${e1}@${e2}.${e3}</a>`;
-  </script>
-
-  <script>
-    const areaInput = document.getElementById('area');
-    const eco = document.getElementById('eco');
-    const std = document.getElementById('std');
-    const pre = document.getElementById('pre');
-
-    function formatEuro(num) {
-      return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(num);
-    }
-
-    areaInput.addEventListener('input', () => {
-      const m2 = parseFloat(areaInput.value);
-
-      if (isNaN(m2) || m2 <= 0) {
-        eco.textContent = std.textContent = pre.textContent = '—';
-        return;
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() { return {}; }
+  componentDidMount() {
+    const T = {
+      es: {
+        speak:"Hablamos:", nav_services:"Servicios", nav_projects:"Proyectos", nav_calc:"Calculadora", nav_contact:"Contacto", nav_cta:"Presupuesto gratis",
+        hero_eyebrow:"Reformas en Barcelona", hero_title:"Reformas integrales que dan nueva vida a tu hogar", hero_sub:"Cocinas, baños, electricidad y pintura. Trabajo serio, precios transparentes y atención en tu idioma.", hero_cta1:"Pedir presupuesto gratis", hero_cta2:"Escribir por WhatsApp", hero_price_note:"Reformas desde, con precio cerrado",
+        chip_1:"Presupuesto sin compromiso", chip_2:"Garantía por escrito", chip_3:"Atención en 3 idiomas",
+        val1_t:"Presupuesto sin compromiso", val1_d:"Te damos un precio claro antes de empezar, sin sorpresas.", val2_t:"Precios transparentes", val2_d:"Desde 800 €/m². Sabes lo que pagas y por qué.", val3_t:"Hablamos tu idioma", val3_d:"Español · English · Русский.", val4_t:"Garantía de calidad", val4_d:"Materiales y acabados con garantía.",
+        services_eyebrow:"Servicios", services_title:"Todo lo que tu reforma necesita", services_sub:"De la demolición a la última capa de pintura, nos encargamos de todo.",
+        srv1_t:"Reformas integrales", srv1_d:"Proyectos completos de principio a fin.", srv2_t:"Cocinas", srv2_d:"Diseño, muebles e instalación.", srv3_t:"Baños", srv3_d:"Alicatado, sanitarios y fontanería.", srv4_t:"Electricidad", srv4_d:"Instalaciones seguras y a norma.", srv5_t:"Pintura", srv5_d:"Acabados limpios y duraderos.", srv6_t:"Albañilería", srv6_d:"Tabiques, suelos y alicatados.",
+        ba_eyebrow:"Antes y después", ba_title:"Resultados reales en Barcelona", ba_sub:"Pasa el cursor sobre la imagen para ver la transformación.", ba_before:"Antes", ba_after:"Después", ba1_label:"Cocina · Reforma integral", ba2_label:"Baño · Reforma integral", ba3_label:"Habitación · Reforma integral", see_more:"Ver más fotos", see_less:"Ocultar fotos",
+        nav_smart:"Domótica", smart_eyebrow:"Domótica · Junto a nuestros partners", smart_title:"Reformas listas para el hogar inteligente", smart_intro:"Dejamos tu reforma preparada para la domótica: ejecutamos el montaje en obra —cableado, canalizaciones y cuadros eléctricos—. La instalación y programación del sistema inteligente la realizan nuestros partners especializados.", smart_our_label:"Nuestra parte", smart_our_title:"Montaje en obra y preinstalación", smart_cap1:"Cableado estructurado y canalizaciones", smart_cap2:"Cuadros eléctricos y regletas", smart_cap3:"Preinstalación de mecanismos KNX", smart_cap4:"Puntos para clima, luz y persianas", smart_cap5:"Obra coordinada con los partners de domótica", smart_note:"Tú tratas con un único equipo: nosotros nos encargamos de la obra y coordinamos con los partners el sistema inteligente.", smart_partners_label:"Hogares inteligentes de nuestros partners", smart_partners_sub:"Ejemplos de sistemas de hogar inteligente de nuestros partners.", smart_g1:"Cableado estructurado", smart_g2:"Cuadro eléctrico", smart_g3:"Panel de control", smart_g4:"Escenas de iluminación", smart_g5:"Integración Apple Home", smart_g6:"Control de clima",
+        types_title:"Tipos de reforma", types_sub:"Elige el nivel que encaja con tu proyecto y presupuesto.", types_price_label:"Precio aproximado", econ_t:"Económica", econ_d:"Soluciones básicas y funcionales.", std_t:"Estándar", std_d:"La mejor relación calidad-precio.", prem_t:"Premium", prem_d:"Materiales y acabados de alta gama.", popular:"Más elegida", get_quote:"Pedir presupuesto",
+        calc_eyebrow:"Calculadora", calc_title:"Calcula tu reforma en segundos", calc_intro:"Superficie de tu reforma (m²)", calc_econ:"Económica", calc_std:"Estándar", calc_pre:"Premium", calc_note_title:"Importante", calc_note_text:"Los cálculos son orientativos, basados en precios medios. No constituyen una oferta. El presupuesto final depende del proyecto.",
+        process_eyebrow:"Cómo trabajamos", process_title:"Un proceso claro, de principio a fin", step1_t:"Visita y presupuesto", step1_d:"Vamos a tu casa, medimos y te damos un precio claro.", step2_t:"Planificación", step2_d:"Definimos materiales, plazos y cada detalle.", step3_t:"Ejecución", step3_d:"Ejecutamos la obra con orden y limpieza.", step4_t:"Entrega con garantía", step4_d:"Revisamos juntos y respondemos por el trabajo.",
+        projects_eyebrow:"Proyectos", projects_title:"Trabajos realizados", projects_sub:"Reformas reales de pisos en Barcelona.", projects_button:"Ver todos los proyectos", gal_kicker:"Galería", std_gal_btn:"Ver galería completa →", prem_gal_btn:"Ver galería completa →", gal_text:"Mira todas las reformas económicas, antes y después, en la galería completa.", gal_btn:"Ver galería completa",
+        contact_eyebrow:"Contacto", contact_title:"Hablemos de tu proyecto", contact_sub:"Escríbenos por WhatsApp o déjanos tus datos y te llamamos.", contact_phone_label:"Teléfono", contact_email_label:"Email", contact_maps:"📍 Ver en Google Maps", form_name:"Nombre", form_phone:"Teléfono", form_msg:"Cuéntanos qué necesitas", form_send:"Enviar solicitud", form_consent:"He leído y acepto la", form_privacy:"Política de Privacidad", form_consent_end:"y el tratamiento de mis datos para gestionar mi solicitud.", form_legal:"Responsable: Vital Vibe Constructions. Finalidad: atender tu solicitud de presupuesto y contacto. Legitimación: tu consentimiento. No cedemos tus datos a terceros; puedes ejercer tus derechos de acceso, rectificación y supresión en info@vitalvibeconstruction.com.",
+        nav_premium:"Premium", prem_eyebrow:"Premium · Trabajos de contrata", prem_title:"Trabajos de contrata en obras premium", prem_intro:"Como contratistas especializados ejecutamos trabajos de obra y acabado en viviendas y villas de alta gama: pladur, enlucido, pintura e iluminación LED integrada, junto a los equipos de proyecto del cliente.", prem_badge:"Como contratistas", prem_g1:"Enlucido y pintura de techo", prem_g2:"Acabado uniforme", prem_g3:"Iluminación LED integrada", prem_g4:"Pladur y preinstalación", prem_g5:"Enlucido y acabados", prem_tag1:"Pladur", prem_tag2:"Enlucido", prem_tag3:"Pintura", prem_tag4:"Iluminación LED", prem_note:"No mostramos el proyecto completo: aportamos la parte de obra y acabados como contratistas de confianza.", prem_case_eyebrow:"Caso puntual · Restauración y pintura de techo", prem_case_title:"Restauración y pintura de techo tras instalaciones", prem_case_sub:"Trabajo puntual de contrata: del sellado y masillado del techo tras las intervenciones de instalaciones hasta la pintura a pistola de techos y paredes, con acabado uniforme.", prem_case_badge:"Trabajo puntual", prem_step1:"01 · Preparación del techo", prem_step2:"02 · Pintura a pistola", prem_tc1:"Masillado del techo", prem_tc2:"Preparación de superficies", prem_tc3:"Juntas y empalmes", prem_tc4:"Listo para pintar", prem_tc5:"Pintura de techo a pistola", prem_tc6:"Acabado uniforme",
+        std_case_eyebrow:"Proyecto destacado · Estándar", std_case_title:"De la obra al resultado final", std_case_sub:"Reforma integral de un piso en Barcelona: redistribución, instalaciones, suelo de roble y cocina a medida.", std_case_badge:"Nivel Estándar", std_c_kitchen:"Cocina a medida", std_c1:"Estructura e instalaciones", std_c2:"Base de suelo", std_c3:"Suelo de roble", std_c4:"Resultado final",
+        footer_tagline:"Reformas y construcción en Barcelona.", footer_rights:"© 2025 Vital Vibe Constructions"
+      },
+      en: {
+        speak:"We speak:", nav_services:"Services", nav_projects:"Projects", nav_calc:"Calculator", nav_contact:"Contact", nav_cta:"Free quote",
+        hero_eyebrow:"Renovations in Barcelona", hero_title:"Full renovations that bring your home back to life", hero_sub:"Kitchens, bathrooms, electrics and painting. Serious work, transparent prices and service in your language.", hero_cta1:"Get a free quote", hero_cta2:"Message on WhatsApp", hero_price_note:"Renovations from, with a fixed price",
+        chip_1:"No-obligation quote", chip_2:"Written guarantee", chip_3:"Service in 3 languages",
+        val1_t:"No-obligation quote", val1_d:"We give you a clear price before we start — no surprises.", val2_t:"Transparent pricing", val2_d:"From €800/m². You know what you pay and why.", val3_t:"We speak your language", val3_d:"Spanish · English · Russian.", val4_t:"Quality guarantee", val4_d:"Materials and finishes with guarantee.",
+        services_eyebrow:"Services", services_title:"Everything your renovation needs", services_sub:"From demolition to the final coat of paint, we handle it all.",
+        srv1_t:"Full renovations", srv1_d:"Complete projects from start to finish.", srv2_t:"Kitchens", srv2_d:"Design, units and installation.", srv3_t:"Bathrooms", srv3_d:"Tiling, fixtures and plumbing.", srv4_t:"Electrics", srv4_d:"Safe, code-compliant wiring.", srv5_t:"Painting", srv5_d:"Clean, lasting finishes.", srv6_t:"Masonry", srv6_d:"Walls, floors and tiling.",
+        ba_eyebrow:"Before & after", ba_title:"Real results in Barcelona", ba_sub:"Hover over the image to see the transformation.", ba_before:"Before", ba_after:"After", ba1_label:"Kitchen · Full renovation", ba2_label:"Bathroom · Full renovation", ba3_label:"Room · Full renovation", see_more:"See more photos", see_less:"Hide photos",
+        nav_smart:"Smart home", smart_eyebrow:"Home automation · With our partners", smart_title:"Renovations ready for the smart home", smart_intro:"We get your renovation ready for home automation: we handle the on-site work —wiring, conduits and electrical panels—. The smart system itself is installed and programmed by our specialised partners.", smart_our_label:"Our part", smart_our_title:"On-site work and pre-installation", smart_cap1:"Structured wiring and conduits", smart_cap2:"Electrical panels and terminal blocks", smart_cap3:"KNX mechanism pre-installation", smart_cap4:"Points for climate, light and blinds", smart_cap5:"Work coordinated with the automation partners", smart_note:"You deal with a single team: we handle the build and coordinate the smart system with our partners.", smart_partners_label:"Smart homes by our partners", smart_partners_sub:"Examples of smart-home systems by our partners.", smart_g1:"Structured wiring", smart_g2:"Electrical panel", smart_g3:"Control panel", smart_g4:"Lighting scenes", smart_g5:"Apple Home integration", smart_g6:"Climate control",
+        types_title:"Types of renovation", types_sub:"Choose the level that fits your project and budget.", types_price_label:"Approximate price", econ_t:"Economy", econ_d:"Basic, functional solutions.", std_t:"Standard", std_d:"Best value for money.", prem_t:"Premium", prem_d:"High-end materials and finishes.", popular:"Most chosen", get_quote:"Request a quote",
+        calc_eyebrow:"Calculator", calc_title:"Estimate your renovation in seconds", calc_intro:"Renovation area (m²)", calc_econ:"Economy", calc_std:"Standard", calc_pre:"Premium", calc_note_title:"Important", calc_note_text:"Estimates are approximate, based on average prices. They are not a binding offer. The final quote depends on the project.",
+        process_eyebrow:"How we work", process_title:"A clear process, start to finish", step1_t:"Visit & quote", step1_d:"We visit, measure and give you a clear price.", step2_t:"Planning", step2_d:"We define materials, timeline and every detail.", step3_t:"Execution", step3_d:"We carry out the work tidily and on schedule.", step4_t:"Handover with guarantee", step4_d:"We review together and stand behind our work.",
+        projects_eyebrow:"Projects", projects_title:"Completed work", projects_sub:"Real apartment renovations in Barcelona.", projects_button:"View all projects", gal_kicker:"Gallery", std_gal_btn:"View full gallery →", prem_gal_btn:"View full gallery →", gal_text:"See all our budget renovations, before and after, in the full gallery.", gal_btn:"View full gallery",
+        contact_eyebrow:"Contact", contact_title:"Let's talk about your project", contact_sub:"Message us on WhatsApp or leave your details and we'll call you.", contact_phone_label:"Phone", contact_email_label:"Email", contact_maps:"📍 View on Google Maps", form_name:"Name", form_phone:"Phone", form_msg:"Tell us what you need", form_send:"Send request", form_consent:"I have read and accept the", form_privacy:"Privacy Policy", form_consent_end:"and the processing of my data to handle my request.", form_legal:"Controller: Vital Vibe Constructions. Purpose: to handle your quote and contact request. Legal basis: your consent. We do not share your data with third parties; you may exercise your rights of access, rectification and erasure at info@vitalvibeconstruction.com.",
+        nav_premium:"Premium", prem_eyebrow:"Premium · Contract work", prem_title:"Contract work on premium projects", prem_intro:"As specialised contractors we carry out construction and finishing work in high-end homes and villas: plasterboard, skimming, painting and integrated LED lighting, alongside the client's project teams.", prem_badge:"As contractors", prem_g1:"Ceiling skimming & painting", prem_g2:"Even finish", prem_g3:"Integrated LED lighting", prem_g4:"Plasterboard & pre-install", prem_g5:"Skimming & finishes", prem_tag1:"Plasterboard", prem_tag2:"Skimming", prem_tag3:"Painting", prem_tag4:"LED lighting", prem_note:"We don't show the full project: we deliver the construction and finishing part as a trusted contractor.", prem_case_eyebrow:"One-off case · Ceiling restoration & painting", prem_case_title:"Ceiling restoration and painting after services work", prem_case_sub:"One-off contract job: from sealing and filling the ceiling after the services work through to spray-painting ceilings and walls, with an even finish.", prem_case_badge:"One-off job", prem_step1:"01 · Ceiling preparation", prem_step2:"02 · Spray painting", prem_tc1:"Ceiling filling", prem_tc2:"Surface preparation", prem_tc3:"Joints & seams", prem_tc4:"Ready to paint", prem_tc5:"Spray-painted ceiling", prem_tc6:"Even finish",
+        std_case_eyebrow:"Featured project · Standard", std_case_title:"From building site to final result", std_case_sub:"Full renovation of an apartment in Barcelona: new layout, installations, oak flooring and a custom kitchen.", std_case_badge:"Standard level", std_c_kitchen:"Custom kitchen", std_c1:"Structure & installations", std_c2:"Floor underlay", std_c3:"Oak flooring", std_c4:"Final result",
+        footer_tagline:"Renovation and construction in Barcelona.", footer_rights:"© 2025 Vital Vibe Constructions"
+      },
+      ru: {
+        speak:"Мы говорим:", nav_services:"Услуги", nav_projects:"Проекты", nav_calc:"Калькулятор", nav_contact:"Контакты", nav_cta:"Бесплатная смета",
+        hero_eyebrow:"Ремонт в Барселоне", hero_title:"Комплексный ремонт, который вдохнёт жизнь в ваш дом", hero_sub:"Кухни, ванные, электрика и покраска. Серьёзный подход, прозрачные цены и общение на вашем языке.", hero_cta1:"Получить бесплатную смету", hero_cta2:"Написать в WhatsApp", hero_price_note:"Ремонт от, с фиксированной ценой",
+        chip_1:"Смета без обязательств", chip_2:"Гарантия в договоре", chip_3:"Обслуживание на 3 языках",
+        val1_t:"Смета без обязательств", val1_d:"Чёткая цена до начала работ — без сюрпризов.", val2_t:"Прозрачные цены", val2_d:"От 800 €/м². Вы знаете, за что платите.", val3_t:"Говорим на вашем языке", val3_d:"Испанский · Английский · Русский.", val4_t:"Гарантия качества", val4_d:"Материалы и отделка с гарантией.",
+        services_eyebrow:"Услуги", services_title:"Всё, что нужно для вашего ремонта", services_sub:"От демонтажа до последнего слоя краски — берём всё на себя.",
+        srv1_t:"Комплексный ремонт", srv1_d:"Проекты под ключ от начала до конца.", srv2_t:"Кухни", srv2_d:"Дизайн, мебель и установка.", srv3_t:"Ванные комнаты", srv3_d:"Плитка, сантехника и трубы.", srv4_t:"Электрика", srv4_d:"Безопасная проводка по нормам.", srv5_t:"Покраска", srv5_d:"Чистая и долговечная отделка.", srv6_t:"Общестроительные работы", srv6_d:"Перегородки, полы и плитка.",
+        ba_eyebrow:"До и после", ba_title:"Реальные результаты в Барселоне", ba_sub:"Наведите курсор на фото, чтобы увидеть преобразование.", ba_before:"До", ba_after:"После", ba1_label:"Кухня · Комплексный ремонт", ba2_label:"Ванная · Комплексный ремонт", ba3_label:"Комната · Комплексный ремонт", see_more:"Показать ещё фото", see_less:"Скрыть фото",
+        nav_smart:"Умный дом", smart_eyebrow:"Умный дом · Вместе с партнёрами", smart_title:"Ремонт, готовый к умному дому", smart_intro:"Готовим ваш ремонт под умный дом: выполняем черновой монтаж — проводку, штробы и электрощиты. Установку и программирование самой умной системы делают наши партнёры-специалисты.", smart_our_label:"Наша часть", smart_our_title:"Черновой монтаж и преинсталляция", smart_cap1:"Структурированная проводка и штробы", smart_cap2:"Электрощиты и клеммные сборки", smart_cap3:"Преинсталляция механизмов KNX", smart_cap4:"Точки под климат, свет и шторы", smart_cap5:"Работа в координации с партнёрами по домотике", smart_note:"Вы общаетесь с одной командой: мы делаем ремонт и координируем умную систему с партнёрами.", smart_partners_label:"Умные дома наших партнёров", smart_partners_sub:"Примеры реализации систем умный дом от наших партнёров.", smart_g1:"Структурированная проводка", smart_g2:"Электрощит", smart_g3:"Панель управления", smart_g4:"Световые сцены", smart_g5:"Интеграция Apple Home", smart_g6:"Управление климатом",
+        types_title:"Виды ремонта", types_sub:"Выберите уровень под ваш проект и бюджет.", types_price_label:"Примерная цена", econ_t:"Эконом", econ_d:"Базовые функциональные решения.", std_t:"Стандарт", std_d:"Лучшее соотношение цены и качества.", prem_t:"Премиум", prem_d:"Материалы и отделка высокого класса.", popular:"Выбирают чаще", get_quote:"Запросить смету",
+        calc_eyebrow:"Калькулятор", calc_title:"Рассчитайте ремонт за секунды", calc_intro:"Площадь ремонта (м²)", calc_econ:"Эконом", calc_std:"Стандарт", calc_pre:"Премиум", calc_note_title:"Важно", calc_note_text:"Расчёты ориентировочные, по средним ценам. Это не оферта. Итоговая смета зависит от проекта.",
+        process_eyebrow:"Как мы работаем", process_title:"Понятный процесс от и до", step1_t:"Выезд и смета", step1_d:"Приезжаем, замеряем и называем чёткую цену.", step2_t:"Планирование", step2_d:"Определяем материалы, сроки и все детали.", step3_t:"Выполнение", step3_d:"Ведём работы аккуратно и по графику.", step4_t:"Сдача с гарантией", step4_d:"Принимаем работу вместе и отвечаем за результат.",
+        projects_eyebrow:"Проекты", projects_title:"Выполненные работы", projects_sub:"Реальные ремонты квартир в Барселоне.", projects_button:"Смотреть все проекты", gal_kicker:"Галерея", std_gal_btn:"Открыть галерею →", prem_gal_btn:"Открыть галерею →", gal_text:"Смотрите все бюджетные ремонты — до и после — в полной галерее.", gal_btn:"Открыть галерею",
+        contact_eyebrow:"Контакты", contact_title:"Обсудим ваш проект", contact_sub:"Напишите в WhatsApp или оставьте контакты — мы перезвоним.", contact_phone_label:"Телефон", contact_email_label:"Эл. почта", contact_maps:"📍 Открыть в Google Maps", form_name:"Имя", form_phone:"Телефон", form_msg:"Опишите, что нужно", form_send:"Отправить заявку", form_consent:"Я прочитал(а) и принимаю", form_privacy:"Политику конфиденциальности", form_consent_end:"и согласен(на) на обработку моих данных для обработки заявки.", form_legal:"Ответственный: Vital Vibe Constructions. Цель: обработка вашей заявки на смету и контакт. Основание: ваше согласие. Мы не передаём данные третьим лицам; вы можете воспользоваться правами на доступ, исправление и удаление, написав на info@vitalvibeconstruction.com.",
+        nav_premium:"Премиум", prem_eyebrow:"Премиум · Подрядные работы", prem_title:"Подрядные работы на объектах премиум-класса", prem_intro:"Как специализированные подрядчики выполняем строительные и отделочные работы в домах и виллах высокого класса: гипсокартон, шпаклёвка, покраска и встроенная LED-подсветка — вместе с проектными командами заказчика.", prem_badge:"Как подрядчики", prem_g1:"Шпаклёвка и покраска потолка", prem_g2:"Ровное покрытие", prem_g3:"Встроенная LED-подсветка", prem_g4:"Гипсокартон и проводка", prem_g5:"Шпаклёвка и отделка", prem_tag1:"Гипсокартон", prem_tag2:"Шпаклёвка", prem_tag3:"Покраска", prem_tag4:"LED-подсветка", prem_note:"Мы не показываем объект целиком: выполняем строительную и отделочную часть как надёжный подрядчик.", prem_case_eyebrow:"Разовая работа · Восстановление и покраска потолка", prem_case_title:"Восстановление и покраска потолка после инженерных работ", prem_case_sub:"Разовая подрядная работа: от заделки и шпаклёвки потолка после инженерных работ до покраски потолков и стен краскопультом — ровное покрытие.", prem_case_badge:"Разовая работа", prem_step1:"01 · Подготовка потолка", prem_step2:"02 · Покраска краскопультом", prem_tc1:"Шпаклёвка потолка", prem_tc2:"Подготовка поверхностей", prem_tc3:"Стыки и швы", prem_tc4:"Готово к покраске", prem_tc5:"Покраска потолка краскопультом", prem_tc6:"Ровное покрытие",
+        std_case_eyebrow:"Избранный проект · Стандарт", std_case_title:"От стройки до готового результата", std_case_sub:"Комплексный ремонт квартиры в Барселоне: перепланировка, инженерия, дубовый пол и кухня на заказ.", std_case_badge:"Уровень Стандарт", std_c_kitchen:"Кухня на заказ", std_c1:"Каркас и инженерия", std_c2:"Основание пола", std_c3:"Дубовый пол", std_c4:"Готовый результат",
+        footer_tagline:"Ремонт и строительство в Барселоне.", footer_rights:"© 2025 Vital Vibe Constructions"
       }
+    };
+    this._T = T;
+    const $$ = (s) => Array.from(document.querySelectorAll(s));
+    let lang = localStorage.getItem('vv_lang') || 'es';
 
-      eco.textContent = formatEuro(m2 * 800);
-      std.textContent = formatEuro(m2 * 1200);
-      pre.textContent = formatEuro(m2 * 1500);
+    const styleLangs = () => {
+      $$('[data-lang]').forEach(b => { const on = b.dataset.lang === lang; b.style.color = on ? '#e0a33b' : '#9aa1a8'; b.style.fontWeight = on ? '700' : '500'; b.style.borderBottomColor = on ? '#e0a33b' : 'transparent'; });
+    };
+    const applyLang = (l) => {
+      lang = l; localStorage.setItem('vv_lang', l);
+      const dict = T[l] || T.es;
+      $$('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (dict[k] != null) el.textContent = dict[k]; });
+      $$('[data-i18n-ph]').forEach(el => { const k = el.getAttribute('data-i18n-ph'); if (dict[k] != null) el.placeholder = dict[k]; });
+      document.documentElement.lang = l;
+      $$('[data-form] input[name="locale"]').forEach(el => el.value = l);
+      styleLangs(); recalc();
+    };
+    const fmt = (n) => new Intl.NumberFormat('es-ES', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(n);
+    const recalc = () => {
+      $$('[data-calc]').forEach(group => {
+        const input = group.querySelector('[data-calc-input]');
+        const m2 = parseFloat(input && input.value);
+        const set = (sel, rate) => { const el = group.querySelector(sel); if (!el) return; el.textContent = (!m2 || m2 <= 0) ? '—' : fmt(m2 * rate); };
+        set('[data-eco]', 800); set('[data-std]', 1200); set('[data-pre]', 1500);
+      });
+    };
+
+    // transparent header that gains a background on scroll
+    const header = document.querySelector('[data-header]');
+    const onScroll = () => {
+      if (!header) return;
+      const solid = window.scrollY > 24;
+      header.style.background = solid ? 'rgba(20,23,27,.9)' : 'transparent';
+      header.style.borderBottomColor = solid ? 'rgba(255,255,255,.09)' : 'transparent';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // wire interactions
+    $$('[data-lang]').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+    const phone = '+34 691 07 46 18', tel = 'tel:+34691074618', wa = 'https://wa.me/34691074618', email = 'info@vitalvibeconstruction.com';
+    $$('[data-phone]').forEach(e => { e.textContent = phone; if (e.tagName === 'A') e.href = tel; });
+    $$('[data-wa]').forEach(e => { if (e.tagName === 'A') e.href = wa; });
+    $$('[data-email]').forEach(e => { e.textContent = email; if (e.tagName === 'A') e.href = 'mailto:' + email; });
+    $$('[data-calc-input]').forEach(inp => inp.addEventListener('input', recalc));
+
+    $$('[data-ba]').forEach(el => {
+      const after = el.querySelector('[data-ba-after]'); const handle = el.querySelector('[data-ba-handle]');
+      const apply = (p) => { p = Math.max(0, Math.min(100, p)); if (after) after.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)'; if (handle) handle.style.left = p + '%'; };
+      const move = (e) => { const r = el.getBoundingClientRect(); const cx = (e.touches ? e.touches[0].clientX : e.clientX) - r.left; apply(cx / r.width * 100); };
+      el.addEventListener('mousemove', move); el.addEventListener('touchmove', (e) => move(e), { passive:true });
+      apply(50);
     });
-  </script>
 
-  <script>
-    let translations = {};
-    let currentLang = localStorage.getItem("lang") || "es";
+    // expandable photo galleries (preview + "see more" button)
+    $$('[data-toggle]').forEach(b => b.addEventListener('click', () => {
+      const t = document.getElementById(b.getAttribute('data-toggle')); if (!t) return;
+      const willOpen = !t.style.display || t.style.display === 'none';
+      t.style.display = willOpen ? '' : 'none';
+      const c = b.querySelector('[data-show="closed"]'), o = b.querySelector('[data-show="open"]');
+      if (c) c.style.display = willOpen ? 'none' : '';
+      if (o) o.style.display = willOpen ? '' : 'none';
+    }));
 
-    function applyTranslations(lang) {
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.dataset.i18n;
-        if (translations[lang] && translations[lang][key]) {
-          el.textContent = translations[lang][key];
-        }
-      });
+    // auto-populate technical fields per frontend contract
+    const startedAt = new Date().toISOString();
+    $$('[data-form]').forEach(f => {
+      const set = (n, v) => { const el = f.querySelector('input[name="' + n + '"]'); if (el && v != null) el.value = v; };
+      set('page_url', String(location.href).slice(0, 500));
+      set('form_started_at', startedAt);
+      set('locale', lang);
+    });
 
-      document.querySelectorAll('.langs button').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
-    }
+    const MSG = {
+      ok: { es:'¡Gracias! Te contactaremos pronto.', en:'Thanks! We will contact you soon.', ru:'Спасибо! Мы скоро свяжемся с вами.' },
+      fill: { es:'Por favor, rellena tu nombre y teléfono.', en:'Please fill in your name and phone.', ru:'Пожалуйста, укажите имя и телефон.' },
+      consent: { es:'Debes aceptar la Política de Privacidad para enviar.', en:'You must accept the Privacy Policy to submit.', ru:'Чтобы отправить, примите Политику конфиденциальности.' }
+    };
+    $$('[data-form]').forEach(f => f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // anti-spam honeypot: if the hidden field is filled, it's a bot — pretend success, send nothing
+      const hp = f.querySelector('[data-hp] input');
+      if (hp && hp.value.trim() !== '') { f.reset(); return; }
+      // required fields
+      const name = f.querySelector('[name="name"]'), phone = f.querySelector('[name="phone"]');
+      if (!name || !name.value.trim() || !phone || !phone.value.trim()) { alert(MSG.fill[lang] || MSG.fill.es); (name && !name.value.trim() ? name : phone).focus(); return; }
+      // explicit RGPD consent
+      const consent = f.querySelector('[data-consent]');
+      if (consent && !consent.checked) { alert(MSG.consent[lang] || MSG.consent.es); consent.focus(); return; }
+      // NOTE: no real submission — needs a secure HTTPS backend. Front-end only collects + validates.
+      f.reset();
+      alert(MSG.ok[lang] || MSG.ok.es);
+    }));
 
-    function setLang(lang) {
-      currentLang = lang;
-      localStorage.setItem("lang", lang);
-      applyTranslations(lang);
-    }
-
-    fetch("translations.json")
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
-        return r.json();
-      })
-      .then(data => {
-        translations = data;
-        applyTranslations(currentLang);
-      })
-      .catch(err => {
-        console.error("Translation load error:", err);
-        applyTranslations("es");
-      });
-  </script>
-
+    applyLang(lang);
+  }
+}
+</script>
 </body>
 </html>

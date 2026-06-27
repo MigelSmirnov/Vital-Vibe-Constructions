@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330">
+  <rect width="960" height="330" rx="24" fill="none"></rect>
+  <g transform="translate(80,70)">
+    <rect x="0" y="0" width="800" height="160" rx="12" fill="#14110F"></rect>
+    <rect x="8" y="8" width="784" height="144" rx="8" fill="none" stroke="#14110F" stroke-width="0"></rect>
+    <rect x="0" y="0" width="330" height="160" rx="12" fill="#F2B233"></rect>
+    <path d="M330 0H800V160H330Z" fill="#14110F"></path>
+    <line x1="330" y1="0" x2="330" y2="160" stroke="#14110F" stroke-width="8"></line>
+    <text x="165" y="104" text-anchor="middle" font-family="Arial Black, Impact, DejaVu Sans, sans-serif" font-weight="900" font-size="86" letter-spacing="-5" fill="#14110F">VVC</text>
+    <text x="376" y="67" font-family="Oswald, Arial Narrow, DejaVu Sans, sans-serif" font-weight="700" font-size="34" letter-spacing="8" fill="#FBFAF8">VITAL VIBE</text>
+    <text x="376" y="111" font-family="Oswald, Arial Narrow, DejaVu Sans, sans-serif" font-weight="300" font-size="34" letter-spacing="8" fill="#F2B233">CONSTRUCCIÓN</text>
+  </g>
+  <defs><pattern id="stripe" patternUnits="userSpaceOnUse" width="38" height="38" patternTransform="rotate(45)"><rect width="19" height="38" fill="#14110F"></rect><rect x="19" width="19" height="38" fill="#F2B233"></rect></pattern></defs>
+  <rect x="80" y="250" width="800" height="24" fill="url(#stripe)"></rect>
+</svg>
