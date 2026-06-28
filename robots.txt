@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vitalvibeconstruction.com/sitemap.xml
+
+# Vital Vibe Construction provides renovation and interior works in Barcelona.
+# Electrical planning tool: https://app.vitalvibeconstruction.com/
