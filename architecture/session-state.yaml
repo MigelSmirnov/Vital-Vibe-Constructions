@@ -5,7 +5,6 @@ phase: knowledge-foundation
 active_branch: agent/architecture-sandbox
 
 current_target:
-  - decide yaml parser strategy
   - add Project knowledge entity
   - add Media knowledge entity
   - add repository cross-reference validation
@@ -37,9 +36,15 @@ completed:
   - ExternalApp knowledge entity
   - repository uniqueness validation for external app ids
   - Site knowledge entity
+  - content table parser strategy decision
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
   - project and media typed entities need source content tables before projection can expand safely
+
+content_tables:
+  current_format: json-compatible-yaml
+  parser: JSON.parse
+  yaml_parser_policy: add only when yaml-specific authoring features are required
 
 next_update_required: true
