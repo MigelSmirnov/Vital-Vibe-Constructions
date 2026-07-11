@@ -1,0 +1,163 @@
+{
+  "media": [
+    {
+      "id": "media-proyecto-2-cocina-despues",
+      "slug": "proyecto-2-cocina-despues",
+      "src": "proyecto-2/b8.jpeg",
+      "alt": "Cocina reformada en Barcelona",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-piso-reformado-barcelona",
+      "before_after_state": "after"
+    },
+    {
+      "id": "media-proyecto-2-cocina-antes",
+      "slug": "proyecto-2-cocina-antes",
+      "src": "proyecto-2/b1.jpeg",
+      "alt": "Cocina antes de la reforma",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-piso-reformado-barcelona",
+      "before_after_state": "before"
+    },
+    {
+      "id": "media-estandar-cocina-terminada",
+      "slug": "estandar-cocina-terminada",
+      "src": "estandar/cocina.jpeg",
+      "alt": "Cocina a medida terminada con suelo de roble",
+      "width": 4032,
+      "height": 3024,
+      "project_id": "project-reforma-integral-estandar-barcelona",
+      "before_after_state": "after"
+    },
+    {
+      "id": "media-estandar-obra-instalaciones",
+      "slug": "estandar-obra-instalaciones",
+      "src": "estandar/obra.jpeg",
+      "alt": "Estructura e instalaciones en obra",
+      "width": 4032,
+      "height": 3024,
+      "project_id": "project-reforma-integral-estandar-barcelona",
+      "before_after_state": "before"
+    },
+    {
+      "id": "media-estandar-suelo-base",
+      "slug": "estandar-suelo-base",
+      "src": "estandar/suelo-base.jpeg",
+      "alt": "Base de suelo antes del parquet",
+      "width": 3840,
+      "height": 2160,
+      "project_id": "project-reforma-integral-estandar-barcelona",
+      "before_after_state": "before"
+    },
+    {
+      "id": "media-estandar-parquet",
+      "slug": "estandar-parquet",
+      "src": "estandar/parquet.jpeg",
+      "alt": "Instalación de suelo de roble",
+      "width": 4032,
+      "height": 3024,
+      "project_id": "project-reforma-integral-estandar-barcelona"
+    },
+    {
+      "id": "media-estandar-pasillo",
+      "slug": "estandar-pasillo",
+      "src": "estandar/pasillo.jpeg",
+      "alt": "Pasillo terminado con suelo de roble",
+      "width": 4032,
+      "height": 3024,
+      "project_id": "project-reforma-integral-estandar-barcelona",
+      "before_after_state": "after"
+    },
+    {
+      "id": "media-premium-pintura-techo",
+      "slug": "premium-pintura-techo",
+      "src": "premium/pintura-techo.jpeg",
+      "alt": "Enlucido y pintura de techo a pistola en obra premium",
+      "width": 813,
+      "height": 1442,
+      "project_id": "project-trabajos-contrata-premium"
+    },
+    {
+      "id": "media-premium-pintura-pared",
+      "slug": "premium-pintura-pared",
+      "src": "premium/pintura-pared.jpeg",
+      "alt": "Pintura de pared a pistola con acabado uniforme",
+      "width": 818,
+      "height": 1436,
+      "project_id": "project-trabajos-contrata-premium"
+    },
+    {
+      "id": "media-premium-led-escalera",
+      "slug": "premium-led-escalera",
+      "src": "premium/led-escalera.jpeg",
+      "alt": "Escalera con iluminación LED integrada en villa premium",
+      "width": 750,
+      "height": 1038,
+      "project_id": "project-trabajos-contrata-premium"
+    },
+    {
+      "id": "media-premium-pladur-instalacion",
+      "slug": "premium-pladur-instalacion",
+      "src": "premium/pladur-instalacion.jpeg",
+      "alt": "Pladur y preinstalación en obra premium",
+      "width": 4032,
+      "height": 3024,
+      "project_id": "project-trabajos-contrata-premium"
+    },
+    {
+      "id": "media-premium-pladur-obra",
+      "slug": "premium-pladur-obra",
+      "src": "premium/pladur-obra.jpeg",
+      "alt": "Enlucido y acabados en obra premium",
+      "width": 4032,
+      "height": 3024,
+      "project_id": "project-trabajos-contrata-premium"
+    },
+    {
+      "id": "media-smart-gira-panel",
+      "slug": "smart-gira-panel",
+      "src": "smart/gira.jpeg",
+      "alt": "Panel de control del hogar inteligente",
+      "width": 1466,
+      "height": 2048,
+      "service_ids": ["electrical"]
+    },
+    {
+      "id": "media-premium-panel-marmol",
+      "slug": "premium-panel-marmol",
+      "src": "premium/panel-marmol.jpeg",
+      "alt": "Panel de clima de diseño",
+      "width": 1536,
+      "height": 2048,
+      "service_ids": ["electrical"]
+    },
+    {
+      "id": "media-premium-gira-panel",
+      "slug": "premium-gira-panel",
+      "src": "premium/gira.jpeg",
+      "alt": "Panel de control de la vivienda",
+      "width": 1466,
+      "height": 2048,
+      "service_ids": ["electrical"]
+    },
+    {
+      "id": "media-premium-apple-home",
+      "slug": "premium-apple-home",
+      "src": "premium/apple-home.jpeg",
+      "alt": "Integración con Apple Home",
+      "width": 1638,
+      "height": 2048,
+      "service_ids": ["electrical"]
+    },
+    {
+      "id": "media-smart-escenas-iluminacion",
+      "slug": "smart-escenas-iluminacion",
+      "src": "smart/escenas.jpeg",
+      "alt": "Escenas de iluminación",
+      "width": 1536,
+      "height": 2048,
+      "service_ids": ["electrical"]
+    }
+  ]
+}

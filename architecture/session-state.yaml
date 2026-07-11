@@ -5,10 +5,12 @@ phase: knowledge-foundation
 active_branch: agent/architecture-sandbox
 
 current_target:
-  - add Project knowledge entity
   - add Media knowledge entity
+  - connect media table to Knowledge Repository
+  - add media uniqueness validation
+  - add Project knowledge entity
   - add repository cross-reference validation
-  - add project/media content tables when source records are ready
+  - add project content table when source records are ready
 
 legacy:
   runtime: x-dc
@@ -37,14 +39,17 @@ completed:
   - repository uniqueness validation for external app ids
   - Site knowledge entity
   - content table parser strategy decision
+  - homepage media inventory
+  - measured homepage raster media dimensions
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
-  - project and media typed entities need source content tables before projection can expand safely
+  - project typed entity needs source content table before projection can expand safely
 
 content_tables:
   current_format: json-compatible-yaml
   parser: JSON.parse
   yaml_parser_policy: add only when yaml-specific authoring features are required
+  media_records: homepage-visible raster images only
 
 next_update_required: true
