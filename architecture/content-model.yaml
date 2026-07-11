@@ -1,0 +1,26 @@
+version: 1
+entities:
+  service:
+    required_fields: [id, slug, title, summary]
+    optional_fields: [body, image, related_project_ids, related_article_ids]
+  project:
+    required_fields: [id, slug, title, summary, image_ids]
+    optional_fields: [service_ids, article_ids, location, area_m2, duration, budget_range]
+  article:
+    required_fields: [id, slug, title, summary, body, published_at]
+    optional_fields: [modified_at, author, category, tags, hero_image_id, related_service_ids, related_project_ids]
+  media:
+    required_fields: [id, slug, src, alt, width, height]
+    optional_fields: [caption, description, project_id, service_ids, before_after_state, published_at]
+  testimonial:
+    required_fields: [id, quote, display_name]
+    optional_fields: [project_id, service_id, published_at]
+  external_app:
+    required_fields: [id, url, status, label]
+    optional_fields: [summary, related_service_ids, related_article_ids]
+relations:
+  service_to_project: many_to_many
+  service_to_article: many_to_many
+  project_to_media: one_to_many
+  project_to_article: many_to_many
+  external_app_to_service: many_to_many
