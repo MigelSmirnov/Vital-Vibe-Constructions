@@ -1,4 +1,5 @@
-import { assertUniqueEntityKeys } from "../core/collection-invariants.mjs";
+import { assertUniqueEntityKeys, assertUniqueField } from "../core/collection-invariants.mjs";
+import { ExternalApp } from "../entities/external-app.mjs";
 import { Service } from "../entities/service.mjs";
 
 export class KnowledgeRepository {
@@ -11,9 +12,14 @@ export class KnowledgeRepository {
     this.services = Object.freeze(
       services.map((record, index) => Service.fromRecord(record, `content/tables/services.yaml#services[${index}]`)),
     );
-    this.externalApps = Object.freeze(externalApps.map((record) => Object.freeze({ ...record })));
+    this.externalApps = Object.freeze(
+      externalApps.map((record, index) =>
+        ExternalApp.fromRecord(record, `content/tables/external-apps.yaml#externalApps[${index}]`),
+      ),
+    );
 
     assertUniqueEntityKeys(this.services, "services");
+    assertUniqueField(this.externalApps, "id", "externalApps");
 
     Object.freeze(this);
   }
