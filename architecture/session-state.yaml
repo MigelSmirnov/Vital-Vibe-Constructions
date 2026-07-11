@@ -5,10 +5,9 @@ phase: knowledge-foundation
 active_branch: agent/architecture-sandbox
 
 current_target:
-  - add Media knowledge entity
-  - connect media table to Knowledge Repository
-  - add media uniqueness validation
   - add Project knowledge entity
+  - connect projects to Knowledge Repository
+  - add project uniqueness validation
   - add repository cross-reference validation
   - add project content table when source records are ready
 
@@ -41,6 +40,9 @@ completed:
   - content table parser strategy decision
   - homepage media inventory
   - measured homepage raster media dimensions
+  - Media knowledge entity
+  - media table connected to Knowledge Repository
+  - media uniqueness validation for ids, slugs, and src values
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes

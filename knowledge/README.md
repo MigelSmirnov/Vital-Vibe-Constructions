@@ -15,6 +15,7 @@ The knowledge layer is the source model for the next website runtime.
 - `Service`
 - `ExternalApp`
 - `Site`
+- `Media`
 - `KnowledgeRepository`
 - collection invariant helpers for unique entity ids and slugs
 - JSON-compatible content table adapter for current `content/tables/*.yaml` files

@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Homepage media inventory added
+Status: Media knowledge entity connected
 
 Branch:
 agent/architecture-sandbox
@@ -46,6 +46,9 @@ agent/architecture-sandbox
 - content table parser strategy decision
 - `content/tables/media.yaml` with homepage-visible raster media
 - repeatable media dimensions helper
+- `Media` typed knowledge entity
+- media table connected to Knowledge Repository
+- media uniqueness validation for ids, slugs, and src values
 
 ## Decisions
 
@@ -64,14 +67,15 @@ agent/architecture-sandbox
 - If a real YAML parser is introduced, it belongs inside `knowledge/adapters/content-tables.mjs`.
 - Homepage raster media records must include measured `width` and `height`.
 - Brand SVG assets are not part of the project/media inventory unless they become content records.
+- Media records are loaded through the Knowledge Repository before any projection consumes them.
 
 ## Next Session
 
-1. Add `Media` knowledge entity.
-2. Connect `content/tables/media.yaml` to `KnowledgeRepository`.
-3. Add media uniqueness validation for `id`, `slug`, and `src`.
-4. Add `Project` knowledge entity and project content table.
-5. Add repository validation for project/media/service references.
+1. Add `Project` knowledge entity and project content table.
+2. Connect projects to Knowledge Repository.
+3. Add project uniqueness validation for ids and slugs.
+4. Add repository validation for project/media/service references.
+5. Expand `site-next` projection from knowledge records.
 
 ## Do Not Do
 

@@ -5,19 +5,22 @@ const TABLES = {
   site: "content/tables/site.yaml",
   services: "content/tables/services.yaml",
   externalApps: "content/tables/external-apps.yaml",
+  media: "content/tables/media.yaml",
 };
 
 export async function loadContentTables({ root = process.cwd() } = {}) {
-  const [siteTable, servicesTable, appsTable] = await Promise.all([
+  const [siteTable, servicesTable, appsTable, mediaTable] = await Promise.all([
     readJsonCompatibleTable(root, TABLES.site),
     readJsonCompatibleTable(root, TABLES.services),
     readJsonCompatibleTable(root, TABLES.externalApps),
+    readJsonCompatibleTable(root, TABLES.media),
   ]);
 
   return {
     site: requireObject(siteTable.site, "site"),
     services: requireArray(servicesTable.services, "services"),
     externalApps: requireArray(appsTable.externalApps, "externalApps"),
+    media: requireArray(mediaTable.media, "media"),
   };
 }
 
