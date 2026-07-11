@@ -1,0 +1,489 @@
+version: 1
+application:
+  id: vital-vibe-constructions
+  name: Vital Vibe Constructions Website
+  kind: marketing-website
+  architecture_style: deep-modular-frontend
+  dependency_direction:
+    - ui -> features
+    - features -> domain
+    - infrastructure -> domain
+    - domain -> shared
+  goals:
+    - preserve the current visual design and public behavior
+    - remove business content and interaction logic from the page shell
+    - replace scattered inline constants with explicit configuration
+    - isolate generated runtime code from application-owned code
+    - support incremental refactoring without changing main
+
+modules:
+  - id: site-domain
+    name: Site Domain Model
+    layer: domain
+    responsibility: Own typed business content and concepts used by the construction website.
+    owns:
+      - services
+      - projects
+      - testimonials
+      - contact details
+      - company profile
+      - estimate inputs and outputs
+    exposes:
+      - SiteContent
+      - Service
+      - Project
+      - Testimonial
+      - ContactDetails
+      - EstimateRequest
+      - EstimateResult
+    depends_on:
+      - shared-types
+    used_by:
+      - site-content
+      - estimate-feature
+      - page-sections
+    data_in:
+      - validated content records
+    data_out:
+      - domain entities
+    forbidden_dependencies:
+      - page-shell
+      - browser-adapters
+      - generated-runtime
+    extension_points:
+      - CMS-backed content
+      - multilingual content
+    invariant_files:
+      - src/domain/invariants/siteContentInvariants.ts
+      - src/domain/invariants/estimateInvariants.ts
+    config_files:
+      - src/domain/config/domainConstants.ts
+
+  - id: site-content
+    name: Site Content Repository
+    layer: application
+    responsibility: Provide validated website content through a stable public API.
+    owns:
+      - content assembly
+      - content normalization
+      - content validation orchestration
+    exposes:
+      - getSiteContent
+    depends_on:
+      - site-domain
+      - site-config
+    used_by:
+      - page-sections
+      - seo-feature
+    data_in:
+      - static content configuration
+    data_out:
+      - SiteContent
+    forbidden_dependencies:
+      - page-shell
+      - generated-runtime
+    extension_points:
+      - remote CMS adapter
+    invariant_files:
+      - src/content/invariants/contentInvariants.ts
+    config_files:
+      - src/content/siteContent.ts
+
+  - id: site-config
+    name: Site Configuration
+    layer: shared
+    responsibility: Own stable site-wide constants and environment-independent configuration.
+    owns:
+      - navigation configuration
+      - section identifiers
+      - breakpoints
+      - animation settings
+      - external URLs
+      - SEO defaults
+    exposes:
+      - SITE_CONFIG
+      - NAVIGATION_ITEMS
+      - UI_CONSTANTS
+    depends_on: []
+    used_by:
+      - site-content
+      - page-sections
+      - seo-feature
+      - page-shell
+    data_in:
+      - explicit configuration values
+    data_out:
+      - immutable configuration objects
+    forbidden_dependencies:
+      - site-domain
+      - page-shell
+      - browser-adapters
+    extension_points:
+      - environment-specific configuration
+    invariant_files: []
+    config_files:
+      - src/config/siteConfig.ts
+      - src/config/uiConstants.ts
+
+  - id: estimate-feature
+    name: Estimate Feature
+    layer: application
+    responsibility: Own estimate input normalization, validation, and calculations independently of UI.
+    owns:
+      - estimate calculation
+      - estimate validation
+      - estimate result formatting model
+    exposes:
+      - calculateEstimate
+      - validateEstimateRequest
+    depends_on:
+      - site-domain
+      - site-config
+    used_by:
+      - page-sections
+    data_in:
+      - EstimateRequest
+    data_out:
+      - EstimateResult
+    forbidden_dependencies:
+      - page-shell
+      - browser-adapters
+      - generated-runtime
+    extension_points:
+      - backend pricing adapter
+      - regional pricing rules
+    invariant_files:
+      - src/features/estimate/invariants.ts
+    config_files:
+      - src/features/estimate/estimateConstants.ts
+
+  - id: contact-feature
+    name: Contact Feature
+    layer: application
+    responsibility: Prepare and validate contact submissions before delegating delivery to an adapter.
+    owns:
+      - contact form model
+      - contact validation
+      - submission orchestration
+    exposes:
+      - submitContactRequest
+      - validateContactRequest
+    depends_on:
+      - site-domain
+      - contact-adapter
+    used_by:
+      - page-sections
+    data_in:
+      - contact form values
+    data_out:
+      - submission result
+    forbidden_dependencies:
+      - page-shell
+      - generated-runtime
+    extension_points:
+      - CRM integration
+      - email provider integration
+    invariant_files:
+      - src/features/contact/contactInvariants.ts
+    config_files:
+      - src/features/contact/contactConstants.ts
+
+  - id: contact-adapter
+    name: Contact Delivery Adapter
+    layer: infrastructure
+    responsibility: Isolate network or third-party delivery details for contact requests.
+    owns:
+      - HTTP request mapping
+      - provider response mapping
+      - infrastructure errors
+    exposes:
+      - sendContactRequest
+    depends_on:
+      - site-domain
+    used_by:
+      - contact-feature
+    data_in:
+      - validated contact request
+    data_out:
+      - provider-neutral delivery result
+    forbidden_dependencies:
+      - page-shell
+      - page-sections
+      - generated-runtime
+    extension_points:
+      - alternate form provider
+    invariant_files: []
+    config_files:
+      - src/infrastructure/contact/contactAdapterConfig.ts
+
+  - id: browser-adapters
+    name: Browser Adapters
+    layer: infrastructure
+    responsibility: Isolate browser APIs used for scrolling, observers, storage, and analytics.
+    owns:
+      - intersection observer wrapper
+      - scroll navigation adapter
+      - analytics adapter
+      - storage adapter
+    exposes:
+      - createSectionObserver
+      - scrollToSection
+      - trackEvent
+    depends_on:
+      - shared-types
+    used_by:
+      - page-sections
+      - page-shell
+    data_in:
+      - browser interaction requests
+    data_out:
+      - provider-neutral results
+    forbidden_dependencies:
+      - site-domain
+      - estimate-feature
+    extension_points:
+      - alternate analytics provider
+    invariant_files: []
+    config_files:
+      - src/infrastructure/browser/browserConstants.ts
+
+  - id: page-sections
+    name: Page Sections
+    layer: ui
+    responsibility: Render focused page sections using domain content and application services.
+    owns:
+      - hero section
+      - services section
+      - projects section
+      - testimonials section
+      - estimate section
+      - contact section
+      - footer
+    exposes:
+      - HeroSection
+      - ServicesSection
+      - ProjectsSection
+      - TestimonialsSection
+      - EstimateSection
+      - ContactSection
+      - SiteFooter
+    depends_on:
+      - site-domain
+      - site-content
+      - site-config
+      - estimate-feature
+      - contact-feature
+      - browser-adapters
+      - ui-components
+    used_by:
+      - page-shell
+    data_in:
+      - domain content
+      - application callbacks
+    data_out:
+      - rendered section UI
+    forbidden_dependencies:
+      - contact-adapter
+      - generated-runtime
+    extension_points:
+      - additional marketing sections
+    invariant_files: []
+    config_files:
+      - src/ui/sections/sectionConfig.ts
+
+  - id: ui-components
+    name: Shared UI Components
+    layer: ui
+    responsibility: Own reusable visual primitives without business rules.
+    owns:
+      - buttons
+      - cards
+      - section headings
+      - form controls
+      - responsive containers
+    exposes:
+      - Button
+      - Card
+      - SectionHeading
+      - Field
+      - Container
+    depends_on:
+      - site-config
+      - shared-types
+    used_by:
+      - page-sections
+      - page-shell
+    data_in:
+      - presentation props
+    data_out:
+      - rendered UI primitives
+    forbidden_dependencies:
+      - site-domain
+      - estimate-feature
+      - contact-feature
+      - contact-adapter
+    extension_points:
+      - design tokens
+      - component variants
+    invariant_files: []
+    config_files:
+      - src/ui/theme/tokens.ts
+
+  - id: seo-feature
+    name: SEO Metadata
+    layer: application
+    responsibility: Build page metadata and structured data from validated site content.
+    owns:
+      - title and description generation
+      - canonical metadata
+      - organization structured data
+    exposes:
+      - buildSeoMetadata
+      - buildOrganizationSchema
+    depends_on:
+      - site-domain
+      - site-config
+    used_by:
+      - page-shell
+    data_in:
+      - SiteContent
+    data_out:
+      - metadata model
+    forbidden_dependencies:
+      - generated-runtime
+      - browser-adapters
+    extension_points:
+      - route-specific metadata
+    invariant_files:
+      - src/features/seo/seoInvariants.ts
+    config_files:
+      - src/features/seo/seoConstants.ts
+
+  - id: page-shell
+    name: Page Shell
+    layer: ui
+    responsibility: Compose the page, global navigation, metadata, and section modules without owning their business logic.
+    owns:
+      - application bootstrap
+      - top-level layout
+      - navigation composition
+      - section ordering
+    exposes:
+      - App
+    depends_on:
+      - site-content
+      - site-config
+      - seo-feature
+      - page-sections
+      - ui-components
+      - browser-adapters
+    used_by: []
+    data_in:
+      - application configuration
+    data_out:
+      - complete website UI
+    forbidden_dependencies:
+      - contact-adapter
+      - generated-runtime
+    extension_points:
+      - route shell
+    invariant_files: []
+    config_files:
+      - src/app/appConfig.ts
+
+  - id: generated-runtime
+    name: Generated DC Runtime
+    layer: infrastructure
+    responsibility: Host generated runtime code as an external implementation detail until it can be replaced or rebuilt from its source project.
+    owns:
+      - support.js generated bundle
+    exposes:
+      - runtime bootstrap only
+    depends_on: []
+    used_by:
+      - legacy-entrypoint
+    data_in:
+      - x-dc document template
+    data_out:
+      - mounted page runtime
+    forbidden_dependencies:
+      - site-domain
+      - estimate-feature
+      - contact-feature
+    extension_points:
+      - replacement with standard application bootstrap
+    invariant_files: []
+    config_files: []
+
+  - id: legacy-entrypoint
+    name: Legacy Entrypoint
+    layer: infrastructure
+    responsibility: Preserve the current index.html behavior during incremental migration.
+    owns:
+      - current index.html
+      - compatibility loading
+    exposes:
+      - current public website
+    depends_on:
+      - generated-runtime
+    used_by: []
+    data_in:
+      - legacy page template
+    data_out:
+      - rendered legacy website
+    forbidden_dependencies:
+      - site-domain
+      - estimate-feature
+      - contact-feature
+    extension_points:
+      - progressive replacement by page-shell
+    invariant_files: []
+    config_files: []
+
+  - id: shared-types
+    name: Shared Types and Utilities
+    layer: shared
+    responsibility: Own framework-neutral primitives shared across modules.
+    owns:
+      - result types
+      - identifiers
+      - utility types
+    exposes:
+      - Result
+      - EntityId
+    depends_on: []
+    used_by:
+      - site-domain
+      - browser-adapters
+      - ui-components
+    data_in:
+      - primitive values
+    data_out:
+      - shared primitives
+    forbidden_dependencies:
+      - page-shell
+      - generated-runtime
+    extension_points: []
+    invariant_files: []
+    config_files: []
+
+migration:
+  strategy: incremental-strangler
+  rules:
+    - never edit support.js directly because it is generated
+    - preserve index.html as the working legacy entrypoint until replacement sections are verified
+    - extract configuration and content before extracting visual sections
+    - move one page section at a time behind a stable public API
+    - keep domain and application modules free of DOM and React dependencies
+    - validate behavior after every extraction
+  implementation_order:
+    - document current structure and behavior
+    - extract site configuration and content
+    - define domain types and invariants
+    - extract estimate calculations and validation
+    - extract contact submission orchestration and adapter
+    - create shared UI primitives and design tokens
+    - migrate page sections incrementally
+    - replace legacy entrypoint with page shell
+    - add tests for domain logic, calculations, and adapters
+    - remove obsolete inline code after parity verification
