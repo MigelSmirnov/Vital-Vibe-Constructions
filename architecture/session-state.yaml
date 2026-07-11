@@ -1,0 +1,33 @@
+version: 1
+
+phase: knowledge-foundation
+
+active_branch: agent/architecture-sandbox
+
+current_target:
+  - create knowledge layer
+  - implement EntityCore
+  - implement Service
+  - implement Knowledge Repository
+
+legacy:
+  runtime: x-dc
+  editable: false
+  migration_strategy: strangler-pattern
+
+next_runtime:
+  root: site-next
+  status: active-development
+
+completed:
+  - architecture contracts
+  - engineering process
+  - content extractor
+  - crawlability audit
+  - ai-native foundation
+  - initial site-next
+
+blocked:
+  - legacy runtime cannot tolerate structural HTML changes
+
+next_update_required: true
