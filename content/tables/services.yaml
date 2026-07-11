@@ -1,0 +1,40 @@
+{
+  "services": [
+    {
+      "id": "integral-renovation",
+      "slug": "reformas-integrales",
+      "title": "Reformas integrales",
+      "summary": "Coordinación completa de la reforma, desde la preparación y las instalaciones hasta los acabados finales."
+    },
+    {
+      "id": "kitchens",
+      "slug": "cocinas",
+      "title": "Cocinas",
+      "summary": "Redistribución, instalaciones, revestimientos, iluminación y montaje para cocinas funcionales y duraderas."
+    },
+    {
+      "id": "bathrooms",
+      "slug": "banos",
+      "title": "Baños",
+      "summary": "Renovación de baños con atención a impermeabilización, fontanería, ventilación y acabados."
+    },
+    {
+      "id": "electrical",
+      "slug": "electricidad",
+      "title": "Electricidad",
+      "summary": "Planificación de puntos, iluminación, mecanismos y cuadro eléctrico para reformas actuales y futuras."
+    },
+    {
+      "id": "painting",
+      "slug": "pintura",
+      "title": "Pintura",
+      "summary": "Preparación de superficies y acabados de pintura para viviendas y espacios comerciales."
+    },
+    {
+      "id": "masonry",
+      "slug": "albanileria",
+      "title": "Albañilería",
+      "summary": "Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida."
+    }
+  ]
+}
