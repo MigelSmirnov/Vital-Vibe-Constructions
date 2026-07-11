@@ -194,7 +194,7 @@ h3 { font-size: 1.3rem; }
 
 async function main() {
   const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
-  const site = knowledge.getSite();
+  const site = knowledge.getSite().toRecord();
   const services = knowledge.listServices().map((service) => service.toRecord());
   const planner = knowledge.findExternalAppById("electrical-planner");
 

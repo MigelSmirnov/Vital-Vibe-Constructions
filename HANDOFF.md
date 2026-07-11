@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: External app knowledge entity added
+Status: Site knowledge entity added
 
 Branch:
 agent/architecture-sandbox
@@ -42,6 +42,7 @@ agent/architecture-sandbox
 - repository uniqueness validation for service ids and slugs
 - `ExternalApp` typed knowledge entity
 - repository uniqueness validation for external app ids
+- `Site` typed knowledge entity for metadata, hero, and contact data
 
 ## Decisions
 
@@ -55,13 +56,14 @@ agent/architecture-sandbox
 - Current `content/tables/*.yaml` files are JSON-compatible and are parsed without adding dependencies.
 - Knowledge collections must validate unique ids and slugs before powering projections.
 - Planner data is a typed knowledge entity, not a plain content table object.
+- Site metadata, hero, and contact content are typed knowledge records before projection.
 
 ## Next Session
 
 1. Decide whether to keep JSON-compatible tables or introduce a real YAML parser.
-2. Add `Site` as a typed knowledge entity for global site and hero data.
-3. Add `Project` and `Media` knowledge entities.
-4. Add repository validation for cross-record references.
+2. Add `Project` and `Media` knowledge entities.
+3. Add repository validation for cross-record references.
+4. Add project/media content tables when source records are ready.
 5. Expand `site-next` projection from knowledge records.
 
 ## Do Not Do

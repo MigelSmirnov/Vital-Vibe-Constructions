@@ -6,10 +6,10 @@ active_branch: agent/architecture-sandbox
 
 current_target:
   - decide yaml parser strategy
-  - add Site knowledge entity
   - add Project knowledge entity
   - add Media knowledge entity
   - add repository cross-reference validation
+  - add project/media content tables when source records are ready
 
 legacy:
   runtime: x-dc
@@ -36,8 +36,10 @@ completed:
   - repository uniqueness validation for service ids and slugs
   - ExternalApp knowledge entity
   - repository uniqueness validation for external app ids
+  - Site knowledge entity
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
+  - project and media typed entities need source content tables before projection can expand safely
 
 next_update_required: true
