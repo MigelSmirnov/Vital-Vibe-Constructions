@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Foundation complete
+Status: Knowledge foundation connected
 
 Branch:
 agent/architecture-sandbox
@@ -33,6 +33,12 @@ agent/architecture-sandbox
 - Initial `site-next`
 - Planner integration
 - Engineering process
+- `knowledge/` layer
+- `EntityCore`
+- `Service`
+- `KnowledgeRepository`
+- JSON-compatible content table adapter
+- `site-next` build connected to Knowledge Repository
 
 ## Decisions
 
@@ -42,14 +48,16 @@ agent/architecture-sandbox
 - Keep module APIs small.
 - Use deep modules.
 - Content is the single source of truth.
+- Builders consume content through the Knowledge Repository.
+- Current `content/tables/*.yaml` files are JSON-compatible and are parsed without adding dependencies.
 
 ## Next Session
 
-1. Create `knowledge/`
-2. Implement `EntityCore`
-3. Implement `Service`
-4. Create Knowledge Repository
-5. Connect YAML adapter
+1. Decide whether to keep JSON-compatible tables or introduce a real YAML parser.
+2. Add next knowledge entities: `Project`, `Media`, `ExternalApp`.
+3. Add repository validation for duplicate ids and slugs.
+4. Move planner and site records behind typed knowledge models.
+5. Expand `site-next` projection from knowledge records.
 
 ## Do Not Do
 

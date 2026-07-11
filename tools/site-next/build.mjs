@@ -1,16 +1,12 @@
 #!/usr/bin/env node
 
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
 
 const root = process.cwd();
 const outputDir = path.join(root, "site-next");
-
-async function readTable(relativePath) {
-  const filePath = path.join(root, relativePath);
-  return JSON.parse(await readFile(filePath, "utf8"));
-}
 
 function escapeHtml(value) {
   return String(value)
@@ -197,13 +193,10 @@ h3 { font-size: 1.3rem; }
 }`;
 
 async function main() {
-  const siteTable = await readTable("content/tables/site.yaml");
-  const servicesTable = await readTable("content/tables/services.yaml");
-  const appsTable = await readTable("content/tables/external-apps.yaml");
-
-  const site = siteTable.site;
-  const services = servicesTable.services;
-  const planner = appsTable.externalApps.find((app) => app.id === "electrical-planner");
+  const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
+  const site = knowledge.getSite();
+  const services = knowledge.listServices().map((service) => service.toRecord());
+  const planner = knowledge.findExternalAppById("electrical-planner");
 
   if (!site || !Array.isArray(services) || !planner) {
     throw new Error("Required content records are missing.");
