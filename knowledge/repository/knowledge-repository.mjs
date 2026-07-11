@@ -1,3 +1,4 @@
+import { assertUniqueEntityKeys } from "../core/collection-invariants.mjs";
 import { Service } from "../entities/service.mjs";
 
 export class KnowledgeRepository {
@@ -7,8 +8,12 @@ export class KnowledgeRepository {
     }
 
     this.site = Object.freeze({ ...site });
-    this.services = Object.freeze(services.map((record) => Service.fromRecord(record, "content/tables/services.yaml")));
+    this.services = Object.freeze(
+      services.map((record, index) => Service.fromRecord(record, `content/tables/services.yaml#services[${index}]`)),
+    );
     this.externalApps = Object.freeze(externalApps.map((record) => Object.freeze({ ...record })));
+
+    assertUniqueEntityKeys(this.services, "services");
 
     Object.freeze(this);
   }

@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Knowledge foundation connected
+Status: Knowledge repository invariants added
 
 Branch:
 agent/architecture-sandbox
@@ -39,6 +39,7 @@ agent/architecture-sandbox
 - `KnowledgeRepository`
 - JSON-compatible content table adapter
 - `site-next` build connected to Knowledge Repository
+- repository uniqueness validation for service ids and slugs
 
 ## Decisions
 
@@ -50,13 +51,14 @@ agent/architecture-sandbox
 - Content is the single source of truth.
 - Builders consume content through the Knowledge Repository.
 - Current `content/tables/*.yaml` files are JSON-compatible and are parsed without adding dependencies.
+- Knowledge collections must validate unique ids and slugs before powering projections.
 
 ## Next Session
 
 1. Decide whether to keep JSON-compatible tables or introduce a real YAML parser.
-2. Add next knowledge entities: `Project`, `Media`, `ExternalApp`.
-3. Add repository validation for duplicate ids and slugs.
-4. Move planner and site records behind typed knowledge models.
+2. Add `ExternalApp` as a typed knowledge entity for planner data.
+3. Move planner records behind typed repository methods.
+4. Add `Project` and `Media` knowledge entities.
 5. Expand `site-next` projection from knowledge records.
 
 ## Do Not Do
