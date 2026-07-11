@@ -1,0 +1,25 @@
+version: 1
+site:
+  id: vital-vibe-constructions
+  canonical_origin: https://vitalvibeconstruction.com
+  default_language: es
+  supported_languages:
+    - es
+    - en
+    - ru
+  currency: EUR
+  service_area:
+    primary_city: Barcelona
+    region: Catalonia
+external_apps:
+  electrical_planner:
+    url: https://app.vitalvibeconstruction.com/manual
+    status: beta
+    label:
+      es: Abrir planificador eléctrico
+      en: Open electrical planner
+      ru: Открыть электрический планировщик
+seo:
+  default_title: Reformas integrales en Barcelona | Vital Vibe Construction
+  default_description: Reformas integrales, cocinas, baños, electricidad y preparación para hogar inteligente en Barcelona.
+  default_og_image: /proyecto-2/b8.jpeg
