@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-11T22:10:38.259Z",
+  "source": "site-next/index.html",
+  "meta": {
+    "title": "Reformas integrales en Barcelona | Vital Vibe Construction",
+    "description": "Reformas integrales, cocinas, baños, electricidad y preparación para hogar inteligente en Barcelona.",
+    "canonical": "https://vitalvibeconstruction.com/",
+    "openGraph": {
+      "og:type": "website",
+      "og:title": "Reformas integrales en Barcelona | Vital Vibe Construction",
+      "og:description": "Reformas integrales, cocinas, baños, electricidad y preparación para hogar inteligente en Barcelona.",
+      "og:url": "https://vitalvibeconstruction.com/",
+      "og:image": "https://vitalvibeconstruction.com/proyecto-2/b8.jpeg"
+    },
+    "twitter": {
+      "twitter:card": "summary_large_image"
+    },
+    "alternates": []
+  },
+  "headings": [
+    {
+      "index": 0,
+      "level": 1,
+      "id": null,
+      "text": "Reformas integrales que dan nueva vida a tu hogar"
+    },
+    {
+      "index": 1,
+      "level": 2,
+      "id": null,
+      "text": "Todo lo que tu reforma necesita"
+    },
+    {
+      "index": 2,
+      "level": 3,
+      "id": null,
+      "text": "Reformas integrales"
+    },
+    {
+      "index": 3,
+      "level": 3,
+      "id": null,
+      "text": "Cocinas"
+    },
+    {
+      "index": 4,
+      "level": 3,
+      "id": null,
+      "text": "Baños"
+    },
+    {
+      "index": 5,
+      "level": 3,
+      "id": null,
+      "text": "Electricidad"
+    },
+    {
+      "index": 6,
+      "level": 3,
+      "id": null,
+      "text": "Pintura"
+    },
+    {
+      "index": 7,
+      "level": 3,
+      "id": null,
+      "text": "Albañilería"
+    },
+    {
+      "index": 8,
+      "level": 2,
+      "id": null,
+      "text": "Planifica la electricidad antes de la obra"
+    },
+    {
+      "index": 9,
+      "level": 2,
+      "id": null,
+      "text": "Hablemos de tu proyecto"
+    }
+  ],
+  "landmarks": [
+    {
+      "index": 0,
+      "tag": "header",
+      "id": null,
+      "ariaLabel": null,
+      "heading": null,
+      "headingLevel": null,
+      "textPreview": "Servicios Planificador Contacto",
+      "linkCount": 4,
+      "imageCount": 1
+    },
+    {
+      "index": 1,
+      "tag": "main",
+      "id": "main-content",
+      "ariaLabel": null,
+      "heading": "Reformas integrales que dan nueva vida a tu hogar",
+      "headingLevel": 1,
+      "textPreview": "Reformas integrales en Barcelona Reformas integrales que dan nueva vida a tu hogar Planificamos y ejecutamos reformas residenciales y comerciales con una coordinación clara, acabados cuidados y apoyo en la planificación eléctrica. Solicitar presupuesto Abrir planificador eléctric",
+      "linkCount": 3,
+      "imageCount": 1
+    },
+    {
+      "index": 2,
+      "tag": "footer",
+      "id": null,
+      "ariaLabel": null,
+      "heading": null,
+      "headingLevel": null,
+      "textPreview": "© 2026 Vital Vibe Construction",
+      "linkCount": 0,
+      "imageCount": 0
+    }
+  ],
+  "links": [
+    {
+      "index": 0,
+      "href": "#main-content",
+      "text": "Saltar al contenido",
+      "title": null,
+      "target": null,
+      "rel": null,
+      "ariaLabel": null
+    },
+    {
+      "index": 1,
+      "href": "./",
+      "text": "",
+      "title": null,
+      "target": null,
+      "rel": null,
+      "ariaLabel": "Vital Vibe Construction"
+    },
+    {
+      "index": 2,
+      "href": "#servicios",
+      "text": "Servicios",
+      "title": null,
+      "target": null,
+      "rel": null,
+      "ariaLabel": null
+    },
+    {
+      "index": 3,
+      "href": "#planificador",
+      "text": "Planificador",
+      "title": null,
+      "target": null,
+      "rel": null,
+      "ariaLabel": null
+    },
+    {
+      "index": 4,
+      "href": "#contacto",
+      "text": "Contacto",
+      "title": null,
+      "target": null,
+      "rel": null,
+      "ariaLabel": null
+    },
+    {
+      "index": 5,
+      "href": "#contacto",
+      "text": "Solicitar presupuesto",
+      "title": null,
+      "target": null,
+      "rel": null,
+      "ariaLabel": null
+    },
+    {
+      "index": 6,
+      "href": "https://app.vitalvibeconstruction.com/manual",
+      "text": "Abrir planificador eléctrico beta",
+      "title": null,
+      "target": "_blank",
+      "rel": "noopener",
+      "ariaLabel": null
+    },
+    {
+      "index": 7,
+      "href": "https://app.vitalvibeconstruction.com/manual",
+      "text": "Abrir planificador eléctrico beta",
+      "title": null,
+      "target": "_blank",
+      "rel": "noopener",
+      "ariaLabel": null
+    }
+  ],
+  "images": [
+    {
+      "index": 0,
+      "src": "../VVC_primary_logo.svg",
+      "srcset": null,
+      "alt": "Vital Vibe Construction",
+      "title": null,
+      "width": "170",
+      "height": "48",
+      "loading": null,
+      "decoding": null
+    },
+    {
+      "index": 1,
+      "src": "../proyecto-2/b8.jpeg",
+      "srcset": null,
+      "alt": "Cocina reformada en Barcelona",
+      "title": null,
+      "width": "1600",
+      "height": "1000",
+      "loading": null,
+      "decoding": null
+    }
+  ],
+  "scripts": [
+    {
+      "index": 0,
+      "src": null,
+      "type": "application/ld+json",
+      "async": false,
+      "defer": false,
+      "dataDcScript": false,
+      "inlineLength": 1776
+    }
+  ],
+  "structuredData": [
+    {
+      "index": 0,
+      "valid": true,
+      "value": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Vital Vibe Construction",
+        "url": "https://vitalvibeconstruction.com/",
+        "logo": "https://vitalvibeconstruction.com/VVC_primary_logo.svg",
+        "areaServed": "Barcelona y alrededores",
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Reformas integrales",
+              "description": "Coordinación completa de la reforma, desde la preparación y las instalaciones hasta los acabados finales."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cocinas",
+              "description": "Redistribución, instalaciones, revestimientos, iluminación y montaje para cocinas funcionales y duraderas."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Baños",
+              "description": "Renovación de baños con atención a impermeabilización, fontanería, ventilación y acabados."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Electricidad",
+              "description": "Planificación de puntos, iluminación, mecanismos y cuadro eléctrico para reformas actuales y futuras."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pintura",
+              "description": "Preparación de superficies y acabados de pintura para viviendas y espacios comerciales."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Albañilería",
+              "description": "Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "inlineStyles": {
+    "blockCount": 0,
+    "blockCharacterCount": 0,
+    "attributeCount": 0
+  },
+  "customElements": [],
+  "rawMetrics": {
+    "characterCount": 6925,
+    "lineCount": 165,
+    "xDcPresent": false,
+    "dataDcScriptPresent": false,
+    "hasMain": true,
+    "hasNav": true
+  },
+  "findings": []
+}
