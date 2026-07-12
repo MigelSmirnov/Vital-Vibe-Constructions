@@ -29,7 +29,35 @@ function renderServices(services) {
     .join("");
 }
 
-function renderPage({ site, services, planner }) {
+function renderProjects(projects, mediaById, serviceById) {
+  return projects
+    .map((project) => {
+      const image = mediaById.get(project.image_ids[0]);
+      const services = project.service_ids
+        ? project.service_ids.map((serviceId) => serviceById.get(serviceId)).filter(Boolean)
+        : [];
+
+      if (!image) {
+        throw new Error(`Project "${project.id}" does not have a resolvable lead image.`);
+      }
+
+      return `
+        <article class="project-card" id="${escapeHtml(project.slug)}">
+          <img src="../${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" width="${escapeHtml(image.width)}" height="${escapeHtml(image.height)}" loading="lazy">
+          <div class="project-card-body">
+            <p class="project-meta">${escapeHtml([project.location, project.budget_range].filter(Boolean).join(" · "))}</p>
+            <h3>${escapeHtml(project.title)}</h3>
+            <p>${escapeHtml(project.summary)}</p>
+            <div class="project-tags">${services.map((service) => `<span>${escapeHtml(service.title)}</span>`).join("")}</div>
+          </div>
+        </article>`;
+    })
+    .join("");
+}
+
+function renderPage({ site, services, projects, media, planner }) {
+  const serviceById = new Map(services.map((service) => [service.id, service]));
+  const mediaById = new Map(media.map((item) => [item.id, item]));
   const organizationSchema = JSON.stringify(
     {
       "@context": "https://schema.org",
@@ -77,6 +105,7 @@ function renderPage({ site, services, planner }) {
       </a>
       <nav aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
         <a href="#planificador">Planificador</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -105,6 +134,14 @@ function renderPage({ site, services, planner }) {
         <p class="eyebrow">Servicios</p>
         <h2>Todo lo que tu reforma necesita</h2>
         <div class="service-grid">${renderServices(services)}</div>
+      </div>
+    </section>
+
+    <section class="section projects" id="proyectos">
+      <div class="container">
+        <p class="eyebrow">Proyectos</p>
+        <h2>Trabajos realizados</h2>
+        <div class="project-grid">${renderProjects(projects, mediaById, serviceById)}</div>
       </div>
     </section>
 
@@ -178,8 +215,16 @@ h3 { font-size: 1.3rem; }
 .badge { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; opacity: .78; }
 .section { padding: 88px 0; }
 .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px; }
-.service-card p, .planner p, .contact p { color: var(--muted); }
+.service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 26px; }
+.service-card p, .project-card p, .planner p, .contact p { color: var(--muted); }
+.projects { background: #181c20; }
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.project-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.project-card-body { padding: 22px; }
+.project-card .project-meta { margin: 0 0 10px; font-size: .82rem; color: var(--accent); font-weight: 700; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.project-tags span { border: 1px solid var(--border); border-radius: 999px; padding: 4px 9px; color: var(--muted); font-size: .78rem; }
 .planner { background: #20252b; }
 .planner-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 36px; }
 .contact { text-align: center; }
@@ -189,6 +234,7 @@ h3 { font-size: 1.3rem; }
   nav { gap: 16px; }
   .hero { min-height: 590px; }
   .service-grid { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
   .planner-grid { grid-template-columns: 1fr; align-items: start; }
 }`;
 
@@ -196,14 +242,16 @@ async function main() {
   const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
   const site = knowledge.getSite().toRecord();
   const services = knowledge.listServices().map((service) => service.toRecord());
+  const projects = knowledge.listProjects().map((project) => project.toRecord());
+  const media = knowledge.listMedia().map((item) => item.toRecord());
   const planner = knowledge.findExternalAppById("electrical-planner");
 
-  if (!site || !Array.isArray(services) || !planner) {
+  if (!site || !Array.isArray(services) || !Array.isArray(projects) || !Array.isArray(media) || !planner) {
     throw new Error("Required content records are missing.");
   }
 
   await mkdir(outputDir, { recursive: true });
-  await writeFile(path.join(outputDir, "index.html"), renderPage({ site, services, planner }), "utf8");
+  await writeFile(path.join(outputDir, "index.html"), renderPage({ site, services, projects, media, planner }), "utf8");
   await writeFile(path.join(outputDir, "styles.css"), styles, "utf8");
   console.log("Built site-next/index.html and site-next/styles.css");
 }

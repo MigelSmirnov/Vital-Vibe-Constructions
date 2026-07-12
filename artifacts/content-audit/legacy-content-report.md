@@ -1,6 +1,6 @@
 # Legacy Content and Crawlability Audit
 
-Generated from `index.html` at 2026-07-11T23:26:21.848Z.
+Generated from `index.html` at 2026-07-12T06:43:04.963Z.
 
 ## Summary
 

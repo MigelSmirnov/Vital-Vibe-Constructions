@@ -4,14 +4,16 @@ import path from "node:path";
 const TABLES = {
   site: "content/tables/site.yaml",
   services: "content/tables/services.yaml",
+  projects: "content/tables/projects.yaml",
   externalApps: "content/tables/external-apps.yaml",
   media: "content/tables/media.yaml",
 };
 
 export async function loadContentTables({ root = process.cwd() } = {}) {
-  const [siteTable, servicesTable, appsTable, mediaTable] = await Promise.all([
+  const [siteTable, servicesTable, projectsTable, appsTable, mediaTable] = await Promise.all([
     readJsonCompatibleTable(root, TABLES.site),
     readJsonCompatibleTable(root, TABLES.services),
+    readJsonCompatibleTable(root, TABLES.projects),
     readJsonCompatibleTable(root, TABLES.externalApps),
     readJsonCompatibleTable(root, TABLES.media),
   ]);
@@ -19,6 +21,7 @@ export async function loadContentTables({ root = process.cwd() } = {}) {
   return {
     site: requireObject(siteTable.site, "site"),
     services: requireArray(servicesTable.services, "services"),
+    projects: requireArray(projectsTable.projects, "projects"),
     externalApps: requireArray(appsTable.externalApps, "externalApps"),
     media: requireArray(mediaTable.media, "media"),
   };

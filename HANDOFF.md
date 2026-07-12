@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Media knowledge entity connected
+Status: Project knowledge entity connected and projected in site-next
 
 Branch:
 agent/architecture-sandbox
@@ -49,6 +49,12 @@ agent/architecture-sandbox
 - `Media` typed knowledge entity
 - media table connected to Knowledge Repository
 - media uniqueness validation for ids, slugs, and src values
+- `Project` typed knowledge entity
+- `content/tables/projects.yaml` with homepage-visible project records
+- projects connected to Knowledge Repository
+- project uniqueness validation for ids and slugs
+- repository cross-reference validation for project/media/service references
+- `site-next` project section projected from Knowledge Repository records
 
 ## Decisions
 
@@ -68,14 +74,14 @@ agent/architecture-sandbox
 - Homepage raster media records must include measured `width` and `height`.
 - Brand SVG assets are not part of the project/media inventory unless they become content records.
 - Media records are loaded through the Knowledge Repository before any projection consumes them.
+- Project records are loaded through the Knowledge Repository before projections consume them.
+- Project lead images are resolved through media knowledge records, not duplicated in the projection.
 
 ## Next Session
 
-1. Add `Project` knowledge entity and project content table.
-2. Connect projects to Knowledge Repository.
-3. Add project uniqueness validation for ids and slugs.
-4. Add repository validation for project/media/service references.
-5. Expand `site-next` projection from knowledge records.
+1. Review `site-next` project section against the legacy visual/content intent.
+2. Add focused Knowledge Repository invariant tests once a test runner is introduced or selected.
+3. Continue the next content-model entity only when source records are ready.
 
 ## Do Not Do
 

@@ -1,0 +1,49 @@
+{
+  "projects": [
+    {
+      "id": "project-piso-reformado-barcelona",
+      "slug": "piso-reformado-barcelona",
+      "title": "Piso reformado en Barcelona",
+      "summary": "Reforma integral de un piso en Barcelona con cocina renovada y entrega llave en mano.",
+      "image_ids": [
+        "media-proyecto-2-cocina-despues",
+        "media-proyecto-2-cocina-antes"
+      ],
+      "service_ids": ["integral-renovation", "kitchens"],
+      "location": "Barcelona",
+      "budget_range": "Económico"
+    },
+    {
+      "id": "project-reforma-integral-estandar-barcelona",
+      "slug": "reforma-integral-estandar-barcelona",
+      "title": "Reforma integral estándar en Barcelona",
+      "summary": "Reforma completa de vivienda con instalaciones, suelo de roble, pasillo terminado y cocina a medida.",
+      "image_ids": [
+        "media-estandar-cocina-terminada",
+        "media-estandar-obra-instalaciones",
+        "media-estandar-suelo-base",
+        "media-estandar-parquet",
+        "media-estandar-pasillo"
+      ],
+      "service_ids": ["integral-renovation", "kitchens", "electrical", "painting", "masonry"],
+      "location": "Barcelona",
+      "budget_range": "Estándar"
+    },
+    {
+      "id": "project-trabajos-contrata-premium",
+      "slug": "trabajos-contrata-premium",
+      "title": "Trabajos de contrata en proyectos premium",
+      "summary": "Trabajos especializados de pladur, enlucido, pintura e iluminación LED integrada para viviendas de alta gama.",
+      "image_ids": [
+        "media-premium-pintura-techo",
+        "media-premium-pintura-pared",
+        "media-premium-led-escalera",
+        "media-premium-pladur-instalacion",
+        "media-premium-pladur-obra"
+      ],
+      "service_ids": ["electrical", "painting", "masonry"],
+      "location": "Barcelona",
+      "budget_range": "Premium"
+    }
+  ]
+}

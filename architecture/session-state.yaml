@@ -5,11 +5,9 @@ phase: knowledge-foundation
 active_branch: agent/architecture-sandbox
 
 current_target:
-  - add Project knowledge entity
-  - connect projects to Knowledge Repository
-  - add project uniqueness validation
-  - add repository cross-reference validation
-  - add project content table when source records are ready
+  - review site-next project projection
+  - add focused repository invariant tests when test tooling exists
+  - continue next content-model entity when source records are ready
 
 legacy:
   runtime: x-dc
@@ -43,15 +41,21 @@ completed:
   - Media knowledge entity
   - media table connected to Knowledge Repository
   - media uniqueness validation for ids, slugs, and src values
+  - Project knowledge entity
+  - project content table
+  - projects connected to Knowledge Repository
+  - project uniqueness validation for ids and slugs
+  - repository cross-reference validation for project/media/service references
+  - site-next project section projected from Knowledge Repository
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
-  - project typed entity needs source content table before projection can expand safely
 
 content_tables:
   current_format: json-compatible-yaml
   parser: JSON.parse
   yaml_parser_policy: add only when yaml-specific authoring features are required
   media_records: homepage-visible raster images only
+  project_records: homepage-visible projects only
 
 next_update_required: true

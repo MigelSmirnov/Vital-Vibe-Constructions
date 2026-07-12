@@ -39,8 +39,16 @@ h3 { font-size: 1.3rem; }
 .badge { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; opacity: .78; }
 .section { padding: 88px 0; }
 .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px; }
-.service-card p, .planner p, .contact p { color: var(--muted); }
+.service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 26px; }
+.service-card p, .project-card p, .planner p, .contact p { color: var(--muted); }
+.projects { background: #181c20; }
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.project-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.project-card-body { padding: 22px; }
+.project-card .project-meta { margin: 0 0 10px; font-size: .82rem; color: var(--accent); font-weight: 700; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.project-tags span { border: 1px solid var(--border); border-radius: 999px; padding: 4px 9px; color: var(--muted); font-size: .78rem; }
 .planner { background: #20252b; }
 .planner-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 36px; }
 .contact { text-align: center; }
@@ -50,5 +58,6 @@ h3 { font-size: 1.3rem; }
   nav { gap: 16px; }
   .hero { min-height: 590px; }
   .service-grid { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
   .planner-grid { grid-template-columns: 1fr; align-items: start; }
 }
