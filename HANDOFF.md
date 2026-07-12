@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Project knowledge entity connected, projected, checked, and lightly refined
+Status: Legacy metadata audit cleanup completed
 
 Branch:
 agent/architecture-sandbox
@@ -59,6 +59,8 @@ agent/architecture-sandbox
 - `tools/checks/run.mjs` check runner for knowledge tests, `site-next` build, content audit, and whitespace checks
 - static `site-next` project projection review for metadata, landmarks, local assets, duplicate ids, image dimensions, and project card count
 - project section summary and equal-height project card layout refinements
+- legacy `index.html` head metadata added for title, description, canonical, Open Graph, Twitter card, and Organization JSON-LD
+- legacy content audit reduced from 1 error / 7 warnings to 0 errors / 5 warnings
 
 ## Decisions
 
@@ -81,14 +83,15 @@ agent/architecture-sandbox
 - Project records are loaded through the Knowledge Repository before projections consume them.
 - Project lead images are resolved through media knowledge records, not duplicated in the projection.
 - Use `node tools/checks/run.mjs` for the current full local check suite.
-- The content audit currently completes with legacy findings: 1 error and 7 warnings.
-- Legacy audit findings are documented debt unless the next session explicitly targets the legacy entrypoint.
+- The content audit currently completes with legacy findings: 0 errors and 5 warnings.
+- Remaining legacy audit warnings are structural debt: heading-level skip, missing `<main>`, heavy inline styles, `x-dc` runtime root, and large inline script.
+- Do not address remaining legacy structural warnings without a browser/runtime verification path.
 
 ## Next Session
 
-1. Decide whether legacy content audit findings should remain documented debt or become active cleanup work.
-2. Add browser screenshot tooling only if visual regression checks become a recurring need.
-3. Continue the next content-model entity only when source records are ready.
+1. Continue the next content-model entity only when source records are ready.
+2. Add browser screenshot tooling only if visual/runtime checks become a recurring need.
+3. Defer remaining legacy audit warnings unless the session explicitly targets legacy structural cleanup.
 
 ## Do Not Do
 

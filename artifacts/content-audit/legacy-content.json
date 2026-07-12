@@ -1,13 +1,21 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-12T06:58:25.824Z",
+  "generatedAt": "2026-07-12T10:27:02.545Z",
   "source": "index.html",
   "meta": {
-    "title": null,
-    "description": null,
-    "canonical": null,
-    "openGraph": {},
-    "twitter": {},
+    "title": "Reformas integrales en Barcelona | Vital Vibe Construction",
+    "description": "Reformas integrales, cocinas, baños, electricidad y preparación para hogar inteligente en Barcelona.",
+    "canonical": "https://vitalvibeconstruction.com/",
+    "openGraph": {
+      "og:type": "website",
+      "og:title": "Reformas integrales en Barcelona | Vital Vibe Construction",
+      "og:description": "Reformas integrales, cocinas, baños, electricidad y preparación para hogar inteligente en Barcelona.",
+      "og:url": "https://vitalvibeconstruction.com/",
+      "og:image": "https://vitalvibeconstruction.com/proyecto-2/b8.jpeg"
+    },
+    "twitter": {
+      "twitter:card": "summary_large_image"
+    },
     "alternates": []
   },
   "headings": [
@@ -699,6 +707,15 @@
   "scripts": [
     {
       "index": 0,
+      "src": null,
+      "type": "application/ld+json",
+      "async": false,
+      "defer": false,
+      "dataDcScript": false,
+      "inlineLength": 985
+    },
+    {
+      "index": 1,
       "src": "./support.js",
       "type": null,
       "async": false,
@@ -707,7 +724,7 @@
       "inlineLength": 0
     },
     {
-      "index": 1,
+      "index": 2,
       "src": null,
       "type": "text/x-dc",
       "async": false,
@@ -716,7 +733,46 @@
       "inlineLength": 27333
     }
   ],
-  "structuredData": [],
+  "structuredData": [
+    {
+      "index": 0,
+      "valid": true,
+      "value": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Vital Vibe Construction",
+        "url": "https://vitalvibeconstruction.com/",
+        "logo": "https://vitalvibeconstruction.com/VVC_primary_logo.svg",
+        "areaServed": "Barcelona y alrededores",
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Reformas integrales",
+              "description": "Coordinación completa de reformas residenciales y comerciales en Barcelona."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cocinas",
+              "description": "Redistribución, instalaciones, revestimientos, iluminación y montaje de cocinas."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Electricidad",
+              "description": "Planificación de puntos, iluminación, mecanismos y cuadros eléctricos para reformas."
+            }
+          }
+        ]
+      }
+    }
+  ],
   "inlineStyles": {
     "blockCount": 1,
     "blockCharacterCount": 6845,
@@ -726,32 +782,14 @@
     "x-dc"
   ],
   "rawMetrics": {
-    "characterCount": 90498,
-    "lineCount": 790,
+    "characterCount": 92307,
+    "lineCount": 835,
     "xDcPresent": true,
     "dataDcScriptPresent": true,
     "hasMain": false,
     "hasNav": true
   },
   "findings": [
-    {
-      "severity": "error",
-      "code": "missing-title",
-      "message": "Document has no <title> element.",
-      "details": null
-    },
-    {
-      "severity": "warning",
-      "code": "missing-description",
-      "message": "Document has no meta description.",
-      "details": null
-    },
-    {
-      "severity": "warning",
-      "code": "missing-canonical",
-      "message": "Document has no canonical link.",
-      "details": null
-    },
     {
       "severity": "warning",
       "code": "heading-level-skip",
@@ -786,15 +824,9 @@
       "details": null
     },
     {
-      "severity": "info",
-      "code": "missing-structured-data",
-      "message": "Document has no JSON-LD structured data.",
-      "details": null
-    },
-    {
       "severity": "warning",
       "code": "large-inline-script",
-      "message": "Document contains 27333 characters of inline JavaScript.",
+      "message": "Document contains 28318 characters of inline JavaScript.",
       "details": null
     }
   ]

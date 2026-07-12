@@ -5,9 +5,9 @@ phase: knowledge-foundation
 active_branch: agent/architecture-sandbox
 
 current_target:
-  - decide whether legacy content audit findings are active cleanup work
-  - decide whether browser screenshot tooling is needed
   - continue next content-model entity when source records are ready
+  - decide whether browser screenshot tooling is needed
+  - defer legacy structural audit warnings unless explicitly targeted
 
 legacy:
   runtime: x-dc
@@ -51,6 +51,9 @@ completed:
   - local check runner for knowledge tests, site-next build, content audit, and whitespace checks
   - static site-next project projection review
   - project section summary and equal-height project card layout refinements
+  - legacy index head metadata cleanup
+  - Organization JSON-LD added to legacy index
+  - legacy content audit reduced to 0 errors
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
@@ -66,7 +69,13 @@ content_tables:
 checks:
   command: node tools/checks/run.mjs
   latest_result: pass
-  content_audit_findings: 1 error and 7 warnings in legacy content audit
+  content_audit_findings: 0 errors and 5 warnings in legacy content audit
+  remaining_legacy_warnings:
+    - heading-level-skip
+    - missing-main
+    - heavy-inline-styles
+    - runtime-dependent-root
+    - large-inline-script
   static_site_next_review:
     metadata: pass
     landmarks: pass

@@ -1,6 +1,6 @@
 # Legacy Content and Crawlability Audit
 
-Generated from `index.html` at 2026-07-12T06:58:25.824Z.
+Generated from `index.html` at 2026-07-12T10:27:02.545Z.
 
 ## Summary
 
@@ -8,32 +8,20 @@ Generated from `index.html` at 2026-07-12T06:58:25.824Z.
 - Semantic landmarks/sections: 13
 - Links: 19
 - Images: 20
-- Scripts: 2
+- Scripts: 3
 - Inline style attributes: 342
-- JSON-LD blocks: 0
-- Errors: 1
-- Warnings: 7
-- Informational findings: 2
+- JSON-LD blocks: 1
+- Errors: 0
+- Warnings: 5
+- Informational findings: 1
 
 ## Metadata
 
-- Title: Missing
-- Description: Missing
-- Canonical: Missing
+- Title: Reformas integrales en Barcelona | Vital Vibe Construction
+- Description: Reformas integrales, cocinas, baños, electricidad y preparación para hogar inteligente en Barcelona.
+- Canonical: https://vitalvibeconstruction.com/
 
 ## Findings
-
-### ERROR: missing-title
-
-Document has no <title> element.
-
-### WARNING: missing-description
-
-Document has no meta description.
-
-### WARNING: missing-canonical
-
-Document has no canonical link.
 
 ### WARNING: heading-level-skip
 
@@ -55,13 +43,9 @@ Document contains 342 inline style attributes.
 
 Document uses <x-dc>; verify that primary content remains present in raw HTML and does not depend on runtime-only rendering.
 
-### INFO: missing-structured-data
-
-Document has no JSON-LD structured data.
-
 ### WARNING: large-inline-script
 
-Document contains 27333 characters of inline JavaScript.
+Document contains 28318 characters of inline JavaScript.
 
 ## Heading inventory
 
