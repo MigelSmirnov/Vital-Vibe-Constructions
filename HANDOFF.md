@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Project knowledge entity connected and projected in site-next
+Status: Project knowledge entity connected, projected, and covered by focused checks
 
 Branch:
 agent/architecture-sandbox
@@ -55,6 +55,8 @@ agent/architecture-sandbox
 - project uniqueness validation for ids and slugs
 - repository cross-reference validation for project/media/service references
 - `site-next` project section projected from Knowledge Repository records
+- focused `node:test` coverage for Project and Knowledge Repository invariants
+- `tools/checks/run.mjs` check runner for knowledge tests, `site-next` build, content audit, and whitespace checks
 
 ## Decisions
 
@@ -76,11 +78,13 @@ agent/architecture-sandbox
 - Media records are loaded through the Knowledge Repository before any projection consumes them.
 - Project records are loaded through the Knowledge Repository before projections consume them.
 - Project lead images are resolved through media knowledge records, not duplicated in the projection.
+- Use `node tools/checks/run.mjs` for the current full local check suite.
+- The content audit currently completes with legacy findings: 1 error and 7 warnings.
 
 ## Next Session
 
 1. Review `site-next` project section against the legacy visual/content intent.
-2. Add focused Knowledge Repository invariant tests once a test runner is introduced or selected.
+2. Decide whether legacy content audit findings should remain documented debt or become active cleanup work.
 3. Continue the next content-model entity only when source records are ready.
 
 ## Do Not Do

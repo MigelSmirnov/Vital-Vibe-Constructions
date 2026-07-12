@@ -6,7 +6,7 @@ active_branch: agent/architecture-sandbox
 
 current_target:
   - review site-next project projection
-  - add focused repository invariant tests when test tooling exists
+  - decide whether legacy content audit findings are active cleanup work
   - continue next content-model entity when source records are ready
 
 legacy:
@@ -47,6 +47,8 @@ completed:
   - project uniqueness validation for ids and slugs
   - repository cross-reference validation for project/media/service references
   - site-next project section projected from Knowledge Repository
+  - focused node:test coverage for Project and Knowledge Repository invariants
+  - local check runner for knowledge tests, site-next build, content audit, and whitespace checks
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
@@ -57,5 +59,10 @@ content_tables:
   yaml_parser_policy: add only when yaml-specific authoring features are required
   media_records: homepage-visible raster images only
   project_records: homepage-visible projects only
+
+checks:
+  command: node tools/checks/run.mjs
+  latest_result: pass
+  content_audit_findings: 1 error and 7 warnings in legacy content audit
 
 next_update_required: true

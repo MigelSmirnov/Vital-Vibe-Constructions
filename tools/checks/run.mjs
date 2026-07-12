@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+import { spawnSync } from "node:child_process";
+import process from "node:process";
+
+const checks = [
+  ["Knowledge tests", "node", ["--test", "knowledge/repository/knowledge-repository.test.mjs"]],
+  ["site-next build", "node", ["tools/site-next/build.mjs"]],
+  ["content audit", "node", ["tools/content-extractor/run.mjs"]],
+  ["diff whitespace check", "git", ["diff", "--check"]],
+];
+
+for (const [label, command, args] of checks) {
+  console.log(`\n==> ${label}`);
+  const result = spawnSync(command, args, {
+    cwd: process.cwd(),
+    stdio: "inherit",
+  });
+
+  if (result.status !== 0) {
+    process.exitCode = result.status ?? 1;
+    break;
+  }
+}
