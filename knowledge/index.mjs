@@ -5,6 +5,7 @@ export { ContactDetails } from "./entities/contact-details.mjs";
 export { ExternalApp } from "./entities/external-app.mjs";
 export { Media } from "./entities/media.mjs";
 export { Project } from "./entities/project.mjs";
+export { RenovationTier } from "./entities/renovation-tier.mjs";
 export { Service } from "./entities/service.mjs";
 export { Site } from "./entities/site.mjs";
 export { KnowledgeRepository, createKnowledgeRepository } from "./repository/knowledge-repository.mjs";

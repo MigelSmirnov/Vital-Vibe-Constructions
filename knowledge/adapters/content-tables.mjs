@@ -5,25 +5,29 @@ const TABLES = {
   site: "content/tables/site.yaml",
   contactDetails: "content/tables/contact-details.yaml",
   services: "content/tables/services.yaml",
+  renovationTiers: "content/tables/renovation-tiers.yaml",
   projects: "content/tables/projects.yaml",
   externalApps: "content/tables/external-apps.yaml",
   media: "content/tables/media.yaml",
 };
 
 export async function loadContentTables({ root = process.cwd() } = {}) {
-  const [siteTable, contactDetailsTable, servicesTable, projectsTable, appsTable, mediaTable] = await Promise.all([
-    readJsonCompatibleTable(root, TABLES.site),
-    readJsonCompatibleTable(root, TABLES.contactDetails),
-    readJsonCompatibleTable(root, TABLES.services),
-    readJsonCompatibleTable(root, TABLES.projects),
-    readJsonCompatibleTable(root, TABLES.externalApps),
-    readJsonCompatibleTable(root, TABLES.media),
-  ]);
+  const [siteTable, contactDetailsTable, servicesTable, renovationTiersTable, projectsTable, appsTable, mediaTable] =
+    await Promise.all([
+      readJsonCompatibleTable(root, TABLES.site),
+      readJsonCompatibleTable(root, TABLES.contactDetails),
+      readJsonCompatibleTable(root, TABLES.services),
+      readJsonCompatibleTable(root, TABLES.renovationTiers),
+      readJsonCompatibleTable(root, TABLES.projects),
+      readJsonCompatibleTable(root, TABLES.externalApps),
+      readJsonCompatibleTable(root, TABLES.media),
+    ]);
 
   return {
     site: requireObject(siteTable.site, "site"),
     contactDetails: requireObject(contactDetailsTable.contactDetails, "contactDetails"),
     services: requireArray(servicesTable.services, "services"),
+    renovationTiers: requireArray(renovationTiersTable.renovationTiers, "renovationTiers"),
     projects: requireArray(projectsTable.projects, "projects"),
     externalApps: requireArray(appsTable.externalApps, "externalApps"),
     media: requireArray(mediaTable.media, "media"),

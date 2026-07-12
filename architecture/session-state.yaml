@@ -1,10 +1,10 @@
-version: 2
+version: 3
 
-updated_at: 2026-07-12T10:58:22Z
+updated_at: 2026-07-12T11:10:20Z
 phase: knowledge-foundation
 stage_status: completed
 active_branch: agent/architecture-sandbox
-branch_ahead_commits: 6
+branch_ahead_commits_after_stage_commit: 8
 
 current_strategy:
   legacy_runtime: read-only
@@ -13,8 +13,8 @@ current_strategy:
   content_table_format: json-compatible-yaml
 
 completed_stage:
-  summary: Knowledge Repository foundation connected to first homepage content and checked.
-  latest_commit: 7b560c1 Document site-next gaps
+  summary: Renovation tiers connected to Knowledge Repository and projected into site-next.
+  latest_completed_work: Add renovation tier knowledge
   detail_artifacts:
     - artifacts/site-next-gap-audit/report.md
     - artifacts/content-audit/legacy-content-report.md
@@ -25,12 +25,14 @@ completed_stage:
     - Project
     - ExternalApp
     - ContactDetails
+    - RenovationTier
   active_projection:
     root: site-next
     sections:
       - hero
       - services
       - projects
+      - renovation tiers
       - planner
       - contact
 
@@ -56,54 +58,27 @@ checks:
     - large-inline-script
 
 next_stage:
-  goal: Make renovation pricing tiers first-class knowledge records and project them into site-next.
-  recommended_commit_message: Add renovation tier knowledge
-  source_records:
-    - id: economical
-      title: Económica
-      price_per_m2: 800
-      currency: EUR
-      summary: Soluciones básicas y funcionales.
-    - id: standard
-      title: Estándar
-      price_per_m2: 1200
-      currency: EUR
-      summary: La mejor relación calidad-precio.
-      is_featured: true
-      badge: Más elegida
-    - id: premium
-      title: Premium
-      price_per_m2: 1500
-      currency: EUR
-      summary: Materiales y acabados de alta gama.
+  goal: Generate llms.txt from Knowledge Repository records.
+  recommended_commit_message: Generate llms from knowledge
   implementation_steps:
-    - add RenovationTier to architecture/content-model.yaml
-    - add knowledge/entities/renovation-tier.mjs
-    - add content/tables/renovation-tiers.yaml
-    - connect renovation tiers in knowledge/adapters/content-tables.mjs
-    - expose listRenovationTiers and findRenovationTierById from KnowledgeRepository
-    - export RenovationTier from knowledge/index.mjs
-    - add repository tests for loading, uniqueness, required fields, positive price, and featured flag preservation
-    - project renovation tiers into site-next from Knowledge Repository records
+    - add tools/ai-discovery/build-llms.mjs
+    - write llms.txt from Site, Services, RenovationTiers, Projects, ExternalApp, and ContactDetails records
+    - add generated llms.txt validation without new dependencies
+    - add llms builder and validation to tools/checks/run.mjs
     - run node tools/checks/run.mjs
     - update HANDOFF.md and architecture/session-state.yaml
   test_plan:
-    unit:
-      - current content tables load with 3 renovation tiers
-      - repository exposes tiers in source order
-      - duplicate tier id or slug is rejected
-      - empty required fields are rejected
-      - non-positive or non-integer price_per_m2 is rejected
-      - featured tier is preserved in toRecord
-    generated_html:
-      - site-next contains Económica, Estándar, Premium
-      - site-next contains 800, 1200, 1500
-      - site-next contains the pricing disclaimer
+    generated_llms:
+      - uses https://app.vitalvibeconstruction.com/manual
+      - includes all service titles
+      - includes Económica, Estándar, Premium
+      - includes 800, 1200, 1500
+      - includes info@vitalvibeconstruction.com
+      - does not present https://app.vitalvibeconstruction.com/ as the primary planner URL
     full_suite:
       - node tools/checks/run.mjs
 
 later_work:
-  - Knowledge-backed llms.txt generation
   - Knowledge-backed sitemap.xml generation
   - smart home capability section from existing service/media records
   - project/gallery detail route planning

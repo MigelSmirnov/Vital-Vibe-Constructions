@@ -18,6 +18,9 @@ entities:
   contact_details:
     required_fields: [id, phone_display, phone_href, whatsapp_url, email, map_url, map_label]
     optional_fields: [legal_summary]
+  renovation_tier:
+    required_fields: [id, slug, title, summary, price_per_m2, currency]
+    optional_fields: [is_featured, badge, disclaimer]
   external_app:
     required_fields: [id, url, status, label]
     optional_fields: [summary, related_service_ids, related_article_ids]

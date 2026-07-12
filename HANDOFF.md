@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 2
-Updated: 2026-07-12T10:58:22Z
+Version: 3
+Updated: 2026-07-12T11:10:20Z
 
 ## Session Rule
 
@@ -14,16 +14,16 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-The current knowledge-foundation stage is complete.
+The renovation-tier knowledge stage is complete.
 
 Branch:
 
 - `agent/architecture-sandbox`
-- ahead of origin by 6 commits
+- ahead of origin by 8 commits after this stage commit
 
 Latest completed commit:
 
-- `7b560c1 Document site-next gaps`
+- this stage is committed as `Add renovation tier knowledge`
 
 Important detail artifacts:
 
@@ -40,20 +40,16 @@ Important detail artifacts:
 
 ## Stage Completed
 
-The completed stage established the Knowledge Repository foundation and connected the first real homepage content:
+The completed stage made renovation pricing tiers first-class knowledge records and projected them into `site-next`:
 
-- site metadata, hero, and contact copy
-- services
-- media inventory
-- projects
-- external electrical planner
-- public contact channels
-- `site-next` projection for hero, services, projects, planner, and contact
-- Organization JSON-LD with offers and contactPoint
-- focused `node:test` checks for repository invariants
-- `node tools/checks/run.mjs` as the current local check suite
-- legacy head metadata cleanup, reducing content audit to `0 errors / 5 warnings`
-- gap audit for the next `site-next` work
+- `RenovationTier` entity
+- `content/tables/renovation-tiers.yaml`
+- Knowledge Repository API: `listRenovationTiers()` and `findRenovationTierById(id)`
+- uniqueness validation for tier `id` and `slug`
+- validation for required fields and positive integer `price_per_m2`
+- repository tests for loading, ordering, uniqueness, price validation, and featured metadata
+- `site-next` pricing/tier section from Knowledge Repository records
+- generated HTML contains `Económica`, `Estándar`, `Premium`, `800`, `1200`, `1500`, and the pricing disclaimer
 
 ## Non-Negotiable Constraints
 
@@ -93,119 +89,69 @@ Known remaining legacy audit warnings:
 
 Goal:
 
-Make pricing and renovation tiers first-class knowledge records and project them into `site-next`, with tests.
+Generate `llms.txt` from the Knowledge Repository so AI-facing content stops drifting from content tables.
 
-Source records already exist in legacy content:
+### Step 1: Builder
 
-- `Económica`: `800 EUR/m2`, "Soluciones básicas y funcionales."
-- `Estándar`: `1200 EUR/m2`, "La mejor relación calidad-precio.", featured / most chosen.
-- `Premium`: `1500 EUR/m2`, "Materiales y acabados de alta gama."
-- pricing disclaimer from calculator: estimates are approximate and not a binding offer.
+Add a builder that reads Knowledge Repository records and writes `llms.txt`.
 
-### Step 1: Model
+Expected file:
 
-Add `RenovationTier` to the content model.
+- `tools/ai-discovery/build-llms.mjs`
 
-Recommended fields:
+The builder should include:
 
-- required: `id`, `slug`, `title`, `summary`, `price_per_m2`, `currency`
-- optional: `is_featured`, `badge`, `disclaimer`
+- company name
+- canonical origin
+- service area
+- services from `Service`
+- renovation tiers from `RenovationTier`
+- projects from `Project`
+- planner URL from `ExternalApp`
+- public contact channels from `ContactDetails`
 
-Expected files:
+### Step 2: Checks
 
-- `knowledge/entities/renovation-tier.mjs`
-- `content/tables/renovation-tiers.yaml`
-- updates to `architecture/content-model.yaml`
-
-### Step 2: Repository
-
-Connect renovation tiers to the Knowledge Repository.
-
-Expected repository API:
-
-- `listRenovationTiers()`
-- `findRenovationTierById(id)`
-
-Required validation:
-
-- unique `id`
-- unique `slug`
-- positive integer `price_per_m2`
-- non-empty `currency`
-
-Expected files:
-
-- `knowledge/adapters/content-tables.mjs`
-- `knowledge/repository/knowledge-repository.mjs`
-- `knowledge/index.mjs`
-
-### Step 3: Tests
-
-Extend `knowledge/repository/knowledge-repository.test.mjs`.
-
-Required test coverage:
-
-- current content tables load with 3 renovation tiers
-- repository exposes tiers in source order
-- duplicate tier `id` or `slug` is rejected
-- empty required fields are rejected
-- non-positive or non-integer `price_per_m2` is rejected
-- featured tier is preserved in `toRecord()`
-
-### Step 4: Projection
-
-Project renovation tiers into `site-next`.
+Add the builder to `tools/checks/run.mjs` before the content audit.
 
 Expected behavior:
 
-- add a visible pricing/tier section after projects or before planner
-- render three tiers from Knowledge Repository records
-- visually mark the featured `Estándar` tier
-- include the disclaimer near the tiers or planner
-- do not hardcode tier prices in `tools/site-next/build.mjs`
+- running `node tools/checks/run.mjs` regenerates `llms.txt`
+- generated `llms.txt` uses `https://app.vitalvibeconstruction.com/manual`
+- generated `llms.txt` includes `Económica`, `Estándar`, `Premium`
+- generated `llms.txt` includes public contact email
 
-Expected files:
+### Step 3: Tests Or Validation
 
-- `tools/site-next/build.mjs`
-- generated `site-next/index.html`
-- generated `site-next/styles.css`
+Add focused validation without new dependencies.
 
-### Step 5: Verification
+Recommended options:
 
-Run:
+- add a small `tools/ai-discovery/validate-llms.mjs`
+- or extend `tools/checks/run.mjs` with a direct content assertion command
 
-```bash
-node tools/checks/run.mjs
-```
+Validate:
 
-Also verify generated HTML contains:
+- no stale planner root URL appears as the primary planner URL
+- all service titles appear
+- all renovation tier titles and prices appear
+- contact email appears
 
-- `Económica`
-- `Estándar`
-- `Premium`
-- `800`
-- `1200`
-- `1500`
-- the pricing disclaimer
-
-### Step 6: Handoff And Commit
+### Step 4: Handoff And Commit
 
 Update:
 
 - `HANDOFF.md`
 - `architecture/session-state.yaml`
 
-Commit as a separate reviewable commit, suggested message:
+Suggested commit message:
 
 ```text
-Add renovation tier knowledge
+Generate llms from knowledge
 ```
 
-## Next After Renovation Tiers
+## Later Work
 
-Likely follow-up work:
-
-1. Knowledge-backed `llms.txt` generation.
-2. Knowledge-backed `sitemap.xml` generation.
-3. Smart home capability section from existing service/media records.
-4. Project/gallery detail route planning.
+1. Knowledge-backed `sitemap.xml` generation.
+2. Smart home capability section from existing service/media records.
+3. Project/gallery detail route planning.

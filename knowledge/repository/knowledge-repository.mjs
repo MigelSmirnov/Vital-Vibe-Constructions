@@ -3,15 +3,21 @@ import { ContactDetails } from "../entities/contact-details.mjs";
 import { ExternalApp } from "../entities/external-app.mjs";
 import { Media } from "../entities/media.mjs";
 import { Project } from "../entities/project.mjs";
+import { RenovationTier } from "../entities/renovation-tier.mjs";
 import { Service } from "../entities/service.mjs";
 import { Site } from "../entities/site.mjs";
 
 export class KnowledgeRepository {
-  constructor({ site, contactDetails, services, projects, externalApps, media }) {
+  constructor({ site, contactDetails, services, renovationTiers, projects, externalApps, media }) {
     this.site = Site.fromRecord(site, "content/tables/site.yaml#site");
     this.contactDetails = ContactDetails.fromRecord(contactDetails, "content/tables/contact-details.yaml#contactDetails");
     this.services = Object.freeze(
       services.map((record, index) => Service.fromRecord(record, `content/tables/services.yaml#services[${index}]`)),
+    );
+    this.renovationTiers = Object.freeze(
+      renovationTiers.map((record, index) =>
+        RenovationTier.fromRecord(record, `content/tables/renovation-tiers.yaml#renovationTiers[${index}]`),
+      ),
     );
     this.projects = Object.freeze(
       projects.map((record, index) => Project.fromRecord(record, `content/tables/projects.yaml#projects[${index}]`)),
@@ -26,6 +32,7 @@ export class KnowledgeRepository {
     );
 
     assertUniqueEntityKeys(this.services, "services");
+    assertUniqueEntityKeys(this.renovationTiers, "renovationTiers");
     assertUniqueEntityKeys(this.projects, "projects");
     assertUniqueField(this.externalApps, "id", "externalApps");
     assertUniqueEntityKeys(this.media, "media");
@@ -53,6 +60,14 @@ export class KnowledgeRepository {
 
   findServiceById(id) {
     return this.services.find((service) => service.id === id) ?? null;
+  }
+
+  listRenovationTiers() {
+    return this.renovationTiers;
+  }
+
+  findRenovationTierById(id) {
+    return this.renovationTiers.find((tier) => tier.id === id) ?? null;
   }
 
   listProjects() {

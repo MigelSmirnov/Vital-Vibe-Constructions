@@ -50,6 +50,17 @@ h3 { font-size: 1.3rem; }
 .project-card .project-meta { margin: 0 0 10px; font-size: .82rem; color: var(--accent); font-weight: 700; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 18px; }
 .project-tags span { border: 1px solid var(--border); border-radius: 999px; padding: 4px 9px; color: var(--muted); font-size: .78rem; }
+.tiers { background: #f3f0e8; color: #171a1f; }
+.tiers .eyebrow { color: #9a6819; }
+.tier-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.tier-card { position: relative; background: #fff; border: 1px solid #ddd6c8; border-radius: 8px; padding: 28px; }
+.tier-card-featured { background: #171a1f; color: #fff; border-color: #171a1f; }
+.tier-badge { position: absolute; top: -11px; left: 22px; background: var(--accent); color: #211708; border-radius: 5px; padding: 5px 10px; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.tier-label { margin: 0; color: #666d75; font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.tier-card-featured .tier-label { color: var(--accent); }
+.tier-price { margin: 14px 0 12px; color: inherit; font-weight: 800; }
+.tier-price span { font-size: 2.8rem; line-height: 1; }
+.tier-disclaimer { max-width: 760px; margin: 24px auto 0; color: #666d75; text-align: center; font-size: .92rem; }
 .planner { background: #20252b; }
 .planner-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 36px; }
 .contact { text-align: center; }
@@ -61,5 +72,6 @@ h3 { font-size: 1.3rem; }
   .hero { min-height: 590px; }
   .service-grid { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+  .tier-grid { grid-template-columns: 1fr; }
   .planner-grid { grid-template-columns: 1fr; align-items: start; }
 }

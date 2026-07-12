@@ -55,9 +55,25 @@ function renderProjects(projects, mediaById, serviceById) {
     .join("");
 }
 
-function renderPage({ site, contactDetails, services, projects, media, planner }) {
+function renderRenovationTiers(renovationTiers) {
+  return renovationTiers
+    .map((tier) => {
+      const badge = tier.badge ? `\n          <span class="tier-badge">${escapeHtml(tier.badge)}</span>` : "";
+
+      return `
+        <article class="tier-card${tier.is_featured ? " tier-card-featured" : ""}" id="${escapeHtml(tier.slug)}">${badge}
+          <p class="tier-label">${escapeHtml(tier.title)}</p>
+          <p class="tier-price"><span>${escapeHtml(tier.price_per_m2)}</span> ${escapeHtml(tier.currency)}/m²</p>
+          <p>${escapeHtml(tier.summary)}</p>
+        </article>`;
+    })
+    .join("");
+}
+
+function renderPage({ site, contactDetails, services, renovationTiers, projects, media, planner }) {
   const serviceById = new Map(services.map((service) => [service.id, service]));
   const mediaById = new Map(media.map((item) => [item.id, item]));
+  const renovationTierDisclaimer = renovationTiers.find((tier) => tier.disclaimer)?.disclaimer ?? null;
   const organizationSchema = JSON.stringify(
     {
       "@context": "https://schema.org",
@@ -113,6 +129,7 @@ function renderPage({ site, contactDetails, services, projects, media, planner }
       <nav aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
         <a href="#proyectos">Proyectos</a>
+        <a href="#precios">Precios</a>
         <a href="#planificador">Planificador</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -150,6 +167,15 @@ function renderPage({ site, contactDetails, services, projects, media, planner }
         <h2>Trabajos realizados</h2>
         <p class="section-summary">Reformas reales de pisos y trabajos especializados en Barcelona.</p>
         <div class="project-grid">${renderProjects(projects, mediaById, serviceById)}</div>
+      </div>
+    </section>
+
+    <section class="section tiers" id="precios">
+      <div class="container">
+        <p class="eyebrow">Tipos de reforma</p>
+        <h2>Elige el nivel que encaja con tu proyecto</h2>
+        <div class="tier-grid">${renderRenovationTiers(renovationTiers)}</div>
+        ${renovationTierDisclaimer ? `<p class="tier-disclaimer">${escapeHtml(renovationTierDisclaimer)}</p>` : ""}
       </div>
     </section>
 
@@ -240,6 +266,17 @@ h3 { font-size: 1.3rem; }
 .project-card .project-meta { margin: 0 0 10px; font-size: .82rem; color: var(--accent); font-weight: 700; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 18px; }
 .project-tags span { border: 1px solid var(--border); border-radius: 999px; padding: 4px 9px; color: var(--muted); font-size: .78rem; }
+.tiers { background: #f3f0e8; color: #171a1f; }
+.tiers .eyebrow { color: #9a6819; }
+.tier-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.tier-card { position: relative; background: #fff; border: 1px solid #ddd6c8; border-radius: 8px; padding: 28px; }
+.tier-card-featured { background: #171a1f; color: #fff; border-color: #171a1f; }
+.tier-badge { position: absolute; top: -11px; left: 22px; background: var(--accent); color: #211708; border-radius: 5px; padding: 5px 10px; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.tier-label { margin: 0; color: #666d75; font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.tier-card-featured .tier-label { color: var(--accent); }
+.tier-price { margin: 14px 0 12px; color: inherit; font-weight: 800; }
+.tier-price span { font-size: 2.8rem; line-height: 1; }
+.tier-disclaimer { max-width: 760px; margin: 24px auto 0; color: #666d75; text-align: center; font-size: .92rem; }
 .planner { background: #20252b; }
 .planner-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 36px; }
 .contact { text-align: center; }
@@ -251,6 +288,7 @@ h3 { font-size: 1.3rem; }
   .hero { min-height: 590px; }
   .service-grid { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+  .tier-grid { grid-template-columns: 1fr; }
   .planner-grid { grid-template-columns: 1fr; align-items: start; }
 }`;
 
@@ -259,18 +297,27 @@ async function main() {
   const site = knowledge.getSite().toRecord();
   const contactDetails = knowledge.getContactDetails().toRecord();
   const services = knowledge.listServices().map((service) => service.toRecord());
+  const renovationTiers = knowledge.listRenovationTiers().map((tier) => tier.toRecord());
   const projects = knowledge.listProjects().map((project) => project.toRecord());
   const media = knowledge.listMedia().map((item) => item.toRecord());
   const planner = knowledge.findExternalAppById("electrical-planner");
 
-  if (!site || !contactDetails || !Array.isArray(services) || !Array.isArray(projects) || !Array.isArray(media) || !planner) {
+  if (
+    !site ||
+    !contactDetails ||
+    !Array.isArray(services) ||
+    !Array.isArray(renovationTiers) ||
+    !Array.isArray(projects) ||
+    !Array.isArray(media) ||
+    !planner
+  ) {
     throw new Error("Required content records are missing.");
   }
 
   await mkdir(outputDir, { recursive: true });
   await writeFile(
     path.join(outputDir, "index.html"),
-    renderPage({ site, contactDetails, services, projects, media, planner }),
+    renderPage({ site, contactDetails, services, renovationTiers, projects, media, planner }),
     "utf8",
   );
   await writeFile(path.join(outputDir, "styles.css"), styles, "utf8");
