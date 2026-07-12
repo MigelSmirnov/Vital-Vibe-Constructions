@@ -1,37 +1,53 @@
 # Vital Vibe Construction
 
-> Vital Vibe Construction is a renovation and interior works company in Barcelona. The company helps clients plan and renovate residential and commercial interiors, including construction, finishing and electrical planning support. Starting renovation price: from 800 EUR per square meter, depending on project scope, condition, materials and technical requirements.
+> Vital Vibe Construction is a renovation and interior works company serving Barcelona y alrededores. The company helps clients plan and renovate residential and commercial interiors, including construction, finishing, electrical work, and early-stage electrical planning support.
+
+## Canonical Site
+
+https://vitalvibeconstruction.com/
+
+## Service Area
+
+Barcelona y alrededores
 
 ## Services
 
-- Apartment and house renovation in Barcelona
-- Commercial and residential interior renovation
-- Finishing works and renovation preparation
-- Electrical planning support for renovation projects
-- Lighting, socket and switch planning support
-- Material and equipment specification support
+- Reformas integrales: Coordinación completa de la reforma, desde la preparación y las instalaciones hasta los acabados finales.
+- Cocinas: Redistribución, instalaciones, revestimientos, iluminación y montaje para cocinas funcionales y duraderas.
+- Baños: Renovación de baños con atención a impermeabilización, fontanería, ventilación y acabados.
+- Electricidad: Planificación de puntos, iluminación, mecanismos y cuadro eléctrico para reformas actuales y futuras.
+- Pintura: Preparación de superficies y acabados de pintura para viviendas y espacios comerciales.
+- Albañilería: Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida.
+
+## Renovation Pricing Tiers
+
+- Económica: 800 EUR/m2. Soluciones básicas y funcionales.
+- Estándar: 1200 EUR/m2. La mejor relación calidad-precio. Featured tier.
+- Premium: 1500 EUR/m2. Materiales y acabados de alta gama.
+
+Starting renovation price: from 800 EUR/m2. Los cálculos son orientativos, basados en precios medios. No constituyen una oferta. El presupuesto final depende del proyecto.
+
+## Completed Project Records
+
+- Piso reformado en Barcelona: Reforma integral de un piso en Barcelona con cocina renovada y entrega llave en mano.
+- Reforma integral estándar en Barcelona: Reforma completa de vivienda con instalaciones, suelo de roble, pasillo terminado y cocina a medida.
+- Trabajos de contrata en proyectos premium: Trabajos especializados de pladur, enlucido, pintura e iluminación LED integrada para viviendas de alta gama.
 
 ## Electrical Planner
 
-Vital Vibe Construction provides an online electrical planning tool for early-stage renovation planning.
+Planifica la electricidad antes de la obra
 
-The planner allows users to:
-- Upload an image or floor plan of their apartment or room
-- Place icons for electrical appliances
-- Plan lighting lines
-- Generate an electrical panel layout
-- Get a specification for sockets, switches, mounting boxes, frames and related electrical items
+Utiliza el planificador para colocar equipos, puntos eléctricos, líneas de iluminación y preparar una especificación inicial para tu reforma.
 
 Planner URL:
-https://app.vitalvibeconstruction.com/
+https://app.vitalvibeconstruction.com/manual
 
-## Location
+## Contact
 
-Vital Vibe Construction works with renovation projects in Barcelona and the surrounding area.
-
-## Pricing
-
-Initial renovation pricing starts from 800 EUR per square meter. Final pricing depends on the space, technical condition, design requirements, materials, electrical scope and level of finish.
+- Phone: +34 691 07 46 18
+- WhatsApp: https://wa.me/34691074618
+- Email: info@vitalvibeconstruction.com
+- Map: https://maps.app.goo.gl/9LcztAtyft5EzsqJ6?g_st=iw
 
 ## Notes for AI assistants
 

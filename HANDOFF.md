@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 3
-Updated: 2026-07-12T11:10:20Z
+Version: 4
+Updated: 2026-07-12T12:31:07Z
 
 ## Session Rule
 
@@ -14,16 +14,16 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-The renovation-tier knowledge stage is complete.
+The Knowledge-backed `llms.txt` stage is complete.
 
 Branch:
 
 - `agent/architecture-sandbox`
-- ahead of origin by 8 commits after this stage commit
+- ahead of origin by 9 commits after this stage commit
 
 Latest completed commit:
 
-- this stage is committed as `Add renovation tier knowledge`
+- this stage is committed as `Generate llms from knowledge`
 
 Important detail artifacts:
 
@@ -40,16 +40,14 @@ Important detail artifacts:
 
 ## Stage Completed
 
-The completed stage made renovation pricing tiers first-class knowledge records and projected them into `site-next`:
+The completed stage made `llms.txt` a generated projection of Knowledge Repository records:
 
-- `RenovationTier` entity
-- `content/tables/renovation-tiers.yaml`
-- Knowledge Repository API: `listRenovationTiers()` and `findRenovationTierById(id)`
-- uniqueness validation for tier `id` and `slug`
-- validation for required fields and positive integer `price_per_m2`
-- repository tests for loading, ordering, uniqueness, price validation, and featured metadata
-- `site-next` pricing/tier section from Knowledge Repository records
-- generated HTML contains `Económica`, `Estándar`, `Premium`, `800`, `1200`, `1500`, and the pricing disclaimer
+- `tools/ai-discovery/build-llms.mjs`
+- `tools/ai-discovery/validate-llms.mjs`
+- `tools/checks/run.mjs` now builds and validates `llms.txt`
+- generated `llms.txt` includes site identity, service area, services, renovation tiers, projects, planner URL, and contact channels
+- generated `llms.txt` uses `https://app.vitalvibeconstruction.com/manual`
+- validation checks service titles, renovation tier titles/prices, project titles, contact email, and stale planner-root usage
 
 ## Non-Negotiable Constraints
 
@@ -73,6 +71,8 @@ node tools/checks/run.mjs
 Expected result:
 
 - Knowledge tests pass.
+- `llms.txt` build passes.
+- `llms.txt` validation passes.
 - `site-next` build passes.
 - content audit completes with `0 errors / 5 warnings`.
 - `git diff --check` passes.
@@ -89,53 +89,44 @@ Known remaining legacy audit warnings:
 
 Goal:
 
-Generate `llms.txt` from the Knowledge Repository so AI-facing content stops drifting from content tables.
+Generate `sitemap.xml` from explicit site/page knowledge so the sitemap stops listing utility files and external app URLs as main indexable pages.
 
 ### Step 1: Builder
 
-Add a builder that reads Knowledge Repository records and writes `llms.txt`.
+Add a builder that writes `sitemap.xml`.
 
 Expected file:
 
-- `tools/ai-discovery/build-llms.mjs`
+- `tools/seo/build-sitemap.mjs`
 
-The builder should include:
+The initial sitemap should include:
 
-- company name
-- canonical origin
-- service area
-- services from `Service`
-- renovation tiers from `RenovationTier`
-- projects from `Project`
-- planner URL from `ExternalApp`
-- public contact channels from `ContactDetails`
+- homepage only, because `site-next` currently generates only one canonical HTML page
 
-### Step 2: Checks
+It should exclude:
 
-Add the builder to `tools/checks/run.mjs` before the content audit.
+- `robots.txt`
+- `llms.txt`
+- external planner app URLs
 
-Expected behavior:
+### Step 2: Validation
 
-- running `node tools/checks/run.mjs` regenerates `llms.txt`
-- generated `llms.txt` uses `https://app.vitalvibeconstruction.com/manual`
-- generated `llms.txt` includes `Económica`, `Estándar`, `Premium`
-- generated `llms.txt` includes public contact email
+Add validation without new dependencies.
 
-### Step 3: Tests Or Validation
+Expected file:
 
-Add focused validation without new dependencies.
-
-Recommended options:
-
-- add a small `tools/ai-discovery/validate-llms.mjs`
-- or extend `tools/checks/run.mjs` with a direct content assertion command
+- `tools/seo/validate-sitemap.mjs`
 
 Validate:
 
-- no stale planner root URL appears as the primary planner URL
-- all service titles appear
-- all renovation tier titles and prices appear
-- contact email appears
+- homepage URL exists
+- utility files are not listed
+- external planner URL is not listed
+- every URL starts with `Site.canonicalOrigin`
+
+### Step 3: Checks
+
+Add sitemap build and validation to `tools/checks/run.mjs`.
 
 ### Step 4: Handoff And Commit
 
@@ -147,11 +138,10 @@ Update:
 Suggested commit message:
 
 ```text
-Generate llms from knowledge
+Generate sitemap from knowledge
 ```
 
 ## Later Work
 
-1. Knowledge-backed `sitemap.xml` generation.
-2. Smart home capability section from existing service/media records.
-3. Project/gallery detail route planning.
+1. Smart home capability section from existing service/media records.
+2. Project/gallery detail route planning.

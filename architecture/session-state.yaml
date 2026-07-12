@@ -1,10 +1,10 @@
-version: 3
+version: 4
 
-updated_at: 2026-07-12T11:10:20Z
+updated_at: 2026-07-12T12:31:07Z
 phase: knowledge-foundation
 stage_status: completed
 active_branch: agent/architecture-sandbox
-branch_ahead_commits_after_stage_commit: 8
+branch_ahead_commits_after_stage_commit: 9
 
 current_strategy:
   legacy_runtime: read-only
@@ -13,8 +13,8 @@ current_strategy:
   content_table_format: json-compatible-yaml
 
 completed_stage:
-  summary: Renovation tiers connected to Knowledge Repository and projected into site-next.
-  latest_completed_work: Add renovation tier knowledge
+  summary: llms.txt generated and validated from Knowledge Repository records.
+  latest_completed_work: Generate llms from knowledge
   detail_artifacts:
     - artifacts/site-next-gap-audit/report.md
     - artifacts/content-audit/legacy-content-report.md
@@ -49,6 +49,13 @@ constraints:
 checks:
   command: node tools/checks/run.mjs
   latest_result: pass
+  includes:
+    - knowledge tests
+    - llms.txt build
+    - llms.txt validation
+    - site-next build
+    - content audit
+    - diff whitespace check
   expected_content_audit: 0 errors and 5 warnings
   remaining_legacy_warnings:
     - heading-level-skip
@@ -58,27 +65,26 @@ checks:
     - large-inline-script
 
 next_stage:
-  goal: Generate llms.txt from Knowledge Repository records.
-  recommended_commit_message: Generate llms from knowledge
+  goal: Generate sitemap.xml from explicit site/page knowledge.
+  recommended_commit_message: Generate sitemap from knowledge
   implementation_steps:
-    - add tools/ai-discovery/build-llms.mjs
-    - write llms.txt from Site, Services, RenovationTiers, Projects, ExternalApp, and ContactDetails records
-    - add generated llms.txt validation without new dependencies
-    - add llms builder and validation to tools/checks/run.mjs
+    - add tools/seo/build-sitemap.mjs
+    - add tools/seo/validate-sitemap.mjs
+    - generate sitemap.xml with the homepage URL only for now
+    - exclude robots.txt, llms.txt, and external planner URLs from sitemap.xml
+    - add sitemap build and validation to tools/checks/run.mjs
     - run node tools/checks/run.mjs
     - update HANDOFF.md and architecture/session-state.yaml
   test_plan:
-    generated_llms:
-      - uses https://app.vitalvibeconstruction.com/manual
-      - includes all service titles
-      - includes Económica, Estándar, Premium
-      - includes 800, 1200, 1500
-      - includes info@vitalvibeconstruction.com
-      - does not present https://app.vitalvibeconstruction.com/ as the primary planner URL
+    generated_sitemap:
+      - includes https://vitalvibeconstruction.com/
+      - excludes https://vitalvibeconstruction.com/robots.txt
+      - excludes https://vitalvibeconstruction.com/llms.txt
+      - excludes https://app.vitalvibeconstruction.com/manual
+      - every listed URL starts with https://vitalvibeconstruction.com
     full_suite:
       - node tools/checks/run.mjs
 
 later_work:
-  - Knowledge-backed sitemap.xml generation
   - smart home capability section from existing service/media records
   - project/gallery detail route planning
