@@ -1,110 +1,109 @@
-version: 1
+version: 2
 
+updated_at: 2026-07-12T10:58:22Z
 phase: knowledge-foundation
-
+stage_status: completed
 active_branch: agent/architecture-sandbox
+branch_ahead_commits: 6
 
-current_target:
-  - add RenovationTier knowledge entity
-  - project renovation tiers into site-next
-  - add Knowledge-backed llms.txt generation
-  - add Knowledge-backed sitemap.xml generation
-  - defer legacy structural audit warnings unless explicitly targeted
+current_strategy:
+  legacy_runtime: read-only
+  next_runtime: site-next
+  source_of_truth: Knowledge Repository
+  content_table_format: json-compatible-yaml
 
-legacy:
-  runtime: x-dc
-  editable: false
-  migration_strategy: strangler-pattern
+completed_stage:
+  summary: Knowledge Repository foundation connected to first homepage content and checked.
+  latest_commit: 7b560c1 Document site-next gaps
+  detail_artifacts:
+    - artifacts/site-next-gap-audit/report.md
+    - artifacts/content-audit/legacy-content-report.md
+  active_entities:
+    - Site
+    - Service
+    - Media
+    - Project
+    - ExternalApp
+    - ContactDetails
+  active_projection:
+    root: site-next
+    sections:
+      - hero
+      - services
+      - projects
+      - planner
+      - contact
 
-next_runtime:
-  root: site-next
-  status: active-development
-
-completed:
-  - architecture contracts
-  - engineering process
-  - content extractor
-  - crawlability audit
-  - ai-native foundation
-  - initial site-next
-  - knowledge layer
-  - EntityCore
-  - Service
-  - Knowledge Repository
-  - JSON-compatible content table adapter
-  - site-next build connected to knowledge repository
-  - repository uniqueness validation for service ids and slugs
-  - ExternalApp knowledge entity
-  - repository uniqueness validation for external app ids
-  - Site knowledge entity
-  - content table parser strategy decision
-  - homepage media inventory
-  - measured homepage raster media dimensions
-  - Media knowledge entity
-  - media table connected to Knowledge Repository
-  - media uniqueness validation for ids, slugs, and src values
-  - Project knowledge entity
-  - project content table
-  - projects connected to Knowledge Repository
-  - project uniqueness validation for ids and slugs
-  - repository cross-reference validation for project/media/service references
-  - site-next project section projected from Knowledge Repository
-  - focused node:test coverage for Project and Knowledge Repository invariants
-  - local check runner for knowledge tests, site-next build, content audit, and whitespace checks
-  - static site-next project projection review
-  - project section summary and equal-height project card layout refinements
-  - legacy index head metadata cleanup
-  - Organization JSON-LD added to legacy index
-  - legacy content audit reduced to 0 errors
-  - ContactDetails knowledge entity
-  - contact details content table
-  - contact details connected to Knowledge Repository
-  - focused contact channel validation tests
-  - site-next contact section projected from ContactDetails
-  - site-next Organization JSON-LD contactPoint projected from ContactDetails
-  - site-next gap audit
-
-blocked:
-  - legacy runtime cannot tolerate structural HTML changes
-  - browser screenshot review tooling is not installed in this repository
-
-content_tables:
-  current_format: json-compatible-yaml
-  parser: JSON.parse
-  yaml_parser_policy: add only when yaml-specific authoring features are required
-  media_records: homepage-visible raster images only
-  project_records: homepage-visible projects only
-  contact_details_records: public contact channels only
-  next_recommended_entity: RenovationTier
-
-gap_audit:
-  report: artifacts/site-next-gap-audit/report.md
-  high_priority_gaps:
-    - renovation tiers and pricing
-    - smart home capability section
-    - project and gallery detail URLs
-    - Knowledge-backed llms.txt
-    - Knowledge-backed sitemap.xml
-  blocked_without_source_records:
-    - articles
-    - testimonials
+constraints:
+  - do not edit support.js
+  - do not evolve the legacy runtime
+  - do not bypass the Knowledge Repository
+  - do not duplicate content between builders and tables
+  - do not add dependencies unless the current platform cannot reasonably solve the problem
+  - keep content/tables/*.yaml JSON-compatible until YAML-specific authoring is required
+  - do not create Article or Testimonial records without real source records
+  - do not address remaining legacy structural warnings without browser/runtime verification
 
 checks:
   command: node tools/checks/run.mjs
   latest_result: pass
-  content_audit_findings: 0 errors and 5 warnings in legacy content audit
+  expected_content_audit: 0 errors and 5 warnings
   remaining_legacy_warnings:
     - heading-level-skip
     - missing-main
     - heavy-inline-styles
     - runtime-dependent-root
     - large-inline-script
-  static_site_next_review:
-    metadata: pass
-    landmarks: pass
-    project_cards: 3
-    local_assets: pass
-    duplicate_ids: pass
-    image_dimensions: pass
 
-next_update_required: true
+next_stage:
+  goal: Make renovation pricing tiers first-class knowledge records and project them into site-next.
+  recommended_commit_message: Add renovation tier knowledge
+  source_records:
+    - id: economical
+      title: Económica
+      price_per_m2: 800
+      currency: EUR
+      summary: Soluciones básicas y funcionales.
+    - id: standard
+      title: Estándar
+      price_per_m2: 1200
+      currency: EUR
+      summary: La mejor relación calidad-precio.
+      is_featured: true
+      badge: Más elegida
+    - id: premium
+      title: Premium
+      price_per_m2: 1500
+      currency: EUR
+      summary: Materiales y acabados de alta gama.
+  implementation_steps:
+    - add RenovationTier to architecture/content-model.yaml
+    - add knowledge/entities/renovation-tier.mjs
+    - add content/tables/renovation-tiers.yaml
+    - connect renovation tiers in knowledge/adapters/content-tables.mjs
+    - expose listRenovationTiers and findRenovationTierById from KnowledgeRepository
+    - export RenovationTier from knowledge/index.mjs
+    - add repository tests for loading, uniqueness, required fields, positive price, and featured flag preservation
+    - project renovation tiers into site-next from Knowledge Repository records
+    - run node tools/checks/run.mjs
+    - update HANDOFF.md and architecture/session-state.yaml
+  test_plan:
+    unit:
+      - current content tables load with 3 renovation tiers
+      - repository exposes tiers in source order
+      - duplicate tier id or slug is rejected
+      - empty required fields are rejected
+      - non-positive or non-integer price_per_m2 is rejected
+      - featured tier is preserved in toRecord
+    generated_html:
+      - site-next contains Económica, Estándar, Premium
+      - site-next contains 800, 1200, 1500
+      - site-next contains the pricing disclaimer
+    full_suite:
+      - node tools/checks/run.mjs
+
+later_work:
+  - Knowledge-backed llms.txt generation
+  - Knowledge-backed sitemap.xml generation
+  - smart home capability section from existing service/media records
+  - project/gallery detail route planning

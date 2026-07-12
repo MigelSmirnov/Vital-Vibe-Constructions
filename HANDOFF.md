@@ -1,113 +1,211 @@
 # HANDOFF
 
-## Project Rule
+Version: 2
+Updated: 2026-07-12T10:58:22Z
 
-Every working session ends with updates to:
+## Session Rule
+
+Every working session must end by updating:
 
 - `HANDOFF.md`
 - `architecture/session-state.yaml`
 
-This rule is more important than any README because it allows a human or AI to continue the work without reading the full project history.
+This file is a living handoff, not a changelog. Historical detail should live in commits and artifacts.
 
-## Current Session
+## Current Status
 
-Status: site-next gap audit completed
+The current knowledge-foundation stage is complete.
 
 Branch:
-agent/architecture-sandbox
+
+- `agent/architecture-sandbox`
+- ahead of origin by 6 commits
+
+Latest completed commit:
+
+- `7b560c1 Document site-next gaps`
+
+Important detail artifacts:
+
+- `artifacts/site-next-gap-audit/report.md`
+- `artifacts/content-audit/legacy-content-report.md`
 
 ## Current Strategy
 
-- Legacy website is preserved.
-- New implementation is developed in parallel.
-- Legacy runtime (`support.js` + `x-dc`) is read-only.
-- Knowledge is the primary model.
-- HTML is a projection of the knowledge model.
+- Preserve the legacy website.
+- Build `site-next` in parallel.
+- Treat legacy runtime (`support.js` + `x-dc`) as read-only.
+- Treat Knowledge Repository records as the source of truth.
+- Treat HTML as a projection of validated knowledge records.
 
-## Completed
+## Stage Completed
 
-- Architecture contracts
-- Content extractor
-- Crawlability audit
-- AI-native requirements
-- Initial `site-next`
-- Planner integration
-- Engineering process
-- `knowledge/` layer
-- `EntityCore`
-- `Service`
-- `KnowledgeRepository`
-- JSON-compatible content table adapter
-- `site-next` build connected to Knowledge Repository
-- repository uniqueness validation for service ids and slugs
-- `ExternalApp` typed knowledge entity
-- repository uniqueness validation for external app ids
-- `Site` typed knowledge entity for metadata, hero, and contact data
-- content table parser strategy decision
-- `content/tables/media.yaml` with homepage-visible raster media
-- repeatable media dimensions helper
-- `Media` typed knowledge entity
-- media table connected to Knowledge Repository
-- media uniqueness validation for ids, slugs, and src values
-- `Project` typed knowledge entity
-- `content/tables/projects.yaml` with homepage-visible project records
-- projects connected to Knowledge Repository
-- project uniqueness validation for ids and slugs
-- repository cross-reference validation for project/media/service references
-- `site-next` project section projected from Knowledge Repository records
-- focused `node:test` coverage for Project and Knowledge Repository invariants
-- `tools/checks/run.mjs` check runner for knowledge tests, `site-next` build, content audit, and whitespace checks
-- static `site-next` project projection review for metadata, landmarks, local assets, duplicate ids, image dimensions, and project card count
-- project section summary and equal-height project card layout refinements
-- legacy `index.html` head metadata added for title, description, canonical, Open Graph, Twitter card, and Organization JSON-LD
-- legacy content audit reduced from 1 error / 7 warnings to 0 errors / 5 warnings
-- `ContactDetails` typed knowledge entity
-- `content/tables/contact-details.yaml` with public phone, WhatsApp, email, and map URL records
-- contact details connected to Knowledge Repository
-- focused `node:test` coverage for required contact channels
-- `site-next` contact section projected from ContactDetails records
-- `site-next` Organization JSON-LD includes contactPoint from ContactDetails
-- `artifacts/site-next-gap-audit/report.md` comparing legacy homepage, `site-next`, Knowledge tables, and AI/crawlability requirements
+The completed stage established the Knowledge Repository foundation and connected the first real homepage content:
 
-## Decisions
+- site metadata, hero, and contact copy
+- services
+- media inventory
+- projects
+- external electrical planner
+- public contact channels
+- `site-next` projection for hero, services, projects, planner, and contact
+- Organization JSON-LD with offers and contactPoint
+- focused `node:test` checks for repository invariants
+- `node tools/checks/run.mjs` as the current local check suite
+- legacy head metadata cleanup, reducing content audit to `0 errors / 5 warnings`
+- gap audit for the next `site-next` work
 
+## Non-Negotiable Constraints
+
+- Do not edit `support.js`.
 - Do not evolve the legacy runtime.
-- Build the new implementation independently.
-- YAML files are architecture contracts.
-- Keep module APIs small.
-- Use deep modules.
-- Content is the single source of truth.
-- Builders consume content through the Knowledge Repository.
-- Current `content/tables/*.yaml` files are JSON-compatible and are parsed without adding dependencies.
-- Knowledge collections must validate unique ids and slugs before powering projections.
-- Planner data is a typed knowledge entity, not a plain content table object.
-- Site metadata, hero, and contact content are typed knowledge records before projection.
-- Keep `content/tables/*.yaml` JSON-compatible until YAML-specific authoring features are needed.
-- If a real YAML parser is introduced, it belongs inside `knowledge/adapters/content-tables.mjs`.
-- Homepage raster media records must include measured `width` and `height`.
-- Brand SVG assets are not part of the project/media inventory unless they become content records.
-- Media records are loaded through the Knowledge Repository before any projection consumes them.
-- Project records are loaded through the Knowledge Repository before projections consume them.
-- Project lead images are resolved through media knowledge records, not duplicated in the projection.
-- Public contact channels are loaded through the Knowledge Repository before projections consume them.
-- Do not create Article or Testimonial records without real source records.
-- `llms.txt` and `sitemap.xml` currently drift from Knowledge Repository and should eventually be generated.
-- Use `node tools/checks/run.mjs` for the current full local check suite.
-- The content audit currently completes with legacy findings: 0 errors and 5 warnings.
-- Remaining legacy audit warnings are structural debt: heading-level skip, missing `<main>`, heavy inline styles, `x-dc` runtime root, and large inline script.
-- Do not address remaining legacy structural warnings without a browser/runtime verification path.
+- Do not bypass the Knowledge Repository.
+- Do not duplicate content between builders and tables.
+- Do not add dependencies unless the current platform cannot reasonably solve the problem.
+- Keep `content/tables/*.yaml` JSON-compatible until YAML-specific authoring is required.
+- Do not create `Article` or `Testimonial` records without real source records.
+- Do not address remaining legacy structural warnings without browser/runtime verification.
 
-## Next Session
+## Current Checks
 
-1. Add `RenovationTier` knowledge entity and content table from legacy pricing records.
-2. Project renovation tiers into `site-next`.
-3. Add Knowledge-backed `llms.txt` generation.
-4. Add Knowledge-backed `sitemap.xml` generation and remove utility/external URLs from the main sitemap.
-5. Plan project/gallery detail route generation before expanding project UI further.
+Run:
 
-## Do Not Do
+```bash
+node tools/checks/run.mjs
+```
 
-- Do not edit `support.js`
-- Do not bypass the Knowledge layer
-- Do not duplicate content
-- Do not add new functionality to the legacy site
+Expected result:
+
+- Knowledge tests pass.
+- `site-next` build passes.
+- content audit completes with `0 errors / 5 warnings`.
+- `git diff --check` passes.
+
+Known remaining legacy audit warnings:
+
+- `heading-level-skip`
+- `missing-main`
+- `heavy-inline-styles`
+- `runtime-dependent-root`
+- `large-inline-script`
+
+## Next Stage
+
+Goal:
+
+Make pricing and renovation tiers first-class knowledge records and project them into `site-next`, with tests.
+
+Source records already exist in legacy content:
+
+- `Económica`: `800 EUR/m2`, "Soluciones básicas y funcionales."
+- `Estándar`: `1200 EUR/m2`, "La mejor relación calidad-precio.", featured / most chosen.
+- `Premium`: `1500 EUR/m2`, "Materiales y acabados de alta gama."
+- pricing disclaimer from calculator: estimates are approximate and not a binding offer.
+
+### Step 1: Model
+
+Add `RenovationTier` to the content model.
+
+Recommended fields:
+
+- required: `id`, `slug`, `title`, `summary`, `price_per_m2`, `currency`
+- optional: `is_featured`, `badge`, `disclaimer`
+
+Expected files:
+
+- `knowledge/entities/renovation-tier.mjs`
+- `content/tables/renovation-tiers.yaml`
+- updates to `architecture/content-model.yaml`
+
+### Step 2: Repository
+
+Connect renovation tiers to the Knowledge Repository.
+
+Expected repository API:
+
+- `listRenovationTiers()`
+- `findRenovationTierById(id)`
+
+Required validation:
+
+- unique `id`
+- unique `slug`
+- positive integer `price_per_m2`
+- non-empty `currency`
+
+Expected files:
+
+- `knowledge/adapters/content-tables.mjs`
+- `knowledge/repository/knowledge-repository.mjs`
+- `knowledge/index.mjs`
+
+### Step 3: Tests
+
+Extend `knowledge/repository/knowledge-repository.test.mjs`.
+
+Required test coverage:
+
+- current content tables load with 3 renovation tiers
+- repository exposes tiers in source order
+- duplicate tier `id` or `slug` is rejected
+- empty required fields are rejected
+- non-positive or non-integer `price_per_m2` is rejected
+- featured tier is preserved in `toRecord()`
+
+### Step 4: Projection
+
+Project renovation tiers into `site-next`.
+
+Expected behavior:
+
+- add a visible pricing/tier section after projects or before planner
+- render three tiers from Knowledge Repository records
+- visually mark the featured `Estándar` tier
+- include the disclaimer near the tiers or planner
+- do not hardcode tier prices in `tools/site-next/build.mjs`
+
+Expected files:
+
+- `tools/site-next/build.mjs`
+- generated `site-next/index.html`
+- generated `site-next/styles.css`
+
+### Step 5: Verification
+
+Run:
+
+```bash
+node tools/checks/run.mjs
+```
+
+Also verify generated HTML contains:
+
+- `Económica`
+- `Estándar`
+- `Premium`
+- `800`
+- `1200`
+- `1500`
+- the pricing disclaimer
+
+### Step 6: Handoff And Commit
+
+Update:
+
+- `HANDOFF.md`
+- `architecture/session-state.yaml`
+
+Commit as a separate reviewable commit, suggested message:
+
+```text
+Add renovation tier knowledge
+```
+
+## Next After Renovation Tiers
+
+Likely follow-up work:
+
+1. Knowledge-backed `llms.txt` generation.
+2. Knowledge-backed `sitemap.xml` generation.
+3. Smart home capability section from existing service/media records.
+4. Project/gallery detail route planning.
