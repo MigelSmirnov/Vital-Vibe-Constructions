@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Legacy metadata audit cleanup completed
+Status: Contact details knowledge entity connected and projected in site-next
 
 Branch:
 agent/architecture-sandbox
@@ -61,6 +61,12 @@ agent/architecture-sandbox
 - project section summary and equal-height project card layout refinements
 - legacy `index.html` head metadata added for title, description, canonical, Open Graph, Twitter card, and Organization JSON-LD
 - legacy content audit reduced from 1 error / 7 warnings to 0 errors / 5 warnings
+- `ContactDetails` typed knowledge entity
+- `content/tables/contact-details.yaml` with public phone, WhatsApp, email, and map URL records
+- contact details connected to Knowledge Repository
+- focused `node:test` coverage for required contact channels
+- `site-next` contact section projected from ContactDetails records
+- `site-next` Organization JSON-LD includes contactPoint from ContactDetails
 
 ## Decisions
 
@@ -82,6 +88,7 @@ agent/architecture-sandbox
 - Media records are loaded through the Knowledge Repository before any projection consumes them.
 - Project records are loaded through the Knowledge Repository before projections consume them.
 - Project lead images are resolved through media knowledge records, not duplicated in the projection.
+- Public contact channels are loaded through the Knowledge Repository before projections consume them.
 - Use `node tools/checks/run.mjs` for the current full local check suite.
 - The content audit currently completes with legacy findings: 0 errors and 5 warnings.
 - Remaining legacy audit warnings are structural debt: heading-level skip, missing `<main>`, heavy inline styles, `x-dc` runtime root, and large inline script.

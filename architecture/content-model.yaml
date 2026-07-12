@@ -15,6 +15,9 @@ entities:
   testimonial:
     required_fields: [id, quote, display_name]
     optional_fields: [project_id, service_id, published_at]
+  contact_details:
+    required_fields: [id, phone_display, phone_href, whatsapp_url, email, map_url, map_label]
+    optional_fields: [legal_summary]
   external_app:
     required_fields: [id, url, status, label]
     optional_fields: [summary, related_service_ids, related_article_ids]

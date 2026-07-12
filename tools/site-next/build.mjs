@@ -55,7 +55,7 @@ function renderProjects(projects, mediaById, serviceById) {
     .join("");
 }
 
-function renderPage({ site, services, projects, media, planner }) {
+function renderPage({ site, contactDetails, services, projects, media, planner }) {
   const serviceById = new Map(services.map((service) => [service.id, service]));
   const mediaById = new Map(media.map((item) => [item.id, item]));
   const organizationSchema = JSON.stringify(
@@ -66,6 +66,13 @@ function renderPage({ site, services, projects, media, planner }) {
       url: `${site.canonicalOrigin}/`,
       logo: `${site.canonicalOrigin}/VVC_primary_logo.svg`,
       areaServed: site.serviceArea,
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: contactDetails.phone_display,
+        email: contactDetails.email,
+        contactType: "customer service",
+        areaServed: site.serviceArea,
+      },
       makesOffer: services.map((service) => ({
         "@type": "Offer",
         itemOffered: {
@@ -164,6 +171,12 @@ function renderPage({ site, services, projects, media, planner }) {
         <p class="eyebrow">Contacto</p>
         <h2>${escapeHtml(site.contact.heading)}</h2>
         <p>${escapeHtml(site.contact.summary)}</p>
+        <div class="contact-actions">
+          <a class="button button-primary" href="${escapeHtml(contactDetails.whatsapp_url)}" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="button button-secondary" href="${escapeHtml(contactDetails.phone_href)}">${escapeHtml(contactDetails.phone_display)}</a>
+          <a class="button button-secondary" href="mailto:${escapeHtml(contactDetails.email)}">${escapeHtml(contactDetails.email)}</a>
+          <a class="button button-secondary" href="${escapeHtml(contactDetails.map_url)}" target="_blank" rel="noopener">${escapeHtml(contactDetails.map_label)}</a>
+        </div>
       </div>
     </section>
   </main>
@@ -230,6 +243,7 @@ h3 { font-size: 1.3rem; }
 .planner { background: #20252b; }
 .planner-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 36px; }
 .contact { text-align: center; }
+.contact-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
 .site-footer { border-top: 1px solid var(--border); color: var(--muted); padding: 26px 0; }
 @media (max-width: 760px) {
   .header-inner { align-items: flex-start; padding-block: 14px; flex-direction: column; }
@@ -243,17 +257,22 @@ h3 { font-size: 1.3rem; }
 async function main() {
   const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
   const site = knowledge.getSite().toRecord();
+  const contactDetails = knowledge.getContactDetails().toRecord();
   const services = knowledge.listServices().map((service) => service.toRecord());
   const projects = knowledge.listProjects().map((project) => project.toRecord());
   const media = knowledge.listMedia().map((item) => item.toRecord());
   const planner = knowledge.findExternalAppById("electrical-planner");
 
-  if (!site || !Array.isArray(services) || !Array.isArray(projects) || !Array.isArray(media) || !planner) {
+  if (!site || !contactDetails || !Array.isArray(services) || !Array.isArray(projects) || !Array.isArray(media) || !planner) {
     throw new Error("Required content records are missing.");
   }
 
   await mkdir(outputDir, { recursive: true });
-  await writeFile(path.join(outputDir, "index.html"), renderPage({ site, services, projects, media, planner }), "utf8");
+  await writeFile(
+    path.join(outputDir, "index.html"),
+    renderPage({ site, contactDetails, services, projects, media, planner }),
+    "utf8",
+  );
   await writeFile(path.join(outputDir, "styles.css"), styles, "utf8");
   console.log("Built site-next/index.html and site-next/styles.css");
 }

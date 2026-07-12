@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { loadContentTables } from "../adapters/content-tables.mjs";
+import { ContactDetails } from "../entities/contact-details.mjs";
 import { Project } from "../entities/project.mjs";
 import { createKnowledgeRepository } from "./knowledge-repository.mjs";
 
@@ -23,6 +24,15 @@ const baseTables = Object.freeze({
       heading: "Contact",
       summary: "Contact summary",
     },
+  },
+  contactDetails: {
+    id: "primary-contact",
+    phone_display: "+34 600 00 00 00",
+    phone_href: "tel:+34600000000",
+    whatsapp_url: "https://wa.me/34600000000",
+    email: "test@example.test",
+    map_url: "https://maps.example.test",
+    map_label: "View map",
   },
   services: [
     {
@@ -70,9 +80,30 @@ const baseTables = Object.freeze({
 test("loads current content tables into a repository with project records", async () => {
   const repository = createKnowledgeRepository(await loadContentTables());
 
+  assert.equal(repository.getContactDetails().email, "info@vitalvibeconstruction.com");
   assert.equal(repository.listProjects().length, 3);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
+});
+
+test("ContactDetails requires public contact channels", () => {
+  assert.throws(
+    () =>
+      ContactDetails.fromRecord({
+        id: "incomplete-contact",
+        phone_display: "+34 600 00 00 00",
+        phone_href: "tel:+34600000000",
+        whatsapp_url: "https://wa.me/34600000000",
+        map_url: "https://maps.example.test",
+        map_label: "View map",
+      }),
+    /Expected email to be a non-empty string/,
+  );
+
+  const contactDetails = ContactDetails.fromRecord(baseTables.contactDetails);
+
+  assert.equal(contactDetails.phoneHref, "tel:+34600000000");
+  assert.equal(contactDetails.whatsappUrl, "https://wa.me/34600000000");
 });
 
 test("Project requires at least one image id and preserves optional references", () => {

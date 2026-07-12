@@ -1,4 +1,5 @@
 import { assertUniqueEntityKeys, assertUniqueField } from "../core/collection-invariants.mjs";
+import { ContactDetails } from "../entities/contact-details.mjs";
 import { ExternalApp } from "../entities/external-app.mjs";
 import { Media } from "../entities/media.mjs";
 import { Project } from "../entities/project.mjs";
@@ -6,8 +7,9 @@ import { Service } from "../entities/service.mjs";
 import { Site } from "../entities/site.mjs";
 
 export class KnowledgeRepository {
-  constructor({ site, services, projects, externalApps, media }) {
+  constructor({ site, contactDetails, services, projects, externalApps, media }) {
     this.site = Site.fromRecord(site, "content/tables/site.yaml#site");
+    this.contactDetails = ContactDetails.fromRecord(contactDetails, "content/tables/contact-details.yaml#contactDetails");
     this.services = Object.freeze(
       services.map((record, index) => Service.fromRecord(record, `content/tables/services.yaml#services[${index}]`)),
     );
@@ -39,6 +41,10 @@ export class KnowledgeRepository {
 
   getSite() {
     return this.site;
+  }
+
+  getContactDetails() {
+    return this.contactDetails;
   }
 
   listServices() {

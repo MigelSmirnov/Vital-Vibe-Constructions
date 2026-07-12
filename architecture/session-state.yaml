@@ -54,6 +54,12 @@ completed:
   - legacy index head metadata cleanup
   - Organization JSON-LD added to legacy index
   - legacy content audit reduced to 0 errors
+  - ContactDetails knowledge entity
+  - contact details content table
+  - contact details connected to Knowledge Repository
+  - focused contact channel validation tests
+  - site-next contact section projected from ContactDetails
+  - site-next Organization JSON-LD contactPoint projected from ContactDetails
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
@@ -65,6 +71,7 @@ content_tables:
   yaml_parser_policy: add only when yaml-specific authoring features are required
   media_records: homepage-visible raster images only
   project_records: homepage-visible projects only
+  contact_details_records: public contact channels only
 
 checks:
   command: node tools/checks/run.mjs
