@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Contact details knowledge entity connected and projected in site-next
+Status: site-next gap audit completed
 
 Branch:
 agent/architecture-sandbox
@@ -67,6 +67,7 @@ agent/architecture-sandbox
 - focused `node:test` coverage for required contact channels
 - `site-next` contact section projected from ContactDetails records
 - `site-next` Organization JSON-LD includes contactPoint from ContactDetails
+- `artifacts/site-next-gap-audit/report.md` comparing legacy homepage, `site-next`, Knowledge tables, and AI/crawlability requirements
 
 ## Decisions
 
@@ -89,6 +90,8 @@ agent/architecture-sandbox
 - Project records are loaded through the Knowledge Repository before projections consume them.
 - Project lead images are resolved through media knowledge records, not duplicated in the projection.
 - Public contact channels are loaded through the Knowledge Repository before projections consume them.
+- Do not create Article or Testimonial records without real source records.
+- `llms.txt` and `sitemap.xml` currently drift from Knowledge Repository and should eventually be generated.
 - Use `node tools/checks/run.mjs` for the current full local check suite.
 - The content audit currently completes with legacy findings: 0 errors and 5 warnings.
 - Remaining legacy audit warnings are structural debt: heading-level skip, missing `<main>`, heavy inline styles, `x-dc` runtime root, and large inline script.
@@ -96,9 +99,11 @@ agent/architecture-sandbox
 
 ## Next Session
 
-1. Continue the next content-model entity only when source records are ready.
-2. Add browser screenshot tooling only if visual/runtime checks become a recurring need.
-3. Defer remaining legacy audit warnings unless the session explicitly targets legacy structural cleanup.
+1. Add `RenovationTier` knowledge entity and content table from legacy pricing records.
+2. Project renovation tiers into `site-next`.
+3. Add Knowledge-backed `llms.txt` generation.
+4. Add Knowledge-backed `sitemap.xml` generation and remove utility/external URLs from the main sitemap.
+5. Plan project/gallery detail route generation before expanding project UI further.
 
 ## Do Not Do
 

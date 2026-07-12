@@ -5,8 +5,10 @@ phase: knowledge-foundation
 active_branch: agent/architecture-sandbox
 
 current_target:
-  - continue next content-model entity when source records are ready
-  - decide whether browser screenshot tooling is needed
+  - add RenovationTier knowledge entity
+  - project renovation tiers into site-next
+  - add Knowledge-backed llms.txt generation
+  - add Knowledge-backed sitemap.xml generation
   - defer legacy structural audit warnings unless explicitly targeted
 
 legacy:
@@ -60,6 +62,7 @@ completed:
   - focused contact channel validation tests
   - site-next contact section projected from ContactDetails
   - site-next Organization JSON-LD contactPoint projected from ContactDetails
+  - site-next gap audit
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
@@ -72,6 +75,19 @@ content_tables:
   media_records: homepage-visible raster images only
   project_records: homepage-visible projects only
   contact_details_records: public contact channels only
+  next_recommended_entity: RenovationTier
+
+gap_audit:
+  report: artifacts/site-next-gap-audit/report.md
+  high_priority_gaps:
+    - renovation tiers and pricing
+    - smart home capability section
+    - project and gallery detail URLs
+    - Knowledge-backed llms.txt
+    - Knowledge-backed sitemap.xml
+  blocked_without_source_records:
+    - articles
+    - testimonials
 
 checks:
   command: node tools/checks/run.mjs
