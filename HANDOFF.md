@@ -11,7 +11,7 @@ This rule is more important than any README because it allows a human or AI to c
 
 ## Current Session
 
-Status: Project knowledge entity connected, projected, and covered by focused checks
+Status: Project knowledge entity connected, projected, checked, and lightly refined
 
 Branch:
 agent/architecture-sandbox
@@ -57,6 +57,8 @@ agent/architecture-sandbox
 - `site-next` project section projected from Knowledge Repository records
 - focused `node:test` coverage for Project and Knowledge Repository invariants
 - `tools/checks/run.mjs` check runner for knowledge tests, `site-next` build, content audit, and whitespace checks
+- static `site-next` project projection review for metadata, landmarks, local assets, duplicate ids, image dimensions, and project card count
+- project section summary and equal-height project card layout refinements
 
 ## Decisions
 
@@ -80,11 +82,12 @@ agent/architecture-sandbox
 - Project lead images are resolved through media knowledge records, not duplicated in the projection.
 - Use `node tools/checks/run.mjs` for the current full local check suite.
 - The content audit currently completes with legacy findings: 1 error and 7 warnings.
+- Legacy audit findings are documented debt unless the next session explicitly targets the legacy entrypoint.
 
 ## Next Session
 
-1. Review `site-next` project section against the legacy visual/content intent.
-2. Decide whether legacy content audit findings should remain documented debt or become active cleanup work.
+1. Decide whether legacy content audit findings should remain documented debt or become active cleanup work.
+2. Add browser screenshot tooling only if visual regression checks become a recurring need.
 3. Continue the next content-model entity only when source records are ready.
 
 ## Do Not Do

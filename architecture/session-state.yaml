@@ -5,8 +5,8 @@ phase: knowledge-foundation
 active_branch: agent/architecture-sandbox
 
 current_target:
-  - review site-next project projection
   - decide whether legacy content audit findings are active cleanup work
+  - decide whether browser screenshot tooling is needed
   - continue next content-model entity when source records are ready
 
 legacy:
@@ -49,9 +49,12 @@ completed:
   - site-next project section projected from Knowledge Repository
   - focused node:test coverage for Project and Knowledge Repository invariants
   - local check runner for knowledge tests, site-next build, content audit, and whitespace checks
+  - static site-next project projection review
+  - project section summary and equal-height project card layout refinements
 
 blocked:
   - legacy runtime cannot tolerate structural HTML changes
+  - browser screenshot review tooling is not installed in this repository
 
 content_tables:
   current_format: json-compatible-yaml
@@ -64,5 +67,12 @@ checks:
   command: node tools/checks/run.mjs
   latest_result: pass
   content_audit_findings: 1 error and 7 warnings in legacy content audit
+  static_site_next_review:
+    metadata: pass
+    landmarks: pass
+    project_cards: 3
+    local_assets: pass
+    duplicate_ids: pass
+    image_dimensions: pass
 
 next_update_required: true

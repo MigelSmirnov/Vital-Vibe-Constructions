@@ -31,6 +31,7 @@ h1, h2, h3 { line-height: 1.12; margin-top: 0; }
 h1 { font-size: clamp(2.7rem, 7vw, 5.3rem); margin-bottom: 24px; }
 h2 { font-size: clamp(2rem, 4vw, 3.3rem); margin-bottom: 24px; }
 h3 { font-size: 1.3rem; }
+.section-summary { color: var(--muted); max-width: 680px; margin: -10px 0 32px; }
 .hero-summary { font-size: 1.15rem; color: var(--muted); max-width: 720px; margin: 0 auto 32px; }
 .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .button { display: inline-flex; align-items: center; gap: 8px; padding: 13px 19px; border-radius: 9px; text-decoration: none; font-weight: 750; border: 1px solid transparent; }
@@ -43,11 +44,11 @@ h3 { font-size: 1.3rem; }
 .service-card p, .project-card p, .planner p, .contact p { color: var(--muted); }
 .projects { background: #181c20; }
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
 .project-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.project-card-body { padding: 22px; }
+.project-card-body { padding: 22px; display: flex; flex: 1; flex-direction: column; }
 .project-card .project-meta { margin: 0 0 10px; font-size: .82rem; color: var(--accent); font-weight: 700; }
-.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 18px; }
 .project-tags span { border: 1px solid var(--border); border-radius: 999px; padding: 4px 9px; color: var(--muted); font-size: .78rem; }
 .planner { background: #20252b; }
 .planner-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 36px; }
