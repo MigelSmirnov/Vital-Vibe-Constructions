@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 7
-Updated: 2026-07-13T20:00:36Z
+Version: 8
+Updated: 2026-07-13T22:05:48Z
 
 ## Session Rule
 
@@ -14,7 +14,7 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-The project and gallery route diagnostic stage is complete.
+The approved project page generation stage is complete.
 
 Delivery state:
 
@@ -24,11 +24,12 @@ Delivery state:
 
 Latest completed work:
 
-- legacy gallery sources are mapped to current `Project` and `Media` records
-- `architecture/project-routes.yaml` defines canonical route families and planned instances
-- `tools/routes/validate-project-routes.mjs` enforces route, entity, output, and sitemap invariants
-- planned routes remain absent from `sitemap.xml` until generated HTML exists
-- a generic `Page` entity remains deferred because route metadata is currently derivable from `Site` and `Project`
+- `site-next/projects/index.html` and three project detail pages are generated from Knowledge Repository records
+- `tools/site-next/validate-project-pages.mjs` enforces metadata, semantic HTML, media, service, and reciprocal-link invariants
+- `architecture/project-routes.yaml` marks the four generated routes as sitemap eligible
+- `sitemap.xml` contains exactly the homepage and the four eligible project routes
+- `llms.txt` exposes canonical links for all current projects
+- desktop and mobile browser verification passed; every referenced project image returned HTTP 200
 
 Important detail artifacts:
 
@@ -48,21 +49,23 @@ Important detail artifacts:
 
 ## Stage Completed
 
-The completed diagnostic stage established four route families:
+The completed generation stage activated two route families:
 
-- `/projects/`: ready for generation
-- `/projects/{project-slug}/`: three routes ready for generation
+- `/projects/`: generated and sitemap eligible
+- `/projects/{project-slug}/`: three routes generated and sitemap eligible
 - `/gallery/`: blocked on media migration or an explicit curated-gallery decision
 - `/projects/{project-slug}/images/{media-slug}/`: deferred
 
-Legacy source coverage:
+Generated page guarantees:
 
-- economic gallery: 2 of 16 images have project-owned Media records; one studio project is unmodeled
-- standard gallery: 5 of 6 images have project-owned Media records
-- premium gallery: 5 of 17 images have project-owned Media records; two more are modeled as capability media
-- overall: 27 of 39 legacy content images lack project ownership and 25 lack any Media record
+- unique title, description, canonical URL, and exactly one H1 per page
+- index-to-detail and detail-to-index links are reciprocal
+- project facts, services, and media resolve through Knowledge Repository records
+- image paths, alt text, width, and height match current Media records
+- output paths match the route contract
+- blocked and deferred route families remain absent from generated output and the sitemap
 
-The three current project detail routes are ready because each Project has truthful identity, summary, services, location, and at least two validated project-owned images. Initial pages must not imply full legacy gallery coverage.
+The legacy homepage runtime remains unchanged. Project cards on the generated `site-next` homepage now link to the corresponding generated detail pages.
 
 ## Non-Negotiable Constraints
 
@@ -88,10 +91,11 @@ node tools/checks/run.mjs
 Expected result:
 
 - 13 Knowledge tests pass.
+- project page build and raw HTML validation pass.
 - project route contract validation passes.
 - `llms.txt` build and validation pass.
 - `site-next` build passes.
-- sitemap build and validation pass.
+- sitemap build and validation pass with five URLs.
 - content audit completes with `0 errors / 5 warnings`.
 - `git diff --check` passes.
 
@@ -107,51 +111,41 @@ Known remaining legacy audit warnings:
 
 Goal:
 
-Generate the approved project index and three project detail pages from Knowledge Repository records.
+Resolve gallery readiness without generating `/gallery/` prematurely.
 
-### Step 1: Static Generation
+### Step 1: Coverage Decision
 
-- generate `site-next/projects/index.html`
-- generate `site-next/projects/{project-slug}/index.html` for all three current Project records
-- use current Project, Media, Service, and Site records only
-- preserve image dimensions, semantic headings, visible internal links, and raw HTML content
+- choose and document complete legacy coverage or an explicitly curated gallery
+- define the minimum Media metadata required for inclusion
+- decide whether the unmodeled studio renovation becomes a Project or remains excluded
 
-### Step 2: Page Validation
+### Step 2: Media Inventory
 
-- require unique title, description, canonical URL, and one H1 per page
-- require project images and service references to resolve through Knowledge
-- verify index-to-detail and detail-to-index links
-- verify generated output paths match the route contract
+- reconcile the 39 legacy content images against current Media records
+- classify the 25 unmodeled images by project, capability, duplicate, or excluded status
+- capture provenance, truthful alt text, dimensions, and ownership for accepted media
 
-### Step 3: Contract And Sitemap Activation
+### Step 3: Contract Gate
 
-- set `generated_html_path` only after files exist
-- set `sitemap_eligible` only after page validation passes
-- update the sitemap builder to consume eligible route records
-- keep `/gallery/` and image-detail routes excluded
+- update Knowledge records and validation before changing the gallery route status
+- keep `/gallery/` blocked until the selected coverage rule passes
+- continue deferring image-detail routes until stable media slugs and metadata exist
 
-### Step 4: Browser Verification
+### Step 4: Verification And Handoff
 
-- verify project index and every detail page on desktop and mobile
-- verify all project media return HTTP 200
-- confirm the legacy homepage remains unchanged
+- run the full suite after every accepted migration batch
+- regenerate projections only through their builders
+- update `HANDOFF.md` and `architecture/session-state.yaml`
 
-### Step 5: Handoff And Commit
-
-Update:
-
-- `HANDOFF.md`
-- `architecture/session-state.yaml`
-
-Suggested commit message:
+Suggested next-stage commit message:
 
 ```text
-Generate project pages from knowledge
+Define gallery media coverage
 ```
 
 ## Later Work
 
-1. Decide between complete and curated `/gallery/` after media migration.
+1. Generate `/gallery/` only after its coverage gate passes.
 2. Add canonical image-detail pages only after required Media metadata exists.
 3. Homepage value propositions from existing legacy source content.
 4. Process steps from existing legacy source content.
