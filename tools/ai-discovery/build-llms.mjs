@@ -12,7 +12,7 @@ function renderList(items, renderItem) {
   return items.map((item) => `- ${renderItem(item)}`).join("\n");
 }
 
-function renderLlms({ site, contactDetails, services, renovationTiers, projects, planner }) {
+function renderLlms({ site, contactDetails, services, renovationTiers, projects, capabilitySections, planner }) {
   const startingTier = renovationTiers[0];
 
   return `# ${site.name}
@@ -48,6 +48,20 @@ Starting renovation price: from ${startingTier.price_per_m2} ${startingTier.curr
 ## Completed Project Records
 
 ${renderList(projects, (project) => `${project.title}: ${project.summary}`)}
+
+## Smart Home Readiness
+
+${capabilitySections
+  .map(
+    (section) => `${section.title}
+
+${section.summary}
+
+${renderList(section.capabilities, (capability) => capability)}
+
+${section.note}`,
+  )
+  .join("\n\n")}
 
 ## Electrical Planner
 
@@ -85,6 +99,7 @@ async function main() {
     services: knowledge.listServices().map((service) => service.toRecord()),
     renovationTiers: knowledge.listRenovationTiers().map((tier) => tier.toRecord()),
     projects: knowledge.listProjects().map((project) => project.toRecord()),
+    capabilitySections: knowledge.listCapabilitySections().map((section) => section.toRecord()),
     planner: planner.toRecord(),
   });
 

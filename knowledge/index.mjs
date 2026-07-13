@@ -1,6 +1,7 @@
 export { assertUniqueEntityKeys, assertUniqueField } from "./core/collection-invariants.mjs";
 export { loadContentTables } from "./adapters/content-tables.mjs";
 export { EntityCore } from "./core/entity-core.mjs";
+export { CapabilitySection } from "./entities/capability-section.mjs";
 export { ContactDetails } from "./entities/contact-details.mjs";
 export { ExternalApp } from "./entities/external-app.mjs";
 export { Media } from "./entities/media.mjs";

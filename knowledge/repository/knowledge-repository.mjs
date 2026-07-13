@@ -1,4 +1,5 @@
 import { assertUniqueEntityKeys, assertUniqueField } from "../core/collection-invariants.mjs";
+import { CapabilitySection } from "../entities/capability-section.mjs";
 import { ContactDetails } from "../entities/contact-details.mjs";
 import { ExternalApp } from "../entities/external-app.mjs";
 import { Media } from "../entities/media.mjs";
@@ -8,8 +9,16 @@ import { Service } from "../entities/service.mjs";
 import { Site } from "../entities/site.mjs";
 
 export class KnowledgeRepository {
-  constructor({ site, contactDetails, services, renovationTiers, projects, externalApps, media }) {
+  constructor({ site, capabilitySections, contactDetails, services, renovationTiers, projects, externalApps, media }) {
     this.site = Site.fromRecord(site, "content/tables/site.yaml#site");
+    this.capabilitySections = Object.freeze(
+      capabilitySections.map((record, index) =>
+        CapabilitySection.fromRecord(
+          record,
+          `content/tables/capability-sections.yaml#capabilitySections[${index}]`,
+        ),
+      ),
+    );
     this.contactDetails = ContactDetails.fromRecord(contactDetails, "content/tables/contact-details.yaml#contactDetails");
     this.services = Object.freeze(
       services.map((record, index) => Service.fromRecord(record, `content/tables/services.yaml#services[${index}]`)),
@@ -31,6 +40,7 @@ export class KnowledgeRepository {
       media.map((record, index) => Media.fromRecord(record, `content/tables/media.yaml#media[${index}]`)),
     );
 
+    assertUniqueEntityKeys(this.capabilitySections, "capabilitySections");
     assertUniqueEntityKeys(this.services, "services");
     assertUniqueEntityKeys(this.renovationTiers, "renovationTiers");
     assertUniqueEntityKeys(this.projects, "projects");
@@ -40,6 +50,8 @@ export class KnowledgeRepository {
     assertKnownReferences({
       services: this.services,
       projects: this.projects,
+      capabilitySections: this.capabilitySections,
+      externalApps: this.externalApps,
       media: this.media,
     });
 
@@ -52,6 +64,14 @@ export class KnowledgeRepository {
 
   getContactDetails() {
     return this.contactDetails;
+  }
+
+  listCapabilitySections() {
+    return this.capabilitySections;
+  }
+
+  findCapabilitySectionById(id) {
+    return this.capabilitySections.find((section) => section.id === id) ?? null;
   }
 
   listServices() {
@@ -103,10 +123,22 @@ export function createKnowledgeRepository(contentTables) {
   return new KnowledgeRepository(contentTables);
 }
 
-function assertKnownReferences({ services, projects, media }) {
+function assertKnownReferences({ services, projects, capabilitySections, externalApps, media }) {
   const serviceIds = new Set(services.map((service) => service.id));
   const projectIds = new Set(projects.map((project) => project.id));
+  const externalAppIds = new Set(externalApps.map((app) => app.id));
   const mediaIds = new Set(media.map((item) => item.id));
+
+  for (const section of capabilitySections) {
+    assertAllKnown(section.serviceIds, serviceIds, `capabilitySections "${section.id}" service_ids`, "services");
+    assertAllKnown(section.mediaIds, mediaIds, `capabilitySections "${section.id}" media_ids`, "media");
+    assertKnown(
+      section.relatedExternalAppId,
+      externalAppIds,
+      `capabilitySections "${section.id}" related_external_app_id`,
+      "externalApps",
+    );
+  }
 
   for (const project of projects) {
     assertAllKnown(project.imageIds, mediaIds, `projects "${project.id}" image_ids`, "media");

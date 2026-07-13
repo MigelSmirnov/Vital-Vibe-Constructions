@@ -55,6 +55,78 @@ function renderProjects(projects, mediaById, serviceById) {
     .join("");
 }
 
+function renderCapabilitySections(capabilitySections, mediaById, serviceById, externalAppById) {
+  return capabilitySections
+    .map((section) => {
+      const media = section.media_ids.map((mediaId) => mediaById.get(mediaId)).filter(Boolean);
+      const services = section.service_ids.map((serviceId) => serviceById.get(serviceId)).filter(Boolean);
+      const relatedApp = externalAppById.get(section.related_external_app_id);
+      const [leadImage, ...galleryImages] = media;
+
+      if (!leadImage || media.length !== section.media_ids.length) {
+        throw new Error(`Capability section "${section.id}" does not have all configured media records.`);
+      }
+
+      if (services.length !== section.service_ids.length) {
+        throw new Error(`Capability section "${section.id}" does not have all configured service records.`);
+      }
+
+      if (!relatedApp) {
+        throw new Error(`Capability section "${section.id}" does not have its related external application.`);
+      }
+
+      return `
+    <section class="section capabilities" id="${escapeHtml(section.slug)}">
+      <div class="container">
+        <div class="capability-header">
+          <p class="eyebrow">${escapeHtml(section.eyebrow)}</p>
+          <h2>${escapeHtml(section.title)}</h2>
+          <p>${escapeHtml(section.summary)}</p>
+        </div>
+        <div class="capability-layout">
+          <div>
+            <h3>${escapeHtml(section.capability_title)}</h3>
+            <ol class="capability-list">
+              ${section.capabilities
+                .map(
+                  (capability, index) =>
+                    `<li><span>${String(index + 1).padStart(2, "0")}</span>${escapeHtml(capability)}</li>`,
+                )
+                .join("")}
+            </ol>
+            <p class="capability-note">${escapeHtml(section.note)}</p>
+            <div class="capability-actions">
+              <div class="capability-services">${services
+                .map((service) => `<span>${escapeHtml(service.title)}</span>`)
+                .join("")}</div>
+              <a class="button button-secondary" href="${escapeHtml(relatedApp.url)}" target="_blank" rel="noopener">
+                ${escapeHtml(relatedApp.label)} <span class="badge">${escapeHtml(relatedApp.status)}</span>
+              </a>
+            </div>
+          </div>
+          <figure class="capability-lead">
+            <img src="../${escapeHtml(leadImage.src)}" alt="${escapeHtml(leadImage.alt)}" width="${escapeHtml(leadImage.width)}" height="${escapeHtml(leadImage.height)}" loading="lazy">
+          </figure>
+        </div>
+        <div class="capability-gallery-block">
+          <p>${escapeHtml(section.partners_summary)}</p>
+          <div class="capability-gallery">
+            ${galleryImages
+              .map(
+                (image) => `<figure>
+                  <img src="../${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" width="${escapeHtml(image.width)}" height="${escapeHtml(image.height)}" loading="lazy">
+                  <figcaption>${escapeHtml(image.caption ?? image.alt)}</figcaption>
+                </figure>`,
+              )
+              .join("")}
+          </div>
+        </div>
+      </div>
+    </section>`;
+    })
+    .join("");
+}
+
 function renderRenovationTiers(renovationTiers) {
   return renovationTiers
     .map((tier) => {
@@ -70,9 +142,20 @@ function renderRenovationTiers(renovationTiers) {
     .join("");
 }
 
-function renderPage({ site, contactDetails, services, renovationTiers, projects, media, planner }) {
+function renderPage({
+  site,
+  contactDetails,
+  services,
+  renovationTiers,
+  projects,
+  capabilitySections,
+  externalApps,
+  media,
+  planner,
+}) {
   const serviceById = new Map(services.map((service) => [service.id, service]));
   const mediaById = new Map(media.map((item) => [item.id, item]));
+  const externalAppById = new Map(externalApps.map((app) => [app.id, app]));
   const renovationTierDisclaimer = renovationTiers.find((tier) => tier.disclaimer)?.disclaimer ?? null;
   const organizationSchema = JSON.stringify(
     {
@@ -129,6 +212,7 @@ function renderPage({ site, contactDetails, services, renovationTiers, projects,
       <nav aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
         <a href="#proyectos">Proyectos</a>
+        <a href="#hogar-inteligente">Domótica</a>
         <a href="#precios">Precios</a>
         <a href="#planificador">Planificador</a>
         <a href="#contacto">Contacto</a>
@@ -169,6 +253,8 @@ function renderPage({ site, contactDetails, services, renovationTiers, projects,
         <div class="project-grid">${renderProjects(projects, mediaById, serviceById)}</div>
       </div>
     </section>
+
+${renderCapabilitySections(capabilitySections, mediaById, serviceById, externalAppById)}
 
     <section class="section tiers" id="precios">
       <div class="container">
@@ -266,6 +352,25 @@ h3 { font-size: 1.3rem; }
 .project-card .project-meta { margin: 0 0 10px; font-size: .82rem; color: var(--accent); font-weight: 700; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 18px; }
 .project-tags span { border: 1px solid var(--border); border-radius: 999px; padding: 4px 9px; color: var(--muted); font-size: .78rem; }
+.capabilities { background: #20252b; }
+.capability-header { max-width: 820px; margin-bottom: 42px; }
+.capability-header > p:last-child { color: var(--muted); font-size: 1.05rem; }
+.capability-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 420px); align-items: center; gap: 52px; }
+.capability-list { list-style: none; margin: 24px 0; padding: 0; border-top: 1px solid var(--border); }
+.capability-list li { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.capability-list span { color: var(--accent); font-size: .8rem; font-weight: 800; }
+.capability-note { margin: 24px 0; padding-left: 18px; border-left: 3px solid var(--accent); color: var(--muted); }
+.capability-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; }
+.capability-services { display: flex; flex-wrap: wrap; gap: 8px; }
+.capability-services span { border: 1px solid var(--border); border-radius: 999px; padding: 5px 10px; color: var(--muted); font-size: .78rem; }
+.capability-lead { margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; }
+.capability-lead img { width: 100%; height: 520px; object-fit: cover; }
+.capability-gallery-block { margin-top: 52px; padding-top: 36px; border-top: 1px solid var(--border); }
+.capability-gallery-block > p { color: var(--muted); font-size: 1.05rem; }
+.capability-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.capability-gallery figure { margin: 0; }
+.capability-gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
+.capability-gallery figcaption { padding-top: 9px; color: var(--muted); font-size: .82rem; }
 .tiers { background: #f3f0e8; color: #171a1f; }
 .tiers .eyebrow { color: #9a6819; }
 .tier-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
@@ -289,6 +394,10 @@ h3 { font-size: 1.3rem; }
   .service-grid { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
   .project-card img { height: 240px; }
+  .capability-layout { grid-template-columns: 1fr; gap: 32px; }
+  .capability-lead img { height: 380px; }
+  .capability-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .capability-gallery img { height: 230px; }
   .tier-grid { grid-template-columns: 1fr; }
   .planner-grid { grid-template-columns: 1fr; align-items: start; }
 }`;
@@ -300,6 +409,8 @@ async function main() {
   const services = knowledge.listServices().map((service) => service.toRecord());
   const renovationTiers = knowledge.listRenovationTiers().map((tier) => tier.toRecord());
   const projects = knowledge.listProjects().map((project) => project.toRecord());
+  const capabilitySections = knowledge.listCapabilitySections().map((section) => section.toRecord());
+  const externalApps = knowledge.listExternalApps().map((app) => app.toRecord());
   const media = knowledge.listMedia().map((item) => item.toRecord());
   const planner = knowledge.findExternalAppById("electrical-planner");
 
@@ -309,6 +420,8 @@ async function main() {
     !Array.isArray(services) ||
     !Array.isArray(renovationTiers) ||
     !Array.isArray(projects) ||
+    !Array.isArray(capabilitySections) ||
+    !Array.isArray(externalApps) ||
     !Array.isArray(media) ||
     !planner
   ) {
@@ -318,7 +431,17 @@ async function main() {
   await mkdir(outputDir, { recursive: true });
   await writeFile(
     path.join(outputDir, "index.html"),
-    renderPage({ site, contactDetails, services, renovationTiers, projects, media, planner }),
+    renderPage({
+      site,
+      contactDetails,
+      services,
+      renovationTiers,
+      projects,
+      capabilitySections,
+      externalApps,
+      media,
+      planner,
+    }),
     "utf8",
   );
   await writeFile(path.join(outputDir, "styles.css"), styles, "utf8");

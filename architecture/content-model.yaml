@@ -18,6 +18,9 @@ entities:
   contact_details:
     required_fields: [id, phone_display, phone_href, whatsapp_url, email, map_url, map_label]
     optional_fields: [legal_summary]
+  capability_section:
+    required_fields: [id, slug, eyebrow, title, summary, capability_title, capabilities, note, partners_summary, service_ids, media_ids, related_external_app_id]
+    optional_fields: []
   renovation_tier:
     required_fields: [id, slug, title, summary, price_per_m2, currency]
     optional_fields: [is_featured, badge, disclaimer]
@@ -30,3 +33,6 @@ relations:
   project_to_media: one_to_many
   project_to_article: many_to_many
   external_app_to_service: many_to_many
+  capability_section_to_service: many_to_many
+  capability_section_to_media: many_to_many
+  capability_section_to_external_app: many_to_one

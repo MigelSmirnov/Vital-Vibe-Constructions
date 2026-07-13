@@ -27,6 +27,9 @@ async function main() {
     ...knowledge.listServices().map((service) => service.title),
     ...knowledge.listRenovationTiers().flatMap((tier) => [tier.title, String(tier.pricePerM2)]),
     ...knowledge.listProjects().map((project) => project.title),
+    ...knowledge
+      .listCapabilitySections()
+      .flatMap((section) => [section.title, section.note, ...section.capabilities]),
   ];
 
   for (const fragment of requiredFragments) {

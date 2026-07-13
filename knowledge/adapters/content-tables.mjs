@@ -3,6 +3,7 @@ import path from "node:path";
 
 const TABLES = {
   site: "content/tables/site.yaml",
+  capabilitySections: "content/tables/capability-sections.yaml",
   contactDetails: "content/tables/contact-details.yaml",
   services: "content/tables/services.yaml",
   renovationTiers: "content/tables/renovation-tiers.yaml",
@@ -12,9 +13,19 @@ const TABLES = {
 };
 
 export async function loadContentTables({ root = process.cwd() } = {}) {
-  const [siteTable, contactDetailsTable, servicesTable, renovationTiersTable, projectsTable, appsTable, mediaTable] =
+  const [
+    siteTable,
+    capabilitySectionsTable,
+    contactDetailsTable,
+    servicesTable,
+    renovationTiersTable,
+    projectsTable,
+    appsTable,
+    mediaTable,
+  ] =
     await Promise.all([
       readJsonCompatibleTable(root, TABLES.site),
+      readJsonCompatibleTable(root, TABLES.capabilitySections),
       readJsonCompatibleTable(root, TABLES.contactDetails),
       readJsonCompatibleTable(root, TABLES.services),
       readJsonCompatibleTable(root, TABLES.renovationTiers),
@@ -25,6 +36,7 @@ export async function loadContentTables({ root = process.cwd() } = {}) {
 
   return {
     site: requireObject(siteTable.site, "site"),
+    capabilitySections: requireArray(capabilitySectionsTable.capabilitySections, "capabilitySections"),
     contactDetails: requireObject(contactDetailsTable.contactDetails, "contactDetails"),
     services: requireArray(servicesTable.services, "services"),
     renovationTiers: requireArray(renovationTiersTable.renovationTiers, "renovationTiers"),

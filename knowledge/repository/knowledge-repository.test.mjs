@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { loadContentTables } from "../adapters/content-tables.mjs";
+import { CapabilitySection } from "../entities/capability-section.mjs";
 import { ContactDetails } from "../entities/contact-details.mjs";
 import { Project } from "../entities/project.mjs";
 import { RenovationTier } from "../entities/renovation-tier.mjs";
@@ -35,6 +36,22 @@ const baseTables = Object.freeze({
     map_url: "https://maps.example.test",
     map_label: "View map",
   },
+  capabilitySections: [
+    {
+      id: "smart-home-readiness",
+      slug: "smart-home-readiness",
+      eyebrow: "Smart home",
+      title: "Smart-home-ready renovation",
+      summary: "Prepare the renovation for a partner-installed smart system.",
+      capability_title: "On-site preparation",
+      capabilities: ["Structured wiring", "Electrical panel preparation"],
+      note: "The renovation team coordinates the system preparation with specialist partners.",
+      partners_summary: "Examples of systems installed by specialist partners.",
+      service_ids: ["integral-renovation"],
+      media_ids: ["media-test"],
+      related_external_app_id: "electrical-planner",
+    },
+  ],
   services: [
     {
       id: "integral-renovation",
@@ -102,12 +119,51 @@ test("loads current content tables into a repository with project records", asyn
   const repository = createKnowledgeRepository(await loadContentTables());
 
   assert.equal(repository.getContactDetails().email, "info@vitalvibeconstruction.com");
+  assert.equal(repository.listCapabilitySections().length, 1);
+  assert.equal(repository.findCapabilitySectionById("smart-home-readiness").mediaIds.length, 5);
   assert.equal(repository.listRenovationTiers().length, 3);
   assert.equal(repository.listRenovationTiers()[0].id, "economical");
   assert.equal(repository.findRenovationTierById("standard").pricePerM2, 1200);
   assert.equal(repository.listProjects().length, 3);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
+});
+
+test("CapabilitySection requires explicit content and preserves references", () => {
+  assert.throws(
+    () =>
+      CapabilitySection.fromRecord({
+        ...baseTables.capabilitySections[0],
+        capabilities: [],
+      }),
+    /Expected capabilities to be a non-empty array/,
+  );
+
+  assert.throws(
+    () =>
+      CapabilitySection.fromRecord({
+        ...baseTables.capabilitySections[0],
+        media_ids: ["media-test", "media-test"],
+      }),
+    /Expected mediaIds to contain unique values/,
+  );
+
+  const section = CapabilitySection.fromRecord(baseTables.capabilitySections[0]);
+
+  assert.deepEqual(section.toRecord(), {
+    id: "smart-home-readiness",
+    slug: "smart-home-readiness",
+    title: "Smart-home-ready renovation",
+    summary: "Prepare the renovation for a partner-installed smart system.",
+    eyebrow: "Smart home",
+    capability_title: "On-site preparation",
+    capabilities: ["Structured wiring", "Electrical panel preparation"],
+    note: "The renovation team coordinates the system preparation with specialist partners.",
+    partners_summary: "Examples of systems installed by specialist partners.",
+    service_ids: ["integral-renovation"],
+    media_ids: ["media-test"],
+    related_external_app_id: "electrical-planner",
+  });
 });
 
 test("RenovationTier requires valid pricing and preserves featured metadata", () => {
@@ -300,6 +356,57 @@ test("repository rejects media references to unknown projects", () => {
         }),
       ),
     /Unknown media "media-test" project_id reference "missing-project"/,
+  );
+});
+
+test("repository rejects capability section references to unknown services", () => {
+  assert.throws(
+    () =>
+      createKnowledgeRepository(
+        withOverrides({
+          capabilitySections: [
+            {
+              ...baseTables.capabilitySections[0],
+              service_ids: ["missing-service"],
+            },
+          ],
+        }),
+      ),
+    /Unknown capabilitySections "smart-home-readiness" service_ids reference "missing-service"/,
+  );
+});
+
+test("repository rejects capability section references to unknown media", () => {
+  assert.throws(
+    () =>
+      createKnowledgeRepository(
+        withOverrides({
+          capabilitySections: [
+            {
+              ...baseTables.capabilitySections[0],
+              media_ids: ["missing-media"],
+            },
+          ],
+        }),
+      ),
+    /Unknown capabilitySections "smart-home-readiness" media_ids reference "missing-media"/,
+  );
+});
+
+test("repository rejects capability section references to unknown external apps", () => {
+  assert.throws(
+    () =>
+      createKnowledgeRepository(
+        withOverrides({
+          capabilitySections: [
+            {
+              ...baseTables.capabilitySections[0],
+              related_external_app_id: "missing-app",
+            },
+          ],
+        }),
+      ),
+    /Unknown capabilitySections "smart-home-readiness" related_external_app_id reference "missing-app"/,
   );
 });
 
