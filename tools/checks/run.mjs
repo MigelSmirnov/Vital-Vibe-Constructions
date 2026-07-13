@@ -8,6 +8,8 @@ const checks = [
   ["llms.txt build", "node", ["tools/ai-discovery/build-llms.mjs"]],
   ["llms.txt validation", "node", ["tools/ai-discovery/validate-llms.mjs"]],
   ["site-next build", "node", ["tools/site-next/build.mjs"]],
+  ["sitemap build", "node", ["tools/seo/build-sitemap.mjs"]],
+  ["sitemap validation", "node", ["tools/seo/validate-sitemap.mjs"]],
   ["content audit", "node", ["tools/content-extractor/run.mjs"]],
   ["diff whitespace check", "git", ["diff", "--check"]],
 ];
