@@ -1,20 +1,28 @@
-version: 4
+version: 5
 
-updated_at: 2026-07-12T12:31:07Z
+updated_at: 2026-07-13T19:20:41Z
 phase: knowledge-foundation
 stage_status: completed
 active_branch: agent/architecture-sandbox
-branch_ahead_commits_after_stage_commit: 9
+pull_request:
+  number: 1
+  state: draft
+  base: main
+  head: agent/architecture-sandbox
 
 current_strategy:
   legacy_runtime: read-only
   next_runtime: site-next
   source_of_truth: Knowledge Repository
   content_table_format: json-compatible-yaml
+  generated_projections:
+    - site-next
+    - llms.txt
+    - sitemap.xml
 
 completed_stage:
-  summary: llms.txt generated and validated from Knowledge Repository records.
-  latest_completed_work: Generate llms from knowledge
+  summary: sitemap.xml generated and validated from the canonical Site record.
+  latest_completed_work: Generate sitemap from knowledge
   detail_artifacts:
     - artifacts/site-next-gap-audit/report.md
     - artifacts/content-audit/legacy-content-report.md
@@ -35,6 +43,30 @@ completed_stage:
       - renovation tiers
       - planner
       - contact
+  seo_projection:
+    output: sitemap.xml
+    urls:
+      - https://vitalvibeconstruction.com/
+    exclusions:
+      - https://vitalvibeconstruction.com/robots.txt
+      - https://vitalvibeconstruction.com/llms.txt
+      - https://app.vitalvibeconstruction.com/manual
+
+repository_checks:
+  pull_request_workflow: .github/workflows/project-checks.yml
+  content_audit_entrypoint: tools/content-extractor/run.mjs
+  generated_at_policy: preserve when semantic audit content is unchanged
+
+browser_verification:
+  engine: Playwright Chromium
+  viewports:
+    - 1440x900
+    - 390x844
+  pages:
+    - legacy homepage
+    - site-next
+  result: pass
+  correction: stable project card media heights on desktop and mobile
 
 constraints:
   - do not edit support.js
@@ -54,6 +86,8 @@ checks:
     - llms.txt build
     - llms.txt validation
     - site-next build
+    - sitemap build
+    - sitemap validation
     - content audit
     - diff whitespace check
   expected_content_audit: 0 errors and 5 warnings
@@ -65,26 +99,30 @@ checks:
     - large-inline-script
 
 next_stage:
-  goal: Generate sitemap.xml from explicit site/page knowledge.
-  recommended_commit_message: Generate sitemap from knowledge
+  goal: Add a Knowledge-backed Smart Home capability section to site-next.
+  recommended_commit_message: Add smart home capability knowledge
   implementation_steps:
-    - add tools/seo/build-sitemap.mjs
-    - add tools/seo/validate-sitemap.mjs
-    - generate sitemap.xml with the homepage URL only for now
-    - exclude robots.txt, llms.txt, and external planner URLs from sitemap.xml
-    - add sitemap build and validation to tools/checks/run.mjs
+    - add an explicit capability section content table and Knowledge entity
+    - validate service_ids and media_ids against existing records
+    - expose capability records through the Knowledge Repository
+    - project Smart Home copy and media into raw site-next HTML
+    - keep the planner as a related external application
+    - add focused Knowledge Repository tests
     - run node tools/checks/run.mjs
+    - verify desktop and mobile rendering
     - update HANDOFF.md and architecture/session-state.yaml
   test_plan:
-    generated_sitemap:
-      - includes https://vitalvibeconstruction.com/
-      - excludes https://vitalvibeconstruction.com/robots.txt
-      - excludes https://vitalvibeconstruction.com/llms.txt
-      - excludes https://app.vitalvibeconstruction.com/manual
-      - every listed URL starts with https://vitalvibeconstruction.com
+    knowledge:
+      - capability records reject unknown service references
+      - capability records reject unknown media references
+    projection:
+      - primary Smart Home content exists in raw HTML
+      - configured media and planner link resolve from existing records
     full_suite:
       - node tools/checks/run.mjs
 
 later_work:
-  - smart home capability section from existing service/media records
-  - project/gallery detail route planning
+  - project and gallery detail route planning
+  - homepage value propositions
+  - process steps
+  - articles and testimonials after real source records exist

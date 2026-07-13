@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 4
-Updated: 2026-07-12T12:31:07Z
+Version: 5
+Updated: 2026-07-13T19:20:41Z
 
 ## Session Rule
 
@@ -14,16 +14,20 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-The Knowledge-backed `llms.txt` stage is complete.
+The Knowledge-backed sitemap stage is complete.
 
-Branch:
+Delivery state:
 
-- `agent/architecture-sandbox`
-- ahead of origin by 9 commits after this stage commit
+- branch: `agent/architecture-sandbox`
+- draft pull request: `#1 Build architecture sandbox and knowledge foundation`
+- local and remote branches were synchronized before this stage
 
-Latest completed commit:
+Latest completed work:
 
-- this stage is committed as `Generate llms from knowledge`
+- `sitemap.xml` is generated and validated from Knowledge Repository site data
+- project checks run locally and through pull request CI
+- the legacy content audit is reproducible across local and GitHub runs
+- `site-next` project cards have stable desktop and mobile media dimensions
 
 Important detail artifacts:
 
@@ -36,18 +40,28 @@ Important detail artifacts:
 - Build `site-next` in parallel.
 - Treat legacy runtime (`support.js` + `x-dc`) as read-only.
 - Treat Knowledge Repository records as the source of truth.
-- Treat HTML as a projection of validated knowledge records.
+- Treat HTML, `llms.txt`, and `sitemap.xml` as generated projections of validated knowledge records.
+- Keep pull request checks deterministic and leave the worktree clean after regeneration.
 
 ## Stage Completed
 
-The completed stage made `llms.txt` a generated projection of Knowledge Repository records:
+The completed stage made `sitemap.xml` a generated projection of the canonical site record:
 
-- `tools/ai-discovery/build-llms.mjs`
-- `tools/ai-discovery/validate-llms.mjs`
-- `tools/checks/run.mjs` now builds and validates `llms.txt`
-- generated `llms.txt` includes site identity, service area, services, renovation tiers, projects, planner URL, and contact channels
-- generated `llms.txt` uses `https://app.vitalvibeconstruction.com/manual`
-- validation checks service titles, renovation tier titles/prices, project titles, contact email, and stale planner-root usage
+- `tools/seo/build-sitemap.mjs` writes the sitemap
+- `tools/seo/validate-sitemap.mjs` validates canonical origin, required homepage, duplicates, and excluded URLs
+- the initial sitemap contains only `https://vitalvibeconstruction.com/`
+- utility files and external application URLs are excluded
+- `tools/checks/run.mjs` builds and validates the sitemap
+- `.github/workflows/project-checks.yml` runs project checks for pull requests into `main`
+- content audit generation preserves `generatedAt` when report content is unchanged
+- local and GitHub content audit workflows use `tools/content-extractor/run.mjs`
+
+Browser verification completed with Playwright Chromium:
+
+- legacy homepage: 1440x900 and 390x844
+- `site-next`: 1440x900 and 390x844
+- legacy rendering remained intact
+- `site-next` project card stretching found during verification was corrected in the generator
 
 ## Non-Negotiable Constraints
 
@@ -71,11 +85,12 @@ node tools/checks/run.mjs
 Expected result:
 
 - Knowledge tests pass.
-- `llms.txt` build passes.
-- `llms.txt` validation passes.
+- `llms.txt` build and validation pass.
 - `site-next` build passes.
+- sitemap build and validation pass.
 - content audit completes with `0 errors / 5 warnings`.
 - `git diff --check` passes.
+- a second generation run does not change tracked output.
 
 Known remaining legacy audit warnings:
 
@@ -89,44 +104,33 @@ Known remaining legacy audit warnings:
 
 Goal:
 
-Generate `sitemap.xml` from explicit site/page knowledge so the sitemap stops listing utility files and external app URLs as main indexable pages.
+Add a Knowledge-backed Smart Home / Domotica capability section to `site-next` using existing service and media records.
 
-### Step 1: Builder
+### Step 1: Content Model
 
-Add a builder that writes `sitemap.xml`.
+Add an explicit capability section record rather than embedding copy in the page builder.
 
-Expected file:
+Expected ownership:
 
-- `tools/seo/build-sitemap.mjs`
+- content table with title, summary, capability items, note, `service_ids`, and `media_ids`
+- Knowledge entity and repository accessors
+- reference validation for services and media
 
-The initial sitemap should include:
+### Step 2: Projection
 
-- homepage only, because `site-next` currently generates only one canonical HTML page
+Project the capability section into raw `site-next` HTML:
 
-It should exclude:
+- explain electrical preparation and partner coordination truthfully
+- reuse existing Smart Home media records
+- preserve the external electrical planner as a related application, not the capability itself
+- keep all primary text and links crawlable without client-side JavaScript
 
-- `robots.txt`
-- `llms.txt`
-- external planner app URLs
+### Step 3: Validation
 
-### Step 2: Validation
-
-Add validation without new dependencies.
-
-Expected file:
-
-- `tools/seo/validate-sitemap.mjs`
-
-Validate:
-
-- homepage URL exists
-- utility files are not listed
-- external planner URL is not listed
-- every URL starts with `Site.canonicalOrigin`
-
-### Step 3: Checks
-
-Add sitemap build and validation to `tools/checks/run.mjs`.
+- add focused Knowledge Repository tests
+- run `node tools/checks/run.mjs`
+- verify desktop and mobile rendering
+- confirm legacy output remains unchanged
 
 ### Step 4: Handoff And Commit
 
@@ -138,10 +142,12 @@ Update:
 Suggested commit message:
 
 ```text
-Generate sitemap from knowledge
+Add smart home capability knowledge
 ```
 
 ## Later Work
 
-1. Smart home capability section from existing service/media records.
-2. Project/gallery detail route planning.
+1. Project/gallery detail route planning and canonical page generation.
+2. Homepage value propositions from existing legacy source content.
+3. Process steps from existing legacy source content.
+4. Articles and testimonials only after real source records are available.
