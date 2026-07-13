@@ -26,7 +26,9 @@ async function main() {
     planner.url,
     ...knowledge.listServices().map((service) => service.title),
     ...knowledge.listRenovationTiers().flatMap((tier) => [tier.title, String(tier.pricePerM2)]),
-    ...knowledge.listProjects().map((project) => project.title),
+    ...knowledge
+      .listProjects()
+      .flatMap((project) => [project.title, `${knowledge.getSite().canonicalOrigin}/projects/${project.slug}/`]),
     ...knowledge
       .listCapabilitySections()
       .flatMap((section) => [section.title, section.note, ...section.capabilities]),

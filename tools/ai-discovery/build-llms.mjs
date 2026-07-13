@@ -47,7 +47,10 @@ Starting renovation price: from ${startingTier.price_per_m2} ${startingTier.curr
 
 ## Completed Project Records
 
-${renderList(projects, (project) => `${project.title}: ${project.summary}`)}
+${renderList(
+  projects,
+  (project) => `${project.title}: ${site.canonicalOrigin}/projects/${project.slug}/ - ${project.summary}`,
+)}
 
 ## Smart Home Readiness
 

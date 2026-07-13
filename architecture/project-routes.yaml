@@ -25,14 +25,14 @@
       "path_pattern": "/projects/",
       "output_pattern": "site-next/projects/index.html",
       "entity_type": "ProjectCollection",
-      "status": "planned"
+      "status": "generated"
     },
     {
       "id": "project-detail",
       "path_pattern": "/projects/{project.slug}/",
       "output_pattern": "site-next/projects/{project.slug}/index.html",
       "entity_type": "Project",
-      "status": "planned"
+      "status": "generated"
     },
     {
       "id": "gallery-index",
@@ -57,10 +57,10 @@
       "canonical_url": "https://vitalvibeconstruction.com/projects/",
       "entity_type": "ProjectCollection",
       "entity_id": null,
-      "status": "ready-for-generation",
+      "status": "generated",
       "source_files": ["content/tables/projects.yaml"],
-      "generated_html_path": null,
-      "sitemap_eligible": false
+      "generated_html_path": "site-next/projects/index.html",
+      "sitemap_eligible": true
     },
     {
       "id": "project-piso-reformado-barcelona",
@@ -69,10 +69,10 @@
       "canonical_url": "https://vitalvibeconstruction.com/projects/piso-reformado-barcelona/",
       "entity_type": "Project",
       "entity_id": "project-piso-reformado-barcelona",
-      "status": "ready-for-generation",
+      "status": "generated",
       "source_files": ["galeria-economica.dc.html"],
-      "generated_html_path": null,
-      "sitemap_eligible": false
+      "generated_html_path": "site-next/projects/piso-reformado-barcelona/index.html",
+      "sitemap_eligible": true
     },
     {
       "id": "project-reforma-integral-estandar-barcelona",
@@ -81,10 +81,10 @@
       "canonical_url": "https://vitalvibeconstruction.com/projects/reforma-integral-estandar-barcelona/",
       "entity_type": "Project",
       "entity_id": "project-reforma-integral-estandar-barcelona",
-      "status": "ready-for-generation",
+      "status": "generated",
       "source_files": ["galeria-estandar.dc.html"],
-      "generated_html_path": null,
-      "sitemap_eligible": false
+      "generated_html_path": "site-next/projects/reforma-integral-estandar-barcelona/index.html",
+      "sitemap_eligible": true
     },
     {
       "id": "project-trabajos-contrata-premium",
@@ -93,10 +93,10 @@
       "canonical_url": "https://vitalvibeconstruction.com/projects/trabajos-contrata-premium/",
       "entity_type": "Project",
       "entity_id": "project-trabajos-contrata-premium",
-      "status": "ready-for-generation",
+      "status": "generated",
       "source_files": ["galeria-premium.dc.html"],
-      "generated_html_path": null,
-      "sitemap_eligible": false
+      "generated_html_path": "site-next/projects/trabajos-contrata-premium/index.html",
+      "sitemap_eligible": true
     },
     {
       "id": "gallery-index",
