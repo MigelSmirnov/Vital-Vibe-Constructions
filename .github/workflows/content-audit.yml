@@ -27,7 +27,7 @@ jobs:
           node-version: 20
 
       - name: Run content extractor
-        run: node tools/content-extractor/extract.mjs
+        run: node tools/content-extractor/run.mjs
 
       - name: Commit generated baseline
         run: |

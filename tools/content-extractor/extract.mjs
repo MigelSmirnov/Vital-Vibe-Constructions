@@ -224,8 +224,8 @@ function buildAudit(snapshot) {
     add("warning", "non-crawlable-links", `${nonCrawlableLinks.length} links are missing href or use javascript: URLs.`, nonCrawlableLinks);
   }
 
-  if (!snapshot.landmarks.some((item) => item.tag === "main")) add("warning", "missing-main", "Document has no semantic <main> landmark.");
-  if (!snapshot.landmarks.some((item) => item.tag === "nav")) add("info", "missing-nav", "Document has no semantic <nav> landmark.");
+  if (!snapshot.rawMetrics.hasMain) add("warning", "missing-main", "Document has no semantic <main> landmark.");
+  if (!snapshot.rawMetrics.hasNav) add("info", "missing-nav", "Document has no semantic <nav> landmark.");
 
   if (snapshot.inlineStyles.attributeCount > 25) {
     add("warning", "heavy-inline-styles", `Document contains ${snapshot.inlineStyles.attributeCount} inline style attributes.`);
@@ -308,6 +308,25 @@ function renderMarkdown(snapshot, findings) {
   return `${lines.join("\n")}\n`;
 }
 
+async function preserveGeneratedAtWhenContentIsUnchanged(outputPath, output) {
+  let previousOutput;
+
+  try {
+    previousOutput = JSON.parse(await readFile(outputPath, "utf8"));
+  } catch (error) {
+    if (error?.code === "ENOENT" || error instanceof SyntaxError) return output;
+    throw error;
+  }
+
+  const normalize = (value) => JSON.stringify({ ...value, generatedAt: null });
+
+  if (normalize(previousOutput) !== normalize(output) || typeof previousOutput.generatedAt !== "string") {
+    return output;
+  }
+
+  return { ...output, generatedAt: previousOutput.generatedAt };
+}
+
 async function main() {
   const html = await readFile(inputPath, "utf8");
 
@@ -329,6 +348,8 @@ async function main() {
       lineCount: html.split(/\r?\n/).length,
       xDcPresent: /<x-dc\b/i.test(html),
       dataDcScriptPresent: /data-dc-script/i.test(html),
+      hasMain: /<main\b/i.test(html),
+      hasNav: /<nav\b/i.test(html),
     },
   };
 
@@ -336,8 +357,16 @@ async function main() {
   const output = { ...snapshot, findings };
 
   await mkdir(outputDir, { recursive: true });
-  await writeFile(path.join(outputDir, "legacy-content.json"), `${JSON.stringify(output, null, 2)}\n`, "utf8");
-  await writeFile(path.join(outputDir, "legacy-content-report.md"), renderMarkdown(snapshot, findings), "utf8");
+  const stableOutput = await preserveGeneratedAtWhenContentIsUnchanged(
+    path.join(outputDir, "legacy-content.json"),
+    output,
+  );
+  await writeFile(path.join(outputDir, "legacy-content.json"), `${JSON.stringify(stableOutput, null, 2)}\n`, "utf8");
+  await writeFile(
+    path.join(outputDir, "legacy-content-report.md"),
+    renderMarkdown(stableOutput, stableOutput.findings),
+    "utf8",
+  );
 
   const errors = findings.filter((item) => item.severity === "error").length;
   const warnings = findings.filter((item) => item.severity === "warning").length;
