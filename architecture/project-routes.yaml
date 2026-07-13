@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "canonical_origin_source": "content/tables/site.yaml#site.canonicalOrigin",
+  "diagnostic_artifact": "artifacts/project-route-audit/report.md",
+  "policies": {
+    "legacy_urls_are_source_material_only": true,
+    "generated_html_required_for_sitemap": true,
+    "redirects_are_separate_from_canonical_routes": true,
+    "page_entity": {
+      "decision": "deferred",
+      "reason": "Current route metadata is derivable from Site and Project records; introduce Page only when page-owned metadata has more than one real consumer."
+    }
+  },
+  "required_page_output": [
+    "unique_title",
+    "unique_description",
+    "canonical_url",
+    "single_h1",
+    "raw_html_primary_content",
+    "visible_internal_links"
+  ],
+  "route_families": [
+    {
+      "id": "projects-index",
+      "path_pattern": "/projects/",
+      "output_pattern": "site-next/projects/index.html",
+      "entity_type": "ProjectCollection",
+      "status": "planned"
+    },
+    {
+      "id": "project-detail",
+      "path_pattern": "/projects/{project.slug}/",
+      "output_pattern": "site-next/projects/{project.slug}/index.html",
+      "entity_type": "Project",
+      "status": "planned"
+    },
+    {
+      "id": "gallery-index",
+      "path_pattern": "/gallery/",
+      "output_pattern": "site-next/gallery/index.html",
+      "entity_type": "ProjectMediaCollection",
+      "status": "blocked-on-media-migration"
+    },
+    {
+      "id": "project-image-detail",
+      "path_pattern": "/projects/{project.slug}/images/{media.slug}/",
+      "output_pattern": "site-next/projects/{project.slug}/images/{media.slug}/index.html",
+      "entity_type": "Media",
+      "status": "deferred"
+    }
+  ],
+  "routes": [
+    {
+      "id": "projects-index",
+      "family_id": "projects-index",
+      "path": "/projects/",
+      "canonical_url": "https://vitalvibeconstruction.com/projects/",
+      "entity_type": "ProjectCollection",
+      "entity_id": null,
+      "status": "ready-for-generation",
+      "source_files": ["content/tables/projects.yaml"],
+      "generated_html_path": null,
+      "sitemap_eligible": false
+    },
+    {
+      "id": "project-piso-reformado-barcelona",
+      "family_id": "project-detail",
+      "path": "/projects/piso-reformado-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/projects/piso-reformado-barcelona/",
+      "entity_type": "Project",
+      "entity_id": "project-piso-reformado-barcelona",
+      "status": "ready-for-generation",
+      "source_files": ["galeria-economica.dc.html"],
+      "generated_html_path": null,
+      "sitemap_eligible": false
+    },
+    {
+      "id": "project-reforma-integral-estandar-barcelona",
+      "family_id": "project-detail",
+      "path": "/projects/reforma-integral-estandar-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/projects/reforma-integral-estandar-barcelona/",
+      "entity_type": "Project",
+      "entity_id": "project-reforma-integral-estandar-barcelona",
+      "status": "ready-for-generation",
+      "source_files": ["galeria-estandar.dc.html"],
+      "generated_html_path": null,
+      "sitemap_eligible": false
+    },
+    {
+      "id": "project-trabajos-contrata-premium",
+      "family_id": "project-detail",
+      "path": "/projects/trabajos-contrata-premium/",
+      "canonical_url": "https://vitalvibeconstruction.com/projects/trabajos-contrata-premium/",
+      "entity_type": "Project",
+      "entity_id": "project-trabajos-contrata-premium",
+      "status": "ready-for-generation",
+      "source_files": ["galeria-premium.dc.html"],
+      "generated_html_path": null,
+      "sitemap_eligible": false
+    },
+    {
+      "id": "gallery-index",
+      "family_id": "gallery-index",
+      "path": "/gallery/",
+      "canonical_url": "https://vitalvibeconstruction.com/gallery/",
+      "entity_type": "ProjectMediaCollection",
+      "entity_id": null,
+      "status": "blocked-on-media-migration",
+      "source_files": [
+        "galeria-economica.dc.html",
+        "galeria-estandar.dc.html",
+        "galeria-premium.dc.html"
+      ],
+      "generated_html_path": null,
+      "sitemap_eligible": false
+    }
+  ],
+  "legacy_source_mappings": [
+    {
+      "source_file": "galeria-economica.dc.html",
+      "project_ids": ["project-piso-reformado-barcelona"],
+      "unmodeled_project_titles": ["Estudio reformado en Barcelona"],
+      "content_media_count": 16,
+      "project_owned_media_count": 2,
+      "modeled_non_project_media_count": 0
+    },
+    {
+      "source_file": "galeria-estandar.dc.html",
+      "project_ids": ["project-reforma-integral-estandar-barcelona"],
+      "unmodeled_project_titles": [],
+      "content_media_count": 6,
+      "project_owned_media_count": 5,
+      "modeled_non_project_media_count": 0
+    },
+    {
+      "source_file": "galeria-premium.dc.html",
+      "project_ids": ["project-trabajos-contrata-premium"],
+      "unmodeled_project_titles": [],
+      "content_media_count": 17,
+      "project_owned_media_count": 5,
+      "modeled_non_project_media_count": 2
+    }
+  ]
+}
