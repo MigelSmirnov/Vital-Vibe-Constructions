@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 5
-Updated: 2026-07-13T19:20:41Z
+Version: 6
+Updated: 2026-07-13T19:31:15Z
 
 ## Session Rule
 
@@ -14,20 +14,21 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-The Knowledge-backed sitemap stage is complete.
+The Knowledge-backed Smart Home capability stage is complete.
 
 Delivery state:
 
 - branch: `agent/architecture-sandbox`
-- draft pull request: `#1 Build architecture sandbox and knowledge foundation`
-- local and remote branches were synchronized before this stage
+- pull request: `#1 Build architecture sandbox and knowledge foundation`
+- pull request state: ready for review
 
 Latest completed work:
 
-- `sitemap.xml` is generated and validated from Knowledge Repository site data
-- project checks run locally and through pull request CI
-- the legacy content audit is reproducible across local and GitHub runs
-- `site-next` project cards have stable desktop and mobile media dimensions
+- Smart Home content is owned by an explicit `CapabilitySection` model
+- service, media, and related external application references are validated by the Knowledge Repository
+- `site-next` projects the section into raw semantic HTML without client-side rendering
+- `llms.txt` includes the same Smart Home facts from the Knowledge Repository
+- desktop and mobile rendering have been verified with all configured media returning HTTP 200
 
 Important detail artifacts:
 
@@ -41,27 +42,27 @@ Important detail artifacts:
 - Treat legacy runtime (`support.js` + `x-dc`) as read-only.
 - Treat Knowledge Repository records as the source of truth.
 - Treat HTML, `llms.txt`, and `sitemap.xml` as generated projections of validated knowledge records.
-- Keep pull request checks deterministic and leave the worktree clean after regeneration.
+- Add canonical routes only after defining an explicit route/page contract.
 
 ## Stage Completed
 
-The completed stage made `sitemap.xml` a generated projection of the canonical site record:
+The completed stage added an explicit, reusable Smart Home capability boundary:
 
-- `tools/seo/build-sitemap.mjs` writes the sitemap
-- `tools/seo/validate-sitemap.mjs` validates canonical origin, required homepage, duplicates, and excluded URLs
-- the initial sitemap contains only `https://vitalvibeconstruction.com/`
-- utility files and external application URLs are excluded
-- `tools/checks/run.mjs` builds and validates the sitemap
-- `.github/workflows/project-checks.yml` runs project checks for pull requests into `main`
-- content audit generation preserves `generatedAt` when report content is unchanged
-- local and GitHub content audit workflows use `tools/content-extractor/run.mjs`
+- `content/tables/capability-sections.yaml` owns visible copy and record references
+- `knowledge/entities/capability-section.mjs` validates the record shape
+- the Knowledge Repository validates `service_ids`, `media_ids`, and `related_external_app_id`
+- `architecture/content-model.yaml` defines capability section fields and relations
+- `tools/site-next/build.mjs` renders the section, media gallery, service context, and related planner CTA
+- `tools/ai-discovery/build-llms.mjs` renders the same capability facts into `llms.txt`
+- `tools/ai-discovery/validate-llms.mjs` detects missing Smart Home facts
+- Knowledge Repository tests cover entity validation and unknown references
 
 Browser verification completed with Playwright Chromium:
 
-- legacy homepage: 1440x900 and 390x844
 - `site-next`: 1440x900 and 390x844
-- legacy rendering remained intact
-- `site-next` project card stretching found during verification was corrected in the generator
+- Smart Home lead and gallery media returned HTTP 200
+- no horizontal overflow or incoherent layout overlap was observed
+- legacy `index.html` and `support.js` were not changed
 
 ## Non-Negotiable Constraints
 
@@ -72,6 +73,7 @@ Browser verification completed with Playwright Chromium:
 - Do not add dependencies unless the current platform cannot reasonably solve the problem.
 - Keep `content/tables/*.yaml` JSON-compatible until YAML-specific authoring is required.
 - Do not create `Article` or `Testimonial` records without real source records.
+- Do not invent canonical pages or add routes to `sitemap.xml` before their HTML output exists.
 - Do not address remaining legacy structural warnings without browser/runtime verification.
 
 ## Current Checks
@@ -84,13 +86,13 @@ node tools/checks/run.mjs
 
 Expected result:
 
-- Knowledge tests pass.
+- 13 Knowledge tests pass.
 - `llms.txt` build and validation pass.
 - `site-next` build passes.
 - sitemap build and validation pass.
 - content audit completes with `0 errors / 5 warnings`.
 - `git diff --check` passes.
-- a second generation run does not change tracked output.
+- repeated generation does not change tracked output.
 
 Known remaining legacy audit warnings:
 
@@ -104,33 +106,32 @@ Known remaining legacy audit warnings:
 
 Goal:
 
-Add a Knowledge-backed Smart Home / Domotica capability section to `site-next` using existing service and media records.
+Define the project and gallery route-generation contract before adding new canonical HTML pages.
 
-### Step 1: Content Model
+### Step 1: Source Inventory
 
-Add an explicit capability section record rather than embedding copy in the page builder.
+- map legacy gallery files to existing `Project` and `Media` records
+- identify which current records have enough truthful content for a detail page
+- record legacy URLs as source material, not target canonical routes
 
-Expected ownership:
+### Step 2: Route Contract
 
-- content table with title, summary, capability items, note, `service_ids`, and `media_ids`
-- Knowledge entity and repository accessors
-- reference validation for services and media
+Add a machine-readable architecture contract covering:
 
-### Step 2: Projection
+- `/projects/`
+- `/projects/{project-slug}/`
+- `/gallery/`
+- deferred `/projects/{project-slug}/images/{image-slug}/` routes
+- ownership of canonical URL generation and sitemap inclusion
 
-Project the capability section into raw `site-next` HTML:
+Do not introduce a generic `Page` entity until the route contract demonstrates the required fields and consumers.
 
-- explain electrical preparation and partner coordination truthfully
-- reuse existing Smart Home media records
-- preserve the external electrical planner as a related application, not the capability itself
-- keep all primary text and links crawlable without client-side JavaScript
+### Step 3: Validation Plan
 
-### Step 3: Validation
-
-- add focused Knowledge Repository tests
-- run `node tools/checks/run.mjs`
-- verify desktop and mobile rendering
-- confirm legacy output remains unchanged
+- require every route record to resolve to existing Knowledge entities
+- prevent duplicate paths and canonical URLs
+- require generated HTML before sitemap inclusion
+- define legacy redirect decisions separately from the canonical route model
 
 ### Step 4: Handoff And Commit
 
@@ -142,12 +143,13 @@ Update:
 Suggested commit message:
 
 ```text
-Add smart home capability knowledge
+Define project route generation
 ```
 
 ## Later Work
 
-1. Project/gallery detail route planning and canonical page generation.
-2. Homepage value propositions from existing legacy source content.
-3. Process steps from existing legacy source content.
-4. Articles and testimonials only after real source records are available.
+1. Generate project index/detail pages from the approved route contract.
+2. Add canonical project pages to `sitemap.xml` only after generation exists.
+3. Homepage value propositions from existing legacy source content.
+4. Process steps from existing legacy source content.
+5. Articles and testimonials only after real source records are available.

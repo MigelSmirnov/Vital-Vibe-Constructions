@@ -1,12 +1,12 @@
-version: 5
+version: 6
 
-updated_at: 2026-07-13T19:20:41Z
+updated_at: 2026-07-13T19:31:15Z
 phase: knowledge-foundation
 stage_status: completed
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
-  state: draft
+  state: ready-for-review
   base: main
   head: agent/architecture-sandbox
 
@@ -21,11 +21,8 @@ current_strategy:
     - sitemap.xml
 
 completed_stage:
-  summary: sitemap.xml generated and validated from the canonical Site record.
-  latest_completed_work: Generate sitemap from knowledge
-  detail_artifacts:
-    - artifacts/site-next-gap-audit/report.md
-    - artifacts/content-audit/legacy-content-report.md
+  summary: Smart Home capability content modeled once and projected into site-next and llms.txt.
+  latest_completed_work: Add smart home capability knowledge
   active_entities:
     - Site
     - Service
@@ -34,28 +31,26 @@ completed_stage:
     - ExternalApp
     - ContactDetails
     - RenovationTier
+    - CapabilitySection
   active_projection:
     root: site-next
     sections:
       - hero
       - services
       - projects
+      - smart home capability
       - renovation tiers
       - planner
       - contact
-  seo_projection:
-    output: sitemap.xml
-    urls:
-      - https://vitalvibeconstruction.com/
-    exclusions:
-      - https://vitalvibeconstruction.com/robots.txt
-      - https://vitalvibeconstruction.com/llms.txt
-      - https://app.vitalvibeconstruction.com/manual
-
-repository_checks:
-  pull_request_workflow: .github/workflows/project-checks.yml
-  content_audit_entrypoint: tools/content-extractor/run.mjs
-  generated_at_policy: preserve when semantic audit content is unchanged
+  capability_projection:
+    id: smart-home-readiness
+    service_ids:
+      - electrical
+    media_count: 5
+    related_external_app_id: electrical-planner
+    outputs:
+      - site-next/index.html
+      - llms.txt
 
 browser_verification:
   engine: Playwright Chromium
@@ -63,10 +58,9 @@ browser_verification:
     - 1440x900
     - 390x844
   pages:
-    - legacy homepage
     - site-next
+  media_http_status: 200
   result: pass
-  correction: stable project card media heights on desktop and mobile
 
 constraints:
   - do not edit support.js
@@ -76,13 +70,16 @@ constraints:
   - do not add dependencies unless the current platform cannot reasonably solve the problem
   - keep content/tables/*.yaml JSON-compatible until YAML-specific authoring is required
   - do not create Article or Testimonial records without real source records
+  - do not invent canonical pages before generated HTML exists
   - do not address remaining legacy structural warnings without browser/runtime verification
 
 checks:
   command: node tools/checks/run.mjs
   latest_result: pass
+  knowledge_test_count: 13
   includes:
-    - knowledge tests
+    - capability section entity validation
+    - capability section reference validation
     - llms.txt build
     - llms.txt validation
     - site-next build
@@ -99,30 +96,26 @@ checks:
     - large-inline-script
 
 next_stage:
-  goal: Add a Knowledge-backed Smart Home capability section to site-next.
-  recommended_commit_message: Add smart home capability knowledge
+  goal: Define the project and gallery route-generation contract.
+  recommended_commit_message: Define project route generation
   implementation_steps:
-    - add an explicit capability section content table and Knowledge entity
-    - validate service_ids and media_ids against existing records
-    - expose capability records through the Knowledge Repository
-    - project Smart Home copy and media into raw site-next HTML
-    - keep the planner as a related external application
-    - add focused Knowledge Repository tests
-    - run node tools/checks/run.mjs
-    - verify desktop and mobile rendering
+    - map legacy gallery files to existing Project and Media records
+    - identify records with enough truthful detail-page content
+    - define canonical project index, detail, gallery, and deferred image-detail route patterns
+    - define route ownership, duplicate prevention, and sitemap eligibility
+    - keep legacy redirect decisions separate from canonical route records
     - update HANDOFF.md and architecture/session-state.yaml
   test_plan:
-    knowledge:
-      - capability records reject unknown service references
-      - capability records reject unknown media references
-    projection:
-      - primary Smart Home content exists in raw HTML
-      - configured media and planner link resolve from existing records
+    route_contract:
+      - every entity reference resolves through the Knowledge Repository
+      - paths and canonical URLs are unique
+      - sitemap eligibility requires generated HTML
     full_suite:
       - node tools/checks/run.mjs
 
 later_work:
-  - project and gallery detail route planning
+  - generate project index and detail pages
+  - add generated project pages to sitemap.xml
   - homepage value propositions
   - process steps
   - articles and testimonials after real source records exist
