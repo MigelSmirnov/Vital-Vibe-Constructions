@@ -1,7 +1,7 @@
-version: 6
+version: 7
 
-updated_at: 2026-07-13T19:31:15Z
-phase: knowledge-foundation
+updated_at: 2026-07-13T20:00:36Z
+phase: route-planning
 stage_status: completed
 active_branch: agent/architecture-sandbox
 pull_request:
@@ -14,53 +14,46 @@ current_strategy:
   legacy_runtime: read-only
   next_runtime: site-next
   source_of_truth: Knowledge Repository
-  content_table_format: json-compatible-yaml
+  route_contract: architecture/project-routes.yaml
   generated_projections:
     - site-next
     - llms.txt
     - sitemap.xml
 
 completed_stage:
-  summary: Smart Home capability content modeled once and projected into site-next and llms.txt.
-  latest_completed_work: Add smart home capability knowledge
-  active_entities:
-    - Site
-    - Service
-    - Media
-    - Project
-    - ExternalApp
-    - ContactDetails
-    - RenovationTier
-    - CapabilitySection
-  active_projection:
-    root: site-next
-    sections:
-      - hero
-      - services
-      - projects
-      - smart home capability
-      - renovation tiers
-      - planner
-      - contact
-  capability_projection:
-    id: smart-home-readiness
-    service_ids:
-      - electrical
-    media_count: 5
-    related_external_app_id: electrical-planner
-    outputs:
-      - site-next/index.html
-      - llms.txt
+  summary: Project and gallery routes diagnosed and captured in a validated machine-readable contract.
+  latest_completed_work: Define project route generation
+  diagnostic_artifact: artifacts/project-route-audit/report.md
+  page_entity_decision: deferred
+  route_families:
+    projects_index:
+      pattern: /projects/
+      status: ready-for-generation
+    project_detail:
+      pattern: /projects/{project-slug}/
+      status: ready-for-generation
+      instance_count: 3
+    gallery_index:
+      pattern: /gallery/
+      status: blocked-on-media-migration
+    project_image_detail:
+      pattern: /projects/{project-slug}/images/{media-slug}/
+      status: deferred
+  legacy_media_coverage:
+    total_content_media: 39
+    project_owned_media: 12
+    modeled_non_project_media: 2
+    unmodeled_media: 25
+    unmodeled_projects:
+      - Estudio reformado en Barcelona
 
-browser_verification:
-  engine: Playwright Chromium
-  viewports:
-    - 1440x900
-    - 390x844
-  pages:
-    - site-next
-  media_http_status: 200
-  result: pass
+route_invariants:
+  - canonical origin comes from Site.canonicalOrigin
+  - route paths and canonical URLs are unique
+  - every project detail route resolves to one current Project
+  - generated HTML is required before sitemap eligibility
+  - non-eligible routes must not appear in sitemap.xml
+  - image detail route instances are forbidden while deferred
 
 constraints:
   - do not edit support.js
@@ -68,54 +61,53 @@ constraints:
   - do not bypass the Knowledge Repository
   - do not duplicate content between builders and tables
   - do not add dependencies unless the current platform cannot reasonably solve the problem
-  - keep content/tables/*.yaml JSON-compatible until YAML-specific authoring is required
-  - do not create Article or Testimonial records without real source records
-  - do not invent canonical pages before generated HTML exists
-  - do not address remaining legacy structural warnings without browser/runtime verification
+  - do not generate gallery while blocked
+  - do not generate image detail routes while deferred
+  - do not add sitemap URLs before generated HTML validation
 
 checks:
   command: node tools/checks/run.mjs
   latest_result: pass
   knowledge_test_count: 13
   includes:
-    - capability section entity validation
-    - capability section reference validation
-    - llms.txt build
-    - llms.txt validation
+    - knowledge tests
+    - project route contract validation
+    - llms.txt build and validation
     - site-next build
-    - sitemap build
-    - sitemap validation
+    - sitemap build and validation
     - content audit
     - diff whitespace check
   expected_content_audit: 0 errors and 5 warnings
-  remaining_legacy_warnings:
-    - heading-level-skip
-    - missing-main
-    - heavy-inline-styles
-    - runtime-dependent-root
-    - large-inline-script
 
 next_stage:
-  goal: Define the project and gallery route-generation contract.
-  recommended_commit_message: Define project route generation
+  goal: Generate the approved project index and detail pages from Knowledge records.
+  recommended_commit_message: Generate project pages from knowledge
   implementation_steps:
-    - map legacy gallery files to existing Project and Media records
-    - identify records with enough truthful detail-page content
-    - define canonical project index, detail, gallery, and deferred image-detail route patterns
-    - define route ownership, duplicate prevention, and sitemap eligibility
-    - keep legacy redirect decisions separate from canonical route records
+    - generate site-next/projects/index.html
+    - generate one detail index.html for each current Project slug
+    - render Project, Media, Service, and Site facts into raw semantic HTML
+    - validate metadata, canonical URLs, one H1, internal links, and output paths
+    - activate generated routes in the route contract
+    - include only validated eligible routes in sitemap.xml
+    - keep gallery and image detail routes excluded
+    - verify desktop and mobile rendering and project media responses
     - update HANDOFF.md and architecture/session-state.yaml
   test_plan:
-    route_contract:
-      - every entity reference resolves through the Knowledge Repository
-      - paths and canonical URLs are unique
-      - sitemap eligibility requires generated HTML
+    generated_pages:
+      - unique title, description, canonical URL, and H1
+      - index and detail links are reciprocal
+      - every image and service reference resolves through Knowledge
+      - output paths match route contract
+    route_activation:
+      - generated_html_path exists
+      - sitemap_eligible routes appear exactly once in sitemap.xml
+      - blocked and deferred routes remain absent
     full_suite:
       - node tools/checks/run.mjs
 
 later_work:
-  - generate project index and detail pages
-  - add generated project pages to sitemap.xml
+  - decide complete versus curated gallery
+  - migrate Media metadata for image detail pages
   - homepage value propositions
   - process steps
   - articles and testimonials after real source records exist

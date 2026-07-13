@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 6
-Updated: 2026-07-13T19:31:15Z
+Version: 7
+Updated: 2026-07-13T20:00:36Z
 
 ## Session Rule
 
@@ -14,7 +14,7 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-The Knowledge-backed Smart Home capability stage is complete.
+The project and gallery route diagnostic stage is complete.
 
 Delivery state:
 
@@ -24,14 +24,15 @@ Delivery state:
 
 Latest completed work:
 
-- Smart Home content is owned by an explicit `CapabilitySection` model
-- service, media, and related external application references are validated by the Knowledge Repository
-- `site-next` projects the section into raw semantic HTML without client-side rendering
-- `llms.txt` includes the same Smart Home facts from the Knowledge Repository
-- desktop and mobile rendering have been verified with all configured media returning HTTP 200
+- legacy gallery sources are mapped to current `Project` and `Media` records
+- `architecture/project-routes.yaml` defines canonical route families and planned instances
+- `tools/routes/validate-project-routes.mjs` enforces route, entity, output, and sitemap invariants
+- planned routes remain absent from `sitemap.xml` until generated HTML exists
+- a generic `Page` entity remains deferred because route metadata is currently derivable from `Site` and `Project`
 
 Important detail artifacts:
 
+- `artifacts/project-route-audit/report.md`
 - `artifacts/site-next-gap-audit/report.md`
 - `artifacts/content-audit/legacy-content-report.md`
 
@@ -42,27 +43,26 @@ Important detail artifacts:
 - Treat legacy runtime (`support.js` + `x-dc`) as read-only.
 - Treat Knowledge Repository records as the source of truth.
 - Treat HTML, `llms.txt`, and `sitemap.xml` as generated projections of validated knowledge records.
-- Add canonical routes only after defining an explicit route/page contract.
+- Generate only route instances approved by the project route contract.
+- Keep redirect decisions separate from canonical route ownership.
 
 ## Stage Completed
 
-The completed stage added an explicit, reusable Smart Home capability boundary:
+The completed diagnostic stage established four route families:
 
-- `content/tables/capability-sections.yaml` owns visible copy and record references
-- `knowledge/entities/capability-section.mjs` validates the record shape
-- the Knowledge Repository validates `service_ids`, `media_ids`, and `related_external_app_id`
-- `architecture/content-model.yaml` defines capability section fields and relations
-- `tools/site-next/build.mjs` renders the section, media gallery, service context, and related planner CTA
-- `tools/ai-discovery/build-llms.mjs` renders the same capability facts into `llms.txt`
-- `tools/ai-discovery/validate-llms.mjs` detects missing Smart Home facts
-- Knowledge Repository tests cover entity validation and unknown references
+- `/projects/`: ready for generation
+- `/projects/{project-slug}/`: three routes ready for generation
+- `/gallery/`: blocked on media migration or an explicit curated-gallery decision
+- `/projects/{project-slug}/images/{media-slug}/`: deferred
 
-Browser verification completed with Playwright Chromium:
+Legacy source coverage:
 
-- `site-next`: 1440x900 and 390x844
-- Smart Home lead and gallery media returned HTTP 200
-- no horizontal overflow or incoherent layout overlap was observed
-- legacy `index.html` and `support.js` were not changed
+- economic gallery: 2 of 16 images have project-owned Media records; one studio project is unmodeled
+- standard gallery: 5 of 6 images have project-owned Media records
+- premium gallery: 5 of 17 images have project-owned Media records; two more are modeled as capability media
+- overall: 27 of 39 legacy content images lack project ownership and 25 lack any Media record
+
+The three current project detail routes are ready because each Project has truthful identity, summary, services, location, and at least two validated project-owned images. Initial pages must not imply full legacy gallery coverage.
 
 ## Non-Negotiable Constraints
 
@@ -73,8 +73,9 @@ Browser verification completed with Playwright Chromium:
 - Do not add dependencies unless the current platform cannot reasonably solve the problem.
 - Keep `content/tables/*.yaml` JSON-compatible until YAML-specific authoring is required.
 - Do not create `Article` or `Testimonial` records without real source records.
-- Do not invent canonical pages or add routes to `sitemap.xml` before their HTML output exists.
-- Do not address remaining legacy structural warnings without browser/runtime verification.
+- Do not generate `/gallery/` while its contract status is blocked.
+- Do not generate image-detail routes while their family status is deferred.
+- Do not add a route to `sitemap.xml` before its raw HTML exists and passes validation.
 
 ## Current Checks
 
@@ -87,12 +88,12 @@ node tools/checks/run.mjs
 Expected result:
 
 - 13 Knowledge tests pass.
+- project route contract validation passes.
 - `llms.txt` build and validation pass.
 - `site-next` build passes.
 - sitemap build and validation pass.
 - content audit completes with `0 errors / 5 warnings`.
 - `git diff --check` passes.
-- repeated generation does not change tracked output.
 
 Known remaining legacy audit warnings:
 
@@ -106,34 +107,36 @@ Known remaining legacy audit warnings:
 
 Goal:
 
-Define the project and gallery route-generation contract before adding new canonical HTML pages.
+Generate the approved project index and three project detail pages from Knowledge Repository records.
 
-### Step 1: Source Inventory
+### Step 1: Static Generation
 
-- map legacy gallery files to existing `Project` and `Media` records
-- identify which current records have enough truthful content for a detail page
-- record legacy URLs as source material, not target canonical routes
+- generate `site-next/projects/index.html`
+- generate `site-next/projects/{project-slug}/index.html` for all three current Project records
+- use current Project, Media, Service, and Site records only
+- preserve image dimensions, semantic headings, visible internal links, and raw HTML content
 
-### Step 2: Route Contract
+### Step 2: Page Validation
 
-Add a machine-readable architecture contract covering:
+- require unique title, description, canonical URL, and one H1 per page
+- require project images and service references to resolve through Knowledge
+- verify index-to-detail and detail-to-index links
+- verify generated output paths match the route contract
 
-- `/projects/`
-- `/projects/{project-slug}/`
-- `/gallery/`
-- deferred `/projects/{project-slug}/images/{image-slug}/` routes
-- ownership of canonical URL generation and sitemap inclusion
+### Step 3: Contract And Sitemap Activation
 
-Do not introduce a generic `Page` entity until the route contract demonstrates the required fields and consumers.
+- set `generated_html_path` only after files exist
+- set `sitemap_eligible` only after page validation passes
+- update the sitemap builder to consume eligible route records
+- keep `/gallery/` and image-detail routes excluded
 
-### Step 3: Validation Plan
+### Step 4: Browser Verification
 
-- require every route record to resolve to existing Knowledge entities
-- prevent duplicate paths and canonical URLs
-- require generated HTML before sitemap inclusion
-- define legacy redirect decisions separately from the canonical route model
+- verify project index and every detail page on desktop and mobile
+- verify all project media return HTTP 200
+- confirm the legacy homepage remains unchanged
 
-### Step 4: Handoff And Commit
+### Step 5: Handoff And Commit
 
 Update:
 
@@ -143,13 +146,13 @@ Update:
 Suggested commit message:
 
 ```text
-Define project route generation
+Generate project pages from knowledge
 ```
 
 ## Later Work
 
-1. Generate project index/detail pages from the approved route contract.
-2. Add canonical project pages to `sitemap.xml` only after generation exists.
+1. Decide between complete and curated `/gallery/` after media migration.
+2. Add canonical image-detail pages only after required Media metadata exists.
 3. Homepage value propositions from existing legacy source content.
 4. Process steps from existing legacy source content.
 5. Articles and testimonials only after real source records are available.
