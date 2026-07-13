@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-12T12:32:39.513Z",
+  "generatedAt": "2026-07-13T19:07:04.049Z",
   "source": "index.html",
   "meta": {
     "title": "Reformas integrales en Barcelona | Vital Vibe Construction",
@@ -785,9 +785,7 @@
     "characterCount": 92307,
     "lineCount": 835,
     "xDcPresent": true,
-    "dataDcScriptPresent": true,
-    "hasMain": false,
-    "hasNav": true
+    "dataDcScriptPresent": true
   },
   "findings": [
     {
@@ -809,6 +807,12 @@
       "severity": "warning",
       "code": "missing-main",
       "message": "Document has no semantic <main> landmark.",
+      "details": null
+    },
+    {
+      "severity": "info",
+      "code": "missing-nav",
+      "message": "Document has no semantic <nav> landmark.",
       "details": null
     },
     {

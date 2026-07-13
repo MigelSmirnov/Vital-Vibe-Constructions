@@ -1,6 +1,6 @@
 # Legacy Content and Crawlability Audit
 
-Generated from `index.html` at 2026-07-12T12:32:39.513Z.
+Generated from `index.html` at 2026-07-13T19:07:04.049Z.
 
 ## Summary
 
@@ -13,7 +13,7 @@ Generated from `index.html` at 2026-07-12T12:32:39.513Z.
 - JSON-LD blocks: 1
 - Errors: 0
 - Warnings: 5
-- Informational findings: 1
+- Informational findings: 2
 
 ## Metadata
 
@@ -34,6 +34,10 @@ Heading hierarchy jumps from H1 to H3.
 ### WARNING: missing-main
 
 Document has no semantic <main> landmark.
+
+### INFO: missing-nav
+
+Document has no semantic <nav> landmark.
 
 ### WARNING: heavy-inline-styles
 
