@@ -43,9 +43,9 @@ h3 { font-size: 1.3rem; }
 .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 26px; }
 .service-card p, .project-card p, .planner p, .contact p { color: var(--muted); }
 .projects { background: #181c20; }
-.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 18px; }
 .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
-.project-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.project-card img { width: 100%; height: 260px; object-fit: cover; }
 .project-card-body { padding: 22px; display: flex; flex: 1; flex-direction: column; }
 .project-card .project-meta { margin: 0 0 10px; font-size: .82rem; color: var(--accent); font-weight: 700; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 18px; }
@@ -72,6 +72,7 @@ h3 { font-size: 1.3rem; }
   .hero { min-height: 590px; }
   .service-grid { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+  .project-card img { height: 240px; }
   .tier-grid { grid-template-columns: 1fr; }
   .planner-grid { grid-template-columns: 1fr; align-items: start; }
 }
