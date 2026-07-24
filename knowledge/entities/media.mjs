@@ -1,5 +1,7 @@
 import { EntityCore, assertNonEmptyString, compactRecord } from "../core/entity-core.mjs";
 
+const MEDIA_STATES = new Set(["before", "work", "after", "detail"]);
+
 export class Media extends EntityCore {
   constructor({
     id,
@@ -25,8 +27,14 @@ export class Media extends EntityCore {
     if (caption !== null) assertNonEmptyString(caption, "caption");
     if (description !== null) assertNonEmptyString(description, "description");
     if (projectId !== null) assertNonEmptyString(projectId, "projectId");
-    if (beforeAfterState !== null) assertNonEmptyString(beforeAfterState, "beforeAfterState");
-    if (publishedAt !== null) assertNonEmptyString(publishedAt, "publishedAt");
+    if (beforeAfterState !== null) assertMediaState(beforeAfterState);
+    if (projectId !== null && beforeAfterState === null) {
+      throw new Error("Expected beforeAfterState for project-owned media.");
+    }
+    if (publishedAt !== null) assertIsoDate(publishedAt, "publishedAt");
+
+    const normalizedServiceIds = serviceIds.map((serviceId) => normalizeId(serviceId, "serviceIds"));
+    assertUniqueValues(normalizedServiceIds, "serviceIds");
 
     this.src = src;
     this.alt = alt;
@@ -35,7 +43,7 @@ export class Media extends EntityCore {
     this.caption = caption;
     this.description = description;
     this.projectId = projectId;
-    this.serviceIds = Object.freeze(serviceIds.map((serviceId) => normalizeId(serviceId, "serviceIds")));
+    this.serviceIds = Object.freeze(normalizedServiceIds);
     this.beforeAfterState = beforeAfterState;
     this.publishedAt = publishedAt;
 
@@ -84,6 +92,28 @@ export class Media extends EntityCore {
 export function assertPositiveInteger(value, fieldName) {
   if (!Number.isInteger(value) || value <= 0) {
     throw new Error(`Expected ${fieldName} to be a positive integer.`);
+  }
+}
+
+function assertMediaState(value) {
+  assertNonEmptyString(value, "beforeAfterState");
+  if (!MEDIA_STATES.has(value)) {
+    throw new Error(`Expected beforeAfterState to be one of: ${[...MEDIA_STATES].join(", ")}.`);
+  }
+}
+
+function assertIsoDate(value, fieldName) {
+  assertNonEmptyString(value, fieldName);
+  const dateOnly = /^\d{4}-\d{2}-\d{2}$/u;
+  const dateTime = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/u;
+  if ((!dateOnly.test(value) && !dateTime.test(value)) || Number.isNaN(Date.parse(value))) {
+    throw new Error(`Expected ${fieldName} to be an ISO date or UTC timestamp.`);
+  }
+}
+
+function assertUniqueValues(values, fieldName) {
+  if (new Set(values).size !== values.length) {
+    throw new Error(`Expected ${fieldName} to contain unique values.`);
   }
 }
 
