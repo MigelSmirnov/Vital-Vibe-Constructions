@@ -1,7 +1,7 @@
-version: 10
+version: 11
 
 updated_at: 2026-07-24T00:00:00Z
-phase: gallery-media-migration
+phase: repository-structure-alignment
 stage_status: in-progress
 active_branch: agent/architecture-sandbox
 pull_request:
@@ -10,27 +10,41 @@ pull_request:
   base: main
   head: agent/architecture-sandbox
 
+contract_references:
+  architecture: architecture/app-architecture.yaml
+  invariants: architecture/invariants.yaml
+  constants: architecture/constants.yaml
+  routes: architecture/project-routes.yaml
+  gallery_coverage: architecture/gallery-media-coverage.yaml
+
+latest_verified_baseline:
+  commit: 4e69b95
+  summary: Studio project and generated projections committed after a fully green local validation run.
+  checks:
+    knowledge_tests:
+      passed: 13
+      failed: 0
+    gallery_media_coverage:
+      accounted: 39
+      required: 39
+    project_detail_pages: 4
+    sitemap_urls: 6
+    content_audit:
+      errors: 0
+      warnings: 5
+    diff_whitespace: pass
+  command: node tools/checks/run.mjs
+  environment: Termux
+
 current_strategy:
   legacy_runtime: read-only
   next_runtime: site-next
   source_of_truth: Knowledge Repository
-  route_contract: architecture/project-routes.yaml
   gallery_coverage: complete-legacy-coverage
   generated_projections:
     - site-next
     - llms.txt
     - sitemap.xml
-
-latest_completed_work:
-  summary: Studio renovation promoted to a first-class Project with eight modeled legacy Media records and an approved detail route.
-  project_id: project-studio-renovation-barcelona
-  project_slug: estudio-reformado-barcelona
-  media_added: 8
-  verified_dimensions: 1200x1600
-  route:
-    path: /projects/estudio-reformado-barcelona/
-    status: generated
-    sitemap_eligible: true
 
 route_state:
   projects_index:
@@ -50,53 +64,33 @@ route_state:
     pattern: /projects/{project-slug}/images/{media-slug}/
     status: deferred
     sitemap_eligible: false
-  expected_sitemap_url_count: 6
 
-coverage_decision:
-  mode: complete-legacy-coverage
-  required_content_media_count: 39
-  curated_gallery_allowed: false
-  studio_project_required: true
-  studio_project_completed: true
-  allowed_exclusions:
-    - logos
-    - empty runtime placeholders
-    - duplicate references to the same source asset
-
-current_media_coverage:
+media_migration:
   total_content_media: 39
   project_owned_media: 20
   modeled_non_project_media: 2
   unmodeled_media: 17
-
-target_media_coverage:
-  accounted_content_media: 39
-  unclassified_content_media: 0
-
-constraints:
-  - do not edit support.js
-  - do not evolve the legacy runtime
-  - do not bypass the Knowledge Repository
-  - do not duplicate content between builders and tables
-  - do not generate gallery while blocked
-  - do not generate image detail routes while deferred
-  - do not replace complete coverage with a curated subset
-  - do not silently exclude a real legacy content image
-
-checks:
-  command: node tools/checks/run.mjs
-  latest_result: pending-ci-after-studio-migration
-  expected:
-    knowledge_tests: pass
-    gallery_coverage_contract: pass
-    project_detail_count: 4
-    sitemap_url_count: 6
-    content_audit: no-errors
-  note: Connected GitHub API has not exposed a workflow run for the latest commit yet.
+  target_unmodeled_media: 0
 
 active_stage:
-  goal: Model the remaining 17 legacy content images without generating the blocked gallery route.
-  recommended_commit_message: Model remaining legacy gallery media
+  goal: Align repository structure contracts before continuing the remaining media migration.
+  scope:
+    - make architecture YAML describe the repository that actually exists
+    - centralize non-negotiable rules in invariants.yaml
+    - centralize stable values and paths in constants.yaml
+    - keep session-state.yaml limited to current progress and verified facts
+    - update agent reading order
+    - add validation for architecture contract consistency
+  exclusions:
+    - do not move runtime or content directories during this stage
+    - do not generate the blocked gallery route
+    - do not continue media modeling until structural contracts validate
+  next_verification:
+    - node tools/checks/run.mjs
+    - inspect git diff for generated-output churn
+
+next_stage:
+  goal: Model the remaining 17 legacy content images.
   implementation_steps:
     - add six missing proyecto-2 apartment Media records
     - add estandar/pintura.jpeg
@@ -104,17 +98,3 @@ active_stage:
     - reconcile premium capability images with explicit capability or service ownership
     - verify dimensions and preserve before, work, and after states
     - reach 39 accounted images and zero unmodeled images
-    - keep gallery blocked until complete coverage passes
-    - update HANDOFF.md and architecture/session-state.yaml
-  test_plan:
-    - node tools/checks/run.mjs
-    - validate every Media record against its source asset
-    - validate complete legacy source coverage count equals 39
-    - verify blocked and deferred routes remain absent from sitemap.xml
-
-later_work:
-  - generate gallery after complete coverage gate passes
-  - add image detail pages after Media metadata is complete
-  - homepage value propositions
-  - process steps
-  - articles and testimonials after real source records exist
