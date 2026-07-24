@@ -1,489 +1,189 @@
-version: 1
+version: 2
 application:
   id: vital-vibe-constructions
   name: Vital Vibe Constructions Website
-  kind: marketing-website
-  architecture_style: deep-modular-frontend
-  dependency_direction:
-    - ui -> features
-    - features -> domain
-    - infrastructure -> domain
-    - domain -> shared
-  goals:
-    - preserve the current visual design and public behavior
-    - remove business content and interaction logic from the page shell
-    - replace scattered inline constants with explicit configuration
-    - isolate generated runtime code from application-owned code
-    - support incremental refactoring without changing main
+  kind: static-marketing-website
+  migration_style: incremental-strangler
+  source_of_truth: knowledge-repository
+
+truth_priority:
+  - architecture/invariants.yaml
+  - architecture/constants.yaml
+  - architecture/app-architecture.yaml
+  - architecture/session-state.yaml
+  - architecture/project-routes.yaml
+  - architecture/gallery-media-coverage.yaml
+  - HANDOFF.md
+  - README.md
+
+runtimes:
+  legacy:
+    status: read-only
+    entrypoints:
+      - index.html
+      - galeria-economica.dc.html
+      - galeria-estandar.dc.html
+      - galeria-premium.dc.html
+      - aviso-legal.dc.html
+    generated_runtime:
+      path: support.js
+      editable: false
+    role: Preserve current public behavior and provide migration source material.
+  next:
+    status: generated-in-parallel
+    output_root: site-next
+    role: Receive statically generated pages from validated Knowledge Repository records.
+
+layers:
+  architecture:
+    root: architecture
+    responsibility: Machine-readable contracts for structure, invariants, constants, routes, coverage, and current state.
+  content:
+    root: content/tables
+    responsibility: JSON-compatible source records for public business content.
+  domain:
+    root: knowledge
+    responsibility: Entity models, repository loading, reference validation, and collection invariants.
+  tooling:
+    root: tools
+    responsibility: Builders, validators, audits, migrations, checks, and local execution helpers.
+  generated_output:
+    roots:
+      - site-next
+      - llms.txt
+      - sitemap.xml
+    responsibility: Reproducible projections generated from contracts and content records.
+  diagnostics:
+    root: artifacts
+    responsibility: Audit reports and local execution logs; not a content source of truth.
+  legacy_assets:
+    roots:
+      - proyecto-1
+      - proyecto-2
+      - estandar
+      - premium
+      - smart
+    responsibility: Existing media assets referenced by legacy pages and migrated Media records.
 
 modules:
-  - id: site-domain
-    name: Site Domain Model
-    layer: domain
-    responsibility: Own typed business content and concepts used by the construction website.
+  - id: architecture-contracts
+    root: architecture
     owns:
+      - structural contracts
+      - non-negotiable invariants
+      - stable constants
+      - route activation
+      - media coverage policy
+      - current development state
+    depends_on: []
+
+  - id: content-tables
+    root: content/tables
+    owns:
+      - site records
       - services
       - projects
-      - testimonials
+      - media
+      - renovation tiers
       - contact details
-      - company profile
-      - estimate inputs and outputs
-    exposes:
-      - SiteContent
-      - Service
-      - Project
-      - Testimonial
-      - ContactDetails
-      - EstimateRequest
-      - EstimateResult
+      - capability sections
+      - external apps
     depends_on:
-      - shared-types
-    used_by:
-      - site-content
-      - estimate-feature
-      - page-sections
-    data_in:
-      - validated content records
-    data_out:
+      - architecture-contracts
+
+  - id: knowledge-repository
+    root: knowledge
+    owns:
       - domain entities
-    forbidden_dependencies:
-      - page-shell
-      - browser-adapters
-      - generated-runtime
-    extension_points:
-      - CMS-backed content
-      - multilingual content
-    invariant_files:
-      - src/domain/invariants/siteContentInvariants.ts
-      - src/domain/invariants/estimateInvariants.ts
-    config_files:
-      - src/domain/config/domainConstants.ts
-
-  - id: site-content
-    name: Site Content Repository
-    layer: application
-    responsibility: Provide validated website content through a stable public API.
-    owns:
-      - content assembly
-      - content normalization
-      - content validation orchestration
-    exposes:
-      - getSiteContent
+      - content-table adapters
+      - entity and collection validation
+      - cross-record reference integrity
     depends_on:
-      - site-domain
-      - site-config
-    used_by:
-      - page-sections
-      - seo-feature
-    data_in:
-      - static content configuration
-    data_out:
-      - SiteContent
-    forbidden_dependencies:
-      - page-shell
-      - generated-runtime
-    extension_points:
-      - remote CMS adapter
-    invariant_files:
-      - src/content/invariants/contentInvariants.ts
-    config_files:
-      - src/content/siteContent.ts
+      - content-tables
 
-  - id: site-config
-    name: Site Configuration
-    layer: shared
-    responsibility: Own stable site-wide constants and environment-independent configuration.
+  - id: site-next-builders
+    root: tools/site-next
     owns:
-      - navigation configuration
-      - section identifiers
-      - breakpoints
-      - animation settings
-      - external URLs
-      - SEO defaults
-    exposes:
-      - SITE_CONFIG
-      - NAVIGATION_ITEMS
-      - UI_CONSTANTS
+      - site-next homepage generation
+      - project index generation
+      - project detail generation
+      - generated-page validation
+    depends_on:
+      - knowledge-repository
+      - route-contracts
+
+  - id: route-contracts
+    root: architecture/project-routes.yaml
+    owns:
+      - route families
+      - concrete route instances
+      - sitemap eligibility
+      - generated output paths
+    depends_on:
+      - architecture-contracts
+      - knowledge-repository
+
+  - id: gallery-coverage
+    root: architecture/gallery-media-coverage.yaml
+    owns:
+      - complete legacy image inventory
+      - source ownership classification
+      - gallery unlock condition
+    depends_on:
+      - architecture-contracts
+      - content-tables
+
+  - id: seo-and-ai-discovery
+    roots:
+      - tools/seo
+      - tools/ai-discovery
+    owns:
+      - sitemap generation and validation
+      - llms.txt generation and validation
+    depends_on:
+      - knowledge-repository
+      - route-contracts
+
+  - id: content-audit
+    root: tools/content-extractor
+    owns:
+      - legacy and generated HTML diagnostics
+      - machine-readable and human-readable reports
     depends_on: []
-    used_by:
-      - site-content
-      - page-sections
-      - seo-feature
-      - page-shell
-    data_in:
-      - explicit configuration values
-    data_out:
-      - immutable configuration objects
-    forbidden_dependencies:
-      - site-domain
-      - page-shell
-      - browser-adapters
-    extension_points:
-      - environment-specific configuration
-    invariant_files: []
-    config_files:
-      - src/config/siteConfig.ts
-      - src/config/uiConstants.ts
 
-  - id: estimate-feature
-    name: Estimate Feature
-    layer: application
-    responsibility: Own estimate input normalization, validation, and calculations independently of UI.
+  - id: verification
+    root: tools/checks
     owns:
-      - estimate calculation
-      - estimate validation
-      - estimate result formatting model
-    exposes:
-      - calculateEstimate
-      - validateEstimateRequest
+      - ordered full-project validation command
     depends_on:
-      - site-domain
-      - site-config
-    used_by:
-      - page-sections
-    data_in:
-      - EstimateRequest
-    data_out:
-      - EstimateResult
-    forbidden_dependencies:
-      - page-shell
-      - browser-adapters
-      - generated-runtime
-    extension_points:
-      - backend pricing adapter
-      - regional pricing rules
-    invariant_files:
-      - src/features/estimate/invariants.ts
-    config_files:
-      - src/features/estimate/estimateConstants.ts
+      - knowledge-repository
+      - gallery-coverage
+      - site-next-builders
+      - seo-and-ai-discovery
+      - route-contracts
+      - content-audit
 
-  - id: contact-feature
-    name: Contact Feature
-    layer: application
-    responsibility: Prepare and validate contact submissions before delegating delivery to an adapter.
+  - id: termux-bridge
+    root: tools/termux
     owns:
-      - contact form model
-      - contact validation
-      - submission orchestration
-    exposes:
-      - submitContactRequest
-      - validateContactRequest
+      - safe local command execution
+      - reproducible diagnostic logs
     depends_on:
-      - site-domain
-      - contact-adapter
-    used_by:
-      - page-sections
-    data_in:
-      - contact form values
-    data_out:
-      - submission result
-    forbidden_dependencies:
-      - page-shell
-      - generated-runtime
-    extension_points:
-      - CRM integration
-      - email provider integration
-    invariant_files:
-      - src/features/contact/contactInvariants.ts
-    config_files:
-      - src/features/contact/contactConstants.ts
+      - verification
 
-  - id: contact-adapter
-    name: Contact Delivery Adapter
-    layer: infrastructure
-    responsibility: Isolate network or third-party delivery details for contact requests.
-    owns:
-      - HTTP request mapping
-      - provider response mapping
-      - infrastructure errors
-    exposes:
-      - sendContactRequest
-    depends_on:
-      - site-domain
-    used_by:
-      - contact-feature
-    data_in:
-      - validated contact request
-    data_out:
-      - provider-neutral delivery result
-    forbidden_dependencies:
-      - page-shell
-      - page-sections
-      - generated-runtime
-    extension_points:
-      - alternate form provider
-    invariant_files: []
-    config_files:
-      - src/infrastructure/contact/contactAdapterConfig.ts
-
-  - id: browser-adapters
-    name: Browser Adapters
-    layer: infrastructure
-    responsibility: Isolate browser APIs used for scrolling, observers, storage, and analytics.
-    owns:
-      - intersection observer wrapper
-      - scroll navigation adapter
-      - analytics adapter
-      - storage adapter
-    exposes:
-      - createSectionObserver
-      - scrollToSection
-      - trackEvent
-    depends_on:
-      - shared-types
-    used_by:
-      - page-sections
-      - page-shell
-    data_in:
-      - browser interaction requests
-    data_out:
-      - provider-neutral results
-    forbidden_dependencies:
-      - site-domain
-      - estimate-feature
-    extension_points:
-      - alternate analytics provider
-    invariant_files: []
-    config_files:
-      - src/infrastructure/browser/browserConstants.ts
-
-  - id: page-sections
-    name: Page Sections
-    layer: ui
-    responsibility: Render focused page sections using domain content and application services.
-    owns:
-      - hero section
-      - services section
-      - projects section
-      - testimonials section
-      - estimate section
-      - contact section
-      - footer
-    exposes:
-      - HeroSection
-      - ServicesSection
-      - ProjectsSection
-      - TestimonialsSection
-      - EstimateSection
-      - ContactSection
-      - SiteFooter
-    depends_on:
-      - site-domain
-      - site-content
-      - site-config
-      - estimate-feature
-      - contact-feature
-      - browser-adapters
-      - ui-components
-    used_by:
-      - page-shell
-    data_in:
-      - domain content
-      - application callbacks
-    data_out:
-      - rendered section UI
-    forbidden_dependencies:
-      - contact-adapter
-      - generated-runtime
-    extension_points:
-      - additional marketing sections
-    invariant_files: []
-    config_files:
-      - src/ui/sections/sectionConfig.ts
-
-  - id: ui-components
-    name: Shared UI Components
-    layer: ui
-    responsibility: Own reusable visual primitives without business rules.
-    owns:
-      - buttons
-      - cards
-      - section headings
-      - form controls
-      - responsive containers
-    exposes:
-      - Button
-      - Card
-      - SectionHeading
-      - Field
-      - Container
-    depends_on:
-      - site-config
-      - shared-types
-    used_by:
-      - page-sections
-      - page-shell
-    data_in:
-      - presentation props
-    data_out:
-      - rendered UI primitives
-    forbidden_dependencies:
-      - site-domain
-      - estimate-feature
-      - contact-feature
-      - contact-adapter
-    extension_points:
-      - design tokens
-      - component variants
-    invariant_files: []
-    config_files:
-      - src/ui/theme/tokens.ts
-
-  - id: seo-feature
-    name: SEO Metadata
-    layer: application
-    responsibility: Build page metadata and structured data from validated site content.
-    owns:
-      - title and description generation
-      - canonical metadata
-      - organization structured data
-    exposes:
-      - buildSeoMetadata
-      - buildOrganizationSchema
-    depends_on:
-      - site-domain
-      - site-config
-    used_by:
-      - page-shell
-    data_in:
-      - SiteContent
-    data_out:
-      - metadata model
-    forbidden_dependencies:
-      - generated-runtime
-      - browser-adapters
-    extension_points:
-      - route-specific metadata
-    invariant_files:
-      - src/features/seo/seoInvariants.ts
-    config_files:
-      - src/features/seo/seoConstants.ts
-
-  - id: page-shell
-    name: Page Shell
-    layer: ui
-    responsibility: Compose the page, global navigation, metadata, and section modules without owning their business logic.
-    owns:
-      - application bootstrap
-      - top-level layout
-      - navigation composition
-      - section ordering
-    exposes:
-      - App
-    depends_on:
-      - site-content
-      - site-config
-      - seo-feature
-      - page-sections
-      - ui-components
-      - browser-adapters
-    used_by: []
-    data_in:
-      - application configuration
-    data_out:
-      - complete website UI
-    forbidden_dependencies:
-      - contact-adapter
-      - generated-runtime
-    extension_points:
-      - route shell
-    invariant_files: []
-    config_files:
-      - src/app/appConfig.ts
-
-  - id: generated-runtime
-    name: Generated DC Runtime
-    layer: infrastructure
-    responsibility: Host generated runtime code as an external implementation detail until it can be replaced or rebuilt from its source project.
-    owns:
-      - support.js generated bundle
-    exposes:
-      - runtime bootstrap only
-    depends_on: []
-    used_by:
-      - legacy-entrypoint
-    data_in:
-      - x-dc document template
-    data_out:
-      - mounted page runtime
-    forbidden_dependencies:
-      - site-domain
-      - estimate-feature
-      - contact-feature
-    extension_points:
-      - replacement with standard application bootstrap
-    invariant_files: []
-    config_files: []
-
-  - id: legacy-entrypoint
-    name: Legacy Entrypoint
-    layer: infrastructure
-    responsibility: Preserve the current index.html behavior during incremental migration.
-    owns:
-      - current index.html
-      - compatibility loading
-    exposes:
-      - current public website
-    depends_on:
-      - generated-runtime
-    used_by: []
-    data_in:
-      - legacy page template
-    data_out:
-      - rendered legacy website
-    forbidden_dependencies:
-      - site-domain
-      - estimate-feature
-      - contact-feature
-    extension_points:
-      - progressive replacement by page-shell
-    invariant_files: []
-    config_files: []
-
-  - id: shared-types
-    name: Shared Types and Utilities
-    layer: shared
-    responsibility: Own framework-neutral primitives shared across modules.
-    owns:
-      - result types
-      - identifiers
-      - utility types
-    exposes:
-      - Result
-      - EntityId
-    depends_on: []
-    used_by:
-      - site-domain
-      - browser-adapters
-      - ui-components
-    data_in:
-      - primitive values
-    data_out:
-      - shared primitives
-    forbidden_dependencies:
-      - page-shell
-      - generated-runtime
-    extension_points: []
-    invariant_files: []
-    config_files: []
+build_flow:
+  - architecture contracts define allowed structure and route state
+  - content tables define business records
+  - Knowledge Repository loads and validates records
+  - builders generate site-next, llms.txt, and sitemap.xml
+  - validators compare outputs with contracts and source records
+  - full checks run through tools/checks/run.mjs
 
 migration:
-  strategy: incremental-strangler
+  current_phase: gallery-media-migration
   rules:
-    - never edit support.js directly because it is generated
-    - preserve index.html as the working legacy entrypoint until replacement sections are verified
-    - extract configuration and content before extracting visual sections
-    - move one page section at a time behind a stable public API
-    - keep domain and application modules free of DOM and React dependencies
-    - validate behavior after every extraction
-  implementation_order:
-    - document current structure and behavior
-    - extract site configuration and content
-    - define domain types and invariants
-    - extract estimate calculations and validation
-    - extract contact submission orchestration and adapter
-    - create shared UI primitives and design tokens
-    - migrate page sections incrementally
-    - replace legacy entrypoint with page shell
-    - add tests for domain logic, calculations, and adapters
-    - remove obsolete inline code after parity verification
+    - preserve legacy runtime until replacement routes are generated and validated
+    - migrate content through Knowledge Repository records rather than copying it into builders
+    - activate routes only through architecture/project-routes.yaml
+    - keep generated outputs reproducible from committed inputs
+    - perform repository restructuring only from a green validation baseline
