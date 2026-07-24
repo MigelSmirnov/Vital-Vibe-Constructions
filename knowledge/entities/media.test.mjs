@@ -78,6 +78,55 @@ test("repository rejects orphan media", () => {
   );
 });
 
+test("repository rejects project-owned media missing from project image_ids", () => {
+  const tables = createTables();
+  tables.media.push({
+    ...validMediaRecord,
+    id: "media-unlisted",
+    slug: "media-unlisted",
+    src: "project/unlisted.jpeg",
+  });
+
+  assert.throws(
+    () => createKnowledgeRepository(tables),
+    /Project-media mismatch for media "media-unlisted"; expected project "project-test" image_ids to include it/,
+  );
+});
+
+test("repository rejects project references to media owned by another project", () => {
+  const tables = createTables();
+  tables.projects.push({
+    id: "project-other",
+    slug: "project-other",
+    title: "Other project",
+    summary: "Another project fixture.",
+    image_ids: ["media-test"],
+    service_ids: ["integral-renovation"],
+  });
+
+  assert.throws(
+    () => createKnowledgeRepository(tables),
+    /Project-media mismatch for project "project-other" and media "media-test"; expected media.project_id to equal "project-other"/,
+  );
+});
+
+test("repository preserves author-defined project media order", () => {
+  const tables = createTables();
+  const secondMedia = {
+    ...validMediaRecord,
+    id: "media-before",
+    slug: "media-before",
+    src: "project/before.jpeg",
+    before_after_state: "before",
+  };
+  tables.media.push(secondMedia);
+  tables.projects[0].image_ids = [secondMedia.id, validMediaRecord.id];
+
+  const repository = createKnowledgeRepository(tables);
+
+  assert.deepEqual(repository.findProjectById("project-test").imageIds, ["media-before", "media-test"]);
+});
+
 function createTables() {
   return structuredClone({
     site: {
