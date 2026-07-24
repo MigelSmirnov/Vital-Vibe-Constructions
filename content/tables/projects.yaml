@@ -14,6 +14,25 @@
       "budget_range": "Económico"
     },
     {
+      "id": "project-studio-renovation-barcelona",
+      "slug": "estudio-reformado-barcelona",
+      "title": "Estudio reformado en Barcelona",
+      "summary": "Reforma integral de un estudio en Barcelona documentada desde el estado original y la obra hasta los baños y el espacio terminado.",
+      "image_ids": [
+        "media-proyecto-1-estudio-reformado",
+        "media-proyecto-1-estado-original",
+        "media-proyecto-1-estudio-antes",
+        "media-proyecto-1-solera-base",
+        "media-proyecto-1-paredes-enlucidas",
+        "media-proyecto-1-bano-reformado",
+        "media-proyecto-1-aseo-reformado",
+        "media-proyecto-1-pladur-preinstalacion"
+      ],
+      "service_ids": ["integral-renovation", "bathrooms", "masonry", "painting"],
+      "location": "Barcelona",
+      "budget_range": "Económico"
+    },
+    {
       "id": "project-reforma-integral-estandar-barcelona",
       "slug": "reforma-integral-estandar-barcelona",
       "title": "Reforma integral estándar en Barcelona",
