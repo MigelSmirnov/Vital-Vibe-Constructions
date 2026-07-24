@@ -137,7 +137,8 @@
       "alt": "Instalación de suelo de roble",
       "width": 4032,
       "height": 3024,
-      "project_id": "project-reforma-integral-estandar-barcelona"
+      "project_id": "project-reforma-integral-estandar-barcelona",
+      "before_after_state": "work"
     },
     {
       "id": "media-estandar-pasillo",
@@ -156,7 +157,8 @@
       "alt": "Enlucido y pintura de techo a pistola en obra premium",
       "width": 813,
       "height": 1442,
-      "project_id": "project-trabajos-contrata-premium"
+      "project_id": "project-trabajos-contrata-premium",
+      "before_after_state": "work"
     },
     {
       "id": "media-premium-pintura-pared",
@@ -165,7 +167,8 @@
       "alt": "Pintura de pared a pistola con acabado uniforme",
       "width": 818,
       "height": 1436,
-      "project_id": "project-trabajos-contrata-premium"
+      "project_id": "project-trabajos-contrata-premium",
+      "before_after_state": "work"
     },
     {
       "id": "media-premium-led-escalera",
@@ -174,7 +177,8 @@
       "alt": "Escalera con iluminación LED integrada en villa premium",
       "width": 750,
       "height": 1038,
-      "project_id": "project-trabajos-contrata-premium"
+      "project_id": "project-trabajos-contrata-premium",
+      "before_after_state": "after"
     },
     {
       "id": "media-premium-pladur-instalacion",
@@ -183,7 +187,8 @@
       "alt": "Pladur y preinstalación en obra premium",
       "width": 4032,
       "height": 3024,
-      "project_id": "project-trabajos-contrata-premium"
+      "project_id": "project-trabajos-contrata-premium",
+      "before_after_state": "work"
     },
     {
       "id": "media-premium-pladur-obra",
@@ -192,7 +197,8 @@
       "alt": "Enlucido y acabados en obra premium",
       "width": 4032,
       "height": 3024,
-      "project_id": "project-trabajos-contrata-premium"
+      "project_id": "project-trabajos-contrata-premium",
+      "before_after_state": "work"
     },
     {
       "id": "media-smart-gira-panel",
