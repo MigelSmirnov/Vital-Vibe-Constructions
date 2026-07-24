@@ -4,7 +4,11 @@ import { spawnSync } from "node:child_process";
 import process from "node:process";
 
 const checks = [
-  ["Knowledge tests", "node", ["--test", "knowledge/repository/knowledge-repository.test.mjs"]],
+  ["Knowledge tests", "node", [
+    "--test",
+    "knowledge/entities/media.test.mjs",
+    "knowledge/repository/knowledge-repository.test.mjs",
+  ]],
   ["Gallery media coverage", "node", ["tools/content-inventory/validate-gallery-coverage.mjs"]],
   ["llms.txt build", "node", ["tools/ai-discovery/build-llms.mjs"]],
   ["llms.txt validation", "node", ["tools/ai-discovery/validate-llms.mjs"]],

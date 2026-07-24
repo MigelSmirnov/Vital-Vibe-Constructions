@@ -111,6 +111,7 @@ const baseTables = Object.freeze({
       height: 800,
       project_id: "project-test",
       service_ids: ["integral-renovation"],
+      before_after_state: "after",
     },
   ],
 });
