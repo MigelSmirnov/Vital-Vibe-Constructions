@@ -1,4 +1,4 @@
-version: 9
+version: 10
 
 updated_at: 2026-07-24T00:00:00Z
 phase: gallery-media-migration
@@ -21,114 +21,91 @@ current_strategy:
     - llms.txt
     - sitemap.xml
 
-completed_stage:
-  summary: Approved project index and detail routes generated, validated, and activated from Knowledge records.
-  latest_completed_work: Define complete gallery media coverage
-  generated_routes:
-    projects_index:
-      path: /projects/
-      status: generated
-      sitemap_eligible: true
-    project_detail:
-      pattern: /projects/{project-slug}/
-      status: generated
-      instance_count: 3
-      sitemap_eligible: true
-    gallery_index:
-      path: /gallery/
-      status: blocked-on-complete-media-migration
-      sitemap_eligible: false
-    project_image_detail:
-      pattern: /projects/{project-slug}/images/{media-slug}/
-      status: deferred
-      sitemap_eligible: false
-  page_validation:
-    unique_metadata: pass
-    semantic_html: pass
-    reciprocal_links: pass
-    knowledge_references: pass
-    output_paths: pass
-  browser_verification:
-    desktop: pass
-    mobile: pass
-    project_media_http_200: 12
-  sitemap_url_count: 5
+latest_completed_work:
+  summary: Studio renovation promoted to a first-class Project with eight modeled legacy Media records and an approved detail route.
+  project_id: project-studio-renovation-barcelona
+  project_slug: estudio-reformado-barcelona
+  media_added: 8
+  verified_dimensions: 1200x1600
+  route:
+    path: /projects/estudio-reformado-barcelona/
+    status: generated
+    sitemap_eligible: true
+
+route_state:
+  projects_index:
+    path: /projects/
+    status: generated
+    sitemap_eligible: true
+  project_detail:
+    pattern: /projects/{project-slug}/
+    status: generated
+    instance_count: 4
+    sitemap_eligible: true
+  gallery_index:
+    path: /gallery/
+    status: blocked-on-complete-media-migration
+    sitemap_eligible: false
+  project_image_detail:
+    pattern: /projects/{project-slug}/images/{media-slug}/
+    status: deferred
+    sitemap_eligible: false
+  expected_sitemap_url_count: 6
 
 coverage_decision:
   mode: complete-legacy-coverage
   required_content_media_count: 39
   curated_gallery_allowed: false
   studio_project_required: true
+  studio_project_completed: true
   allowed_exclusions:
     - logos
     - empty runtime placeholders
     - duplicate references to the same source asset
-  rules:
-    - every unique legacy content image must resolve to one Media record
-    - every Media record must have truthful alt text and verified dimensions
-    - project media must resolve to a Project
-    - capability media must resolve to an explicit capability or service relationship
-    - exclusions require a documented non-content or duplicate reason
 
-route_invariants:
-  - canonical origin comes from Site.canonicalOrigin
-  - route paths and canonical URLs are unique
-  - every project detail route resolves to one current Project
-  - generated HTML is required before sitemap eligibility
-  - eligible routes appear exactly once in sitemap.xml
-  - blocked and deferred routes remain absent from generated output and sitemap.xml
-  - gallery cannot be generated until all 39 legacy content images pass the coverage gate
+current_media_coverage:
+  total_content_media: 39
+  project_owned_media: 20
+  modeled_non_project_media: 2
+  unmodeled_media: 17
+
+target_media_coverage:
+  accounted_content_media: 39
+  unclassified_content_media: 0
 
 constraints:
   - do not edit support.js
   - do not evolve the legacy runtime
   - do not bypass the Knowledge Repository
   - do not duplicate content between builders and tables
-  - do not add dependencies unless the current platform cannot reasonably solve the problem
   - do not generate gallery while blocked
   - do not generate image detail routes while deferred
-  - do not add sitemap URLs before generated HTML validation
   - do not replace complete coverage with a curated subset
   - do not silently exclude a real legacy content image
 
 checks:
   command: node tools/checks/run.mjs
-  latest_result: pass-before-coverage-decision
-  knowledge_test_count: 13
-  includes:
-    - knowledge tests
-    - llms.txt build and validation
-    - site-next build
-    - project page build and validation
-    - sitemap build and validation
-    - project route contract validation
-    - content audit
-    - diff whitespace check
-  expected_sitemap_url_count: 5
-  expected_content_audit: 0 errors and 5 warnings
+  latest_result: pending-ci-after-studio-migration
+  expected:
+    knowledge_tests: pass
+    gallery_coverage_contract: pass
+    project_detail_count: 4
+    sitemap_url_count: 6
+    content_audit: no-errors
+  note: Connected GitHub API has not exposed a workflow run for the latest commit yet.
 
 active_stage:
-  goal: Model every legacy content image without generating blocked gallery routes.
-  recommended_commit_message: Model complete legacy media inventory
+  goal: Model the remaining 17 legacy content images without generating the blocked gallery route.
+  recommended_commit_message: Model remaining legacy gallery media
   implementation_steps:
-    - create a first-class Project record for the studio renovation
-    - add Media records for all eight proyecto-1 studio images
-    - add missing Media records for the six unmodeled proyecto-2 apartment images
-    - add the remaining standard gallery image
-    - add the remaining premium gallery images
-    - classify capability images separately from project-owned images
+    - add six missing proyecto-2 apartment Media records
+    - add estandar/pintura.jpeg
+    - add remaining premium project Media records
+    - reconcile premium capability images with explicit capability or service ownership
     - verify dimensions and preserve before, work, and after states
-    - add a complete-coverage validation report and gate
-    - keep gallery blocked until all 39 content images are accounted for
+    - reach 39 accounted images and zero unmodeled images
+    - keep gallery blocked until complete coverage passes
     - update HANDOFF.md and architecture/session-state.yaml
-  current_media_coverage:
-    total_content_media: 39
-    project_owned_media: 12
-    modeled_non_project_media: 2
-    unmodeled_media: 25
-  target_media_coverage:
-    accounted_content_media: 39
-    unclassified_content_media: 0
   test_plan:
     - node tools/checks/run.mjs
     - validate every Media record against its source asset
