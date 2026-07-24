@@ -59,6 +59,7 @@ export class KnowledgeRepository {
       capabilitySections: this.capabilitySections,
       media: this.media,
     });
+    assertProjectMediaConsistency({ projects: this.projects, media: this.media });
 
     Object.freeze(this);
   }
@@ -170,6 +171,33 @@ function assertMediaOwnership({ projects, capabilitySections, media }) {
     if (!hasOwner) {
       throw new Error(
         `Orphan media "${item.id}"; expected project_id, service_ids, or an explicit project/capability reference.`,
+      );
+    }
+  }
+}
+
+function assertProjectMediaConsistency({ projects, media }) {
+  const mediaById = new Map(media.map((item) => [item.id, item]));
+  const projectImageIds = new Map(projects.map((project) => [project.id, new Set(project.imageIds)]));
+
+  for (const project of projects) {
+    for (const mediaId of project.imageIds) {
+      const item = mediaById.get(mediaId);
+      if (item.projectId !== project.id) {
+        throw new Error(
+          `Project-media mismatch for project "${project.id}" and media "${mediaId}"; expected media.project_id to equal "${project.id}".`,
+        );
+      }
+    }
+  }
+
+  for (const item of media) {
+    if (item.projectId === null) continue;
+
+    const imageIds = projectImageIds.get(item.projectId);
+    if (!imageIds.has(item.id)) {
+      throw new Error(
+        `Project-media mismatch for media "${item.id}"; expected project "${item.projectId}" image_ids to include it.`,
       );
     }
   }
