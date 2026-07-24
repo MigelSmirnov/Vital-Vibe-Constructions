@@ -21,6 +21,86 @@
       "before_after_state": "before"
     },
     {
+      "id": "media-proyecto-1-estado-original",
+      "slug": "proyecto-1-estado-original",
+      "src": "proyecto-1/p1.jpeg",
+      "alt": "Estado original",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-studio-renovation-barcelona",
+      "before_after_state": "before"
+    },
+    {
+      "id": "media-proyecto-1-estudio-antes",
+      "slug": "proyecto-1-estudio-antes",
+      "src": "proyecto-1/p2.jpeg",
+      "alt": "Estudio antes de la reforma",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-studio-renovation-barcelona",
+      "before_after_state": "before"
+    },
+    {
+      "id": "media-proyecto-1-solera-base",
+      "slug": "proyecto-1-solera-base",
+      "src": "proyecto-1/p3.jpeg",
+      "alt": "Solera y base de suelo",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-studio-renovation-barcelona",
+      "before_after_state": "work"
+    },
+    {
+      "id": "media-proyecto-1-paredes-enlucidas",
+      "slug": "proyecto-1-paredes-enlucidas",
+      "src": "proyecto-1/p4.jpeg",
+      "alt": "Paredes enlucidas en obra",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-studio-renovation-barcelona",
+      "before_after_state": "work"
+    },
+    {
+      "id": "media-proyecto-1-bano-reformado",
+      "slug": "proyecto-1-bano-reformado",
+      "src": "proyecto-1/p5.jpeg",
+      "alt": "Baño reformado",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-studio-renovation-barcelona",
+      "before_after_state": "after"
+    },
+    {
+      "id": "media-proyecto-1-aseo-reformado",
+      "slug": "proyecto-1-aseo-reformado",
+      "src": "proyecto-1/p6.jpeg",
+      "alt": "Aseo reformado",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-studio-renovation-barcelona",
+      "before_after_state": "after"
+    },
+    {
+      "id": "media-proyecto-1-estudio-reformado",
+      "slug": "proyecto-1-estudio-reformado",
+      "src": "proyecto-1/p7.jpeg",
+      "alt": "Estudio reformado",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-studio-renovation-barcelona",
+      "before_after_state": "after"
+    },
+    {
+      "id": "media-proyecto-1-pladur-preinstalacion",
+      "slug": "proyecto-1-pladur-preinstalacion",
+      "src": "proyecto-1/p8.jpeg",
+      "alt": "Pladur y preinstalación",
+      "width": 1200,
+      "height": 1600,
+      "project_id": "project-studio-renovation-barcelona",
+      "before_after_state": "work"
+    },
+    {
       "id": "media-estandar-cocina-terminada",
       "slug": "estandar-cocina-terminada",
       "src": "estandar/cocina.jpeg",
