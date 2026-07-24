@@ -7,7 +7,13 @@
       "summary": "Reforma integral de un piso en Barcelona con cocina renovada y entrega llave en mano.",
       "image_ids": [
         "media-proyecto-2-cocina-despues",
-        "media-proyecto-2-cocina-antes"
+        "media-proyecto-2-cocina-antes",
+        "media-proyecto-2-habitacion-antes",
+        "media-proyecto-2-demolicion-obra",
+        "media-proyecto-2-dormitorio-reformado",
+        "media-proyecto-2-bano-reformado",
+        "media-proyecto-2-cocina-reformada",
+        "media-proyecto-2-pasillo-reformado"
       ],
       "service_ids": ["integral-renovation", "kitchens"],
       "location": "Barcelona",
@@ -42,6 +48,7 @@
         "media-estandar-obra-instalaciones",
         "media-estandar-suelo-base",
         "media-estandar-parquet",
+        "media-estandar-pintura-iluminacion",
         "media-estandar-pasillo"
       ],
       "service_ids": ["integral-renovation", "kitchens", "electrical", "painting", "masonry"],
@@ -55,10 +62,20 @@
       "summary": "Trabajos especializados de pladur, enlucido, pintura e iluminación LED integrada para viviendas de alta gama.",
       "image_ids": [
         "media-premium-pintura-techo",
-        "media-premium-pintura-pared",
-        "media-premium-led-escalera",
         "media-premium-pladur-instalacion",
-        "media-premium-pladur-obra"
+        "media-premium-pladur-obra",
+        "media-premium-instalacion",
+        "media-premium-prep-techo-1",
+        "media-premium-prep-techo-2",
+        "media-premium-prep-techo-3",
+        "media-premium-prep-techo-4",
+        "media-premium-pintura-pared",
+        "media-premium-techo-1",
+        "media-premium-techo-2",
+        "media-premium-techo-3",
+        "media-premium-techo-4",
+        "media-premium-led-escalera",
+        "media-premium-cuadro-villa"
       ],
       "service_ids": ["electrical", "painting", "masonry"],
       "location": "Barcelona",
