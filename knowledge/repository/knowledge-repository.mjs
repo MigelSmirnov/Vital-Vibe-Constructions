@@ -54,6 +54,11 @@ export class KnowledgeRepository {
       externalApps: this.externalApps,
       media: this.media,
     });
+    assertMediaOwnership({
+      projects: this.projects,
+      capabilitySections: this.capabilitySections,
+      media: this.media,
+    });
 
     Object.freeze(this);
   }
@@ -151,6 +156,22 @@ function assertKnownReferences({ services, projects, capabilitySections, externa
     }
 
     assertAllKnown(item.serviceIds, serviceIds, `media "${item.id}" service_ids`, "services");
+  }
+}
+
+function assertMediaOwnership({ projects, capabilitySections, media }) {
+  const referencedMediaIds = new Set([
+    ...projects.flatMap((project) => project.imageIds),
+    ...capabilitySections.flatMap((section) => section.mediaIds),
+  ]);
+
+  for (const item of media) {
+    const hasOwner = item.projectId !== null || item.serviceIds.length > 0 || referencedMediaIds.has(item.id);
+    if (!hasOwner) {
+      throw new Error(
+        `Orphan media "${item.id}"; expected project_id, service_ids, or an explicit project/capability reference.`,
+      );
+    }
   }
 }
 
