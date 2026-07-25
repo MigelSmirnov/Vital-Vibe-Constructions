@@ -15,6 +15,8 @@ const checks = [
   ["site-next build", "node", ["tools/site-next/build.mjs"]],
   ["project pages build", "node", ["tools/site-next/build-projects.mjs"]],
   ["project pages validation", "node", ["tools/site-next/validate-project-pages.mjs"]],
+  ["gallery page build", "node", ["tools/site-next/build-gallery.mjs"]],
+  ["gallery page validation", "node", ["tools/site-next/validate-gallery-page.mjs"]],
   ["sitemap build", "node", ["tools/seo/build-sitemap.mjs"]],
   ["sitemap validation", "node", ["tools/seo/validate-sitemap.mjs"]],
   ["Project route contract", "node", ["tools/routes/validate-project-routes.mjs"]],
