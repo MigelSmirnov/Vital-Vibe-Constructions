@@ -1,8 +1,8 @@
-version: 11
+version: 12
 
-updated_at: 2026-07-24T00:00:00Z
-phase: repository-structure-alignment
-stage_status: in-progress
+updated_at: 2026-07-25T00:00:00Z
+phase: gallery-route-preparation
+stage_status: ready
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -18,15 +18,19 @@ contract_references:
   gallery_coverage: architecture/gallery-media-coverage.yaml
 
 latest_verified_baseline:
-  commit: 4e69b95
-  summary: Studio project and generated projections committed after a fully green local validation run.
+  commit: f489c5c808788fad848d2f46ebe8bcdfb645c032
+  summary: Complete legacy gallery media coverage and repository structure contracts validated in pull request CI.
   checks:
+    workflow: Project checks
+    workflow_run: 33
+    conclusion: success
     knowledge_tests:
       passed: 13
       failed: 0
     gallery_media_coverage:
-      accounted: 39
+      modeled: 39
       required: 39
+      unmodeled: 0
     project_detail_pages: 4
     sitemap_urls: 6
     content_audit:
@@ -34,7 +38,7 @@ latest_verified_baseline:
       warnings: 5
     diff_whitespace: pass
   command: node tools/checks/run.mjs
-  environment: Termux
+  environment: GitHub Actions
 
 current_strategy:
   legacy_runtime: read-only
@@ -58,7 +62,7 @@ route_state:
     sitemap_eligible: true
   gallery_index:
     path: /gallery/
-    status: blocked-on-complete-media-migration
+    status: blocked-pending-route-implementation
     sitemap_eligible: false
   project_image_detail:
     pattern: /projects/{project-slug}/images/{media-slug}/
@@ -67,34 +71,37 @@ route_state:
 
 media_migration:
   total_content_media: 39
-  project_owned_media: 20
+  project_owned_media: 37
   modeled_non_project_media: 2
-  unmodeled_media: 17
+  unmodeled_media: 0
   target_unmodeled_media: 0
+  coverage_gate: passed
 
 active_stage:
-  goal: Align repository structure contracts before continuing the remaining media migration.
+  goal: Prepare the validated gallery route implementation without changing the legacy runtime.
   scope:
-    - make architecture YAML describe the repository that actually exists
-    - centralize non-negotiable rules in invariants.yaml
-    - centralize stable values and paths in constants.yaml
-    - keep session-state.yaml limited to current progress and verified facts
-    - update agent reading order
-    - add validation for architecture contract consistency
+    - define gallery page behavior and metadata from Knowledge Repository records
+    - add a site-next gallery builder and validator
+    - activate the gallery route only through architecture/project-routes.yaml
+    - include the generated gallery route in sitemap and llms.txt projections
+    - preserve crawlable raw HTML, truthful alt text, image dimensions, and project ownership links
   exclusions:
-    - do not move runtime or content directories during this stage
-    - do not generate the blocked gallery route
-    - do not continue media modeling until structural contracts validate
+    - do not edit support.js or legacy entrypoints
+    - do not generate project image detail routes
+    - do not duplicate Media content in builders
+    - do not add unsupported claims or invented content
   next_verification:
     - node tools/checks/run.mjs
+    - inspect generated gallery HTML at desktop and mobile sizes
+    - verify all gallery image paths return HTTP 200
     - inspect git diff for generated-output churn
 
 next_stage:
-  goal: Model the remaining 17 legacy content images.
+  goal: Generate and validate /gallery/ from the 39 validated legacy Media records.
   implementation_steps:
-    - add six missing proyecto-2 apartment Media records
-    - add estandar/pintura.jpeg
-    - add remaining premium project Media records
-    - reconcile premium capability images with explicit capability or service ownership
-    - verify dimensions and preserve before, work, and after states
-    - reach 39 accounted images and zero unmodeled images
+    - define gallery grouping and ordering from existing Media and Project relationships
+    - create unique gallery metadata and visible introductory content
+    - generate site-next/gallery/index.html
+    - update route status and sitemap eligibility after validation
+    - update llms.txt and sitemap.xml through their existing builders
+    - keep image-detail routes deferred
