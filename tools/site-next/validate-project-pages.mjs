@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { access, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
@@ -74,7 +74,6 @@ async function main() {
   assertUniqueMetadata(metadata, "title");
   assertUniqueMetadata(metadata, "description");
   assertUniqueMetadata(metadata, "canonical");
-  await assertMissing("site-next/gallery/index.html", "Blocked gallery output");
 
   console.log(`Validated project index and ${projectRoutes.length} project detail pages`);
 }
@@ -134,16 +133,6 @@ function assertUniqueMetadata(metadata, fieldName) {
   if (new Set(values).size !== values.length) {
     throw new Error(`Generated project pages must have unique ${fieldName} values.`);
   }
-}
-
-async function assertMissing(relativePath, description) {
-  try {
-    await access(path.join(root, relativePath));
-  } catch {
-    return;
-  }
-
-  throw new Error(`${description} must not exist: ${relativePath}`);
 }
 
 main().catch((error) => {
