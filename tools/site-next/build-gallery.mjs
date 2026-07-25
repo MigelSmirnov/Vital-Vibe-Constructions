@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
 
 const root = process.cwd();
 const outputDir = path.join(root, "site-next/gallery");
+const coverageContractPath = path.join(root, "architecture/gallery-media-coverage.yaml");
 
 function escapeHtml(value) {
   return String(value)
@@ -103,10 +104,24 @@ function renderGallery({ site, projects, media, capabilitySections }) {
 }
 
 async function main() {
-  const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
-  const media = knowledge.listMedia().map((item) => item.toRecord());
+  const [knowledge, coverageContract] = await Promise.all([
+    loadContentTables({ root }).then((tables) => createKnowledgeRepository(tables)),
+    readFile(coverageContractPath, "utf8").then(JSON.parse),
+  ]);
+  const mediaBySrc = new Map(knowledge.listMedia().map((item) => [item.src, item.toRecord()]));
+  const expectedSources = coverageContract.sources.flatMap((source) => source.items.map((item) => item.src));
 
-  if (media.length !== 39) throw new Error(`Gallery requires exactly 39 Media records; found ${media.length}.`);
+  if (expectedSources.length !== coverageContract.policy.expected_content_media_count) {
+    throw new Error(
+      `Gallery coverage contract declares ${coverageContract.policy.expected_content_media_count} images but lists ${expectedSources.length}.`,
+    );
+  }
+
+  const media = expectedSources.map((src) => {
+    const item = mediaBySrc.get(src);
+    if (!item) throw new Error(`Gallery coverage source does not resolve to Media: ${src}`);
+    return item;
+  });
 
   await mkdir(outputDir, { recursive: true });
   await writeFile(path.join(outputDir, "index.html"), renderGallery({
@@ -115,7 +130,7 @@ async function main() {
     media,
     capabilitySections: knowledge.listCapabilitySections().map((section) => section.toRecord()),
   }), "utf8");
-  console.log(`Built gallery with ${media.length} media records`);
+  console.log(`Built gallery with ${media.length} contract media records`);
 }
 
 main().catch((error) => {
