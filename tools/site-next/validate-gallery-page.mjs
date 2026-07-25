@@ -21,12 +21,13 @@ function assertIncludes(html, fragment, description) {
 }
 
 async function main() {
-  const [html, contract, knowledge] = await Promise.all([
+  const [html, routeContract, coverageContract, knowledge] = await Promise.all([
     readFile(path.join(root, "site-next/gallery/index.html"), "utf8"),
     readFile(path.join(root, "architecture/project-routes.yaml"), "utf8").then(JSON.parse),
+    readFile(path.join(root, "architecture/gallery-media-coverage.yaml"), "utf8").then(JSON.parse),
     loadContentTables({ root }).then((tables) => createKnowledgeRepository(tables)),
   ]);
-  const route = contract.routes.find((item) => item.family_id === "gallery-index");
+  const route = routeContract.routes.find((item) => item.family_id === "gallery-index");
 
   if (!route || route.status !== "generated" || route.sitemap_eligible !== true) {
     throw new Error("Gallery route must be generated and sitemap eligible before validation.");
@@ -41,16 +42,24 @@ async function main() {
   assertIncludes(html, `<link rel="canonical" href="${route.canonical_url}">`, "Canonical URL");
   assertIncludes(html, '<main id="main-content">', "Main landmark");
 
-  const media = knowledge.listMedia();
-  if (media.length !== 39) throw new Error(`Expected 39 Media records; found ${media.length}.`);
+  const mediaBySrc = new Map(knowledge.listMedia().map((item) => [item.src, item]));
+  const expectedSources = coverageContract.sources.flatMap((source) => source.items.map((item) => item.src));
 
-  for (const item of media) {
+  if (expectedSources.length !== coverageContract.policy.expected_content_media_count) {
+    throw new Error(
+      `Gallery coverage contract declares ${coverageContract.policy.expected_content_media_count} images but lists ${expectedSources.length}.`,
+    );
+  }
+
+  for (const src of expectedSources) {
+    const item = mediaBySrc.get(src);
+    if (!item) throw new Error(`Gallery coverage source does not resolve to Media: ${src}`);
     assertIncludes(html, item.src, `Media source ${item.id}`);
     assertIncludes(html, `alt="${escapeHtml(item.alt)}"`, `Media alt ${item.id}`);
     assertIncludes(html, `width="${item.width}" height="${item.height}"`, `Media dimensions ${item.id}`);
   }
 
-  console.log(`Validated gallery page with ${media.length} media records`);
+  console.log(`Validated gallery page with ${expectedSources.length} contract media records`);
 }
 
 main().catch((error) => {
