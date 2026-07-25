@@ -39,7 +39,7 @@
       "path_pattern": "/gallery/",
       "output_pattern": "site-next/gallery/index.html",
       "entity_type": "ProjectMediaCollection",
-      "status": "blocked-on-media-migration"
+      "status": "generated"
     },
     {
       "id": "project-image-detail",
@@ -117,14 +117,16 @@
       "canonical_url": "https://vitalvibeconstruction.com/gallery/",
       "entity_type": "ProjectMediaCollection",
       "entity_id": null,
-      "status": "blocked-on-media-migration",
+      "status": "generated",
       "source_files": [
         "galeria-economica.dc.html",
         "galeria-estandar.dc.html",
-        "galeria-premium.dc.html"
+        "galeria-premium.dc.html",
+        "architecture/gallery-media-coverage.yaml",
+        "content/tables/media.yaml"
       ],
-      "generated_html_path": null,
-      "sitemap_eligible": false
+      "generated_html_path": "site-next/gallery/index.html",
+      "sitemap_eligible": true
     }
   ],
   "legacy_source_mappings": [
@@ -133,7 +135,7 @@
       "project_ids": ["project-studio-renovation-barcelona", "project-piso-reformado-barcelona"],
       "unmodeled_project_titles": [],
       "content_media_count": 16,
-      "project_owned_media_count": 10,
+      "project_owned_media_count": 16,
       "modeled_non_project_media_count": 0
     },
     {
@@ -141,7 +143,7 @@
       "project_ids": ["project-reforma-integral-estandar-barcelona"],
       "unmodeled_project_titles": [],
       "content_media_count": 6,
-      "project_owned_media_count": 5,
+      "project_owned_media_count": 6,
       "modeled_non_project_media_count": 0
     },
     {
@@ -149,7 +151,7 @@
       "project_ids": ["project-trabajos-contrata-premium"],
       "unmodeled_project_titles": [],
       "content_media_count": 17,
-      "project_owned_media_count": 5,
+      "project_owned_media_count": 15,
       "modeled_non_project_media_count": 2
     }
   ]
