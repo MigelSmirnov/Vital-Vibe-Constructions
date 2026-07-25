@@ -52,6 +52,12 @@ ${renderList(
   (project) => `${project.title}: ${site.canonicalOrigin}/projects/${project.slug}/ - ${project.summary}`,
 )}
 
+## Visual Gallery
+
+${site.canonicalOrigin}/gallery/
+
+Complete validated gallery of 39 legacy project and capability images with truthful alternative text, dimensions, ownership links, and before, work, or after states where applicable.
+
 ## Smart Home Readiness
 
 ${capabilitySections
