@@ -24,7 +24,7 @@ async function listHtmlFiles(directory) {
 function publicDirectoryFor(filePath) {
   const relativePath = path.relative(siteRoot, filePath).split(path.sep).join("/");
   const directory = path.posix.dirname(`/${relativePath}`);
-  return directory === "/." ? "/" : `${directory}/`;
+  return directory === "/" || directory === "/." ? "/" : `${directory}/`;
 }
 
 function shouldNormalize(value) {

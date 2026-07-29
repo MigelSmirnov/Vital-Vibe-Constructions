@@ -54,7 +54,7 @@ async function main() {
   for (const src of expectedSources) {
     const item = mediaBySrc.get(src);
     if (!item) throw new Error(`Gallery coverage source does not resolve to Media: ${src}`);
-    assertIncludes(html, item.src, `Media source ${item.id}`);
+    assertIncludes(html, `src="/${item.src}"`, `Media source ${item.id}`);
     assertIncludes(html, `alt="${escapeHtml(item.alt)}"`, `Media alt ${item.id}`);
     assertIncludes(html, `width="${item.width}" height="${item.height}"`, `Media dimensions ${item.id}`);
   }

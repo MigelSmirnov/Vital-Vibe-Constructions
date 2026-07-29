@@ -21,9 +21,11 @@ async function listHtmlFiles(directory) {
 }
 
 function isInvalidLocalUrl(value) {
-  if (!value || value.startsWith("/") || value.startsWith("#")) return false;
+  if (!value || value.startsWith("#")) return false;
+  if (value.startsWith("//")) return true;
+  if (value.startsWith("/")) return false;
   if (value.startsWith("mailto:") || value.startsWith("tel:") || value.startsWith("data:")) return false;
-  if (/^[a-z][a-z\d+.-]*:/i.test(value) || value.startsWith("//")) return false;
+  if (/^[a-z][a-z\d+.-]*:/i.test(value)) return false;
   return true;
 }
 

@@ -1,7 +1,7 @@
-version: 12
+version: 13
 
-updated_at: 2026-07-25T00:00:00Z
-phase: gallery-route-preparation
+updated_at: 2026-07-29T00:00:00Z
+phase: root-domain-publication-preparation
 stage_status: ready
 active_branch: agent/architecture-sandbox
 pull_request:
@@ -18,33 +18,41 @@ contract_references:
   gallery_coverage: architecture/gallery-media-coverage.yaml
 
 latest_verified_baseline:
-  commit: f489c5c808788fad848d2f46ebe8bcdfb645c032
-  summary: Complete legacy gallery media coverage and repository structure contracts validated in pull request CI.
+  commit: 92696090524cb6e12607c6a14334deb7f6b47349
+  summary: Root public paths and all generated projections validated locally from this base commit plus the current task changes.
   checks:
-    workflow: Project checks
-    workflow_run: 33
+    workflow: local full project checks
     conclusion: success
     knowledge_tests:
-      passed: 13
+      passed: 22
       failed: 0
     gallery_media_coverage:
       modeled: 39
       required: 39
       unmodeled: 0
+    generated_html_pages: 7
+    root_path_validation: pass
     project_detail_pages: 4
-    sitemap_urls: 6
+    gallery_pages: 1
+    sitemap_urls: 7
     content_audit:
       errors: 0
       warnings: 5
     diff_whitespace: pass
   command: node tools/checks/run.mjs
-  environment: GitHub Actions
+  environment: local
 
 current_strategy:
   legacy_runtime: read-only
   next_runtime: site-next
   source_of_truth: Knowledge Repository
   gallery_coverage: complete-legacy-coverage
+  public_path_mode: root-relative
+  public_path_rules:
+    stylesheet: /styles.css
+    logo: /VVC_primary_logo.svg
+    project_routes: /projects/{project-slug}/
+    contact: /#contacto
   generated_projections:
     - site-next
     - llms.txt
@@ -62,8 +70,8 @@ route_state:
     sitemap_eligible: true
   gallery_index:
     path: /gallery/
-    status: blocked-pending-route-implementation
-    sitemap_eligible: false
+    status: generated
+    sitemap_eligible: true
   project_image_detail:
     pattern: /projects/{project-slug}/images/{media-slug}/
     status: deferred
@@ -78,30 +86,28 @@ media_migration:
   coverage_gate: passed
 
 active_stage:
-  goal: Prepare the validated gallery route implementation without changing the legacy runtime.
+  goal: Prepare site-next for publication at the domain root without changing the legacy runtime.
+  status: completed
   scope:
-    - define gallery page behavior and metadata from Knowledge Repository records
-    - add a site-next gallery builder and validator
-    - activate the gallery route only through architecture/project-routes.yaml
-    - include the generated gallery route in sitemap and llms.txt projections
-    - preserve crawlable raw HTML, truthful alt text, image dimensions, and project ownership links
+    - normalize local generated HTML href and src values to root-relative public URLs
+    - preserve same-page homepage anchors
+    - preserve canonical, Open Graph, HTTPS, mailto, tel, and WhatsApp URLs
+    - validate root-relative URLs before page-specific generated output validators
+    - keep generated site-next, llms.txt, and sitemap.xml reproducible
   exclusions:
     - do not edit support.js or legacy entrypoints
-    - do not generate project image detail routes
-    - do not duplicate Media content in builders
-    - do not add unsupported claims or invented content
+    - do not change the legacy public runtime
+    - do not weaken or remove existing validators
   next_verification:
     - node tools/checks/run.mjs
-    - inspect generated gallery HTML at desktop and mobile sizes
-    - verify all gallery image paths return HTTP 200
-    - inspect git diff for generated-output churn
+    - git diff --check
+    - verify deployed root-relative assets return HTTP 200
+    - inspect site-next at desktop and mobile sizes after deployment
 
 next_stage:
-  goal: Generate and validate /gallery/ from the 39 validated legacy Media records.
+  goal: Verify the generated site in its root-domain hosting environment before switching public traffic.
   implementation_steps:
-    - define gallery grouping and ordering from existing Media and Project relationships
-    - create unique gallery metadata and visible introductory content
-    - generate site-next/gallery/index.html
-    - update route status and sitemap eligibility after validation
-    - update llms.txt and sitemap.xml through their existing builders
-    - keep image-detail routes deferred
+    - confirm the host publishes site-next as the domain document root
+    - verify CSS, logo, project media, project routes, and contact anchors over HTTP
+    - perform desktop and mobile visual inspection
+    - preserve the legacy runtime until the replacement deployment is validated

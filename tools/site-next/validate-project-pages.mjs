@@ -45,14 +45,14 @@ async function main() {
       throw new Error(`Project "${project.id}" output path does not match its slug.`);
     }
 
-    assertIncludes(indexHtml, `href="./${project.slug}/"`, `Projects index link for ${project.id}`);
+    assertIncludes(indexHtml, `href="${route.path}"`, `Projects index link for ${project.id}`);
     assertIncludes(indexHtml, escapeHtml(project.title), `Projects index title for ${project.id}`);
 
     const html = await readGeneratedPage(route);
     metadata.push(validatePageShell(html, route));
     assertIncludes(html, escapeHtml(project.title), `Project title for ${project.id}`);
     assertIncludes(html, escapeHtml(project.summary), `Project summary for ${project.id}`);
-    assertIncludes(html, 'href="../"', `Project index backlink for ${project.id}`);
+    assertIncludes(html, `href="${projectIndexRoute.path}"`, `Project index backlink for ${project.id}`);
 
     for (const serviceId of project.serviceIds) {
       const service = knowledge.findServiceById(serviceId);
@@ -61,7 +61,7 @@ async function main() {
 
     for (const mediaId of project.imageIds) {
       const media = knowledge.findMediaById(mediaId);
-      assertIncludes(html, media.src, `Media source "${mediaId}" for ${project.id}`);
+      assertIncludes(html, `src="/${media.src}"`, `Media source "${mediaId}" for ${project.id}`);
       assertIncludes(html, `alt="${escapeHtml(media.alt)}"`, `Media alt "${mediaId}" for ${project.id}`);
       assertIncludes(
         html,

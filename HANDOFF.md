@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 11
-Updated: 2026-07-25T00:00:00Z
+Version: 12
+Updated: 2026-07-29T00:00:00Z
 
 ## Session Rule
 
@@ -14,25 +14,28 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-Complete legacy gallery media migration is finished and validated. All 39 content images listed by the coverage contract now resolve to Media records.
+`site-next` is generated with root-relative public paths and is ready for root-domain hosting verification. All seven generated HTML pages use paths that do not depend on page depth.
 
 Delivery state:
 
 - branch: `agent/architecture-sandbox`
 - pull request: `#1 Build architecture sandbox and knowledge foundation`
 - pull request state: ready for review
-- latest verified commit before this handoff update: `f489c5c808788fad848d2f46ebe8bcdfb645c032`
-- GitHub Actions `Project checks` run 33: success
+- base commit used for local verification: `92696090524cb6e12607c6a14334deb7f6b47349`
+- local `node tools/checks/run.mjs`: success
 
 Latest completed work:
 
-- all eight `proyecto-1` images are modeled for the studio renovation project
-- all eight `proyecto-2` images are modeled for the apartment renovation project
-- all six standard gallery images are modeled, including `estandar/pintura.jpeg`
-- all premium project images are modeled with truthful state and ownership metadata
-- `premium/panel-marmol.jpeg` and `premium/apple-home.jpeg` are modeled as service-owned capability media
-- complete gallery coverage now has zero unmodeled legacy content images
-- repository structure contracts and the full project check suite are green
+- local generated links and assets are normalized after all `site-next` builders run
+- CSS uses `/styles.css`
+- the brand logo uses `/VVC_primary_logo.svg`
+- content images use root paths such as `/proyecto-2/b8.jpeg`
+- project links use `/projects/{project-slug}/`
+- nested-page contact links use `/#contacto`; same-page homepage anchors remain unchanged
+- canonical, Open Graph, HTTPS, mailto, tel, and WhatsApp URLs remain unchanged
+- the root-path validator rejects relative local URLs and accidental double-slash URLs
+- project and gallery validators assert exact root-relative media paths
+- `/gallery/`, `llms.txt`, and `sitemap.xml` are regenerated from their existing contracts
 
 Current modeled gallery coverage:
 
@@ -47,18 +50,18 @@ Current modeled gallery coverage:
 - Build `site-next` in parallel.
 - Treat Knowledge Repository records as the source of truth.
 - Treat HTML, `llms.txt`, and `sitemap.xml` as generated projections.
+- Normalize generated local `href` and `src` values to root-relative public URLs.
 - Use complete legacy media coverage; curated omission is not allowed.
-- Implement `/gallery/` only through a builder, validator, and route-contract change.
 - Continue deferring image-detail routes.
 
 ## Current Routes
 
 - `/projects/`: generated and sitemap eligible
 - `/projects/{project-slug}/`: four routes generated and sitemap eligible
-- `/gallery/`: coverage gate passed, but route implementation is still pending
+- `/gallery/`: generated and sitemap eligible
 - `/projects/{project-slug}/images/{media-slug}/`: deferred
 
-The current generated sitemap contains six URLs: homepage, projects index, and four project details. The gallery URL must be added only after its generated HTML validates.
+The current generated sitemap contains seven URLs: homepage, projects index, four project details, and gallery.
 
 ## Non-Negotiable Constraints
 
@@ -68,7 +71,6 @@ The current generated sitemap contains six URLs: homepage, projects index, and f
 - Do not duplicate content between builders and tables.
 - Do not add dependencies unless the current platform cannot reasonably solve the problem.
 - Keep `content/tables/*.yaml` JSON-compatible until YAML-specific authoring is required.
-- Do not mark `/gallery/` generated or sitemap eligible before its output exists and validates.
 - Do not generate image-detail routes while their family status is deferred.
 - Do not replace complete gallery coverage with a curated subset.
 - Preserve truthful alt text, dimensions, and project or service ownership for every gallery image.
@@ -83,36 +85,36 @@ node tools/checks/run.mjs
 
 Latest verified result:
 
-- GitHub Actions workflow: `Project checks`
-- run number: 33
+- environment: local
 - conclusion: success
-- Knowledge Repository tests: 13 passed
+- Knowledge Repository tests: 22 passed, 0 failed
 - complete gallery coverage: 39 modeled, 0 unmodeled
-- project page build: index and four detail pages
-- sitemap validation: six URLs
+- root-path normalization and validation: 7 generated HTML files
+- project page validation: index and four detail pages
+- gallery validation: 39 contract media records
+- sitemap validation: seven URLs
 - content audit: 0 errors and 5 known legacy warnings
 - whitespace validation: pass
 
-## Active Stage: Gallery Route Preparation
+## Active Stage: Root-Domain Publication Preparation
 
-Next batch:
+Completed:
 
-1. Define gallery grouping and ordering from existing Project, Media, and service relationships.
-2. Add unique gallery metadata and visible introductory content from validated records.
-3. Add a `site-next` gallery builder and validator.
-4. Generate `site-next/gallery/index.html` with raw semantic HTML, truthful alt text, dimensions, and crawlable project links.
-5. Change `/gallery/` to generated and sitemap eligible only after validation passes.
-6. Regenerate and validate `llms.txt` and `sitemap.xml`.
-7. Verify all 39 image paths and inspect desktop and mobile output.
+1. Generate homepage, projects, project details, and gallery.
+2. Normalize local generated HTML URLs after all page builders.
+3. Reject relative local paths and accidental `//` paths.
+4. Validate project and gallery media with exact root-relative URLs.
+5. Regenerate discovery projections and run the full project checks.
 
 Suggested next commit message:
 
 ```text
-Generate validated project gallery
+Verify root-domain deployment
 ```
 
 ## Later Work
 
-1. Add canonical image-detail pages only after extended Media metadata and route contracts are ready.
-2. Add homepage value propositions and process steps from real legacy source content.
-3. Add articles and testimonials only after real source records are available.
+1. Confirm the host serves `site-next` as the document root.
+2. Verify root-relative assets and routes return HTTP 200 in the deployment environment.
+3. Inspect desktop and mobile rendering before switching public traffic.
+4. Add canonical image-detail pages only after extended Media metadata and route contracts are ready.
