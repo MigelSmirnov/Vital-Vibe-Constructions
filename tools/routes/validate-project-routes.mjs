@@ -50,6 +50,9 @@ async function main() {
     if (route.entity_type === "Project" && !knowledge.findProjectById(route.entity_id)) {
       throw new Error(`Route "${route.id}" references unknown Project "${route.entity_id}".`);
     }
+    if (route.entity_type === "Service" && !knowledge.findServiceById(route.entity_id)) {
+      throw new Error(`Route "${route.id}" references unknown Service "${route.entity_id}".`);
+    }
 
     for (const sourceFile of requireArray(route.source_files, `${route.id}.source_files`)) {
       await assertFileExists(sourceFile, `Route "${route.id}" source file`);
@@ -70,6 +73,7 @@ async function main() {
   }
 
   assertProjectRouteCoverage(routes, knowledge.listProjects());
+  assertServiceRouteCoverage(routes, knowledge.listServices());
   assertDeferredImageRoutes(familyById, routes);
 
   for (const mapping of mappings) {
@@ -92,7 +96,7 @@ async function main() {
   }
 
   await assertFileExists(contract.diagnostic_artifact, "Route diagnostic artifact");
-  console.log("Validated project route contract");
+  console.log("Validated route contract");
 }
 
 async function readJsonContract(filePath) {
@@ -130,6 +134,7 @@ function assertRequiredFamilies(familyById) {
     ["projects-index", "/projects/"],
     ["project-detail", "/projects/{project.slug}/"],
     ["gallery-index", "/gallery/"],
+    ["service-detail", "/servicios/{service.slug}-barcelona/"],
     ["project-image-detail", "/projects/{project.slug}/images/{media.slug}/"],
   ]);
 
@@ -140,6 +145,22 @@ function assertRequiredFamilies(familyById) {
     if (family.path_pattern !== pathPattern) {
       throw new Error(`Route family "${familyId}" must use path pattern "${pathPattern}".`);
     }
+  }
+}
+
+function assertServiceRouteCoverage(routes, services) {
+  const pageServiceIds = new Set(
+    services.filter((service) => service.seoTitle !== null).map((service) => service.id),
+  );
+  const serviceRoutes = routes.filter((route) => route.family_id === "service-detail");
+  const routedServiceIds = new Set(serviceRoutes.map((route) => route.entity_id));
+
+  if (
+    serviceRoutes.length !== pageServiceIds.size ||
+    pageServiceIds.size !== routedServiceIds.size ||
+    [...pageServiceIds].some((serviceId) => !routedServiceIds.has(serviceId))
+  ) {
+    throw new Error("Service detail routes must cover every Service with page content exactly once.");
   }
 }
 

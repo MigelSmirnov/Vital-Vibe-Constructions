@@ -42,6 +42,13 @@
       "status": "generated"
     },
     {
+      "id": "service-detail",
+      "path_pattern": "/servicios/{service.slug}-barcelona/",
+      "output_pattern": "site-next/servicios/{service.slug}-barcelona/index.html",
+      "entity_type": "Service",
+      "status": "generated"
+    },
+    {
       "id": "project-image-detail",
       "path_pattern": "/projects/{project.slug}/images/{media.slug}/",
       "output_pattern": "site-next/projects/{project.slug}/images/{media.slug}/index.html",
@@ -126,6 +133,24 @@
         "content/tables/media.yaml"
       ],
       "generated_html_path": "site-next/gallery/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "service-integral-renovation-barcelona",
+      "family_id": "service-detail",
+      "path": "/servicios/reformas-integrales-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/servicios/reformas-integrales-barcelona/",
+      "entity_type": "Service",
+      "entity_id": "integral-renovation",
+      "status": "generated",
+      "source_files": [
+        "content/tables/services.yaml",
+        "content/tables/projects.yaml",
+        "content/tables/media.yaml",
+        "content/tables/site.yaml",
+        "content/tables/contact-details.yaml"
+      ],
+      "generated_html_path": "site-next/servicios/reformas-integrales-barcelona/index.html",
       "sitemap_eligible": true
     }
   ],

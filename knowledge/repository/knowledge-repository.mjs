@@ -151,6 +151,15 @@ function assertKnownReferences({ services, projects, capabilitySections, externa
     assertAllKnown(project.serviceIds, serviceIds, `projects "${project.id}" service_ids`, "services");
   }
 
+  for (const service of services) {
+    assertAllKnown(
+      service.includedServiceIds,
+      serviceIds,
+      `services "${service.id}" included_service_ids`,
+      "services",
+    );
+  }
+
   for (const item of media) {
     if (item.projectId !== null) {
       assertKnown(item.projectId, projectIds, `media "${item.id}" project_id`, "projects");

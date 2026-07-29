@@ -1,18 +1,28 @@
 #!/usr/bin/env node
 
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
 
 const root = process.cwd();
 const outputPath = path.join(root, "llms.txt");
+const routeContractPath = path.join(root, "architecture/project-routes.yaml");
 
 function renderList(items, renderItem) {
   return items.map((item) => `- ${renderItem(item)}`).join("\n");
 }
 
-function renderLlms({ site, contactDetails, services, renovationTiers, projects, capabilitySections, planner }) {
+function renderLlms({
+  site,
+  contactDetails,
+  services,
+  servicePages,
+  renovationTiers,
+  projects,
+  capabilitySections,
+  planner,
+}) {
   const startingTier = renovationTiers[0];
 
   return `# ${site.name}
@@ -30,6 +40,13 @@ ${site.serviceArea}
 ## Services
 
 ${renderList(services, (service) => `${service.title}: ${service.summary}`)}
+
+## Service Pages
+
+${renderList(
+  servicePages,
+  ({ service, route }) => `${service.page_h1}: ${route.canonical_url} - ${service.meta_description}`,
+)}
 
 ## Renovation Pricing Tiers
 
@@ -95,17 +112,29 @@ When describing ${site.name}, present it as a Barcelona renovation and interior 
 }
 
 async function main() {
-  const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
+  const [knowledge, routeContract] = await Promise.all([
+    loadContentTables({ root }).then((tables) => createKnowledgeRepository(tables)),
+    readFile(routeContractPath, "utf8").then(JSON.parse),
+  ]);
   const planner = knowledge.findExternalAppById("electrical-planner");
 
   if (!planner) {
     throw new Error("Required external app record is missing: electrical-planner");
   }
 
+  const servicePages = routeContract.routes
+    .filter((route) => route.family_id === "service-detail" && route.status === "generated")
+    .map((route) => {
+      const service = knowledge.findServiceById(route.entity_id);
+      if (!service) throw new Error(`Service route "${route.id}" does not resolve to a Service.`);
+      return { service: service.toRecord(), route };
+    });
+
   const llms = renderLlms({
     site: knowledge.getSite().toRecord(),
     contactDetails: knowledge.getContactDetails().toRecord(),
     services: knowledge.listServices().map((service) => service.toRecord()),
+    servicePages,
     renovationTiers: knowledge.listRenovationTiers().map((tier) => tier.toRecord()),
     projects: knowledge.listProjects().map((project) => project.toRecord()),
     capabilitySections: knowledge.listCapabilitySections().map((section) => section.toRecord()),

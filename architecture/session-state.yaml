@@ -1,7 +1,7 @@
-version: 13
+version: 14
 
 updated_at: 2026-07-29T00:00:00Z
-phase: root-domain-publication-preparation
+phase: service-page-generation
 stage_status: ready
 active_branch: agent/architecture-sandbox
 pull_request:
@@ -14,27 +14,44 @@ contract_references:
   architecture: architecture/app-architecture.yaml
   invariants: architecture/invariants.yaml
   constants: architecture/constants.yaml
+  content_model: architecture/content-model.yaml
   routes: architecture/project-routes.yaml
   gallery_coverage: architecture/gallery-media-coverage.yaml
 
 latest_verified_baseline:
-  commit: 92696090524cb6e12607c6a14334deb7f6b47349
-  summary: Root public paths and all generated projections validated locally from this base commit plus the current task changes.
+  commit: a3d27ad11223ecef0bcd0c013f40de4a7579b626
+  summary: First Knowledge Repository-backed service page validated locally from this base commit plus the current task changes.
   checks:
     workflow: local full project checks
     conclusion: success
     knowledge_tests:
-      passed: 22
+      passed: 27
       failed: 0
     gallery_media_coverage:
       modeled: 39
       required: 39
       unmodeled: 0
-    generated_html_pages: 7
+    generated_html_pages: 8
     root_path_validation: pass
     project_detail_pages: 4
     gallery_pages: 1
-    sitemap_urls: 7
+    service_detail_pages: 1
+    sitemap_urls: 8
+    local_http:
+      service_page: 200
+      stylesheet: 200
+      logo: 200
+      related_project_images: 3
+      related_project_routes: 3
+    visual_checks:
+      browser: Firefox headless
+      desktop_viewport: 1440x2200
+      mobile_viewport: 390x8000
+      horizontal_overflow_visible: false
+      h1_readable: true
+      cta_visible: true
+      navigation_visible: true
+      project_images_loaded: true
     content_audit:
       errors: 0
       warnings: 5
@@ -72,6 +89,11 @@ route_state:
     path: /gallery/
     status: generated
     sitemap_eligible: true
+  service_detail:
+    pattern: /servicios/{service-slug}-barcelona/
+    status: generated
+    instance_count: 1
+    sitemap_eligible: true
   project_image_detail:
     pattern: /projects/{project-slug}/images/{media-slug}/
     status: deferred
@@ -86,28 +108,29 @@ media_migration:
   coverage_gate: passed
 
 active_stage:
-  goal: Prepare site-next for publication at the domain root without changing the legacy runtime.
+  goal: Generate the first complete SEO service page from Knowledge Repository content.
   status: completed
   scope:
-    - normalize local generated HTML href and src values to root-relative public URLs
-    - preserve same-page homepage anchors
-    - preserve canonical, Open Graph, HTTPS, mailto, tel, and WhatsApp URLs
-    - validate root-relative URLs before page-specific generated output validators
-    - keep generated site-next, llms.txt, and sitemap.xml reproducible
+    - extend Service with page-owned SEO, introduction, scope, process, and FAQ fields
+    - generate /servicios/reformas-integrales-barcelona/
+    - derive related projects, project media, routes, and contacts from existing repository records
+    - add WebPage, Service, BreadcrumbList, and visible FAQPage structured data
+    - link the homepage service card to the generated route
+    - include the route in sitemap.xml and llms.txt
   exclusions:
     - do not edit support.js or legacy entrypoints
     - do not change the legacy public runtime
-    - do not weaken or remove existing validators
+    - do not add unsupported experience, guarantees, credentials, timing, pricing, testimonials, or location claims
   next_verification:
     - node tools/checks/run.mjs
     - git diff --check
     - verify deployed root-relative assets return HTTP 200
-    - inspect site-next at desktop and mobile sizes after deployment
+    - repeat desktop and mobile inspection in the deployment environment
 
 next_stage:
   goal: Verify the generated site in its root-domain hosting environment before switching public traffic.
   implementation_steps:
     - confirm the host publishes site-next as the domain document root
-    - verify CSS, logo, project media, project routes, and contact anchors over HTTP
-    - perform desktop and mobile visual inspection
+    - verify the service page, CSS, logo, project media, project routes, and contact anchors over HTTPS
+    - repeat desktop and mobile visual inspection against the deployed URL
     - preserve the legacy runtime until the replacement deployment is validated

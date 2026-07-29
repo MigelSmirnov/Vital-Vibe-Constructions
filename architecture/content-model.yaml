@@ -2,7 +2,18 @@ version: 1
 entities:
   service:
     required_fields: [id, slug, title, summary]
-    optional_fields: [body, image, related_project_ids, related_article_ids]
+    optional_fields:
+      - body
+      - image
+      - seo_title
+      - meta_description
+      - page_h1
+      - introduction
+      - included_service_ids
+      - process_steps
+      - faq
+      - related_project_ids
+      - related_article_ids
   project:
     required_fields: [id, slug, title, summary, image_ids]
     optional_fields: [service_ids, article_ids, location, area_m2, duration, budget_range]

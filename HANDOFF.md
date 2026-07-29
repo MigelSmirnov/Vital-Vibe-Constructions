@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 12
+Version: 13
 Updated: 2026-07-29T00:00:00Z
 
 ## Session Rule
@@ -14,28 +14,26 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-`site-next` is generated with root-relative public paths and is ready for root-domain hosting verification. All seven generated HTML pages use paths that do not depend on page depth.
+`site-next` now includes the first full Knowledge Repository-backed SEO service page at `/servicios/reformas-integrales-barcelona/`. All eight generated HTML pages use root-relative public paths.
 
 Delivery state:
 
 - branch: `agent/architecture-sandbox`
 - pull request: `#1 Build architecture sandbox and knowledge foundation`
 - pull request state: ready for review
-- base commit used for local verification: `92696090524cb6e12607c6a14334deb7f6b47349`
+- base commit used for local verification: `a3d27ad11223ecef0bcd0c013f40de4a7579b626`
 - local `node tools/checks/run.mjs`: success
 
 Latest completed work:
 
-- local generated links and assets are normalized after all `site-next` builders run
-- CSS uses `/styles.css`
-- the brand logo uses `/VVC_primary_logo.svg`
-- content images use root paths such as `/proyecto-2/b8.jpeg`
-- project links use `/projects/{project-slug}/`
-- nested-page contact links use `/#contacto`; same-page homepage anchors remain unchanged
-- canonical, Open Graph, HTTPS, mailto, tel, and WhatsApp URLs remain unchanged
-- the root-path validator rejects relative local URLs and accidental double-slash URLs
-- project and gallery validators assert exact root-relative media paths
-- `/gallery/`, `llms.txt`, and `sitemap.xml` are regenerated from their existing contracts
+- Service supports page-owned SEO title, meta description, H1, introduction, body, included service references, process steps, and FAQ
+- the integral renovation page derives three related projects and their lead images from existing Project and Media records
+- the page includes visible breadcrumbs, scope, process, project cards, six FAQ items, and contact CTA
+- JSON-LD contains WebPage, Service, BreadcrumbList, and FAQPage data matching visible content
+- the homepage `Reformas integrales` card links to the generated service route
+- route, sitemap, llms.txt, root-path, content-reference, schema, FAQ, metadata, and CTA validation are active
+- local HTTP checks returned 200 for the page, CSS, logo, three project images, and three project routes
+- headless Firefox inspection passed at 1440×2200 and 390×8000 with readable H1, visible CTA and navigation, loaded images, and no visible horizontal overflow
 
 Current modeled gallery coverage:
 
@@ -59,9 +57,10 @@ Current modeled gallery coverage:
 - `/projects/`: generated and sitemap eligible
 - `/projects/{project-slug}/`: four routes generated and sitemap eligible
 - `/gallery/`: generated and sitemap eligible
+- `/servicios/reformas-integrales-barcelona/`: generated and sitemap eligible
 - `/projects/{project-slug}/images/{media-slug}/`: deferred
 
-The current generated sitemap contains seven URLs: homepage, projects index, four project details, and gallery.
+The current generated sitemap contains eight URLs: homepage, projects index, four project details, gallery, and the integral renovation service page.
 
 ## Non-Negotiable Constraints
 
@@ -87,34 +86,37 @@ Latest verified result:
 
 - environment: local
 - conclusion: success
-- Knowledge Repository tests: 22 passed, 0 failed
+- Knowledge Repository tests: 27 passed, 0 failed
 - complete gallery coverage: 39 modeled, 0 unmodeled
-- root-path normalization and validation: 7 generated HTML files
+- root-path normalization and validation: 8 generated HTML files
 - project page validation: index and four detail pages
 - gallery validation: 39 contract media records
-- sitemap validation: seven URLs
+- service page validation: one generated route
+- sitemap validation: eight URLs
 - content audit: 0 errors and 5 known legacy warnings
 - whitespace validation: pass
 
-## Active Stage: Root-Domain Publication Preparation
+## Active Stage: First Service SEO Page
 
 Completed:
 
-1. Generate homepage, projects, project details, and gallery.
-2. Normalize local generated HTML URLs after all page builders.
-3. Reject relative local paths and accidental `//` paths.
-4. Validate project and gallery media with exact root-relative URLs.
-5. Regenerate discovery projections and run the full project checks.
+1. Extend Service with validated page-owned content fields.
+2. Register and generate `/servicios/reformas-integrales-barcelona/`.
+3. Derive related services, projects, media, routes, and contacts from repository records.
+4. Add matching WebPage, Service, BreadcrumbList, and FAQPage schemas.
+5. Link the homepage service card and regenerate discovery projections.
+6. Validate locally through project checks, HTTP requests, and desktop/mobile Firefox screenshots.
 
 Suggested next commit message:
 
 ```text
-Verify root-domain deployment
+Verify integral renovation service page deployment
 ```
 
 ## Later Work
 
 1. Confirm the host serves `site-next` as the document root.
-2. Verify root-relative assets and routes return HTTP 200 in the deployment environment.
-3. Inspect desktop and mobile rendering before switching public traffic.
-4. Add canonical image-detail pages only after extended Media metadata and route contracts are ready.
+2. Verify the service page, root-relative assets, and routes over production HTTPS.
+3. Repeat desktop and mobile inspection against the deployed page.
+4. Add more service routes only after their confirmed page-owned content is available.
+5. Add canonical image-detail pages only after extended Media metadata and route contracts are ready.

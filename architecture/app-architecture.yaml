@@ -107,6 +107,7 @@ modules:
       - site-next homepage generation
       - project index generation
       - project detail generation
+      - service detail generation
       - generated-page validation
     depends_on:
       - knowledge-repository
@@ -180,7 +181,7 @@ build_flow:
   - full checks run through tools/checks/run.mjs
 
 migration:
-  current_phase: gallery-media-migration
+  current_phase: service-page-generation
   rules:
     - preserve legacy runtime until replacement routes are generated and validated
     - migrate content through Knowledge Repository records rather than copying it into builders

@@ -343,6 +343,37 @@ test("repository rejects project references to unknown services", () => {
   );
 });
 
+test("repository rejects service page references to unknown included services", () => {
+  assert.throws(
+    () =>
+      createKnowledgeRepository(
+        withOverrides({
+          services: [
+            {
+              ...baseTables.services[0],
+              body: "Complete service page body.",
+              seo_title: "Service page title",
+              meta_description: "Unique service page description.",
+              page_h1: "Service page H1",
+              introduction: "Visible service page introduction.",
+              included_service_ids: ["missing-service"],
+              process_steps: [
+                { title: "Initial contact", description: "Collect the available project information." },
+              ],
+              faq: [
+                { question: "Question 1", answer: "Answer 1" },
+                { question: "Question 2", answer: "Answer 2" },
+                { question: "Question 3", answer: "Answer 3" },
+                { question: "Question 4", answer: "Answer 4" },
+              ],
+            },
+          ],
+        }),
+      ),
+    /Unknown services "integral-renovation" included_service_ids reference "missing-service"/,
+  );
+});
+
 test("repository rejects media references to unknown projects", () => {
   assert.throws(
     () =>

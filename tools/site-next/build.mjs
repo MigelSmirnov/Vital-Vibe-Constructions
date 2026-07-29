@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
 
 const root = process.cwd();
 const outputDir = path.join(root, "site-next");
+const routeContractPath = path.join(root, "architecture/project-routes.yaml");
 
 function escapeHtml(value) {
   return String(value)
@@ -17,15 +18,20 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function renderServices(services) {
+function renderServices(services, serviceRouteById) {
   return services
-    .map(
-      (service) => `
+    .map((service) => {
+      const route = serviceRouteById.get(service.id);
+      const title = route
+        ? `<a href="${escapeHtml(route.path)}">${escapeHtml(service.title)}</a>`
+        : escapeHtml(service.title);
+
+      return `
         <article class="service-card" id="${escapeHtml(service.slug)}">
-          <h3>${escapeHtml(service.title)}</h3>
+          <h3>${title}</h3>
           <p>${escapeHtml(service.summary)}</p>
-        </article>`,
-    )
+        </article>`;
+    })
     .join("");
 }
 
@@ -154,10 +160,12 @@ function renderPage({
   externalApps,
   media,
   planner,
+  serviceRoutes,
 }) {
   const serviceById = new Map(services.map((service) => [service.id, service]));
   const mediaById = new Map(media.map((item) => [item.id, item]));
   const externalAppById = new Map(externalApps.map((app) => [app.id, app]));
+  const serviceRouteById = new Map(serviceRoutes.map((route) => [route.entity_id, route]));
   const renovationTierDisclaimer = renovationTiers.find((tier) => tier.disclaimer)?.disclaimer ?? null;
   const organizationSchema = JSON.stringify(
     {
@@ -243,7 +251,7 @@ function renderPage({
       <div class="container">
         <p class="eyebrow">Servicios</p>
         <h2>Todo lo que tu reforma necesita</h2>
-        <div class="service-grid">${renderServices(services)}</div>
+        <div class="service-grid">${renderServices(services, serviceRouteById)}</div>
       </div>
     </section>
 
@@ -345,6 +353,8 @@ h3 { font-size: 1.3rem; }
 .section { padding: 88px 0; }
 .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 26px; }
+.service-card h3 a { text-decoration: none; }
+.service-card h3 a:hover, .service-card h3 a:focus-visible { color: var(--accent); }
 .service-card p, .project-card p, .planner p, .contact p { color: var(--muted); }
 .projects { background: #181c20; }
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 18px; }
@@ -384,8 +394,8 @@ h3 { font-size: 1.3rem; }
 .project-index-media { display: block; }
 .project-index-media img { width: 100%; height: 260px; object-fit: cover; }
 .project-index-body { padding: 22px; }
-.project-index-body h2 { font-size: 1.45rem; }
-.project-index-body h2 a, .text-link, .back-link { text-decoration: none; }
+.project-index-body h2, .project-index-body h3 { font-size: 1.45rem; }
+.project-index-body h2 a, .project-index-body h3 a, .text-link, .back-link { text-decoration: none; }
 .project-index-body > p { color: var(--muted); }
 .text-link, .back-link { color: var(--accent); font-weight: 750; }
 .project-detail-intro .back-link { display: inline-block; margin-bottom: 30px; }
@@ -405,6 +415,37 @@ h3 { font-size: 1.3rem; }
 .project-media-grid img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
 .project-media-grid figcaption { padding-top: 9px; color: var(--muted); font-size: .85rem; }
 .project-navigation .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+.service-hero { padding: 34px 0 76px; background: #181c20; }
+.breadcrumb { margin-bottom: 42px; }
+.breadcrumb ol { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: .88rem; }
+.breadcrumb li:not(:last-child)::after { margin-left: 8px; content: "/"; color: #727982; }
+.breadcrumb a { text-decoration: none; }
+.breadcrumb a:hover, .breadcrumb a:focus-visible { color: var(--text); }
+.service-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 480px); align-items: center; gap: 58px; }
+.service-hero h1 { max-width: 760px; font-size: clamp(2.7rem, 6vw, 4.8rem); }
+.service-introduction { max-width: 720px; margin: 0 0 30px; color: var(--muted); font-size: 1.12rem; }
+.service-hero-media { margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; }
+.service-hero-media img { width: 100%; height: 540px; object-fit: cover; }
+.service-section-heading { max-width: 820px; margin-bottom: 38px; }
+.service-section-heading > p:last-child { color: var(--muted); font-size: 1.05rem; }
+.service-scope-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.service-scope-card { padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+.service-scope-card p { margin-bottom: 0; color: var(--muted); }
+.service-process { background: #20252b; }
+.service-process-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+.service-process-list li { display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+.service-process-list h3 { margin-bottom: 8px; }
+.service-process-list p { margin: 0; color: var(--muted); }
+.service-process-number { color: var(--accent); font-size: .8rem; font-weight: 800; }
+.service-projects { background: #181c20; }
+.service-faq-layout { display: grid; grid-template-columns: minmax(260px, 380px) minmax(0, 1fr); gap: 64px; align-items: start; }
+.service-faq-list { border-top: 1px solid var(--border); }
+.service-faq-list details { border-bottom: 1px solid var(--border); }
+.service-faq-list summary { padding: 20px 34px 20px 0; cursor: pointer; font-weight: 750; }
+.service-faq-list p { margin: 0; padding: 0 0 22px; color: var(--muted); }
+.service-contact { text-align: center; background: #20252b; }
+.service-contact > .container > p:not(.eyebrow) { max-width: 680px; margin-inline: auto; color: var(--muted); }
+.service-contact .button { overflow-wrap: anywhere; }
 .tiers { background: #f3f0e8; color: #171a1f; }
 .tiers .eyebrow { color: #9a6819; }
 .tier-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
@@ -439,12 +480,22 @@ h3 { font-size: 1.3rem; }
   .project-detail-grid { grid-template-columns: 1fr; gap: 32px; }
   .project-media-grid { grid-template-columns: 1fr; }
   .project-media-grid img { height: 360px; }
+  .service-hero { padding-top: 24px; }
+  .breadcrumb { margin-bottom: 30px; }
+  .service-hero-grid { grid-template-columns: 1fr; gap: 34px; }
+  .service-hero-media img { height: 380px; }
+  .service-scope-grid { grid-template-columns: 1fr; }
+  .service-process-list { grid-template-columns: 1fr; }
+  .service-faq-layout { grid-template-columns: 1fr; gap: 24px; }
   .tier-grid { grid-template-columns: 1fr; }
   .planner-grid { grid-template-columns: 1fr; align-items: start; }
 }`;
 
 async function main() {
-  const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
+  const [knowledge, routeContract] = await Promise.all([
+    loadContentTables({ root }).then((tables) => createKnowledgeRepository(tables)),
+    readFile(routeContractPath, "utf8").then(JSON.parse),
+  ]);
   const site = knowledge.getSite().toRecord();
   const contactDetails = knowledge.getContactDetails().toRecord();
   const services = knowledge.listServices().map((service) => service.toRecord());
@@ -454,6 +505,9 @@ async function main() {
   const externalApps = knowledge.listExternalApps().map((app) => app.toRecord());
   const media = knowledge.listMedia().map((item) => item.toRecord());
   const planner = knowledge.findExternalAppById("electrical-planner");
+  const serviceRoutes = routeContract.routes.filter(
+    (route) => route.family_id === "service-detail" && route.status === "generated",
+  );
 
   if (
     !site ||
@@ -482,6 +536,7 @@ async function main() {
       externalApps,
       media,
       planner,
+      serviceRoutes,
     }),
     "utf8",
   );
