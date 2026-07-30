@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "articles": [
+    {
+      "id": "reforma-cocina-barcelona",
+      "title": "Cómo planificar una reforma de cocina en Barcelona",
+      "status": "draft",
+      "language": "es",
+      "source": "./drafts/reforma-cocina-barcelona.yaml"
+    }
+  ]
+}
