@@ -1,0 +1,29 @@
+name: Article sandbox
+
+on:
+  pull_request:
+    paths:
+      - "sandbox/articles/**"
+      - "tools/articles/**"
+      - ".github/workflows/article-sandbox.yml"
+  push:
+    branches:
+      - "agent/architecture-sandbox"
+    paths:
+      - "sandbox/articles/**"
+      - "tools/articles/**"
+      - ".github/workflows/article-sandbox.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-drafts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate article drafts
+        run: node tools/articles/validate-drafts.mjs
