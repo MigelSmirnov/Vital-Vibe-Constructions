@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Article Sandbox | Vital Vibe Construction</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="sandbox-header">
+    <div>
+      <p class="eyebrow">Vital Vibe Construction</p>
+      <h1>Article Sandbox</h1>
+      <p class="subtitle">Черновой просмотрщик. Материалы здесь не являются публичными страницами сайта.</p>
+    </div>
+    <span class="status-badge">NOINDEX · DRAFTS</span>
+  </header>
+
+  <main class="workspace">
+    <aside class="draft-panel" aria-label="Черновики статей">
+      <div class="panel-heading">
+        <h2>Черновики</h2>
+        <button id="resetDraft" class="secondary-button" type="button">Сбросить правки</button>
+      </div>
+      <div id="draftList" class="draft-list"></div>
+    </aside>
+
+    <section class="preview-panel">
+      <div id="error" class="error-message" hidden></div>
+
+      <div class="toolbar">
+        <div class="view-switch" role="group" aria-label="Режим просмотра">
+          <button type="button" class="view-button is-active" data-view="preview">Просмотр</button>
+          <button type="button" class="view-button" data-view="source">Редактор JSON</button>
+        </div>
+        <button id="saveDraft" class="primary-button" type="button">Сохранить локально</button>
+      </div>
+
+      <div id="previewView">
+        <section id="seoPanel" class="seo-panel" aria-label="SEO-поля статьи"></section>
+        <article id="articlePreview" class="article-preview"></article>
+      </div>
+
+      <div id="sourceView" class="source-view" hidden>
+        <label for="sourceEditor">JSON-совместимый YAML черновик</label>
+        <textarea id="sourceEditor" spellcheck="false"></textarea>
+        <p class="editor-note">Изменения сохраняются только в этом браузере. Репозиторий и публичный сайт не изменяются.</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
