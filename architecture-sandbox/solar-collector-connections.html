@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Можно ли подключать плоский солнечный коллектор с одной стороны? Сравнение односторонней и диагональной схем, рекомендации производителей и интерактивная анимация.">
+  <title>Одностороннее или диагональное подключение солнечного коллектора</title>
+  <style>
+    :root{
+      --bg:#0d1b2a;--panel:#12263a;--panel2:#0f2134;--ink:#e8f1f8;
+      --muted:#9bb8cc;--line:#31536f;--accent:#ffd166;--hot:#ff6b5f;
+      --cool:#3fa9f5;--ok:#4bd4a2;--warn:#ffb454;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Roboto,system-ui,sans-serif;line-height:1.65}
+    a{color:inherit}
+    .wrap{max-width:1040px;margin:auto;padding:28px 20px 64px}
+    .eyebrow{margin:0 0 8px;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+    h1,h2,h3{line-height:1.18}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,5vw,48px);margin:0;max-width:850px}
+    h2{font-size:clamp(23px,3vw,31px);margin:0 0 16px}
+    h3{font-size:18px;margin:0 0 8px}
+    p{margin:0 0 14px}
+    .lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:800px;margin-top:18px}
+    .hero{padding:24px 0 32px;border-bottom:1px solid var(--line)}
+    .answer{margin:28px 0 0;padding:20px 22px;border:1px solid rgba(75,212,162,.45);border-radius:14px;background:rgba(75,212,162,.08)}
+    .answer strong{color:var(--ok)}
+    .section{padding:38px 0;border-bottom:1px solid var(--line)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:21px}
+    .card.single{border-top:3px solid var(--cool)}
+    .card.diagonal{border-top:3px solid var(--hot)}
+    .tag{display:inline-block;margin-bottom:11px;padding:4px 9px;border:1px solid var(--line);border-radius:999px;color:var(--accent);font-size:12px;font-weight:700}
+    .diagram{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre;background:#0a1725;border:1px solid var(--line);border-radius:10px;padding:14px;margin:16px 0;color:#cfe5f3;overflow:auto}
+    ul{padding-left:20px;margin:13px 0 0}
+    li{margin:7px 0;color:var(--muted)}
+    .source{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:22px;margin-top:16px}
+    .source-title{display:flex;gap:10px;align-items:center;margin-bottom:9px}
+    .source-title span{width:10px;height:10px;border-radius:50%;background:var(--ok);flex:none}
+    .source p{color:var(--muted)}
+    .source a,.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700}
+    .source a{color:var(--accent)}
+    .source a:hover{text-decoration:underline}
+    .animation-shell{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+    iframe{display:block;width:100%;height:790px;border:0;background:var(--bg)}
+    .animation-footer{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 17px;border-top:1px solid var(--line)}
+    .animation-footer small{color:var(--muted)}
+    .btn{background:var(--accent);color:#0d1b2a;border-radius:9px;padding:10px 15px}
+    .notice{margin-top:18px;padding:16px 18px;border-left:3px solid var(--warn);background:rgba(255,180,84,.08);color:var(--muted)}
+    .checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+    .check{padding:15px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+    .check b{display:block;margin-bottom:4px;color:var(--ink)}
+    .check span{color:var(--muted);font-size:14px}
+    footer{padding-top:28px;color:var(--muted);font-size:13px}
+    @media(max-width:760px){
+      .grid,.checklist{grid-template-columns:1fr}
+      iframe{height:690px}
+      .animation-footer{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Проверка монтажа солнечной системы</p>
+    <h1>Одностороннее или диагональное подключение плоского солнечного коллектора?</h1>
+    <p class="lead">Если монтажники подключили подачу и обратку с одной стороны панели, это не обязательно ошибка. Допустимая схема зависит от конструкции коллектора, количества панелей и инструкции производителя.</p>
+    <div class="answer"><strong>Быстрый ответ:</strong> для одной панели односторонняя схема часто допустима. Для нескольких панелей производитель может ограничить её применение или потребовать подключение с противоположных сторон.</div>
+  </header>
+
+  <section class="section">
+    <h2>Чем отличаются две схемы</h2>
+    <div class="grid">
+      <article class="card single">
+        <span class="tag">Односторонняя</span>
+        <h3>Подача и обратка с одной стороны</h3>
+        <div class="diagram">выход ↑
+┌──────────────┐
+│  коллектор   │
+└──────────────┘
+вход  ↑</div>
+        <p>Такое подключение упрощает трассу и уменьшает количество наружной трубы. Для одиночной панели оно часто предусмотрено изготовителем.</p>
+        <ul>
+          <li>проще и быстрее монтаж;</li>
+          <li>короче трубопровод;</li>
+          <li>допустимость проверяется по паспорту модели.</li>
+        </ul>
+      </article>
+
+      <article class="card diagonal">
+        <span class="tag">Диагональная</span>
+        <h3>Вход и выход по противоположным углам</h3>
+        <div class="diagram">              выход ↑
+┌──────────────┐
+│  коллектор   │
+└──────────────┘
+вход ↑</div>
+        <p>Диагональное подключение создаёт более симметричный путь через панель или ряд панелей. Его чаще используют при увеличении коллекторного поля.</p>
+        <ul>
+          <li>удобно для нескольких панелей;</li>
+          <li>помогает выравнивать гидравлические пути;</li>
+          <li>может быть обязательным по инструкции.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Что говорят производители</h2>
+    <p>Универсального числа панелей для всех марок нет. Производители задают пределы с учётом внутреннего трубопровода конкретного коллектора.</p>
+
+    <div class="source">
+      <div class="source-title"><span></span><h3>Bosch: пример системы до пяти коллекторов</h3></div>
+      <p>На официальной странице комплекта Bosch Excellence 7000 Plus указано, что трубы абсорбера с двойным меандром позволяют выполнить одностороннее последовательное соединение до пяти коллекторов.</p>
+      <a href="https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/" target="_blank" rel="noopener noreferrer">Открыть страницу Bosch ↗</a>
+    </div>
+
+    <div class="source">
+      <div class="source-title"><span></span><h3>Buderus: до десяти в ряду, до пяти с одной стороны</h3></div>
+      <p>Для плоского коллектора Logasol SKT 1.0 производитель указывает: в одном ряду можно соединить до десяти коллекторов, а подачу и обратку с одной стороны — для ряда до пяти коллекторов.</p>
+      <a href="https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/" target="_blank" rel="noopener noreferrer">Открыть страницу Buderus ↗</a>
+    </div>
+
+    <div class="source">
+      <div class="source-title"><span></span><h3>IDAE–ASIT: проектирование и гидравлическая балансировка</h3></div>
+      <p>Испанское техническое руководство IDAE–ASIT рассматривает проектирование, исполнение и обслуживание солнечных тепловых установок. Его можно использовать как общую техническую основу, но окончательная схема подключения определяется документацией изготовителя.</p>
+      <a href="https://www.idae.es/index.php/publicaciones/guia-tecnica-de-energia-solar-termica" target="_blank" rel="noopener noreferrer">Открыть руководство IDAE ↗</a>
+    </div>
+
+    <div class="notice"><strong>Важно:</strong> правило Bosch или Buderus нельзя автоматически переносить на коллектор другой марки. Даже внешне похожие панели могут иметь другую внутреннюю гидравлическую схему.</div>
+  </section>
+
+  <section class="section">
+    <h2>Как проверить монтаж на своём объекте</h2>
+    <div class="checklist">
+      <div class="check"><b>1. Найдите модель панели</b><span>Маркировка обычно расположена на боковой или задней стороне корпуса.</span></div>
+      <div class="check"><b>2. Откройте монтажную инструкцию</b><span>Ищите разделы Hydraulic connection, Anschluss, Collegamento idraulico или Conexión hidráulica.</span></div>
+      <div class="check"><b>3. Сверьте число панелей</b><span>Схема, допустимая для одной панели, может быть ограничена для длинного ряда.</span></div>
+      <div class="check"><b>4. Проверьте датчик и направление потока</b><span>Датчик коллектора должен находиться на предусмотренном изготовителем выходе.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="animation">
+    <h2>Сравните подключение на анимации</h2>
+    <p>Переключите схему и посмотрите, как меняются расположение выходного патрубка и точка установки датчика.</p>
+    <div class="animation-shell">
+      <iframe src="./solar-collector.html" title="Анимация одностороннего и диагонального подключения солнечного коллектора" loading="lazy"></iframe>
+      <div class="animation-footer">
+        <small>Анимация носит пояснительный характер и не заменяет гидравлический расчёт или инструкцию производителя.</small>
+        <a class="btn" href="./solar-collector.html">Открыть отдельно →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Материал подготовлен для предварительной проверки монтажа. При спорной ситуации приоритет имеют паспорт коллектора, проект установки и заключение квалифицированного специалиста.
+  </footer>
+</main>
+</body>
+</html>
