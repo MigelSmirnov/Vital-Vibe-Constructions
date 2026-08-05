@@ -5,6 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Можно ли подключать плоский солнечный коллектор с одной стороны? Сравнение односторонней и диагональной схем, рекомендации производителей и интерактивная анимация.">
   <title>Одностороннее или диагональное подключение солнечного коллектора</title>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Vital Vibe Constructions">
+  <meta name="keywords" content="подключение солнечного коллектора, одностороннее подключение, диагональное подключение, плоский солнечный коллектор, проверка монтажа">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"Article",
+        "headline":"Одностороннее или диагональное подключение плоского солнечного коллектора?",
+        "description":"Практическая проверка монтажа: когда подключение с одной стороны допустимо и когда производитель требует диагональную схему.",
+        "inLanguage":"ru",
+        "author":{"@type":"Organization","name":"Vital Vibe Constructions"},
+        "publisher":{"@type":"Organization","name":"Vital Vibe Constructions"},
+        "about":["плоский солнечный коллектор","одностороннее подключение","диагональное подключение","гидравлическое подключение"],
+        "citation":[
+          "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/",
+          "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/",
+          "https://www.idae.es/index.php/publicaciones/guia-tecnica-de-energia-solar-termica"
+        ]
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"Одностороннее подключение одной панели — это ошибка?",
+            "acceptedAnswer":{"@type":"Answer","text":"Не обязательно. Для одной панели односторонняя схема часто допускается, если она предусмотрена инструкцией конкретного коллектора."}
+          },
+          {
+            "@type":"Question",
+            "name":"Когда требуется диагональное подключение?",
+            "acceptedAnswer":{"@type":"Answer","text":"Оно чаще применяется для нескольких панелей и может быть обязательным, когда этого требует производитель конкретной модели."}
+          },
+          {
+            "@type":"Question",
+            "name":"Можно ли применять правило Bosch к другой марке?",
+            "acceptedAnswer":{"@type":"Answer","text":"Нет. Ограничения относятся к конкретной гидравлической конструкции и должны проверяться по инструкции установленной модели."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <style>
     :root{
       --bg:#0d1b2a;--panel:#12263a;--panel2:#0f2134;--ink:#e8f1f8;
@@ -35,6 +79,8 @@
     .diagram{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre;background:#0a1725;border:1px solid var(--line);border-radius:10px;padding:14px;margin:16px 0;color:#cfe5f3;overflow:auto}
     ul{padding-left:20px;margin:13px 0 0}
     li{margin:7px 0;color:var(--muted)}
+    .rule{display:grid;grid-template-columns:84px 1fr;gap:16px;align-items:start;margin:16px 0;padding:17px;background:var(--panel2);border:1px solid var(--line);border-radius:12px}
+    .rule b{color:var(--accent);font-size:21px}
     .source{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:22px;margin-top:16px}
     .source-title{display:flex;gap:10px;align-items:center;margin-bottom:9px}
     .source-title span{width:10px;height:10px;border-radius:50%;background:var(--ok);flex:none}
@@ -52,6 +98,16 @@
     .check{padding:15px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
     .check b{display:block;margin-bottom:4px;color:var(--ink)}
     .check span{color:var(--muted);font-size:14px}
+    .photo-placeholder{min-height:360px;border:2px dashed #557690;border-radius:16px;background:linear-gradient(135deg,rgba(63,169,245,.08),rgba(255,209,102,.05));display:grid;place-items:center;text-align:center;padding:28px;overflow:hidden}
+    .photo-placeholder strong{display:block;font-size:20px;margin-bottom:7px}
+    .photo-placeholder span{color:var(--muted);max-width:560px;display:block}
+    .photo-placeholder code{display:inline-block;margin-top:12px;padding:5px 8px;border-radius:7px;background:#091522;color:var(--accent)}
+    .agent-summary{background:#0a1725;border:1px solid var(--line);border-radius:15px;padding:20px 22px}
+    .agent-summary dt{font-weight:700;color:var(--ink);margin-top:12px}
+    .agent-summary dd{margin:3px 0 0;color:var(--muted)}
+    .faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin-top:10px}
+    .faq summary{cursor:pointer;font-weight:700}
+    .faq details p{color:var(--muted);margin:10px 0 0}
     footer{padding-top:28px;color:var(--muted);font-size:13px}
     @media(max-width:760px){
       .grid,.checklist{grid-template-columns:1fr}
@@ -68,6 +124,18 @@
     <p class="lead">Если монтажники подключили подачу и обратку с одной стороны панели, это не обязательно ошибка. Допустимая схема зависит от конструкции коллектора, количества панелей и инструкции производителя.</p>
     <div class="answer"><strong>Быстрый ответ:</strong> для одной панели односторонняя схема часто допустима. Для нескольких панелей производитель может ограничить её применение или потребовать подключение с противоположных сторон.</div>
   </header>
+
+  <section class="section" aria-labelledby="real-photo-title">
+    <h2 id="real-photo-title">Реальный объект после завершения работ</h2>
+    <p>Здесь будет фотография установленного плоского коллектора с видимыми патрубками, теплоизоляцией и фактической схемой подключения.</p>
+    <figure class="photo-placeholder" data-photo-slot="completed-installation">
+      <figcaption>
+        <strong>Фото будет добавлено после завершения монтажа</strong>
+        <span>Рекомендуемый кадр: вся панель целиком, обе точки подключения и часть трубопровода. Это позволит заказчику сравнить реальный объект со схемой.</span>
+        <code>solar-collector-installation-final.webp</code>
+      </figcaption>
+    </figure>
+  </section>
 
   <section class="section">
     <h2>Чем отличаются две схемы</h2>
@@ -139,6 +207,24 @@
       <div class="check"><b>3. Сверьте число панелей</b><span>Схема, допустимая для одной панели, может быть ограничена для длинного ряда.</span></div>
       <div class="check"><b>4. Проверьте датчик и направление потока</b><span>Датчик коллектора должен находиться на предусмотренном изготовителем выходе.</span></div>
     </div>
+  </section>
+
+  <section class="section" id="machine-readable-summary">
+    <h2>Краткие проверяемые выводы</h2>
+    <dl class="agent-summary">
+      <dt>Главный ответ</dt><dd>Подключение одной панели с одной стороны может быть допустимым и само по себе не доказывает ошибку монтажа.</dd>
+      <dt>Ограничение</dt><dd>Допустимое количество панелей и схема соединения зависят от внутренней гидравлики и документации изготовителя.</dd>
+      <dt>Пример производителя</dt><dd>Bosch и Buderus публикуют модели, для которых одностороннее соединение допускается до пяти коллекторов.</dd>
+      <dt>Практическая проверка</dt><dd>Нужно определить модель панели, открыть монтажную инструкцию и сверить число панелей, вход, выход и положение датчика.</dd>
+      <dt>Приоритет источников</dt><dd>Паспорт и монтажная инструкция конкретной модели имеют приоритет над общими статьями и примерами других брендов.</dd>
+    </dl>
+  </section>
+
+  <section class="section faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Короткие ответы</h2>
+    <details open><summary>Одностороннее подключение одной панели — это ошибка?</summary><p>Не обязательно. Оно часто допустимо, если предусмотрено производителем.</p></details>
+    <details><summary>Почему тогда используют диагональную схему?</summary><p>Она чаще нужна для нескольких панелей и помогает организовать более симметричный гидравлический путь.</p></details>
+    <details><summary>Можно ли ориентироваться только на внешний вид?</summary><p>Нет. Внешне похожие панели могут иметь разную внутреннюю схему, поэтому нужна точная модель и её инструкция.</p></details>
   </section>
 
   <section class="section" id="animation">
