@@ -7,6 +7,13 @@
       "status": "draft",
       "language": "es",
       "source": "./drafts/reforma-cocina-barcelona.yaml"
+    },
+    {
+      "id": "pintura-paredes-barcelona",
+      "title": "Pintura de paredes: de qué depende el precio y por qué no basta con repintar",
+      "status": "draft",
+      "language": "es",
+      "source": "./drafts/pintura-paredes-barcelona.yaml"
     }
   ]
 }
