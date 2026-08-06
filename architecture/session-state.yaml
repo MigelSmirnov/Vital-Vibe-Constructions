@@ -1,4 +1,4 @@
-version: 15
+version: 16
 
 updated_at: 2026-08-06T00:00:00Z
 phase: project-case-study-enrichment
@@ -114,16 +114,24 @@ completed_work:
     summary: Expanded the El Raval studio-conversion project record with verified scope, initial condition, phased execution, engineering decisions, budget strategy, approximate cost, transformation summary, and pending technical-media subjects.
     source_record: content/tables/projects.yaml
     validation: pending-local-checks
+  - date: 2026-08-06
+    commits:
+      - ff13f179810502d4e2e4d0a32a9bf1f24055635f
+      - d0582d321432521cd32150d40da051b0447807c9
+      - 241a174308781f8f4df77e7c4f7266046d223a9a
+    backlog_item: AI-011
+    summary: Extended the project content contract and Project entity, then added evidence-rich project-page sections for initial condition, challenges, engineering decisions, budget tradeoffs, approximate cost, result, and pending technical media.
+    validation: pending-local-checks
 
 active_stage:
   goal: Turn the El Raval project into the first evidence-rich project case study for AI-011.
-  status: in-progress
+  status: implementation-complete-validation-pending
   scope:
     - preserve verified project facts in the Knowledge Repository source record
     - separate engineering decisions from deliberately simple decorative finishes
     - expose the approximate project cost with a clear limitation note
     - reserve technical-media subjects for later uploads and visible evidence links
-    - update the project-page builder to render the richer case-study sections
+    - render the richer case-study sections from the Project entity
   exclusions:
     - do not invent completion dates, exact material brands, certifications, customer identity, or private address details
     - do not edit support.js or legacy entrypoints
@@ -134,10 +142,9 @@ active_stage:
     - inspect the generated El Raval project page on desktop and mobile
 
 next_stage:
-  goal: Render and validate the enriched El Raval case study in site-next.
+  goal: Validate and refine the generated El Raval case study.
   implementation_steps:
-    - extend the Project domain model to accept the new evidence fields
-    - update the project-detail builder with meaningful case-study sections
-    - add visible pending or resolved technical-media links without broken URLs
-    - regenerate site-next, sitemap.xml, and llms.txt as required
+    - regenerate site-next, sitemap.xml, and llms.txt through the existing build flow
     - run the full project checks locally
+    - inspect the desktop and mobile layout
+    - replace pending technical-media placeholders as photographs are uploaded
