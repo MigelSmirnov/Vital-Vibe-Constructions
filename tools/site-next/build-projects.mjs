@@ -132,12 +132,18 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
   const title = `${project.title} | ${site.name}`;
   const description = project.summary;
   const [leadImage, ...galleryImages] = media;
+  const duration = project.duration ?? renderExecutionDuration(project.execution);
   const facts = [
     project.location ? ["Ubicación", project.location] : null,
-    project.budget_range ? ["Nivel", project.budget_range] : null,
+    project.project_type ? ["Tipo de proyecto", project.project_type] : null,
     project.area_m2 ? ["Superficie", `${project.area_m2} m²`] : null,
-    project.duration ? ["Duración", project.duration] : null,
+    duration ? ["Duración", duration] : null,
+    project.estimated_total_cost_eur
+      ? ["Coste aproximado", formatCurrency(project.estimated_total_cost_eur, site.currency ?? "EUR")]
+      : null,
   ].filter(Boolean);
+
+  const evidenceSections = renderEvidenceSections(project);
 
   return renderDocument({
     language: site.defaultLanguage,
@@ -151,6 +157,12 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
       name: project.title,
       description,
       url: canonicalUrl,
+      about: {
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.transformation_summary ?? project.summary,
+        locationCreated: project.location ?? undefined,
+      },
       isPartOf: {
         "@type": "WebSite",
         name: site.name,
@@ -175,12 +187,13 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
         <img src="../../../${escapeHtml(leadImage.src)}" alt="${escapeHtml(leadImage.alt)}" width="${escapeHtml(leadImage.width)}" height="${escapeHtml(leadImage.height)}">
       </div>
     </section>
+    ${evidenceSections}
     <section class="section project-detail-content">
       <div class="container project-detail-grid">
         <div>
-          <p class="eyebrow">Alcance</p>
-          <h2>Trabajos relacionados</h2>
-          <p>${escapeHtml(project.summary)}</p>
+          <p class="eyebrow">Servicios relacionados</p>
+          <h2>Trabajos vinculados al proyecto</h2>
+          <p>${escapeHtml(project.transformation_summary ?? project.summary)}</p>
         </div>
         <ul class="project-service-list">${services
           .map((service) => `<li><strong>${escapeHtml(service.title)}</strong><span>${escapeHtml(service.summary)}</span></li>`)
@@ -205,6 +218,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
     </section>`
         : ""
     }
+    ${renderPendingTechnicalMedia(project.pending_technical_media)}
     <section class="section project-navigation">
       <div class="container">
         <a class="button button-secondary" href="../">Volver a todos los proyectos</a>
@@ -214,6 +228,140 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
   </main>
   ${renderFooter(site)}`,
   });
+}
+
+function renderEvidenceSections(project) {
+  const sections = [];
+
+  if (project.initial_condition) {
+    const facts = project.initial_condition.verified_facts ?? [];
+    sections.push(renderTextAndListSection({
+      eyebrow: "Punto de partida",
+      title: "Estado inicial",
+      text: project.initial_condition.summary,
+      items: facts,
+      quote: project.initial_condition.project_lead_note,
+    }));
+  }
+
+  if (project.project_objective) {
+    sections.push(renderTextAndListSection({
+      eyebrow: "Objetivo",
+      title: "Dos estudios independientes con un presupuesto controlado",
+      text: project.project_objective,
+    }));
+  }
+
+  if (project.engineering_challenges?.length) {
+    sections.push(renderTextAndListSection({
+      eyebrow: "Diagnóstico",
+      title: "Principales desafíos de la obra",
+      items: project.engineering_challenges,
+    }));
+  }
+
+  if (project.engineering_decisions) {
+    const groups = [
+      ["Instalación eléctrica", project.engineering_decisions.electrical],
+      ["Fontanería, saneamiento y ventilación", project.engineering_decisions.water_and_drainage],
+      ["Nivelación y formación de los suelos", project.engineering_decisions.floor_system],
+      ["Divisiones y acabados", project.engineering_decisions.partition_and_finish],
+    ].filter(([, items]) => Array.isArray(items) && items.length);
+
+    sections.push(`<section class="section project-detail-content">
+      <div class="container">
+        <p class="eyebrow">Decisiones de ingeniería</p>
+        <h2>Soluciones adoptadas y motivo de cada prioridad</h2>
+        <div class="project-detail-grid">${groups
+          .map(([heading, items]) => `<div><h3>${escapeHtml(heading)}</h3>${renderList(items)}</div>`)
+          .join("")}</div>
+      </div>
+    </section>`);
+  }
+
+  if (project.budget_strategy) {
+    sections.push(`<section class="section project-detail-content">
+      <div class="container">
+        <p class="eyebrow">Criterio de presupuesto</p>
+        <h2>${escapeHtml(project.budget_strategy.principle)}</h2>
+        <div class="project-detail-grid">
+          <div>
+            <h3>Dónde se redujo el presupuesto</h3>
+            ${renderList(project.budget_strategy.where_savings_were_made ?? [])}
+          </div>
+          <div>
+            <h3>Dónde no se aceptó ningún compromiso</h3>
+            ${renderList(project.budget_strategy.where_no_compromise_was_accepted ?? [])}
+          </div>
+        </div>
+      </div>
+    </section>`);
+  }
+
+  if (project.estimated_total_cost_eur || project.cost_note) {
+    sections.push(renderTextAndListSection({
+      eyebrow: "Coste del caso",
+      title: project.estimated_total_cost_eur
+        ? `Orden de magnitud: ${formatCurrency(project.estimated_total_cost_eur, "EUR")}`
+        : "Coste aproximado",
+      text: project.cost_note,
+    }));
+  }
+
+  if (project.transformation_summary) {
+    sections.push(renderTextAndListSection({
+      eyebrow: "Resultado",
+      title: "Transformación conseguida",
+      text: project.transformation_summary,
+    }));
+  }
+
+  return sections.join("");
+}
+
+function renderTextAndListSection({ eyebrow, title, text = null, items = [], quote = null }) {
+  return `<section class="section project-detail-content">
+      <div class="container">
+        <p class="eyebrow">${escapeHtml(eyebrow)}</p>
+        <h2>${escapeHtml(title)}</h2>
+        ${text ? `<p>${escapeHtml(text)}</p>` : ""}
+        ${items.length ? renderList(items) : ""}
+        ${quote ? `<blockquote><p>${escapeHtml(quote)}</p></blockquote>` : ""}
+      </div>
+    </section>`;
+}
+
+function renderList(items) {
+  return `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+}
+
+function renderPendingTechnicalMedia(items = []) {
+  if (!items.length) return "";
+
+  return `<section class="section project-detail-content" id="technical-media-pending">
+      <div class="container">
+        <p class="eyebrow">Documentación técnica</p>
+        <h2>Fotografías pendientes de incorporar</h2>
+        <p>Esta lista reserva el lugar para imágenes que documentarán soluciones concretas del proyecto.</p>
+        <ul>${items
+          .map((item) => `<li><a href="#technical-media-pending">${escapeHtml(item.subject)}</a></li>`)
+          .join("")}</ul>
+      </div>
+    </section>`;
+}
+
+function renderExecutionDuration(execution) {
+  if (!execution?.phase_count || !execution?.duration_per_phase_months) return null;
+
+  return `${execution.phase_count} fases de ${execution.duration_per_phase_months} meses`;
+}
+
+function formatCurrency(value, currency) {
+  return new Intl.NumberFormat("es-ES", {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0,
+  }).format(value);
 }
 
 async function main() {
