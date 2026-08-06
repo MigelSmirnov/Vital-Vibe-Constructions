@@ -46,9 +46,11 @@ function normalizeValue(value, publicDirectory) {
 }
 
 function normalizeHtml(html, publicDirectory) {
-  return html.replace(/\b(href|src)=(['"])([^'"]+)\2/g, (match, attribute, quote, value) => {
+  const normalizedPaths = html.replace(/\b(href|src)=(['"])([^'"]+)\2/g, (match, attribute, quote, value) => {
     return `${attribute}=${quote}${normalizeValue(value, publicDirectory)}${quote}`;
   });
+
+  return normalizedPaths.replace(/[ \t]+$/gmu, "");
 }
 
 async function main() {
@@ -60,7 +62,7 @@ async function main() {
     await writeFile(filePath, normalized, "utf8");
   }
 
-  console.log(`Normalized root-relative URLs in ${htmlFiles.length} generated HTML files`);
+  console.log(`Normalized root-relative URLs and trailing whitespace in ${htmlFiles.length} generated HTML files`);
 }
 
 main().catch((error) => {
