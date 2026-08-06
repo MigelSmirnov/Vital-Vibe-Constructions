@@ -1,4 +1,4 @@
-version: 16
+version: 17
 
 updated_at: 2026-08-06T00:00:00Z
 phase: project-case-study-enrichment
@@ -15,15 +15,16 @@ contract_references:
   invariants: architecture/invariants.yaml
   constants: architecture/constants.yaml
   content_model: architecture/content-model.yaml
+  project_evidence_standard: architecture/project-evidence-standard.md
   routes: architecture/project-routes.yaml
   gallery_coverage: architecture/gallery-media-coverage.yaml
 
 latest_verified_baseline:
-  commit: a3d27ad11223ecef0bcd0c013f40de4a7579b626
-  summary: First Knowledge Repository-backed service page validated locally from this base commit plus the current task changes.
+  commit: 67cfd025c5c3de4d361062075a63d7c658e0c44b
+  summary: El Raval evidence-rich project case study built and validated locally; generated whitespace cleanup remains to be rechecked after the normalizer update.
   checks:
     workflow: local full project checks
-    conclusion: success
+    conclusion: success-with-whitespace-findings
     knowledge_tests:
       passed: 27
       failed: 0
@@ -37,27 +38,12 @@ latest_verified_baseline:
     gallery_pages: 1
     service_detail_pages: 1
     sitemap_urls: 8
-    local_http:
-      service_page: 200
-      stylesheet: 200
-      logo: 200
-      related_project_images: 3
-      related_project_routes: 3
-    visual_checks:
-      browser: Firefox headless
-      desktop_viewport: 1440x2200
-      mobile_viewport: 390x8000
-      horizontal_overflow_visible: false
-      h1_readable: true
-      cta_visible: true
-      navigation_visible: true
-      project_images_loaded: true
     content_audit:
       errors: 0
       warnings: 5
-    diff_whitespace: pass
+    diff_whitespace: trailing-whitespace-found-in-generated-project-html
   command: node tools/checks/run.mjs
-  environment: local
+  environment: Termux
 
 current_strategy:
   legacy_runtime: read-only
@@ -113,7 +99,7 @@ completed_work:
     backlog_item: AI-011
     summary: Expanded the El Raval studio-conversion project record with verified scope, initial condition, phased execution, engineering decisions, budget strategy, approximate cost, transformation summary, and pending technical-media subjects.
     source_record: content/tables/projects.yaml
-    validation: pending-local-checks
+    validation: passed-domain-and-generated-page-checks
   - date: 2026-08-06
     commits:
       - ff13f179810502d4e2e4d0a32a9bf1f24055635f
@@ -121,30 +107,38 @@ completed_work:
       - 241a174308781f8f4df77e7c4f7266046d223a9a
     backlog_item: AI-011
     summary: Extended the project content contract and Project entity, then added evidence-rich project-page sections for initial condition, challenges, engineering decisions, budget tradeoffs, approximate cost, result, and pending technical media.
-    validation: pending-local-checks
+    validation: passed-domain-and-generated-page-checks
+  - date: 2026-08-06
+    commits:
+      - 709ad3f55e480bc88975508d90d2342d83d68343
+      - f940e903d6f52db9df5e1028774fef93d472f517
+    backlog_item: AI-011
+    summary: Added generated HTML trailing-whitespace normalization and documented the repository-wide evidence standard for project case studies.
+    validation: pending-local-recheck
 
 active_stage:
-  goal: Turn the El Raval project into the first evidence-rich project case study for AI-011.
+  goal: Complete validation of the El Raval evidence-rich project case study and its reusable project standard.
   status: implementation-complete-validation-pending
   scope:
     - preserve verified project facts in the Knowledge Repository source record
-    - separate engineering decisions from deliberately simple decorative finishes
-    - expose the approximate project cost with a clear limitation note
+    - render evidence-rich case-study sections from the Project entity
+    - normalize generated HTML whitespace after root-path processing
+    - maintain a reusable evidence and anti-template writing standard
     - reserve technical-media subjects for later uploads and visible evidence links
-    - render the richer case-study sections from the Project entity
   exclusions:
     - do not invent completion dates, exact material brands, certifications, customer identity, or private address details
     - do not edit support.js or legacy entrypoints
-    - do not mark AI-011 complete until the generated page and evidence media are validated
+    - do not mark AI-011 complete until the pending technical photographs are incorporated and visually reviewed
   next_verification:
+    - git pull --ff-only origin agent/architecture-sandbox
     - node tools/checks/run.mjs
     - git diff --check
-    - inspect the generated El Raval project page on desktop and mobile
+    - inspect the generated El Raval project page locally on mobile
 
 next_stage:
-  goal: Validate and refine the generated El Raval case study.
+  goal: Replace the pending El Raval technical-media subjects with verified Media records.
   implementation_steps:
-    - regenerate site-next, sitemap.xml, and llms.txt through the existing build flow
-    - run the full project checks locally
-    - inspect the desktop and mobile layout
-    - replace pending technical-media placeholders as photographs are uploaded
+    - upload the floor-pour, subfloor and plasterboard, wall-restoration, bathroom-waterproofing, corrugated-conduit, and electrical-panel photographs
+    - record truthful media metadata and project ownership
+    - link each technical claim to its supporting image without creating thin image pages
+    - repeat full checks and mobile inspection
