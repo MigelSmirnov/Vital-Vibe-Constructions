@@ -1,8 +1,8 @@
-version: 14
+version: 15
 
-updated_at: 2026-07-29T00:00:00Z
-phase: service-page-generation
-stage_status: ready
+updated_at: 2026-08-06T00:00:00Z
+phase: project-case-study-enrichment
+stage_status: in-progress
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -107,30 +107,37 @@ media_migration:
   target_unmodeled_media: 0
   coverage_gate: passed
 
+completed_work:
+  - date: 2026-08-06
+    commit: 88ab9434967f246264650ae8ba056957e531749f
+    backlog_item: AI-011
+    summary: Expanded the El Raval studio-conversion project record with verified scope, initial condition, phased execution, engineering decisions, budget strategy, approximate cost, transformation summary, and pending technical-media subjects.
+    source_record: content/tables/projects.yaml
+    validation: pending-local-checks
+
 active_stage:
-  goal: Generate the first complete SEO service page from Knowledge Repository content.
-  status: completed
+  goal: Turn the El Raval project into the first evidence-rich project case study for AI-011.
+  status: in-progress
   scope:
-    - extend Service with page-owned SEO, introduction, scope, process, and FAQ fields
-    - generate /servicios/reformas-integrales-barcelona/
-    - derive related projects, project media, routes, and contacts from existing repository records
-    - add WebPage, Service, BreadcrumbList, and visible FAQPage structured data
-    - link the homepage service card to the generated route
-    - include the route in sitemap.xml and llms.txt
+    - preserve verified project facts in the Knowledge Repository source record
+    - separate engineering decisions from deliberately simple decorative finishes
+    - expose the approximate project cost with a clear limitation note
+    - reserve technical-media subjects for later uploads and visible evidence links
+    - update the project-page builder to render the richer case-study sections
   exclusions:
+    - do not invent completion dates, exact material brands, certifications, customer identity, or private address details
     - do not edit support.js or legacy entrypoints
-    - do not change the legacy public runtime
-    - do not add unsupported experience, guarantees, credentials, timing, pricing, testimonials, or location claims
+    - do not mark AI-011 complete until the generated page and evidence media are validated
   next_verification:
     - node tools/checks/run.mjs
     - git diff --check
-    - verify deployed root-relative assets return HTTP 200
-    - repeat desktop and mobile inspection in the deployment environment
+    - inspect the generated El Raval project page on desktop and mobile
 
 next_stage:
-  goal: Verify the generated site in its root-domain hosting environment before switching public traffic.
+  goal: Render and validate the enriched El Raval case study in site-next.
   implementation_steps:
-    - confirm the host publishes site-next as the domain document root
-    - verify the service page, CSS, logo, project media, project routes, and contact anchors over HTTPS
-    - repeat desktop and mobile visual inspection against the deployed URL
-    - preserve the legacy runtime until the replacement deployment is validated
+    - extend the Project domain model to accept the new evidence fields
+    - update the project-detail builder with meaningful case-study sections
+    - add visible pending or resolved technical-media links without broken URLs
+    - regenerate site-next, sitemap.xml, and llms.txt as required
+    - run the full project checks locally
