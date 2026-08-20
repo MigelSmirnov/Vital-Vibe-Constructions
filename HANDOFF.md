@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 15
-Updated: 2026-08-20T07:10:00Z
+Version: 16
+Updated: 2026-08-20T07:16:00Z
 
 ## Session Rule
 
@@ -14,18 +14,19 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-`agent/architecture-sandbox` is on a reproducible green baseline. The current Knowledge Repository records, builders, tracked generated projections, and SEO/AEO planning handoff are synchronized.
+`agent/architecture-sandbox` is on a reproducible green baseline and now has a ranked SEO/AEO query-to-page architecture.
 
 Delivery state:
 
 - branch: `agent/architecture-sandbox`
 - pull request: `#1 Build architecture sandbox and knowledge foundation`
 - pull request state: open and ready for review
-- current planning head before this note: `9ab16b9c3b75792e1fa2da34f776fec36cd18939`
+- query/page matrix commit: `7b35dd80e40e3007784eaed77d246f89a1cd3d8e`
+- matrix artifact: `architecture/seo-aeo-query-page-matrix.md`
 - generated projection sync commit: `2d644be010466c5b620ad5c9ac1667f7846296d6`
-- GitHub Actions `Project checks` run `#78`: success
-- `node tools/checks/run.mjs`: success
-- `git diff --exit-code` after generation: success
+- GitHub Actions `Project checks` run `#80`: success
+- GitHub Actions `Article sandbox` run `#30`: success
+- generated projections remain unchanged and reproducible
 
 Current generated site:
 
@@ -49,96 +50,150 @@ Current generated site:
 - Keep image-detail routes deferred.
 - Prefer evidence-rich, locally specific content over generic SEO copy.
 - Do not create page families by cloning a template with only the service keyword changed.
+- Do not activate new routes merely because they appear in the SEO/AEO matrix.
 
-## SEO / AEO Audit Summary
+## SEO / AEO Matrix
 
-The `site-next` architecture is strong enough to support both conventional search and AI answer systems, but the current content footprint is still small.
+The first ranked matrix contains 15 page opportunities. It intentionally does not invent search-volume numbers. Priority is based on commercial value, current Barcelona search-result intent, first-party evidence readiness, AEO usefulness, and the ability to create genuinely distinct content.
 
-Strengths:
+Top priorities:
 
-- crawlable static HTML with unique titles, descriptions, canonical URLs, headings, and internal links
-- one full service landing page with visible breadcrumbs, process, FAQs, related projects, and structured data
-- project pages with first-party construction evidence rather than generic marketing text
-- El Raval case study exposes concrete facts including location, 50 m² area, phased execution, engineering constraints, decisions, approximate cost, and visible limitations
-- complete gallery ownership and truthful media metadata
-- reproducible `sitemap.xml` and `llms.txt`
-- Knowledge Repository structure makes future page expansion systematic rather than ad hoc
+1. **Existing reformas integrales service** — `/servicios/reformas-integrales-barcelona/`
+2. **Renovation price guide** — proposed `/guias/precio-reforma-integral-barcelona/`
+3. **Kitchen service** — proposed `/servicios/cocinas-barcelona/`
+4. **Bathroom service** — proposed `/servicios/banos-barcelona/`
+5. **Electrical service** — proposed `/servicios/electricidad-barcelona/`
 
-Primary gaps:
+Second-wave evidence pages:
 
-1. `site-next` must become the public production document root before its SEO/AEO improvements can materially affect discovery.
-2. Only `Reformas integrales` currently has a full public service route. Kitchens, bathrooms, electrical, painting, and masonry are still only short service records/cards.
-3. The site lacks a deliberate query-to-page architecture covering commercial, project-evidence, and informational intent.
-4. Entity/local-business structured data can be strengthened after confirming only factual business details that may be published.
-5. Existing project media should be moved closer to the technical statements they support when useful; new El Raval technical photographs remain desirable but are not required to continue SEO/AEO planning.
-6. The current Spanish site should be made strong first; English/Russian crawlable variants and hreflang remain later work.
-7. Useful editorial content exists in the article sandbox but is not yet part of the public Knowledge Repository or route model.
+- old-building renovation in Barcelona
+- uneven-floor / floor-leveling guide
+- electrical-renovation guide
+- painting service
+- painting price/preparation guide
+- masonry service
 
-## SEO / AEO Working Principles
+Supporting third-wave content:
 
-- Optimize for answerable real questions, not keyword density.
-- Every commercial page should explain scope, constraints, process, evidence, pricing context where truthful, and next action.
-- Every project case study should contain facts that distinguish the project from a reusable marketing template.
-- Important technical claims should be paired with existing or future visual evidence when practical.
-- Structured data must mirror visible content and must not introduce facts that are absent from the page.
-- `llms.txt` is a supporting discovery projection, not a substitute for strong crawlable HTML.
-- FAQs should exist because they answer real customer questions, not because of an expected search-result enhancement.
-- New articles should answer questions that naturally lead users toward service or project pages.
-- Do not infer addresses, certifications, customer identities, material brands, project dates, or technical properties that are not verified.
+- kitchen planning guide
+- bathroom waterproofing guide
+- how to review a renovation estimate
 
-## Active Stage: SEO / AEO Content Architecture
+The existing El Raval project is treated as the primary evidence node rather than as a new route opportunity.
 
-Technical-media completion for El Raval is deferred until the six reserved photographs are available. AI-011 remains open but is not blocking the next stage.
+## Why the Ranking Looks This Way
 
-The active goal is to define the minimum high-value public page set for Barcelona before adding more builders or public routes.
+Current Barcelona search results strongly emphasize:
 
-### Next Artifact: Query / Page Matrix
+- price per square metre and example apartment sizes;
+- complete versus partial kitchen and bathroom renovation;
+- scope and duration;
+- old-building conditions and hidden installations;
+- waterproofing, drainage and ventilation;
+- preparation work as a major driver of painting cost.
 
-Create a prioritized SEO/AEO matrix that maps real user intent to public page candidates.
+VVC should not copy competitor numbers, guarantees or claims. The opportunity is to answer the same user questions with better first-party evidence.
 
-The matrix should cover at least:
+## Evidence Advantage
 
-- commercial service intent
-- local Barcelona intent
-- project / case-study evidence intent
-- pricing and budgeting questions
-- old-building renovation problems
-- electrical planning and renovation questions
-- kitchen and bathroom renovation questions
-- flooring, leveling, waterproofing, drainage, painting, and masonry questions where first-party experience exists
+### El Raval
 
-For each candidate page record:
+Strongest evidence source for:
 
-- primary query / user question
-- intent class
-- proposed canonical route
-- target entity or content type
-- evidence currently available in the Knowledge Repository
-- missing evidence or facts
-- related existing project(s)
-- related service(s)
-- recommended schema only when useful and truthful
-- internal-link sources and destinations
-- business value
-- SEO/AEO priority
-- publication readiness
+- integral renovation;
+- 50 m² project cost context;
+- old-building constraints;
+- uneven floors and lightweight build-up;
+- new electrical installation;
+- drainage, ventilation and waterproofing;
+- masonry / dry lining;
+- budget trade-offs;
+- phased execution.
 
-The first matrix should rank roughly 10–15 highest-value page opportunities rather than create a large speculative backlog.
+### Piso reformado Barcelona
 
-## Planned Execution After the Matrix
+Useful for:
 
-1. **Production gate** — confirm the deployment approach for serving `site-next` as the public document root, then verify canonical routes, assets, sitemap, robots, and HTTP behavior over production HTTPS.
-2. **Service expansion** — select the highest-value service pages from the matrix, expected to include some or all of kitchens, bathrooms, electrical, painting, and masonry. Add page-owned content only when enough real information exists.
-3. **Entity/local layer** — define a factual site/business entity model and strengthen Organization/WebSite/local-business structured data without inventing a public address or unsupported business attributes.
-4. **Evidence placement** — use existing project photographs contextually inside technical case-study sections where they already support visible claims; add the six reserved El Raval photographs later when available.
-5. **Editorial layer** — promote the strongest article-sandbox topics into modeled public content after defining article entities/routes and evidence requirements. High-value topics include renovation cost, old Barcelona housing stock, floor leveling, electrical renovation planning, bathrooms, and other first-party construction problems.
-6. **Internal linking** — connect informational pages to relevant service and project evidence pages, and connect service pages back to documented projects and supporting guides.
-7. **Multilingual stage** — only after Spanish coverage is strong, design crawlable EN/RU routes and hreflang rather than client-only translations.
-8. **Measurement** — once production deployment exists, use Search Console and business-profile data to revise priorities based on real impressions, queries, indexing, and conversions rather than guesses.
+- integral renovation;
+- kitchen service;
+- before / work / after sequences;
+- finished bathroom and circulation-space results where relevant.
+
+### Reforma integral estándar
+
+Useful for:
+
+- integral renovation;
+- kitchen;
+- electrical preparation;
+- painting;
+- masonry;
+- floor base and parquet evidence.
+
+### Premium contractor work
+
+Useful for:
+
+- painting preparation and spray finish;
+- plasterboard / dry lining;
+- integrated LED / electrical work;
+- premium finish evidence.
+
+## Article Sandbox Promotion Order
+
+1. `sandbox/articles/drafts/coste-reforma-piso-barcelona-2026.md`
+   - highest-value editorial candidate;
+   - must be converted to Spanish and verified line by line;
+   - combines price intent with strong old-building and floor reasoning.
+
+2. `sandbox/articles/drafts/pintura-paredes-barcelona.yaml`
+   - mature evidence-first structure;
+   - verify current 4–6 / ~6 EUR/m² claims before publication;
+   - connect to premium and project media.
+
+3. `sandbox/articles/drafts/reforma-cocina-barcelona.yaml`
+   - useful supporting guide;
+   - enrich with real project evidence before publication.
+
+## Active Stage: Wave Selection and Production Gate
+
+The query/page matrix is complete. The next work should not be another speculative SEO backlog.
+
+### Wave 0 — Production Gate
+
+Before expecting organic impact:
+
+1. confirm how `site-next` will become the public document root;
+2. deploy the current eight-page projection without changing canonical URLs;
+3. verify public HTTP 200 behavior, assets, canonical tags, robots, sitemap, structured data and mobile rendering;
+4. confirm Search Console discovery/indexing once production is live.
+
+### Wave 1 — First Content Expansion
+
+After the deployment approach is clear, implement in this order unless new first-party evidence changes the ranking:
+
+1. strengthen the existing integral-renovation service if needed;
+2. model and publish the Spanish renovation-price guide;
+3. add page-owned kitchen service content and route;
+4. add page-owned bathroom service content and route;
+5. add page-owned electrical service content and route.
+
+No route should be activated until its content is evidence-ready and the route contract is updated deliberately.
+
+## Local / Entity Layer
+
+After or alongside Wave 1:
+
+- add factual `WebSite` identity markup;
+- strengthen Organization/local-business identity only with verified publishable facts;
+- do not invent a public street address;
+- keep schema synchronized with visible content and Knowledge Repository records.
 
 ## El Raval Technical Media: Deferred
 
-When the photographs become available, resume AI-011 with:
+AI-011 remains open, but missing technical photographs do not block SEO/AEO execution.
+
+When available, add:
 
 1. floor-pour photograph
 2. subfloor/plasterboard photograph
@@ -147,7 +202,20 @@ When the photographs become available, resume AI-011 with:
 5. corrugated-conduit photograph
 6. electrical-panel photograph
 
-Record truthful alt text, dimensions, state, source path, and project ownership; link the supporting technical claims; keep image-detail routes deferred; regenerate and require a clean diff; visually review the page before completing AI-011.
+Use truthful Media metadata and contextual evidence links; keep image-detail routes deferred.
+
+## Intentionally Deferred SEO Ideas
+
+Do not prioritize:
+
+- one repeated landing page per Barcelona neighborhood;
+- self-ranking `mejor empresa` pages;
+- guarantee/warranty claims without verified policy;
+- financing pages without a confirmed offer;
+- permit-management promises without confirmed operational scope;
+- structural-safety advice without professional verification;
+- exact brand comparison pages based on competitor content;
+- EN/RU mirrors before Spanish topical coverage is stronger.
 
 ## Non-Negotiable Constraints
 
@@ -162,6 +230,7 @@ Record truthful alt text, dimensions, state, source path, and project ownership;
 - Do not replace complete gallery coverage with a curated subset.
 - Preserve truthful alt text, dimensions, and project or service ownership for every gallery image.
 - Do not publish generic mass-produced landing pages without page-specific evidence and useful content.
+- Do not use competitor prices or guarantees as VVC facts.
 
 ## Verification
 
