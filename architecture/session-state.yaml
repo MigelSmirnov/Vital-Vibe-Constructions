@@ -1,8 +1,8 @@
-version: 22
+version: 23
 
-updated_at: 2026-08-20T09:57:00+02:00
-phase: vps-migration-preparation
-stage_status: repository-prep-complete-awaiting-vps-facts
+updated_at: 2026-08-20T10:06:00+02:00
+phase: vps-security-preparation
+stage_status: security-baseline-recorded-awaiting-vps-facts
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -20,37 +20,8 @@ contract_references:
   gallery_coverage: architecture/gallery-media-coverage.yaml
   seo_aeo_query_page_matrix: architecture/seo-aeo-query-page-matrix.md
   vps_migration_plan: architecture/vps-migration-plan.md
+  vps_security_plan: architecture/vps-security-plan.md
   github_pages_fallback_plan: architecture/production-deployment-plan.md
-
-latest_verified_baseline:
-  head_commit: 822c508d56ce36c03d7e878bff5785b31f89ef29
-  generated_projection_commit: 2d644be010466c5b620ad5c9ac1667f7846296d6
-  checks:
-    project_checks:
-      run_number: 94
-      conclusion: success
-    article_sandbox:
-      run_number: 44
-      conclusion: success
-    vps_bundle_check:
-      run_number: 1
-      conclusion: success
-      artifact_name: vps-site-bundle
-      artifact_size_bytes: 47934769
-      artifact_digest: sha256:bede9381bcc65554d9a143676a66f92bc6f8bf7e82bf439da6e007f60ba8cd04
-    knowledge_tests:
-      passed: 27
-      failed: 0
-    gallery_media_coverage:
-      modeled: 39
-      required: 39
-      unmodeled: 0
-    generated_html_pages: 8
-    project_detail_pages: 4
-    gallery_pages: 1
-    service_detail_pages: 1
-    sitemap_urls: 8
-    generated_file_diff: clean
 
 current_strategy:
   legacy_runtime: read-only
@@ -60,6 +31,12 @@ current_strategy:
   github_pages_target_status: fallback-only
   production_unchanged: true
   public_path_mode: root-relative
+  application_attack_surface:
+    cms: false
+    database: false
+    php_runtime: false
+    node_runtime_on_server: false
+    public_application_admin: false
   deployment_model:
     build_location: github-actions
     server_build_required: false
@@ -71,6 +48,59 @@ current_strategy:
     initial_deploy_mode: manual-artifact-upload
     automatic_ssh_deploy_enabled: false
 
+vps_security:
+  artifact: architecture/vps-security-plan.md
+  caddy_admin:
+    bind: 127.0.0.1:2019
+    public_exposure_allowed: false
+  response_headers:
+    server_banner_removed: true
+    x_content_type_options: nosniff
+    referrer_policy: strict-origin-when-cross-origin
+    x_frame_options: DENY
+    permissions_policy:
+      - camera-disabled
+      - microphone-disabled
+      - geolocation-disabled
+    hsts_enabled: false
+    hsts_reason: defer-until-https-cutover-and-rollback-proven
+    csp_enforced: false
+    csp_policy: audit-resources-and-test-report-only-before-enforcement
+  ssh_target:
+    root_login: disabled
+    password_authentication: disabled
+    key_authentication: required
+    preferred_network_access: private-vpn-or-management-network
+    fail2ban: optional-secondary-if-public-ssh
+    secret_keys_in_repository: forbidden
+  firewall:
+    provider_firewall_preferred: true
+    host_firewall_required: true
+    caddy_admin_port_public: false
+    deny_unused_inbound: true
+  operating_system:
+    supported_lts_required: true
+    automatic_security_updates_required: true
+    unused_services_should_be_removed: true
+  filesystem:
+    releases_immutable_after_activation: true
+    caddy_site_tree_write_access: false
+    deploy_user_owns_release_activation: true
+  ddos:
+    host_firewall_is_not_sufficient_for_volumetric_attack: true
+    upstream_protection_required: true
+    edge_options:
+      - provider-protected-direct-caddy
+      - cloudflare-proxied-dns-restricted-origin
+      - cloudflare-tunnel-private-ssh
+    strongest_practical_origin_isolation: cloudflare-tunnel-private-ssh
+  dns_and_registrar:
+    mfa_required: true
+    transfer_lock_required: true
+    export_zone_before_cutover: true
+    dnssec_recommended_when_supported: true
+    least_privilege_dns_tokens_if_automated: true
+
 vps_bundle:
   builder: tools/deploy/build-vps-bundle.mjs
   validator: tools/deploy/validate-vps-bundle.mjs
@@ -78,20 +108,6 @@ vps_bundle:
   ignored_outputs:
     - .deploy-dist/
     - vps-site-bundle.tgz
-  contents:
-    - site-next-contents-at-root
-    - sitemap.xml
-    - llms.txt
-    - robots.txt
-    - VVC_primary_logo.svg
-    - proyecto-1
-    - proyecto-2
-    - estandar
-    - premium
-    - smart
-    - aviso-legal.dc.html
-    - support.js
-    - DEPLOYMENT_COMMIT
   excludes:
     - legacy-root-index-html
 
@@ -99,14 +115,9 @@ vps_server:
   web_server: caddy
   caddy_template: deploy/vps/Caddyfile
   default_web_root: /srv/vital-vibe/current
-  automatic_https_expected: true
-  hsts_initially_enabled: false
-  compression:
-    - zstd
-    - gzip
-  static_asset_cache_seconds: 86400
   release_installer: deploy/vps/install-release.sh
   rollback_helper: deploy/vps/rollback-release.sh
+  automatic_https_expected_for_direct-caddy-mode: true
 
 historical_redirects:
   - from: /projects.html
@@ -133,18 +144,16 @@ cutover_policy:
   before_dns_change:
     - record-current-apex-and-www-dns
     - record-github-pages-custom-domain-state
-    - lower-relevant-dns-ttl-if-possible
     - confirm-vps-ipv4
     - confirm-ipv6-before-aaaa
-    - confirm-ports-80-and-443
     - install-and-smoke-test-vps-release
+    - choose-ddos-and-origin-protection-mode
+    - verify-ssh-and-firewall-hardening
+    - verify-caddy-admin-loopback-only
     - keep-github-pages-as-hosting-rollback
   dns_cutover:
-    - point-apex-a-to-vps-ipv4
-    - only-configure-aaaa-if-ipv6-works-end-to-end
-    - configure-www-only-after-policy-and-dns-confirmation
-    - start-or-reload-caddy
-    - verify-public-tls
+    - update-only-required-apex-and-www-records
+    - verify-public-https
     - verify-canonical-routes
     - verify-historical-301s
   rollback:
@@ -155,15 +164,16 @@ cutover_policy:
 seo_aeo_matrix:
   artifact: architecture/seo-aeo-query-page-matrix.md
   candidate_count: 15
-  wave_1:
-    - /servicios/reformas-integrales-barcelona/
-    - /guias/precio-reforma-integral-barcelona/
-    - /servicios/cocinas-barcelona/
-    - /servicios/banos-barcelona/
-    - /servicios/electricidad-barcelona/
   route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
+  - date: 2026-08-20
+    commits:
+      - 21c4a70b98440f58dadc057d04fc509d8795639a
+      - 1657467d56f9e152e7e4620d8005a41014eaf4f4
+      - b3306f13d2864f08f55a7c9fa98a935ee4036f03
+    summary: Added VPS security threat model and hardening plan; explicitly bound Caddy admin API to loopback, removed HTTP server banner, added baseline response security headers, and documented SSH/firewall/update/DDoS/DNS/CI controls.
+    validation: pending-final-ci-after-security-docs
   - date: 2026-08-20
     commits:
       - abb80ba05f1ef42b08c523af8508240deab4fb7b
@@ -173,13 +183,12 @@ completed_work:
       - cf48a9851e790c91eef7c5a6cca9a6549bc0d0e3
       - e897d33859bb4a134ff7b51b4cbadc51760146c8
       - 822c508d56ce36c03d7e878bff5785b31f89ef29
-      - 613cb9064091fec3a10b585cdc54945d0df596e0
-    summary: Selected VPS+Caddy as production direction; added deterministic deployment bundle builder/validator, atomic release and rollback helpers, Caddy redirects/headers, and CI artifact packaging without touching production.
-    validation: vps-bundle-check-run-1-success
+    summary: Selected VPS+Caddy as production direction and added deterministic bundle, validator, CI artifact, Caddy redirects, and atomic release/rollback.
+    validation: vps-bundle-check-success
 
 active_stage:
-  goal: Provision or identify the VPS, perform a manual release smoke test, then prepare a reversible DNS cutover.
-  status: waiting-for-non-secret-vps-facts
+  goal: Provision or identify the VPS, choose the public-edge/DDoS mode, perform a manual hardened release smoke test, then prepare reversible DNS cutover.
+  status: waiting-for-non-secret-vps-and-edge-facts
   required_non_secret_inputs:
     - linux-distribution-and-version
     - public-ipv4
@@ -189,21 +198,19 @@ active_stage:
     - caddy-installed-or-not
     - dns-provider
     - current-apex-and-www-records
-  secrets_not_to_commit:
+    - selected-edge-mode
+  secrets_not_to_commit_or_share_in-repo:
     - ssh-private-key
     - passwords
+    - recovery-codes
     - provider-api-tokens
 
 next_verification:
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
   - generated-projections-must-remain-clean
+  - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Install a validated CI artifact on the real VPS, validate Caddy/server behavior before DNS changes, then execute the DNS cutover with GitHub Pages preserved as rollback.
-
-deferred_work:
-  el_raval_technical_media:
-    backlog_item: AI-011
-    blocking_current_stage: false
+  goal: Harden the real VPS according to architecture/vps-security-plan.md, install a validated CI artifact, smoke-test Caddy and origin protection, then execute the DNS cutover with GitHub Pages preserved as rollback.
