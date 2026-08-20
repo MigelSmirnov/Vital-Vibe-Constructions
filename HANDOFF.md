@@ -1,7 +1,7 @@
 # HANDOFF
 
 Version: 15
-Updated: 2026-08-20T07:08:00Z
+Updated: 2026-08-20T07:10:00Z
 
 ## Session Rule
 
@@ -14,16 +14,16 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-`agent/architecture-sandbox` is on a reproducible green baseline. The current Knowledge Repository records, builders, and tracked generated projections are synchronized.
+`agent/architecture-sandbox` is on a reproducible green baseline. The current Knowledge Repository records, builders, tracked generated projections, and SEO/AEO planning handoff are synchronized.
 
 Delivery state:
 
 - branch: `agent/architecture-sandbox`
 - pull request: `#1 Build architecture sandbox and knowledge foundation`
 - pull request state: open and ready for review
-- latest verified branch baseline: `bb73128909111dc96afe8fa31365c7c415ae7bee`
+- current planning head before this note: `9ab16b9c3b75792e1fa2da34f776fec36cd18939`
 - generated projection sync commit: `2d644be010466c5b620ad5c9ac1667f7846296d6`
-- GitHub Actions `Project checks` run `#76`: success
+- GitHub Actions `Project checks` run `#78`: success
 - `node tools/checks/run.mjs`: success
 - `git diff --exit-code` after generation: success
 
