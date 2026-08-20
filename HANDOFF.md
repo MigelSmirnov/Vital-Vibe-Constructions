@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 18
-Updated: 2026-08-20T09:56:00+02:00
+Version: 19
+Updated: 2026-08-20T10:06:00+02:00
 
 ## Session Rule
 
@@ -14,21 +14,26 @@ This file is a living handoff, not a changelog. Historical detail belongs in com
 
 ## Current Status
 
-`agent/architecture-sandbox` is on a reproducible green baseline with:
+`agent/architecture-sandbox` is on a reproducible green architecture baseline with VPS migration and security preparation in place.
+
+Current capabilities:
 
 - validated Knowledge Repository architecture;
 - eight generated public HTML routes in `site-next`;
 - complete 39/39 legacy media coverage;
 - ranked 15-page SEO/AEO query-to-page matrix;
-- VPS selected as the production hosting direction;
-- a deterministic, validated VPS release bundle produced in pull-request CI;
-- no production, DNS, GitHub Pages or canonical URL changes yet.
+- VPS + Caddy selected as the production hosting direction;
+- deterministic VPS release bundle produced and validated in PR CI;
+- atomic server release/rollback scripts;
+- explicit VPS security hardening plan;
+- production, DNS, GitHub Pages settings and canonical URLs remain unchanged.
 
 Key artifacts:
 
 - `architecture/seo-aeo-query-page-matrix.md`
 - `architecture/vps-migration-plan.md`
-- `architecture/production-deployment-plan.md` — evaluated GitHub Pages fallback
+- `architecture/vps-security-plan.md`
+- `architecture/production-deployment-plan.md` — GitHub Pages fallback evaluation
 - `tools/deploy/build-vps-bundle.mjs`
 - `tools/deploy/validate-vps-bundle.mjs`
 - `deploy/vps/Caddyfile`
@@ -38,11 +43,9 @@ Key artifacts:
 
 ## Production Hosting Decision
 
-Long-term target: **VPS + Caddy**, not GitHub Pages.
+Long-term target: **VPS + Caddy**.
 
-GitHub remains responsible for source control, tests and release artifacts. The VPS serves only validated static release bundles.
-
-Target flow:
+GitHub remains the source-control, validation and artifact-build system. The VPS serves only validated static release bundles.
 
 ```text
 Knowledge Repository
@@ -52,115 +55,131 @@ Knowledge Repository
         -> vps-site-bundle.tgz
         -> /srv/vital-vibe/releases/<release-id>/
         -> /srv/vital-vibe/current
-        -> Caddy
+        -> Caddy / protected edge
         -> https://vitalvibeconstruction.com
 ```
 
-Do not copy generated `site-next` files into repository root as source files.
+The production web tier requires no CMS, database, PHP runtime or Node application server.
 
-## Why VPS
+## Security Model
 
-The VPS direction is preferred because it provides:
+The static architecture removes the most common CMS/application attack surfaces, including plugin exploits, database injection paths and browser-accessible admin login brute force.
 
-- real HTTP 301 redirects for historical URLs;
-- explicit cache/security headers;
-- server logs;
-- deterministic document root;
-- atomic release/rollback through a symlink;
-- future reverse-proxy capacity;
-- no dependence on GitHub Pages source-directory limitations.
+Remaining material boundaries are:
 
-The site remains static-first. No CMS, database or Node runtime is required on the production server to serve a release.
+1. VPS operating system and SSH;
+2. Caddy/network exposure;
+3. DNS/domain-account integrity;
+4. upstream DDoS/origin protection;
+5. GitHub/CI deployment credentials after automation is eventually enabled.
 
-## Caddy
-
-Server template:
+Detailed plan:
 
 ```text
-deploy/vps/Caddyfile
+architecture/vps-security-plan.md
 ```
 
-It currently provides:
+### No public admin panel
 
-- static file serving from `/srv/vital-vibe/current` by default;
-- zstd/gzip encoding;
-- conservative no-cache policy for HTML/default responses;
-- one-day cache for static assets with non-hashed filenames;
+Do not introduce a hosting/CMS admin panel without a real requirement.
+
+Caddy's configuration API is not a browser admin UI. The Caddyfile now explicitly binds it to:
+
+```text
+127.0.0.1:2019
+```
+
+Never expose port 2019 through host or provider firewall rules.
+
+### Caddy baseline hardening
+
+`deploy/vps/Caddyfile` now includes:
+
+- `Server` response header removal;
 - `X-Content-Type-Options: nosniff`;
 - `Referrer-Policy: strict-origin-when-cross-origin`;
-- permanent redirects for historical project/gallery URLs.
+- `X-Frame-Options: DENY`;
+- restrictive `Permissions-Policy` for camera, microphone and geolocation;
+- compression and conservative cache controls;
+- HTTP 301 redirects for known historical URLs.
 
-Caddy automatic HTTPS is the intended TLS mechanism after DNS points to the VPS and ports 80/443 are reachable.
+Banner hiding reduces passive fingerprinting only; it is not treated as a primary security control.
 
-Do **not** enable long-lived HSTS before the first production cutover is verified.
+Do not enable HSTS before first production HTTPS and rollback behavior are verified.
+
+Do not enforce a CSP blindly. Inventory inline JSON-LD/external resources first and test a report-only policy before enforcement.
+
+### SSH baseline
+
+Preferred:
+
+- non-root admin/deploy account;
+- public-key authentication only;
+- `PasswordAuthentication no`;
+- `PermitRootLogin no`;
+- private/VPN management path such as Tailscale/WireGuard where practical;
+- provider console/rescue access retained as break-glass recovery.
+
+Fail2ban is optional secondary protection if SSH remains public. It is not a substitute for keys-only authentication and firewall restrictions.
+
+### Firewall baseline
+
+Use provider firewall plus host firewall where available.
+
+Direct-origin mode allows only required HTTP/HTTPS and the approved SSH management path. Caddy admin port 2019 remains loopback-only.
+
+If Cloudflare Tunnel is selected, the preferred final state can expose no public inbound web ports and no public SSH when management also uses a private VPN path.
+
+### Updates and filesystem permissions
+
+Use a supported LTS Linux release and automatic security updates.
+
+Release directories are immutable after activation. Caddy receives read-only access to deployed HTML/assets; the deploy user owns release creation and the `current` symlink.
+
+## DDoS / Origin Protection
+
+Caddy and a host firewall cannot stop a volumetric attack that saturates the VPS/provider uplink before traffic reaches the server.
+
+Before cutover choose one explicit edge model:
+
+1. provider-protected direct Caddy — simplest, public origin IP;
+2. Cloudflare proxied DNS + restricted origin — strong practical compromise;
+3. Cloudflare Tunnel + private SSH — smallest public origin attack surface if Cloudflare dependency is acceptable.
+
+For this static site, option 3 is the strongest practical isolation; option 2 is the simpler strong default.
+
+If origin hiding is desired, do not leak the new VPS IP through temporary DNS records, public test hostnames, mail infrastructure, repository files or documentation.
+
+## Domain / DNS Security
+
+Before migration:
+
+- strong MFA on registrar and DNS provider;
+- unique credentials;
+- registrar/domain transfer lock;
+- review recovery channels;
+- DNSSEC where supported and operationally understood;
+- export the full pre-cutover DNS zone;
+- use scoped least-privilege API tokens only if DNS automation is added later.
+
+Domain/DNS account takeover can bypass every VPS control, so this is a first-class part of the security model.
 
 ## VPS Release Bundle
 
-Builder:
+Build:
 
 ```bash
 node tools/deploy/build-vps-bundle.mjs
-```
-
-Output:
-
-```text
-.deploy-dist/
-```
-
-The bundle contains:
-
-- generated `site-next` contents at deployment root;
-- generated `sitemap.xml` and `llms.txt`;
-- `robots.txt`;
-- logo and current project/capability media directories;
-- temporary legal/runtime compatibility (`aviso-legal.dc.html`, `support.js`);
-- `DEPLOYMENT_COMMIT` with the exact source commit.
-
-The legacy root `index.html` is explicitly excluded.
-
-Validator:
-
-```bash
 node tools/deploy/validate-vps-bundle.mjs
 ```
 
-It checks:
+The bundle contains the generated site, discovery files, logo/media assets, required temporary legal/runtime compatibility and `DEPLOYMENT_COMMIT`. Legacy root `index.html` is excluded.
 
-- the homepage is the generated `site-next` homepage, not the legacy runtime;
-- every sitemap route exists in the bundle;
-- every local HTML `href`/`src` resolves;
-- canonical/sitemap origin remains `https://vitalvibeconstruction.com`;
-- robots points to the production sitemap;
-- no public `site-next/` path leaks;
-- required discovery/legal/runtime compatibility files exist.
+`VPS bundle check` packages this as `vps-site-bundle.tgz` and uploads a short-lived CI artifact. The workflow has read-only repository permissions and no SSH/deployment credentials.
 
-## CI Result
+The first successful bundle artifact was approximately 47.9 MB and passed canonical checks, generated-file reproducibility, route/asset validation and packaging.
 
-Workflow:
-
-```text
-VPS bundle check
-```
-
-First run on commit `822c508d56ce36c03d7e878bff5785b31f89ef29`:
-
-- conclusion: success;
-- canonical project checks: success;
-- tracked generated-file diff: clean;
-- VPS bundle build: success;
-- VPS bundle validation: success;
-- tar packaging: success;
-- artifact upload: success;
-- artifact name: `vps-site-bundle`;
-- artifact size: 47,934,769 bytes;
-- artifact digest: `sha256:bede9381bcc65554d9a143676a66f92bc6f8bf7e82bf439da6e007f60ba8cd04`.
-
-The workflow has no SSH secrets and no deployment step.
-
-## Release / Rollback Model
-
-Server layout:
+## Release / Rollback
 
 ```text
 /srv/vital-vibe/
@@ -169,59 +188,44 @@ Server layout:
     <release-id>/
 ```
 
-Install a release with:
+Install:
 
 ```bash
 deploy/vps/install-release.sh vps-site-bundle.tgz <release-id>
 ```
 
-Rollback with:
+Rollback:
 
 ```bash
 deploy/vps/rollback-release.sh <previous-release-id>
 ```
 
-Both switch the `current` symlink atomically. A normal application rollback therefore requires no DNS change.
+Normal application rollback is an atomic symlink switch and does not require a DNS change.
 
-## Historical Redirects
+GitHub Pages remains available as a hosting-level rollback until the VPS architecture is proven stable.
 
-Current Caddy template prepares HTTP 301 redirects:
+## Active Stage
 
-- `/projects.html` -> `/projects/`
-- `/proyecto-1.html` -> `/projects/estudio-reformado-barcelona/`
-- `/proyecto-2.html` -> `/projects/piso-reformado-barcelona/`
-- old tier gallery `.dc.html` URLs -> `/gallery/`
+Repository-side VPS and security preparation is complete enough for a real server smoke test.
 
-Before production cutover, verify old project mappings against current live behavior / Search Console if available.
+Next required input is non-secret VPS/DNS information:
 
-## DNS Cutover Strategy
+- Linux distribution/version;
+- public IPv4;
+- whether IPv6 is enabled;
+- SSH username and port;
+- whether Caddy is installed;
+- DNS provider;
+- current apex and `www` DNS records;
+- chosen edge/DDoS mode: direct provider protection, Cloudflare proxy, or Cloudflare Tunnel.
 
-Do not change DNS until the VPS is provisioned and smoke-tested.
+Do not commit or paste private SSH keys, passwords, recovery codes or provider API tokens.
 
-Before cutover:
+The first production-adjacent deployment remains **manual artifact upload + smoke test before DNS cutover**. Automatic GitHub-to-VPS deployment is deferred until one cutover and rollback are proven.
 
-1. record current apex and `www` DNS records;
-2. record current GitHub Pages custom-domain state;
-3. lower relevant DNS TTL ahead of migration if possible;
-4. confirm VPS IPv4 and IPv6 status;
-5. confirm firewall/ports 80 and 443;
-6. install a validated release and test it before public DNS changes;
-7. keep GitHub Pages intact as hosting rollback.
+## SEO / AEO
 
-At cutover:
-
-1. point apex A record to the VPS IPv4;
-2. only add/change AAAA if IPv6 is verified end-to-end;
-3. configure `www` only after its DNS/redirect policy is confirmed;
-4. start/reload Caddy;
-5. wait for public TLS provisioning;
-6. verify all canonical routes and historical 301 redirects over HTTPS.
-
-If VPS cutover itself fails, restore the recorded GitHub Pages DNS records. Do not rewrite canonical URLs during rollback.
-
-## SEO / AEO Matrix
-
-Top content priorities remain unchanged:
+Top priorities remain:
 
 1. existing `/servicios/reformas-integrales-barcelona/`;
 2. proposed `/guias/precio-reforma-integral-barcelona/`;
@@ -229,46 +233,25 @@ Top content priorities remain unchanged:
 4. proposed `/servicios/banos-barcelona/`;
 5. proposed `/servicios/electricidad-barcelona/`.
 
-Do not start Wave 1 public route expansion until hosting/cutover mechanics are clear enough to deploy safely.
-
-## Active Stage
-
-The repository-side VPS migration preparation is complete enough for a real server smoke test.
-
-Next required input is **non-secret VPS information**:
-
-- Linux distribution/version;
-- public IPv4;
-- whether IPv6 is enabled;
-- SSH username and port;
-- whether Caddy is already installed;
-- DNS provider and current records relevant to apex and `www`.
-
-Do not commit private SSH keys, passwords or provider API tokens.
-
-Once a VPS exists, first production-adjacent operation should be a **manual artifact upload + smoke test**, not automatic GitHub-to-VPS deployment. Add protected automated deployment only after the first cutover/rollback path is proven.
-
-## Deferred
-
-El Raval technical photographs remain deferred and non-blocking for deployment/SEO work.
-
-GitHub Pages Actions remains a documented fallback only. Do not add `actions/deploy-pages` while VPS is the selected target.
+Do not activate Wave 1 routes until hosting and cutover are ready.
 
 ## Non-Negotiable Constraints
 
 - Do not edit `support.js`.
 - Do not evolve legacy entrypoints.
 - Do not bypass the Knowledge Repository.
-- Do not hand-edit generated output as a substitute for its source/builder.
-- Do not duplicate business content between builders and tables.
+- Do not hand-edit generated output instead of its source/builder.
 - Do not activate speculative routes from the SEO/AEO matrix.
 - Do not deploy from pull requests.
 - Do not add production SSH secrets before a real host exists and its host key can be pinned.
-- Do not use `StrictHostKeyChecking=no` in future deploy automation.
+- Do not use `StrictHostKeyChecking=no` in future automation.
+- Do not expose Caddy admin API publicly.
+- Do not add a CMS/admin panel merely for deployment convenience.
+- Do not enable HSTS before the initial HTTPS/rollback path is verified.
 
 ## Verification
 
-After content, route, builder, generated-output, structural or deployment changes run:
+After content, route, builder, generated-output, structural, deployment or security changes run:
 
 ```bash
 node tools/checks/run.mjs
