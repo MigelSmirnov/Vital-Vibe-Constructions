@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 14
-Updated: 2026-08-20T06:32:00Z
+Version: 15
+Updated: 2026-08-20T07:08:00Z
 
 ## Session Rule
 
@@ -14,54 +14,140 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-`agent/architecture-sandbox` is back on a reproducible green baseline. The current Knowledge Repository records, builders, and tracked generated projections are synchronized.
+`agent/architecture-sandbox` is on a reproducible green baseline. The current Knowledge Repository records, builders, and tracked generated projections are synchronized.
 
 Delivery state:
 
 - branch: `agent/architecture-sandbox`
 - pull request: `#1 Build architecture sandbox and knowledge foundation`
 - pull request state: open and ready for review
+- latest verified branch baseline: `bb73128909111dc96afe8fa31365c7c415ae7bee`
 - generated projection sync commit: `2d644be010466c5b620ad5c9ac1667f7846296d6`
-- cleanup baseline: `4bf0067748cfc466cd7e85818c700be832e0c44a`
-- GitHub Actions `Project checks` run `#74`: success
+- GitHub Actions `Project checks` run `#76`: success
 - `node tools/checks/run.mjs`: success
 - `git diff --exit-code` after generation: success
 
-Latest completed work:
+Current generated site:
 
-- synchronized `site-next`, `llms.txt`, and `sitemap.xml` with the current Knowledge Repository and builders
-- generated El Raval project content now reflects the evidence-rich Project record across the project page, homepage, projects index, gallery, service references, structured data, and AI discovery output
-- generated HTML trailing-whitespace normalization is active and no longer leaves tracked diffs
-- removed the temporary one-shot regeneration workflow after the canonical generated outputs were committed
-- preserved the existing `Project checks` workflow unchanged as the authoritative CI gate
-
-Current modeled gallery coverage:
-
-- total legacy content images: 39
-- project-owned Media records: 37
-- modeled non-project Media records: 2
-- unmodeled images remaining: 0
+- homepage
+- `/projects/`
+- four project detail pages
+- `/gallery/`
+- `/servicios/reformas-integrales-barcelona/`
+- eight sitemap-eligible URLs total
+- 39 of 39 legacy content images modeled
 
 ## Current Strategy
 
 - Preserve the legacy website and keep `support.js` read-only.
-- Build `site-next` in parallel.
+- Build `site-next` in parallel until deployment replaces the legacy public document root.
 - Treat Knowledge Repository records as the source of truth.
 - Treat HTML, `llms.txt`, and `sitemap.xml` as generated projections.
 - Keep tracked generated projections reproducible: a normal generation run must leave no repository diff.
 - Normalize generated local `href` and `src` values to root-relative public URLs.
 - Use complete legacy media coverage; curated omission is not allowed.
-- Continue deferring image-detail routes.
+- Keep image-detail routes deferred.
+- Prefer evidence-rich, locally specific content over generic SEO copy.
+- Do not create page families by cloning a template with only the service keyword changed.
 
-## Current Routes
+## SEO / AEO Audit Summary
 
-- `/projects/`: generated and sitemap eligible
-- `/projects/{project-slug}/`: four routes generated and sitemap eligible
-- `/gallery/`: generated and sitemap eligible
-- `/servicios/reformas-integrales-barcelona/`: generated and sitemap eligible
-- `/projects/{project-slug}/images/{media-slug}/`: deferred
+The `site-next` architecture is strong enough to support both conventional search and AI answer systems, but the current content footprint is still small.
 
-The generated sitemap contains eight URLs: homepage, projects index, four project details, gallery, and the integral renovation service page.
+Strengths:
+
+- crawlable static HTML with unique titles, descriptions, canonical URLs, headings, and internal links
+- one full service landing page with visible breadcrumbs, process, FAQs, related projects, and structured data
+- project pages with first-party construction evidence rather than generic marketing text
+- El Raval case study exposes concrete facts including location, 50 m² area, phased execution, engineering constraints, decisions, approximate cost, and visible limitations
+- complete gallery ownership and truthful media metadata
+- reproducible `sitemap.xml` and `llms.txt`
+- Knowledge Repository structure makes future page expansion systematic rather than ad hoc
+
+Primary gaps:
+
+1. `site-next` must become the public production document root before its SEO/AEO improvements can materially affect discovery.
+2. Only `Reformas integrales` currently has a full public service route. Kitchens, bathrooms, electrical, painting, and masonry are still only short service records/cards.
+3. The site lacks a deliberate query-to-page architecture covering commercial, project-evidence, and informational intent.
+4. Entity/local-business structured data can be strengthened after confirming only factual business details that may be published.
+5. Existing project media should be moved closer to the technical statements they support when useful; new El Raval technical photographs remain desirable but are not required to continue SEO/AEO planning.
+6. The current Spanish site should be made strong first; English/Russian crawlable variants and hreflang remain later work.
+7. Useful editorial content exists in the article sandbox but is not yet part of the public Knowledge Repository or route model.
+
+## SEO / AEO Working Principles
+
+- Optimize for answerable real questions, not keyword density.
+- Every commercial page should explain scope, constraints, process, evidence, pricing context where truthful, and next action.
+- Every project case study should contain facts that distinguish the project from a reusable marketing template.
+- Important technical claims should be paired with existing or future visual evidence when practical.
+- Structured data must mirror visible content and must not introduce facts that are absent from the page.
+- `llms.txt` is a supporting discovery projection, not a substitute for strong crawlable HTML.
+- FAQs should exist because they answer real customer questions, not because of an expected search-result enhancement.
+- New articles should answer questions that naturally lead users toward service or project pages.
+- Do not infer addresses, certifications, customer identities, material brands, project dates, or technical properties that are not verified.
+
+## Active Stage: SEO / AEO Content Architecture
+
+Technical-media completion for El Raval is deferred until the six reserved photographs are available. AI-011 remains open but is not blocking the next stage.
+
+The active goal is to define the minimum high-value public page set for Barcelona before adding more builders or public routes.
+
+### Next Artifact: Query / Page Matrix
+
+Create a prioritized SEO/AEO matrix that maps real user intent to public page candidates.
+
+The matrix should cover at least:
+
+- commercial service intent
+- local Barcelona intent
+- project / case-study evidence intent
+- pricing and budgeting questions
+- old-building renovation problems
+- electrical planning and renovation questions
+- kitchen and bathroom renovation questions
+- flooring, leveling, waterproofing, drainage, painting, and masonry questions where first-party experience exists
+
+For each candidate page record:
+
+- primary query / user question
+- intent class
+- proposed canonical route
+- target entity or content type
+- evidence currently available in the Knowledge Repository
+- missing evidence or facts
+- related existing project(s)
+- related service(s)
+- recommended schema only when useful and truthful
+- internal-link sources and destinations
+- business value
+- SEO/AEO priority
+- publication readiness
+
+The first matrix should rank roughly 10–15 highest-value page opportunities rather than create a large speculative backlog.
+
+## Planned Execution After the Matrix
+
+1. **Production gate** — confirm the deployment approach for serving `site-next` as the public document root, then verify canonical routes, assets, sitemap, robots, and HTTP behavior over production HTTPS.
+2. **Service expansion** — select the highest-value service pages from the matrix, expected to include some or all of kitchens, bathrooms, electrical, painting, and masonry. Add page-owned content only when enough real information exists.
+3. **Entity/local layer** — define a factual site/business entity model and strengthen Organization/WebSite/local-business structured data without inventing a public address or unsupported business attributes.
+4. **Evidence placement** — use existing project photographs contextually inside technical case-study sections where they already support visible claims; add the six reserved El Raval photographs later when available.
+5. **Editorial layer** — promote the strongest article-sandbox topics into modeled public content after defining article entities/routes and evidence requirements. High-value topics include renovation cost, old Barcelona housing stock, floor leveling, electrical renovation planning, bathrooms, and other first-party construction problems.
+6. **Internal linking** — connect informational pages to relevant service and project evidence pages, and connect service pages back to documented projects and supporting guides.
+7. **Multilingual stage** — only after Spanish coverage is strong, design crawlable EN/RU routes and hreflang rather than client-only translations.
+8. **Measurement** — once production deployment exists, use Search Console and business-profile data to revise priorities based on real impressions, queries, indexing, and conversions rather than guesses.
+
+## El Raval Technical Media: Deferred
+
+When the photographs become available, resume AI-011 with:
+
+1. floor-pour photograph
+2. subfloor/plasterboard photograph
+3. wall-restoration photograph
+4. bathroom-waterproofing photograph
+5. corrugated-conduit photograph
+6. electrical-panel photograph
+
+Record truthful alt text, dimensions, state, source path, and project ownership; link the supporting technical claims; keep image-detail routes deferred; regenerate and require a clean diff; visually review the page before completing AI-011.
 
 ## Non-Negotiable Constraints
 
@@ -75,43 +161,14 @@ The generated sitemap contains eight URLs: homepage, projects index, four projec
 - Do not generate image-detail routes while their family status is deferred.
 - Do not replace complete gallery coverage with a curated subset.
 - Preserve truthful alt text, dimensions, and project or service ownership for every gallery image.
+- Do not publish generic mass-produced landing pages without page-specific evidence and useful content.
 
-## Current Checks
+## Verification
 
-Run:
+After content, route, builder, generated-output, or structural changes run:
 
 ```bash
 node tools/checks/run.mjs
 ```
 
-Latest verified result:
-
-- environment: GitHub Actions
-- workflow: `Project checks` run `#74`
-- conclusion: success
-- Knowledge Repository tests: 27 passed, 0 failed
-- complete gallery coverage: 39 modeled, 0 unmodeled
-- root-path normalization and validation: 8 generated HTML files
-- project page validation: index and four detail pages
-- gallery validation: 39 contract media records
-- service page validation: one generated route
-- sitemap validation: eight URLs
-- content audit: 0 errors and 5 known legacy warnings
-- generated-file reproducibility check: pass
-
-## Active Stage: El Raval Evidence Case Study
-
-The evidence-rich case-study implementation and generated projections are validated. AI-011 remains open because the reserved technical-media subjects still need real photographs and contextual Media records.
-
-Current El Raval page includes verified initial condition, objective, engineering challenges, engineering decisions, budget tradeoffs, approximate cost, result, related services, existing project media, and visible placeholders for technical evidence that has not yet been uploaded.
-
-## Next Stage
-
-Replace the pending El Raval technical-media subjects with verified Media records:
-
-1. Upload the floor-pour, subfloor/plasterboard, wall-restoration, bathroom-waterproofing, corrugated-conduit, and electrical-panel photographs.
-2. Record truthful alt text, dimensions, state, source path, and project ownership in `content/tables/media.yaml`.
-3. Add the new Media IDs to the El Raval Project record in deliberate evidence order.
-4. Link technical claims to supporting photographs without creating thin image-detail routes.
-5. Regenerate projections and require a clean `git diff --exit-code`.
-6. Repeat mobile visual inspection before marking AI-011 complete.
+Then require generated projections to remain clean under the repository reproducibility check.
