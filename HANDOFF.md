@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 17
-Updated: 2026-08-20T09:38:00+02:00
+Version: 18
+Updated: 2026-08-20T09:56:00+02:00
 
 ## Session Rule
 
@@ -10,7 +10,7 @@ Every working session must end by updating:
 - `HANDOFF.md`
 - `architecture/session-state.yaml`
 
-This file is a living handoff, not a changelog. Historical detail should live in commits and artifacts.
+This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
 
 ## Current Status
 
@@ -20,28 +20,208 @@ This file is a living handoff, not a changelog. Historical detail should live in
 - eight generated public HTML routes in `site-next`;
 - complete 39/39 legacy media coverage;
 - ranked 15-page SEO/AEO query-to-page matrix;
-- a documented production deployment approach for GitHub Pages.
+- VPS selected as the production hosting direction;
+- a deterministic, validated VPS release bundle produced in pull-request CI;
+- no production, DNS, GitHub Pages or canonical URL changes yet.
 
-Key planning artifacts:
+Key artifacts:
 
 - `architecture/seo-aeo-query-page-matrix.md`
-- `architecture/production-deployment-plan.md`
+- `architecture/vps-migration-plan.md`
+- `architecture/production-deployment-plan.md` — evaluated GitHub Pages fallback
+- `tools/deploy/build-vps-bundle.mjs`
+- `tools/deploy/validate-vps-bundle.mjs`
+- `deploy/vps/Caddyfile`
+- `deploy/vps/install-release.sh`
+- `deploy/vps/rollback-release.sh`
+- `.github/workflows/vps-bundle-check.yml`
 
-Production has **not** been changed in this session.
+## Production Hosting Decision
 
-## Current Strategy
+Long-term target: **VPS + Caddy**, not GitHub Pages.
 
-- Preserve the legacy website and keep `support.js` read-only.
-- Keep `site-next` as the generated projection, not as a manually copied repository-root site.
-- Treat Knowledge Repository records as the source of truth.
-- Treat `site-next`, `llms.txt`, and `sitemap.xml` as reproducible generated projections.
-- Prefer evidence-rich Spanish content over generic SEO landing pages.
-- Do not activate new routes until both priority and evidence readiness are established.
-- Keep El Raval technical-photo completion deferred and non-blocking.
+GitHub remains responsible for source control, tests and release artifacts. The VPS serves only validated static release bundles.
+
+Target flow:
+
+```text
+Knowledge Repository
+        -> builders/checks
+        -> site-next + sitemap.xml + llms.txt
+        -> .deploy-dist
+        -> vps-site-bundle.tgz
+        -> /srv/vital-vibe/releases/<release-id>/
+        -> /srv/vital-vibe/current
+        -> Caddy
+        -> https://vitalvibeconstruction.com
+```
+
+Do not copy generated `site-next` files into repository root as source files.
+
+## Why VPS
+
+The VPS direction is preferred because it provides:
+
+- real HTTP 301 redirects for historical URLs;
+- explicit cache/security headers;
+- server logs;
+- deterministic document root;
+- atomic release/rollback through a symlink;
+- future reverse-proxy capacity;
+- no dependence on GitHub Pages source-directory limitations.
+
+The site remains static-first. No CMS, database or Node runtime is required on the production server to serve a release.
+
+## Caddy
+
+Server template:
+
+```text
+deploy/vps/Caddyfile
+```
+
+It currently provides:
+
+- static file serving from `/srv/vital-vibe/current` by default;
+- zstd/gzip encoding;
+- conservative no-cache policy for HTML/default responses;
+- one-day cache for static assets with non-hashed filenames;
+- `X-Content-Type-Options: nosniff`;
+- `Referrer-Policy: strict-origin-when-cross-origin`;
+- permanent redirects for historical project/gallery URLs.
+
+Caddy automatic HTTPS is the intended TLS mechanism after DNS points to the VPS and ports 80/443 are reachable.
+
+Do **not** enable long-lived HSTS before the first production cutover is verified.
+
+## VPS Release Bundle
+
+Builder:
+
+```bash
+node tools/deploy/build-vps-bundle.mjs
+```
+
+Output:
+
+```text
+.deploy-dist/
+```
+
+The bundle contains:
+
+- generated `site-next` contents at deployment root;
+- generated `sitemap.xml` and `llms.txt`;
+- `robots.txt`;
+- logo and current project/capability media directories;
+- temporary legal/runtime compatibility (`aviso-legal.dc.html`, `support.js`);
+- `DEPLOYMENT_COMMIT` with the exact source commit.
+
+The legacy root `index.html` is explicitly excluded.
+
+Validator:
+
+```bash
+node tools/deploy/validate-vps-bundle.mjs
+```
+
+It checks:
+
+- the homepage is the generated `site-next` homepage, not the legacy runtime;
+- every sitemap route exists in the bundle;
+- every local HTML `href`/`src` resolves;
+- canonical/sitemap origin remains `https://vitalvibeconstruction.com`;
+- robots points to the production sitemap;
+- no public `site-next/` path leaks;
+- required discovery/legal/runtime compatibility files exist.
+
+## CI Result
+
+Workflow:
+
+```text
+VPS bundle check
+```
+
+First run on commit `822c508d56ce36c03d7e878bff5785b31f89ef29`:
+
+- conclusion: success;
+- canonical project checks: success;
+- tracked generated-file diff: clean;
+- VPS bundle build: success;
+- VPS bundle validation: success;
+- tar packaging: success;
+- artifact upload: success;
+- artifact name: `vps-site-bundle`;
+- artifact size: 47,934,769 bytes;
+- artifact digest: `sha256:bede9381bcc65554d9a143676a66f92bc6f8bf7e82bf439da6e007f60ba8cd04`.
+
+The workflow has no SSH secrets and no deployment step.
+
+## Release / Rollback Model
+
+Server layout:
+
+```text
+/srv/vital-vibe/
+  current -> /srv/vital-vibe/releases/<release-id>
+  releases/
+    <release-id>/
+```
+
+Install a release with:
+
+```bash
+deploy/vps/install-release.sh vps-site-bundle.tgz <release-id>
+```
+
+Rollback with:
+
+```bash
+deploy/vps/rollback-release.sh <previous-release-id>
+```
+
+Both switch the `current` symlink atomically. A normal application rollback therefore requires no DNS change.
+
+## Historical Redirects
+
+Current Caddy template prepares HTTP 301 redirects:
+
+- `/projects.html` -> `/projects/`
+- `/proyecto-1.html` -> `/projects/estudio-reformado-barcelona/`
+- `/proyecto-2.html` -> `/projects/piso-reformado-barcelona/`
+- old tier gallery `.dc.html` URLs -> `/gallery/`
+
+Before production cutover, verify old project mappings against current live behavior / Search Console if available.
+
+## DNS Cutover Strategy
+
+Do not change DNS until the VPS is provisioned and smoke-tested.
+
+Before cutover:
+
+1. record current apex and `www` DNS records;
+2. record current GitHub Pages custom-domain state;
+3. lower relevant DNS TTL ahead of migration if possible;
+4. confirm VPS IPv4 and IPv6 status;
+5. confirm firewall/ports 80 and 443;
+6. install a validated release and test it before public DNS changes;
+7. keep GitHub Pages intact as hosting rollback.
+
+At cutover:
+
+1. point apex A record to the VPS IPv4;
+2. only add/change AAAA if IPv6 is verified end-to-end;
+3. configure `www` only after its DNS/redirect policy is confirmed;
+4. start/reload Caddy;
+5. wait for public TLS provisioning;
+6. verify all canonical routes and historical 301 redirects over HTTPS.
+
+If VPS cutover itself fails, restore the recorded GitHub Pages DNS records. Do not rewrite canonical URLs during rollback.
 
 ## SEO / AEO Matrix
 
-Top priorities remain:
+Top content priorities remain unchanged:
 
 1. existing `/servicios/reformas-integrales-barcelona/`;
 2. proposed `/guias/precio-reforma-integral-barcelona/`;
@@ -49,151 +229,51 @@ Top priorities remain:
 4. proposed `/servicios/banos-barcelona/`;
 5. proposed `/servicios/electricidad-barcelona/`.
 
-No new route has been activated from the matrix.
-
-## Production Gate Findings
-
-Repository evidence shows the legacy site was designed for classic GitHub Pages branch publishing:
-
-- `main` contains the legacy root `index.html`;
-- `main/CNAME` contains `vitalvibeconstruction.com`;
-- the legacy README instructs publishing from branch `/root` or `/docs`;
-- the legacy root entrypoint depends on `support.js` and root asset directories;
-- there is no repository-owned Pages deployment workflow in `main`.
-
-The connected GitHub tool does not expose the exact `Settings -> Pages` source selector, so that setting must be visually confirmed before production cutover.
-
-GitHub Pages branch publishing only supports `/` or `/docs`, not arbitrary `site-next/`. Therefore the preferred production architecture is a **custom GitHub Actions Pages artifact**.
-
-## Deployment Decision
-
-Do **not** copy generated `site-next` files into repository root as source files.
-
-Preferred flow:
-
-```text
-Knowledge Repository
-        -> builders/checks
-        -> site-next + sitemap.xml + llms.txt
-        -> deterministic .pages-dist bundle
-        -> GitHub Pages artifact
-        -> vitalvibeconstruction.com
-```
-
-`.pages-dist` is ephemeral and must not become a tracked content source.
-
-## Pages Bundle Composition
-
-The future bundle should contain:
-
-### Generated projection at artifact root
-
-- contents of `site-next/` flattened to artifact root;
-- `sitemap.xml`;
-- `llms.txt`;
-- `robots.txt`.
-
-### Shared assets
-
-- `VVC_primary_logo.svg`;
-- `proyecto-1/`;
-- `proyecto-2/`;
-- `estandar/`;
-- `premium/`;
-- `smart/`.
-
-### Custom domain
-
-- copy `CNAME` for consistency;
-- separately verify the custom domain remains configured in GitHub Pages settings.
-
-### Initial legacy compatibility
-
-Preserve during first cutover:
-
-- `aviso-legal.dc.html`;
-- `galeria-economica.dc.html`;
-- `galeria-estandar.dc.html`;
-- `galeria-premium.dc.html`;
-- `support.js`.
-
-Do not copy legacy root `index.html`; generated `site-next/index.html` must own `/` in the artifact.
-
-Historical URLs such as `/projects.html`, `/proyecto-1.html`, and `/proyecto-2.html` must be checked immediately before cutover. Add compatibility redirect documents only if the old mappings are confirmed and the URLs still matter.
-
-## Safe Cutover Sequence
-
-### Phase A — no production change
-
-1. Implement deterministic Pages bundle assembly.
-2. Implement bundle validation.
-3. Run bundle build in PR CI only; do not deploy.
-4. Verify all generated routes, assets, discovery files and compatibility files exist in the bundle.
-5. Manually confirm `Settings -> Pages`, custom domain and HTTPS state.
-
-### Phase B — production-ready merge
-
-1. Keep normal project checks green.
-2. Merge reviewed production-capable code to `main` only when the branch is otherwise ready.
-3. Do not change canonical URLs as part of cutover.
-
-### Phase C — explicit Pages switch
-
-In GitHub Pages settings select:
-
-```text
-Build and deployment -> Source -> GitHub Actions
-```
-
-Then enable the production `deploy-pages` job from `main`.
-
-### Phase D — production verification
-
-Verify HTTP 200, canonical URLs, H1, CSS, images, navigation, sitemap, robots, `llms.txt`, mobile rendering and the eight canonical routes over HTTPS.
-
-### Phase E — discovery
-
-Re-check sitemap/indexing in Search Console and monitor old URL coverage before starting SEO/AEO Wave 1.
-
-## Rollback
-
-Keep the legacy root files intact until the Actions deployment is proven stable.
-
-If cutover fails and current Pages source is confirmed as `main /root`, rollback is to switch Pages back to branch publishing from `main /root` and verify the legacy homepage returns.
+Do not start Wave 1 public route expansion until hosting/cutover mechanics are clear enough to deploy safely.
 
 ## Active Stage
 
-The active implementation task is now:
+The repository-side VPS migration preparation is complete enough for a real server smoke test.
 
-> **Build and validate the Pages deployment bundle without deploying it.**
+Next required input is **non-secret VPS information**:
 
-Do not add `actions/deploy-pages` yet.
+- Linux distribution/version;
+- public IPv4;
+- whether IPv6 is enabled;
+- SSH username and port;
+- whether Caddy is already installed;
+- DNS provider and current records relevant to apex and `www`.
 
-Expected next code:
+Do not commit private SSH keys, passwords or provider API tokens.
 
-- a deterministic bundle assembly tool under `tools/`;
-- a bundle validator;
-- CI coverage proving the artifact contains every required route and asset;
-- no production permissions and no deployment step.
+Once a VPS exists, first production-adjacent operation should be a **manual artifact upload + smoke test**, not automatic GitHub-to-VPS deployment. Add protected automated deployment only after the first cutover/rollback path is proven.
+
+## Deferred
+
+El Raval technical photographs remain deferred and non-blocking for deployment/SEO work.
+
+GitHub Pages Actions remains a documented fallback only. Do not add `actions/deploy-pages` while VPS is the selected target.
 
 ## Non-Negotiable Constraints
 
 - Do not edit `support.js`.
 - Do not evolve legacy entrypoints.
 - Do not bypass the Knowledge Repository.
-- Do not hand-edit generated output as a substitute for changing its source or builder.
+- Do not hand-edit generated output as a substitute for its source/builder.
 - Do not duplicate business content between builders and tables.
-- Do not add dependencies unless the current platform cannot reasonably solve the problem.
 - Do not activate speculative routes from the SEO/AEO matrix.
-- Do not publish generic mass-produced landing pages.
 - Do not deploy from pull requests.
+- Do not add production SSH secrets before a real host exists and its host key can be pinned.
+- Do not use `StrictHostKeyChecking=no` in future deploy automation.
 
 ## Verification
 
-After content, route, builder, generated-output, structural, or deployment-bundle changes run:
+After content, route, builder, generated-output, structural or deployment changes run:
 
 ```bash
 node tools/checks/run.mjs
+node tools/deploy/build-vps-bundle.mjs
+node tools/deploy/validate-vps-bundle.mjs
 ```
 
-The future Pages bundle validator must pass separately, and tracked generated projections must remain clean.
+Tracked generated projections must remain clean.
