@@ -18,7 +18,7 @@ contract_references:
   project_evidence_standard: architecture/project-evidence-standard.md
   routes: architecture/project-routes.yaml
   gallery_coverage: architecture/gallery-media-coverage.yaml
-  seo_aEO_query_page_matrix: architecture/seo-aeo-query-page-matrix.md
+  seo_aeo_query_page_matrix: architecture/seo-aeo-query-page-matrix.md
 
 latest_verified_baseline:
   commit: 7b35dd80e40e3007784eaed77d246f89a1cd3d8e
