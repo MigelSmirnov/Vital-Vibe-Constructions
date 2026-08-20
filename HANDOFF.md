@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 16
-Updated: 2026-08-20T07:18:00Z
+Version: 17
+Updated: 2026-08-20T09:38:00+02:00
 
 ## Session Rule
 
@@ -14,208 +14,167 @@ This file is a living handoff, not a changelog. Historical detail should live in
 
 ## Current Status
 
-`agent/architecture-sandbox` is on a reproducible green baseline and now has a ranked SEO/AEO query-to-page architecture.
+`agent/architecture-sandbox` is on a reproducible green baseline with:
 
-Delivery state:
+- validated Knowledge Repository architecture;
+- eight generated public HTML routes in `site-next`;
+- complete 39/39 legacy media coverage;
+- ranked 15-page SEO/AEO query-to-page matrix;
+- a documented production deployment approach for GitHub Pages.
 
-- branch: `agent/architecture-sandbox`
-- pull request: `#1 Build architecture sandbox and knowledge foundation`
-- pull request state: open and ready for review
-- query/page matrix commit: `7b35dd80e40e3007784eaed77d246f89a1cd3d8e`
-- matrix artifact: `architecture/seo-aeo-query-page-matrix.md`
-- generated projection sync commit: `2d644be010466c5b620ad5c9ac1667f7846296d6`
-- GitHub Actions `Project checks` run `#80`: success
-- GitHub Actions `Article sandbox` run `#30`: success
-- generated projections remain unchanged and reproducible
+Key planning artifacts:
 
-Current generated site:
+- `architecture/seo-aeo-query-page-matrix.md`
+- `architecture/production-deployment-plan.md`
 
-- homepage
-- `/projects/`
-- four project detail pages
-- `/gallery/`
-- `/servicios/reformas-integrales-barcelona/`
-- eight sitemap-eligible URLs total
-- 39 of 39 legacy content images modeled
+Production has **not** been changed in this session.
 
 ## Current Strategy
 
 - Preserve the legacy website and keep `support.js` read-only.
-- Build `site-next` in parallel until deployment replaces the legacy public document root.
+- Keep `site-next` as the generated projection, not as a manually copied repository-root site.
 - Treat Knowledge Repository records as the source of truth.
-- Treat HTML, `llms.txt`, and `sitemap.xml` as generated projections.
-- Keep tracked generated projections reproducible: a normal generation run must leave no repository diff.
-- Normalize generated local `href` and `src` values to root-relative public URLs.
-- Use complete legacy media coverage; curated omission is not allowed.
-- Keep image-detail routes deferred.
-- Prefer evidence-rich, locally specific content over generic SEO copy.
-- Do not create page families by cloning a template with only the service keyword changed.
-- Do not activate new routes merely because they appear in the SEO/AEO matrix.
+- Treat `site-next`, `llms.txt`, and `sitemap.xml` as reproducible generated projections.
+- Prefer evidence-rich Spanish content over generic SEO landing pages.
+- Do not activate new routes until both priority and evidence readiness are established.
+- Keep El Raval technical-photo completion deferred and non-blocking.
 
 ## SEO / AEO Matrix
 
-The first ranked matrix contains 15 page opportunities. It intentionally does not invent search-volume numbers. Priority is based on commercial value, current Barcelona search-result intent, first-party evidence readiness, AEO usefulness, and the ability to create genuinely distinct content.
+Top priorities remain:
 
-Top priorities:
+1. existing `/servicios/reformas-integrales-barcelona/`;
+2. proposed `/guias/precio-reforma-integral-barcelona/`;
+3. proposed `/servicios/cocinas-barcelona/`;
+4. proposed `/servicios/banos-barcelona/`;
+5. proposed `/servicios/electricidad-barcelona/`.
 
-1. **Existing reformas integrales service** — `/servicios/reformas-integrales-barcelona/`
-2. **Renovation price guide** — proposed `/guias/precio-reforma-integral-barcelona/`
-3. **Kitchen service** — proposed `/servicios/cocinas-barcelona/`
-4. **Bathroom service** — proposed `/servicios/banos-barcelona/`
-5. **Electrical service** — proposed `/servicios/electricidad-barcelona/`
+No new route has been activated from the matrix.
 
-Second-wave evidence pages:
+## Production Gate Findings
 
-- old-building renovation in Barcelona
-- uneven-floor / floor-leveling guide
-- electrical-renovation guide
-- painting service
-- painting price/preparation guide
-- masonry service
+Repository evidence shows the legacy site was designed for classic GitHub Pages branch publishing:
 
-Supporting third-wave content:
+- `main` contains the legacy root `index.html`;
+- `main/CNAME` contains `vitalvibeconstruction.com`;
+- the legacy README instructs publishing from branch `/root` or `/docs`;
+- the legacy root entrypoint depends on `support.js` and root asset directories;
+- there is no repository-owned Pages deployment workflow in `main`.
 
-- kitchen planning guide
-- bathroom waterproofing guide
-- how to review a renovation estimate
+The connected GitHub tool does not expose the exact `Settings -> Pages` source selector, so that setting must be visually confirmed before production cutover.
 
-The existing El Raval project is treated as the primary evidence node rather than as a new route opportunity.
+GitHub Pages branch publishing only supports `/` or `/docs`, not arbitrary `site-next/`. Therefore the preferred production architecture is a **custom GitHub Actions Pages artifact**.
 
-## Why the Ranking Looks This Way
+## Deployment Decision
 
-Current Barcelona search results strongly emphasize:
+Do **not** copy generated `site-next` files into repository root as source files.
 
-- price per square metre and example apartment sizes;
-- complete versus partial kitchen and bathroom renovation;
-- scope and duration;
-- old-building conditions and hidden installations;
-- waterproofing, drainage and ventilation;
-- preparation work as a major driver of painting cost.
+Preferred flow:
 
-VVC should not copy competitor numbers, guarantees or claims. The opportunity is to answer the same user questions with better first-party evidence.
+```text
+Knowledge Repository
+        -> builders/checks
+        -> site-next + sitemap.xml + llms.txt
+        -> deterministic .pages-dist bundle
+        -> GitHub Pages artifact
+        -> vitalvibeconstruction.com
+```
 
-## Evidence Advantage
+`.pages-dist` is ephemeral and must not become a tracked content source.
 
-### El Raval
+## Pages Bundle Composition
 
-Strongest evidence source for:
+The future bundle should contain:
 
-- integral renovation;
-- 50 m² project cost context;
-- old-building constraints;
-- uneven floors and lightweight build-up;
-- new electrical installation;
-- drainage, ventilation and waterproofing;
-- masonry / dry lining;
-- budget trade-offs;
-- phased execution.
+### Generated projection at artifact root
 
-### Piso reformado Barcelona
+- contents of `site-next/` flattened to artifact root;
+- `sitemap.xml`;
+- `llms.txt`;
+- `robots.txt`.
 
-Useful for:
+### Shared assets
 
-- integral renovation;
-- kitchen service;
-- before / work / after sequences;
-- finished bathroom and circulation-space results where relevant.
+- `VVC_primary_logo.svg`;
+- `proyecto-1/`;
+- `proyecto-2/`;
+- `estandar/`;
+- `premium/`;
+- `smart/`.
 
-### Reforma integral estándar
+### Custom domain
 
-Useful for:
+- copy `CNAME` for consistency;
+- separately verify the custom domain remains configured in GitHub Pages settings.
 
-- integral renovation;
-- kitchen;
-- electrical preparation;
-- painting;
-- masonry;
-- floor base and parquet evidence.
+### Initial legacy compatibility
 
-### Premium contractor work
+Preserve during first cutover:
 
-Useful for:
+- `aviso-legal.dc.html`;
+- `galeria-economica.dc.html`;
+- `galeria-estandar.dc.html`;
+- `galeria-premium.dc.html`;
+- `support.js`.
 
-- painting preparation and spray finish;
-- plasterboard / dry lining;
-- integrated LED / electrical work;
-- premium finish evidence.
+Do not copy legacy root `index.html`; generated `site-next/index.html` must own `/` in the artifact.
 
-## Article Sandbox Promotion Order
+Historical URLs such as `/projects.html`, `/proyecto-1.html`, and `/proyecto-2.html` must be checked immediately before cutover. Add compatibility redirect documents only if the old mappings are confirmed and the URLs still matter.
 
-1. `sandbox/articles/drafts/coste-reforma-piso-barcelona-2026.md`
-   - highest-value editorial candidate;
-   - must be converted to Spanish and verified line by line;
-   - combines price intent with strong old-building and floor reasoning.
+## Safe Cutover Sequence
 
-2. `sandbox/articles/drafts/pintura-paredes-barcelona.yaml`
-   - mature evidence-first structure;
-   - verify current 4–6 / ~6 EUR/m² claims before publication;
-   - connect to premium and project media.
+### Phase A — no production change
 
-3. `sandbox/articles/drafts/reforma-cocina-barcelona.yaml`
-   - useful supporting guide;
-   - enrich with real project evidence before publication.
+1. Implement deterministic Pages bundle assembly.
+2. Implement bundle validation.
+3. Run bundle build in PR CI only; do not deploy.
+4. Verify all generated routes, assets, discovery files and compatibility files exist in the bundle.
+5. Manually confirm `Settings -> Pages`, custom domain and HTTPS state.
 
-## Active Stage: Wave Selection and Production Gate
+### Phase B — production-ready merge
 
-The query/page matrix is complete. The next work should not be another speculative SEO backlog.
+1. Keep normal project checks green.
+2. Merge reviewed production-capable code to `main` only when the branch is otherwise ready.
+3. Do not change canonical URLs as part of cutover.
 
-### Wave 0 — Production Gate
+### Phase C — explicit Pages switch
 
-Before expecting organic impact:
+In GitHub Pages settings select:
 
-1. confirm how `site-next` will become the public document root;
-2. deploy the current eight-page projection without changing canonical URLs;
-3. verify public HTTP 200 behavior, assets, canonical tags, robots, sitemap, structured data and mobile rendering;
-4. confirm Search Console discovery/indexing once production is live.
+```text
+Build and deployment -> Source -> GitHub Actions
+```
 
-### Wave 1 — First Content Expansion
+Then enable the production `deploy-pages` job from `main`.
 
-After the deployment approach is clear, implement in this order unless new first-party evidence changes the ranking:
+### Phase D — production verification
 
-1. strengthen the existing integral-renovation service if needed;
-2. model and publish the Spanish renovation-price guide;
-3. add page-owned kitchen service content and route;
-4. add page-owned bathroom service content and route;
-5. add page-owned electrical service content and route.
+Verify HTTP 200, canonical URLs, H1, CSS, images, navigation, sitemap, robots, `llms.txt`, mobile rendering and the eight canonical routes over HTTPS.
 
-No route should be activated until its content is evidence-ready and the route contract is updated deliberately.
+### Phase E — discovery
 
-## Local / Entity Layer
+Re-check sitemap/indexing in Search Console and monitor old URL coverage before starting SEO/AEO Wave 1.
 
-After or alongside Wave 1:
+## Rollback
 
-- add factual `WebSite` identity markup;
-- strengthen Organization/local-business identity only with verified publishable facts;
-- do not invent a public street address;
-- keep schema synchronized with visible content and Knowledge Repository records.
+Keep the legacy root files intact until the Actions deployment is proven stable.
 
-## El Raval Technical Media: Deferred
+If cutover fails and current Pages source is confirmed as `main /root`, rollback is to switch Pages back to branch publishing from `main /root` and verify the legacy homepage returns.
 
-AI-011 remains open, but missing technical photographs do not block SEO/AEO execution.
+## Active Stage
 
-When available, add:
+The active implementation task is now:
 
-1. floor-pour photograph
-2. subfloor/plasterboard photograph
-3. wall-restoration photograph
-4. bathroom-waterproofing photograph
-5. corrugated-conduit photograph
-6. electrical-panel photograph
+> **Build and validate the Pages deployment bundle without deploying it.**
 
-Use truthful Media metadata and contextual evidence links; keep image-detail routes deferred.
+Do not add `actions/deploy-pages` yet.
 
-## Intentionally Deferred SEO Ideas
+Expected next code:
 
-Do not prioritize:
-
-- one repeated landing page per Barcelona neighborhood;
-- self-ranking `mejor empresa` pages;
-- guarantee/warranty claims without verified policy;
-- financing pages without a confirmed offer;
-- permit-management promises without confirmed operational scope;
-- structural-safety advice without professional verification;
-- exact brand comparison pages based on competitor content;
-- EN/RU mirrors before Spanish topical coverage is stronger.
+- a deterministic bundle assembly tool under `tools/`;
+- a bundle validator;
+- CI coverage proving the artifact contains every required route and asset;
+- no production permissions and no deployment step.
 
 ## Non-Negotiable Constraints
 
@@ -225,19 +184,16 @@ Do not prioritize:
 - Do not hand-edit generated output as a substitute for changing its source or builder.
 - Do not duplicate business content between builders and tables.
 - Do not add dependencies unless the current platform cannot reasonably solve the problem.
-- Keep `content/tables/*.yaml` JSON-compatible until YAML-specific authoring is required.
-- Do not generate image-detail routes while their family status is deferred.
-- Do not replace complete gallery coverage with a curated subset.
-- Preserve truthful alt text, dimensions, and project or service ownership for every gallery image.
-- Do not publish generic mass-produced landing pages without page-specific evidence and useful content.
-- Do not use competitor prices or guarantees as VVC facts.
+- Do not activate speculative routes from the SEO/AEO matrix.
+- Do not publish generic mass-produced landing pages.
+- Do not deploy from pull requests.
 
 ## Verification
 
-After content, route, builder, generated-output, or structural changes run:
+After content, route, builder, generated-output, structural, or deployment-bundle changes run:
 
 ```bash
 node tools/checks/run.mjs
 ```
 
-Then require generated projections to remain clean under the repository reproducibility check.
+The future Pages bundle validator must pass separately, and tracked generated projections must remain clean.
