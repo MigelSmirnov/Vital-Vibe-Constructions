@@ -1,0 +1,46 @@
+name: VPS bundle check
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run canonical project checks
+        run: node tools/checks/run.mjs
+
+      - name: Verify tracked generated files
+        run: git diff --exit-code
+
+      - name: Build VPS deployment bundle
+        run: node tools/deploy/build-vps-bundle.mjs
+
+      - name: Validate VPS deployment bundle
+        run: node tools/deploy/validate-vps-bundle.mjs
+
+      - name: Package VPS deployment bundle
+        run: tar -C .deploy-dist -czf vps-site-bundle.tgz .
+
+      - name: Upload VPS deployment bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: vps-site-bundle
+          path: vps-site-bundle.tgz
+          if-no-files-found: error
+          retention-days: 7
