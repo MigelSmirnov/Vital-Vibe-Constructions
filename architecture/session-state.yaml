@@ -1,8 +1,8 @@
-version: 21
+version: 22
 
-updated_at: 2026-08-20T09:38:00+02:00
-phase: production-deployment-gate
-stage_status: deployment-plan-complete-ready-for-bundle-builder
+updated_at: 2026-08-20T09:57:00+02:00
+phase: vps-migration-preparation
+stage_status: repository-prep-complete-awaiting-vps-facts
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -19,17 +19,25 @@ contract_references:
   routes: architecture/project-routes.yaml
   gallery_coverage: architecture/gallery-media-coverage.yaml
   seo_aeo_query_page_matrix: architecture/seo-aeo-query-page-matrix.md
-  production_deployment_plan: architecture/production-deployment-plan.md
+  vps_migration_plan: architecture/vps-migration-plan.md
+  github_pages_fallback_plan: architecture/production-deployment-plan.md
 
 latest_verified_baseline:
+  head_commit: 822c508d56ce36c03d7e878bff5785b31f89ef29
   generated_projection_commit: 2d644be010466c5b620ad5c9ac1667f7846296d6
-  summary: SEO/AEO matrix is complete and production deployment architecture is documented without changing production or activating routes.
-  last_known_checks:
-    workflow: GitHub Actions Project checks
-    run_number: 84
-    conclusion: success
-    article_sandbox_run_number: 34
-    article_sandbox_conclusion: success
+  checks:
+    project_checks:
+      run_number: 94
+      conclusion: success
+    article_sandbox:
+      run_number: 44
+      conclusion: success
+    vps_bundle_check:
+      run_number: 1
+      conclusion: success
+      artifact_name: vps-site-bundle
+      artifact_size_bytes: 47934769
+      artifact_digest: sha256:bede9381bcc65554d9a143676a66f92bc6f8bf7e82bf439da6e007f60ba8cd04
     knowledge_tests:
       passed: 27
       failed: 0
@@ -43,230 +51,159 @@ latest_verified_baseline:
     service_detail_pages: 1
     sitemap_urls: 8
     generated_file_diff: clean
-  command: node tools/checks/run.mjs
-  environment: GitHub Actions
 
 current_strategy:
   legacy_runtime: read-only
   next_runtime: site-next
   source_of_truth: Knowledge Repository
-  production_target: github-pages-actions-artifact
+  production_target: vps-caddy-static
+  github_pages_target_status: fallback-only
   production_unchanged: true
   public_path_mode: root-relative
-  generated_projections:
-    - site-next
-    - llms.txt
-    - sitemap.xml
-  deployment_bundle:
-    proposed_directory: .pages-dist
-    tracked: false
-    role: ephemeral-production-package
-    deployment_enabled: false
-  seo_aeo_policy:
-    evidence_first: true
-    page_specific_content_required: true
-    generic_mass_landing_pages_forbidden: true
-    structured_data_must_match_visible_content: true
-    spanish_content_first: true
-    no_unverified_search_volume_numbers: true
-    routes_require_priority_and_evidence_readiness: true
+  deployment_model:
+    build_location: github-actions
+    server_build_required: false
+    artifact: vps-site-bundle.tgz
+    bundle_directory: .deploy-dist
+    server_root: /srv/vital-vibe/current
+    release_root: /srv/vital-vibe/releases
+    atomic_switch: symlink
+    initial_deploy_mode: manual-artifact-upload
+    automatic_ssh_deploy_enabled: false
 
-route_state:
-  projects_index:
-    path: /projects/
-    status: generated
-    sitemap_eligible: true
-  project_detail:
-    pattern: /projects/{project-slug}/
-    status: generated
-    instance_count: 4
-    sitemap_eligible: true
-  gallery_index:
-    path: /gallery/
-    status: generated
-    sitemap_eligible: true
-  service_detail:
-    pattern: /servicios/{service-slug}-barcelona/
-    status: generated
-    instance_count: 1
-    sitemap_eligible: true
-  project_image_detail:
-    pattern: /projects/{project-slug}/images/{media-slug}/
-    status: deferred
-    sitemap_eligible: false
-  guide_detail:
-    pattern: /guias/{guide-slug}/
-    status: proposed-only
-    sitemap_eligible: false
-
-seo_aeo_matrix:
-  artifact: architecture/seo-aeo-query-page-matrix.md
-  candidate_count: 15
-  top_ranked_opportunities:
-    - /servicios/reformas-integrales-barcelona/
-    - /guias/precio-reforma-integral-barcelona/
-    - /servicios/cocinas-barcelona/
-    - /servicios/banos-barcelona/
-    - /servicios/electricidad-barcelona/
-  no_routes_activated_from_matrix: true
-
-production_gate_findings:
-  repository_evidence:
-    main_has_legacy_root_index: true
-    main_has_cname: true
-    cname_value: vitalvibeconstruction.com
-    main_has_repository_pages_workflow: false
-    legacy_readme_describes_branch_root_or_docs_pages_source: true
-    legacy_root_depends_on_support_js: true
-  connector_limitations:
-    github_pages_settings_source_visible: false
-    manual_settings_confirmation_required: true
-  github_pages_branch_source_constraint:
-    allowed_source_directories:
-      - /
-      - /docs
-    arbitrary_site_next_directory_supported: false
-  decision:
-    preferred_mode: custom-github-actions-pages-artifact
-    copy_site_next_into_repository_root: false
-    publish_permanently_from_working_branch: false
-
-pages_bundle_plan:
-  artifact_root: .pages-dist
-  generated_projection:
-    - site-next-contents-at-artifact-root
+vps_bundle:
+  builder: tools/deploy/build-vps-bundle.mjs
+  validator: tools/deploy/validate-vps-bundle.mjs
+  workflow: .github/workflows/vps-bundle-check.yml
+  ignored_outputs:
+    - .deploy-dist/
+    - vps-site-bundle.tgz
+  contents:
+    - site-next-contents-at-root
     - sitemap.xml
     - llms.txt
     - robots.txt
-  static_assets:
     - VVC_primary_logo.svg
     - proyecto-1
     - proyecto-2
     - estandar
     - premium
     - smart
-  custom_domain:
-    include_cname_file: true
-    settings_remain_authoritative: true
-  initial_legacy_compatibility:
     - aviso-legal.dc.html
-    - galeria-economica.dc.html
-    - galeria-estandar.dc.html
-    - galeria-premium.dc.html
     - support.js
-  excluded:
+    - DEPLOYMENT_COMMIT
+  excludes:
     - legacy-root-index-html
-  historical_urls_to_check_before_cutover:
-    - /projects.html
-    - /proyecto-1.html
-    - /proyecto-2.html
 
-pages_bundle_validation:
-  required_root_files:
-    - index.html
-    - styles.css
-    - VVC_primary_logo.svg
-    - robots.txt
-    - sitemap.xml
-    - llms.txt
-  requirements:
-    - all-eight-sitemap-route-outputs-present
-    - all-generated-local-image-references-resolve
-    - all-generated-local-links-resolve-or-are-approved
-    - no-public-site-next-prefix
-    - sitemap-and-canonical-routes-match
-    - canonical-origin-is-production-origin
-    - legacy-index-does-not-overwrite-generated-index
-    - configured-compatibility-files-present
+vps_server:
+  web_server: caddy
+  caddy_template: deploy/vps/Caddyfile
+  default_web_root: /srv/vital-vibe/current
+  automatic_https_expected: true
+  hsts_initially_enabled: false
+  compression:
+    - zstd
+    - gzip
+  static_asset_cache_seconds: 86400
+  release_installer: deploy/vps/install-release.sh
+  rollback_helper: deploy/vps/rollback-release.sh
 
-cutover_plan:
-  phase_a:
-    name: ci-only-bundle-preparation
-    production_change: false
-    steps:
-      - implement deterministic bundle builder
-      - implement bundle validator
-      - run bundle build in pull-request CI
-      - inspect bundle route and asset inventory
-      - manually confirm GitHub Pages source setting
-      - manually confirm custom domain and HTTPS state
-      - check historical URL behavior
-  phase_b:
-    name: production-capable-merge
-    steps:
-      - keep normal checks green
-      - merge reviewed code to main when otherwise ready
-      - keep canonical URLs unchanged during cutover
-  phase_c:
-    name: pages-source-switch
-    steps:
-      - set Pages source to GitHub Actions
-      - enable production deploy job from main
-  phase_d:
-    name: production-verification
-    steps:
-      - verify eight canonical HTML routes over HTTPS
-      - verify stylesheet and logo
-      - verify generated media assets
-      - verify robots sitemap and llms
-      - verify canonical H1 navigation and mobile rendering
-  phase_e:
-    name: discovery-verification
-    steps:
-      - recheck sitemap in Search Console
-      - inspect indexing of eight canonical routes
-      - monitor old URL coverage and 404s
-      - measure queries before Wave 1 expansion
+historical_redirects:
+  - from: /projects.html
+    to: /projects/
+    status: 301
+  - from: /proyecto-1.html
+    to: /projects/estudio-reformado-barcelona/
+    status: 301
+  - from: /proyecto-2.html
+    to: /projects/piso-reformado-barcelona/
+    status: 301
+  - from: /galeria-economica.dc.html
+    to: /gallery/
+    status: 301
+  - from: /galeria-estandar.dc.html
+    to: /gallery/
+    status: 301
+  - from: /galeria-premium.dc.html
+    to: /gallery/
+    status: 301
+  verification_before_cutover_required: true
 
-rollback:
-  preserve_legacy_root_files_until_stable: true
-  preferred_action_if_cutover_fails:
-    - switch Pages back to branch publishing
-    - select main and root if confirmed as current source
-    - verify legacy homepage
-    - debug artifact deployment without editing legacy runtime
+cutover_policy:
+  before_dns_change:
+    - record-current-apex-and-www-dns
+    - record-github-pages-custom-domain-state
+    - lower-relevant-dns-ttl-if-possible
+    - confirm-vps-ipv4
+    - confirm-ipv6-before-aaaa
+    - confirm-ports-80-and-443
+    - install-and-smoke-test-vps-release
+    - keep-github-pages-as-hosting-rollback
+  dns_cutover:
+    - point-apex-a-to-vps-ipv4
+    - only-configure-aaaa-if-ipv6-works-end-to-end
+    - configure-www-only-after-policy-and-dns-confirmation
+    - start-or-reload-caddy
+    - verify-public-tls
+    - verify-canonical-routes
+    - verify-historical-301s
+  rollback:
+    application: switch-current-symlink-to-previous-release
+    hosting: restore-recorded-github-pages-dns
+    canonical_urls_change_during_rollback: false
+
+seo_aeo_matrix:
+  artifact: architecture/seo-aeo-query-page-matrix.md
+  candidate_count: 15
+  wave_1:
+    - /servicios/reformas-integrales-barcelona/
+    - /guias/precio-reforma-integral-barcelona/
+    - /servicios/cocinas-barcelona/
+    - /servicios/banos-barcelona/
+    - /servicios/electricidad-barcelona/
+  route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
   - date: 2026-08-20
-    commit: 77060af3d4e80d7a0c33db42c5731c33303a71d4
-    summary: Documented the production deployment plan, selected a GitHub Pages Actions artifact architecture, defined bundle contents, compatibility policy, cutover sequence, validation and rollback without changing production.
-    validation: documentation-only-production-unchanged
-  - date: 2026-08-20
-    commit: 7b35dd80e40e3007784eaed77d246f89a1cd3d8e
-    summary: Added the ranked 15-page SEO/AEO query-to-page matrix without activating routes.
-    validation: github-actions-success
+    commits:
+      - abb80ba05f1ef42b08c523af8508240deab4fb7b
+      - 13578882a29b370fb44008b4291074966bdb2b36
+      - ab33b925053a8d52f53c4f0cdf6a8fe4e04de34f
+      - aa11b43af5e3b81b691ccaf82c93c610bacd96e5
+      - cf48a9851e790c91eef7c5a6cca9a6549bc0d0e3
+      - e897d33859bb4a134ff7b51b4cbadc51760146c8
+      - 822c508d56ce36c03d7e878bff5785b31f89ef29
+      - 613cb9064091fec3a10b585cdc54945d0df596e0
+    summary: Selected VPS+Caddy as production direction; added deterministic deployment bundle builder/validator, atomic release and rollback helpers, Caddy redirects/headers, and CI artifact packaging without touching production.
+    validation: vps-bundle-check-run-1-success
+
+active_stage:
+  goal: Provision or identify the VPS, perform a manual release smoke test, then prepare a reversible DNS cutover.
+  status: waiting-for-non-secret-vps-facts
+  required_non_secret_inputs:
+    - linux-distribution-and-version
+    - public-ipv4
+    - ipv6-enabled-or-not
+    - ssh-username
+    - ssh-port
+    - caddy-installed-or-not
+    - dns-provider
+    - current-apex-and-www-records
+  secrets_not_to_commit:
+    - ssh-private-key
+    - passwords
+    - provider-api-tokens
+
+next_verification:
+  - project-checks-must-remain-green
+  - vps-bundle-check-must-remain-green
+  - generated-projections-must-remain-clean
+  - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
+
+next_stage:
+  goal: Install a validated CI artifact on the real VPS, validate Caddy/server behavior before DNS changes, then execute the DNS cutover with GitHub Pages preserved as rollback.
 
 deferred_work:
   el_raval_technical_media:
     backlog_item: AI-011
     blocking_current_stage: false
-    subjects:
-      - floor-pour
-      - subfloor-and-plasterboard
-      - wall-restoration
-      - bathroom-waterproofing
-      - corrugated-conduit
-      - electrical-panel
-
-active_stage:
-  goal: Build and validate an ephemeral GitHub Pages deployment bundle in CI without deploying it.
-  status: ready
-  production_change_allowed: false
-  implementation_scope:
-    - deterministic bundle assembly tool
-    - bundle validator
-    - pull-request CI coverage
-  exclusions:
-    - no actions/deploy-pages step
-    - no Pages source setting change
-    - no canonical URL changes
-    - no new SEO/AEO routes
-    - no edits to support.js or legacy entrypoints
-
-next_verification:
-  - run node tools/checks/run.mjs after deployment-tool changes
-  - require tracked generated projections to remain clean
-  - run the new Pages bundle validator
-
-next_stage:
-  goal: Implement the CI-only Pages bundle builder and validator, then inspect the resulting artifact before enabling production deployment.
