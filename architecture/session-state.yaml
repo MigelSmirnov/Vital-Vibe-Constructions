@@ -1,8 +1,8 @@
-version: 17
+version: 18
 
-updated_at: 2026-08-06T00:00:00Z
+updated_at: 2026-08-20T06:33:00Z
 phase: project-case-study-enrichment
-stage_status: in-progress
+stage_status: ready-for-technical-media
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -20,11 +20,13 @@ contract_references:
   gallery_coverage: architecture/gallery-media-coverage.yaml
 
 latest_verified_baseline:
-  commit: 67cfd025c5c3de4d361062075a63d7c658e0c44b
-  summary: El Raval evidence-rich project case study built and validated locally; generated whitespace cleanup remains to be rechecked after the normalizer update.
+  commit: 4bf0067748cfc466cd7e85818c700be832e0c44a
+  generated_projection_commit: 2d644be010466c5b620ad5c9ac1667f7846296d6
+  summary: Current Knowledge Repository, builders, and tracked generated projections are synchronized; the normal Project checks workflow passes with no generated-file diff.
   checks:
-    workflow: local full project checks
-    conclusion: success-with-whitespace-findings
+    workflow: GitHub Actions Project checks
+    run_number: 74
+    conclusion: success
     knowledge_tests:
       passed: 27
       failed: 0
@@ -41,9 +43,9 @@ latest_verified_baseline:
     content_audit:
       errors: 0
       warnings: 5
-    diff_whitespace: trailing-whitespace-found-in-generated-project-html
+    generated_file_diff: clean
   command: node tools/checks/run.mjs
-  environment: Termux
+  environment: GitHub Actions
 
 current_strategy:
   legacy_runtime: read-only
@@ -60,6 +62,10 @@ current_strategy:
     - site-next
     - llms.txt
     - sitemap.xml
+  generated_projection_policy:
+    tracked: true
+    reproducible: true
+    clean_diff_required_after_generation: true
 
 route_state:
   projects_index:
@@ -94,6 +100,13 @@ media_migration:
   coverage_gate: passed
 
 completed_work:
+  - date: 2026-08-20
+    commits:
+      - a915c960a904e1a7789b87dc5c10c5f505307b85
+      - 2d644be010466c5b620ad5c9ac1667f7846296d6
+      - 4bf0067748cfc466cd7e85818c700be832e0c44a
+    summary: Restored reproducibility of tracked generated projections, synchronized the El Raval case-study changes across site-next and AI discovery output, and removed the temporary regeneration workflow after use.
+    validation: github-actions-project-checks-run-74-success
   - date: 2026-08-06
     commit: 88ab9434967f246264650ae8ba056957e531749f
     backlog_item: AI-011
@@ -114,31 +127,40 @@ completed_work:
       - f940e903d6f52db9df5e1028774fef93d472f517
     backlog_item: AI-011
     summary: Added generated HTML trailing-whitespace normalization and documented the repository-wide evidence standard for project case studies.
-    validation: pending-local-recheck
+    validation: passed-after-generated-projection-sync
 
 active_stage:
-  goal: Complete validation of the El Raval evidence-rich project case study and its reusable project standard.
-  status: implementation-complete-validation-pending
+  goal: Replace the pending El Raval technical-media subjects with verified Media records and contextual evidence links.
+  status: ready
+  prerequisites:
+    generated_projection_baseline: clean
+    gallery_coverage_gate: passed
+    project_case_study_rendering: validated
   scope:
-    - preserve verified project facts in the Knowledge Repository source record
-    - render evidence-rich case-study sections from the Project entity
-    - normalize generated HTML whitespace after root-path processing
-    - maintain a reusable evidence and anti-template writing standard
-    - reserve technical-media subjects for later uploads and visible evidence links
+    - upload the six reserved El Raval technical photographs
+    - record truthful Media metadata and project ownership
+    - add Media IDs to the project in deliberate evidence order
+    - connect technical claims to supporting photographs
+    - preserve deferred image-detail routes
   exclusions:
     - do not invent completion dates, exact material brands, certifications, customer identity, or private address details
     - do not edit support.js or legacy entrypoints
     - do not mark AI-011 complete until the pending technical photographs are incorporated and visually reviewed
-  next_verification:
-    - git pull --ff-only origin agent/architecture-sandbox
-    - node tools/checks/run.mjs
-    - git diff --check
-    - inspect the generated El Raval project page locally on mobile
+
+next_verification:
+  - node tools/checks/run.mjs
+  - git diff --exit-code
+  - inspect the generated El Raval project page locally on mobile after technical media are added
 
 next_stage:
-  goal: Replace the pending El Raval technical-media subjects with verified Media records.
+  goal: Complete AI-011 with evidence-linked technical media for the El Raval case study.
   implementation_steps:
-    - upload the floor-pour, subfloor and plasterboard, wall-restoration, bathroom-waterproofing, corrugated-conduit, and electrical-panel photographs
-    - record truthful media metadata and project ownership
-    - link each technical claim to its supporting image without creating thin image pages
+    - upload the floor-pour photograph
+    - upload the subfloor and plasterboard photograph
+    - upload the wall-restoration photograph
+    - upload the bathroom-waterproofing photograph
+    - upload the corrugated-conduit photograph
+    - upload the electrical-panel photograph
+    - add truthful metadata and project ownership for each Media record
+    - replace pending technical-media placeholders with real evidence links
     - repeat full checks and mobile inspection
