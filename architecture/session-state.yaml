@@ -1,8 +1,8 @@
-version: 19
+version: 20
 
-updated_at: 2026-08-20T07:09:00Z
+updated_at: 2026-08-20T07:17:00Z
 phase: seo-aeo-content-architecture
-stage_status: ready-for-query-page-matrix
+stage_status: matrix-complete-ready-for-production-gate
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -18,15 +18,18 @@ contract_references:
   project_evidence_standard: architecture/project-evidence-standard.md
   routes: architecture/project-routes.yaml
   gallery_coverage: architecture/gallery-media-coverage.yaml
+  seo_aEO_query_page_matrix: architecture/seo-aeo-query-page-matrix.md
 
 latest_verified_baseline:
-  commit: bb73128909111dc96afe8fa31365c7c415ae7bee
+  commit: 7b35dd80e40e3007784eaed77d246f89a1cd3d8e
   generated_projection_commit: 2d644be010466c5b620ad5c9ac1667f7846296d6
-  summary: Current Knowledge Repository, builders, tracked generated projections, HANDOFF baseline, and normal CI gate are synchronized and reproducible before SEO/AEO planning changes.
+  summary: Ranked 15-page SEO/AEO query-to-page matrix added without activating routes or changing generated projections; normal CI remains green.
   checks:
     workflow: GitHub Actions Project checks
-    run_number: 76
+    run_number: 80
     conclusion: success
+    article_sandbox_run_number: 30
+    article_sandbox_conclusion: success
     knowledge_tests:
       passed: 27
       failed: 0
@@ -53,11 +56,6 @@ current_strategy:
   source_of_truth: Knowledge Repository
   gallery_coverage: complete-legacy-coverage
   public_path_mode: root-relative
-  public_path_rules:
-    stylesheet: /styles.css
-    logo: /VVC_primary_logo.svg
-    project_routes: /projects/{project-slug}/
-    contact: /#contacto
   generated_projections:
     - site-next
     - llms.txt
@@ -73,6 +71,9 @@ current_strategy:
     structured_data_must_match_visible_content: true
     spanish_content_first: true
     llms_txt_is_supporting_projection: true
+    competitor_claims_are_research_only: true
+    no_unverified_search_volume_numbers: true
+    routes_require_priority_and_evidence_readiness: true
 
 route_state:
   projects_index:
@@ -97,128 +98,170 @@ route_state:
     pattern: /projects/{project-slug}/images/{media-slug}/
     status: deferred
     sitemap_eligible: false
+  guide_detail:
+    pattern: /guias/{guide-slug}/
+    status: proposed-only
+    sitemap_eligible: false
+    note: No guide route family has been activated in project-routes.yaml.
 
 media_migration:
   total_content_media: 39
   project_owned_media: 37
   modeled_non_project_media: 2
   unmodeled_media: 0
-  target_unmodeled_media: 0
   coverage_gate: passed
 
-seo_aeo_audit:
-  overall_direction: strong-foundation-limited-content-footprint
-  strengths:
-    - crawlable static HTML with unique metadata and canonical URLs
-    - one complete service landing page with visible breadcrumbs, process, FAQs, related projects, and structured data
-    - evidence-rich project pages with first-party facts
-    - El Raval case study includes location, area, phased execution, engineering constraints, decisions, approximate cost, and visible limitations
-    - complete gallery media ownership and truthful metadata
-    - reproducible sitemap and AI discovery projection
-  gaps:
-    - site-next production deployment remains the first discovery gate
-    - only integral-renovation has page-owned service content and a public service route
-    - no prioritized query-to-page architecture yet exists
-    - entity and local-business layer can be strengthened only with verified publishable business facts
-    - existing media should be placed closer to technical claims where useful
-    - article sandbox content is not yet modeled as public Knowledge Repository content
-    - multilingual crawlable routes and hreflang are deferred until Spanish coverage is strong
+seo_aeo_matrix:
+  artifact: architecture/seo-aeo-query-page-matrix.md
+  candidate_count: 15
+  methodology:
+    - commercial_value
+    - observed_barcelona_search_intent
+    - first_party_evidence_readiness
+    - answer_engine_usefulness
+    - distinct_page_value
+  no_search_volume_claims: true
+  top_ranked_opportunities:
+    - rank: 1
+      route: /servicios/reformas-integrales-barcelona/
+      type: existing-service
+      priority: P0
+    - rank: 2
+      route: /guias/precio-reforma-integral-barcelona/
+      type: proposed-guide
+      priority: P0
+    - rank: 3
+      route: /servicios/cocinas-barcelona/
+      type: proposed-service
+      priority: P0
+    - rank: 4
+      route: /servicios/banos-barcelona/
+      type: proposed-service
+      priority: P0
+    - rank: 5
+      route: /servicios/electricidad-barcelona/
+      type: proposed-service
+      priority: P0
+  wave_2_evidence_opportunities:
+    - /guias/reforma-piso-antiguo-barcelona/
+    - /guias/nivelar-suelo-piso-antiguo-barcelona/
+    - /guias/instalacion-electrica-reforma-piso-barcelona/
+    - /servicios/pintura-barcelona/
+    - /guias/pintura-paredes-precio-preparacion-barcelona/
+    - /servicios/albanileria-barcelona/
+  wave_3_supporting_opportunities:
+    - /guias/como-planificar-reforma-cocina-barcelona/
+    - /guias/impermeabilizacion-bano-reforma-barcelona/
+    - /guias/como-revisar-presupuesto-reforma-barcelona/
+
+seo_aeo_research_observations:
+  sampled_at: 2026-08-20
+  market_patterns:
+    - integral-renovation search results emphasize price per square metre and example apartment sizes
+    - kitchen and bathroom results emphasize complete versus partial scope, price and duration
+    - old-building content emphasizes hidden installations and floor conditions
+    - bathroom content frequently emphasizes waterproofing, drainage and ventilation
+    - painting content emphasizes preparation condition as a major cost driver
+  use_policy: External market observations inform intent only; they are not VVC factual sources.
+
+first_party_evidence_graph:
+  el_raval:
+    supports:
+      - integral-renovation
+      - price-context
+      - old-building-renovation
+      - floor-leveling
+      - electrical-renovation
+      - bathroom-waterproofing-drainage-ventilation
+      - masonry-dry-lining
+      - budget-tradeoffs
+      - phased-execution
+  piso_reformado_barcelona:
+    supports:
+      - integral-renovation
+      - kitchen
+      - before-work-after
+      - finished-bathroom
+  reforma_integral_estandar:
+    supports:
+      - integral-renovation
+      - kitchen
+      - electrical
+      - painting
+      - masonry
+      - floor-base-and-parquet
+  premium_contractor_work:
+    supports:
+      - painting-preparation
+      - spray-finish
+      - plasterboard
+      - integrated-led-electrical
+      - premium-finish
+
+article_sandbox_priority:
+  - source: sandbox/articles/drafts/coste-reforma-piso-barcelona-2026.md
+    priority: 1
+    readiness: spanish-conversion-and-factual-review-required
+  - source: sandbox/articles/drafts/pintura-paredes-barcelona.yaml
+    priority: 2
+    readiness: current-price-verification-and-evidence-linking-required
+  - source: sandbox/articles/drafts/reforma-cocina-barcelona.yaml
+    priority: 3
+    readiness: project-evidence-enrichment-required
 
 completed_work:
   - date: 2026-08-20
-    commit: 4b749f60a70da45b31fb9ae6d15e8009c72ac3c6
-    summary: Reframed the handoff around SEO/AEO content architecture, recorded the audit findings, deferred unavailable El Raval technical media, and defined the query/page matrix as the next planning artifact.
-    validation: documentation-only-change
+    commits:
+      - 7b35dd80e40e3007784eaed77d246f89a1cd3d8e
+      - b02912e5d0cf33acc11499277d16d77d0577d8f8
+    summary: Researched current Barcelona renovation intent, ranked 15 SEO/AEO page opportunities, documented evidence readiness and gaps, defined implementation waves, and updated the handoff without activating routes.
+    validation: github-actions-project-checks-run-80-success-on-matrix-commit
   - date: 2026-08-20
     commits:
       - a915c960a904e1a7789b87dc5c10c5f505307b85
       - 2d644be010466c5b620ad5c9ac1667f7846296d6
       - 4bf0067748cfc466cd7e85818c700be832e0c44a
-    summary: Restored reproducibility of tracked generated projections, synchronized the El Raval case-study changes across site-next and AI discovery output, and removed the temporary regeneration workflow after use.
-    validation: github-actions-project-checks-run-74-success
-  - date: 2026-08-06
-    commit: 88ab9434967f246264650ae8ba056957e531749f
-    backlog_item: AI-011
-    summary: Expanded the El Raval studio-conversion project record with verified scope, initial condition, phased execution, engineering decisions, budget strategy, approximate cost, transformation summary, and pending technical-media subjects.
-    source_record: content/tables/projects.yaml
-    validation: passed-domain-and-generated-page-checks
-  - date: 2026-08-06
-    commits:
-      - ff13f179810502d4e2e4d0a32a9bf1f24055635f
-      - d0582d321432521cd32150d40da051b0447807c9
-      - 241a174308781f8f4df77e7c4f7266046d223a9a
-    backlog_item: AI-011
-    summary: Extended the project content contract and Project entity, then added evidence-rich project-page sections for initial condition, challenges, engineering decisions, budget tradeoffs, approximate cost, result, and pending technical media.
-    validation: passed-domain-and-generated-page-checks
-  - date: 2026-08-06
-    commits:
-      - 709ad3f55e480bc88975508d90d2342d83d68343
-      - f940e903d6f52db9df5e1028774fef93d472f517
-    backlog_item: AI-011
-    summary: Added generated HTML trailing-whitespace normalization and documented the repository-wide evidence standard for project case studies.
-    validation: passed-after-generated-projection-sync
+    summary: Restored reproducibility of tracked generated projections and synchronized the El Raval case-study changes.
+    validation: github-actions-success
 
 active_stage:
-  goal: Define a prioritized SEO/AEO query-to-page architecture for the highest-value Barcelona search and answer intents before adding more public routes.
+  goal: Move from planning to a production-discovery gate, then implement the first evidence-ready SEO/AEO content wave.
   status: ready
-  next_artifact: prioritized-query-page-matrix
-  target_opportunity_count: 10-15
-  matrix_fields:
-    - primary_query_or_user_question
-    - intent_class
-    - proposed_canonical_route
-    - target_entity_or_content_type
-    - currently_available_evidence
-    - missing_evidence_or_facts
-    - related_projects
-    - related_services
-    - recommended_truthful_schema
-    - internal_link_sources
-    - internal_link_destinations
-    - business_value
-    - seo_aeo_priority
-    - publication_readiness
-  scope:
-    - commercial service intent
-    - local Barcelona intent
-    - project and case-study evidence intent
-    - pricing and budgeting questions
-    - old-building renovation problems
-    - electrical planning and renovation questions
-    - kitchen and bathroom renovation questions
-    - flooring and leveling questions
-    - waterproofing and drainage questions
-    - painting and masonry questions where first-party evidence exists
-  exclusions:
-    - do not create public routes before the matrix establishes priority and evidence readiness
-    - do not invent search demand numbers without verified data
-    - do not infer addresses, certifications, customer identities, private locations, material brands, dates, or unsupported technical facts
-    - do not mass-produce near-duplicate service or city pages
-    - do not edit support.js or legacy entrypoints
+  matrix_complete: true
+  no_routes_activated_from_matrix: true
+  wave_0:
+    name: production-gate
+    steps:
+      - confirm how site-next becomes the public document root
+      - deploy current eight-page projection without canonical changes
+      - verify HTTP 200 for routes and assets over production HTTPS
+      - verify robots.txt and sitemap.xml
+      - verify canonical and structured data output
+      - inspect desktop and mobile production rendering
+      - confirm Search Console discovery/indexing after deployment
+  wave_1:
+    name: core-commercial-expansion
+    order:
+      - existing integral-renovation service optimization
+      - Spanish renovation-price guide
+      - kitchen service
+      - bathroom service
+      - electrical service
+    rule: Do not activate any route until page-owned content and evidence readiness are validated.
 
-planned_execution:
-  - stage: production-gate
-    goal: Confirm the deployment approach for serving site-next as the public document root and verify routes, assets, sitemap, robots, canonical URLs, and production HTTPS behavior.
-  - stage: service-expansion
-    goal: Use the query/page matrix to choose and author the highest-value page-owned service records, expected to include some or all of kitchens, bathrooms, electrical, painting, and masonry.
-  - stage: entity-local-layer
-    goal: Strengthen factual Organization, WebSite, and appropriate local-business entity markup without inventing a public address or unsupported attributes.
-  - stage: evidence-placement
-    goal: Place existing project media next to technical claims where the current images already support those claims; add reserved El Raval technical media later when available.
-  - stage: editorial-layer
-    goal: Promote strong article-sandbox topics into modeled public content after article entities, route contracts, evidence rules, and builders are defined.
-  - stage: internal-linking
-    goal: Connect informational content to relevant services and evidence-rich projects and connect service pages back to documented projects and supporting guides.
-  - stage: multilingual
-    goal: Design crawlable English and Russian variants with hreflang only after Spanish coverage is strong.
-  - stage: measurement
-    goal: After production deployment, revise priorities using real indexing, query, impression, click, and conversion data rather than speculative demand.
+planned_later_work:
+  - strengthen factual WebSite and business entity markup
+  - contextually place existing project media near supporting technical claims
+  - build wave-2 technical evidence guides and painting/masonry services
+  - build wave-3 planning/decision guides
+  - add reserved El Raval technical photographs when available
+  - introduce EN/RU crawlable variants only after Spanish coverage is strong
+  - revise priorities using real Search Console and conversion data after production deployment
 
 deferred_work:
   el_raval_technical_media:
     backlog_item: AI-011
-    reason: six reserved photographs are not currently available
-    blocking_seo_aeo_planning: false
+    blocking_seo_aeo_execution: false
     subjects:
       - floor-pour
       - subfloor-and-plasterboard
@@ -226,24 +269,11 @@ deferred_work:
       - bathroom-waterproofing
       - corrugated-conduit
       - electrical-panel
-    completion_requires:
-      - truthful Media metadata
-      - project ownership
-      - contextual evidence links
-      - clean full checks
-      - mobile visual review
 
 next_verification:
-  - documentation-only handoff/state changes should leave generated projections untouched
-  - after any content, route, builder, generated-output, or structural change run node tools/checks/run.mjs
+  - documentation and planning changes must leave generated projections untouched
+  - after content, route, builder, generated-output or structural changes run node tools/checks/run.mjs
   - require generated projections to remain clean after generation
 
 next_stage:
-  goal: Produce and rank the first 10-15 query/page opportunities for Barcelona using current Knowledge Repository evidence and business value.
-  implementation_steps:
-    - inventory existing intent coverage from homepage, service, project, gallery, and article-sandbox content
-    - group opportunities by commercial, local, evidence, and informational intent
-    - identify evidence-ready versus evidence-missing opportunities
-    - propose canonical routes without activating them
-    - score business value and SEO/AEO priority
-    - select the first page batch for implementation
+  goal: Resolve the production deployment approach for site-next and verify the current eight routes publicly before adding new SEO/AEO routes.
