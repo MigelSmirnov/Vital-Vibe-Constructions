@@ -1,0 +1,39 @@
+name: Regenerate projections once
+
+on:
+  push:
+    branches:
+      - agent/architecture-sandbox
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out working branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/architecture-sandbox
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run canonical project generation and checks
+        run: node tools/checks/run.mjs
+
+      - name: Commit generated projections
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add llms.txt sitemap.xml site-next/
+          if git diff --cached --quiet; then
+            echo "Generated projections are already synchronized."
+            exit 0
+          fi
+          git commit -m "build: sync generated projections [skip ci]"
+          git push origin HEAD:agent/architecture-sandbox
