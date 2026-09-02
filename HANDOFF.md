@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 19
-Updated: 2026-08-20T10:06:00+02:00
+Version: 20
+Updated: 2026-09-02T06:50:00Z
 
 ## Session Rule
 
@@ -18,6 +18,7 @@ This file is a living handoff, not a changelog. Historical detail belongs in com
 
 Current capabilities:
 
+- generated Spanish, English and Russian homepages with crawlable language switching and hreflang alternates;
 - validated Knowledge Repository architecture;
 - eight generated public HTML routes in `site-next`;
 - complete 39/39 legacy media coverage;
@@ -27,6 +28,8 @@ Current capabilities:
 - atomic server release/rollback scripts;
 - explicit VPS security hardening plan;
 - production, DNS, GitHub Pages settings and canonical URLs remain unchanged.
+
+The multilingual rollout is intentionally staged. The homepage is available in ES at `/`, EN at `/en/`, and RU at `/ru/`. Project, gallery, service and article routes still require localized content records and route contracts before they can be published as complete language variants.
 
 Key artifacts:
 
