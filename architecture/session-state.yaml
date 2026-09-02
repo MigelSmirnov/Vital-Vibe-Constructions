@@ -1,8 +1,8 @@
-version: 23
+version: 24
 
-updated_at: 2026-08-20T10:06:00+02:00
-phase: vps-security-preparation
-stage_status: security-baseline-recorded-awaiting-vps-facts
+updated_at: 2026-09-02T06:50:00Z
+phase: multilingual-site-foundation
+stage_status: localized-homepages-generated-secondary-routes-pending
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -167,6 +167,9 @@ seo_aeo_matrix:
   route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
+  - date: 2026-09-02
+    summary: Added centralized English and Russian homepage translations, static /en/ and /ru/ outputs, a crawlable ES/EN/RU language switcher, hreflang alternates, and build validation. Secondary project, gallery, service, and article routes remain Spanish until their localized records and route contracts are completed.
+    validation: full-project-checks-success
   - date: 2026-08-20
     commits:
       - 21c4a70b98440f58dadc057d04fc509d8795639a
