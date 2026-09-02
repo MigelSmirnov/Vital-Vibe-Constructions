@@ -14,6 +14,7 @@ const checks = [
   ["llms.txt build", "node", ["tools/ai-discovery/build-llms.mjs"]],
   ["llms.txt validation", "node", ["tools/ai-discovery/validate-llms.mjs"]],
   ["site-next build", "node", ["tools/site-next/build.mjs"]],
+  ["localized homepages build", "node", ["tools/site-next/build-home-locales.mjs"]],
   ["project pages build", "node", ["tools/site-next/build-projects.mjs"]],
   ["gallery page build", "node", ["tools/site-next/build-gallery.mjs"]],
   ["service pages build", "node", ["tools/site-next/build-services.mjs"]],
