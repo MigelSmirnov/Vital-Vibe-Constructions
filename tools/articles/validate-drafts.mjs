@@ -20,6 +20,7 @@ const requiredFields = [
   "sections",
 ];
 const supportedBlockTypes = new Set(["paragraph", "list", "quote", "image"]);
+const documentNumberPattern = /^VVC-ART-\d{3}$/;
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -70,6 +71,18 @@ function validateDraft(draft, source) {
   }
 }
 
+function validatePresentation(item) {
+  assert(item.document && typeof item.document === "object", `manifest entry ${item.id}: document metadata is required`);
+  assert(typeof item.document.number === "string" && documentNumberPattern.test(item.document.number), `manifest entry ${item.id}: document.number must match VVC-ART-000`);
+
+  if (item.sheet_titles !== undefined) {
+    assert(Array.isArray(item.sheet_titles), `manifest entry ${item.id}: sheet_titles must be an array`);
+    for (const [index, title] of item.sheet_titles.entries()) {
+      assert(typeof title === "string" && title.trim(), `manifest entry ${item.id}: sheet_titles[${index}] must be non-empty`);
+    }
+  }
+}
+
 async function main() {
   const manifest = await readJson(manifestPath);
   assert(manifest.version === 1, "draft manifest version must be 1");
@@ -77,11 +90,16 @@ async function main() {
 
   const ids = new Set();
   const slugs = new Set();
+  const documentNumbers = new Set();
 
   for (const item of manifest.articles) {
     assert(item.status === "draft", `manifest entry ${item.id}: status must be draft`);
     assert(!ids.has(item.id), `duplicate manifest id: ${item.id}`);
     ids.add(item.id);
+
+    validatePresentation(item);
+    assert(!documentNumbers.has(item.document.number), `duplicate document number: ${item.document.number}`);
+    documentNumbers.add(item.document.number);
 
     const sourcePath = path.resolve(sandboxRoot, item.source);
     assert(sourcePath.startsWith(path.join(sandboxRoot, "drafts") + path.sep), `manifest entry ${item.id}: source must remain inside drafts`);

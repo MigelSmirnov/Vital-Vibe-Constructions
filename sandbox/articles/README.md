@@ -10,6 +10,21 @@ A private-by-convention draft previewer for developing article content without p
 - Draft content must not be copied into `tools/site-next` builders.
 - Promotion to public content requires a later Article entity, validated content records, route contracts, builders, and checks.
 
+## Technical-document preview
+
+The preview renders article drafts as a lightweight engineering document system rather than a generic blog layout:
+
+- cover sheet with document number, revision, date, language and sheet count;
+- drawing-style coordinate frame and reusable title block;
+- numbered sections grouped into content sheets;
+- technical notes, figures and specification-style lists;
+- final notes/FAQ sheet;
+- sheet-to-sheet navigation.
+
+Stable document numbers and sheet labels live in `drafts/index.json` as sandbox presentation metadata, so reordering drafts does not renumber existing documents. A draft may still override presentation fields locally while it is being edited; none of this metadata is a public content source of truth.
+
+This visual system is deliberately confined to the sandbox until the public Article entity and article route family exist.
+
 ## Run locally
 
 From the repository root:

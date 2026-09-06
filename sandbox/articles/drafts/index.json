@@ -6,14 +6,39 @@
       "title": "Cómo planificar una reforma de cocina en Barcelona",
       "status": "draft",
       "language": "es",
-      "source": "./drafts/reforma-cocina-barcelona.yaml"
+      "source": "./drafts/reforma-cocina-barcelona.yaml",
+      "document": {
+        "number": "VVC-ART-001",
+        "revision": "0",
+        "status": "Borrador",
+        "service_label": "Reforma de cocina",
+        "scope": "Barcelona",
+        "stamp_title": "Reforma de cocina: planificación"
+      },
+      "sheet_titles": [
+        "Alcance, distribución e instalaciones",
+        "Preparación del presupuesto"
+      ]
     },
     {
       "id": "pintura-paredes-barcelona",
       "title": "Pintura de paredes: de qué depende el precio y por qué no basta con repintar",
       "status": "draft",
       "language": "es",
-      "source": "./drafts/pintura-paredes-barcelona.yaml"
+      "source": "./drafts/pintura-paredes-barcelona.yaml",
+      "document": {
+        "number": "VVC-ART-002",
+        "revision": "0",
+        "status": "Borrador",
+        "service_label": "Pintura",
+        "scope": "Barcelona",
+        "stamp_title": "Pintura de paredes: precio y preparación"
+      },
+      "sheet_titles": [
+        "Cuándo la pintura sale barata y cuándo no",
+        "Estado del soporte y aplicación",
+        "Pistola, rodillo y precio final"
+      ]
     }
   ]
 }

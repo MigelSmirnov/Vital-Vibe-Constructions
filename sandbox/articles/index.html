@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Article Sandbox | Vital Vibe Construction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <header class="sandbox-header">
     <div>
-      <p class="eyebrow">Vital Vibe Construction</p>
+      <p class="eyebrow">Vital Vibe Construction · Design lab</p>
       <h1>Article Sandbox</h1>
-      <p class="subtitle">Черновой просмотрщик. Материалы здесь не являются публичными страницами сайта.</p>
+      <p class="subtitle">Черновики статей в техническом оформлении. Sandbox остаётся noindex и не создаёт публичных маршрутов.</p>
     </div>
     <span class="status-badge">NOINDEX · DRAFTS</span>
   </header>
@@ -21,7 +24,7 @@
     <aside class="draft-panel" aria-label="Черновики статей">
       <div class="panel-heading">
         <h2>Черновики</h2>
-        <button id="resetDraft" class="secondary-button" type="button">Сбросить правки</button>
+        <button id="resetDraft" class="secondary-button" type="button">Сбросить</button>
       </div>
       <div id="draftList" class="draft-list"></div>
     </aside>
@@ -32,14 +35,14 @@
       <div class="toolbar">
         <div class="view-switch" role="group" aria-label="Режим просмотра">
           <button type="button" class="view-button is-active" data-view="preview">Просмотр</button>
-          <button type="button" class="view-button" data-view="source">Редактор JSON</button>
+          <button type="button" class="view-button" data-view="source">JSON</button>
         </div>
         <button id="saveDraft" class="primary-button" type="button">Сохранить локально</button>
       </div>
 
       <div id="previewView">
         <section id="seoPanel" class="seo-panel" aria-label="SEO-поля статьи"></section>
-        <article id="articlePreview" class="article-preview"></article>
+        <div id="articlePreview" class="article-preview"></div>
       </div>
 
       <div id="sourceView" class="source-view" hidden>

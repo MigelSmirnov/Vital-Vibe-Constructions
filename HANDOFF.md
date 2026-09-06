@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 20
-Updated: 2026-09-02T06:50:00Z
+Version: 21
+Updated: 2026-09-06T14:40:00Z
 
 ## Session Rule
 
@@ -23,16 +23,21 @@ Current capabilities:
 - eight generated public HTML routes in `site-next`;
 - complete 39/39 legacy media coverage;
 - ranked 15-page SEO/AEO query-to-page matrix;
+- engineering-style article sandbox with stable draft document numbers, drawing-sheet framing, title blocks, sheet navigation and FAQ notes;
 - VPS + Caddy selected as the production hosting direction;
 - deterministic VPS release bundle produced and validated in PR CI;
 - atomic server release/rollback scripts;
 - explicit VPS security hardening plan;
 - production, DNS, GitHub Pages settings and canonical URLs remain unchanged.
 
+The article technical-document system is intentionally sandbox-only. It renders existing draft records from `sandbox/articles/drafts/` and does not add Article entities, public article routes, sitemap entries or `llms.txt` entries. `VVC-ART-001` and `VVC-ART-002` are stable presentation identifiers stored in the draft manifest rather than derived from ordering.
+
 The multilingual rollout is intentionally staged. The homepage is available in ES at `/`, EN at `/en/`, and RU at `/ru/`. Project, gallery, service and article routes still require localized content records and route contracts before they can be published as complete language variants.
 
 Key artifacts:
 
+- `sandbox/articles/README.md`
+- `sandbox/articles/drafts/index.json`
 - `architecture/seo-aeo-query-page-matrix.md`
 - `architecture/vps-migration-plan.md`
 - `architecture/vps-security-plan.md`
@@ -253,6 +258,12 @@ Do not activate Wave 1 routes until hosting and cutover are ready.
 - Do not enable HSTS before the initial HTTPS/rollback path is verified.
 
 ## Verification
+
+For article-sandbox-only changes run or rely on `.github/workflows/article-sandbox.yml`:
+
+```bash
+node tools/articles/validate-drafts.mjs
+```
 
 After content, route, builder, generated-output, structural, deployment or security changes run:
 
