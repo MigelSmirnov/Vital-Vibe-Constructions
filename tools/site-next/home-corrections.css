@@ -1,0 +1,163 @@
+/* HOME CORRECTIONS: follow-up fixes from live mobile review. Loaded after home-redesign.css. */
+
+.home nav a[href="#planificador"] { display: none; }
+
+.home #guias::before {
+  content: "05";
+  position: absolute;
+  top: 34px;
+  left: max(32px, calc((100vw - 1240px) / 2));
+  color: #a16c08;
+  font: 900 32px/1 "Arial Black", Arial, sans-serif;
+}
+.home #planificador::before { content: "06"; }
+.home #contacto::before { content: "07"; }
+
+.home .guides {
+  background: #e7e2d8;
+  color: var(--home-ink);
+}
+.home .guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 8px;
+}
+.home .guide-card {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0 24px;
+  min-height: 300px;
+  padding: 28px;
+  border: 1px solid var(--home-ink);
+  background: var(--home-paper);
+}
+.home .sheet-mini {
+  grid-row: 1 / 5;
+  min-height: 190px;
+  padding: 10px;
+  border: 1px solid var(--home-ink);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: start;
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(20,17,15,.09) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(20,17,15,.09) 50%, transparent 51%),
+    #faf9f5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.home .sheet-mini span {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: var(--home-accent);
+  border: 1px solid var(--home-ink);
+  font-weight: 800;
+}
+.home .sheet-mini strong {
+  align-self: center;
+  font-size: 10px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.home .sheet-mini small {
+  padding-top: 8px;
+  border-top: 1px solid var(--home-ink);
+  font-size: 8px;
+  letter-spacing: .06em;
+}
+.home .guide-card h3 {
+  margin: 0 0 12px;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 1.05;
+}
+.home .guide-card p {
+  margin: 0 0 20px;
+  color: #55514b;
+  line-height: 1.5;
+}
+.home .guide-link {
+  align-self: end;
+  width: fit-content;
+  padding-top: 10px;
+  border-top: 1px solid var(--home-ink);
+  color: var(--home-ink);
+  text-decoration: none;
+  font: 700 10px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.home .guide-link:hover,
+.home .guide-link:focus-visible { color: #8b5c00; }
+
+@media (max-width: 900px) {
+  .home .header-inner {
+    min-height: 0;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    padding: 10px 0 8px;
+  }
+  .home .brand { order: 1; }
+  .home nav { order: 2; margin-left: auto; }
+  .home .language-switcher {
+    display: flex;
+    order: 3;
+    width: 100%;
+    margin: 2px 0 0;
+    padding-top: 8px;
+    justify-content: center;
+    border-top: 1px solid var(--home-line);
+  }
+  .home .language-switcher a {
+    min-width: 44px;
+    padding: 5px 9px;
+    border: 0;
+    border-left: 1px solid var(--home-line);
+    font-size: 11px;
+  }
+  .home .language-switcher a:first-child { border-left: 0; }
+  .home .language-switcher a[aria-current="page"] {
+    background: var(--home-accent);
+    color: var(--home-ink);
+  }
+
+  .home #guias::before {
+    left: 18px;
+    top: 26px;
+    font-size: 26px;
+  }
+
+  .home .project-card:first-child {
+    min-height: 0;
+    grid-template-rows: auto auto;
+  }
+  .home .project-card:first-child .project-card-media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .home .project-card:first-child img {
+    min-height: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .home .guide-grid { grid-template-columns: 1fr; }
+  .home .guide-card { min-height: 0; }
+}
+
+@media (max-width: 560px) {
+  .home .header-inner { padding-bottom: 7px; }
+  .home .language-switcher { padding-top: 6px; }
+  .home .language-switcher a { min-width: 40px; }
+
+  .home .guide-card {
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 0 16px;
+    padding: 20px 16px;
+  }
+  .home .sheet-mini { min-height: 160px; }
+  .home .guide-card h3 { font-size: 1.2rem; }
+  .home .guide-card p { font-size: .92rem; }
+}

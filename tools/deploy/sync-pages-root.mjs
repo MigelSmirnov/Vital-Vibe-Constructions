@@ -10,6 +10,7 @@ const mappings = [
   ["site-next/index.html", "index.html"],
   ["site-next/styles.css", "styles.css"],
   ["site-next/home-redesign.css", "home-redesign.css"],
+  ["site-next/home-corrections.css", "home-corrections.css"],
   ["site-next/en/index.html", "en/index.html"],
   ["site-next/ru/index.html", "ru/index.html"],
   ["site-next/gallery/index.html", "gallery/index.html"],
