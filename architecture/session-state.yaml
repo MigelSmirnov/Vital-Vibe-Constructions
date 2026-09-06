@@ -6,7 +6,7 @@ stage_status: engineering-homepage-redesign-ready-for-validation
 active_branch: agent/home-redesign
 pull_request:
   number: 3
-  state: draft
+  state: ready-for-review
   base: main
   head: agent/home-redesign
 
