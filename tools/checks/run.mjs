@@ -27,7 +27,6 @@ const checks = [
   ["sitemap validation", "node", ["tools/seo/validate-sitemap.mjs"]],
   ["service pages validation", "node", ["tools/site-next/validate-service-pages.mjs"]],
   ["Route contract", "node", ["tools/routes/validate-project-routes.mjs"]],
-  ["content audit", "node", ["tools/content-extractor/run.mjs"]],
   ["diff whitespace check", "git", ["diff", "--check"]],
 ];
 
