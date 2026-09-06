@@ -19,6 +19,7 @@ const checks = [
   ["gallery page build", "node", ["tools/site-next/build-gallery.mjs"]],
   ["service pages build", "node", ["tools/site-next/build-services.mjs"]],
   ["root path normalization", "node", ["tools/site-next/normalize-root-paths.mjs"]],
+  ["GitHub Pages root mirror", "node", ["tools/deploy/sync-pages-root.mjs"]],
   ["root path validation", "node", ["tools/site-next/validate-root-paths.mjs"]],
   ["project pages validation", "node", ["tools/site-next/validate-project-pages.mjs"]],
   ["gallery page validation", "node", ["tools/site-next/validate-gallery-page.mjs"]],
