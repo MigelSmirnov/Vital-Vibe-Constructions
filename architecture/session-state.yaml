@@ -1,14 +1,14 @@
-version: 25
+version: 27
 
-updated_at: 2026-09-06T14:44:00Z
+updated_at: 2026-09-06T15:20:00Z
 phase: multilingual-site-foundation
-stage_status: localized-homepages-generated-secondary-routes-pending
-active_branch: agent/architecture-sandbox
+stage_status: engineering-homepage-redesign-validated
+active_branch: agent/home-redesign
 pull_request:
-  number: 1
+  number: 3
   state: ready-for-review
   base: main
-  head: agent/architecture-sandbox
+  head: agent/home-redesign
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -27,6 +27,8 @@ current_strategy:
   legacy_runtime: read-only
   next_runtime: site-next
   source_of_truth: Knowledge Repository
+  homepage_visual_system: engineering-office
+  homepage_visual_scope: generated-es-en-ru-homepages-only
   article_sandbox: engineering-document-preview
   article_sandbox_publication_status: noindex-draft-only
   production_target: vps-caddy-static
@@ -170,10 +172,13 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-06
+    summary: Added a generated, homepage-only engineering-office visual layer for the ES/EN/RU homepages. The redesign uses an asymmetric project-led hero, technical metadata, numbered sections, specification-style services and pricing, project hierarchy, a technical smart-home block, and a title-block-inspired contact area. The layer is emitted by the localized homepage builder from tools/site-next/home-redesign.css, so generated outputs remain reproducible and non-home routes keep their existing shared styling.
+    validation: project-checks-success; vps-bundle-check-success; generated-projections-clean
+  - date: 2026-09-06
     summary: Reworked the private article sandbox into a reusable engineering-document preview system with drawing-sheet framing, title blocks, numbered sections, technical notes, FAQ sheet navigation, stable VVC article document numbers, and the existing VVC brand header. No public Article entity, route, sitemap entry, llms.txt entry, site-next output, production setting, or legacy runtime was changed.
     validation: article-sandbox-ci-success; project-checks-success; vps-bundle-check-success
   - date: 2026-09-02
-    summary: Added centralized English and Russian homepage translations, static /en/ and /ru/ outputs, a crawlable ES/EN/RU language switcher, hreflang alternates, and build validation. Secondary project, gallery, service, and article routes remain Spanish until their localized records and route contracts are completed.
+    summary: Added centralized English and Russian homepage translations, static /en/ and /ru/ outputs, a crawlable ES/EN/RU language switcher, hreflang alternates, and build validation. Secondary project, gallery, service and article routes remain Spanish until their localized records and route contracts are completed.
     validation: full-project-checks-success
   - date: 2026-08-20
     commits:
@@ -195,31 +200,22 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Provision or identify the VPS, choose the public-edge/DDoS mode, perform a manual hardened release smoke test, then prepare reversible DNS cutover.
-  status: waiting-for-non-secret-vps-and-edge-facts
-  required_non_secret_inputs:
-    - linux-distribution-and-version
-    - public-ipv4
-    - ipv6-enabled-or-not
-    - ssh-username
-    - ssh-port
-    - caddy-installed-or-not
-    - dns-provider
-    - current-apex-and-www-records
-    - selected-edge-mode
-  secrets_not_to_commit_or_share_in-repo:
+  goal: Merge the validated homepage redesign to main, let GitHub Pages deploy it, then visually inspect the live desktop and mobile result and revert if the direction is rejected.
+  status: ready-to-merge-homepage-redesign
+  required_non_secret_inputs: []
+  secrets_not_to_commit_or-share_in-repo:
     - ssh-private-key
     - passwords
     - recovery-codes
     - provider-api-tokens
 
 next_verification:
-  - article-sandbox-workflow-must-pass
-  - project-checks-must-remain-green
+  - post-merge-pages-deployment-must-succeed
+  - live-es-en-ru-homepages-must-load-home-redesign-stylesheet
+  - non-home-site-next-pages-must-retain-existing-shared-styles
   - vps-bundle-check-must-remain-green
-  - generated-projections-must-remain-clean
   - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Harden the real VPS according to architecture/vps-security-plan.md, install a validated CI artifact, smoke-test Caddy and origin protection, then execute the DNS cutover with GitHub Pages preserved as rollback.
+  goal: After homepage visual review, return to the VPS hardening and reversible production cutover plan unless further design iteration is requested.

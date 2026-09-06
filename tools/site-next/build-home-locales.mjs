@@ -7,6 +7,8 @@ import process from "node:process";
 const root = process.cwd();
 const outputRoot = path.join(root, "site-next");
 const sourcePath = path.join(outputRoot, "index.html");
+const homeStylesOutputPath = path.join(outputRoot, "home-redesign.css");
+const homeStylesPath = path.join(root, "tools", "site-next", "home-redesign.css");
 const localizationPath = path.join(root, "content/tables/home-localizations.yaml");
 const canonicalOrigin = "https://vitalvibeconstruction.com";
 
@@ -40,8 +42,14 @@ function addLanguageNavigation(html, activeLanguage) {
     .replace("      </nav>", `      </nav>\n      ${languageLinks(activeLanguage)}`);
 }
 
+function markHomepage(html) {
+  return html
+    .replace("<body>", '<body class="home">')
+    .replace("</head>", '  <link rel="stylesheet" href="/home-redesign.css">\n</head>');
+}
+
 function localize(source, language, config) {
-  let html = source
+  let html = markHomepage(source)
     .replace('<html lang="es">', `<html lang="${language}">`)
     .replace('href="./styles.css"', 'href="/styles.css"')
     .replaceAll('href="./projects/', 'href="/projects/')
@@ -56,20 +64,22 @@ function localize(source, language, config) {
 }
 
 async function main() {
-  const [source, localizationRaw] = await Promise.all([
+  const [source, localizationRaw, homeStyles] = await Promise.all([
     readFile(sourcePath, "utf8"),
     readFile(localizationPath, "utf8"),
+    readFile(homeStylesPath, "utf8"),
   ]);
   const { locales } = JSON.parse(localizationRaw);
 
-  await writeFile(sourcePath, addLanguageNavigation(source, "es"), "utf8");
+  await writeFile(sourcePath, addLanguageNavigation(markHomepage(source), "es"), "utf8");
+  await writeFile(homeStylesOutputPath, homeStyles, "utf8");
   for (const [language, config] of Object.entries(locales)) {
     const destination = path.join(outputRoot, language);
     await mkdir(destination, { recursive: true });
     await writeFile(path.join(destination, "index.html"), localize(source, language, config), "utf8");
   }
 
-  console.log(`Built localized homepages: ${["es", ...Object.keys(locales)].join(", ")}`);
+  console.log(`Built localized homepages and engineering home styles: ${["es", ...Object.keys(locales)].join(", ")}`);
 }
 
 main().catch((error) => {
