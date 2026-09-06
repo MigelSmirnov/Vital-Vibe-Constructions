@@ -24,7 +24,6 @@ const assetDirectories = [
   "estandar",
   "premium",
   "smart",
-  "sandbox/articles",
 ];
 
 async function copyRequired(source, destination) {
@@ -47,9 +46,7 @@ async function main() {
   }
 
   for (const directory of assetDirectories) {
-    const destination = path.join(outputRoot, directory);
-    await mkdir(path.dirname(destination), { recursive: true });
-    await cp(path.join(root, directory), destination, {
+    await cp(path.join(root, directory), path.join(outputRoot, directory), {
       recursive: true,
       force: true,
     });
