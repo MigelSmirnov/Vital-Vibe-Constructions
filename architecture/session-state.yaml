@@ -1,6 +1,6 @@
 version: 25
 
-updated_at: 2026-09-06T14:40:00Z
+updated_at: 2026-09-06T14:44:00Z
 phase: multilingual-site-foundation
 stage_status: localized-homepages-generated-secondary-routes-pending
 active_branch: agent/architecture-sandbox
@@ -171,7 +171,7 @@ seo_aeo_matrix:
 completed_work:
   - date: 2026-09-06
     summary: Reworked the private article sandbox into a reusable engineering-document preview system with drawing-sheet framing, title blocks, numbered sections, technical notes, FAQ sheet navigation, stable VVC article document numbers, and the existing VVC brand header. No public Article entity, route, sitemap entry, llms.txt entry, site-next output, production setting, or legacy runtime was changed.
-    validation: pending-article-sandbox-ci
+    validation: article-sandbox-ci-success; project-checks-success; vps-bundle-check-success
   - date: 2026-09-02
     summary: Added centralized English and Russian homepage translations, static /en/ and /ru/ outputs, a crawlable ES/EN/RU language switcher, hreflang alternates, and build validation. Secondary project, gallery, service, and article routes remain Spanish until their localized records and route contracts are completed.
     validation: full-project-checks-success
