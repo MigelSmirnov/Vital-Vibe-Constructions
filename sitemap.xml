@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vitalvibeconstruction.com/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://vitalvibeconstruction.com/robots.txt</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
+    <loc>https://vitalvibeconstruction.com/projects/</loc>
   </url>
   <url>
-    <loc>https://vitalvibeconstruction.com/llms.txt</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://vitalvibeconstruction.com/projects/piso-reformado-barcelona/</loc>
   </url>
   <url>
-    <loc>https://app.vitalvibeconstruction.com/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://vitalvibeconstruction.com/projects/estudio-reformado-barcelona/</loc>
+  </url>
+  <url>
+    <loc>https://vitalvibeconstruction.com/projects/reforma-integral-estandar-barcelona/</loc>
+  </url>
+  <url>
+    <loc>https://vitalvibeconstruction.com/projects/trabajos-contrata-premium/</loc>
+  </url>
+  <url>
+    <loc>https://vitalvibeconstruction.com/gallery/</loc>
+  </url>
+  <url>
+    <loc>https://vitalvibeconstruction.com/servicios/reformas-integrales-barcelona/</loc>
   </url>
 </urlset>

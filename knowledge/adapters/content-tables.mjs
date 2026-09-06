@@ -1,0 +1,73 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+
+const TABLES = {
+  site: "content/tables/site.yaml",
+  capabilitySections: "content/tables/capability-sections.yaml",
+  contactDetails: "content/tables/contact-details.yaml",
+  services: "content/tables/services.yaml",
+  renovationTiers: "content/tables/renovation-tiers.yaml",
+  projects: "content/tables/projects.yaml",
+  externalApps: "content/tables/external-apps.yaml",
+  media: "content/tables/media.yaml",
+};
+
+export async function loadContentTables({ root = process.cwd() } = {}) {
+  const [
+    siteTable,
+    capabilitySectionsTable,
+    contactDetailsTable,
+    servicesTable,
+    renovationTiersTable,
+    projectsTable,
+    appsTable,
+    mediaTable,
+  ] =
+    await Promise.all([
+      readJsonCompatibleTable(root, TABLES.site),
+      readJsonCompatibleTable(root, TABLES.capabilitySections),
+      readJsonCompatibleTable(root, TABLES.contactDetails),
+      readJsonCompatibleTable(root, TABLES.services),
+      readJsonCompatibleTable(root, TABLES.renovationTiers),
+      readJsonCompatibleTable(root, TABLES.projects),
+      readJsonCompatibleTable(root, TABLES.externalApps),
+      readJsonCompatibleTable(root, TABLES.media),
+    ]);
+
+  return {
+    site: requireObject(siteTable.site, "site"),
+    capabilitySections: requireArray(capabilitySectionsTable.capabilitySections, "capabilitySections"),
+    contactDetails: requireObject(contactDetailsTable.contactDetails, "contactDetails"),
+    services: requireArray(servicesTable.services, "services"),
+    renovationTiers: requireArray(renovationTiersTable.renovationTiers, "renovationTiers"),
+    projects: requireArray(projectsTable.projects, "projects"),
+    externalApps: requireArray(appsTable.externalApps, "externalApps"),
+    media: requireArray(mediaTable.media, "media"),
+  };
+}
+
+async function readJsonCompatibleTable(root, relativePath) {
+  const filePath = path.join(root, relativePath);
+
+  try {
+    return JSON.parse(await readFile(filePath, "utf8"));
+  } catch (error) {
+    throw new Error(`Failed to read JSON-compatible content table ${relativePath}: ${error.message}`);
+  }
+}
+
+function requireObject(value, name) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error(`Expected ${name} content table value to be an object.`);
+  }
+
+  return value;
+}
+
+function requireArray(value, name) {
+  if (!Array.isArray(value)) {
+    throw new Error(`Expected ${name} content table value to be an array.`);
+  }
+
+  return value;
+}

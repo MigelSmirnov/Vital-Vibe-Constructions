@@ -1,0 +1,98 @@
+{
+  "services": [
+    {
+      "id": "integral-renovation",
+      "slug": "reformas-integrales",
+      "title": "Reformas integrales",
+      "summary": "Coordinación completa de la reforma, desde la preparación y las instalaciones hasta los acabados finales.",
+      "seo_title": "Reformas integrales en Barcelona | Vital Vibe Construction",
+      "meta_description": "Reformas integrales de viviendas y locales en Barcelona: planificación, albañilería, instalaciones, cocinas, baños, pintura y acabados coordinados.",
+      "page_h1": "Reformas integrales en Barcelona",
+      "introduction": "Coordinamos los trabajos necesarios para transformar viviendas y locales en Barcelona, desde la revisión inicial y la definición del alcance hasta las instalaciones, los acabados y la revisión final.",
+      "body": "Una reforma integral reúne la preparación del espacio, la albañilería, las instalaciones y los acabados dentro de un alcance coordinado. Cada proyecto se revisa para definir qué trabajos son necesarios antes de preparar el presupuesto.",
+      "included_service_ids": ["masonry", "electrical", "kitchens", "bathrooms", "painting"],
+      "process_steps": [
+        {
+          "title": "Contacto inicial",
+          "description": "Recogemos la información disponible sobre el espacio, las necesidades y el resultado que se busca."
+        },
+        {
+          "title": "Revisión del proyecto",
+          "description": "Revisamos el estado del espacio y la información necesaria para entender los trabajos que puede requerir la reforma."
+        },
+        {
+          "title": "Definición del alcance",
+          "description": "Delimitamos las partidas de obra, instalaciones, cocina, baños, pintura y acabados que forman parte del proyecto."
+        },
+        {
+          "title": "Presupuesto",
+          "description": "Preparamos una propuesta basada en el alcance definido y la revisamos antes de organizar los trabajos."
+        },
+        {
+          "title": "Coordinación de los trabajos",
+          "description": "Organizamos las distintas partidas de la reforma para que la ejecución siga el alcance acordado."
+        },
+        {
+          "title": "Revisión final",
+          "description": "Repasamos los trabajos realizados y los puntos pendientes, si los hubiera, al finalizar la ejecución."
+        }
+      ],
+      "faq": [
+        {
+          "question": "¿Qué incluye una reforma integral?",
+          "answer": "El alcance puede reunir preparación y albañilería, instalaciones eléctricas, cocina, baños, pintura y acabados. Los trabajos concretos se definen después de revisar cada proyecto."
+        },
+        {
+          "question": "¿Cómo se prepara el presupuesto?",
+          "answer": "El presupuesto se prepara a partir del estado del espacio, las necesidades planteadas y el alcance definido para las distintas partidas de la reforma."
+        },
+        {
+          "question": "¿Se puede reformar solo una parte de la vivienda?",
+          "answer": "Sí. También trabajamos servicios concretos como cocinas, baños, electricidad, pintura o albañilería cuando el proyecto no requiere una reforma integral."
+        },
+        {
+          "question": "¿Quién coordina los diferentes trabajos?",
+          "answer": "En una reforma integral coordinamos las partidas incluidas en el alcance para organizar la preparación, las instalaciones y los acabados."
+        },
+        {
+          "question": "¿Puedo utilizar el planificador eléctrico antes de pedir presupuesto?",
+          "answer": "Sí. El planificador eléctrico beta permite ordenar una propuesta inicial de equipos, puntos eléctricos y líneas de iluminación antes de solicitar presupuesto."
+        },
+        {
+          "question": "¿Trabajáis en Barcelona y alrededores?",
+          "answer": "Sí. El área de servicio indicada por Vital Vibe Construction es Barcelona y alrededores."
+        }
+      ]
+    },
+    {
+      "id": "kitchens",
+      "slug": "cocinas",
+      "title": "Cocinas",
+      "summary": "Redistribución, instalaciones, revestimientos, iluminación y montaje para cocinas funcionales y duraderas."
+    },
+    {
+      "id": "bathrooms",
+      "slug": "banos",
+      "title": "Baños",
+      "summary": "Renovación de baños con atención a impermeabilización, fontanería, ventilación y acabados."
+    },
+    {
+      "id": "electrical",
+      "slug": "electricidad",
+      "title": "Electricidad",
+      "summary": "Planificación de puntos, iluminación, mecanismos y cuadro eléctrico para reformas actuales y futuras."
+    },
+    {
+      "id": "painting",
+      "slug": "pintura",
+      "title": "Pintura",
+      "summary": "Preparación de superficies y acabados de pintura para viviendas y espacios comerciales."
+    },
+    {
+      "id": "masonry",
+      "slug": "albanileria",
+      "title": "Albañilería",
+      "summary": "Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida."
+    }
+  ]
+}

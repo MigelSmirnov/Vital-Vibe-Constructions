@@ -1,0 +1,44 @@
+{
+  # Keep Caddy's administrative API on loopback only. This is not a public web
+  # admin panel and must never be exposed on the VPS network interface.
+  admin 127.0.0.1:2019
+}
+
+{$VVC_DOMAIN:vitalvibeconstruction.com} {
+  root * {$VVC_WEB_ROOT:/srv/vital-vibe/current}
+
+  encode zstd gzip
+
+  # Historical URL compatibility. Keep these until Search Console/backlink data
+  # confirms the old paths no longer need explicit redirects.
+  redir /projects.html /projects/ permanent
+  redir /proyecto-1.html /projects/estudio-reformado-barcelona/ permanent
+  redir /proyecto-2.html /projects/piso-reformado-barcelona/ permanent
+  redir /galeria-economica.dc.html /gallery/ permanent
+  redir /galeria-estandar.dc.html /gallery/ permanent
+  redir /galeria-premium.dc.html /gallery/ permanent
+
+  header {
+    # Reduce passive service fingerprinting. This is hygiene, not a substitute
+    # for patching, firewalling, or protecting the origin from DDoS.
+    -Server
+
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    X-Frame-Options "DENY"
+    Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Cache-Control "no-cache"
+  }
+
+  @staticAssets path *.css *.svg *.jpg *.jpeg *.png *.webp *.avif *.woff *.woff2
+  header @staticAssets Cache-Control "public, max-age=86400"
+
+  file_server
+}
+
+# Add a separate www -> apex redirect block only after DNS for www is verified.
+# Caddy will manage HTTPS automatically for configured public hostnames when
+# DNS points to the VPS and ports 80/443 are reachable.
+#
+# HSTS and an enforced CSP are intentionally deferred until production HTTPS,
+# embedded/external resources, and rollback behavior are verified.

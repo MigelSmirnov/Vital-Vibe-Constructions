@@ -1,0 +1,187 @@
+{
+  "projects": [
+    {
+      "id": "project-piso-reformado-barcelona",
+      "slug": "piso-reformado-barcelona",
+      "title": "Piso reformado en Barcelona",
+      "summary": "Reforma integral de un piso en Barcelona con cocina renovada y entrega llave en mano.",
+      "image_ids": [
+        "media-proyecto-2-cocina-despues",
+        "media-proyecto-2-cocina-antes",
+        "media-proyecto-2-habitacion-antes",
+        "media-proyecto-2-demolicion-obra",
+        "media-proyecto-2-dormitorio-reformado",
+        "media-proyecto-2-bano-reformado",
+        "media-proyecto-2-cocina-reformada",
+        "media-proyecto-2-pasillo-reformado"
+      ],
+      "service_ids": ["integral-renovation", "kitchens"],
+      "location": "Barcelona",
+      "budget_range": "Económico"
+    },
+    {
+      "id": "project-studio-renovation-barcelona",
+      "slug": "estudio-reformado-barcelona",
+      "title": "Dos estudios independientes en un piso de 50 m² en El Raval",
+      "summary": "Conversión en dos fases de una vivienda de 50 m² sin instalaciones funcionales en dos estudios independientes, priorizando la ingeniería sobre los acabados decorativos.",
+      "image_ids": [
+        "media-proyecto-1-estudio-reformado",
+        "media-proyecto-1-estado-original",
+        "media-proyecto-1-estudio-antes",
+        "media-proyecto-1-solera-base",
+        "media-proyecto-1-paredes-enlucidas",
+        "media-proyecto-1-bano-reformado",
+        "media-proyecto-1-aseo-reformado",
+        "media-proyecto-1-pladur-preinstalacion"
+      ],
+      "service_ids": ["integral-renovation", "bathrooms", "masonry", "painting", "electrical"],
+      "location": "El Raval, Barcelona",
+      "budget_range": "Económico",
+      "area_m2": 50,
+      "project_type": "Conversión de una vivienda en dos estudios independientes",
+      "execution": {
+        "phase_count": 2,
+        "duration_per_phase_months": 2,
+        "strategy": "Primero se terminó y puso en servicio un estudio; después se ejecutó el segundo sin interrumpir las instalaciones de la unidad ya ocupable."
+      },
+      "initial_condition": {
+        "summary": "Vivienda en estado muy deteriorado, sin instalaciones funcionales y sin puertas ni ventanas.",
+        "verified_facts": [
+          "No había instalación funcional de agua.",
+          "No había instalación funcional de saneamiento.",
+          "No había instalación eléctrica funcional.",
+          "El agua tuvo que subirse a través del rellano.",
+          "La alimentación eléctrica inicial se tomó desde la zona común de la escalera.",
+          "Faltaban puertas y ventanas.",
+          "El suelo presentaba un desnivel aproximado de 15 cm a lo largo de 10 metros."
+        ],
+        "project_lead_note": "Al ver el estado inicial, se bromeó con el propietario diciendo que podía alquilar la vivienda a Hollywood como decorado para una película de terror."
+      },
+      "project_objective": "Crear dos estudios independientes y fiables para alquiler, manteniendo un presupuesto contenido y reservando la mayor parte del esfuerzo para resolver la ingeniería.",
+      "engineering_challenges": [
+        "Reconstruir desde cero las instalaciones de agua, electricidad y saneamiento.",
+        "Corregir una instalación de saneamiento anterior que había abierto verticalmente una pared para ocultar una tubería.",
+        "Restaurar la pared afectada después de corregir el recorrido del saneamiento.",
+        "Corregir un desnivel de suelo aproximado de 15 cm en 10 metros.",
+        "Planificar las redes para ejecutar la segunda fase sin desconectar el primer estudio."
+      ],
+      "engineering_decisions": {
+        "electrical": [
+          "Instalación eléctrica completamente nueva.",
+          "Tubo corrugado blanco.",
+          "Líneas independientes para las tomas de corriente, evitando conexiones en cadena.",
+          "Cuadro eléctrico nuevo.",
+          "Líneas eléctricas preparadas para futuros equipos de aire acondicionado.",
+          "Interruptores maestros con conexión Wi-Fi."
+        ],
+        "water_and_drainage": [
+          "Tuberías de agua colocadas dentro de una envolvente protectora con aislamiento térmico.",
+          "Red de saneamiento rehecha con las pendientes necesarias.",
+          "Conexiones de saneamiento previstas para futuros equipos de aire acondicionado.",
+          "Extracción instalada en cocinas y cuartos de baño.",
+          "Impermeabilización de las zonas húmedas antes del revestimiento."
+        ],
+        "floor_system": [
+          "Paneles de XPS como capa separadora y de relleno ligero.",
+          "Malla metálica de refuerzo sobre la capa separadora de XPS.",
+          "Regularización mediante mezcla ligera con arcilla expandida.",
+          "Capa final de mortero autonivelante de aproximadamente 5 mm."
+        ],
+        "partition_and_finish": [
+          "Divisiones y trasdosados ejecutados con placas de yeso laminado.",
+          "Tratamiento de juntas sin enlucido completo de todas las placas.",
+          "Suelo laminado en el primer estudio.",
+          "Pavimento de PVC o cuarzo-vinilo en el segundo estudio."
+        ]
+      },
+      "budget_strategy": {
+        "principle": "Simplificar los acabados visibles sin reducir la calidad de las instalaciones ocultas.",
+        "where_savings_were_made": [
+          "Acabados decorativos sencillos.",
+          "Placas de yeso laminado con tratamiento de juntas, sin enlucido completo.",
+          "Pavimentos económicos adaptados a cada estudio."
+        ],
+        "where_no_compromise_was_accepted": [
+          "Distribución eléctrica y protección de los circuitos.",
+          "Fontanería y aislamiento de tuberías.",
+          "Pendientes de saneamiento.",
+          "Impermeabilización de baños.",
+          "Ventilación de cocinas y baños.",
+          "Preinstalación para futuros equipos de aire acondicionado."
+        ]
+      },
+      "estimated_total_cost_eur": 48000,
+      "cost_note": "Importe aproximado. Algunos materiales fueron comprados directamente por el propietario, por lo que no es posible reconstruir un coste total exacto ni utilizar esta cifra como tarifa para otros proyectos.",
+      "pending_technical_media": [
+        {
+          "subject": "Formación y vertido de los suelos",
+          "status": "pending-upload"
+        },
+        {
+          "subject": "Suelos en fase de obra y cerramientos de yeso laminado",
+          "status": "pending-upload"
+        },
+        {
+          "subject": "Restauración de la pared",
+          "status": "pending-upload"
+        },
+        {
+          "subject": "Impermeabilización de los baños",
+          "status": "pending-upload"
+        },
+        {
+          "subject": "Instalación con tubo corrugado blanco",
+          "status": "pending-upload"
+        },
+        {
+          "subject": "Cuadro eléctrico",
+          "status": "pending-upload"
+        }
+      ],
+      "transformation_summary": "Una vivienda de 50 m² sin servicios funcionales se convirtió en dos estudios independientes mediante una obra por fases, diseñada para que la segunda fase no interrumpiera la primera unidad ya terminada."
+    },
+    {
+      "id": "project-reforma-integral-estandar-barcelona",
+      "slug": "reforma-integral-estandar-barcelona",
+      "title": "Reforma integral estándar en Barcelona",
+      "summary": "Reforma completa de vivienda con instalaciones, suelo de roble, pasillo terminado y cocina a medida.",
+      "image_ids": [
+        "media-estandar-cocina-terminada",
+        "media-estandar-obra-instalaciones",
+        "media-estandar-suelo-base",
+        "media-estandar-parquet",
+        "media-estandar-pintura-iluminacion",
+        "media-estandar-pasillo"
+      ],
+      "service_ids": ["integral-renovation", "kitchens", "electrical", "painting", "masonry"],
+      "location": "Barcelona",
+      "budget_range": "Estándar"
+    },
+    {
+      "id": "project-trabajos-contrata-premium",
+      "slug": "trabajos-contrata-premium",
+      "title": "Trabajos de contrata en proyectos premium",
+      "summary": "Trabajos especializados de pladur, enlucido, pintura e iluminación LED integrada para viviendas de alta gama.",
+      "image_ids": [
+        "media-premium-pintura-techo",
+        "media-premium-pladur-instalacion",
+        "media-premium-pladur-obra",
+        "media-premium-instalacion",
+        "media-premium-prep-techo-1",
+        "media-premium-prep-techo-2",
+        "media-premium-prep-techo-3",
+        "media-premium-prep-techo-4",
+        "media-premium-pintura-pared",
+        "media-premium-techo-1",
+        "media-premium-techo-2",
+        "media-premium-techo-3",
+        "media-premium-techo-4",
+        "media-premium-led-escalera",
+        "media-premium-cuadro-villa"
+      ],
+      "service_ids": ["electrical", "painting", "masonry"],
+      "location": "Barcelona",
+      "budget_range": "Premium"
+    }
+  ]
+}

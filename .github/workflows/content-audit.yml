@@ -1,0 +1,43 @@
+name: Content audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/architecture-sandbox
+    paths:
+      - index.html
+      - tools/content-extractor/**
+      - .github/workflows/content-audit.yml
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run content extractor
+        run: node tools/content-extractor/run.mjs
+
+      - name: Commit generated baseline
+        run: |
+          if git diff --quiet -- artifacts/content-audit; then
+            echo "Content audit is unchanged."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/content-audit
+          git commit -m "Generate legacy content audit baseline"
+          git push

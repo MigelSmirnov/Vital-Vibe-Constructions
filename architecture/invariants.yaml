@@ -1,0 +1,76 @@
+version: 2
+invariants:
+  source_of_truth:
+    knowledge_repository_required: true
+    content_must_not_be_duplicated_in_builders: true
+    architecture_contracts_are_machine_readable: true
+
+  legacy_runtime:
+    support_js_editable: false
+    legacy_entrypoints_are_read_only: true
+    legacy_behavior_preserved_until_replacement_validates: true
+
+  generated_outputs:
+    generated_files_must_not_be_hand_edited: true
+    generated_output_requires_builder: true
+    sitemap_entry_requires_existing_validated_html: true
+    blocked_routes_must_not_be_generated: true
+    deferred_routes_must_not_be_generated: true
+
+  document:
+    exactly_one_h1: true
+    semantic_main_required: true
+    crawlable_navigation_links_required: true
+    primary_content_in_raw_html: true
+
+  metadata:
+    title_required: true
+    description_required: true
+    canonical_required: true
+    metadata_unique_per_public_page: true
+    structured_data_must_match_visible_content: true
+
+  images:
+    alt_attribute_required: true
+    dimensions_required_for_content_images: true
+    truthful_alt_text_required: true
+    project_media_must_resolve_to_project: true
+    important_text_must_not_depend_on_ocr_only: true
+
+  gallery:
+    coverage_mode: complete-legacy-coverage
+    required_unique_content_images: 39
+    curated_subset_allowed: false
+    unclassified_content_images_allowed: 0
+    route_must_remain_blocked_until_media_records_complete: true
+
+  content:
+    stable_id_required: true
+    stable_slug_required_for_public_entities: true
+    public_references_must_resolve: true
+    draft_content_must_not_be_publicly_indexed: true
+    fake_articles_forbidden: true
+    fake_testimonials_forbidden: true
+
+  modules:
+    dependency_direction_must_follow_app_architecture: true
+    circular_dependencies_forbidden: true
+    new_dependencies_require_platform_justification: true
+
+  routes:
+    canonical_origin_comes_from_site_record: true
+    route_paths_unique: true
+    canonical_urls_unique: true
+    every_current_project_has_exactly_one_detail_route: true
+    eligible_routes_appear_once_in_sitemap: true
+
+  external_apps:
+    planner_url_centralized: true
+    beta_status_visible: true
+    navigation_must_work_without_javascript: true
+
+  workflow:
+    non_default_branch_required: true
+    reviewable_commits_required: true
+    full_checks_required_before_structural_refactor: true
+    session_state_updated_after_completed_work: true

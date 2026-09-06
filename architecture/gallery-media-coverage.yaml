@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "policy": {
+    "coverage_mode": "complete-legacy-coverage",
+    "expected_content_media_count": 39,
+    "curated_exclusions_allowed": false,
+    "gallery_route_status": "blocked-on-media-migration",
+    "unlock_condition": "Every listed source image has one validated Media record and every project-owned image resolves to a Project."
+  },
+  "sources": [
+    {
+      "source_file": "galeria-economica.dc.html",
+      "expected_count": 16,
+      "items": [
+        {"src":"proyecto-1/p1.jpeg","alt":"Estado original","owner":"project-studio-renovation-barcelona","state":"before"},
+        {"src":"proyecto-1/p2.jpeg","alt":"Estudio antes de la reforma","owner":"project-studio-renovation-barcelona","state":"before"},
+        {"src":"proyecto-1/p3.jpeg","alt":"Solera y base de suelo","owner":"project-studio-renovation-barcelona","state":"work"},
+        {"src":"proyecto-1/p4.jpeg","alt":"Paredes enlucidas en obra","owner":"project-studio-renovation-barcelona","state":"work"},
+        {"src":"proyecto-1/p5.jpeg","alt":"Baño reformado","owner":"project-studio-renovation-barcelona","state":"after"},
+        {"src":"proyecto-1/p6.jpeg","alt":"Aseo reformado","owner":"project-studio-renovation-barcelona","state":"after"},
+        {"src":"proyecto-1/p7.jpeg","alt":"Estudio reformado","owner":"project-studio-renovation-barcelona","state":"after"},
+        {"src":"proyecto-1/p8.jpeg","alt":"Pladur y preinstalación","owner":"project-studio-renovation-barcelona","state":"work"},
+        {"src":"proyecto-2/b1.jpeg","alt":"Cocina antes de la reforma","owner":"project-piso-reformado-barcelona","state":"before"},
+        {"src":"proyecto-2/b2.jpeg","alt":"Habitación antes de la reforma","owner":"project-piso-reformado-barcelona","state":"before"},
+        {"src":"proyecto-2/b3.jpeg","alt":"Demolición y obra","owner":"project-piso-reformado-barcelona","state":"work"},
+        {"src":"proyecto-2/b4.jpeg","alt":"Dormitorio reformado","owner":"project-piso-reformado-barcelona","state":"after"},
+        {"src":"proyecto-2/b5.jpeg","alt":"Baño reformado","owner":"project-piso-reformado-barcelona","state":"after"},
+        {"src":"proyecto-2/b6.jpeg","alt":"Cocina reformada","owner":"project-piso-reformado-barcelona","state":"after"},
+        {"src":"proyecto-2/b7.jpeg","alt":"Pasillo reformado","owner":"project-piso-reformado-barcelona","state":"after"},
+        {"src":"proyecto-2/b8.jpeg","alt":"Cocina reformada","owner":"project-piso-reformado-barcelona","state":"after"}
+      ]
+    },
+    {
+      "source_file": "galeria-estandar.dc.html",
+      "expected_count": 6,
+      "items": [
+        {"src":"estandar/obra.jpeg","alt":"Cocina en obra, estructura e instalaciones","owner":"project-reforma-integral-estandar-barcelona","state":"work"},
+        {"src":"estandar/cocina.jpeg","alt":"Cocina a medida terminada con suelo de roble","owner":"project-reforma-integral-estandar-barcelona","state":"after"},
+        {"src":"estandar/suelo-base.jpeg","alt":"Base de suelo antes del parquet","owner":"project-reforma-integral-estandar-barcelona","state":"before"},
+        {"src":"estandar/pasillo.jpeg","alt":"Pasillo terminado con suelo de roble","owner":"project-reforma-integral-estandar-barcelona","state":"after"},
+        {"src":"estandar/parquet.jpeg","alt":"Instalación del suelo de roble","owner":"project-reforma-integral-estandar-barcelona","state":"work"},
+        {"src":"estandar/pintura.jpeg","alt":"Pintura e instalación de iluminación","owner":"project-reforma-integral-estandar-barcelona","state":"work"}
+      ]
+    },
+    {
+      "source_file": "galeria-premium.dc.html",
+      "expected_count": 17,
+      "items": [
+        {"src":"premium/pladur-instalacion.jpeg","alt":"Pladur y preinstalación en villa premium","owner":"project-trabajos-contrata-premium","state":"work"},
+        {"src":"premium/pladur-obra.jpeg","alt":"Tabiquería de pladur en obra","owner":"project-trabajos-contrata-premium","state":"work"},
+        {"src":"premium/instalacion.jpeg","alt":"Trazado de instalaciones y canalizaciones","owner":"project-trabajos-contrata-premium","state":"work"},
+        {"src":"premium/prep-techo-1.jpeg","alt":"Imprimación del techo por zonas junto a registro","owner":"project-trabajos-contrata-premium","state":"work"},
+        {"src":"premium/prep-techo-2.jpeg","alt":"Enmasillado de juntas y cajas en techo y pared","owner":"project-trabajos-contrata-premium","state":"work"},
+        {"src":"premium/prep-techo-3.jpeg","alt":"Protección con plástico y enmasillado alrededor del LED","owner":"project-trabajos-contrata-premium","state":"work"},
+        {"src":"premium/prep-techo-4.jpeg","alt":"Techo preparado con LED lineal y protección","owner":"project-trabajos-contrata-premium","state":"work"},
+        {"src":"premium/pintura-techo.jpeg","alt":"Pintura de techo a pistola con acabado uniforme","owner":"project-trabajos-contrata-premium","state":"after"},
+        {"src":"premium/pintura-pared.jpeg","alt":"Pintura de pared a pistola en tono oscuro","owner":"project-trabajos-contrata-premium","state":"after"},
+        {"src":"premium/techo-1.jpeg","alt":"Techo con iluminación LED lineal","owner":"project-trabajos-contrata-premium","state":"after"},
+        {"src":"premium/techo-2.jpeg","alt":"Detalle de techo técnico","owner":"project-trabajos-contrata-premium","state":"after"},
+        {"src":"premium/techo-3.jpeg","alt":"Iluminación lineal integrada en techo","owner":"project-trabajos-contrata-premium","state":"after"},
+        {"src":"premium/techo-4.jpeg","alt":"Composición de techos con luz","owner":"project-trabajos-contrata-premium","state":"after"},
+        {"src":"premium/led-escalera.jpeg","alt":"Iluminación LED en escalera","owner":"project-trabajos-contrata-premium","state":"after"},
+        {"src":"premium/panel-marmol.jpeg","alt":"Panel de mármol retroiluminado","owner":"capability-smart-home-readiness","state":"after"},
+        {"src":"premium/apple-home.jpeg","alt":"Domótica integrada","owner":"capability-smart-home-readiness","state":"after"},
+        {"src":"premium/cuadro-villa.jpeg","alt":"Resultado final de la villa","owner":"project-trabajos-contrata-premium","state":"after"}
+      ]
+    }
+  ]
+}

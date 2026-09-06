@@ -1,0 +1,12 @@
+{
+  "externalApps": [
+    {
+      "id": "electrical-planner",
+      "url": "https://app.vitalvibeconstruction.com/manual",
+      "status": "beta",
+      "label": "Abrir planificador eléctrico",
+      "title": "Planifica la electricidad antes de la obra",
+      "summary": "Utiliza el planificador para colocar equipos, puntos eléctricos, líneas de iluminación y preparar una especificación inicial para tu reforma."
+    }
+  ]
+}

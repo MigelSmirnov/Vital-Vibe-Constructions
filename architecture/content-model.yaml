@@ -1,0 +1,66 @@
+version: 1
+entities:
+  service:
+    required_fields: [id, slug, title, summary]
+    optional_fields:
+      - body
+      - image
+      - seo_title
+      - meta_description
+      - page_h1
+      - introduction
+      - included_service_ids
+      - process_steps
+      - faq
+      - related_project_ids
+      - related_article_ids
+  project:
+    required_fields: [id, slug, title, summary, image_ids]
+    optional_fields:
+      - service_ids
+      - article_ids
+      - location
+      - area_m2
+      - duration
+      - budget_range
+      - project_type
+      - execution
+      - initial_condition
+      - project_objective
+      - engineering_challenges
+      - engineering_decisions
+      - budget_strategy
+      - estimated_total_cost_eur
+      - cost_note
+      - pending_technical_media
+      - transformation_summary
+  article:
+    required_fields: [id, slug, title, summary, body, published_at]
+    optional_fields: [modified_at, author, category, tags, hero_image_id, related_service_ids, related_project_ids]
+  media:
+    required_fields: [id, slug, src, alt, width, height]
+    optional_fields: [caption, description, project_id, service_ids, before_after_state, published_at]
+  testimonial:
+    required_fields: [id, quote, display_name]
+    optional_fields: [project_id, service_id, published_at]
+  contact_details:
+    required_fields: [id, phone_display, phone_href, whatsapp_url, email, map_url, map_label]
+    optional_fields: [legal_summary]
+  capability_section:
+    required_fields: [id, slug, eyebrow, title, summary, capability_title, capabilities, note, partners_summary, service_ids, media_ids, related_external_app_id]
+    optional_fields: []
+  renovation_tier:
+    required_fields: [id, slug, title, summary, price_per_m2, currency]
+    optional_fields: [is_featured, badge, disclaimer]
+  external_app:
+    required_fields: [id, url, status, label]
+    optional_fields: [summary, related_service_ids, related_article_ids]
+relations:
+  service_to_project: many_to_many
+  service_to_article: many_to_many
+  project_to_media: one_to_many
+  project_to_article: many_to_many
+  external_app_to_service: many_to_many
+  capability_section_to_service: many_to_many
+  capability_section_to_media: many_to_many
+  capability_section_to_external_app: many_to_one

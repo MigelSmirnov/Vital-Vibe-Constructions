@@ -1,0 +1,12 @@
+{
+  "contactDetails": {
+    "id": "primary-contact",
+    "phone_display": "+34 691 07 46 18",
+    "phone_href": "tel:+34691074618",
+    "whatsapp_url": "https://wa.me/34691074618",
+    "email": "info@vitalvibeconstruction.com",
+    "map_url": "https://maps.app.goo.gl/9LcztAtyft5EzsqJ6?g_st=iw",
+    "map_label": "Ver en Google Maps",
+    "legal_summary": "Responsable: Vital Vibe Constructions. Finalidad: atender tu solicitud de presupuesto y contacto. Legitimación: tu consentimiento."
+  }
+}

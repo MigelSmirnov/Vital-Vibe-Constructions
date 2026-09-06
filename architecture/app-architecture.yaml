@@ -1,0 +1,190 @@
+version: 2
+application:
+  id: vital-vibe-constructions
+  name: Vital Vibe Constructions Website
+  kind: static-marketing-website
+  migration_style: incremental-strangler
+  source_of_truth: knowledge-repository
+
+truth_priority:
+  - architecture/invariants.yaml
+  - architecture/constants.yaml
+  - architecture/app-architecture.yaml
+  - architecture/session-state.yaml
+  - architecture/project-routes.yaml
+  - architecture/gallery-media-coverage.yaml
+  - HANDOFF.md
+  - README.md
+
+runtimes:
+  legacy:
+    status: read-only
+    entrypoints:
+      - index.html
+      - galeria-economica.dc.html
+      - galeria-estandar.dc.html
+      - galeria-premium.dc.html
+      - aviso-legal.dc.html
+    generated_runtime:
+      path: support.js
+      editable: false
+    role: Preserve current public behavior and provide migration source material.
+  next:
+    status: generated-in-parallel
+    output_root: site-next
+    role: Receive statically generated pages from validated Knowledge Repository records.
+
+layers:
+  architecture:
+    root: architecture
+    responsibility: Machine-readable contracts for structure, invariants, constants, routes, coverage, and current state.
+  content:
+    root: content/tables
+    responsibility: JSON-compatible source records for public business content.
+  domain:
+    root: knowledge
+    responsibility: Entity models, repository loading, reference validation, and collection invariants.
+  tooling:
+    root: tools
+    responsibility: Builders, validators, audits, migrations, checks, and local execution helpers.
+  generated_output:
+    roots:
+      - site-next
+      - llms.txt
+      - sitemap.xml
+    responsibility: Reproducible projections generated from contracts and content records.
+  diagnostics:
+    root: artifacts
+    responsibility: Audit reports and local execution logs; not a content source of truth.
+  legacy_assets:
+    roots:
+      - proyecto-1
+      - proyecto-2
+      - estandar
+      - premium
+      - smart
+    responsibility: Existing media assets referenced by legacy pages and migrated Media records.
+
+modules:
+  - id: architecture-contracts
+    root: architecture
+    owns:
+      - structural contracts
+      - non-negotiable invariants
+      - stable constants
+      - route activation
+      - media coverage policy
+      - current development state
+    depends_on: []
+
+  - id: content-tables
+    root: content/tables
+    owns:
+      - site records
+      - services
+      - projects
+      - media
+      - renovation tiers
+      - contact details
+      - capability sections
+      - external apps
+    depends_on:
+      - architecture-contracts
+
+  - id: knowledge-repository
+    root: knowledge
+    owns:
+      - domain entities
+      - content-table adapters
+      - entity and collection validation
+      - cross-record reference integrity
+    depends_on:
+      - content-tables
+
+  - id: site-next-builders
+    root: tools/site-next
+    owns:
+      - site-next homepage generation
+      - project index generation
+      - project detail generation
+      - service detail generation
+      - generated-page validation
+    depends_on:
+      - knowledge-repository
+      - route-contracts
+
+  - id: route-contracts
+    root: architecture/project-routes.yaml
+    owns:
+      - route families
+      - concrete route instances
+      - sitemap eligibility
+      - generated output paths
+    depends_on:
+      - architecture-contracts
+      - knowledge-repository
+
+  - id: gallery-coverage
+    root: architecture/gallery-media-coverage.yaml
+    owns:
+      - complete legacy image inventory
+      - source ownership classification
+      - gallery unlock condition
+    depends_on:
+      - architecture-contracts
+      - content-tables
+
+  - id: seo-and-ai-discovery
+    roots:
+      - tools/seo
+      - tools/ai-discovery
+    owns:
+      - sitemap generation and validation
+      - llms.txt generation and validation
+    depends_on:
+      - knowledge-repository
+      - route-contracts
+
+  - id: content-audit
+    root: tools/content-extractor
+    owns:
+      - legacy and generated HTML diagnostics
+      - machine-readable and human-readable reports
+    depends_on: []
+
+  - id: verification
+    root: tools/checks
+    owns:
+      - ordered full-project validation command
+    depends_on:
+      - knowledge-repository
+      - gallery-coverage
+      - site-next-builders
+      - seo-and-ai-discovery
+      - route-contracts
+      - content-audit
+
+  - id: termux-bridge
+    root: tools/termux
+    owns:
+      - safe local command execution
+      - reproducible diagnostic logs
+    depends_on:
+      - verification
+
+build_flow:
+  - architecture contracts define allowed structure and route state
+  - content tables define business records
+  - Knowledge Repository loads and validates records
+  - builders generate site-next, llms.txt, and sitemap.xml
+  - validators compare outputs with contracts and source records
+  - full checks run through tools/checks/run.mjs
+
+migration:
+  current_phase: service-page-generation
+  rules:
+    - preserve legacy runtime until replacement routes are generated and validated
+    - migrate content through Knowledge Repository records rather than copying it into builders
+    - activate routes only through architecture/project-routes.yaml
+    - keep generated outputs reproducible from committed inputs
+    - perform repository restructuring only from a green validation baseline

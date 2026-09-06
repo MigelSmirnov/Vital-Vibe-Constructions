@@ -1,0 +1,30 @@
+{
+  "capabilitySections": [
+    {
+      "id": "smart-home-readiness",
+      "slug": "hogar-inteligente",
+      "eyebrow": "Domótica · Junto a nuestros partners",
+      "title": "Reformas listas para el hogar inteligente",
+      "summary": "Dejamos tu reforma preparada para la domótica: ejecutamos el montaje en obra, el cableado, las canalizaciones y los cuadros eléctricos. La instalación y programación del sistema inteligente la realizan nuestros partners especializados.",
+      "capability_title": "Montaje en obra y preinstalación",
+      "capabilities": [
+        "Cableado estructurado y canalizaciones",
+        "Cuadros eléctricos y regletas",
+        "Preinstalación de mecanismos KNX",
+        "Puntos para clima, luz y persianas",
+        "Obra coordinada con los partners de domótica"
+      ],
+      "note": "Tú tratas con un único equipo: nosotros nos encargamos de la obra y coordinamos con los partners el sistema inteligente.",
+      "partners_summary": "Ejemplos de sistemas de hogar inteligente de nuestros partners.",
+      "service_ids": ["electrical"],
+      "media_ids": [
+        "media-smart-gira-panel",
+        "media-premium-panel-marmol",
+        "media-premium-gira-panel",
+        "media-premium-apple-home",
+        "media-smart-escenas-iluminacion"
+      ],
+      "related_external_app_id": "electrical-planner"
+    }
+  ]
+}

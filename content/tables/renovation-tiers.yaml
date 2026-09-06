@@ -1,0 +1,33 @@
+{
+  "renovationTiers": [
+    {
+      "id": "economical",
+      "slug": "economica",
+      "title": "Económica",
+      "summary": "Soluciones básicas y funcionales.",
+      "price_per_m2": 800,
+      "currency": "EUR",
+      "disclaimer": "Los cálculos son orientativos, basados en precios medios. No constituyen una oferta. El presupuesto final depende del proyecto."
+    },
+    {
+      "id": "standard",
+      "slug": "estandar",
+      "title": "Estándar",
+      "summary": "La mejor relación calidad-precio.",
+      "price_per_m2": 1200,
+      "currency": "EUR",
+      "is_featured": true,
+      "badge": "Más elegida",
+      "disclaimer": "Los cálculos son orientativos, basados en precios medios. No constituyen una oferta. El presupuesto final depende del proyecto."
+    },
+    {
+      "id": "premium",
+      "slug": "premium",
+      "title": "Premium",
+      "summary": "Materiales y acabados de alta gama.",
+      "price_per_m2": 1500,
+      "currency": "EUR",
+      "disclaimer": "Los cálculos son orientativos, basados en precios medios. No constituyen una oferta. El presupuesto final depende del proyecto."
+    }
+  ]
+}

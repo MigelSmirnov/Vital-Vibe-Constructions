@@ -1,0 +1,85 @@
+{
+  "id": "reforma-cocina-barcelona",
+  "slug": "como-planificar-reforma-cocina-barcelona",
+  "status": "draft",
+  "language": "es",
+  "category": "Guía de reformas",
+  "title": "Cómo planificar una reforma de cocina en Barcelona",
+  "seo_title": "Cómo planificar una reforma de cocina en Barcelona",
+  "meta_description": "Guía inicial para organizar una reforma de cocina en Barcelona: alcance, distribución, instalaciones, materiales y decisiones antes del presupuesto.",
+  "h1": "Cómo planificar una reforma de cocina en Barcelona",
+  "introduction": "Una reforma de cocina funciona mejor cuando las decisiones principales se ordenan antes de empezar la obra. Esta guía reúne los puntos que conviene revisar para definir el alcance con claridad.",
+  "author": "Vital Vibe Construction",
+  "updated_at": "2026-07-30",
+  "related_service_ids": [
+    "kitchens",
+    "electrical",
+    "masonry"
+  ],
+  "related_project_ids": [],
+  "sections": [
+    {
+      "heading": "Definir qué debe cambiar",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "El primer paso no es elegir acabados, sino decidir si la reforma será estética o si también afectará a la distribución, la electricidad, la fontanería y la ventilación. Esta diferencia condiciona el presupuesto, la duración y el orden de los trabajos."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Conservar o modificar la distribución actual.",
+            "Revisar la ubicación de fregadero, placa y electrodomésticos.",
+            "Definir si se renovarán instalaciones eléctricas y de agua.",
+            "Separar elementos imprescindibles de mejoras opcionales."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Revisar la distribución antes de comprar",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Los muebles y electrodomésticos deben responder a una distribución viable. Antes de comprar conviene confirmar medidas, recorridos de puertas, zonas de paso y puntos de conexión."
+        },
+        {
+          "type": "quote",
+          "text": "Una decisión temprana sobre la distribución evita adaptar la obra a productos comprados sin comprobar su encaje."
+        }
+      ]
+    },
+    {
+      "heading": "Coordinar instalaciones y acabados",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "La cocina reúne varios oficios en poco espacio. Electricidad, agua, revestimientos, mobiliario, encimera, pintura e iluminación deben coordinarse para que cada fase deje preparado el trabajo de la siguiente."
+        }
+      ]
+    },
+    {
+      "heading": "Preparar la información para pedir presupuesto",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Para recibir una propuesta útil es recomendable aportar medidas, fotografías del estado actual y una lista breve de objetivos. Cuando todavía existen decisiones abiertas, deben identificarse como tales en lugar de sustituirlas por supuestos."
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Es necesario cambiar la distribución de la cocina?",
+      "answer": "No siempre. Mantener una distribución funcional puede reducir intervenciones, pero debe revisarse si responde a las necesidades actuales y a la ubicación de las instalaciones."
+    },
+    {
+      "question": "¿Cuándo conviene elegir los electrodomésticos?",
+      "answer": "Antes de cerrar el diseño del mobiliario y los puntos de instalación, porque sus medidas y requisitos pueden afectar a la distribución."
+    },
+    {
+      "question": "¿Este borrador puede publicarse ya?",
+      "answer": "No. Es un contenido de trabajo dentro del sandbox y necesita revisión factual, editorial y SEO antes de entrar en el modelo público de artículos."
+    }
+  ]
+}
