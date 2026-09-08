@@ -53,6 +53,9 @@ async function main() {
     if (route.entity_type === "Service" && !knowledge.findServiceById(route.entity_id)) {
       throw new Error(`Route "${route.id}" references unknown Service "${route.entity_id}".`);
     }
+    if (route.entity_type === "Article" && !knowledge.findArticleById(route.entity_id)?.languages.includes(route.language)) {
+      throw new Error(`Route "${route.id}" references an unknown Article or translation.`);
+    }
 
     for (const sourceFile of requireArray(route.source_files, `${route.id}.source_files`)) {
       await assertFileExists(sourceFile, `Route "${route.id}" source file`);

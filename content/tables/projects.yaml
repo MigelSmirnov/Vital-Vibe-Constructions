@@ -231,7 +231,10 @@
         ]
       },
       "cost_note": "La mano de obra de esta intervención costó 1.100 €, con retirada de escombros incluida. Los residuos casi llenaron un big bag. El importe corresponde a este encargo; no es un precio total de reforma con materiales ni una tarifa para otros baños.",
-      "transformation_summary": "En cuatro días de trabajo, el lavabo quedó en la pared derecha y se añadió el toallero en su antigua ubicación. Se adaptaron las instalaciones y se recuperó el alicatado de las zonas intervenidas."
+      "transformation_summary": "En cuatro días de trabajo, el lavabo quedó en la pared derecha y se añadió el toallero en su antigua ubicación. Se adaptaron las instalaciones y se recuperó el alicatado de las zonas intervenidas.",
+      "article_ids": [
+        "article-bathroom-sink-relocation"
+      ]
     }
   ]
 }

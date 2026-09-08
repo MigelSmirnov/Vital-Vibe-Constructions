@@ -8,7 +8,7 @@ A private-by-convention draft previewer for developing article content without p
 - Drafts must keep `status: draft`.
 - Draft routes must not be added to `architecture/project-routes.yaml`, `sitemap.xml`, or `llms.txt`.
 - Draft content must not be copied into `tools/site-next` builders.
-- Promotion to public content requires a later Article entity, validated content records, route contracts, builders, and checks.
+- Promotion uses the Article entity, validated content records, route contracts, builders, and checks.
 
 ## Technical-document preview
 
@@ -23,7 +23,7 @@ The preview renders article drafts as a lightweight engineering document system 
 
 Stable document numbers and sheet labels live in `drafts/index.json` as sandbox presentation metadata, so reordering drafts does not renumber existing documents. A draft may still override presentation fields locally while it is being edited; none of this metadata is a public content source of truth.
 
-This visual system is deliberately confined to the sandbox until the public Article entity and article route family exist.
+The sheet-style visual system remains confined to this sandbox. Published articles use the lighter reading layout.
 
 ## Run locally
 
@@ -73,7 +73,7 @@ The JSON editor stores changes in browser `localStorage`. It does not write chan
 
 ## Promotion path
 
-The intended future flow is:
+The promotion flow is:
 
 ```text
 sandbox article draft
@@ -86,9 +86,9 @@ sandbox article draft
 
 ## Reading sample
 
-The bathroom case (`VVC-ART-003`) is available at `reading/traslado-lavabo-toallero-cuatro-dias/` and from the sandbox's draft panel. Its source is `drafts/traslado-lavabo-toallero.yaml`. It uses all five original work photographs plus the existing homepage result image, whose previous AI retouch is disclosed in the caption. The case records four working days and EUR 1,100 for labour including rubbish removal. The owner confirmed the location as Badalona. Work date, material cost, VAT and the precise hygienic-shower scope remain editorial unknowns.
+The approved bathroom case (`VVC-ART-003`) has been promoted to `content/tables/articles.yaml` and removed from the draft manifest. Its published pages are `/articulos/traslado-lavabo-toallero/`, `/en/articles/moving-a-bathroom-basin/` and `/ru/articles/perenos-rakoviny/`. The former Spanish reading URL redirects to the published article. Build these pages with `node tools/articles/build-public.mjs` and validate with `node tools/articles/validate-public.mjs`.
 
-All six image blocks refer to the indexed assets imported in commit `587b298`. No new media records or duplicate images are needed. The article remains a noindex draft. Its confirmed case facts and photographs now also have a Project record at `/projects/traslado-lavabo-toallero-badalona/`, linked from the homepage. The original import manifests are historical snapshots; current media ownership is in the content tables.
+The Article uses the same six indexed Media records, with translated captions and the existing final-photo AI-retouch disclosure. Four working days, EUR 1,100 labour including rubble removal and city-only Badalona are retained. The original media import manifests are historical snapshots; current ownership is in the content tables. Two unrelated drafts remain below.
 
 The painting article is the first lighter reading-layout sample. The manifest opts it in with `reading_preview: true`; FAQ items marked `internal: true` remain editorial-only and do not appear in this reader.
 

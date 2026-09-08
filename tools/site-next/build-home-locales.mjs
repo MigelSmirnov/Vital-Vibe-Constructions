@@ -42,7 +42,7 @@ function addLanguageNavigation(html, activeLanguage) {
     .replace("  <meta name=\"twitter:card\" content=\"summary_large_image\">", `  <meta name="twitter:card" content="summary_large_image">\n${alternateLinks()}`);
 }
 
-function localize(source, language, config) {
+function localize(source, language, config, articleRoutes) {
   let html = source
     .replace('<html lang="es">', `<html lang="${language}">`)
     .replace('href="./styles.css"', 'href="/styles.css"')
@@ -50,6 +50,10 @@ function localize(source, language, config) {
     .replace(`<link rel="canonical" href="${canonicalOrigin}/">`, `<link rel="canonical" href="${canonicalOrigin}${config.path}">`)
     .replace(`<meta property="og:url" content="${canonicalOrigin}/">`, `<meta property="og:url" content="${canonicalOrigin}${config.path}">`);
 
+  for (const route of articleRoutes.filter(item => item.language === "es")) {
+    const translated = articleRoutes.find(item => item.entity_id === route.entity_id && item.language === language);
+    if (translated) html = html.replaceAll(`href="${route.path}"`, `href="${translated.path}"`);
+  }
   const entries = Object.entries(config.replacements).sort(([a], [b]) => b.length - a.length);
   for (const [spanish, translation] of entries) {
     html = html.replace(new RegExp(escapeRegExp(spanish), "g"), translation);
@@ -63,12 +67,14 @@ async function main() {
     readFile(localizationPath, "utf8"),
   ]);
   const { locales } = JSON.parse(localizationRaw);
+  const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
+  const articleRoutes = contract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated");
 
   await writeFile(sourcePath, addLanguageNavigation(source, "es"), "utf8");
   for (const [language, config] of Object.entries(locales)) {
     const destination = path.join(outputRoot, language);
     await mkdir(destination, { recursive: true });
-    await writeFile(path.join(destination, "index.html"), localize(source, language, config), "utf8");
+    await writeFile(path.join(destination, "index.html"), localize(source, language, config, articleRoutes), "utf8");
   }
 
   console.log(`Built localized homepages: ${["es", ...Object.keys(locales)].join(", ")}`);

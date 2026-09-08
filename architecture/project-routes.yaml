@@ -54,6 +54,18 @@
       "output_pattern": "site-next/projects/{project.slug}/images/{media.slug}/index.html",
       "entity_type": "Media",
       "status": "deferred"
+    },
+    {
+      "id": "article-detail",
+      "path_pattern": "/{localized-article-base}/{article.localized-slug}/",
+      "output_pattern": "site-next/{localized-article-base}/{article.localized-slug}/index.html",
+      "entity_type": "Article",
+      "status": "generated",
+      "path_prefixes": {
+        "es": "/articulos/",
+        "en": "/en/articles/",
+        "ru": "/ru/articles/"
+      }
     }
   ],
   "routes": [
@@ -163,6 +175,54 @@
       ],
       "generated_html_path": "site-next/projects/traslado-lavabo-toallero-badalona/index.html",
       "sitemap_eligible": true
+    },
+    {
+      "id": "article-bathroom-sink-relocation-es",
+      "family_id": "article-detail",
+      "path": "/articulos/traslado-lavabo-toallero/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/traslado-lavabo-toallero/",
+      "entity_type": "Article",
+      "entity_id": "article-bathroom-sink-relocation",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/traslado-lavabo-toallero/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-bathroom-sink-relocation-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/moving-a-bathroom-basin/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/moving-a-bathroom-basin/",
+      "entity_type": "Article",
+      "entity_id": "article-bathroom-sink-relocation",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/moving-a-bathroom-basin/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-bathroom-sink-relocation-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/perenos-rakoviny/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/perenos-rakoviny/",
+      "entity_type": "Article",
+      "entity_id": "article-bathroom-sink-relocation",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/perenos-rakoviny/index.html",
+      "sitemap_eligible": true
     }
   ],
   "legacy_source_mappings": [
@@ -203,6 +263,13 @@
       "to": "/projects/estudio-reformado-barcelona/",
       "status": 301,
       "reason": "Owner confirmed both legacy photo groups belong to the same El Raval property."
+    }
+  ],
+  "article_redirects": [
+    {
+      "from": "/sandbox/articles/reading/traslado-lavabo-toallero-cuatro-dias/",
+      "to": "/articulos/traslado-lavabo-toallero/",
+      "status": 301
     }
   ]
 }

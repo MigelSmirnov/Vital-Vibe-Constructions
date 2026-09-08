@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 31
-Updated: 2026-09-08T20:59:26Z
+Version: 32
+Updated: 2026-09-08T21:22:01Z
 
 ## Session Rule
 
@@ -11,6 +11,15 @@ Every working session must end by updating:
 - `architecture/session-state.yaml`
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+
+## Multilingual bathroom Article promoted — 2026-09-08
+
+- The owner approved promotion and English/Russian versions. `content/tables/articles.yaml` is now the validated public source, with a Knowledge Article entity, complete localized copy/captions and six existing Media references. The former bathroom draft and its reading output were removed; two unrelated drafts remain.
+- Public routes: `/articulos/traslado-lavabo-toallero/`, `/en/articles/moving-a-bathroom-basin/`, `/ru/articles/perenos-rakoviny/`. Each homepage bathroom feature opens the corresponding language; the Article header switches languages and the Project page links all three versions.
+- Preserve the approved Russian title, four working days, EUR 1,100 labour including rubble removal, two additional tile rows for the mirror outlet at the same height, city-only Badalona and the existing final-photo AI-retouch disclosure. No exact address or unconfirmed technical claims were added.
+- Builders own HTML, CSS, reciprocal hreflang, Article JSON-LD, sitemap and llms entries. The old sandbox reader has a generated noindex redirect and a permanent Caddy redirect. The original media import manifests remain historical snapshots.
+- Validation passed: 34 Knowledge tests, dedicated multilingual Article checks, full checks (zero audit errors; five existing warnings), two remaining drafts, and the release bundle with 11 sitemap routes and 16 HTML files. Refresh the existing owner-private review Site from this source. Original public hosting/VPS deployment remains separate. Browser visual QA is unavailable.
+- Earlier sections below describe prior states; this promotion supersedes their bathroom draft status and homepage target.
 
 ## Bathroom location privacy — 2026-09-08
 

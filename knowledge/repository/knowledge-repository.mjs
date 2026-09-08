@@ -7,9 +7,10 @@ import { Project } from "../entities/project.mjs";
 import { RenovationTier } from "../entities/renovation-tier.mjs";
 import { Service } from "../entities/service.mjs";
 import { Site } from "../entities/site.mjs";
+import { Article } from "../entities/article.mjs";
 
 export class KnowledgeRepository {
-  constructor({ site, capabilitySections, contactDetails, services, renovationTiers, projects, externalApps, media }) {
+  constructor({ site, capabilitySections, contactDetails, services, renovationTiers, projects, externalApps, media, articles = [] }) {
     this.site = Site.fromRecord(site, "content/tables/site.yaml#site");
     this.capabilitySections = Object.freeze(
       capabilitySections.map((record, index) =>
@@ -40,6 +41,24 @@ export class KnowledgeRepository {
       media.map((record, index) => Media.fromRecord(record, `content/tables/media.yaml#media[${index}]`)),
     );
 
+    this.articles = Object.freeze(articles.map(record => Article.fromRecord(record)));
+    assertUniqueEntityKeys(this.articles, "articles");
+    const articleIds = new Set(this.articles.map(article => article.id));
+    const projectIds = new Set(this.projects.map(project => project.id));
+    const serviceIds = new Set(this.services.map(service => service.id));
+    const mediaIds = new Set(this.media.map(media => media.id));
+    const localizedSlugs = new Set();
+    for (const article of this.articles) {
+      assertAllKnown(article.relatedProjectIds, projectIds, `article ${article.id} projects`, "projects");
+      assertAllKnown(article.relatedServiceIds, serviceIds, `article ${article.id} services`, "services");
+      assertAllKnown(article.mediaIds, mediaIds, `article ${article.id} media`, "media");
+      for (const language of article.languages) {
+        const key = `${language}/${article.localized(language).slug}`;
+        if (localizedSlugs.has(key)) throw new Error(`Duplicate localized article slug: ${key}`);
+        localizedSlugs.add(key);
+      }
+    }
+    for (const project of this.projects) assertAllKnown(project.articleIds, articleIds, `project ${project.id} articles`, "articles");
     assertUniqueEntityKeys(this.capabilitySections, "capabilitySections");
     assertUniqueEntityKeys(this.services, "services");
     assertUniqueEntityKeys(this.renovationTiers, "renovationTiers");
@@ -110,6 +129,9 @@ export class KnowledgeRepository {
   listExternalApps() {
     return this.externalApps;
   }
+
+  listArticles() { return this.articles; }
+  findArticleById(id) { return this.articles.find(article => article.id === id) ?? null; }
 
   findExternalAppById(id) {
     return this.externalApps.find((app) => app.id === id) ?? null;

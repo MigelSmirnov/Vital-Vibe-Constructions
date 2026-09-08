@@ -116,7 +116,7 @@ function renderProjectIndex({ site, projects, mediaById }) {
   });
 }
 
-function renderProjectDetail({ site, project, mediaById, serviceById }) {
+function renderProjectDetail({ site, project, mediaById, serviceById, articleRoutes }) {
   const media = project.image_ids.map((mediaId) => mediaById.get(mediaId)).filter(Boolean);
   const services = project.service_ids.map((serviceId) => serviceById.get(serviceId)).filter(Boolean);
 
@@ -178,6 +178,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
         <p class="eyebrow">Proyecto · ${escapeHtml(project.budget_range ?? project.location ?? site.serviceArea)}</p>
         <h1>${escapeHtml(project.title)}</h1>
         <p class="project-detail-summary">${escapeHtml(project.summary)}</p>
+        ${articleRoutes.some(route => project.article_ids?.includes(route.entity_id)) ? `<p class="project-article-links">Leer la historia de esta obra: ${articleRoutes.filter(route => project.article_ids?.includes(route.entity_id)).map(route => `<a class="text-link" href="${escapeHtml(route.path)}" lang="${route.language}" hreflang="${route.language}">${({es:"Español", en:"English", ru:"Русский"})[route.language]}</a>`).join(" · ")}</p>` : ""}
         <dl class="project-facts">${facts
           .map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`)
           .join("")}</dl>
@@ -370,6 +371,8 @@ function formatCurrency(value, currency) {
 
 async function main() {
   const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
+  const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
+  const articleRoutes = contract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated");
   const site = knowledge.getSite().toRecord();
   const projects = knowledge.listProjects().map((project) => project.toRecord());
   const mediaById = new Map(knowledge.listMedia().map((item) => [item.id, item.toRecord()]));
@@ -383,12 +386,11 @@ async function main() {
     await mkdir(projectOutputDir, { recursive: true });
     await writeFile(
       path.join(projectOutputDir, "index.html"),
-      renderProjectDetail({ site, project, mediaById, serviceById }),
+      renderProjectDetail({ site, project, mediaById, serviceById, articleRoutes }),
       "utf8",
     );
   }
 
-  const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
   for (const redirect of contract.redirects ?? []) {
     const target = contract.routes.find((route) => route.path === redirect.to && route.family_id === "project-detail");
     if (!/^\/projects\/[a-z0-9-]+\/$/.test(redirect.from) || !target || contract.routes.some((route) => route.path === redirect.from)) {

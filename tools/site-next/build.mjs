@@ -154,13 +154,15 @@ function renderPage({
   media,
   planner,
   serviceRoutes,
+  articleRoutes,
 }) {
   const serviceById = new Map(services.map((service) => [service.id, service]));
   const mediaById = new Map(media.map((item) => [item.id, item]));
   const featuredMedia = mediaById.get(site.featuredMediaId);
   const featuredProject = projects.find((project) => project.id === featuredMedia?.project_id);
   const otherProjects = projects.filter((project) => project.id !== featuredProject?.id);
-  const featuredProjectHref = featuredProject ? `/projects/${featuredProject.slug}/` : null;
+  const featuredArticleRoute = articleRoutes.find(route => featuredProject?.article_ids?.includes(route.entity_id) && route.language === site.defaultLanguage);
+  const featuredProjectHref = featuredArticleRoute?.path ?? (featuredProject ? `/projects/${featuredProject.slug}/` : null);
   const featuredCost = featuredProject?.labour_cost_eur
     ? `Mano de obra: ${new Intl.NumberFormat("es-ES", { style: "currency", currency: site.currency ?? "EUR", maximumFractionDigits: 0 }).format(featuredProject.labour_cost_eur)}`
     : null;
@@ -558,6 +560,7 @@ async function main() {
       media,
       planner,
       serviceRoutes,
+      articleRoutes: routeContract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated"),
     }),
     "utf8",
   );

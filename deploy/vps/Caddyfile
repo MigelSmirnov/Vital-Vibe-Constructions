@@ -19,6 +19,7 @@
   redir /galeria-economica.dc.html /gallery/ permanent
   redir /galeria-estandar.dc.html /gallery/ permanent
   redir /galeria-premium.dc.html /gallery/ permanent
+  redir /sandbox/articles/reading/traslado-lavabo-toallero-cuatro-dias/ /articulos/traslado-lavabo-toallero/ permanent
 
   header {
     # Reduce passive service fingerprinting. This is hygiene, not a substitute

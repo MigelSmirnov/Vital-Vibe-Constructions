@@ -36,8 +36,12 @@ entities:
       - pending_technical_media
       - transformation_summary
   article:
-    required_fields: [id, slug, title, summary, body, published_at]
-    optional_fields: [modified_at, author, category, tags, hero_image_id, related_service_ids, related_project_ids]
+    required_fields: [id, slug, status, language, title, seo_title, summary, meta_description, category, body, published_at, modified_at, author]
+    optional_fields: [translations, related_service_ids, related_project_ids]
+    translation_fields: [slug, title, seo_title, summary, meta_description, category, body]
+    body_blocks: [paragraph, list, image]
+    image_reference: media_id
+    published_status_required: true
   media:
     required_fields: [id, slug, src, alt, width, height]
     optional_fields: [caption, description, project_id, service_ids, before_after_state, published_at]

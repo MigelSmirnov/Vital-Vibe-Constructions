@@ -1,6 +1,6 @@
-version: 35
+version: 36
 
-updated_at: 2026-09-08T20:59:26Z
+updated_at: 2026-09-08T21:22:01Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -28,7 +28,8 @@ current_strategy:
   next_runtime: site-next
   source_of_truth: Knowledge Repository
   article_sandbox: engineering-document-preview
-  article_sandbox_publication_status: noindex-draft-only
+  article_sandbox_publication_status: two-remaining-noindex-drafts
+  public_articles: validated-knowledge-records-with-es-en-ru-routes
   production_target: vps-caddy-static
   github_pages_target_status: fallback-only
   production_unchanged: true
@@ -170,6 +171,10 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-08
+    summary: Promoted the approved bathroom story to a published Knowledge Article in Spanish, English and Russian. Added localized routes, captions, language navigation, homepage links, sitemap and llms entries; the former draft URL redirects to the Spanish article. Only Badalona is displayed as the location.
+    validation: 34-knowledge-tests-pass; three-localized-article-pages-validated; full-checks-pass; vps-bundle-pass; 11-sitemap-routes; two-remaining-drafts-valid
+    review_delivery: refresh-existing-owner-private-site; original-production-unchanged
+  - date: 2026-09-08
     summary: Integrated the approved narrative title, reader-focused story, mirror outlet height clarification and revised section headings into the Spanish bathroom reading draft. Clarification also updates the Project evidence; city-only location and all six photographs are retained.
     validation: three-drafts-valid; 30-knowledge-tests-pass; full-checks-pass; vps-bundle-pass
     review_delivery: owner-private-site-update-requested
@@ -233,12 +238,12 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Review the linked Badalona bathroom project and its homepage feature; article draft remains available separately.
-  status: bathroom-project-linked-from-homepage
+  goal: Review the published bathroom Article in Spanish, English and Russian on the private review Site.
+  status: multilingual-bathroom-article-published-in-working-site
   source_styles: tools/site-next/home.css
   source_interactions: tools/site-next/home.js
   featured_bathroom_project: project-bathroom-ponent-badalona
-  article_links: deferred-until-publication-contract
+  article_links: localized-homepage-features-and-project-page
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 

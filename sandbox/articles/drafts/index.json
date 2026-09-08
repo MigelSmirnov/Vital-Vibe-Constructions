@@ -40,27 +40,6 @@
         "Pistola, rodillo y precio final"
       ],
       "reading_preview": true
-    },
-    {
-      "id": "traslado-lavabo-toallero",
-      "title": "Mover un lavabo significa desmontar y volver a montar el baño",
-      "status": "draft",
-      "language": "es",
-      "source": "./drafts/traslado-lavabo-toallero.yaml",
-      "document": {
-        "number": "VVC-ART-003",
-        "revision": "0",
-        "status": "Borrador",
-        "service_label": "Reforma parcial de baño",
-        "scope": "Badalona",
-        "stamp_title": "Mover un lavabo: desmontar y volver a montar"
-      },
-      "sheet_titles": [
-        "El encargo y lo que implicaba",
-        "Abrir y recuperar las paredes",
-        "Plazo, coste y resultado"
-      ],
-      "reading_preview": true
     }
   ]
 }
