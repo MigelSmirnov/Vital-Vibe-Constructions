@@ -17,7 +17,7 @@
   "related_project_ids": [],
   "editorial_notes": [
     "Relato basado en la descripción del propietario y en las seis imágenes indexadas del mismo baño.",
-    "La fecha updated_at corresponde al borrador, no a la ejecución de la obra. Ubicación y fecha de obra sin confirmar.",
+    "La fecha updated_at corresponde al borrador, no a la ejecución de la obra. Fecha de obra sin confirmar. Ubicación confirmada por el propietario: Ponent 13, Badalona.",
     "El importe confirmado es mano de obra con retirada de escombros. Coste de materiales y tratamiento del IVA sin confirmar.",
     "El alcance exacto de los trabajos en la ducha higiénica queda pendiente de aclaración; no se detalla en el relato.",
     "No se infieren ensayos, pendientes, conformidad normativa ni calidad de uniones ocultas a partir de las fotos."
@@ -33,6 +33,7 @@
         {
           "type": "list",
           "items": [
+            "Ubicación: Ponent 13, Badalona.",
             "Duración de la intervención: cuatro días de trabajo.",
             "Mano de obra: 1.100 €, con retirada de escombros incluida.",
             "Alcance: traslado del lavabo, incorporación del toallero y adaptación de las paredes e instalaciones afectadas."
