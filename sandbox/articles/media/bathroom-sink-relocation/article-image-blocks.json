@@ -1,0 +1,53 @@
+{
+  "status": "draft",
+  "blocks": [
+    {
+      "type": "image",
+      "src": "/assets/bathroom-sink-relocation/01-open-wall-utilities.jpg",
+      "alt": "Instalaciones de agua y desagüe visibles dentro del tabique abierto del baño",
+      "width": 1536,
+      "height": 1152,
+      "caption": "Traslado de las instalaciones antes de cerrar el tabique."
+    },
+    {
+      "type": "image",
+      "src": "/assets/bathroom-sink-relocation/02-wallboard-wide.jpg",
+      "alt": "Placas de yeso laminado visibles en la pared derecha del baño durante los trabajos",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Reposición del soporte de la pared antes de recuperar el alicatado."
+    },
+    {
+      "type": "image",
+      "src": "/assets/bathroom-sink-relocation/03-wallboard-detail.jpg",
+      "alt": "Pared del baño con placas de yeso laminado y salidas de instalaciones antes del alicatado",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Otro ángulo del soporte preparado y las salidas de instalaciones."
+    },
+    {
+      "type": "image",
+      "src": "/assets/bathroom-sink-relocation/04-tiling-corner.jpg",
+      "alt": "Encuentro de las paredes alicatadas del baño, con tomas de agua y salidas eléctricas visibles",
+      "width": 1536,
+      "height": 1152,
+      "caption": "Alicatado repuesto antes de instalar definitivamente los equipos."
+    },
+    {
+      "type": "image",
+      "src": "/assets/bathroom-sink-relocation/05-tiling-wall.jpg",
+      "alt": "Pared derecha del baño alicatada con tomas de agua, desagüe y salida para el espejo",
+      "width": 1536,
+      "height": 1152,
+      "caption": "Puntos de conexión en la pared derecha después de recuperar el revestimiento."
+    },
+    {
+      "type": "image",
+      "src": "/assets/home/bathroom-retouched.png",
+      "alt": "Baño con ducha de cristal, lavabo suspendido y espejo iluminado",
+      "width": 1086,
+      "height": 1448,
+      "caption": "Baño reformado"
+    }
+  ]
+}

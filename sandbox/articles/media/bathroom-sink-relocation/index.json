@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "case_id": "bathroom-sink-relocation-4-days",
+  "status": "draft-media-package",
+  "language": "es",
+  "source_repository": "MigelSmirnov/Vital-Vibe-Constructions",
+  "source_branch": "agent/architecture-sandbox",
+  "checked_against_commit": "584847863f8a9cd22de6ab17e6338c3b177467ec",
+  "ownership": {
+    "service_ids": [
+      "bathrooms"
+    ],
+    "project_id": null,
+    "reason": "Новый Project пока не создан. Все снимки относятся к одной ванной по подтверждению владельца; готовый кадр повторно использует существующую запись Media."
+  },
+  "user_confirmed_facts": {
+    "duration_work_days": 4,
+    "labour_cost_eur": 1100,
+    "labour_cost_includes_rubbish_removal": true,
+    "materials_cost": null,
+    "vat_status": null,
+    "location": null,
+    "work": [
+      "Перенос раковины с прежней стены на правую",
+      "Добавление полотенцесушителя на прежней стене раковины",
+      "Удаление четырёх рядов плитки на затронутых стенах",
+      "Замена гипсокартона в ходе работ",
+      "Перенос точек воды, датчика протечки, розетки для полотенцесушителя и вывода под зеркало",
+      "Работы с гигиеническим душем — точный объём ещё уточнить"
+    ],
+    "waste_amount_note": "По словам владельца, почти целый бигбэг; точный объём не указан."
+  },
+  "publication_notes": [
+    "Пять новых снимков — промежуточные этапы, а не исходное состояние до ремонта.",
+    "Ни уклоны, ни качество скрытых соединений по фото не подтверждались.",
+    "Новая статья и публичный проект этим пакетом не создаются."
+  ],
+  "photos": [
+    {
+      "order": 1,
+      "media_id": "media-bathroom-sink-relocation-open-wall-utilities",
+      "path": "assets/bathroom-sink-relocation/01-open-wall-utilities.jpg",
+      "original_filename": "1000002000.jpg",
+      "attachment_workspace_filename": "01-1000002000.jpg",
+      "title_ru": "Вскрытая стена и перенос коммуникаций",
+      "stage": "work",
+      "width": 1536,
+      "height": 1152,
+      "bytes": 701796,
+      "sha256": "1a88a24b87b9eb0bb8e4efcd6b8431297d047f58f737f4007d229a172536fbcf",
+      "retouched": false,
+      "order_note": "Порядок этапов для статьи; точное время съёмки не установлено."
+    },
+    {
+      "order": 2,
+      "media_id": "media-bathroom-sink-relocation-wallboard-wide",
+      "path": "assets/bathroom-sink-relocation/02-wallboard-wide.jpg",
+      "original_filename": "1000002015.jpg",
+      "attachment_workspace_filename": "03-1000002015.jpg",
+      "title_ru": "Восстановление основания — общий вид",
+      "stage": "work",
+      "width": 1152,
+      "height": 1536,
+      "bytes": 370766,
+      "sha256": "876820bd1caf1d79e70fb212aca36cd2d0595f451d32a9f0956bc180a2b91197",
+      "retouched": false,
+      "order_note": "Порядок этапов для статьи; точное время съёмки не установлено."
+    },
+    {
+      "order": 3,
+      "media_id": "media-bathroom-sink-relocation-wallboard-detail",
+      "path": "assets/bathroom-sink-relocation/03-wallboard-detail.jpg",
+      "original_filename": "1000002014.jpg",
+      "attachment_workspace_filename": "04-1000002014.jpg",
+      "title_ru": "Восстановление основания — второй ракурс",
+      "stage": "work",
+      "width": 1152,
+      "height": 1536,
+      "bytes": 299609,
+      "sha256": "e0daa81578331e991a9fb75e71d563e04535bf95461574c9218fbaf814fa535e",
+      "retouched": false,
+      "order_note": "Порядок этапов для статьи; точное время съёмки не установлено."
+    },
+    {
+      "order": 4,
+      "media_id": "media-bathroom-sink-relocation-tiling-corner",
+      "path": "assets/bathroom-sink-relocation/04-tiling-corner.jpg",
+      "original_filename": "1000003304.jpg",
+      "attachment_workspace_filename": "01-1000003304.jpg",
+      "title_ru": "Облицовка восстановлена — общий вид",
+      "stage": "work",
+      "width": 1536,
+      "height": 1152,
+      "bytes": 405593,
+      "sha256": "a3939c5e23c4322157fc058779cfdf69551af2bee67977002c5ccba70151c9b6",
+      "retouched": false,
+      "order_note": "Порядок этапов для статьи; точное время съёмки не установлено."
+    },
+    {
+      "order": 5,
+      "media_id": "media-bathroom-sink-relocation-tiling-wall",
+      "path": "assets/bathroom-sink-relocation/05-tiling-wall.jpg",
+      "original_filename": "1000003303.jpg",
+      "attachment_workspace_filename": "02-1000003303.jpg",
+      "title_ru": "Облицовка восстановлена — правая стена",
+      "stage": "work",
+      "width": 1536,
+      "height": 1152,
+      "bytes": 313273,
+      "sha256": "709dc7e37c9076e03a142f9d61f2d0b372c62b86c2e0062444bf907da5ef5653",
+      "retouched": false,
+      "order_note": "Порядок этапов для статьи; точное время съёмки не установлено."
+    },
+    {
+      "order": 6,
+      "media_id": "media-home-bathroom",
+      "path": "assets/home/bathroom-retouched.png",
+      "original_filename": "bathroom-retouched.png",
+      "source_original_filename": "1000003350.jpg",
+      "source_original_available": false,
+      "title_ru": "Готовая ванная — существующий кадр с главной",
+      "stage": "after",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2135087,
+      "sha256": "f638e84fa5dbf38cd84c974974c8e12bf936ade949369afdace1e215cf5e3372",
+      "retouched": true,
+      "retouch_note": "Ранее ретушированный ИИ кадр из репозитория; в этом архиве не изменён. Исходник 1000003350.jpg в текущей сессии отсутствует.",
+      "reuse_existing_media_record": true
+    }
+  ]
+}
