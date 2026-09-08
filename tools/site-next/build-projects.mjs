@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
@@ -382,6 +382,31 @@ async function main() {
       renderProjectDetail({ site, project, mediaById, serviceById }),
       "utf8",
     );
+  }
+
+  const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
+  for (const redirect of contract.redirects ?? []) {
+    const target = contract.routes.find((route) => route.path === redirect.to && route.family_id === "project-detail");
+    if (!/^\/projects\/[a-z0-9-]+\/$/.test(redirect.from) || !target || contract.routes.some((route) => route.path === redirect.from)) {
+      throw new Error(`Invalid project redirect: ${redirect.from}`);
+    }
+    const project = projects.find((item) => item.id === target.entity_id);
+    const directory = path.join(root, "site-next", redirect.from.slice(1));
+    await mkdir(directory, { recursive: true });
+    await writeFile(path.join(directory, "index.html"), `<!doctype html>
+<html lang="${escapeHtml(site.defaultLanguage)}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto actualizado | ${escapeHtml(site.name)}</title>
+  <meta name="description" content="Las fotografías de este inmueble se han reunido en una única página de proyecto.">
+  <meta name="robots" content="noindex, follow">
+  <meta http-equiv="refresh" content="0; url=${escapeHtml(redirect.to)}">
+  <link rel="canonical" href="${escapeHtml(target.canonical_url)}">
+</head>
+<body><main id="main-content"><h1>${escapeHtml(project.title)}</h1><p><a href="${escapeHtml(redirect.to)}">Ver el proyecto completo</a></p></main></body>
+</html>
+`, "utf8");
   }
 
   console.log(`Built project index and ${projects.length} project detail pages`);

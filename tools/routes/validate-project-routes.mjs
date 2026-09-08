@@ -76,6 +76,21 @@ async function main() {
   assertServiceRouteCoverage(routes, knowledge.listServices());
   assertDeferredImageRoutes(familyById, routes);
 
+  for (const redirect of contract.redirects ?? []) {
+    assertConcretePath(redirect.from, "redirect source");
+    const target = routes.find((route) => route.path === redirect.to && route.sitemap_eligible);
+    if (!target || routes.some((route) => route.path === redirect.from) || redirect.status !== 301) {
+      throw new Error(`Invalid permanent redirect: ${redirect.from}`);
+    }
+    if (sitemapLocations.has(new URL(redirect.from, canonicalOrigin).href)) {
+      throw new Error(`Redirect source must not appear in sitemap: ${redirect.from}`);
+    }
+    const html = await readFile(path.join(root, "site-next", redirect.from.slice(1), "index.html"), "utf8");
+    if (!html.includes('content="noindex, follow"') || !html.includes(`content="0; url=${redirect.to}"`) || !html.includes(`href="${target.canonical_url}"`)) {
+      throw new Error(`Static redirect does not match its contract: ${redirect.from}`);
+    }
+  }
+
   for (const mapping of mappings) {
     await assertFileExists(mapping.source_file, "Legacy mapping source file");
 

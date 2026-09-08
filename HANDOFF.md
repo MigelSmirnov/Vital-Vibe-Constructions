@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 24
-Updated: 2026-09-08T15:22:50Z
+Version: 25
+Updated: 2026-09-08T18:31:37Z
 
 ## Session Rule
 
@@ -11,6 +11,13 @@ Every working session must end by updating:
 - `architecture/session-state.yaml`
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+
+## One El Raval property — 2026-09-08
+
+- The owner confirmed that the kitchen and toilet-door homepage cards show the same property. Consolidated the two legacy project records under `project-studio-renovation-barcelona`, preserving the detailed El Raval case study and all 16 image records; kitchen photo leads the case.
+- Homepage, project index, service references, gallery ownership and discovery files now describe three projects. All 39 legacy gallery images remain covered.
+- The former `/projects/piso-reformado-barcelona/` address is now a generated noindex redirect page; its permanent redirect is also prepared in the VPS Caddy configuration. The route contract owns this alias and validation checks it. Original public hosting remains unchanged.
+- Verified all 29 Knowledge tests, full checks, seven sitemap routes, bundle validation, three cards in each homepage language and 16 unique photos in the merged project. Browser QA remains unavailable; owner-private review copy is updated separately.
 
 ## Project card alignment — 2026-09-08
 

@@ -1,6 +1,6 @@
-version: 28
+version: 29
 
-updated_at: 2026-09-08T15:22:50Z
+updated_at: 2026-09-08T18:31:37Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -129,7 +129,7 @@ historical_redirects:
     to: /projects/estudio-reformado-barcelona/
     status: 301
   - from: /proyecto-2.html
-    to: /projects/piso-reformado-barcelona/
+    to: /projects/estudio-reformado-barcelona/
     status: 301
   - from: /galeria-economica.dc.html
     to: /gallery/
@@ -169,6 +169,10 @@ seo_aeo_matrix:
   route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
+  - date: 2026-09-08
+    summary: Owner confirmed the kitchen and toilet-door cards are one El Raval property. Consolidated the projects and all 16 photographs, using the kitchen as cover; retained the former URL as a noindex static redirect and prepared permanent Caddy redirects.
+    validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; 39-gallery-images-preserved; three-homepage-cards-per-language; seven-sitemap-routes
+    limitation: browser-visual-review-unavailable; original-production-unchanged
   - date: 2026-09-08
     summary: Fixed homepage project-card widths from the user's mobile screenshot by overriding inherited cross-axis alignment in the homepage flex column. Rebuilt the shared ES/EN/RU homepage stylesheet.
     validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass

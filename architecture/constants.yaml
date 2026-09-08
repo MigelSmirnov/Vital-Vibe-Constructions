@@ -37,7 +37,7 @@ routes:
 
 media:
   legacy_content_image_count: 39
-  studio_image_count: 8
+  studio_image_count: 16
   coverage_mode: complete-legacy-coverage
 
 external_apps:

@@ -65,20 +65,10 @@
       "entity_type": "ProjectCollection",
       "entity_id": null,
       "status": "generated",
-      "source_files": ["content/tables/projects.yaml"],
+      "source_files": [
+        "content/tables/projects.yaml"
+      ],
       "generated_html_path": "site-next/projects/index.html",
-      "sitemap_eligible": true
-    },
-    {
-      "id": "project-piso-reformado-barcelona",
-      "family_id": "project-detail",
-      "path": "/projects/piso-reformado-barcelona/",
-      "canonical_url": "https://vitalvibeconstruction.com/projects/piso-reformado-barcelona/",
-      "entity_type": "Project",
-      "entity_id": "project-piso-reformado-barcelona",
-      "status": "generated",
-      "source_files": ["galeria-economica.dc.html"],
-      "generated_html_path": "site-next/projects/piso-reformado-barcelona/index.html",
       "sitemap_eligible": true
     },
     {
@@ -89,7 +79,9 @@
       "entity_type": "Project",
       "entity_id": "project-studio-renovation-barcelona",
       "status": "generated",
-      "source_files": ["galeria-economica.dc.html"],
+      "source_files": [
+        "galeria-economica.dc.html"
+      ],
       "generated_html_path": "site-next/projects/estudio-reformado-barcelona/index.html",
       "sitemap_eligible": true
     },
@@ -101,7 +93,9 @@
       "entity_type": "Project",
       "entity_id": "project-reforma-integral-estandar-barcelona",
       "status": "generated",
-      "source_files": ["galeria-estandar.dc.html"],
+      "source_files": [
+        "galeria-estandar.dc.html"
+      ],
       "generated_html_path": "site-next/projects/reforma-integral-estandar-barcelona/index.html",
       "sitemap_eligible": true
     },
@@ -113,7 +107,9 @@
       "entity_type": "Project",
       "entity_id": "project-trabajos-contrata-premium",
       "status": "generated",
-      "source_files": ["galeria-premium.dc.html"],
+      "source_files": [
+        "galeria-premium.dc.html"
+      ],
       "generated_html_path": "site-next/projects/trabajos-contrata-premium/index.html",
       "sitemap_eligible": true
     },
@@ -157,7 +153,9 @@
   "legacy_source_mappings": [
     {
       "source_file": "galeria-economica.dc.html",
-      "project_ids": ["project-studio-renovation-barcelona", "project-piso-reformado-barcelona"],
+      "project_ids": [
+        "project-studio-renovation-barcelona"
+      ],
       "unmodeled_project_titles": [],
       "content_media_count": 16,
       "project_owned_media_count": 16,
@@ -165,7 +163,9 @@
     },
     {
       "source_file": "galeria-estandar.dc.html",
-      "project_ids": ["project-reforma-integral-estandar-barcelona"],
+      "project_ids": [
+        "project-reforma-integral-estandar-barcelona"
+      ],
       "unmodeled_project_titles": [],
       "content_media_count": 6,
       "project_owned_media_count": 6,
@@ -173,11 +173,21 @@
     },
     {
       "source_file": "galeria-premium.dc.html",
-      "project_ids": ["project-trabajos-contrata-premium"],
+      "project_ids": [
+        "project-trabajos-contrata-premium"
+      ],
       "unmodeled_project_titles": [],
       "content_media_count": 17,
       "project_owned_media_count": 15,
       "modeled_non_project_media_count": 2
+    }
+  ],
+  "redirects": [
+    {
+      "from": "/projects/piso-reformado-barcelona/",
+      "to": "/projects/estudio-reformado-barcelona/",
+      "status": 301,
+      "reason": "Owner confirmed both legacy photo groups belong to the same El Raval property."
     }
   ]
 }

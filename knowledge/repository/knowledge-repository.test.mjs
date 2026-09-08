@@ -139,7 +139,7 @@ test("loads current content tables into a repository with project records", asyn
   assert.equal(repository.listRenovationTiers().length, 3);
   assert.equal(repository.listRenovationTiers()[0].id, "economical");
   assert.equal(repository.findRenovationTierById("standard").pricePerM2, 1200);
-  assert.equal(repository.listProjects().length, 4);
+  assert.equal(repository.listProjects().length, 3);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
 });

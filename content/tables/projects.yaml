@@ -1,10 +1,10 @@
 {
   "projects": [
     {
-      "id": "project-piso-reformado-barcelona",
-      "slug": "piso-reformado-barcelona",
-      "title": "Piso reformado en Barcelona",
-      "summary": "Reforma integral de un piso en Barcelona con cocina renovada y entrega llave en mano.",
+      "id": "project-studio-renovation-barcelona",
+      "slug": "estudio-reformado-barcelona",
+      "title": "Dos estudios independientes en un piso de 50 m² en El Raval",
+      "summary": "Conversión en dos fases de una vivienda de 50 m² sin instalaciones funcionales en dos estudios independientes, priorizando la ingeniería sobre los acabados decorativos.",
       "image_ids": [
         "media-proyecto-2-cocina-despues",
         "media-proyecto-2-cocina-antes",
@@ -13,18 +13,7 @@
         "media-proyecto-2-dormitorio-reformado",
         "media-proyecto-2-bano-reformado",
         "media-proyecto-2-cocina-reformada",
-        "media-proyecto-2-pasillo-reformado"
-      ],
-      "service_ids": ["integral-renovation", "kitchens"],
-      "location": "Barcelona",
-      "budget_range": "Económico"
-    },
-    {
-      "id": "project-studio-renovation-barcelona",
-      "slug": "estudio-reformado-barcelona",
-      "title": "Dos estudios independientes en un piso de 50 m² en El Raval",
-      "summary": "Conversión en dos fases de una vivienda de 50 m² sin instalaciones funcionales en dos estudios independientes, priorizando la ingeniería sobre los acabados decorativos.",
-      "image_ids": [
+        "media-proyecto-2-pasillo-reformado",
         "media-proyecto-1-estudio-reformado",
         "media-proyecto-1-estado-original",
         "media-proyecto-1-estudio-antes",
@@ -34,7 +23,14 @@
         "media-proyecto-1-aseo-reformado",
         "media-proyecto-1-pladur-preinstalacion"
       ],
-      "service_ids": ["integral-renovation", "bathrooms", "masonry", "painting", "electrical"],
+      "service_ids": [
+        "integral-renovation",
+        "bathrooms",
+        "masonry",
+        "painting",
+        "electrical",
+        "kitchens"
+      ],
       "location": "El Raval, Barcelona",
       "budget_range": "Económico",
       "area_m2": 50,
@@ -153,7 +149,13 @@
         "media-estandar-pintura-iluminacion",
         "media-estandar-pasillo"
       ],
-      "service_ids": ["integral-renovation", "kitchens", "electrical", "painting", "masonry"],
+      "service_ids": [
+        "integral-renovation",
+        "kitchens",
+        "electrical",
+        "painting",
+        "masonry"
+      ],
       "location": "Barcelona",
       "budget_range": "Estándar"
     },
@@ -179,7 +181,11 @@
         "media-premium-led-escalera",
         "media-premium-cuadro-villa"
       ],
-      "service_ids": ["electrical", "painting", "masonry"],
+      "service_ids": [
+        "electrical",
+        "painting",
+        "masonry"
+      ],
       "location": "Barcelona",
       "budget_range": "Premium"
     }

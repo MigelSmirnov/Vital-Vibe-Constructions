@@ -13,7 +13,9 @@
   # confirms the old paths no longer need explicit redirects.
   redir /projects.html /projects/ permanent
   redir /proyecto-1.html /projects/estudio-reformado-barcelona/ permanent
-  redir /proyecto-2.html /projects/piso-reformado-barcelona/ permanent
+  redir /proyecto-2.html /projects/estudio-reformado-barcelona/ permanent
+  redir /projects/piso-reformado-barcelona /projects/estudio-reformado-barcelona/ permanent
+  redir /projects/piso-reformado-barcelona/ /projects/estudio-reformado-barcelona/ permanent
   redir /galeria-economica.dc.html /gallery/ permanent
   redir /galeria-estandar.dc.html /gallery/ permanent
   redir /galeria-premium.dc.html /gallery/ permanent
