@@ -81,7 +81,11 @@
         "Menú": "Menu",
         "Baño con ducha de cristal, lavabo suspendido y espejo iluminado": "Bathroom with a glass shower, floating vanity and illuminated mirror",
         "Baño reformado": "Renovated bathroom",
-        "Aviso legal": "Legal notice"
+        "Aviso legal": "Legal notice",
+        "Traslado de lavabo y toallero en Badalona": "Sink relocation and towel rail in Badalona",
+        "4 días de trabajo": "4 working days",
+        "Mano de obra": "Labour",
+        "Ver proyecto": "View project"
       }
     },
     "ru": {
@@ -165,7 +169,11 @@
         "Menú": "Меню",
         "Baño con ducha de cristal, lavabo suspendido y espejo iluminado": "Ванная со стеклянной душевой, подвесной тумбой и зеркалом с подсветкой",
         "Baño reformado": "Ванная после ремонта",
-        "Aviso legal": "Правовая информация"
+        "Aviso legal": "Правовая информация",
+        "Traslado de lavabo y toallero en Badalona": "Перенос раковины и полотенцесушитель в Бадалоне",
+        "4 días de trabajo": "4 рабочих дня",
+        "Mano de obra": "Работа",
+        "Ver proyecto": "Смотреть объект"
       }
     }
   }

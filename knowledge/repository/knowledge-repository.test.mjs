@@ -139,9 +139,23 @@ test("loads current content tables into a repository with project records", asyn
   assert.equal(repository.listRenovationTiers().length, 3);
   assert.equal(repository.listRenovationTiers()[0].id, "economical");
   assert.equal(repository.findRenovationTierById("standard").pricePerM2, 1200);
-  assert.equal(repository.listProjects().length, 3);
+  assert.equal(repository.listProjects().length, 4);
+  const bathroom = repository.findProjectById("project-bathroom-ponent-badalona");
+  assert.equal(bathroom.labourCostEur, 1100);
+  assert.equal(bathroom.estimatedTotalCostEur, null);
+  assert.equal(bathroom.imageIds.length, 6);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
+});
+
+test("Project keeps labour cost separate from total cost and rejects invalid amounts", () => {
+  const record = { ...baseTables.projects[0], labour_cost_eur: 1100 };
+  const project = Project.fromRecord(record);
+  assert.equal(project.toRecord().labour_cost_eur, 1100);
+  assert.equal(project.toRecord().estimated_total_cost_eur, undefined);
+  for (const amount of [0, -1, "1100", NaN]) {
+    assert.throws(() => Project.fromRecord({ ...record, labour_cost_eur: amount }), /labourCostEur/);
+  }
 });
 
 test("CapabilitySection requires explicit content and preserves references", () => {

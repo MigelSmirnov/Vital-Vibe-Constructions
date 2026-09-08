@@ -188,6 +188,50 @@
       ],
       "location": "Barcelona",
       "budget_range": "Premium"
+    },
+    {
+      "id": "project-bathroom-ponent-badalona",
+      "slug": "traslado-lavabo-toallero-badalona",
+      "title": "Traslado de lavabo y toallero en Badalona",
+      "summary": "Reforma parcial de baño en Ponent 13, Badalona: traslado del lavabo a la pared derecha, instalación de toallero y reposición de las paredes afectadas en cuatro días.",
+      "image_ids": [
+        "media-home-bathroom",
+        "media-bathroom-sink-relocation-open-wall-utilities",
+        "media-bathroom-sink-relocation-wallboard-wide",
+        "media-bathroom-sink-relocation-wallboard-detail",
+        "media-bathroom-sink-relocation-tiling-corner",
+        "media-bathroom-sink-relocation-tiling-wall"
+      ],
+      "service_ids": [
+        "bathrooms"
+      ],
+      "location": "Ponent 13, Badalona",
+      "duration": "4 días de trabajo",
+      "labour_cost_eur": 1100,
+      "project_type": "Reforma parcial de baño",
+      "initial_condition": {
+        "summary": "El lavabo estaba en la pared destinada al nuevo toallero. Su traslado dejaba orificios de las salidas del espejo que había que resolver."
+      },
+      "project_objective": "Trasladar el lavabo a la pared derecha y añadir un toallero en su antigua ubicación, adaptando las conexiones y recuperando la parte afectada del revestimiento.",
+      "engineering_challenges": [
+        "Modificar las tomas de agua y el desagüe para la nueva posición del lavabo.",
+        "Reubicar el sensor de fugas, la toma eléctrica del toallero y la salida para el espejo.",
+        "Retirar cuatro filas de azulejos en las paredes afectadas y recuperar el soporte y el alicatado."
+      ],
+      "engineering_decisions": {
+        "water_and_drainage": [
+          "Adaptación de las tomas de agua y del desagüe dentro de la pared abierta antes de cerrar el tabique."
+        ],
+        "electrical": [
+          "Traslado del sensor de fugas, la toma eléctrica del toallero y la salida prevista para el espejo."
+        ],
+        "partition_and_finish": [
+          "Retirada de cuatro filas de azulejos en las paredes afectadas, incluida la pared derecha.",
+          "Reposición del soporte de yeso laminado y recuperación del alicatado."
+        ]
+      },
+      "cost_note": "La mano de obra de esta intervención costó 1.100 €, con retirada de escombros incluida. Los residuos casi llenaron un big bag. El importe corresponde a este encargo; no es un precio total de reforma con materiales ni una tarifa para otros baños.",
+      "transformation_summary": "En cuatro días de trabajo, el lavabo quedó en la pared derecha y se añadió el toallero en su antigua ubicación. Se adaptaron las instalaciones y se recuperó el alicatado de las zonas intervenidas."
     }
   ]
 }

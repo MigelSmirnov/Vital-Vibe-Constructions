@@ -148,6 +148,21 @@
       ],
       "generated_html_path": "site-next/servicios/reformas-integrales-barcelona/index.html",
       "sitemap_eligible": true
+    },
+    {
+      "id": "project-bathroom-ponent-badalona",
+      "family_id": "project-detail",
+      "path": "/projects/traslado-lavabo-toallero-badalona/",
+      "canonical_url": "https://vitalvibeconstruction.com/projects/traslado-lavabo-toallero-badalona/",
+      "entity_type": "Project",
+      "entity_id": "project-bathroom-ponent-badalona",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/projects/traslado-lavabo-toallero-badalona/index.html",
+      "sitemap_eligible": true
     }
   ],
   "legacy_source_mappings": [

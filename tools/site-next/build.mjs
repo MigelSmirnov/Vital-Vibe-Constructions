@@ -158,6 +158,12 @@ function renderPage({
   const serviceById = new Map(services.map((service) => [service.id, service]));
   const mediaById = new Map(media.map((item) => [item.id, item]));
   const featuredMedia = mediaById.get(site.featuredMediaId);
+  const featuredProject = projects.find((project) => project.id === featuredMedia?.project_id);
+  const otherProjects = projects.filter((project) => project.id !== featuredProject?.id);
+  const featuredProjectHref = featuredProject ? `/projects/${featuredProject.slug}/` : null;
+  const featuredCost = featuredProject?.labour_cost_eur
+    ? `Mano de obra: ${new Intl.NumberFormat("es-ES", { style: "currency", currency: site.currency ?? "EUR", maximumFractionDigits: 0 }).format(featuredProject.labour_cost_eur)}`
+    : null;
   const externalAppById = new Map(externalApps.map((app) => [app.id, app]));
   const serviceRouteById = new Map(serviceRoutes.map((route) => [route.entity_id, route]));
   const renovationTierDisclaimer = renovationTiers.find((tier) => tier.disclaimer)?.disclaimer ?? null;
@@ -261,8 +267,11 @@ function renderPage({
       <div class="container">
         <div class="section-heading"><h2>Trabajos realizados</h2><a class="text-link" href="/projects/">Ver proyectos <span aria-hidden="true">→</span></a></div>
         <div class="portfolio-layout">
-          ${featuredMedia ? `<figure class="featured-bathroom"><img src="/${escapeHtml(featuredMedia.src)}" alt="${escapeHtml(featuredMedia.alt)}" width="${featuredMedia.width}" height="${featuredMedia.height}" loading="lazy"><figcaption><span>Baños</span><h3>${escapeHtml(featuredMedia.caption)}</h3></figcaption></figure>` : ""}
-          <div class="project-grid">${renderProjects(projects, mediaById, serviceById)}</div>
+          ${featuredProject ? `<article class="featured-bathroom" id="${escapeHtml(featuredProject.slug)}">
+            <a class="featured-bathroom-media" href="${escapeHtml(featuredProjectHref)}"><img src="/${escapeHtml(featuredMedia.src)}" alt="${escapeHtml(featuredMedia.alt)}" width="${featuredMedia.width}" height="${featuredMedia.height}" loading="lazy"></a>
+            <div class="featured-bathroom-body"><span>${escapeHtml(featuredProject.location)}</span><h3><a href="${escapeHtml(featuredProjectHref)}">${escapeHtml(featuredProject.title)}</a></h3><p class="featured-project-facts">${escapeHtml([featuredProject.duration, featuredCost].filter(Boolean).join(" · "))}</p><a class="text-link" href="${escapeHtml(featuredProjectHref)}">Ver proyecto <span aria-hidden="true">→</span></a></div>
+          </article>` : featuredMedia ? `<figure class="featured-bathroom"><img src="/${escapeHtml(featuredMedia.src)}" alt="${escapeHtml(featuredMedia.alt)}" width="${featuredMedia.width}" height="${featuredMedia.height}" loading="lazy"><figcaption><span>Baños</span><h3>${escapeHtml(featuredMedia.caption)}</h3></figcaption></figure>` : ""}
+          <div class="project-grid">${renderProjects(otherProjects, mediaById, serviceById)}</div>
         </div>
       </div>
     </section>
@@ -416,6 +425,7 @@ h3 { font-size: 1.3rem; }
 .project-facts dd { margin: 3px 0 0; font-weight: 750; }
 .project-detail-lead { padding: 34px 0 0; background: #181c20; }
 .project-detail-lead img { width: 100%; height: 560px; object-fit: cover; border-radius: 8px; }
+.project-lead-caption { color: var(--muted); font-size: .85rem; margin: 12px 0 0; }
 .project-detail-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 440px); gap: 56px; }
 .project-detail-grid p, .project-service-list span { color: var(--muted); }
 .project-service-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }

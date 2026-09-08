@@ -1,6 +1,6 @@
-version: 32
+version: 33
 
-updated_at: 2026-09-08T20:19:59Z
+updated_at: 2026-09-08T20:26:41Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -170,6 +170,10 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-08
+    summary: Connected the existing homepage bathroom feature to a real Project record for Ponent 13, Badalona. Added location, four working days and labelled labour cost to ES/EN/RU homepages; generated a route with case evidence and all six owned photographs, without duplicating the homepage card.
+    validation: 30-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; six-media-and-four-homepage-projects-verified; eight-sitemap-routes
+    limitation: browser-visual-qa-not-performed; hosting-not-redeployed
+  - date: 2026-09-08
     summary: Added owner-confirmed bathroom location Ponent 13, Badalona to the article facts, document scope and media case index; rebuilt the reading draft.
     validation: three-drafts-valid; reading-draft-rebuilt; full-checks-pass
   - date: 2026-09-08
@@ -222,11 +226,11 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Review the bathroom case draft and its six indexed photographs in the lighter article reading layout.
-  status: bathroom-article-draft-ready-for-review
+  goal: Review the linked Badalona bathroom project and its homepage feature; article draft remains available separately.
+  status: bathroom-project-linked-from-homepage
   source_styles: tools/site-next/home.css
   source_interactions: tools/site-next/home.js
-  featured_bathroom_project: unassigned-service-media
+  featured_bathroom_project: project-bathroom-ponent-badalona
   article_links: deferred-until-publication-contract
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work

@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 28
-Updated: 2026-09-08T20:19:59Z
+Version: 29
+Updated: 2026-09-08T20:26:41Z
 
 ## Session Rule
 
@@ -11,6 +11,14 @@ Every working session must end by updating:
 - `architecture/session-state.yaml`
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+
+## Bathroom project linked from the homepage — 2026-09-08
+
+- Owner requested the same homepage-to-project flow as El Raval. The existing large bathroom feature now links through its photo, title and CTA to `/projects/traslado-lavabo-toallero-badalona/`; it is excluded from the adjacent compact list to avoid a duplicate card.
+- Added `project-bathroom-ponent-badalona` with confirmed location Ponent 13, Badalona, four working days, work scope and all six existing Media IDs. Their project ownership now resolves through the Knowledge Repository. The owner explicitly supplied the location for the site.
+- Added `labour_cost_eur` as a separate validated amount, displayed as labour on the homepage and project page; EUR 1,100 is not treated as an estimated total with materials. Preserved the cost note including rubbish removal and the final image's AI-retouch disclosure.
+- The route contract owns the new Project page; the project index, sitemap and llms.txt are rebuilt. The separate article draft remains noindex. The legacy gallery still covers all 39 contract photos.
+- Verified 30 Knowledge tests, full checks, VPS bundle, four unique homepage projects per language, six project images and eight sitemap routes. No browser visual QA or hosting redeployment was performed.
 
 ## Bathroom article with photographs — 2026-09-08
 

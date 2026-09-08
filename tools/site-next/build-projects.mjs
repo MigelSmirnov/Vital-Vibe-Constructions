@@ -138,6 +138,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
     project.project_type ? ["Tipo de proyecto", project.project_type] : null,
     project.area_m2 ? ["Superficie", `${project.area_m2} m²`] : null,
     duration ? ["Duración", duration] : null,
+    project.labour_cost_eur ? ["Mano de obra", formatCurrency(project.labour_cost_eur, site.currency ?? "EUR")] : null,
     project.estimated_total_cost_eur
       ? ["Coste aproximado", formatCurrency(project.estimated_total_cost_eur, site.currency ?? "EUR")]
       : null,
@@ -185,6 +186,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
     <section class="project-detail-lead">
       <div class="container">
         <img src="../../../${escapeHtml(leadImage.src)}" alt="${escapeHtml(leadImage.alt)}" width="${escapeHtml(leadImage.width)}" height="${escapeHtml(leadImage.height)}">
+        ${leadImage.caption ? `<p class="project-lead-caption">${escapeHtml(leadImage.caption)}</p>` : ""}
       </div>
     </section>
     ${evidenceSections}
@@ -247,7 +249,7 @@ function renderEvidenceSections(project) {
   if (project.project_objective) {
     sections.push(renderTextAndListSection({
       eyebrow: "Objetivo",
-      title: "Dos estudios independientes con un presupuesto controlado",
+      title: "Objetivo de la intervención",
       text: project.project_objective,
     }));
   }
@@ -298,10 +300,12 @@ function renderEvidenceSections(project) {
     </section>`);
   }
 
-  if (project.estimated_total_cost_eur || project.cost_note) {
+  if (project.estimated_total_cost_eur || project.labour_cost_eur || project.cost_note) {
     sections.push(renderTextAndListSection({
       eyebrow: "Coste del caso",
-      title: project.estimated_total_cost_eur
+      title: project.labour_cost_eur
+        ? `Mano de obra: ${formatCurrency(project.labour_cost_eur, "EUR")}`
+        : project.estimated_total_cost_eur
         ? `Orden de magnitud: ${formatCurrency(project.estimated_total_cost_eur, "EUR")}`
         : "Coste aproximado",
       text: project.cost_note,

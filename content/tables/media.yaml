@@ -432,12 +432,13 @@
       "alt": "Baño con ducha de cristal, lavabo suspendido y espejo iluminado",
       "width": 1086,
       "height": 1448,
-      "caption": "Baño reformado",
-      "description": "Fotografía facilitada por el propietario del sitio. Versión retocada con IA; original 1000003350.jpg. Ubicación y proyecto sin confirmar.",
+      "caption": "Resultado de la intervención. Fotografía retocada previamente con IA; las fotografías de obra se conservan sin retoque.",
+      "description": "Fotografía facilitada por el propietario del sitio del baño en Ponent 13, Badalona. Versión retocada previamente con IA; original 1000003350.jpg.",
       "service_ids": [
         "bathrooms"
       ],
-      "before_after_state": "after"
+      "before_after_state": "after",
+      "project_id": "project-bathroom-ponent-badalona"
     },
     {
       "id": "media-bathroom-sink-relocation-open-wall-utilities",
@@ -451,7 +452,8 @@
       "service_ids": [
         "bathrooms"
       ],
-      "before_after_state": "work"
+      "before_after_state": "work",
+      "project_id": "project-bathroom-ponent-badalona"
     },
     {
       "id": "media-bathroom-sink-relocation-wallboard-wide",
@@ -465,7 +467,8 @@
       "service_ids": [
         "bathrooms"
       ],
-      "before_after_state": "work"
+      "before_after_state": "work",
+      "project_id": "project-bathroom-ponent-badalona"
     },
     {
       "id": "media-bathroom-sink-relocation-wallboard-detail",
@@ -479,7 +482,8 @@
       "service_ids": [
         "bathrooms"
       ],
-      "before_after_state": "work"
+      "before_after_state": "work",
+      "project_id": "project-bathroom-ponent-badalona"
     },
     {
       "id": "media-bathroom-sink-relocation-tiling-corner",
@@ -493,7 +497,8 @@
       "service_ids": [
         "bathrooms"
       ],
-      "before_after_state": "work"
+      "before_after_state": "work",
+      "project_id": "project-bathroom-ponent-badalona"
     },
     {
       "id": "media-bathroom-sink-relocation-tiling-wall",
@@ -507,7 +512,8 @@
       "service_ids": [
         "bathrooms"
       ],
-      "before_after_state": "work"
+      "before_after_state": "work",
+      "project_id": "project-bathroom-ponent-badalona"
     }
   ]
 }

@@ -21,6 +21,7 @@ export class Project extends EntityCore {
     engineeringDecisions = null,
     budgetStrategy = null,
     estimatedTotalCostEur = null,
+    labourCostEur = null,
     costNote = null,
     pendingTechnicalMedia = [],
     transformationSummary = null,
@@ -39,6 +40,7 @@ export class Project extends EntityCore {
     if (projectType !== null) assertNonEmptyString(projectType, "projectType");
     if (projectObjective !== null) assertNonEmptyString(projectObjective, "projectObjective");
     if (estimatedTotalCostEur !== null) assertPositiveInteger(estimatedTotalCostEur, "estimatedTotalCostEur");
+    if (labourCostEur !== null) assertPositiveInteger(labourCostEur, "labourCostEur");
     if (costNote !== null) assertNonEmptyString(costNote, "costNote");
     if (transformationSummary !== null) assertNonEmptyString(transformationSummary, "transformationSummary");
 
@@ -54,6 +56,7 @@ export class Project extends EntityCore {
     this.engineeringDecisions = freezeOptionalRecord(engineeringDecisions, "engineeringDecisions");
     this.budgetStrategy = freezeOptionalRecord(budgetStrategy, "budgetStrategy");
     this.estimatedTotalCostEur = estimatedTotalCostEur;
+    this.labourCostEur = labourCostEur;
     this.costNote = costNote;
     this.pendingTechnicalMedia = Object.freeze(requireRecordArray(pendingTechnicalMedia, "pendingTechnicalMedia"));
     this.transformationSummary = transformationSummary;
@@ -86,6 +89,7 @@ export class Project extends EntityCore {
       engineeringDecisions: record.engineering_decisions ?? null,
       budgetStrategy: record.budget_strategy ?? null,
       estimatedTotalCostEur: record.estimated_total_cost_eur ?? null,
+      labourCostEur: record.labour_cost_eur ?? null,
       costNote: record.cost_note ?? null,
       pendingTechnicalMedia: record.pending_technical_media ?? [],
       transformationSummary: record.transformation_summary ?? null,
@@ -111,6 +115,7 @@ export class Project extends EntityCore {
       engineering_decisions: cloneOptionalRecord(this.engineeringDecisions),
       budget_strategy: cloneOptionalRecord(this.budgetStrategy),
       estimated_total_cost_eur: this.estimatedTotalCostEur,
+      labour_cost_eur: this.labourCostEur,
       cost_note: this.costNote,
       pending_technical_media: this.pendingTechnicalMedia.length
         ? this.pendingTechnicalMedia.map((item) => ({ ...item }))

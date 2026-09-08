@@ -14,7 +14,9 @@
   "related_service_ids": [
     "bathrooms"
   ],
-  "related_project_ids": [],
+  "related_project_ids": [
+    "project-bathroom-ponent-badalona"
+  ],
   "editorial_notes": [
     "Relato basado en la descripción del propietario y en las seis imágenes indexadas del mismo baño.",
     "La fecha updated_at corresponde al borrador, no a la ejecución de la obra. Fecha de obra sin confirmar. Ubicación confirmada por el propietario: Ponent 13, Badalona.",
