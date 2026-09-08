@@ -5,7 +5,21 @@ import { CapabilitySection } from "../entities/capability-section.mjs";
 import { ContactDetails } from "../entities/contact-details.mjs";
 import { Project } from "../entities/project.mjs";
 import { RenovationTier } from "../entities/renovation-tier.mjs";
+import { Site } from "../entities/site.mjs";
 import { createKnowledgeRepository } from "./knowledge-repository.mjs";
+
+test("homepage feature must resolve to a known media record", () => {
+  const tables = structuredClone(baseTables);
+  tables.site.featuredMediaId = "unknown-media";
+  assert.throws(() => createKnowledgeRepository(tables), /featuredMediaId/);
+  tables.site.featuredMediaId = "media-test";
+  assert.equal(createKnowledgeRepository(tables).getSite().featuredMediaId, "media-test");
+});
+
+test("site presentation metadata survives a round trip with optional fields absent", () => {
+  const record = Site.fromRecord(baseTables.site).toRecord();
+  assert.deepEqual(Site.fromRecord(record).toRecord(), record);
+});
 
 const baseTables = Object.freeze({
   site: {

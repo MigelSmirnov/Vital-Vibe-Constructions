@@ -35,9 +35,11 @@ function alternateLinks() {
 }
 
 function addLanguageNavigation(html, activeLanguage) {
-  return html
-    .replace("  <meta name=\"twitter:card\" content=\"summary_large_image\">", `  <meta name="twitter:card" content="summary_large_image">\n${alternateLinks()}`)
-    .replace("      </nav>", `      </nav>\n      ${languageLinks(activeLanguage)}`);
+  const navigation = html.includes("<!-- home-language-switcher -->")
+    ? html.replace("<!-- home-language-switcher -->", languageLinks(activeLanguage))
+    : html.replace("      </nav>", `      </nav>\n      ${languageLinks(activeLanguage)}`);
+  return navigation
+    .replace("  <meta name=\"twitter:card\" content=\"summary_large_image\">", `  <meta name="twitter:card" content="summary_large_image">\n${alternateLinks()}`);
 }
 
 function localize(source, language, config) {

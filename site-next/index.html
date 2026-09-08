@@ -10,13 +10,15 @@
   <meta property="og:title" content="Empresa de reformas en Barcelona | Vital Vibe Construction">
   <meta property="og:description" content="Reformas integrales, cocinas, baños, electricidad y preparación para hogar inteligente en Barcelona.">
   <meta property="og:url" content="https://vitalvibeconstruction.com/">
-  <meta property="og:image" content="https://vitalvibeconstruction.com/proyecto-2/b8.jpeg">
+  <meta property="og:image" content="https://vitalvibeconstruction.com/assets/home/kitchen-living.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="alternate" hreflang="es" href="https://vitalvibeconstruction.com/">
   <link rel="alternate" hreflang="en" href="https://vitalvibeconstruction.com/en/">
   <link rel="alternate" hreflang="ru" href="https://vitalvibeconstruction.com/ru/">
   <link rel="alternate" hreflang="x-default" href="https://vitalvibeconstruction.com/">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/home.css">
+  <script src="/home.js" defer></script>
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -83,80 +85,79 @@
   ]
 }</script>
 </head>
-<body>
+<body class="home">
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="/" aria-label="Vital Vibe Construction">
         <img src="/VVC_primary_logo.svg" alt="Vital Vibe Construction" width="170" height="48">
       </a>
-      <nav aria-label="Navegación principal">
-        <a href="#servicios">Servicios</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#hogar-inteligente">Domótica</a>
-        <a href="#precios">Precios</a>
-        <a href="#planificador">Planificador</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-      <div class="language-switcher" aria-label="Language"><a href="/" lang="es" aria-current="page">ES</a><a href="/en/" lang="en">EN</a><a href="/ru/" lang="ru">RU</a></div>
+      <div class="header-tools">
+        <div class="language-switcher" aria-label="Language"><a href="/" lang="es" aria-current="page">ES</a><a href="/en/" lang="en">EN</a><a href="/ru/" lang="ru">RU</a></div>
+        <a class="header-contact" href="#contacto">Contacto</a>
+        <details class="menu">
+          <summary aria-label="Menú"><span class="menu-lines" aria-hidden="true"></span><span class="sr-only">Menú</span></summary>
+          <nav aria-label="Navegación principal">
+            <a href="#servicios">Servicios</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#hogar-inteligente">Domótica</a>
+            <a href="#precios">Precios</a>
+            <a href="#planificador">Planificador</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+        </details>
+      </div>
     </div>
   </header>
 
   <main id="main-content">
     <section class="hero">
-      <img class="hero-image" src="/proyecto-2/b8.jpeg" alt="Cocina reformada en Barcelona" width="1600" height="1000">
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <p class="eyebrow">Reformas integrales en Barcelona</p>
-        <h1>Reformas integrales que dan nueva vida a tu hogar</h1>
+      <div class="hero-content">
+        <p class="eyebrow">Barcelona + alrededores</p>
+        <h1>Reformas bien pensadas. <span>Bien ejecutadas.</span></h1>
         <p class="hero-summary">Planificamos y ejecutamos reformas residenciales y comerciales con una coordinación clara, acabados cuidados y apoyo en la planificación eléctrica.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#contacto">Solicitar presupuesto</a>
-          <a class="button button-secondary" href="https://app.vitalvibeconstruction.com/manual" target="_blank" rel="noopener">
-            Abrir planificador eléctrico <span class="badge">beta</span>
-          </a>
+          <a class="button button-primary" href="#contacto">Solicitar presupuesto <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#proyectos">Ver proyectos <span aria-hidden="true">→</span></a>
         </div>
       </div>
+      <figure class="hero-visual">
+        <img class="hero-image" src="/assets/home/kitchen-living.jpg" alt="Visualización de cocina y salón con madera y luz natural" width="1152" height="1536" fetchpriority="high">
+        <figcaption>Concepto de interior</figcaption>
+      </figure>
     </section>
 
     <section class="section" id="servicios">
       <div class="container">
-        <p class="eyebrow">Servicios</p>
-        <h2>Todo lo que tu reforma necesita</h2>
-        <div class="service-grid">
-        <article class="service-card" id="reformas-integrales">
-          <h3><a href="/servicios/reformas-integrales-barcelona/">Reformas integrales</a></h3>
-          <p>Coordinación completa de la reforma, desde la preparación y las instalaciones hasta los acabados finales.</p>
-        </article>
-        <article class="service-card" id="cocinas">
-          <h3>Cocinas</h3>
-          <p>Redistribución, instalaciones, revestimientos, iluminación y montaje para cocinas funcionales y duraderas.</p>
-        </article>
-        <article class="service-card" id="banos">
-          <h3>Baños</h3>
-          <p>Renovación de baños con atención a impermeabilización, fontanería, ventilación y acabados.</p>
-        </article>
-        <article class="service-card" id="electricidad">
-          <h3>Electricidad</h3>
-          <p>Planificación de puntos, iluminación, mecanismos y cuadro eléctrico para reformas actuales y futuras.</p>
-        </article>
-        <article class="service-card" id="pintura">
-          <h3>Pintura</h3>
-          <p>Preparación de superficies y acabados de pintura para viviendas y espacios comerciales.</p>
-        </article>
-        <article class="service-card" id="albanileria">
-          <h3>Albañilería</h3>
-          <p>Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida.</p>
-        </article></div>
+        <div class="section-heading"><h2>Nuestros servicios</h2><p>Todo lo que tu reforma necesita</p></div>
+        <div class="service-grid"><details class="service-row" id="reformas-integrales">
+      <summary><span class="service-number">01</span><h3>Reformas integrales</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
+      <div class="service-description"><p>Coordinación completa de la reforma, desde la preparación y las instalaciones hasta los acabados finales.</p><a class="text-link" href="/servicios/reformas-integrales-barcelona/">Reformas integrales <span aria-hidden="true">→</span></a></div>
+    </details><details class="service-row" id="cocinas">
+      <summary><span class="service-number">02</span><h3>Cocinas</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
+      <div class="service-description"><p>Redistribución, instalaciones, revestimientos, iluminación y montaje para cocinas funcionales y duraderas.</p></div>
+    </details><details class="service-row" id="banos">
+      <summary><span class="service-number">03</span><h3>Baños</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
+      <div class="service-description"><p>Renovación de baños con atención a impermeabilización, fontanería, ventilación y acabados.</p></div>
+    </details><details class="service-row" id="electricidad">
+      <summary><span class="service-number">04</span><h3>Electricidad</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
+      <div class="service-description"><p>Planificación de puntos, iluminación, mecanismos y cuadro eléctrico para reformas actuales y futuras.</p></div>
+    </details><details class="service-row" id="pintura">
+      <summary><span class="service-number">05</span><h3>Pintura</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
+      <div class="service-description"><p>Preparación de superficies y acabados de pintura para viviendas y espacios comerciales.</p></div>
+    </details><details class="service-row" id="albanileria">
+      <summary><span class="service-number">06</span><h3>Albañilería</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
+      <div class="service-description"><p>Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida.</p></div>
+    </details></div>
       </div>
     </section>
 
     <section class="section projects" id="proyectos">
       <div class="container">
-        <p class="eyebrow">Proyectos</p>
-        <h2>Trabajos realizados</h2>
-        <p class="section-summary">Reformas reales de pisos y trabajos especializados en Barcelona.</p>
-        <div class="project-grid">
+        <div class="section-heading"><h2>Trabajos realizados</h2><a class="text-link" href="/projects/">Ver proyectos <span aria-hidden="true">→</span></a></div>
+        <div class="portfolio-layout">
+          <figure class="featured-bathroom"><img src="/assets/home/bathroom-retouched.png" alt="Baño con ducha de cristal, lavabo suspendido y espejo iluminado" width="1086" height="1448" loading="lazy"><figcaption><span>Baños</span><h3>Baño reformado</h3></figcaption></figure>
+          <div class="project-grid">
         <article class="project-card" id="piso-reformado-barcelona">
           <a class="project-card-media" href="/projects/piso-reformado-barcelona/">
             <img src="/proyecto-2/b8.jpeg" alt="Cocina reformada en Barcelona" width="1200" height="1600" loading="lazy">
@@ -201,6 +202,7 @@
             <div class="project-tags"><span>Electricidad</span><span>Pintura</span><span>Albañilería</span></div>
           </div>
         </article></div>
+        </div>
       </div>
     </section>
 
@@ -305,7 +307,12 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">© 2026 Vital Vibe Construction</div>
+    <div class="container footer-main">
+      <a class="brand" href="/" aria-label="Vital Vibe Construction"><img src="/VVC_primary_logo.svg" alt="Vital Vibe Construction" width="240" height="83" loading="lazy"></a>
+      <p>Barcelona y alrededores</p>
+      <div><a href="mailto:info@vitalvibeconstruction.com">info@vitalvibeconstruction.com</a><a href="tel:+34691074618">+34 691 07 46 18</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Vital Vibe Construction</span><a href="/aviso-legal.dc.html">Aviso legal</a></div>
   </footer>
 </body>
 </html>

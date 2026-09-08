@@ -1,8 +1,8 @@
-version: 25
+version: 26
 
-updated_at: 2026-09-06T14:44:00Z
-phase: multilingual-site-foundation
-stage_status: localized-homepages-generated-secondary-routes-pending
+updated_at: 2026-09-08T06:22:42Z
+phase: homepage-visual-redesign
+stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -169,6 +169,10 @@ seo_aeo_matrix:
   route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
+  - date: 2026-09-08
+    summary: Implemented the user-supplied graphite/gold homepage direction with split kitchen hero, native service disclosures, a retouched bathroom feature, compact existing project index, responsive header/menu, pricing and footer. Centralized media/content and all three homepage languages retained. Article routes and production remain unchanged.
+    validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; homepage-html-and-asset-checks-pass
+    limitation: browser-visual-review-not-performed
   - date: 2026-09-06
     summary: Reworked the private article sandbox into a reusable engineering-document preview system with drawing-sheet framing, title blocks, numbered sections, technical notes, FAQ sheet navigation, stable VVC article document numbers, and the existing VVC brand header. No public Article entity, route, sitemap entry, llms.txt entry, site-next output, production setting, or legacy runtime was changed.
     validation: article-sandbox-ci-success; project-checks-success; vps-bundle-check-success
@@ -195,23 +199,14 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Provision or identify the VPS, choose the public-edge/DDoS mode, perform a manual hardened release smoke test, then prepare reversible DNS cutover.
-  status: waiting-for-non-secret-vps-and-edge-facts
-  required_non_secret_inputs:
-    - linux-distribution-and-version
-    - public-ipv4
-    - ipv6-enabled-or-not
-    - ssh-username
-    - ssh-port
-    - caddy-installed-or-not
-    - dns-provider
-    - current-apex-and-www-records
-    - selected-edge-mode
-  secrets_not_to_commit_or_share_in-repo:
-    - ssh-private-key
-    - passwords
-    - recovery-codes
-    - provider-api-tokens
+  goal: Review the first homepage design against the supplied reference and refine composition, image crops and mobile presentation.
+  status: first-slice-ready-for-design-review
+  source_styles: tools/site-next/home.css
+  source_interactions: tools/site-next/home.js
+  featured_bathroom_project: unassigned-service-media
+  article_links: deferred-until-publication-contract
+  production_deployment: not-requested
+  vps_preparation: retained-as-separate-pending-work
 
 next_verification:
   - article-sandbox-workflow-must-pass

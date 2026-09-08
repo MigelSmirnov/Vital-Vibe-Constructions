@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 21
-Updated: 2026-09-06T14:40:00Z
+Version: 22
+Updated: 2026-09-08T06:22:42Z
 
 ## Session Rule
 
@@ -11,6 +11,17 @@ Every working session must end by updating:
 - `architecture/session-state.yaml`
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+
+## Homepage Design — 2026-09-08
+
+The active user task is now homepage design. The first slice follows the supplied graphite/gold reference: split hero with the supplied kitchen image, compact header with ES/EN/RU switching and native menu, six service disclosures, a retouched bathroom feature next to the four existing projects, and coordinated pricing/contact/footer styling.
+
+- Author homepage styles/interactions in `tools/site-next/home.css` and `home.js`; the builder copies them into `site-next`. Existing detail pages do not load these files.
+- Hero copy/dimensions/caption live in the Site record. `site.featuredMediaId` resolves through the Knowledge Repository.
+- Kitchen is an interior concept, not attributed to a completed project. Bathroom is service-owned media with no invented project/location. Source notes are in `assets/home/README.md`.
+- All three homepages were rebuilt; article drafts stay sandbox-only. Production has not been deployed.
+- Verified locally: 29 Knowledge tests, full checks, ES/EN/RU heading/navigation/anchor/image checks, source/output CSS and JS equality, and VPS bundle validation. Content audit retains the same five baseline warnings and zero errors. Browser visual QA was not performed.
+- Next: review layout and crops with the user, then refine the design. VPS tasks below remain a separate pending track.
 
 ## Current Status
 

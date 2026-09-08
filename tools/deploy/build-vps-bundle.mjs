@@ -19,6 +19,7 @@ const rootFiles = [
 ];
 
 const assetDirectories = [
+  "assets",
   "proyecto-1",
   "proyecto-2",
   "estandar",

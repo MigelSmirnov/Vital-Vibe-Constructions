@@ -41,6 +41,20 @@
     {"id":"media-premium-panel-marmol","slug":"premium-panel-marmol","src":"premium/panel-marmol.jpeg","alt":"Panel de mármol retroiluminado","width":1536,"height":2048,"service_ids":["electrical"]},
     {"id":"media-premium-gira-panel","slug":"premium-gira-panel","src":"premium/gira.jpeg","alt":"Panel de control de la vivienda","width":1466,"height":2048,"service_ids":["electrical"]},
     {"id":"media-premium-apple-home","slug":"premium-apple-home","src":"premium/apple-home.jpeg","alt":"Domótica integrada","width":1638,"height":2048,"service_ids":["electrical"]},
-    {"id":"media-smart-escenas-iluminacion","slug":"smart-escenas-iluminacion","src":"smart/escenas.jpeg","alt":"Escenas de iluminación","width":1536,"height":2048,"service_ids":["electrical"]}
+    {"id":"media-smart-escenas-iluminacion","slug":"smart-escenas-iluminacion","src":"smart/escenas.jpeg","alt":"Escenas de iluminación","width":1536,"height":2048,"service_ids":["electrical"]},
+    {
+      "id": "media-home-bathroom",
+      "slug": "bano-ducha-acabados",
+      "src": "assets/home/bathroom-retouched.png",
+      "alt": "Baño con ducha de cristal, lavabo suspendido y espejo iluminado",
+      "width": 1086,
+      "height": 1448,
+      "caption": "Baño reformado",
+      "description": "Fotografía facilitada por el propietario del sitio. Versión retocada con IA; original 1000003350.jpg. Ubicación y proyecto sin confirmar.",
+      "service_ids": [
+        "bathrooms"
+      ],
+      "before_after_state": "after"
+    }
   ]
 }

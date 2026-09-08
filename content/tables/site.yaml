@@ -7,15 +7,20 @@
     "description": "Reformas integrales, cocinas, baños, electricidad y preparación para hogar inteligente en Barcelona.",
     "serviceArea": "Barcelona y alrededores",
     "hero": {
-      "eyebrow": "Reformas integrales en Barcelona",
-      "title": "Reformas integrales que dan nueva vida a tu hogar",
+      "eyebrow": "Barcelona + alrededores",
+      "title": "Reformas bien pensadas.",
       "summary": "Planificamos y ejecutamos reformas residenciales y comerciales con una coordinación clara, acabados cuidados y apoyo en la planificación eléctrica.",
-      "image": "/proyecto-2/b8.jpeg",
-      "imageAlt": "Cocina reformada en Barcelona"
+      "image": "/assets/home/kitchen-living.jpg",
+      "imageAlt": "Visualización de cocina y salón con madera y luz natural",
+      "titleAccent": "Bien ejecutadas.",
+      "imageWidth": 1152,
+      "imageHeight": 1536,
+      "caption": "Concepto de interior"
     },
     "contact": {
       "heading": "Hablemos de tu proyecto",
       "summary": "Cuéntanos qué espacio quieres transformar y te ayudaremos a definir el siguiente paso."
-    }
+    },
+    "featuredMediaId": "media-home-bathroom"
   }
 }

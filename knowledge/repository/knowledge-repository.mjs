@@ -54,6 +54,9 @@ export class KnowledgeRepository {
       externalApps: this.externalApps,
       media: this.media,
     });
+    if (this.site.featuredMediaId !== null) {
+      assertKnown(this.site.featuredMediaId, new Set(this.media.map(item => item.id)), "site.featuredMediaId", "media");
+    }
     assertMediaOwnership({
       projects: this.projects,
       capabilitySections: this.capabilitySections,
