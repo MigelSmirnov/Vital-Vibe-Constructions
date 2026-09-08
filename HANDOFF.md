@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 29
-Updated: 2026-09-08T20:26:41Z
+Version: 30
+Updated: 2026-09-08T20:54:02Z
 
 ## Session Rule
 
@@ -12,10 +12,16 @@ Every working session must end by updating:
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
 
+## Bathroom location privacy — 2026-09-08
+
+- Owner agreed to use only Badalona in the site. Removed street and house number from active content records, draft text/metadata, media notes and current handoff records, then rebuilt all generated pages and the release bundle. Stable project/media IDs and URL remain unchanged.
+- Verified draft validation, full checks and VPS bundle; no exact address remains in active tracked text or the bundle. Git history was not rewritten, and hosting was not redeployed.
+- Recent Russian editorial changes (new narrative title, mirror outlet explanation and revised section headings) are agreed working copy in the conversation and still await integration into the Spanish source.
+
 ## Bathroom project linked from the homepage — 2026-09-08
 
 - Owner requested the same homepage-to-project flow as El Raval. The existing large bathroom feature now links through its photo, title and CTA to `/projects/traslado-lavabo-toallero-badalona/`; it is excluded from the adjacent compact list to avoid a duplicate card.
-- Added `project-bathroom-ponent-badalona` with confirmed location Ponent 13, Badalona, four working days, work scope and all six existing Media IDs. Their project ownership now resolves through the Knowledge Repository. The owner explicitly supplied the location for the site.
+- Added `project-bathroom-ponent-badalona` with confirmed location Badalona, four working days, work scope and all six existing Media IDs. Their project ownership now resolves through the Knowledge Repository. The public location is limited to the municipality at the owner’s request.
 - Added `labour_cost_eur` as a separate validated amount, displayed as labour on the homepage and project page; EUR 1,100 is not treated as an estimated total with materials. Preserved the cost note including rubbish removal and the final image's AI-retouch disclosure.
 - The route contract owns the new Project page; the project index, sitemap and llms.txt are rebuilt. The separate article draft remains noindex. The legacy gallery still covers all 39 contract photos.
 - Verified 30 Knowledge tests, full checks, VPS bundle, four unique homepage projects per language, six project images and eight sitemap routes. No browser visual QA or hosting redeployment was performed.
@@ -25,7 +31,7 @@ This file is a living handoff, not a changelog. Historical detail belongs in com
 - The owner imported the prepared media package through Termux and pushed commit `587b298`. Synced that commit before authoring; all original photographs and Media IDs are preserved.
 - Added the Spanish case draft `traslado-lavabo-toallero` (`VVC-ART-003`) and generated `sandbox/articles/reading/traslado-lavabo-toallero-cuatro-dias/index.html` using the existing reading builder and stylesheet. The sandbox panel links to it.
 - Six sections cover the task, utilities, wall support, tiling, result and cost. All five work photographs plus the existing finished image are included. The finished image's prior AI retouch is disclosed in its caption.
-- Four working days and EUR 1,100 for labour with rubbish removal come from the owner's account. The owner confirmed the location as Ponent 13, Badalona. Work date, materials, VAT and the precise hygienic-shower scope remain editorial unknowns; no compliance or pressure-test results are inferred from photographs.
+- Four working days and EUR 1,100 for labour with rubbish removal come from the owner's account. The owner confirmed the location as Badalona. Work date, materials, VAT and the precise hygienic-shower scope remain editorial unknowns; no compliance or pressure-test results are inferred from photographs.
 - Verified three drafts, image identity/dimensions/alt text, reading anchors/noindex, 29 Knowledge tests, full checks and VPS bundle. Existing public projections remain unchanged. No public Article route was activated and no Site was redeployed. Browser visual QA was not performed.
 - Next: review the case text/layout with the owner, then handle public Article promotion through the existing content and route contracts. Two Termux stashes remain on the owner's device; neither was applied or dropped.
 

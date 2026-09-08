@@ -86,7 +86,7 @@ sandbox article draft
 
 ## Reading sample
 
-The bathroom case (`VVC-ART-003`) is available at `reading/traslado-lavabo-toallero-cuatro-dias/` and from the sandbox's draft panel. Its source is `drafts/traslado-lavabo-toallero.yaml`. It uses all five original work photographs plus the existing homepage result image, whose previous AI retouch is disclosed in the caption. The case records four working days and EUR 1,100 for labour including rubbish removal. The owner confirmed the location as Ponent 13, Badalona. Work date, material cost, VAT and the precise hygienic-shower scope remain editorial unknowns.
+The bathroom case (`VVC-ART-003`) is available at `reading/traslado-lavabo-toallero-cuatro-dias/` and from the sandbox's draft panel. Its source is `drafts/traslado-lavabo-toallero.yaml`. It uses all five original work photographs plus the existing homepage result image, whose previous AI retouch is disclosed in the caption. The case records four working days and EUR 1,100 for labour including rubbish removal. The owner confirmed the location as Badalona. Work date, material cost, VAT and the precise hygienic-shower scope remain editorial unknowns.
 
 All six image blocks refer to the indexed assets imported in commit `587b298`. No new media records or duplicate images are needed. The article remains a noindex draft. Its confirmed case facts and photographs now also have a Project record at `/projects/traslado-lavabo-toallero-badalona/`, linked from the homepage. The original import manifests are historical snapshots; current media ownership is in the content tables.
 

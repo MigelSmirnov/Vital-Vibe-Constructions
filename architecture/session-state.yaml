@@ -1,6 +1,6 @@
-version: 33
+version: 34
 
-updated_at: 2026-09-08T20:26:41Z
+updated_at: 2026-09-08T20:54:02Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -170,11 +170,14 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-08
-    summary: Connected the existing homepage bathroom feature to a real Project record for Ponent 13, Badalona. Added location, four working days and labelled labour cost to ES/EN/RU homepages; generated a route with case evidence and all six owned photographs, without duplicating the homepage card.
+    summary: At owner request, generalized bathroom location to Badalona across active content, draft, media notes and generated homepages/project page. Street and house number are omitted from current files; stable IDs and route are retained.
+    validation: three-drafts-valid; full-checks-pass; vps-bundle-pass; exact-address-absent-from-active-content-and-bundle
+  - date: 2026-09-08
+    summary: Connected the existing homepage bathroom feature to a real Project record for Badalona. Added location, four working days and labelled labour cost to ES/EN/RU homepages; generated a route with case evidence and all six owned photographs, without duplicating the homepage card.
     validation: 30-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; six-media-and-four-homepage-projects-verified; eight-sitemap-routes
     limitation: browser-visual-qa-not-performed; hosting-not-redeployed
   - date: 2026-09-08
-    summary: Added owner-confirmed bathroom location Ponent 13, Badalona to the article facts, document scope and media case index; rebuilt the reading draft.
+    summary: Added owner-confirmed bathroom location Badalona to the article facts, document scope and media case index; rebuilt the reading draft.
     validation: three-drafts-valid; reading-draft-rebuilt; full-checks-pass
   - date: 2026-09-08
     summary: Added a Spanish bathroom case draft in the approved reading layout using all six indexed photographs from the owner photo import. Describes the sink relocation, added towel rail, affected walls, four working days and EUR 1100 labour including rubbish removal. Existing result-image AI retouch is disclosed; no location or technical test claims were invented.

@@ -11,7 +11,7 @@
       "bathrooms"
     ],
     "project_id": "project-bathroom-ponent-badalona",
-    "reason": "Все шесть снимков связаны с подтверждённым объектом в Ponent 13, Badalona; существующий ID итогового кадра сохранён."
+    "reason": "Все шесть снимков связаны с подтверждённым объектом в Badalona; существующий ID итогового кадра сохранён."
   },
   "user_confirmed_facts": {
     "duration_work_days": 4,
@@ -19,7 +19,7 @@
     "labour_cost_includes_rubbish_removal": true,
     "materials_cost": null,
     "vat_status": null,
-    "location": "Ponent 13, Badalona",
+    "location": "Badalona",
     "work": [
       "Перенос раковины с прежней стены на правую",
       "Добавление полотенцесушителя на прежней стене раковины",

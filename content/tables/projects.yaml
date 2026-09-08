@@ -193,7 +193,7 @@
       "id": "project-bathroom-ponent-badalona",
       "slug": "traslado-lavabo-toallero-badalona",
       "title": "Traslado de lavabo y toallero en Badalona",
-      "summary": "Reforma parcial de baño en Ponent 13, Badalona: traslado del lavabo a la pared derecha, instalación de toallero y reposición de las paredes afectadas en cuatro días.",
+      "summary": "Reforma parcial de baño en Badalona: traslado del lavabo a la pared derecha, instalación de toallero y reposición de las paredes afectadas en cuatro días.",
       "image_ids": [
         "media-home-bathroom",
         "media-bathroom-sink-relocation-open-wall-utilities",
@@ -205,7 +205,7 @@
       "service_ids": [
         "bathrooms"
       ],
-      "location": "Ponent 13, Badalona",
+      "location": "Badalona",
       "duration": "4 días de trabajo",
       "labour_cost_eur": 1100,
       "project_type": "Reforma parcial de baño",
