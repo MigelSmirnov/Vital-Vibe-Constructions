@@ -1,6 +1,6 @@
-version: 30
+version: 31
 
-updated_at: 2026-09-08T19:11:38Z
+updated_at: 2026-09-08T19:58:38Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -170,6 +170,10 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-08
+    summary: Added a Spanish bathroom case draft in the approved reading layout using all six indexed photographs from the owner photo import. Describes the sink relocation, added towel rail, affected walls, four working days and EUR 1100 labour including rubbish removal. Existing result-image AI retouch is disclosed; no location or technical test claims were invented.
+    validation: three-drafts-valid; six-photo-hashes-alt-dimensions-and-reading-anchors-valid; 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; public-generated-outputs-unchanged
+    limitation: no-browser-visual-qa; draft-only-no-public-article-route; private-review-site-not-redeployed
+  - date: 2026-09-08
     summary: Added a sandbox-only reading sample of the Spanish painting article with compact technical metadata, continuous text, numbered sections, responsive contents and FAQ. Preserved the original sheet preview; no public Article route or production output was added.
     validation: two-drafts-valid; reading-sample-headings-anchors-styles-noindex-valid; 29-knowledge-tests-pass; full-checks-pass; public-generated-outputs-unchanged
     limitation: browser-visual-review-unavailable; draft-prices-and-text-still-await-editorial-factual-approval
@@ -215,8 +219,8 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Review the first homepage design against the supplied reference and refine composition, image crops and mobile presentation.
-  status: first-slice-ready-for-design-review
+  goal: Review the bathroom case draft and its six indexed photographs in the lighter article reading layout.
+  status: bathroom-article-draft-ready-for-review
   source_styles: tools/site-next/home.css
   source_interactions: tools/site-next/home.js
   featured_bathroom_project: unassigned-service-media

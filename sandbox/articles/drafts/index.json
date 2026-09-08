@@ -40,6 +40,27 @@
         "Pistola, rodillo y precio final"
       ],
       "reading_preview": true
+    },
+    {
+      "id": "traslado-lavabo-toallero",
+      "title": "Traslado de lavabo e instalación de toallero en cuatro días",
+      "status": "draft",
+      "language": "es",
+      "source": "./drafts/traslado-lavabo-toallero.yaml",
+      "document": {
+        "number": "VVC-ART-003",
+        "revision": "0",
+        "status": "Borrador",
+        "service_label": "Reforma parcial de baño",
+        "scope": "Traslado de lavabo y toallero",
+        "stamp_title": "Un baño: cuatro días de trabajo"
+      },
+      "sheet_titles": [
+        "Encargo e instalaciones",
+        "Soporte y alicatado",
+        "Resultado, plazo e importe"
+      ],
+      "reading_preview": true
     }
   ]
 }

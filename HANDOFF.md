@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 26
-Updated: 2026-09-08T19:11:38Z
+Version: 27
+Updated: 2026-09-08T19:58:38Z
 
 ## Session Rule
 
@@ -11,6 +11,15 @@ Every working session must end by updating:
 - `architecture/session-state.yaml`
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+
+## Bathroom article with photographs — 2026-09-08
+
+- The owner imported the prepared media package through Termux and pushed commit `587b298`. Synced that commit before authoring; all original photographs and Media IDs are preserved.
+- Added the Spanish case draft `traslado-lavabo-toallero` (`VVC-ART-003`) and generated `sandbox/articles/reading/traslado-lavabo-toallero-cuatro-dias/index.html` using the existing reading builder and stylesheet. The sandbox panel links to it.
+- Six sections cover the task, utilities, wall support, tiling, result and cost. All five work photographs plus the existing finished image are included. The finished image's prior AI retouch is disclosed in its caption.
+- Four working days and EUR 1,100 for labour with rubbish removal come from the owner's account. Location, work date, materials, VAT and the precise hygienic-shower scope remain editorial unknowns; no compliance or pressure-test results are inferred from photographs.
+- Verified three drafts, image identity/dimensions/alt text, reading anchors/noindex, 29 Knowledge tests, full checks and VPS bundle. Existing public projections remain unchanged. No public Article route was activated and no Site was redeployed. Browser visual QA was not performed.
+- Next: review the case text/layout with the owner, then handle public Article promotion through the existing content and route contracts. Two Termux stashes remain on the owner's device; neither was applied or dropped.
 
 ## Article reading sample — 2026-09-08
 

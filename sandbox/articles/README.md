@@ -86,6 +86,10 @@ sandbox article draft
 
 ## Reading sample
 
+The bathroom case (`VVC-ART-003`) is available at `reading/traslado-lavabo-toallero-cuatro-dias/` and from the sandbox's draft panel. Its source is `drafts/traslado-lavabo-toallero.yaml`. It uses all five original work photographs plus the existing homepage result image, whose previous AI retouch is disclosed in the caption. The case records four working days and EUR 1,100 for labour including rubbish removal. Location, work date, material cost, VAT and the precise hygienic-shower scope remain editorial unknowns.
+
+All six image blocks refer to the indexed assets imported in commit `587b298`. No new media records or duplicate images are needed. This is a noindex article draft, not a new public Project or Article route.
+
 The painting article is the first lighter reading-layout sample. The manifest opts it in with `reading_preview: true`; FAQ items marked `internal: true` remain editorial-only and do not appear in this reader.
 
 Build with `node tools/articles/build-reading-preview.mjs` after draft validation. Open `sandbox/articles/reading/pintura-paredes-precio-preparacion-barcelona/` through a static server. The source stylesheet is `sandbox/articles/reading.css`.
