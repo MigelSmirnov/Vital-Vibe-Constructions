@@ -43,7 +43,7 @@
     },
     {
       "id": "traslado-lavabo-toallero",
-      "title": "Traslado de lavabo e instalación de toallero en cuatro días",
+      "title": "Mover un lavabo significa desmontar y volver a montar el baño",
       "status": "draft",
       "language": "es",
       "source": "./drafts/traslado-lavabo-toallero.yaml",
@@ -53,12 +53,12 @@
         "status": "Borrador",
         "service_label": "Reforma parcial de baño",
         "scope": "Badalona",
-        "stamp_title": "Un baño: cuatro días de trabajo"
+        "stamp_title": "Mover un lavabo: desmontar y volver a montar"
       },
       "sheet_titles": [
-        "Encargo e instalaciones",
-        "Soporte y alicatado",
-        "Resultado, plazo e importe"
+        "El encargo y lo que implicaba",
+        "Abrir y recuperar las paredes",
+        "Plazo, coste y resultado"
       ],
       "reading_preview": true
     }

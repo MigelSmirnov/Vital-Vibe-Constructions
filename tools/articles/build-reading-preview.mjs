@@ -59,6 +59,6 @@ for (const entry of manifest.articles.filter(item => item.reading_preview === tr
 `;
   const output = path.join(sandbox, 'reading', draft.slug);
   await mkdir(output, {recursive:true});
-  await writeFile(path.join(output, 'index.html'), html);
+  await writeFile(path.join(output, 'index.html'), html.replace(/[\t ]+$/gm, ''));
   console.log(`Built sandbox reading sample: ${draft.slug}`);
 }

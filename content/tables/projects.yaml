@@ -210,13 +210,13 @@
       "labour_cost_eur": 1100,
       "project_type": "Reforma parcial de baño",
       "initial_condition": {
-        "summary": "El lavabo estaba en la pared destinada al nuevo toallero. Su traslado dejaba orificios de las salidas del espejo que había que resolver."
+        "summary": "El lavabo estaba en la pared destinada al nuevo toallero. Al retirarlo quedaban a la vista la salida eléctrica del espejo y los orificios de las fijaciones; había que recuperar el acabado."
       },
       "project_objective": "Trasladar el lavabo a la pared derecha y añadir un toallero en su antigua ubicación, adaptando las conexiones y recuperando la parte afectada del revestimiento.",
       "engineering_challenges": [
         "Modificar las tomas de agua y el desagüe para la nueva posición del lavabo.",
         "Reubicar el sensor de fugas, la toma eléctrica del toallero y la salida para el espejo.",
-        "Retirar cuatro filas de azulejos en las paredes afectadas y recuperar el soporte y el alicatado."
+        "Mantener la altura de la salida eléctrica del espejo en la nueva pared exigió retirar dos filas adicionales de azulejos por encima del lavabo."
       ],
       "engineering_decisions": {
         "water_and_drainage": [
@@ -226,7 +226,7 @@
           "Traslado del sensor de fugas, la toma eléctrica del toallero y la salida prevista para el espejo."
         ],
         "partition_and_finish": [
-          "Retirada de cuatro filas de azulejos en las paredes afectadas, incluida la pared derecha.",
+          "Retirada del alicatado en las paredes afectadas, incluidas dos filas adicionales para conservar la altura de la salida del espejo.",
           "Reposición del soporte de yeso laminado y recuperación del alicatado."
         ]
       },

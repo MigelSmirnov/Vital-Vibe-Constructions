@@ -4,11 +4,11 @@
   "status": "draft",
   "language": "es",
   "category": "Caso de obra · Baños",
-  "title": "Traslado de lavabo e instalación de toallero en cuatro días",
-  "seo_title": "Traslado de lavabo y toallero: cuatro días de trabajo",
+  "title": "Mover un lavabo significa desmontar y volver a montar el baño",
+  "seo_title": "Mover un lavabo: desmontar y volver a montar el baño",
   "meta_description": "Caso de una reforma parcial de baño: traslado del lavabo, instalaciones y reposición del alicatado. Cuatro días y 1.100 € de mano de obra con retirada de escombros.",
-  "h1": "Traslado de lavabo e instalación de toallero en cuatro días",
-  "introduction": "El encargo era concreto: trasladar el lavabo a la pared derecha y añadir un toallero en su antigua ubicación. La intervención duró cuatro días e incluyó adaptar las instalaciones y recuperar el revestimiento de las paredes afectadas.",
+  "h1": "Mover un lavabo significa desmontar y volver a montar el baño",
+  "introduction": "En un baño terminado, cualquier cambio afecta a más cosas de las que parece. Se puede retirar el lavabo, pero en la pared quedan fijaciones, tuberías y la salida eléctrica del espejo. Y en la nueva ubicación hay que preparar de nuevo todas esas conexiones.",
   "author": "Vital Vibe Construction",
   "updated_at": "2026-09-08",
   "related_service_ids": [
@@ -22,37 +22,50 @@
     "La fecha updated_at corresponde al borrador, no a la ejecución de la obra. Fecha de obra sin confirmar. Ubicación confirmada por el propietario: Badalona.",
     "El importe confirmado es mano de obra con retirada de escombros. Coste de materiales y tratamiento del IVA sin confirmar.",
     "El alcance exacto de los trabajos en la ducha higiénica queda pendiente de aclaración; no se detalla en el relato.",
-    "No se infieren ensayos, pendientes, conformidad normativa ni calidad de uniones ocultas a partir de las fotos."
+    "No se infieren ensayos, pendientes, conformidad normativa ni calidad de uniones ocultas a partir de las fotos.",
+    "El propietario aclaró que mantener la altura de la salida eléctrica del espejo exigió desmontar dos filas adicionales de azulejos. No se calcula un nuevo total de filas a partir de esa aclaración."
   ],
   "sections": [
     {
-      "heading": "El encargo y sus límites",
+      "heading": "El cambio que había que hacer",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Se trataba de una reforma parcial del baño. La nueva distribución situaba el lavabo en la pared derecha y dejaba su antigua pared para el toallero. El trabajo se concentró en estas zonas y en los puntos de conexión que había que trasladar."
+          "text": "En este baño de Badalona, el encargo era trasladar el lavabo a la pared derecha e instalar un toallero en su antigua ubicación."
         },
         {
           "type": "list",
           "items": [
-            "Ubicación: Badalona.",
-            "Duración de la intervención: cuatro días de trabajo.",
-            "Mano de obra: 1.100 €, con retirada de escombros incluida.",
-            "Alcance: traslado del lavabo, incorporación del toallero y adaptación de las paredes e instalaciones afectadas."
+            "Lugar: Badalona.",
+            "Cuatro días de trabajo.",
+            "1.100 € de mano de obra, incluida la retirada de escombros."
           ]
         }
       ]
     },
     {
-      "heading": "Trasladar los puntos de conexión",
+      "heading": "Lo que el traslado llevaba consigo",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Cambiar el lavabo de pared obligó a adaptar las tomas de agua y el desagüe a su nueva posición. También se trasladaron el sensor de fugas, la toma eléctrica del toallero y la salida prevista para el espejo."
+          "text": "En la pared anterior quedaban la salida eléctrica del espejo y los orificios de las fijaciones. Al mover el lavabo, esas marcas habrían quedado a la vista: había que recuperar el acabado."
         },
         {
           "type": "paragraph",
-          "text": "La fotografía muestra las instalaciones durante el trabajo, con el tabique abierto. Es una fase intermedia de la intervención, antes de cerrar la pared y recuperar el acabado."
+          "text": "Además, la salida eléctrica del espejo debía trasladarse a la nueva pared manteniendo la misma altura. Abrir solo la zona cercana a las tuberías no bastaba: hubo que retirar dos filas adicionales de azulejos por encima del lavabo. El traslado de un solo elemento acabó ampliando el trabajo necesario en las paredes."
+        },
+        {
+          "type": "paragraph",
+          "text": "También había que adaptar las tomas de agua y el desagüe, reubicar el sensor de fugas y preparar la toma eléctrica del toallero. Cada cambio dependía del siguiente: abrir, trasladar, cerrar y volver a revestir."
+        }
+      ]
+    },
+    {
+      "heading": "Qué hubo que abrir para mover el lavabo",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Al retirar el alicatado de las zonas afectadas quedaron a la vista el interior del tabique y las instalaciones. Las fotografías de obra muestran esa fase: la pared abierta, las tuberías accesibles y el revestimiento desmontado."
         },
         {
           "type": "image",
@@ -61,19 +74,10 @@
           "width": 1536,
           "height": 1152,
           "caption": "Traslado de las instalaciones antes de cerrar el tabique."
-        }
-      ]
-    },
-    {
-      "heading": "Abrir las paredes y recuperar el soporte",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "text": "En la antigua ubicación quedaban los orificios de las salidas del espejo. Para resolverlos y realizar los cambios de instalaciones se retiraron cuatro filas de azulejos en las paredes afectadas, incluida la pared derecha."
         },
         {
           "type": "paragraph",
-          "text": "La intervención incluyó la reposición del soporte de yeso laminado. Estos dos ángulos muestran la pared durante esa fase, todavía sin el revestimiento terminado."
+          "text": "Aquí se realizó la parte del traslado que después quedaría oculta. Una vez adaptadas las conexiones, se repuso el soporte de yeso laminado. El baño empezó a recuperar su forma, con los puntos de conexión en sus nuevas posiciones."
         },
         {
           "type": "image",
@@ -94,11 +98,11 @@
       ]
     },
     {
-      "heading": "Reponer el alicatado",
+      "heading": "Devolver a las paredes su acabado",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Después de adaptar las instalaciones y recuperar el soporte, se repuso el alicatado de las zonas abiertas. Las siguientes imágenes muestran las paredes revestidas, con los puntos de conexión visibles y antes de la instalación definitiva de los equipos."
+          "text": "Después de adaptar las instalaciones se recuperó el alicatado de las zonas abiertas. Había que resolver las dos partes del encargo: preparar las conexiones en la nueva ubicación y eliminar las huellas de la anterior."
         },
         {
           "type": "image",
@@ -115,15 +119,10 @@
           "width": 1536,
           "height": 1152,
           "caption": "Puntos de conexión en la pared derecha después de recuperar el revestimiento."
-        }
-      ]
-    },
-    {
-      "heading": "El resultado",
-      "blocks": [
+        },
         {
           "type": "paragraph",
-          "text": "El lavabo quedó en la pared derecha y se añadió el toallero en la pared donde estaba antes. Las fotografías de proceso permiten seguir el trabajo que hubo detrás de ese cambio de distribución."
+          "text": "En estas fotografías ya se ven las paredes revestidas y las salidas preparadas. Faltaba el montaje definitivo. El lavabo quedó en la pared derecha y el toallero ocupó su antigua pared."
         },
         {
           "type": "image",
@@ -136,31 +135,22 @@
       ]
     },
     {
-      "heading": "Cuatro días y 1.100 € de mano de obra",
+      "heading": "Cuatro días de trabajo y casi un big bag de escombros",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "La mano de obra de esta intervención costó 1.100 €, con la retirada de escombros incluida. Aunque el alcance era localizado, los residuos acumulados casi llenaron un big bag."
+          "text": "Incluso una intervención localizada como esta generó casi un big bag de escombros. Su retirada quedó incluida en los 1.100 € de mano de obra."
         },
         {
           "type": "paragraph",
-          "text": "Es el importe de este encargo concreto. Para valorar otro baño hay que definir qué elementos cambian de sitio, qué instalaciones se adaptan y cuánto revestimiento debe retirarse y reponerse."
+          "text": "El trabajo completo duró cuatro días. Esta cifra corresponde a la mano de obra de este encargo, sin el coste de los materiales."
+        },
+        {
+          "type": "paragraph",
+          "text": "En el baño terminado se ven el lavabo en su nuevo lugar, el toallero y las paredes recuperadas. Las fotografías del proceso ayudan a entender el trabajo que hubo detrás de ese pequeño cambio."
         }
       ]
     }
   ],
-  "faq": [
-    {
-      "question": "¿Fue una reforma integral del baño?",
-      "answer": "Fue una intervención parcial centrada en trasladar el lavabo, incorporar el toallero y adaptar las instalaciones y paredes afectadas."
-    },
-    {
-      "question": "¿Qué incluye el importe de 1.100 €?",
-      "answer": "Corresponde a la mano de obra de esta intervención, con retirada de escombros incluida. No es un precio total de reforma con materiales."
-    },
-    {
-      "question": "¿Las fotos muestran el estado anterior a la obra?",
-      "answer": "Los cinco originales muestran fases del trabajo. La imagen del baño terminado es el mismo encuadre de portada del sitio, previamente retocado con IA."
-    }
-  ]
+  "faq": []
 }

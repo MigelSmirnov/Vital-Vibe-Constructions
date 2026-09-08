@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 30
-Updated: 2026-09-08T20:54:02Z
+Version: 31
+Updated: 2026-09-08T20:59:26Z
 
 ## Session Rule
 
@@ -16,7 +16,8 @@ This file is a living handoff, not a changelog. Historical detail belongs in com
 
 - Owner agreed to use only Badalona in the site. Removed street and house number from active content records, draft text/metadata, media notes and current handoff records, then rebuilt all generated pages and the release bundle. Stable project/media IDs and URL remain unchanged.
 - Verified draft validation, full checks and VPS bundle; no exact address remains in active tracked text or the bundle. Git history was not rewritten, and hosting was not redeployed.
-- Recent Russian editorial changes (new narrative title, mirror outlet explanation and revised section headings) are agreed working copy in the conversation and still await integration into the Spanish source.
+- Integrated the agreed Russian editorial direction into the Spanish reading source: narrative title, mirror outlet height/two additional tile rows, concrete demolition heading and four-days/big-bag ending. The matching technical clarification is also in the Project record. All six photos remain; the repetitive FAQ was removed from this draft.
+- The user requested a viewable article. Refresh the existing owner-private review Site from the validated release plus reading pages; public hosting remains separate.
 
 ## Bathroom project linked from the homepage — 2026-09-08
 

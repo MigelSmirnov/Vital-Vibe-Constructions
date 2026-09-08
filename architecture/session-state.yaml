@@ -1,6 +1,6 @@
-version: 34
+version: 35
 
-updated_at: 2026-09-08T20:54:02Z
+updated_at: 2026-09-08T20:59:26Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -169,6 +169,10 @@ seo_aeo_matrix:
   route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
+  - date: 2026-09-08
+    summary: Integrated the approved narrative title, reader-focused story, mirror outlet height clarification and revised section headings into the Spanish bathroom reading draft. Clarification also updates the Project evidence; city-only location and all six photographs are retained.
+    validation: three-drafts-valid; 30-knowledge-tests-pass; full-checks-pass; vps-bundle-pass
+    review_delivery: owner-private-site-update-requested
   - date: 2026-09-08
     summary: At owner request, generalized bathroom location to Badalona across active content, draft, media notes and generated homepages/project page. Street and house number are omitted from current files; stable IDs and route are retained.
     validation: three-drafts-valid; full-checks-pass; vps-bundle-pass; exact-address-absent-from-active-content-and-bundle
