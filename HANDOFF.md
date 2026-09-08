@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 25
-Updated: 2026-09-08T18:31:37Z
+Version: 26
+Updated: 2026-09-08T19:11:38Z
 
 ## Session Rule
 
@@ -11,6 +11,13 @@ Every working session must end by updating:
 - `architecture/session-state.yaml`
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+
+## Article reading sample — 2026-09-08
+
+- Selected the more complete Spanish painting draft (nine sections) for the approved lighter technical article direction. Added a generated sandbox-only reading sample with readable continuous text, compact technical metadata, numbered sections, a note, responsive contents and native FAQ disclosures.
+- Kept the original project-sheet preview for comparison. Internal publication-status FAQ is marked editorial-only; article body and prices are unchanged drafts pending editorial/factual approval.
+- Source: `tools/articles/build-reading-preview.mjs`, `sandbox/articles/reading.css`; opt-in lives in the draft manifest. Article sandbox CI checks reproducibility.
+- Verified both drafts, generated sample headings/anchors/styles/noindex, all 29 Knowledge tests and full checks. Public generated outputs, routes and discovery files stayed unchanged. Browser visual QA remains unavailable; sample is copied only to the private review Site.
 
 ## One El Raval property — 2026-09-08
 

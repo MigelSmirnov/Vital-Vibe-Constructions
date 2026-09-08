@@ -1,6 +1,6 @@
-version: 29
+version: 30
 
-updated_at: 2026-09-08T18:31:37Z
+updated_at: 2026-09-08T19:11:38Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -169,6 +169,10 @@ seo_aeo_matrix:
   route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
+  - date: 2026-09-08
+    summary: Added a sandbox-only reading sample of the Spanish painting article with compact technical metadata, continuous text, numbered sections, responsive contents and FAQ. Preserved the original sheet preview; no public Article route or production output was added.
+    validation: two-drafts-valid; reading-sample-headings-anchors-styles-noindex-valid; 29-knowledge-tests-pass; full-checks-pass; public-generated-outputs-unchanged
+    limitation: browser-visual-review-unavailable; draft-prices-and-text-still-await-editorial-factual-approval
   - date: 2026-09-08
     summary: Owner confirmed the kitchen and toilet-door cards are one El Raval property. Consolidated the projects and all 16 photographs, using the kitchen as cover; retained the former URL as a noindex static redirect and prepared permanent Caddy redirects.
     validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; 39-gallery-images-preserved; three-homepage-cards-per-language; seven-sitemap-routes

@@ -83,3 +83,13 @@ sandbox article draft
   -> generated site-next article page
   -> sitemap and llms.txt eligibility
 ```
+
+## Reading sample
+
+The painting article is the first lighter reading-layout sample. The manifest opts it in with `reading_preview: true`; FAQ items marked `internal: true` remain editorial-only and do not appear in this reader.
+
+Build with `node tools/articles/build-reading-preview.mjs` after draft validation. Open `sandbox/articles/reading/pintura-paredes-precio-preparacion-barcelona/` through a static server. The source stylesheet is `sandbox/articles/reading.css`.
+
+The sample has a compact technical header, continuous reading column, numbered sections, a technical note and native FAQ disclosures. Mobile contents start collapsed; all text and navigation remain available without JavaScript. The original sheet-based preview is retained.
+
+This remains a noindex draft, outside `site-next`, sitemap, llms.txt and production bundles. Only the separate owner-private review Site receives a copy for visual review. Prices and wording have not received new factual approval.

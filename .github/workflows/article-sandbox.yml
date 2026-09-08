@@ -27,3 +27,7 @@ jobs:
           node-version: 22
       - name: Validate article drafts
         run: node tools/articles/validate-drafts.mjs
+      - name: Verify generated reading sample
+        run: |
+          node tools/articles/build-reading-preview.mjs
+          git diff --exit-code -- sandbox/articles/reading
