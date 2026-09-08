@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 22
-Updated: 2026-09-08T06:22:42Z
+Version: 24
+Updated: 2026-09-08T15:22:50Z
 
 ## Session Rule
 
@@ -11,6 +11,22 @@ Every working session must end by updating:
 - `architecture/session-state.yaml`
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+
+## Project card alignment — 2026-09-08
+
+- Fixed the uneven homepage project-card widths shown in the user's mobile screenshot. The homepage flex column inherited `align-items: start` from the shared grid style; explicitly stretching its children gives every card the same width and aligns their image/text boundaries.
+- Changed only the scoped homepage source CSS and rebuilt the generated stylesheet. ES/EN/RU share this fix; secondary-page styles are unchanged.
+- Full checks and all 29 Knowledge tests passed; the VPS bundle validated. Browser visual QA remains unavailable in this environment.
+- A separate owner-private Sites copy supports user visual review; the original production site and main branch are unchanged.
+
+## Local preview attempt — 2026-09-08
+
+- Inspected commit `d0b95d78899c49c504131e5fe2f4fb043034011a` in a local checkout at the user's request.
+- Re-ran all project checks: 29/29 Knowledge tests, zero content errors, five existing audit warnings; generated tracked files remained unchanged.
+- Built and validated the VPS bundle: eight sitemap routes and eleven HTML files.
+- Browser QA remains incomplete: the supervised session-preview service is unavailable in this environment (missing daemon mailbox). No desktop/mobile rendering or interaction result is claimed.
+- Removed the temporary preview dependency/configuration experiment. Application source and production are unchanged. This note is local; no GitHub commit or push was performed.
+- Static review: homepage image references total about 6.36 MB; the bathroom PNG (2.14 MB) and one project thumbnail source (1.83 MB) are the largest. Below-fold images use lazy loading. Image optimization and visual review remain pending.
 
 ## Homepage Design — 2026-09-08
 

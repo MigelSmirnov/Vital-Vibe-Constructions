@@ -1,6 +1,6 @@
-version: 26
+version: 28
 
-updated_at: 2026-09-08T06:22:42Z
+updated_at: 2026-09-08T15:22:50Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -169,6 +169,14 @@ seo_aeo_matrix:
   route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
+  - date: 2026-09-08
+    summary: Fixed homepage project-card widths from the user's mobile screenshot by overriding inherited cross-axis alignment in the homepage flex column. Rebuilt the shared ES/EN/RU homepage stylesheet.
+    validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass
+    limitation: browser-visual-review-unavailable; user-review-via-separate-private-site
+  - date: 2026-09-08
+    summary: Rechecked the saved homepage commit locally and built the preview release at the user request. No application source edits, remote writes or deployments were made.
+    validation: 29-knowledge-tests-pass; full-checks-pass; generated-tracked-files-clean; vps-bundle-pass
+    limitation: supervised-session-preview-service-unavailable; browser-visual-review-not-performed
   - date: 2026-09-08
     summary: Implemented the user-supplied graphite/gold homepage direction with split kitchen hero, native service disclosures, a retouched bathroom feature, compact existing project index, responsive header/menu, pricing and footer. Centralized media/content and all three homepage languages retained. Article routes and production remain unchanged.
     validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; homepage-html-and-asset-checks-pass
