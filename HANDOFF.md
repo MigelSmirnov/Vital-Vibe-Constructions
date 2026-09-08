@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 32
-Updated: 2026-09-08T21:22:01Z
+Version: 33
+Updated: 2026-09-08T22:02:39Z
 
 ## Session Rule
 
@@ -11,6 +11,14 @@ Every working session must end by updating:
 - `architecture/session-state.yaml`
 
 This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+
+## Repository task entry point
+
+- Start new work from [task/README.md](task/README.md), after reading the contracts required by AGENTS.md. The root README links it prominently. The task queue is human context, not a new source of truth.
+- The next proposed task is [001 — reproducible visual checks](task/001-visual-checks.md). Screenshot tooling is not implemented yet. The backlog also records photo preparation, remaining link/language checks, shared styling, and the approved logo concept 02 with its signature stroke; keep that logo unchanged and do not install it yet.
+- Task notes stay outside the generated site and release. The bundle validator rejects task/ and root development documents; README now instructs artifact-only publishing instead of copying the repository root.
+- Validation passed: full checks (34 tests, zero audit errors and five existing warnings), release bundle (11 sitemap routes, 16 HTML files), deliberate task/ contamination rejection and relative documentation links. Generated public files remained unchanged. This change does not deploy the website.
+- The previous multilingual Article review was successfully published to the existing owner-private Site as version 6, from source commit 101002319740ab3a403ed03775e2c67c4140b3d5. Original public hosting is separate.
 
 ## Multilingual bathroom Article promoted — 2026-09-08
 

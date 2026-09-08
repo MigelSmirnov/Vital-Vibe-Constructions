@@ -1,6 +1,6 @@
-version: 36
+version: 37
 
-updated_at: 2026-09-08T21:22:01Z
+updated_at: 2026-09-08T22:02:39Z
 phase: homepage-visual-redesign
 stage_status: first-design-slice-built-and-locally-validated
 active_branch: agent/architecture-sandbox
@@ -9,6 +9,9 @@ pull_request:
   state: ready-for-review
   base: main
   head: agent/architecture-sandbox
+
+task_queue: task/README.md
+next_proposed_task: task/001-visual-checks.md
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -113,6 +116,10 @@ vps_bundle:
     - vps-site-bundle.tgz
   excludes:
     - legacy-root-index-html
+    - task/
+    - README.md
+    - HANDOFF.md
+    - AGENTS.md
 
 vps_server:
   web_server: caddy
@@ -171,9 +178,12 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-08
+    summary: Added repository-only task entry point linked from the root README and AGENTS, a bounded visual-check brief, automation backlog and the selected logo decision. Corrected legacy root-deployment guidance and added a deployment-documentation exclusion gate.
+    validation: full-checks-pass; 34-tests-pass; bundle-pass; task-contamination-rejected; documentation-links-valid; public-generated-files-unchanged
+  - date: 2026-09-08
     summary: Promoted the approved bathroom story to a published Knowledge Article in Spanish, English and Russian. Added localized routes, captions, language navigation, homepage links, sitemap and llms entries; the former draft URL redirects to the Spanish article. Only Badalona is displayed as the location.
     validation: 34-knowledge-tests-pass; three-localized-article-pages-validated; full-checks-pass; vps-bundle-pass; 11-sitemap-routes; two-remaining-drafts-valid
-    review_delivery: refresh-existing-owner-private-site; original-production-unchanged
+    review_delivery: owner-private-site-version-6-published; original-production-unchanged
   - date: 2026-09-08
     summary: Integrated the approved narrative title, reader-focused story, mirror outlet height clarification and revised section headings into the Spanish bathroom reading draft. Clarification also updates the Project evidence; city-only location and all six photographs are retained.
     validation: three-drafts-valid; 30-knowledge-tests-pass; full-checks-pass; vps-bundle-pass

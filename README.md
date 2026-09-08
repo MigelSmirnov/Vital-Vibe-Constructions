@@ -1,20 +1,37 @@
-# Vital Vibe Constructions — sitio web
+# Vital Vibe Constructions — сайт
 
-Sitio estático listo para desplegar (GitHub Pages, Netlify, Vercel, etc.).
+> **Начать здесь: [текущие задачи и передача контекста → `/task`](task/README.md).**
+> Следующий предложенный шаг — [автоматические скриншоты и проверка мобильной вёрстки](task/001-visual-checks.md).
 
-## Estructura
-- `index.html` — página principal
-- `galeria-economica.dc.html`, `galeria-estandar.dc.html`, `galeria-premium.dc.html` — galerías
-- `aviso-legal.dc.html` — aviso legal (enlazado desde el footer)
-- `support.js` — runtime necesario (no borrar)
-- `VVC_primary_logo.svg` — logo
-- `estandar/`, `premium/`, `proyecto-1/`, `proyecto-2/`, `smart/` — imágenes
+Новый сайт разрабатывается в ветке `agent/architecture-sandbox`. Исходные данные находятся в `content/tables`, страницы собираются в `site-next`.
 
-## Desplegar en GitHub Pages
-1. Crea un repositorio y sube **el contenido de esta carpeta** a la raíz (o a `/docs`).
-2. En **Settings → Pages**, elige la rama y la carpeta (`/root` o `/docs`).
-3. El sitio se publica en `https://<usuario>.github.io/<repo>/`.
+## Для продолжения работы
 
-El archivo `.nojekyll` evita que GitHub Pages procese los archivos con Jekyll.
+- [task/README.md](task/README.md) — краткий контекст, решения владельца и очередь задач.
+- [AGENTS.md](AGENTS.md) — обязательные правила работы и порядок чтения контрактов.
+- [HANDOFF.md](HANDOFF.md) — подробная передача контекста.
+- [architecture/session-state.yaml](architecture/session-state.yaml) — текущее состояние и результаты проверок.
+- [TERMUX_WORKFLOW.md](TERMUX_WORKFLOW.md) — работа с репозиторием через Termux.
 
-Idiomas: español, inglés y ruso (selector en la cabecera). El formulario de contacto está oculto hasta que el backend esté listo; los botones de WhatsApp ya funcionan.
+## Проверка и сборка нового сайта
+
+Из корня репозитория:
+
+```bash
+node tools/checks/run.mjs
+node tools/deploy/build-vps-bundle.mjs
+node tools/deploy/validate-vps-bundle.mjs
+```
+
+Публикуется только содержимое `.deploy-dist/`. Не загружайте весь корень репозитория и не переключайте GitHub Pages на корень рабочей ветки: там находятся служебные документы и черновики. `/task` — папка репозитория, а не маршрут сайта. Валидатор сборки отклоняет её попадание в публичный пакет.
+
+Текущий план размещения: [VPS и Caddy](architecture/vps-migration-plan.md). [GitHub Pages](architecture/production-deployment-plan.md) сохранён как отдельный резервный сценарий. Команды выше готовят и проверяют файлы, но не выполняют деплой.
+
+## Структура
+
+- `content/tables/`, `knowledge/` — исходные записи и их валидация.
+- `tools/` — сборщики и проверки; `site-next/` — генерируемые страницы.
+- `assets/`, `estandar/`, `premium/`, `proyecto-1/`, `proyecto-2/`, `smart/` — изображения.
+- `sandbox/articles/` — оставшиеся черновики статей.
+- `task/`, `architecture/`, `HANDOFF.md` — задачи, контракты и контекст разработки.
+- Корневые `index.html`, старые галереи и `support.js` — прежний сайт; во время миграции их не редактируем.

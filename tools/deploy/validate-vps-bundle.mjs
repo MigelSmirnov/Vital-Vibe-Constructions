@@ -90,6 +90,13 @@ function extractLocalReferences(html, htmlPath) {
 }
 
 async function main() {
+  // Repository handoff and task notes must never become public site files.
+  for (const internalPath of ["task", "HANDOFF.md", "AGENTS.md", "README.md"]) {
+    if (await exists(internalPath)) {
+      throw new Error(`Repository-only documentation leaked into deployment bundle: ${internalPath}`);
+    }
+  }
+
   for (const file of requiredFiles) {
     if (!(await exists(file))) {
       throw new Error(`Required deployment file is missing: ${file}`);
