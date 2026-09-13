@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 57
-Updated: 2026-09-13T20:32:59Z
+Version: 58
+Updated: 2026-09-13T21:00:39Z
 
 ## Session rule
 
@@ -35,6 +35,10 @@ Validation: 35 tests, gallery 39/39, 12 localized article pages, audit 0 errors 
 GitHub Pages configuration remains `main:/` with its custom domain and HTTPS intact for DNS rollback. Previous release `20260913-13f0f47` is retained for symlink rollback (working solar iframe, heavier article photographs). Initial release `20260913-fb31a282` is also retained as historical recovery material. Article source CSS, its builder and generated CSS links changed in the follow-up fix; article copy, animation source, support.js, main and PR #6 remain unchanged.
 
 **Operational follow-ups are not claimed complete:** shared VPS still permits SSH passwords and root key login; provider firewall/DDoS controls, registrar MFA and external uptime monitoring have not been verified/configured in this task. Handle those with the shared-server recovery/access context. See [execution report](architecture/vps-cutover-20260913/report.md). The public website migration itself is complete.
+
+## Crawler and AEO audit
+
+Read-only audit of current production completed: all 25 checked canonical pages accessible in raw HTML; 24 user-agent probes passed. Two sitemap omissions (/en/, /ru/) and an indexable Netlify preview identified. Article content has useful first-hand evidence; actual new-page indexing and AI citations remain unverified without webmaster data. See [audit and priorities](architecture/crawler-aeo-audit/report.md). No production changes were made.
 
 ## Painting and floor photograph delivery
 

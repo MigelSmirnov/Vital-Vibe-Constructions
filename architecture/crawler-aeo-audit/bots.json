@@ -1,0 +1,186 @@
+[
+  {
+    "ua": "Googlebot",
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "cda9857866d4799abe18a7b2bb60b79b8f66acb123fa13f142092378b20db15e",
+        "robots": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "42b309f5ee67b4e6a1dad18c6c2da9e1f95c170509558a397a2b4d2c65ca1046",
+        "robots": null
+      },
+      {
+        "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+        "status": 200,
+        "sha256": "639dd58d54be8dc7ff262b0b9e0636c1a9244f065d190a242e85edec8e8d6fb9",
+        "robots": null
+      }
+    ]
+  },
+  {
+    "ua": "bingbot",
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "cda9857866d4799abe18a7b2bb60b79b8f66acb123fa13f142092378b20db15e",
+        "robots": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "42b309f5ee67b4e6a1dad18c6c2da9e1f95c170509558a397a2b4d2c65ca1046",
+        "robots": null
+      },
+      {
+        "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+        "status": 200,
+        "sha256": "639dd58d54be8dc7ff262b0b9e0636c1a9244f065d190a242e85edec8e8d6fb9",
+        "robots": null
+      }
+    ]
+  },
+  {
+    "ua": "YandexBot",
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "cda9857866d4799abe18a7b2bb60b79b8f66acb123fa13f142092378b20db15e",
+        "robots": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "42b309f5ee67b4e6a1dad18c6c2da9e1f95c170509558a397a2b4d2c65ca1046",
+        "robots": null
+      },
+      {
+        "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+        "status": 200,
+        "sha256": "639dd58d54be8dc7ff262b0b9e0636c1a9244f065d190a242e85edec8e8d6fb9",
+        "robots": null
+      }
+    ]
+  },
+  {
+    "ua": "OAI-SearchBot",
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "cda9857866d4799abe18a7b2bb60b79b8f66acb123fa13f142092378b20db15e",
+        "robots": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "42b309f5ee67b4e6a1dad18c6c2da9e1f95c170509558a397a2b4d2c65ca1046",
+        "robots": null
+      },
+      {
+        "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+        "status": 200,
+        "sha256": "639dd58d54be8dc7ff262b0b9e0636c1a9244f065d190a242e85edec8e8d6fb9",
+        "robots": null
+      }
+    ]
+  },
+  {
+    "ua": "GPTBot",
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "cda9857866d4799abe18a7b2bb60b79b8f66acb123fa13f142092378b20db15e",
+        "robots": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "42b309f5ee67b4e6a1dad18c6c2da9e1f95c170509558a397a2b4d2c65ca1046",
+        "robots": null
+      },
+      {
+        "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+        "status": 200,
+        "sha256": "639dd58d54be8dc7ff262b0b9e0636c1a9244f065d190a242e85edec8e8d6fb9",
+        "robots": null
+      }
+    ]
+  },
+  {
+    "ua": "ChatGPT-User",
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "cda9857866d4799abe18a7b2bb60b79b8f66acb123fa13f142092378b20db15e",
+        "robots": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "42b309f5ee67b4e6a1dad18c6c2da9e1f95c170509558a397a2b4d2c65ca1046",
+        "robots": null
+      },
+      {
+        "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+        "status": 200,
+        "sha256": "639dd58d54be8dc7ff262b0b9e0636c1a9244f065d190a242e85edec8e8d6fb9",
+        "robots": null
+      }
+    ]
+  },
+  {
+    "ua": "ClaudeBot",
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "cda9857866d4799abe18a7b2bb60b79b8f66acb123fa13f142092378b20db15e",
+        "robots": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "42b309f5ee67b4e6a1dad18c6c2da9e1f95c170509558a397a2b4d2c65ca1046",
+        "robots": null
+      },
+      {
+        "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+        "status": 200,
+        "sha256": "639dd58d54be8dc7ff262b0b9e0636c1a9244f065d190a242e85edec8e8d6fb9",
+        "robots": null
+      }
+    ]
+  },
+  {
+    "ua": "PerplexityBot",
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "cda9857866d4799abe18a7b2bb60b79b8f66acb123fa13f142092378b20db15e",
+        "robots": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "42b309f5ee67b4e6a1dad18c6c2da9e1f95c170509558a397a2b4d2c65ca1046",
+        "robots": null
+      },
+      {
+        "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+        "status": 200,
+        "sha256": "639dd58d54be8dc7ff262b0b9e0636c1a9244f065d190a242e85edec8e8d6fb9",
+        "robots": null
+      }
+    ]
+  }
+]

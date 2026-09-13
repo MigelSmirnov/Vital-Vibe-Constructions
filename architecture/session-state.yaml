@@ -1,8 +1,8 @@
-version: 60
-updated_at: 2026-09-13T20:32:59Z
+version: 61
+updated_at: 2026-09-13T21:00:39Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/article-photo-delivery
+active_branch: agent/crawler-aeo-audit
 pull_request:
   number: 1
   state: merged-historical
@@ -11,6 +11,16 @@ pull_request:
 
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
+
+crawler_aeo_audit:
+  report: architecture/crawler-aeo-audit/report.md
+  production_changes: false
+  canonical_pages_checked: 25
+  user_agent_probes_passed: 24
+  actual_crawler_visits_verified: false
+  new_article_indexing_verified: false
+  sitemap_missing: [/en/, /ru/]
+  preview_root_indexable: true
 
 article_photo_delivery:
   report: architecture/article-photo-delivery/report.md
