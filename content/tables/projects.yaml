@@ -108,32 +108,6 @@
       },
       "estimated_total_cost_eur": 48000,
       "cost_note": "Importe aproximado. Algunos materiales fueron comprados directamente por el propietario, por lo que no es posible reconstruir un coste total exacto ni utilizar esta cifra como tarifa para otros proyectos.",
-      "pending_technical_media": [
-        {
-          "subject": "Formación y vertido de los suelos",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Suelos en fase de obra y cerramientos de yeso laminado",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Restauración de la pared",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Impermeabilización de los baños",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Instalación con tubo corrugado blanco",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Cuadro eléctrico",
-          "status": "pending-upload"
-        }
-      ],
       "transformation_summary": "Una vivienda de 50 m² sin servicios funcionales se convirtió en dos estudios independientes mediante una obra por fases, diseñada para que la segunda fase no interrumpiera la primera unidad ya terminada."
     },
     {

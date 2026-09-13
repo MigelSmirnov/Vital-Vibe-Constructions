@@ -153,8 +153,10 @@
   .home .featured-bathroom > img { flex: auto; height: auto; max-height: 520px; }
   .home .featured-bathroom-media { flex: auto; min-height: 0; }
   .home .featured-bathroom-media img { position: static; height: auto; max-height: 520px; }
-  .home .project-card { grid-template-columns: 35% 1fr; }
-  .home .project-card h3 { font-size: 1.125rem; }
+  .home .project-card { grid-template-columns: 1fr; }
+  .home .project-card-media { min-height: 0; aspect-ratio: 16 / 10; }
+  .home .project-card-body { padding: 1rem 1.1rem 1.2rem; }
+  .home .project-card h3 { font-size: 1.2rem; }
   .home .capability-layout { grid-template-columns: 1fr; }
   .home .capability-lead img { height: 340px; }
   .home .capability-gallery img { height: 220px; }

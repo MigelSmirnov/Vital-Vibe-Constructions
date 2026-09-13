@@ -8,6 +8,7 @@ import { createKnowledgeRepository, loadContentTables } from "../../knowledge/in
 const root = process.cwd();
 const outputDir = path.join(root, "site-next/gallery");
 const coverageContractPath = path.join(root, "architecture/gallery-media-coverage.yaml");
+const galleryStylesPath = path.join(root, "tools/site-next/gallery.css");
 
 function escapeHtml(value) {
   return String(value)
@@ -26,25 +27,67 @@ function renderGallery({ site, projects, media, capabilitySections }) {
   const title = `Galería de reformas en Barcelona | ${site.name}`;
   const description = `Galería completa de proyectos, procesos de obra, acabados e instalaciones documentadas por ${site.name} en Barcelona.`;
   const canonicalUrl = `${site.canonicalOrigin}/gallery/`;
-  const figures = media.map((image) => {
+  const groups = new Map();
+
+  for (const image of media) {
     const project = image.project_id ? projectById.get(image.project_id) : null;
     const capability = capabilityByMediaId.get(image.id);
-    const ownerLabel = project?.title ?? capability?.title ?? "Trabajo documentado";
-    const ownerHref = project ? `../projects/${escapeHtml(project.slug)}/` : "../#hogar-inteligente";
-    const stateLabel = image.before_after_state
-      ? { before: "Antes", work: "Proceso", after: "Resultado" }[image.before_after_state] ?? image.before_after_state
-      : "Detalle";
+    const owner = project
+      ? {
+          key: `project-${project.id}`,
+          title: project.title,
+          href: `../projects/${project.slug}/`,
+          meta: [project.location, project.budget_range].filter(Boolean).join(" · "),
+          linkLabel: "Ver proyecto",
+        }
+      : capability
+        ? {
+            key: `capability-${capability.id}`,
+            title: capability.title,
+            href: `../#${capability.slug}`,
+            meta: "Domótica y preinstalación",
+            linkLabel: "Ver capacidad",
+          }
+        : {
+            key: "documented-work",
+            title: "Trabajo documentado",
+            href: "../#proyectos",
+            meta: "Archivo de obra",
+            linkLabel: "Ver proyectos",
+          };
 
-    return `<figure class="gallery-card">
-      <a class="gallery-card-media" href="${ownerHref}">
-        <img src="../../${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" width="${image.width}" height="${image.height}" loading="lazy">
-      </a>
-      <figcaption>
-        <span class="gallery-state">${escapeHtml(stateLabel)}</span>
-        <strong>${escapeHtml(image.caption ?? image.alt)}</strong>
-        <a class="text-link" href="${ownerHref}">${escapeHtml(ownerLabel)}</a>
-      </figcaption>
-    </figure>`;
+    if (!groups.has(owner.key)) groups.set(owner.key, { ...owner, images: [] });
+    groups.get(owner.key).images.push(image);
+  }
+
+  const sections = [...groups.values()].map((group, groupIndex) => {
+    const headingId = `gallery-group-${groupIndex + 1}`;
+    const cards = group.images.map((image) => {
+      const stateLabel = image.before_after_state
+        ? { before: "Antes", work: "Proceso", after: "Resultado" }[image.before_after_state] ?? image.before_after_state
+        : "Detalle";
+
+      return `<figure class="gallery-card">
+        <a class="gallery-card-media" href="${escapeHtml(group.href)}">
+          <img src="../../${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" width="${image.width}" height="${image.height}" loading="lazy">
+        </a>
+        <figcaption>
+          <span class="gallery-state">${escapeHtml(stateLabel)}</span>
+          <strong>${escapeHtml(image.caption ?? image.alt)}</strong>
+        </figcaption>
+      </figure>`;
+    }).join("");
+
+    return `<section class="gallery-section" aria-labelledby="${headingId}">
+      <header class="gallery-section-heading">
+        <div>
+          <p class="eyebrow">${group.images.length} ${group.images.length === 1 ? "imagen" : "imágenes"}${group.meta ? ` · ${escapeHtml(group.meta)}` : ""}</p>
+          <h2 id="${headingId}">${escapeHtml(group.title)}</h2>
+        </div>
+        <a class="text-link" href="${escapeHtml(group.href)}">${escapeHtml(group.linkLabel)}</a>
+      </header>
+      <div class="gallery-grid">${cards}</div>
+    </section>`;
   }).join("");
 
   const structuredData = {
@@ -69,6 +112,7 @@ function renderGallery({ site, projects, media, capabilitySections }) {
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}">
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../gallery.css">
   <script type="application/ld+json">${JSON.stringify(structuredData, null, 2)}</script>
 </head>
 <body>
@@ -91,11 +135,11 @@ function renderGallery({ site, projects, media, capabilitySections }) {
       <div class="container">
         <p class="eyebrow">Galería completa</p>
         <h1>Reformas, procesos y acabados en Barcelona</h1>
-        <p>Explora las 39 imágenes verificadas del archivo legacy, enlazadas con sus proyectos o capacidades reales.</p>
+        <p>Las 39 imágenes verificadas se conservan completas y se agrupan por proyecto o capacidad para facilitar la exploración.</p>
       </div>
     </section>
     <section class="section">
-      <div class="container gallery-grid">${figures}</div>
+      <div class="container gallery-collection">${sections}</div>
     </section>
   </main>
   <footer class="site-footer"><div class="container">© ${new Date().getUTCFullYear()} ${escapeHtml(site.name)}</div></footer>
@@ -104,9 +148,10 @@ function renderGallery({ site, projects, media, capabilitySections }) {
 }
 
 async function main() {
-  const [knowledge, coverageContract] = await Promise.all([
+  const [knowledge, coverageContract, galleryStyles] = await Promise.all([
     loadContentTables({ root }).then((tables) => createKnowledgeRepository(tables)),
     readFile(coverageContractPath, "utf8").then(JSON.parse),
+    readFile(galleryStylesPath, "utf8"),
   ]);
   const mediaBySrc = new Map(knowledge.listMedia().map((item) => [item.src, item.toRecord()]));
   const expectedSources = coverageContract.sources.flatMap((source) => source.items.map((item) => item.src));
@@ -124,13 +169,16 @@ async function main() {
   });
 
   await mkdir(outputDir, { recursive: true });
-  await writeFile(path.join(outputDir, "index.html"), renderGallery({
-    site: knowledge.getSite().toRecord(),
-    projects: knowledge.listProjects().map((project) => project.toRecord()),
-    media,
-    capabilitySections: knowledge.listCapabilitySections().map((section) => section.toRecord()),
-  }), "utf8");
-  console.log(`Built gallery with ${media.length} contract media records`);
+  await Promise.all([
+    writeFile(path.join(outputDir, "index.html"), renderGallery({
+      site: knowledge.getSite().toRecord(),
+      projects: knowledge.listProjects().map((project) => project.toRecord()),
+      media,
+      capabilitySections: knowledge.listCapabilitySections().map((section) => section.toRecord()),
+    }), "utf8"),
+    writeFile(path.join(root, "site-next/gallery.css"), galleryStyles, "utf8"),
+  ]);
+  console.log(`Built grouped gallery with ${media.length} contract media records`);
 }
 
 main().catch((error) => {
