@@ -1,6 +1,10 @@
 # VPS preparation and pre-DNS acceptance — 2026-09-13
 
-## Current release after article photograph optimization
+## Current release after localized sitemap correction
+
+Production serves `f25d27baa3abef644eedd87b4fcda614c828855d` / `20260913-f25d27b`. Sitemap now contains all three homepages and 25 URLs. Only sitemap.xml and DEPLOYMENT_COMMIT changed; all 201 other files are identical to 2695336. Public checks passed. Rollback release: `20260913-2695336`. See [report](../localized-home-sitemap/report.md).
+
+## Article photograph optimization (historical)
 
 Production now serves `2695336c8117234206bc4a3e19009ae517f7094f` / `20260913-2695336`. Eight painting/floor photos use responsive WebP; all 36 public browser checks passed. See [delivery report](../article-photo-delivery/report.md). Previous `20260913-13f0f47` is retained for rollback. DNS, TLS and shared-server settings are unchanged.
 

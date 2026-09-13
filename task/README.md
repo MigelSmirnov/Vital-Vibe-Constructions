@@ -30,7 +30,7 @@
 
 | Приоритет | Задача | Статус / результат |
 | --- | --- | --- |
-| Следующий шаг | [Crawler / AEO](../architecture/crawler-aeo-audit/report.md) | Аудит готов; Netlify preview закрыт входом в аккаунт (401). Далее: добавить /en/ и /ru/ в sitemap, проверить индексацию через кабинеты поисковиков. Production не изменён. |
+| Следующий шаг | [Crawler / AEO](../architecture/crawler-aeo-audit/report.md) | Netlify preview закрыт (401); /en/ и /ru/ добавлены в production sitemap, 25 URL проверены, релиз f25d27b. Далее: проверить индексацию через кабинеты поисковиков. |
 | Готово | Shared secondary reduced-motion scroll cleanup | Run #68 зелёный; gallery + El Raval получают `scroll-behavior: auto` при reduced motion. |
 | Готово | [002 — responsive image optimization](002-responsive-images.md) | Текущий bounded scope закрыт: homepage + Standard + Premium + hero/LCP + top-16 gallery reuse зелёные. |
 | Опционально | Hero / preload follow-up | Только если отдельный timing experiment покажет пользу. Responsive hero уже внедрён и измерен; preload сейчас не нужен по умолчанию. |

@@ -1,8 +1,8 @@
-version: 62
-updated_at: 2026-09-13T21:09:34Z
+version: 63
+updated_at: 2026-09-13T21:13:30Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/netlify-preview-private
+active_branch: agent/localized-home-sitemap
 pull_request:
   number: 1
   state: merged-historical
@@ -11,6 +11,15 @@ pull_request:
 
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
+
+localized_home_sitemap:
+  report: architecture/localized-home-sitemap/report.md
+  source_sha: f25d27baa3abef644eedd87b4fcda614c828855d
+  sitemap_urls: 25
+  public_routes_passed: 25
+  unchanged_release_files: 201
+  changed_release_files: [sitemap.xml, DEPLOYMENT_COMMIT]
+  webmaster_submission_performed: false
 
 netlify_preview_access:
   report: architecture/netlify-preview-private/report.md
@@ -30,7 +39,8 @@ crawler_aeo_audit:
   user_agent_probes_passed: 24
   actual_crawler_visits_verified: false
   new_article_indexing_verified: false
-  sitemap_missing: [/en/, /ru/]
+  sitemap_missing_at_audit: [/en/, /ru/]
+  sitemap_omissions_resolved: true
   preview_root_indexable_at_audit: true
 
 article_photo_delivery:
@@ -68,11 +78,11 @@ solar_embed_width_fix:
 
 vps_execution:
   report: architecture/vps-cutover-20260913/report.md
-  release_sha: 2695336c8117234206bc4a3e19009ae517f7094f
+  release_sha: f25d27baa3abef644eedd87b4fcda614c828855d
   initial_migration_sha: fb31a282e0204bc37d3ced1982675fef0332573f
-  archive_sha256: e081bca9155398e72fb0a06ea61c5ca510f22902646513a0f38194e4bc55ca6b
-  release_id: 20260913-2695336
-  server_current: /srv/vital-vibe/releases/20260913-2695336
+  archive_sha256: 0775aef73e0fb6b0a9ca8224128d8106996cf251b8b939c1fae5860e279b555c
+  release_id: 20260913-f25d27b
+  server_current: /srv/vital-vibe/releases/20260913-f25d27b
   public_cutover_complete: true
   public_url: https://vitalvibeconstruction.com
   production_browser_page_checks: 21
@@ -93,7 +103,7 @@ vps_execution:
   apex_a: 152.228.139.236
   www_cname: vitalvibeconstruction.com
   preserved_app_and_mail_dns: true
-  previous_vps_release: 20260913-13f0f47
+  previous_vps_release: 20260913-2695336
   rollback_hosting: unchanged-github-pages
   caddy_container: vvc-site
   caddy_listener: 127.0.0.1:8890
@@ -101,7 +111,7 @@ vps_execution:
   runtime_uid: 65534
   release_mount: read-only
   full_checks: passed-35-tests-0-errors-5-warnings
-  sitemap_routes_checked: 23
+  sitemap_routes_checked: 25
   browser_page_checks: 69
   solar_language_viewport_checks: 9
   historical_redirects_checked: 9

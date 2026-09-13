@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 59
-Updated: 2026-09-13T21:09:34Z
+Version: 60
+Updated: 2026-09-13T21:13:30Z
 
 ## Session rule
 
@@ -22,7 +22,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 ## Production — VPS cutover completed 2026-09-13
 
-**Published and verified:** https://vitalvibeconstruction.com serves release SHA `2695336c8117234206bc4a3e19009ae517f7094f` with responsive article photographs. `/srv/vital-vibe/current` points to release `20260913-2695336`. Archive SHA-256: `e081bca9155398e72fb0a06ea61c5ca510f22902646513a0f38194e4bc55ca6b`.
+**Published and verified:** https://vitalvibeconstruction.com serves release SHA `f25d27baa3abef644eedd87b4fcda614c828855d` with all localized homepages in the sitemap. `/srv/vital-vibe/current` points to release `20260913-f25d27b`. Archive SHA-256: `0775aef73e0fb6b0a9ca8224128d8106996cf251b8b939c1fae5860e279b555c`.
 
 Owner changed DonDominio manually: apex now has one A record `152.228.139.236`; www CNAME is `vitalvibeconstruction.com.`. Both authoritative servers agree. Existing app, other subdomains and mail records were preserved. Original zone screenshots and private nginx backup are retained on VPS under `/home/ubuntu/vvc-migration-fb31a282/backup/`.
 
@@ -32,13 +32,17 @@ Certificate covers apex + www until 2026-12-12. **Automatic renewal is configure
 
 Validation: 35 tests, gallery 39/39, 12 localized article pages, audit 0 errors / 5 warnings; 23 sitemap routes and nine historical redirects checked on public HTTPS; 69 pre-cutover browser page checks plus 21 final public browser checks and nine public solar iframe/control checks. No broken images, JS errors or horizontal overflow in the checked pages. Painting retains 10 sections / two photos; renovation-cost article retains 11 sections / six photos. HTTP→HTTPS and www→apex work. Planner `/manual` remained byte-identical. No 5xx or Caddy error messages in the sampled logs; one missing favicon and rejected .env probes were observed.
 
-GitHub Pages configuration remains `main:/` with its custom domain and HTTPS intact for DNS rollback. Previous release `20260913-13f0f47` is retained for symlink rollback (working solar iframe, heavier article photographs). Initial release `20260913-fb31a282` is also retained as historical recovery material. Article source CSS, its builder and generated CSS links changed in the follow-up fix; article copy, animation source, support.js, main and PR #6 remain unchanged.
+GitHub Pages configuration remains `main:/` with its custom domain and HTTPS intact for DNS rollback. Previous release `20260913-2695336` is retained for symlink rollback (same pages and optimized images; EN/RU homepage entries missing from sitemap). Initial release `20260913-fb31a282` is also retained as historical recovery material. Article source CSS, its builder and generated CSS links changed in the follow-up fix; article copy, animation source, support.js, main and PR #6 remain unchanged.
 
 **Operational follow-ups are not claimed complete:** shared VPS still permits SSH passwords and root key login; provider firewall/DDoS controls, registrar MFA and external uptime monitoring have not been verified/configured in this task. Handle those with the shared-server recovery/access context. See [execution report](architecture/vps-cutover-20260913/report.md). The public website migration itself is complete.
 
+## Localized homepage sitemap published
+
+All three homepages now belong to the route contract; sitemap generation/validation has no separate root exception. Public sitemap contains 25 unique canonical URLs including /en/ and /ru/. Full 35 tests, bundle validation and all 25 public route checks passed. Only sitemap.xml and DEPLOYMENT_COMMIT differ from previous production; 201 other files remain identical. Netlify stays protected, planner unchanged. See [release report](architecture/localized-home-sitemap/report.md). Search Console/Bing indexing verification remains the next step.
+
 ## Netlify preview closed to anonymous access
 
-Owner authorized restricting the preview. Netlify project `vital-vibe-preview` now requires team login for all deploys. Both preview alias and deploy permalink return 401 anonymously; the primary VPS site remains public at SHA 2695336 and planner is unchanged. This supersedes the audit finding that preview was publicly indexable. See [settings, checks and rollback](architecture/netlify-preview-private/report.md).
+Owner authorized restricting the preview. Netlify project `vital-vibe-preview` now requires team login for all deploys. Both preview alias and deploy permalink return 401 anonymously; the primary VPS site remained public at SHA 2695336 during that change and planner was unchanged. This supersedes the audit finding that preview was publicly indexable. See [settings, checks and rollback](architecture/netlify-preview-private/report.md).
 
 ## Crawler and AEO audit
 
