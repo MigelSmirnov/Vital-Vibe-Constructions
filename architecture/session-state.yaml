@@ -1,7 +1,7 @@
-version: 38
-updated_at: 2026-09-13T06:36:00Z
+version: 39
+updated_at: 2026-09-13T06:56:00Z
 phase: homepage-visual-redesign
-stage_status: first-visual-review-fixes-built-and-browser-validated
+stage_status: second-visual-refinement-built-and-browser-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -90,7 +90,17 @@ visual_qa:
       - gallery-grouped-by-project-or-capability
       - el-raval-public-pending-photo-status-removed
       - mobile-home-project-cards-stacked
-  baseline_status: awaiting-human-review-of-improved-screenshots
+  second_review_fix_run:
+    run_number: 14
+    source_commit: 712f180c9a8f7f9f273ec8eada27b0755d659931
+    status: success
+    fixes:
+      - smart-home-mobile-density-reduced
+      - article-desktop-editorial-frame-centered
+    loading_failures: 0
+    broken_images: 0
+    horizontal_overflow_findings: 0
+  baseline_status: awaiting-owner-approval-of-refined-screenshots
   diagnostics_publication: ci-artifact-only
 
 visual_design:
@@ -99,12 +109,22 @@ visual_design:
   homepage_source_interactions: tools/site-next/home.js
   gallery_source_styles: tools/site-next/gallery.css
   gallery_builder: tools/site-next/build-gallery.mjs
+  article_source_styles: tools/articles/article.css
   gallery_media_coverage_required: 39
   gallery_media_coverage_current: 39
+  smart_home_mobile:
+    content_removed: false
+    lead_image_height_px: 240
+    partner_grid_columns: 2
+    partner_preview_height_px: 145
+  article_desktop:
+    editorial_frame_px: 1040
+    reading_column_px: 720
+    toc_sticky: true
+    mobile_layout_changed: false
   next_review_candidates:
-    - smart-home-mobile-density
-    - article-desktop-centering
     - shared-semantic-brand-tokens
+    - target-size-keyboard-focus-accessibility
     - responsive-image-optimization
 
 content_state:
@@ -240,6 +260,9 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-13
+    summary: Reduced Smart Home mobile density without removing content and centered the desktop Article into a shared 1040 px editorial frame. Source and tracked generated CSS remain synchronized.
+    validation: full-checks-pass; vps-bundle-pass; visual-qa-run-14-success; no-loading-errors; no-broken-images; no-horizontal-overflow; no-production-deploy
+  - date: 2026-09-13
     summary: Implemented reproducible browser Visual QA and completed the first human review/fix/rerun loop. Grouped the complete gallery into project/capability sections, removed the El Raval internal pending-photo status from public content, and stacked compact homepage project cards on mobile.
     validation: full-checks-pass; vps-bundle-pass; visual-qa-run-5-success; 39-gallery-media-preserved; no-production-deploy
   - date: 2026-09-08
@@ -256,8 +279,8 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Review improved browser screenshots and approve the first visual baseline before starting the next UI refinement.
-  status: first-review-fixes-browser-validated-awaiting-human-baseline-approval
+  goal: Review run #14 screenshots and approve the current refined set as the first visual baseline.
+  status: second-refinement-browser-validated-awaiting-owner-baseline-approval
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
@@ -266,9 +289,9 @@ next_verification:
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
   - generated-projections-must-remain-clean
-  - human-review-required-before-baseline
+  - owner-review-required-before-baseline
   - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: After visual baseline approval, address the next confirmed UI issue; VPS cutover remains a separate future stage.
+  goal: After visual baseline approval, introduce shared semantic brand tokens and accessibility checks; VPS cutover remains a separate future stage.
