@@ -10,7 +10,7 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--gold); outline
 .header-inner > a:last-child { font-size: 14px; text-decoration: none; }
 .header-inner > a:last-child span { margin-left: 12px; color: #d6ad68; }
 main { max-width: 1180px; margin: auto; padding: 0 32px; }
-.article-header { padding: 68px 0 38px; border-bottom: 1px solid var(--line); }
+.article-header { max-width: 1040px; margin-inline: auto; padding: 68px 0 38px; border-bottom: 1px solid var(--line); }
 .article-label { display: flex; gap: 20px; align-items: center; font-size: 14px; color: var(--gold); }
 .article-label > span:first-child { text-transform: uppercase; letter-spacing: .09em; }
 .draft-label { color: var(--muted); border-left: 1px solid var(--line); padding-left: 20px; }
@@ -18,7 +18,7 @@ h1 { max-width: 24ch; font-size: clamp(2rem,4.1vw,3.5rem); line-height: 1.13; fo
 .introduction { max-width: 66ch; font-size: 21px; line-height: 1.65; color: var(--muted); margin: 0 0 30px; }
 .article-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; color: var(--muted); }
 .article-meta > :last-child { margin-left: auto; font-family: ui-monospace, monospace; }
-.reading-layout { display: grid; grid-template-columns: minmax(190px,260px) minmax(0,720px); gap: clamp(32px,6vw,86px); padding-top: 44px; align-items: start; }
+.reading-layout { max-width: 1040px; margin-inline: auto; display: grid; grid-template-columns: minmax(180px,220px) minmax(0,720px); justify-content: center; gap: clamp(44px,5vw,76px); padding-top: 44px; align-items: start; }
 .contents { position: sticky; top: 24px; font-size: 14px; line-height: 1.45; }
 .contents summary { font-weight: 650; cursor: pointer; padding: 0 0 16px; }
 .contents ol { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
@@ -47,7 +47,7 @@ figcaption { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 8
 .faq-section details { border-bottom: 1px solid var(--line); }
 .faq-section summary { padding: 18px 0; cursor: pointer; font-size: 18px; font-weight: 600; line-height: 1.5; }
 .faq-section p { color: var(--muted); }
-.article-footer { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; padding: 34px 0 48px; font-size: 14px; color: var(--muted); }
+.article-footer { max-width: 1040px; margin-inline: auto; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; padding: 34px 0 48px; font-size: 14px; color: var(--muted); }
 @media (max-width: 760px) {
   .header-inner { padding: 18px 22px; gap: 16px; }
   .header-inner img { width: 175px; }
