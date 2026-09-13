@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 42
-Updated: 2026-09-13T09:15:00Z
+Version: 43
+Updated: 2026-09-13T10:10:00Z
 
 ## Session rule
 
@@ -22,7 +22,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 ## Current stage
 
-The human-approved visual baseline, accessibility/token layer, homepage responsive-image slices and standard-project responsive slice are green. A bounded Premium project slice is implemented and derivative CI is green; its dedicated full browser matrix is still waiting for GitHub Actions runner availability. Production and DNS remain unchanged.
+The human-approved visual baseline, accessibility/token layer, homepage high-impact responsive images, Standard project, bounded Premium project and homepage hero/LCP responsive delivery are green. Production and DNS remain unchanged.
 
 Reference states:
 
@@ -30,33 +30,46 @@ Reference states:
 - accessibility: run #23 / `b23f0b9046e359f181f4065cc76665310f9d6188`;
 - first homepage image slice: run #30 / `073a29dc01213c9b12c929fa26630d456984d554`;
 - Smart Home image slice: run #34 / `d43d45294efe9169c26361712a2a9b008c231204`;
-- standard project responsive slice: run #45 / `a47740d5876490df7fa64b970c51449d85a0c8c2`;
-- Premium derivative build: run #8 / `99f12f4565c329ae3ad78e1f35593deeb328dab5`;
-- Premium general Visual QA after release integration: run #59 / `be99a1354136948c5b5a69da0d77c1ed8ba0729e`.
+- Standard project responsive slice: run #45 / `a47740d5876490df7fa64b970c51449d85a0c8c2`;
+- hero/LCP baseline measurement: run #63 / `2d04103065dc1c9c50f469024f8836511d503833`;
+- Premium + responsive hero acceptance: run #64 / `bfbcb7bd7dde15d2f69a663c3c7160f861ec81af`;
+- responsive derivative build including hero: run #9 / `bfbcb7bd7dde15d2f69a663c3c7160f861ec81af`.
 
 ## Responsive-image system
 
 `tools/media/build-home-responsive.sh` auto-orients source photos with ImageMagick before stripping metadata and encoding WebP with `cwebp` q=82 / method 6. CI installs `imagemagick` + `webp` because some legacy JPEGs store intended orientation in EXIF metadata.
 
-`tools/deploy/build-vps-bundle.mjs` generates responsive assets into `.deploy-dist/assets/responsive/`. Homepage delivery is patched into ES/EN/RU release copies. Project patchers apply the same release-only `<picture>` / width-`srcset` / `sizes` pattern to selected project details.
+`tools/deploy/build-vps-bundle.mjs` generates responsive assets into `.deploy-dist/assets/responsive/`. Homepage/project delivery changes are release-only. `tools/media/patch-home-hero-responsive.mjs` wraps the ES/EN/RU homepage hero in a layout-neutral `<picture>` while retaining the original JPEG `<img>` fallback and `fetchpriority="high"`. Standard/Premium project patchers follow the same fallback-preserving pattern.
 
 Original `<img src>` paths, intrinsic dimensions, Media IDs and alt text remain unchanged. `<picture>` is layout-neutral (`display: contents`) so existing CSS object-fit/crop rules remain authoritative. Generated `site-next` source is not hand-edited for these delivery changes.
 
-`tools/visual/responsive-images.mjs` verifies homepage Chromium `currentSrc`, request selection and file presence. `tools/visual/standard-project.mjs` and `tools/visual/premium-project.mjs` provide dedicated project checks at 390×844, 768×1024 and 1440×1000.
+`tools/visual/responsive-images.mjs` verifies the previously optimized homepage/Standard resources. `tools/visual/standard-project.mjs` and `tools/visual/premium-project.mjs` provide dedicated project checks. `tools/visual/hero-lcp.mjs` measures the homepage LCP element, selected hero resource/bytes, responsive markup, preload/fetchpriority state and reference screenshots under a repeatable network-only profile.
 
 ### Standard project slice
 
-`/projects/reforma-integral-estandar-barcelona/` displays six large source photographs totaling **13,644,080 B**. All six have 480w / 768w / 1200w WebP candidates. Run #45 confirmed combined selected 1× bytes of **80,566 B**, **93,344 B** and **214,548 B** at the three reference widths. The EXIF-orientation bug found by human screenshot review was fixed before acceptance, and the final dedicated check reported zero failed requests, zero broken images and zero horizontal overflow.
+`/projects/reforma-integral-estandar-barcelona/` displays six large source photographs totaling **13,644,080 B**. All six have 480w / 768w / 1200w WebP candidates. Run #45 confirmed combined selected 1× bytes of **80,566 B**, **93,344 B** and **214,548 B** at 390 / 768 / 1440. The EXIF-orientation bug found by human screenshot review was fixed before acceptance, and the final dedicated check reported zero failed requests, zero broken images and zero horizontal overflow.
 
 ### Premium project slice
 
 `/projects/trabajos-contrata-premium/` has a bounded top-ten high-transfer slice: `pladur-instalacion`, `pladur-obra`, `prep-techo-1..4`, and `techo-1..4`. Those ten originals total **26,312,747 B**.
 
-The deterministic derivative totals are **177,286 B** for all ten 480w candidates, **382,392 B** for all ten 768w candidates and **789,948 B** for all ten 1200w candidates. `Responsive image derivatives` run #8 succeeded, and manual derivative review shows the selected photographs upright after the EXIF-aware pipeline.
+Run #64 completed the previously pending dedicated browser verification. Chromium selected/requested combined 1× payloads of **177,286 B**, **177,286 B** and **382,392 B** at 390 / 768 / 1440, with 0 failed requests, 0 broken images and 0 horizontal overflow. The 1200w candidate set remains available for larger/higher-density use and totals 789,948 B.
 
-`tools/media/patch-premium-project-responsive.mjs` integrates only those ten images into the release copy while retaining original fallbacks. `tools/visual/premium-project.mjs` checks real browser-selected/requested resources, missing files, failed requests, broken images, overflow and full-page screenshots.
+### Homepage hero / LCP
 
-General Visual QA run #59 succeeded after Premium release integration. The dedicated Premium verifier was added to `tools/visual/run.sh` immediately afterward. Its first complete run (#60) remains queued in GitHub Actions, while the next push (#61) ended in `startup_failure` before any job existed. Do not record final Premium browser-selected byte totals until a run containing `premium-project.mjs` completes successfully.
+The hero baseline was measured before changing delivery. Under a cold-cache, DPR 1, network-only profile (150 ms latency, 1.6 Mbps down, 750 kbps up, no CPU throttling), run #63 observed `.hero-image` as LCP in all 3 viewports. The same `/assets/home/kitchen-living.jpg` file (**264,764 B**) was sent everywhere, with synthetic LCP values of **1,892 / 3,044 / 3,240 ms** at 390 / 768 / 1440.
+
+The accepted experiment adds EXIF-aware 480w / 768w / 1152w WebP candidates while retaining the JPEG fallback, existing object-fit/object-position crop and `fetchpriority="high"`. No preload was added.
+
+Derivative run #9 produced:
+
+- 480w: **28,102 B**;
+- 768w: **55,556 B**;
+- 1152w: **95,278 B**.
+
+Run #64 selected 480w / 480w / 768w at the reference widths, transferring **28,102 / 28,102 / 55,556 B**. Under the same synthetic profile, LCP measured **632 / 640 / 892 ms**. Compared with run #63, that is an 89.4% / 89.4% / 79.0% hero-byte reduction and a 66.6% / 79.0% / 72.5% synthetic LCP reduction. These timing percentages are controlled comparison data, not field Core Web Vitals.
+
+Human review of the run #64 hero screenshots at 390, 768 and 1440 shows the existing composition/crop intact. Full Visual QA remained green. Do not add preload unless a separate timing experiment demonstrates a benefit.
 
 ## Visual/accessibility reference
 
@@ -90,4 +103,4 @@ Production target remains VPS + Caddy. Responsive-image generation is an explici
 
 ## Immediate next action
 
-Finish the dedicated Premium browser matrix when GitHub Actions supplies a runner. If green, record actual selected/requested bytes and accept the Premium slice. Then measure the homepage hero/LCP separately before changing its format, preload or fetch strategy. Do not mass-generate variants for all 39 gallery images until their real transfer benefit is ranked.
+Rank the 39 gallery photographs by source size and actual page/transfer impact before deciding which subset deserves responsive variants. Do not generate 39×N variants blindly. The shared reduced-motion `scroll-behavior: smooth` advisory can be cleaned up independently as a small accessibility follow-up. Solar-collector material remains deferred by owner.
