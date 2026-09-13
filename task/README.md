@@ -6,27 +6,27 @@
 
 1. Проверить `git status -sb` и актуальность ветки `agent/architecture-sandbox`. Сохранить чужие незавершённые изменения; не применять и не удалять stash вслепую.
 2. Прочитать [AGENTS.md](../AGENTS.md) и перечисленные там контракты в указанном порядке.
-3. Продолжать с [001 — воспроизводимые скриншоты и визуальная проверка](001-visual-checks.md), пока улучшенный набор не утверждён как первый baseline.
+3. Первый visual baseline уже утверждён; accessibility/token layer зелёный. Продолжать с [002 — responsive image optimization](002-responsive-images.md).
 4. По завершении обновить этот список, [HANDOFF.md](../HANDOFF.md) и [session-state.yaml](../architecture/session-state.yaml); записать реальные проверки и ограничения.
 
 ## Текущая точка
 
 - Опубликованная статья о ванной существует на ES / EN / RU; главные страницы ведут на соответствующую языковую версию.
 - Visual QA воспроизводимо запускается в GitHub Actions на 390×844, 768×1024 и 1440×1000.
-- Первый набор прошёл технические проверки и был просмотрен человеком.
-- По первому визуальному ревью уже исправлены три Major-проблемы: длинная неструктурированная галерея, публичный служебный список отсутствующих фото El Raval и тесные горизонтальные project cards на мобильной главной.
-- Галерея по-прежнему сохраняет все 39 contract media; изменена только подача и группировка.
-- Production и `main` этими визуальными правками не разворачивались.
+- Первый human-approved visual baseline зафиксирован по run #15 / `b34f72fd7902235cd24206f9a56ea9e243e89c92`.
+- Accessibility QA проверяет semantic tokens, control target-size, реальный Tab-focus и reduced-motion; run #23 прошёл без блокирующих findings.
+- По визуальным проходам уже исправлены длинная галерея, публичный pending-photo статус El Raval, тесные mobile project cards, плотность Smart Home и desktop-композиция Article.
+- Галерея сохраняет все 39 contract media.
+- Production и `main` этими изменениями не разворачивались.
 
 ## Очередь
 
 | Приоритет | Задача | Статус / результат |
 | --- | --- | --- |
-| 1 | [001 — воспроизводимые скриншоты и визуальная проверка](001-visual-checks.md) | В работе. Первый review/fix/rerun цикл зелёный; нужен человеческий просмотр улучшенного набора перед фиксацией baseline. |
-| 2 | Плотность Smart Home на мобильном | Следующий кандидат после baseline: сократить визуальную длину блока без потери подтверждённого содержания. |
-| 3 | Desktop-композиция статьи | Проверить центрирование editorial-layout и пустое правое поле, не ломая хорошую mobile-читаемость. |
-| 4 | Подготовка фотографий одной командой | Предложена. Сохранять оригиналы, стабильно именовать производные файлы и Media IDs, не дублировать фото. |
-| 5 | Общие brand tokens | После визуальных правок: общий semantic слой цвета, типографики, spacing/focus/borders без принудительного одинакового светлого/тёмного surface-контекста. |
+| 1 | [002 — responsive image optimization](002-responsive-images.md) | В работе. CI-builder производных изображений зелёный; измерены первые WebP для ванной и standard-kitchen, интеграция `picture/srcset/sizes` ещё впереди. |
+| 2 | Responsive images на Smart Home / project details | После проверки первого bounded slice относительно утверждённого baseline. |
+| 3 | Gallery image optimization | Не начинать массовую генерацию 39×N вариантов до подтверждения первого slice. |
+| 4 | Shared secondary reduced-motion scroll cleanup | Неблокирующий хвост: gallery/El Raval всё ещё вычисляют `scroll-behavior: smooth` при reduced-motion. |
 | Отложено | Подготовить выбранный логотип к внедрению | Концепт выбран, **пока не устанавливать на сайт**. |
 
 ## Внутренний фотобэклог El Raval
@@ -63,7 +63,8 @@
 - `node tools/checks/run.mjs` — сборка и проверки записей, маршрутов, страниц, языковых метаданных и поисковых файлов.
 - `node tools/articles/validate-drafts.mjs` — валидация оставшихся черновиков.
 - `node tools/deploy/build-vps-bundle.mjs` и `validate-vps-bundle.mjs` — публичный release bundle и его проверка.
-- `bash tools/visual/run.sh` — полный browser QA с фиксированными viewport и diagnostic artifacts.
+- `bash tools/visual/run.sh` — browser QA + accessibility QA с фиксированными viewport и diagnostic artifacts.
+- `bash tools/media/build-home-responsive.sh` — детерминированные WebP-производные первого homepage performance slice; CI workflow `Homepage image derivatives` сохраняет их как artifact.
 
 ## Граница публикации
 
