@@ -1,7 +1,7 @@
-version: 39
-updated_at: 2026-09-13T06:56:00Z
+version: 40
+updated_at: 2026-09-13T07:19:00Z
 phase: homepage-visual-redesign
-stage_status: second-visual-refinement-built-and-browser-validated
+stage_status: first-visual-baseline-approved
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: task/001-visual-checks.md
+next_proposed_task: shared-brand-tokens-and-accessibility
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -100,7 +100,13 @@ visual_qa:
     loading_failures: 0
     broken_images: 0
     horizontal_overflow_findings: 0
-  baseline_status: awaiting-owner-approval-of-refined-screenshots
+  approved_baseline:
+    status: approved-by-owner
+    approved_at: 2026-09-13T07:19:00Z
+    workflow_run_number: 15
+    commit: b34f72fd7902235cd24206f9a56ea9e243e89c92
+    purpose: reference-state-for-future-surgical-ui-comparison
+  baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
 visual_design:
@@ -125,6 +131,7 @@ visual_design:
   next_review_candidates:
     - shared-semantic-brand-tokens
     - target-size-keyboard-focus-accessibility
+    - reduced-motion-verification
     - responsive-image-optimization
 
 content_state:
@@ -260,6 +267,9 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-13
+    summary: Owner approved the refined browser screenshot set as the first visual baseline after the gallery, El Raval, mobile project-card, Smart Home mobile-density and Article desktop refinements.
+    validation: visual-baseline-approved; reference-run-15-success; production-and-dns-unchanged
+  - date: 2026-09-13
     summary: Reduced Smart Home mobile density without removing content and centered the desktop Article into a shared 1040 px editorial frame. Source and tracked generated CSS remain synchronized.
     validation: full-checks-pass; vps-bundle-pass; visual-qa-run-14-success; no-loading-errors; no-broken-images; no-horizontal-overflow; no-production-deploy
   - date: 2026-09-13
@@ -279,8 +289,8 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Review run #14 screenshots and approve the current refined set as the first visual baseline.
-  status: second-refinement-browser-validated-awaiting-owner-baseline-approval
+  goal: Introduce shared semantic brand tokens and accessibility checks from the approved first visual baseline.
+  status: baseline-approved-ready-for-accessibility-layer
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
@@ -289,9 +299,11 @@ next_verification:
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
   - generated-projections-must-remain-clean
-  - owner-review-required-before-baseline
+  - target-size-checks-must-pass-or-document-exceptions
+  - keyboard-focus-must-be-visible-and-operable
+  - reduced-motion-must-not-hide-content
   - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: After visual baseline approval, introduce shared semantic brand tokens and accessibility checks; VPS cutover remains a separate future stage.
+  goal: After brand-token/accessibility validation, optimize responsive images and modern formats; VPS cutover remains a separate future stage.
