@@ -13,9 +13,11 @@
 
 - Опубликованная статья о ванной существует на ES / EN / RU; главные страницы ведут на соответствующую языковую версию.
 - Visual QA воспроизводимо запускается в GitHub Actions на 390×844, 768×1024 и 1440×1000.
-- Первый human-approved visual baseline зафиксирован по run #15 / `b34f72fd7902235cd24206f9a56ea9e243e89c92`.
-- Accessibility QA проверяет semantic tokens, control target-size, реальный Tab-focus и reduced-motion; run #23 прошёл без блокирующих findings.
-- По визуальным проходам уже исправлены длинная галерея, публичный pending-photo статус El Raval, тесные mobile project cards, плотность Smart Home и desktop-композиция Article.
+- Human-approved baseline: run #15 / `b34f72fd7902235cd24206f9a56ea9e243e89c92`.
+- Accessibility QA: run #23, без блокирующих semantic-token / target-size / Tab-focus / reduced-motion findings.
+- Homepage responsive images: первые семь high-impact изображений проверены браузером.
+- Первый project-detail performance slice тоже готов: все шесть фотографий standard renovation получают 480/768/1200 WebP, а run #45 подтвердил фактический выбор ресурсов Chromium и сохранение визуального результата.
+- При первой конвертации project images человеческий screenshot review обнаружил потерю EXIF orientation; теперь builder выполняет `-auto-orient` до WebP-кодирования.
 - Галерея сохраняет все 39 contract media.
 - Production и `main` этими изменениями не разворачивались.
 
@@ -23,10 +25,12 @@
 
 | Приоритет | Задача | Статус / результат |
 | --- | --- | --- |
-| 1 | [002 — responsive image optimization](002-responsive-images.md) | В работе. CI-builder производных изображений зелёный; измерены первые WebP для ванной и standard-kitchen, интеграция `picture/srcset/sizes` ещё впереди. |
-| 2 | Responsive images на Smart Home / project details | После проверки первого bounded slice относительно утверждённого baseline. |
-| 3 | Gallery image optimization | Не начинать массовую генерацию 39×N вариантов до подтверждения первого slice. |
-| 4 | Shared secondary reduced-motion scroll cleanup | Неблокирующий хвост: gallery/El Raval всё ещё вычисляют `scroll-behavior: smooth` при reduced-motion. |
+| 1 | [002 — responsive image optimization](002-responsive-images.md) | В работе. Homepage + standard project slice зелёные; следующий bounded slice — premium project по реальному transfer impact. |
+| 2 | Premium project responsive images | Ранжировать самые тяжёлые и реально отображаемые фотографии; не оптимизировать всё одним массовым проходом. |
+| 3 | Hero / LCP | Отдельно измерить первый экран до изменения формата, `sizes`, preload или fetch strategy. |
+| 4 | Gallery image optimization | Отложено: не генерировать 39×N вариантов до отдельного ранжирования/замера. |
+| 5 | Shared secondary reduced-motion scroll cleanup | Неблокирующий хвост: gallery/El Raval всё ещё вычисляют `scroll-behavior: smooth` при reduced-motion. |
+| Отложено | Солнечный коллектор: статья + анимация | Историческая ветка найдена; владелец попросил вернуться позже и переносить материал хирургически, без wholesale merge старой ветки. |
 | Отложено | Подготовить выбранный логотип к внедрению | Концепт выбран, **пока не устанавливать на сайт**. |
 
 ## Внутренний фотобэклог El Raval
@@ -63,8 +67,8 @@
 - `node tools/checks/run.mjs` — сборка и проверки записей, маршрутов, страниц, языковых метаданных и поисковых файлов.
 - `node tools/articles/validate-drafts.mjs` — валидация оставшихся черновиков.
 - `node tools/deploy/build-vps-bundle.mjs` и `validate-vps-bundle.mjs` — публичный release bundle и его проверка.
-- `bash tools/visual/run.sh` — browser QA + accessibility QA с фиксированными viewport и diagnostic artifacts.
-- `bash tools/media/build-home-responsive.sh` — детерминированные WebP-производные первого homepage performance slice; CI workflow `Homepage image derivatives` сохраняет их как artifact.
+- `bash tools/visual/run.sh` — browser QA + dedicated standard-project screenshots + accessibility QA + responsive-resource verification.
+- `bash tools/media/build-home-responsive.sh` — EXIF-aware deterministic WebP derivatives; CI workflow `Responsive image derivatives` сохраняет diagnostic artifact.
 
 ## Граница публикации
 
