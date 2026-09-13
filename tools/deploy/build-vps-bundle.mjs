@@ -44,6 +44,20 @@ function replaceOnce(html, pattern, replacement, label) {
   return updated;
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function wrapResponsiveImage(html, { src, source, label }) {
+  const pattern = new RegExp(`<img([^>]*?)src="${escapeRegExp(src)}"([^>]*?)>`);
+  return replaceOnce(
+    html,
+    pattern,
+    (_match, before, after) => `<picture style="display:contents">${source}<img${before}src="${src}"${after}></picture>`,
+    label,
+  );
+}
+
 async function integrateHomepageResponsiveImages() {
   execFileSync("bash", [path.join(root, "tools/media/build-home-responsive.sh"), responsiveWorkRoot], {
     cwd: root,
@@ -56,27 +70,48 @@ async function integrateHomepageResponsiveImages() {
     { recursive: true, force: true },
   );
 
-  const bathroomSource = `<source type="image/webp" srcset="/assets/responsive/home/bathroom-retouched-480.webp 480w, /assets/responsive/home/bathroom-retouched-768.webp 768w, /assets/responsive/home/bathroom-retouched-1086.webp 1086w" sizes="(max-width: 720px) 92vw, (max-width: 1400px) 48vw, 650px">`;
-  const kitchenSource = `<source type="image/webp" srcset="/assets/responsive/estandar/cocina-480.webp 480w, /assets/responsive/estandar/cocina-768.webp 768w, /assets/responsive/estandar/cocina-1200.webp 1200w" sizes="(max-width: 720px) 92vw, (max-width: 1000px) 35vw, 300px">`;
+  const images = [
+    {
+      src: "/assets/home/bathroom-retouched.png",
+      label: "featured bathroom",
+      source: `<source type="image/webp" srcset="/assets/responsive/home/bathroom-retouched-480.webp 480w, /assets/responsive/home/bathroom-retouched-768.webp 768w, /assets/responsive/home/bathroom-retouched-1086.webp 1086w" sizes="(max-width: 720px) 92vw, (max-width: 1400px) 48vw, 650px">`,
+    },
+    {
+      src: "/estandar/cocina.jpeg",
+      label: "standard kitchen",
+      source: `<source type="image/webp" srcset="/assets/responsive/estandar/cocina-480.webp 480w, /assets/responsive/estandar/cocina-768.webp 768w, /assets/responsive/estandar/cocina-1200.webp 1200w" sizes="(max-width: 720px) 92vw, (max-width: 1000px) 35vw, 300px">`,
+    },
+    {
+      src: "/smart/gira.jpeg",
+      label: "Smart Home lead panel",
+      source: `<source type="image/webp" srcset="/assets/responsive/smart/gira-320.webp 320w, /assets/responsive/smart/gira-640.webp 640w, /assets/responsive/smart/gira-960.webp 960w" sizes="(max-width: 720px) 92vw, (max-width: 1000px) 42vw, 420px">`,
+    },
+    {
+      src: "/premium/panel-marmol.jpeg",
+      label: "Smart Home marble panel",
+      source: `<source type="image/webp" srcset="/assets/responsive/premium/panel-marmol-320.webp 320w, /assets/responsive/premium/panel-marmol-640.webp 640w, /assets/responsive/premium/panel-marmol-960.webp 960w" sizes="(max-width: 720px) 44vw, (max-width: 1400px) 23vw, 300px">`,
+    },
+    {
+      src: "/premium/gira.jpeg",
+      label: "Smart Home partner panel",
+      source: `<source type="image/webp" srcset="/assets/responsive/premium/gira-320.webp 320w, /assets/responsive/premium/gira-640.webp 640w, /assets/responsive/premium/gira-960.webp 960w" sizes="(max-width: 720px) 44vw, (max-width: 1400px) 23vw, 300px">`,
+    },
+    {
+      src: "/premium/apple-home.jpeg",
+      label: "Smart Home integration panel",
+      source: `<source type="image/webp" srcset="/assets/responsive/premium/apple-home-320.webp 320w, /assets/responsive/premium/apple-home-640.webp 640w, /assets/responsive/premium/apple-home-960.webp 960w" sizes="(max-width: 720px) 44vw, (max-width: 1400px) 23vw, 300px">`,
+    },
+    {
+      src: "/smart/escenas.jpeg",
+      label: "Smart Home lighting scenes",
+      source: `<source type="image/webp" srcset="/assets/responsive/smart/escenas-320.webp 320w, /assets/responsive/smart/escenas-640.webp 640w, /assets/responsive/smart/escenas-960.webp 960w" sizes="(max-width: 720px) 44vw, (max-width: 1400px) 23vw, 300px">`,
+    },
+  ];
 
   for (const relativePath of homeDocuments) {
     const file = path.join(outputRoot, relativePath);
     let html = await readFile(file, "utf8");
-
-    html = replaceOnce(
-      html,
-      /<img([^>]*?)src="\/assets\/home\/bathroom-retouched\.png"([^>]*?)>/,
-      (_match, before, after) => `<picture>${bathroomSource}<img${before}src="/assets/home/bathroom-retouched.png"${after}></picture>`,
-      "featured bathroom",
-    );
-
-    html = replaceOnce(
-      html,
-      /<img([^>]*?)src="\/estandar\/cocina\.jpeg"([^>]*?)>/,
-      (_match, before, after) => `<picture>${kitchenSource}<img${before}src="/estandar/cocina.jpeg"${after}></picture>`,
-      "standard kitchen",
-    );
-
+    for (const image of images) html = wrapResponsiveImage(html, image);
     await writeFile(file, html, "utf8");
   }
 }
