@@ -1,6 +1,6 @@
 # 001 — воспроизводимая проверка внешнего вида
 
-Статус: browser-run воспроизводится в GitHub Actions; два визуальных прохода исправлены и повторно проверены. Текущий набор — кандидат на первый baseline, ждёт подтверждения владельца.
+Статус: первый visual baseline утверждён владельцем 2026-09-13 после двух визуальных проходов и повторной browser-проверки.
 
 ## Зачем
 
@@ -57,16 +57,23 @@ GitHub Actions run #5 на коммите `7b41ed9ac081635f8fe2c7bdd629368b2e2e8
 
 GitHub Actions `Visual QA` run #14 на коммите `712f180c9a8f7f9f273ec8eada27b0755d659931` завершился успешно. Полные project checks, VPS bundle и browser QA прошли.
 
+## Первый утверждённый baseline — 2026-09-13
+
+- Владелец просмотрел уточнённый набор и подтвердил, что текущий вариант устраивает.
+- Baseline привязан к визуальному состоянию, повторно снятому в `Visual QA` run #15 на коммите `b34f72fd7902235cd24206f9a56ea9e243e89c92`.
+- Этот baseline — точка сравнения для дальнейших точечных UI-изменений. Он не означает запрет на улучшения и не вводит popixel-regression автоматически.
+- Production и DNS при утверждении baseline не менялись.
+
 ## Готово, когда
 
 - [x] Есть одна документированная команда, повторяемая из чистой копии репозитория в поддерживаемой среде.
 - [x] Получены повторяемые снимки на одинаковой матрице viewport.
 - [x] Первый набор просмотрен и конкретные визуальные дефекты исправлены.
 - [x] Второй набор просмотрен; Smart Home mobile и Article desktop исправлены и повторно прошли browser QA.
-- [ ] Владелец принимает текущий набор как первый visual baseline.
+- [x] Владелец принимает текущий набор как первый visual baseline.
 - [x] Сбой загрузки страницы или изображения отмечается как ошибка, а не маскируется пустым снимком.
 - [x] Новые артефакты не попадают в `.deploy-dist`.
 
 ## Следом
 
-После утверждения baseline переходить к shared semantic brand tokens и accessibility layer: target-size, keyboard/focus, reduced-motion. Responsive image optimization — после стабилизации layout. Не внедрять popixel regression-suite до утверждения baseline.
+Переходить к shared semantic brand tokens и accessibility layer: target-size, keyboard/focus, reduced-motion. Responsive image optimization — после стабилизации следующего UI-слоя. Не внедрять popixel regression-suite без отдельной необходимости.
