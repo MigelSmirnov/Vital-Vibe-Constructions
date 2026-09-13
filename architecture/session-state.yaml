@@ -1,7 +1,7 @@
-version: 46
-updated_at: 2026-09-13T10:10:00Z
+version: 47
+updated_at: 2026-09-13T11:43:00Z
 phase: homepage-visual-redesign
-stage_status: homepage-project-and-hero-responsive-images-browser-validated
+stage_status: homepage-project-hero-and-bounded-gallery-responsive-images-browser-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: gallery-responsive-images-by-transfer-impact
+next_proposed_task: shared-secondary-reduced-motion-scroll-cleanup
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -30,7 +30,6 @@ current_strategy:
   next_runtime: site-next
   source_of_truth: Knowledge Repository
   visual_change_policy: audit-first-surgical-fixes
-  public_articles: validated-knowledge-records-with-es-en-ru-routes
   production_target: vps-caddy-static
   production_unchanged: true
   public_path_mode: root-relative
@@ -79,24 +78,17 @@ visual_qa:
       workflow_run_number: 34
       commit: d43d45294efe9169c26361712a2a9b008c231204
       optimized_images: 5
-      standard_visual_qa: success
-      accessibility_qa: success
-      chromium_selected_responsive_sources: true
-      browser_requested_selected_sources: true
-      human_mobile_crop_review: no-visible-regression
     standard_project_slice:
       status: success
       workflow_run_number: 45
       commit: a47740d5876490df7fa64b970c51449d85a0c8c2
       route: /projects/reforma-integral-estandar-barcelona/
       optimized_images: 6
-      standard_visual_qa: success
-      accessibility_qa: success
-      chromium_selected_responsive_sources: true
-      browser_requested_selected_sources: true
-      failed_requests: 0
-      broken_images: 0
-      horizontal_overflow_findings: 0
+      original_bytes_total: 13644080
+      selected_1x_bytes:
+        390x844: 80566
+        768x1024: 93344
+        1440x1000: 214548
       human_orientation_crop_review: no-visible-regression-after-auto-orient-fix
     premium_project_slice:
       status: success
@@ -109,8 +101,6 @@ visual_qa:
         390x844: 177286
         768x1024: 177286
         1440x1000: 382392
-      chromium_selected_responsive_sources: true
-      browser_requested_selected_sources: true
       failed_requests: 0
       broken_images: 0
       horizontal_overflow_findings: 0
@@ -139,10 +129,6 @@ visual_qa:
           768x1024: 3044
           1440x1000: 3240
       optimized:
-        selected_resources:
-          390x844: kitchen-living-480.webp
-          768x1024: kitchen-living-480.webp
-          1440x1000: kitchen-living-768.webp
         selected_bytes:
           390x844: 28102
           768x1024: 28102
@@ -151,12 +137,30 @@ visual_qa:
           390x844: 632
           768x1024: 640
           1440x1000: 892
+    gallery_bounded_slice:
+      status: success
+      workflow_run_number: 66
+      commit: 2c38471b8cd31af0c02137c40df6e16f479e4cac
+      route: /gallery/
+      contract_media_count: 39
+      responsive_reused_images: 16
+      remaining_original_images: 23
+      original_bytes_total_for_bounded_16: 39956827
+      selected_1x_bytes:
+        390x844: 257852
+        768x1024: 257852
+        1440x1000: 257852
+      failed_requests: 0
+      broken_images: 0
+      horizontal_overflow_findings: 0
+      human_crop_orientation_review: no-visible-regression
+      note: bounded-16-full-scroll-comparison-not-complete-page-weight
   baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
 responsive_images:
   task: task/002-responsive-images.md
-  status: homepage-standard-premium-and-hero-slices-integrated-and-browser-verified
+  status: bounded-current-release-scope-browser-verified
   derivative_builder: tools/media/build-home-responsive.sh
   derivative_workflow: .github/workflows/home-image-derivatives.yml
   release_integration:
@@ -164,10 +168,12 @@ responsive_images:
     home_hero_patcher: tools/media/patch-home-hero-responsive.mjs
     standard_project_patcher: tools/media/patch-standard-project-core.mjs
     premium_project_patcher: tools/media/patch-premium-project-responsive.mjs
+    gallery_reuse_patcher: tools/media/patch-gallery-responsive.mjs
   browser_verifiers:
     responsive_images: tools/visual/responsive-images.mjs
     standard_project: tools/visual/standard-project.mjs
     premium_project: tools/visual/premium-project.mjs
+    gallery: tools/visual/gallery-responsive.mjs
     hero_lcp: tools/visual/hero-lcp.mjs
   encoder:
     orientation_tool: imagemagick-auto-orient
@@ -181,91 +187,11 @@ responsive_images:
     approved_crops_changed: false
     fallback_original_required: true
     exif_orientation_preserved_in_derivatives: true
-  slice_1:
-    sources:
-      - assets/home/bathroom-retouched.png
-      - estandar/cocina.jpeg
-    original_bytes_total: 3967611
-    note: browser delivery remains responsive and verified
-  smart_home_slice:
-    sources:
-      - smart/gira.jpeg
-      - premium/panel-marmol.jpeg
-      - premium/gira.jpeg
-      - premium/apple-home.jpeg
-      - smart/escenas.jpeg
-    original_bytes_total: 1752633
-    derivatives_per_source:
-      widths:
-        - 320
-        - 640
-        - 960
-  standard_project_slice:
-    route: /projects/reforma-integral-estandar-barcelona/
-    sources:
-      - estandar/cocina.jpeg
-      - estandar/obra.jpeg
-      - estandar/suelo-base.jpeg
-      - estandar/parquet.jpeg
-      - estandar/pintura.jpeg
-      - estandar/pasillo.jpeg
-    original_bytes_total: 13644080
-    derivatives_per_source:
-      widths:
-        - 480
-        - 768
-        - 1200
-    selected_1x_bytes:
-      390x844: 80566
-      768x1024: 93344
-      1440x1000: 214548
-    orientation_regression:
-      detected_by: human-full-page-screenshot-review
-      cause: legacy-jpeg-exif-orientation-lost-in-direct-webp-conversion
-      fix: imagemagick-auto-orient-before-cwebp
-      final_status: fixed-and-reviewed
-  premium_project_slice:
-    route: /projects/trabajos-contrata-premium/
-    source_count: 10
-    original_bytes_total: 26312747
-    derivatives_per_source:
-      widths:
-        - 480
-        - 768
-        - 1200
-    selected_1x_bytes:
-      390x844: 177286
-      768x1024: 177286
-      1440x1000: 382392
-    final_status: browser-verified
-  hero_lcp_slice:
-    source: assets/home/kitchen-living.jpg
-    original_bytes: 264764
-    derivatives:
-      480: 28102
-      768: 55556
-      1152: 95278
-    sizes: "(max-width: 720px) 100vw, (max-width: 1400px) 53vw, 750px"
-    fallback_original_retained: true
-    fetchpriority_high_retained: true
-    preload_added: false
-    final_status: browser-and-synthetic-lcp-verified
-    note: synthetic timing comparison only; not field-core-web-vitals
-  markup:
-    format: picture-with-webp-width-srcset-and-sizes
-    layout_neutral_picture_wrapper: display-contents
-    home_languages:
-      - es
-      - en
-      - ru
-    standard_project_detail: true
-    premium_project_detail: true
-    projects_index_standard_card: true
-    homepage_hero: true
-    original_img_src_fallback_retained: true
-    intrinsic_dimensions_retained: true
-  mass_gallery_derivatives_deferred: true
-  gallery_next_step: rank-source-and-transfer-impact-before-bounded-slice
+  gallery_policy:
+    mass_39xN_generation: deferred
+    current_reuse_subset: standard-six-plus-premium-top-ten
+    reason: these-16-dominate-source-transfer-and-already-have-verified-derivatives
+    remaining_23_require_new-measured-reason-before-optimization: true
 
 visual_design:
   homepage_direction: graphite-gold-split-hero
@@ -279,9 +205,9 @@ visual_design:
     - --accent
     - --border
   next_review_candidates:
-    - gallery-responsive-images-after-ranking
     - shared-secondary-reduced-motion-scroll-cleanup
     - optional-hero-preload-only-if-separate-timing-evidence
+    - solar-collector-surgical-port-when-owner-resumes
 
 content_state:
   home_locales:
@@ -334,20 +260,17 @@ vps_bundle:
 
 completed_work:
   - date: 2026-09-13
-    summary: Measured the homepage hero as the LCP element at all reference widths, then added 480/768/1152 responsive WebP delivery while retaining the JPEG fallback, approved crop and fetchpriority high. Controlled before/after synthetic measurements improved strongly without adding preload.
-    validation: derivative-run-9-success; visual-qa-run-64-success; hero-responsive-selected-all-reference-viewports; hero-screenshots-human-reviewed; production-and-dns-unchanged
+    summary: Reused existing Standard and Premium responsive derivatives for the 16 heaviest gallery sources without generating 39xN variants.
+    validation: visual-qa-run-66-success; gallery-responsive-selection-16-of-16; failed-requests-0; broken-images-0; overflow-0; human-three-viewport-review-pass; production-and-dns-unchanged
   - date: 2026-09-13
-    summary: Completed the bounded Premium project top-ten responsive-image slice and browser-verified actual selected resources at 390/768/1440.
-    validation: visual-qa-run-64-success; premium-responsive-selection-pass; failed-requests-0; broken-images-0; overflow-0
+    summary: Measured the homepage hero as LCP at all reference widths, then added responsive WebP delivery while retaining JPEG fallback, approved crop and fetchpriority high.
+    validation: derivative-run-9-success; visual-qa-run-64-success; hero-responsive-selected-all-reference-viewports; production-and-dns-unchanged
   - date: 2026-09-13
-    summary: Optimized the six photographs on the standard renovation project with EXIF-aware 480/768/1200 WebP derivatives and release-only picture/srcset markup. Human review caught and fixed an orientation regression before acceptance.
-    validation: derivative-run-6-success; visual-qa-run-45-success; standard-project-three-viewport-screenshots-pass; responsive-selection-pass; accessibility-pass; production-and-dns-unchanged
+    summary: Completed bounded Premium top-ten responsive-image slice and browser verification.
+    validation: visual-qa-run-64-success; failed-requests-0; broken-images-0; overflow-0
   - date: 2026-09-13
-    summary: Optimized the five Smart Home homepage images with deterministic responsive WebP candidates and browser-verified release delivery.
-    validation: visual-qa-run-34-success; responsive-selection-pass; accessibility-pass
-  - date: 2026-09-13
-    summary: Integrated responsive WebP delivery for the large bathroom feature and standard-kitchen homepage image.
-    validation: visual-qa-run-30-success; responsive-browser-check-success
+    summary: Completed Standard six-image responsive slice with EXIF-aware conversion after human review caught orientation regression.
+    validation: visual-qa-run-45-success; standard-project-three-viewport-screenshots-pass
   - date: 2026-09-13
     summary: Added semantic-token accessibility layer and browser checks for target size, Tab focus and reduced motion.
     validation: visual-and-accessibility-run-23-success
@@ -356,23 +279,22 @@ completed_work:
     validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Rank gallery image transfer impact and choose a bounded high-value responsive subset without mass-generating 39xN variants.
-  status: homepage-standard-premium-and-hero-performance-slices-green-ready-for-gallery-ranking
+  goal: Remove the remaining shared reduced-motion smooth-scroll advisory without changing layout or behavior for normal-motion users.
+  status: responsive-image-current-release-scope-green-ready-for-small-accessibility-cleanup
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
 next_verification:
   - visual-qa-must-remain-green
   - accessibility-qa-must-remain-green
+  - reduced-motion-scroll-behavior-must-compute-auto-on-shared-secondary-pages
   - responsive-browser-selection-must-remain-green
-  - project-detail-screenshot-orientation-must-remain-correct
-  - hero-approved-crop-must-remain-visually-equivalent
-  - project-checks-must-remain-green
-  - vps-bundle-check-must-remain-green
   - media-identities-must-remain-stable
   - approved-crops-and-layout-must-remain-visually-equivalent
+  - project-checks-must-remain-green
+  - vps-bundle-check-must-remain-green
   - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Rank and optimize a bounded gallery image subset, then clean the shared reduced-motion scroll advisory; VPS cutover remains separate.
+  goal: Clean shared reduced-motion scroll behavior; after that resume solar-collector material only when owner requests it.
