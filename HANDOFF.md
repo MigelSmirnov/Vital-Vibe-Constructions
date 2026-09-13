@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 44
-Updated: 2026-09-13T11:43:00Z
+Version: 45
+Updated: 2026-09-13T11:56:00Z
 
 ## Session rule
 
@@ -15,25 +15,25 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 ## Start here
 
 1. Read `AGENTS.md` and its required architecture contracts in order.
-2. Continue from `task/README.md`; responsive-image work is tracked in `task/002-responsive-images.md`.
+2. Continue from `task/README.md`; responsive-image history is tracked in `task/002-responsive-images.md`.
 3. Work on `agent/architecture-sandbox`; do not use `main` as a working branch.
-4. Do not hand-edit generated `site-next` output instead of changing the builder/source.
+4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
 ## Current stage
 
-The human-approved visual baseline, accessibility/token layer, homepage responsive images, Standard/Premium project slices, homepage hero/LCP delivery and bounded gallery high-transfer reuse are green. Production and DNS remain unchanged.
+The human-approved visual baseline, semantic/accessibility layer, homepage responsive images, Standard/Premium project slices, homepage hero/LCP delivery, bounded gallery high-transfer reuse and shared reduced-motion follow-up are green. Production and DNS remain unchanged.
 
 Reference states:
 
 - visual baseline: run #15 / `b34f72fd7902235cd24206f9a56ea9e243e89c92`;
-- accessibility: run #23 / `b23f0b9046e359f181f4065cc76665310f9d6188`;
-- first homepage image slice: run #30 / `073a29dc01213c9b12c929fa26630d456984d554`;
-- Smart Home image slice: run #34 / `d43d45294efe9169c26361712a2a9b008c231204`;
+- accessibility baseline: run #23 / `b23f0b9046e359f181f4065cc76665310f9d6188`;
 - Standard project responsive slice: run #45 / `a47740d5876490df7fa64b970c51449d85a0c8c2`;
-- hero/LCP baseline measurement: run #63 / `2d04103065dc1c9c50f469024f8836511d503833`;
+- hero/LCP baseline: run #63 / `2d04103065dc1c9c50f469024f8836511d503833`;
 - Premium + responsive hero acceptance: run #64 / `bfbcb7bd7dde15d2f69a663c3c7160f861ec81af`;
-- gallery top-16 responsive reuse: run #66 / `2c38471b8cd31af0c02137c40df6e16f479e4cac`.
+- gallery top-16 responsive reuse: run #66 / `2c38471b8cd31af0c02137c40df6e16f479e4cac`;
+- docs/state control after gallery: run #67 / `75517e4276cafe96b50fb2caae72a428f263b8a6`;
+- reduced-motion cleanup: run #68 / `c583479bfbd639856143212c52876e949b5ccf40`.
 
 ## Responsive-image system
 
@@ -41,43 +41,32 @@ Reference states:
 
 `tools/deploy/build-vps-bundle.mjs` generates responsive assets into `.deploy-dist/assets/responsive/`. Delivery changes are release-only and preserve original `<img src>` fallbacks, intrinsic dimensions, Media IDs and alt text. `<picture>` is layout-neutral (`display: contents`) so existing crop rules remain authoritative.
 
-Patchers/verifiers now include:
+Current release helpers/verifiers include homepage hero, Standard project, Premium project and gallery top-16 reuse. The gallery keeps all 39 contract images; only the six Standard + ten heavy Premium images reuse responsive project derivatives. The remaining 23 stay original until a new measured reason justifies more work.
 
-- homepage hero: `tools/media/patch-home-hero-responsive.mjs` + `tools/visual/hero-lcp.mjs`;
-- Standard project: `tools/media/patch-standard-project-core.mjs` + `tools/visual/standard-project.mjs`;
-- Premium project: `tools/media/patch-premium-project-responsive.mjs` + `tools/visual/premium-project.mjs`;
-- gallery reuse: `tools/media/patch-gallery-responsive.mjs` + `tools/visual/gallery-responsive.mjs`;
-- general optimized-resource check: `tools/visual/responsive-images.mjs`.
+### Key measured results
 
-### Standard project
+- Standard six: **13,644,080 B** originals → **80,566 / 93,344 / 214,548 B** selected at 390 / 768 / 1440 in run #45.
+- Premium top ten: **26,312,747 B** originals → **177,286 / 177,286 / 382,392 B** in run #64.
+- Hero: **264,764 B** JPEG baseline → **28,102 / 28,102 / 55,556 B** selected after responsive delivery. Controlled synthetic LCP changed **1,892/3,044/3,240 ms → 632/640/892 ms**. These are comparative synthetic timings, not field CWV.
+- Gallery bounded top 16: **39,956,827 B** original source payload → **257,852 B** selected in each 1× reference viewport during the full-scroll verification in run #66. This is not complete page weight; 23 other images remain original/lazy-loaded.
 
-Six originals total **13,644,080 B**. Run #45 selected **80,566 / 93,344 / 214,548 B** at 390 / 768 / 1440. The legacy EXIF-orientation bug was caught by human screenshot review and fixed with `-auto-orient` before acceptance.
+## Reduced motion
 
-### Premium project
+The remaining advisory came from shared secondary CSS computing `scroll-behavior: smooth` even when the browser requested `prefers-reduced-motion: reduce`.
 
-The bounded top ten originals total **26,312,747 B**. Run #64 selected/requested **177,286 / 177,286 / 382,392 B** at 390 / 768 / 1440 with 0 failed requests, 0 broken images and 0 overflow.
+`tools/media/patch-reduced-motion.mjs` now appends a deterministic release-only override to `.deploy-dist/styles.css`:
 
-### Homepage hero / LCP
+`@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }`
 
-Baseline run #63 observed `.hero-image` as LCP in all 3 reference viewports and delivered one **264,764 B** JPEG everywhere. Under the same network-only synthetic profile, baseline LCP was **1,892 / 3,044 / 3,240 ms**.
+`tools/visual/reduced-motion.mjs` is a blocking check in `tools/visual/run.sh`. It verifies `/gallery/` and `/projects/estudio-reformado-barcelona/` under a real reduced-motion browser context and fails unless computed scroll behavior is `auto`.
 
-The accepted responsive hero retains the JPEG fallback, crop and `fetchpriority="high"`, adds 480w / 768w / 1152w WebP and no preload. Run #64 selected **28,102 / 28,102 / 55,556 B** and measured **632 / 640 / 892 ms** under that same controlled profile. These timings are comparison data, not field CWV. Human review showed no visible crop regression.
-
-### Gallery highest-transfer subset
-
-The gallery contract remains **39/39**. Ranking by source size showed that the six Standard images plus the ten already-optimized Premium images are the dominant 16 sources, totaling **39,956,827 B** in originals.
-
-Instead of generating 39×N new files, `patch-gallery-responsive.mjs` reuses their existing project derivatives. Run #66 confirmed all 16 selected/requested WebP at 390 / 768 / 1440. The combined selected payload is **257,852 B** at each reference viewport, with 0 failed requests, 0 broken images and 0 overflow. This is a bounded 16-request comparison, not complete page weight; the remaining 23 gallery images stay original and lazy-loaded.
-
-Human review of run #66 gallery screenshots at 390, 768 and 1440 shows the two-/three-column card layout, orientation and crops intact.
+Run #68 completed successfully, so the previous gallery/El Raval smooth-scroll advisory is closed. Normal-motion smooth scrolling remains unchanged.
 
 ## Visual/accessibility reference
 
 Completed UI fixes remain: grouped 39-image gallery; El Raval pending-photo status removed; mobile project cards stacked; Smart Home mobile density reduced; Article desktop centered in a 1040 px editorial frame.
 
 Semantic contract: `--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--border`.
-
-One non-blocking advisory remains: gallery and El Raval still compute `scroll-behavior: smooth` under reduced motion. This is now the immediate small cleanup target.
 
 ## Solar collector material — deferred
 
@@ -99,8 +88,8 @@ Knowledge Repository remains public content source of truth. `support.js`/legacy
 
 ## Production / VPS
 
-Production target remains VPS + Caddy. Responsive-image generation is an explicit packaging dependency. Production, DNS and original hosting were not changed.
+Production target remains VPS + Caddy. Production, DNS and original hosting were not changed. VPS cutover remains a separate owner-directed stage.
 
 ## Immediate next action
 
-Fix the shared secondary `scroll-behavior: smooth` behavior under `prefers-reduced-motion: reduce`, then repeat accessibility + visual QA. Do not mass-generate gallery variants for the remaining 23 images without a new measured reason. Solar-collector material remains deferred until the owner resumes it.
+No current quality/performance blocker is open in this bounded pass. Await owner direction before starting a new stage. Solar-collector content remains deferred, hero preload remains optional only with separate timing evidence, and the remaining 23 gallery images should not be mass-optimized without new measurements.
