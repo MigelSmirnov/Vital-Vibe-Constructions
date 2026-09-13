@@ -83,6 +83,10 @@ try {
           continue;
         }
 
+        await image.evaluate((element) => { element.loading = "eager"; });
+        await image.scrollIntoViewIfNeeded();
+        await image.evaluate((element) => element.decode?.().catch(() => undefined));
+
         const currentSrc = await image.evaluate((element) => element.currentSrc || element.src);
         const selected = new URL(currentSrc, "http://vvc.local").pathname;
         const selectedOk = selected.startsWith(item.selectedPrefix) && selected.endsWith(".webp");
