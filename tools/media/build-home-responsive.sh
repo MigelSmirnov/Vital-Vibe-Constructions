@@ -62,6 +62,23 @@ for width in 320 640 960; do
   make_webp "smart/escenas.jpeg" "assets/responsive/smart/escenas-${width}.webp" "$width"
 done
 
+# Premium project: optimize the ten largest gallery images first. Smaller lead/support images remain on originals in this bounded slice.
+for width in 480 768 1200; do
+  for name in \
+    pladur-instalacion \
+    pladur-obra \
+    prep-techo-1 \
+    prep-techo-2 \
+    prep-techo-3 \
+    prep-techo-4 \
+    techo-1 \
+    techo-2 \
+    techo-3 \
+    techo-4; do
+    make_webp "premium/${name}.jpeg" "assets/responsive/premium/${name}-${width}.webp" "$width"
+  done
+done
+
 {
   echo "# Responsive image derivatives"
   echo
