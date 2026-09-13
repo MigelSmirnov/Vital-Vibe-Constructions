@@ -1,7 +1,7 @@
-version: 45
-updated_at: 2026-09-13T08:31:00Z
+version: 46
+updated_at: 2026-09-13T10:10:00Z
 phase: homepage-visual-redesign
-stage_status: homepage-and-first-project-responsive-images-browser-validated
+stage_status: homepage-project-and-hero-responsive-images-browser-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: premium-project-responsive-images-by-transfer-impact
+next_proposed_task: gallery-responsive-images-by-transfer-impact
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -98,19 +98,77 @@ visual_qa:
       broken_images: 0
       horizontal_overflow_findings: 0
       human_orientation_crop_review: no-visible-regression-after-auto-orient-fix
+    premium_project_slice:
+      status: success
+      workflow_run_number: 64
+      commit: bfbcb7bd7dde15d2f69a663c3c7160f861ec81af
+      route: /projects/trabajos-contrata-premium/
+      optimized_images: 10
+      original_bytes_total: 26312747
+      selected_1x_bytes:
+        390x844: 177286
+        768x1024: 177286
+        1440x1000: 382392
+      chromium_selected_responsive_sources: true
+      browser_requested_selected_sources: true
+      failed_requests: 0
+      broken_images: 0
+      horizontal_overflow_findings: 0
+    hero_lcp_slice:
+      status: success
+      baseline_workflow_run_number: 63
+      baseline_commit: 2d04103065dc1c9c50f469024f8836511d503833
+      optimized_workflow_run_number: 64
+      optimized_commit: bfbcb7bd7dde15d2f69a663c3c7160f861ec81af
+      lcp_element_all_reference_viewports: hero-image
+      fetchpriority: high
+      preload_added: false
+      human_crop_review: no-visible-regression
+      synthetic_profile:
+        cache: cold
+        dpr: 1
+        latency_ms: 150
+        download_mbps: 1.6
+        upload_kbps: 750
+        cpu_throttling: false
+      baseline:
+        resource: /assets/home/kitchen-living.jpg
+        bytes: 264764
+        synthetic_lcp_ms:
+          390x844: 1892
+          768x1024: 3044
+          1440x1000: 3240
+      optimized:
+        selected_resources:
+          390x844: kitchen-living-480.webp
+          768x1024: kitchen-living-480.webp
+          1440x1000: kitchen-living-768.webp
+        selected_bytes:
+          390x844: 28102
+          768x1024: 28102
+          1440x1000: 55556
+        synthetic_lcp_ms:
+          390x844: 632
+          768x1024: 640
+          1440x1000: 892
   baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
 responsive_images:
   task: task/002-responsive-images.md
-  status: homepage-high-impact-and-first-project-detail-slices-integrated-and-browser-verified
+  status: homepage-standard-premium-and-hero-slices-integrated-and-browser-verified
   derivative_builder: tools/media/build-home-responsive.sh
   derivative_workflow: .github/workflows/home-image-derivatives.yml
   release_integration:
     bundle_builder: tools/deploy/build-vps-bundle.mjs
-    standard_project_patcher: tools/media/patch-standard-project-responsive.mjs
-  browser_verifier: tools/visual/responsive-images.mjs
-  standard_project_visual_verifier: tools/visual/standard-project.mjs
+    home_hero_patcher: tools/media/patch-home-hero-responsive.mjs
+    standard_project_patcher: tools/media/patch-standard-project-core.mjs
+    premium_project_patcher: tools/media/patch-premium-project-responsive.mjs
+  browser_verifiers:
+    responsive_images: tools/visual/responsive-images.mjs
+    standard_project: tools/visual/standard-project.mjs
+    premium_project: tools/visual/premium-project.mjs
+    hero_lcp: tools/visual/hero-lcp.mjs
   encoder:
     orientation_tool: imagemagick-auto-orient
     metadata_after_orientation: stripped
@@ -128,7 +186,7 @@ responsive_images:
       - assets/home/bathroom-retouched.png
       - estandar/cocina.jpeg
     original_bytes_total: 3967611
-    note: encoded byte counts changed slightly after EXIF-aware pipeline; browser delivery remains responsive and verified
+    note: browser delivery remains responsive and verified
   smart_home_slice:
     sources:
       - smart/gira.jpeg
@@ -161,25 +219,38 @@ responsive_images:
       390x844: 80566
       768x1024: 93344
       1440x1000: 214548
-    selected_resources:
-      390x844:
-        cocina: cocina-480.webp
-        obra: obra-480.webp
-        suelo_base: suelo-base-480.webp
-        parquet: parquet-480.webp
-        pintura: pintura-480.webp
-        pasillo: pasillo-480.webp
-      768x1024:
-        cocina: cocina-768.webp
-        gallery_width: 480
-      1440x1000:
-        cocina: cocina-1200.webp
-        gallery_width: 768
     orientation_regression:
       detected_by: human-full-page-screenshot-review
       cause: legacy-jpeg-exif-orientation-lost-in-direct-webp-conversion
       fix: imagemagick-auto-orient-before-cwebp
       final_status: fixed-and-reviewed
+  premium_project_slice:
+    route: /projects/trabajos-contrata-premium/
+    source_count: 10
+    original_bytes_total: 26312747
+    derivatives_per_source:
+      widths:
+        - 480
+        - 768
+        - 1200
+    selected_1x_bytes:
+      390x844: 177286
+      768x1024: 177286
+      1440x1000: 382392
+    final_status: browser-verified
+  hero_lcp_slice:
+    source: assets/home/kitchen-living.jpg
+    original_bytes: 264764
+    derivatives:
+      480: 28102
+      768: 55556
+      1152: 95278
+    sizes: "(max-width: 720px) 100vw, (max-width: 1400px) 53vw, 750px"
+    fallback_original_retained: true
+    fetchpriority_high_retained: true
+    preload_added: false
+    final_status: browser-and-synthetic-lcp-verified
+    note: synthetic timing comparison only; not field-core-web-vitals
   markup:
     format: picture-with-webp-width-srcset-and-sizes
     layout_neutral_picture_wrapper: display-contents
@@ -188,11 +259,13 @@ responsive_images:
       - en
       - ru
     standard_project_detail: true
+    premium_project_detail: true
     projects_index_standard_card: true
+    homepage_hero: true
     original_img_src_fallback_retained: true
     intrinsic_dimensions_retained: true
   mass_gallery_derivatives_deferred: true
-  hero_lcp_optimization_deferred_for_separate_measurement: true
+  gallery_next_step: rank-source-and-transfer-impact-before-bounded-slice
 
 visual_design:
   homepage_direction: graphite-gold-split-hero
@@ -206,10 +279,9 @@ visual_design:
     - --accent
     - --border
   next_review_candidates:
-    - premium-project-responsive-images-by-transfer-impact
-    - hero-lcp-measurement-and-format-decision
-    - shared-secondary-reduced-motion-scroll-cleanup
     - gallery-responsive-images-after-ranking
+    - shared-secondary-reduced-motion-scroll-cleanup
+    - optional-hero-preload-only-if-separate-timing-evidence
 
 content_state:
   home_locales:
@@ -262,6 +334,12 @@ vps_bundle:
 
 completed_work:
   - date: 2026-09-13
+    summary: Measured the homepage hero as the LCP element at all reference widths, then added 480/768/1152 responsive WebP delivery while retaining the JPEG fallback, approved crop and fetchpriority high. Controlled before/after synthetic measurements improved strongly without adding preload.
+    validation: derivative-run-9-success; visual-qa-run-64-success; hero-responsive-selected-all-reference-viewports; hero-screenshots-human-reviewed; production-and-dns-unchanged
+  - date: 2026-09-13
+    summary: Completed the bounded Premium project top-ten responsive-image slice and browser-verified actual selected resources at 390/768/1440.
+    validation: visual-qa-run-64-success; premium-responsive-selection-pass; failed-requests-0; broken-images-0; overflow-0
+  - date: 2026-09-13
     summary: Optimized the six photographs on the standard renovation project with EXIF-aware 480/768/1200 WebP derivatives and release-only picture/srcset markup. Human review caught and fixed an orientation regression before acceptance.
     validation: derivative-run-6-success; visual-qa-run-45-success; standard-project-three-viewport-screenshots-pass; responsive-selection-pass; accessibility-pass; production-and-dns-unchanged
   - date: 2026-09-13
@@ -278,8 +356,8 @@ completed_work:
     validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Optimize the premium project images by measured transfer impact while keeping hero/LCP and mass-gallery optimization as separate decisions.
-  status: standard-project-responsive-slice-green-ready-for-premium-ranking
+  goal: Rank gallery image transfer impact and choose a bounded high-value responsive subset without mass-generating 39xN variants.
+  status: homepage-standard-premium-and-hero-performance-slices-green-ready-for-gallery-ranking
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
@@ -288,6 +366,7 @@ next_verification:
   - accessibility-qa-must-remain-green
   - responsive-browser-selection-must-remain-green
   - project-detail-screenshot-orientation-must-remain-correct
+  - hero-approved-crop-must-remain-visually-equivalent
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
   - media-identities-must-remain-stable
@@ -296,4 +375,4 @@ next_verification:
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Rank and optimize premium project images, then measure hero/LCP separately; VPS cutover remains separate.
+  goal: Rank and optimize a bounded gallery image subset, then clean the shared reduced-motion scroll advisory; VPS cutover remains separate.
