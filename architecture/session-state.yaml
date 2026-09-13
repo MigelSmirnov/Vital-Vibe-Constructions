@@ -1,7 +1,7 @@
-version: 41
-updated_at: 2026-09-13T07:34:00Z
+version: 42
+updated_at: 2026-09-13T07:47:00Z
 phase: homepage-visual-redesign
-stage_status: visual-baseline-and-accessibility-layer-validated
+stage_status: responsive-image-derivative-pipeline-green-integration-pending
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: responsive-image-optimization
+next_proposed_task: task/002-responsive-images.md
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -130,6 +130,55 @@ visual_qa:
   baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
+responsive_images:
+  task: task/002-responsive-images.md
+  status: derivative-builder-green-markup-integration-pending
+  builder: tools/media/build-home-responsive.sh
+  workflow: .github/workflows/home-image-derivatives.yml
+  workflow_permissions: read-only-contents
+  first_run:
+    run_number: 1
+    commit: 663f412f38fd830bb0fe722fb0914642aa85b26c
+    status: success
+  encoder:
+    tool: cwebp
+    quality: 82
+    method: 6
+  source_policy:
+    originals_replaced: false
+    media_ids_changed: false
+    approved_crops_changed: false
+    fallback_original_required: true
+  first_slice:
+    - source: assets/home/bathroom-retouched.png
+      original_bytes: 2135087
+      original_dimensions: 1086x1448
+      derivatives:
+        - width: 480
+          bytes: 22896
+        - width: 768
+          bytes: 56418
+        - width: 1086
+          bytes: 130290
+    - source: estandar/cocina.jpeg
+      original_bytes: 1832524
+      original_dimensions: 4032x3024
+      derivatives:
+        - width: 480
+          bytes: 7058
+        - width: 768
+          bytes: 14168
+        - width: 1200
+          bytes: 27268
+  integration_requirements:
+    - picture-webp-source-with-width-srcset
+    - explicit-sizes
+    - original-img-src-fallback
+    - preserve-intrinsic-width-height
+    - visual-qa-after-integration
+    - verify-selected-resource-in-chromium
+  mass-gallery-derivatives_deferred: true
+
 visual_design:
   homepage_direction: graphite-gold-split-hero
   homepage_source_styles: tools/site-next/home.css
@@ -157,8 +206,10 @@ visual_design:
     toc_sticky: true
     mobile_layout_changed: false
   next_review_candidates:
-    - responsive-image-optimization
+    - homepage-responsive-image-markup-integration
     - shared-secondary-reduced-motion-scroll-cleanup
+    - smart-home-responsive-images
+    - project-and-gallery-responsive-images
 
 content_state:
   home_locales:
@@ -181,6 +232,11 @@ content_state:
     media_count: 16
     pending_technical_media_public: false
     pending_technical_media_internal_backlog: task/README.md
+  solar_collector_material:
+    status: deferred-by-owner
+    source_branch: agent/add-solar-collector-animation
+    merge_branch_wholesale: false
+    future_policy: port-article-and-animation-surgically-into-current-architecture
 
 vps_security:
   artifact: architecture/vps-security-plan.md
@@ -293,6 +349,9 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-13
+    summary: Started the first bounded responsive-image performance slice. Added a deterministic cwebp builder and read-only GitHub Actions workflow; generated and measured WebP width variants for the heavy homepage bathroom PNG and standard kitchen JPEG without replacing originals or changing Media IDs.
+    validation: homepage-image-derivatives-run-1-success; originals-unchanged; markup-integration-pending; production-and-dns-unchanged
+  - date: 2026-09-13
     summary: Added the semantic-token accessibility layer from the approved visual baseline. Article now uses the shared color-token contract; browser QA checks 24 px control targets, real Tab focus and reduced motion across the full matrix.
     validation: full-checks-pass; vps-bundle-pass; visual-and-accessibility-run-23-success; zero-missing-tokens; zero-small-controls; zero-sampled-focus-failures; zero-motion-rules; production-and-dns-unchanged
   - date: 2026-09-13
@@ -318,12 +377,14 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Optimize responsive images and modern formats without changing approved layout, crops or Media identities.
-  status: accessibility-layer-green-ready-for-performance-work
+  goal: Integrate the first two responsive WebP image families into homepage markup without changing the approved visual baseline.
+  status: derivatives-built-and-measured-awaiting-picture-srcset-integration
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
 next_verification:
+  - responsive-picture-markup-must-retain-original-fallback
+  - selected-responsive-resource-must-be-confirmed-in-chromium
   - visual-qa-must-remain-green
   - accessibility-qa-must-remain-green
   - project-checks-must-remain-green
@@ -335,4 +396,4 @@ next_verification:
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Add deterministic responsive image derivatives and modern formats, then re-run the approved visual/accessibility matrix; VPS cutover remains a separate future stage.
+  goal: After the first homepage responsive-image slice is integrated and visually confirmed, expand the same pattern selectively to Smart Home/project images; VPS cutover remains separate.
