@@ -23,14 +23,22 @@ make_webp() {
   cwebp -quiet -mt -m 6 -q 82 -resize "$width" 0 "$ROOT/$source" -o "$OUT/$output"
 }
 
+# Homepage featured bathroom.
 make_webp "assets/home/bathroom-retouched.png" "assets/responsive/home/bathroom-retouched-480.webp" 480
 make_webp "assets/home/bathroom-retouched.png" "assets/responsive/home/bathroom-retouched-768.webp" 768
 make_webp "assets/home/bathroom-retouched.png" "assets/responsive/home/bathroom-retouched-1086.webp" 1086
 
-make_webp "estandar/cocina.jpeg" "assets/responsive/estandar/cocina-480.webp" 480
-make_webp "estandar/cocina.jpeg" "assets/responsive/estandar/cocina-768.webp" 768
-make_webp "estandar/cocina.jpeg" "assets/responsive/estandar/cocina-1200.webp" 1200
+# Standard-renovation project. The lead image is also reused on the homepage and project index.
+for width in 480 768 1200; do
+  make_webp "estandar/cocina.jpeg" "assets/responsive/estandar/cocina-${width}.webp" "$width"
+  make_webp "estandar/obra.jpeg" "assets/responsive/estandar/obra-${width}.webp" "$width"
+  make_webp "estandar/suelo-base.jpeg" "assets/responsive/estandar/suelo-base-${width}.webp" "$width"
+  make_webp "estandar/parquet.jpeg" "assets/responsive/estandar/parquet-${width}.webp" "$width"
+  make_webp "estandar/pintura.jpeg" "assets/responsive/estandar/pintura-${width}.webp" "$width"
+  make_webp "estandar/pasillo.jpeg" "assets/responsive/estandar/pasillo-${width}.webp" "$width"
+done
 
+# Homepage Smart Home block.
 for width in 320 640 960; do
   make_webp "smart/gira.jpeg" "assets/responsive/smart/gira-${width}.webp" "$width"
   make_webp "premium/panel-marmol.jpeg" "assets/responsive/premium/panel-marmol-${width}.webp" "$width"
@@ -40,7 +48,7 @@ for width in 320 640 960; do
 done
 
 {
-  echo "# Homepage responsive image derivatives"
+  echo "# Responsive image derivatives"
   echo
   echo "Generated with cwebp q=82, method=6. Originals are retained as fallbacks."
   echo
