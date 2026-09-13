@@ -1,6 +1,22 @@
 name: Visual QA
 
 on:
+  push:
+    branches:
+      - agent/architecture-sandbox
+    paths:
+      - ".github/workflows/visual-qa.yml"
+      - "tools/visual/**"
+      - "tools/site-next/**"
+      - "tools/articles/**"
+      - "tools/deploy/**"
+      - "content/**"
+      - "architecture/**"
+      - "site-next/**"
+      - "assets/**"
+      - "sitemap.xml"
+      - "llms.txt"
+      - "VVC_primary_logo.svg"
   pull_request:
     branches:
       - main
