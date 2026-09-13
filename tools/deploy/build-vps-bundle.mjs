@@ -140,6 +140,10 @@ async function main() {
   }
 
   await integrateHomepageResponsiveImages();
+  execFileSync("node", [path.join(root, "tools/media/patch-standard-project-responsive.mjs")], {
+    cwd: root,
+    stdio: "inherit",
+  });
 
   const commit = process.env.GITHUB_SHA || execFileSync("git", ["rev-parse", "HEAD"], {
     cwd: root,
