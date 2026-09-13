@@ -1,8 +1,8 @@
-version: 54
+version: 55
 updated_at: 2026-09-13T18:34:06Z
-phase: local-agent-vps-handoff
+phase: release-branch-reconciliation
 stage_status: awaiting-local-production-build-and-cutover
-active_branch: agent/solar-collector-port
+active_branch: release/vps-migration
 pull_request:
   number: 1
   state: merged-historical
@@ -11,6 +11,18 @@ pull_request:
 
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
+
+release_preparation:
+  audit: task/004-release-branch-audit.md
+  source_branch: agent/solar-collector-port
+  source_sha: 06ebb34b33b5b3a6d06359bf53af16607e94e4f2
+  integrated_main_sha: b89f003784b81ad6cf8efe672d6cc78446c07954
+  reconciliation_merge_sha: f13a031958e1782c96eaa9533cc4392898755fc2
+  reconciliation_site_tree_changed: false
+  release_selection: explicit-full-sha-from-handoff
+  main_updated: false
+  production_build: pending-webp
+  caddy_validation: pending-on-vps
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -231,7 +243,6 @@ visual_design:
   optional_followups:
     - hero-preload-only-if-separate-timing-evidence
     - remaining-gallery-images-only-if-new-measured-benefit
-    - solar-collector-surgical-port-when-owner-resumes
 
 content_state:
   article_editorial_policy:
@@ -325,6 +336,9 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - date: 2026-09-13
+    summary: Created full-site release branch and integrated main history with identical site tree; aligned handoff and branch contracts.
+    validation: canonical-checks-pass-35-tests; audit-0-errors-5-warnings; generated-projections-unchanged; production-webp-and-caddy-pending
   - date: 2026-09-13
     summary: Prepared owner-authorized local VPS handoff and allowed same-origin solar v3 framing in Caddy.
     validation: full-checks-pass; production-build-with-cwebp-and-caddy-validation-pending-on-local-agent

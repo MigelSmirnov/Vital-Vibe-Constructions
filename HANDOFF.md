@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 51
+Version: 52
 Updated: 2026-09-13T18:34:06Z
 
 ## Session rule
@@ -16,7 +16,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 1. Read `AGENTS.md` and its required architecture contracts in order.
 2. Continue from `task/README.md`; responsive-image history is tracked in `task/002-responsive-images.md`.
-3. Continue solar-collector review on `agent/solar-collector-port`; do not use `main` as a working branch.
+3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
@@ -98,6 +98,10 @@ Owner rejected the condensed report-style rewrites. Restored the original Spanis
 
 ## Immediate next action
 
-Localized article catalogs are generated at /articulos/, /en/articles/ and /ru/articles/ from published Knowledge Repository records, newest first. Homepage menus and article return links use the matching language. Full checks validate catalog coverage, order, metadata, sitemap and navigation. Preview deployment and browser verification passed (menu → catalog → v3 article → catalog, language switching, both card images loaded). Production and DNS are unchanged. Owner approved moving to VPS locally. Continue with `task/003-vps-cutover.md` from `agent/solar-collector-port`. Caddy now permits same-origin framing so solar v3 can render. This session has no cwebp or Caddy: do not treat the preview bundle as a fresh verified production archive.
+Localized article catalogs are generated at /articulos/, /en/articles/ and /ru/articles/ from published Knowledge Repository records, newest first. Homepage menus and article return links use the matching language. Full checks validate catalog coverage, order, metadata, sitemap and navigation. Preview deployment and browser verification passed (menu → catalog → v3 article → catalog, language switching, both card images loaded). Production and DNS are unchanged. Owner approved moving to VPS locally. Continue with `task/003-vps-cutover.md` from `release/vps-migration` at the explicit full release SHA supplied in the handoff. Caddy now permits same-origin framing so solar v3 can render. This session has no cwebp or Caddy: do not treat the preview bundle as a fresh verified production archive.
 
 VPS handoff checks: `node tools/checks/run.mjs` passed in this session (content audit: 0 errors, 5 warnings). Full production WebP build and real Caddy validation were not run here.
+
+## Release branch reconciliation — 2026-09-13
+
+Created `release/vps-migration` from preserved source `06ebb34b33b5b3a6d06359bf53af16607e94e4f2`. Integrated `main` at `b89f003784b81ad6cf8efe672d6cc78446c07954` in merge `f13a031958e1782c96eaa9533cc4392898755fc2`, with exactly the source tree unchanged. The 33 main-only commits have zero net file changes against common ancestor `56ba3ec959a371ea1eb283d835ab5da7dc0be3d9`; no rejected redesign was restored by the merge. See `task/004-release-branch-audit.md`. Full canonical checks passed before and after reconciliation: 35 tests, gallery 39/39, 12 article pages, audit 0 errors / 5 warnings; generated projections unchanged. WebP production build and real Caddy checks remain pending. `main`, original feature branches, production and DNS were not changed.

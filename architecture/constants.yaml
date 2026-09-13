@@ -1,4 +1,4 @@
-version: 2
+version: 3
 site:
   id: vital-vibe-constructions
   canonical_origin: https://vitalvibeconstruction.com
@@ -15,7 +15,8 @@ site:
 repository:
   default_branch: main
   working_branch_prefix: agent/
-  active_migration_branch: agent/architecture-sandbox
+  release_branch_prefix: release/
+  active_migration_branch: release/vps-migration
 
 paths:
   architecture_root: architecture

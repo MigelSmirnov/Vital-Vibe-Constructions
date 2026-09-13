@@ -5,9 +5,9 @@
 ## Какую версию брать
 
 - Репозиторий: `MigelSmirnov/Vital-Vibe-Constructions`.
-- Ветка с одобренными статьями и фото: **`agent/solar-collector-port`**.
+- Ветка подготовки полного сайта: **`release/vps-migration`**. История разобрана в [004 — аудит веток](004-release-branch-audit.md); исходный коммит `06ebb34b33b5b3a6d06359bf53af16607e94e4f2` сохранён в прежней ветке.
 - Начать с `AGENTS.md`, обязательных контрактов и `HANDOFF.md`.
-- Забрать актуальную удалённую ветку в отдельный чистый checkout; записать полный `git rev-parse HEAD` как release SHA. Не собирать из старого `main`, корня репозитория или другой ветки `agent`.
+- Использовать полный 40-символьный `RELEASE_SHA`, переданный вместе с этой инструкцией. Забрать ветку и создать отдельный чистый detached checkout именно этого SHA; не заменять его автоматически свежей вершиной ветки. Проверить, что SHA принадлежит истории `release/vps-migration` и включает объединение истории `f13a031958e1782c96eaa9533cc4392898755fc2`. Не собирать из старого `main`, корня репозитория или другой ветки `agent`.
 - Корень публичного релиза — содержимое `.deploy-dist`, сформированное builder. Исходники, `task/`, секреты и репозиторий на веб-сервер не публиковать.
 
 Одобрены каталоги статей ES/EN/RU, солнечный коллектор с анимацией v3 и двумя фото, исходная полная статья о покраске, полная статья о стоимости ремонта с разделами про полы и фото. Не превращать статьи обратно в краткие отчёты. Дополнительные статьи про электрику, сантехнику и ванную не являются условием запуска.
@@ -29,11 +29,18 @@ set -euo pipefail
 command -v node
 command -v convert
 command -v cwebp
-git rev-parse HEAD
+: "${RELEASE_SHA:?Укажите полный SHA из передачи релиза}"
+[[ "$RELEASE_SHA" =~ ^[0-9a-f]{40}$ ]]
+test "$(git rev-parse HEAD)" = "$RELEASE_SHA"
+test -z "$(git status --porcelain)"
+git merge-base --is-ancestor f13a031958e1782c96eaa9533cc4392898755fc2 "$RELEASE_SHA"
+git merge-base --is-ancestor "$RELEASE_SHA" origin/release/vps-migration
 node tools/checks/run.mjs
 git diff --exit-code
 node tools/deploy/build-vps-bundle.mjs
 node tools/deploy/validate-vps-bundle.mjs
+test "$(cat .deploy-dist/DEPLOYMENT_COMMIT)" = "$RELEASE_SHA"
+git diff --exit-code
 tar -C .deploy-dist -czf vps-site-bundle.tgz .
 sha256sum vps-site-bundle.tgz
 ```
