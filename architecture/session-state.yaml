@@ -1,8 +1,8 @@
-version: 59
-updated_at: 2026-09-13T20:15:58Z
+version: 60
+updated_at: 2026-09-13T20:32:59Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/solar-embed-width-fix
+active_branch: agent/article-photo-delivery
 pull_request:
   number: 1
   state: merged-historical
@@ -11,6 +11,23 @@ pull_request:
 
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
+
+article_photo_delivery:
+  report: architecture/article-photo-delivery/report.md
+  source_sha: 2695336c8117234206bc4a3e19009ae517f7094f
+  articles: [article-painting-preparation, article-floor-leveling]
+  original_photos: 8
+  webp_derivatives: 24
+  localized_articles: 6
+  localized_catalogs: 3
+  local_cases_passed: 36
+  public_cases_passed: 36
+  original_bytes: 2074102
+  selected_bytes_mobile_dpr1: 144364
+  selected_bytes_desktop_dpr1: 314868
+  selected_bytes_desktop_dpr2: 698222
+  text_layout_originals_preserved: true
+  dns_server_configuration_changed: false
 
 solar_embed_width_fix:
   report: architecture/solar-embed-width-fix.md
@@ -30,11 +47,11 @@ solar_embed_width_fix:
 
 vps_execution:
   report: architecture/vps-cutover-20260913/report.md
-  release_sha: 13f0f47c92b44c0ab057ae32b453c0e0641052d4
+  release_sha: 2695336c8117234206bc4a3e19009ae517f7094f
   initial_migration_sha: fb31a282e0204bc37d3ced1982675fef0332573f
-  archive_sha256: 21900aa69131ffdb401d133f2cd739176f6dadd7d7a8f4d19e345ebe70869a7d
-  release_id: 20260913-13f0f47
-  server_current: /srv/vital-vibe/releases/20260913-13f0f47
+  archive_sha256: e081bca9155398e72fb0a06ea61c5ca510f22902646513a0f38194e4bc55ca6b
+  release_id: 20260913-2695336
+  server_current: /srv/vital-vibe/releases/20260913-2695336
   public_cutover_complete: true
   public_url: https://vitalvibeconstruction.com
   production_browser_page_checks: 21
@@ -55,7 +72,7 @@ vps_execution:
   apex_a: 152.228.139.236
   www_cname: vitalvibeconstruction.com
   preserved_app_and_mail_dns: true
-  previous_vps_release: 20260913-fb31a282
+  previous_vps_release: 20260913-13f0f47
   rollback_hosting: unchanged-github-pages
   caddy_container: vvc-site
   caddy_listener: 127.0.0.1:8890
@@ -398,6 +415,7 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - Published responsive WebP for eight painting/floor photos; 36 local and 36 public browser cases passed; release 2695336.
   - date: 2026-09-13
     summary: Fixed solar iframe collapsing to zero width on wide displays, versioned article CSS URLs, added browser regression coverage, and deployed the verified replacement release.
     validation: 35-tests; audit-0-errors-5-warnings; old-bundle-regression-fails; 18-local-and-18-public-embed-checks-pass; public-routes-redirects-pass

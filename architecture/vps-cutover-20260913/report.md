@@ -1,6 +1,10 @@
 # VPS preparation and pre-DNS acceptance — 2026-09-13
 
-## Current release after the solar-layout fix
+## Current release after article photograph optimization
+
+Production now serves `2695336c8117234206bc4a3e19009ae517f7094f` / `20260913-2695336`. Eight painting/floor photos use responsive WebP; all 36 public browser checks passed. See [delivery report](../article-photo-delivery/report.md). Previous `20260913-13f0f47` is retained for rollback. DNS, TLS and shared-server settings are unchanged.
+
+## Solar-layout fix (historical)
 
 The initial migration record below describes `fb31a282`. Production was subsequently updated to `13f0f47c92b44c0ab057ae32b453c0e0641052d4` / release `20260913-13f0f47` to fix a zero-width solar iframe on wide screens. See [fix report](../solar-embed-width-fix.md). The old release is now retained as a symlink rollback target. DNS, TLS and shared-server configuration are unchanged.
 
