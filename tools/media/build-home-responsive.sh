@@ -9,6 +9,15 @@ if ! command -v cwebp >/dev/null 2>&1; then
   exit 1
 fi
 
+if command -v magick >/dev/null 2>&1; then
+  IMAGE_TOOL="magick"
+elif command -v convert >/dev/null 2>&1; then
+  IMAGE_TOOL="convert"
+else
+  echo "ImageMagick is required to auto-orient source photos (Ubuntu: sudo apt-get install imagemagick)" >&2
+  exit 1
+fi
+
 rm -rf "$OUT"
 mkdir -p \
   "$OUT/assets/responsive/home" \
@@ -20,7 +29,13 @@ make_webp() {
   local source="$1"
   local output="$2"
   local width="$3"
-  cwebp -quiet -mt -m 6 -q 82 -resize "$width" 0 "$ROOT/$source" -o "$OUT/$output"
+  local temp
+  temp="$(mktemp --suffix=.png)"
+  trap 'rm -f "$temp"' RETURN
+  "$IMAGE_TOOL" "$ROOT/$source" -auto-orient -resize "${width}x" -strip "$temp"
+  cwebp -quiet -mt -m 6 -q 82 "$temp" -o "$OUT/$output"
+  rm -f "$temp"
+  trap - RETURN
 }
 
 # Homepage featured bathroom.
@@ -50,7 +65,7 @@ done
 {
   echo "# Responsive image derivatives"
   echo
-  echo "Generated with cwebp q=82, method=6. Originals are retained as fallbacks."
+  echo "Generated after EXIF auto-orientation with ImageMagick, then encoded with cwebp q=82, method=6. Originals are retained as fallbacks."
   echo
   echo "| File | Bytes |"
   echo "| --- | ---: |"
