@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 34
-Updated: 2026-09-13T06:36:00Z
+Version: 35
+Updated: 2026-09-13T06:56:00Z
 
 ## Session rule
 
@@ -24,7 +24,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 The active work is **visual QA and refinement of the generated site**, not a wholesale redesign.
 
-The first reproducible browser QA system is implemented:
+The reproducible browser QA system is in place:
 
 - command: `bash tools/visual/run.sh`;
 - source projection: validated `.deploy-dist` served over local HTTP;
@@ -34,39 +34,47 @@ The first reproducible browser QA system is implemented:
 - checks: loading failures, broken images, horizontal overflow and Article language links;
 - screenshots/reports remain diagnostic artifacts and do not enter the release bundle.
 
-GitHub Actions Visual QA run #4 produced the first green set. The owner then approved acting on the visual review findings. Run #5 on commit `7b41ed9ac081635f8fe2c7bdd629368b2e2e867e` passed after the first correction slice.
+GitHub Actions Visual QA run #14 on commit `712f180c9a8f7f9f273ec8eada27b0755d659931` completed successfully after the second visual-refinement slice.
 
-## First visual-review fixes
+## Visual review fixes completed
 
-Three confirmed Major findings were addressed:
+### First slice
 
 1. **Gallery length and sameness**
    - All 39/39 contract media remain present.
-   - `tools/site-next/build-gallery.mjs` now groups media by Project or capability rather than rendering one flat stream.
-   - `tools/site-next/gallery.css` provides compact responsive previews: 3 columns desktop, 2 columns tablet/mobile, with existing `Antes` / `Proceso` / `Resultado` / `Detalle` state labels.
+   - Gallery media are grouped by Project or capability instead of one flat stream.
+   - Responsive previews use 3 columns on desktop and 2 columns on tablet/mobile.
 
 2. **Internal status exposed on El Raval**
    - `pending_technical_media` was removed from the public Project record.
-   - The generated Project page no longer shows `Fotografías pendientes de incorporar`.
-   - The six missing technical-photo subjects were moved to `task/README.md` as internal backlog only.
+   - Missing-photo subjects remain internal backlog only.
 
 3. **Cramped mobile homepage project cards**
-   - Under 720 px the compact project cards now stack vertically: media above, metadata/title below.
-   - Desktop/tablet composition remains unchanged.
+   - Under 720 px compact project cards stack vertically: media above, metadata/title below.
 
-Tracked generated projections were rebuilt from the changed sources and synchronized after the source commit. No production deployment was performed.
+### Second slice
+
+4. **Smart Home mobile density**
+   - Content was preserved; no capability or partner example was removed.
+   - Mobile section spacing was tightened, the lead image reduced to 240 px high and partner examples reduced to compact 2×2 thumbnails.
+   - The ES 390 px full-page capture became materially shorter while keeping the same information hierarchy.
+
+5. **Article desktop composition**
+   - The Article header, TOC/body grid and footer now share a centered 1040 px editorial frame.
+   - Reading column remains 720 px; TOC remains separate and sticky on desktop.
+   - Mobile Article layout is unchanged and remains single-column.
+
+Tracked generated `site-next/home.css` and `site-next/article.css` are synchronized with their source styles. The final diff from the previous approved visual state contains only those four intended CSS files. No production deployment was performed.
 
 ## Visual baseline status
 
-Technical QA is green, but the improved screenshots still need a human pass before they are declared the first visual baseline. Do not treat a CI PASS as proof of visual quality.
+The new screenshot set has been technically validated and visually inspected for the intended changes. It is a **baseline candidate**, but owner approval is still required before calling it the first visual baseline.
 
-Next visual candidates after baseline review:
+Next useful work after baseline approval:
 
-- reduce Smart Home mobile density while preserving real content;
-- improve Article desktop centering without harming its strong mobile reading layout;
-- then introduce a shared semantic brand-token layer for color, typography, spacing, focus and borders.
-
-Image optimization remains pending. Earlier static review found the homepage image payload heavy enough to merit responsive derivatives and modern formats after the layout is stable.
+- shared semantic brand tokens for color, typography, spacing, focus and borders;
+- target-size / keyboard-focus accessibility checks;
+- responsive image derivatives and modern formats after layout stabilizes.
 
 ## Published content state
 
@@ -118,4 +126,4 @@ The public server remains static: no CMS, database, PHP runtime or Node applicat
 
 ## Immediate next action
 
-Review the improved Visual QA screenshots from the latest green run. If the gallery, El Raval page and mobile project cards are accepted, mark them as the first visual baseline in `task/001-visual-checks.md`, then move to the next confirmed visual issue rather than broad redesign work.
+Review the refined run #14 screenshots as the candidate first baseline. If accepted, mark task 001 baseline-approved and move to shared brand tokens / accessibility checks rather than another broad redesign pass.
