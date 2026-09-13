@@ -16,6 +16,8 @@ on:
       - "site-next/**"
       - "assets/**"
       - "estandar/**"
+      - "premium/**"
+      - "smart/**"
       - "sitemap.xml"
       - "llms.txt"
       - "VVC_primary_logo.svg"
@@ -65,6 +67,7 @@ jobs:
             .deploy-dist/gallery.css
             .deploy-dist/gallery/index.html
             .deploy-dist/projects/estudio-reformado-barcelona/index.html
+            .deploy-dist/projects/reforma-integral-estandar-barcelona/index.html
             .deploy-dist/assets/responsive
           if-no-files-found: warn
           retention-days: 3
