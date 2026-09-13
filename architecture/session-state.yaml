@@ -1,7 +1,7 @@
-version: 56
-updated_at: 2026-09-13T19:15:08Z
+version: 57
+updated_at: 2026-09-13T19:38:05Z
 phase: vps-pre-dns-verification
-stage_status: prepared-on-vps-blocked-before-public-cutover
+stage_status: https-ready-awaiting-owner-dns-cutover
 active_branch: agent/vps-cutover-fb31a282
 pull_request:
   number: 1
@@ -19,8 +19,17 @@ vps_execution:
   release_id: 20260913-fb31a282
   server_current: /srv/vital-vibe/releases/20260913-fb31a282
   public_cutover_complete: false
+  public_tls_pre_dns: verified-with-explicit-vps-address
+  https_browser_page_checks: 21
+  https_solar_checks: 9
+  certificate_expires: 2026-12-12
+  tls_edge: existing-nginx-to-loopback-caddy
+  certificate_initial_auth: manual-dns-owner-created-txt
+  certificate_auto_renewal: pending-webroot-reconfigure-after-dns
+  dns_operator: owner-manual-dondominio
+  public_nginx_config: /etc/nginx/sites-available/vital-vibe.conf
   production_hosting: github-pages-main-root-unchanged
-  dns_changed: false
+  dns_changed: acme-txt-added-by-owner-apex-and-www-routing-unchanged
   previous_vps_release: null
   rollback_hosting: unchanged-github-pages
   caddy_container: vvc-site
@@ -35,8 +44,8 @@ vps_execution:
   historical_redirects_checked: 9
   generated_projections_changed: false
   remaining:
-    - obtain-dondominio-access-and-full-zone-export
-    - reconcile-public-nginx-tls-to-caddy-with-direct-caddy-plan
+    - owner-save-zone-and-switch-apex-www-records
+    - configure-and-test-webroot-certificate-renewal-after-dns
     - complete-shared-vps-and-registrar-security-checklist
     - dns-cutover-and-public-https-production-acceptance
 

@@ -1,5 +1,15 @@
 # VPS preparation and pre-DNS acceptance — 2026-09-13
 
+## HTTPS follow-up (supersedes the initial blockers below)
+
+Owner confirmed manual DonDominio operation. Owner added the requested ACME TXT records; certificate issuance succeeded for apex and www, expiration 2026-12-12. A dedicated `/etc/nginx/sites-available/vital-vibe.conf` was installed, linked, validated and reloaded; no existing virtual host was rewritten. TLS terminates at the existing nginx edge and proxies to private Caddy, preserving other sites. Nginx sends its own Server header (HTTPS hides version); automatic Caddy ACME is not used in this topology.
+
+Forced-IP HTTPS checks with normal certificate validation passed for 23 sitemap routes, seven support/assets paths and nine historical redirects. HTTP→HTTPS and www→apex work. Planner `/manual` remained byte-identical. `https-smoke.json` records HTTP coverage. `https-browser.json` records 21 successful HTTPS browser page checks (seven targets at three widths) and nine successful iframe control checks; no broken images, JS errors or horizontal overflow. Owner must still save the DNS zone and switch apex/www routing; public A/CNAME records are unchanged.
+
+Initial Certbot authentication is manual DNS and does not auto-renew yet. `/etc/letsencrypt/renewal-hooks/deploy/vvc-nginx-reload` is installed and scoped to this certificate; `certbot.timer` is enabled. After both public names resolve to the VPS, run `sudo certbot reconfigure --cert-name vitalvibeconstruction.com --webroot -w /var/lib/letsencrypt --non-interactive --run-deploy-hooks` and verify successful renewal configuration. Do not leave manual renewal as the finished production state.
+
+## Initial preparation record (historical)
+
 Public migration is **not complete**. The pinned site is installed and verified on the VPS, behind a loopback-only Caddy listener. The public apex and www remain on GitHub Pages. No DNS record, GitHub Pages setting, main branch or existing nginx virtual host was changed.
 
 ## Release provenance

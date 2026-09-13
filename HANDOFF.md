@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 53
-Updated: 2026-09-13T19:15:08Z
+Version: 54
+Updated: 2026-09-13T19:38:05Z
 
 ## Session rule
 
@@ -19,6 +19,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## HTTPS preparation — owner-operated DNS
+
+Owner manages DonDominio manually. Added temporary ACME TXT records and obtained a certificate for apex + www, valid until 2026-12-12. Enabled a dedicated nginx TLS virtual host proxying to the unchanged private Caddy release; existing sites were preserved. All sitemap routes and nine redirects passed HTTPS checks forced to the VPS, with normal certificate verification. HTTP redirects to HTTPS and www redirects to apex. **Public routing A/CNAME records still point to GitHub Pages.** Next: owner switches apex/www DNS; then configure Certbot webroot renewal and complete public-domain acceptance. Initial manual certificate renewal is not yet automatic; the dedicated reload hook and existing Certbot timer are ready.
 
 ## VPS execution — 2026-09-13
 

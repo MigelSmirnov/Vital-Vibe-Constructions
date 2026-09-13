@@ -1,0 +1,263 @@
+{
+  "routes": [],
+  "redirects": [],
+  "pages": [
+    {
+      "path": "/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/en/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/ru/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/gallery/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 40,
+      "sections": 0,
+      "webp": 16
+    },
+    {
+      "path": "/articulos/conexion-colector-solar/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/solar-collector-connections/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/en/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/ru/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/gallery/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 40,
+      "sections": 0,
+      "webp": 16
+    },
+    {
+      "path": "/articulos/conexion-colector-solar/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/solar-collector-connections/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/en/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/ru/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/gallery/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 40,
+      "sections": 0,
+      "webp": 16
+    },
+    {
+      "path": "/articulos/conexion-colector-solar/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/solar-collector-connections/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    }
+  ],
+  "solar": [
+    {
+      "lang": "es",
+      "width": 390,
+      "controls": "pass"
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "controls": "pass"
+    },
+    {
+      "lang": "ru",
+      "width": 390,
+      "controls": "pass"
+    },
+    {
+      "lang": "es",
+      "width": 768,
+      "controls": "pass"
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "controls": "pass"
+    },
+    {
+      "lang": "ru",
+      "width": 768,
+      "controls": "pass"
+    },
+    {
+      "lang": "es",
+      "width": 1440,
+      "controls": "pass"
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "controls": "pass"
+    },
+    {
+      "lang": "ru",
+      "width": 1440,
+      "controls": "pass"
+    }
+  ]
+}
