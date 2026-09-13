@@ -119,6 +119,32 @@ for (const article of articles) {
 }
 for (const [key, value] of expectedArticlePaths) expectedArticlePaths.set(key, [...new Set(value)].sort());
 
+async function settlePage(page) {
+  await page.evaluate(async () => {
+    if (document.fonts?.ready) await document.fonts.ready;
+    for (const image of document.images) image.loading = "eager";
+    const pageHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    const step = Math.max(500, Math.floor(window.innerHeight * 0.8));
+    for (let y = 0; y < pageHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((resolve) => setTimeout(resolve, 30));
+    }
+    window.scrollTo(0, 0);
+    await Promise.all([...document.images].map((image) => image.complete ? null : new Promise((done) => {
+      let timer;
+      const finish = () => {
+        clearTimeout(timer);
+        image.removeEventListener("load", finish);
+        image.removeEventListener("error", finish);
+        done();
+      };
+      image.addEventListener("load", finish, { once: true });
+      image.addEventListener("error", finish, { once: true });
+      timer = setTimeout(finish, 10000);
+    })));
+  });
+}
+
 try {
   for (const target of targets) {
     for (const [width, height] of viewports) {
@@ -130,8 +156,8 @@ try {
       page.on("response", (response) => { if (response.url().startsWith(origin) && response.status() >= 400) failures.push(`${response.status()} ${response.url()}`); });
       const response = await page.goto(new URL(target.path, origin).href, { waitUntil: "networkidle" });
       if (!response?.ok()) failures.push(`navigation ${response?.status() || "failed"}`);
-      await page.evaluate(async () => { if (document.fonts?.ready) await document.fonts.ready; await Promise.all([...document.images].map((image) => image.complete ? null : new Promise((done) => { image.addEventListener("load", done, { once: true }); image.addEventListener("error", done, { once: true }); }))); });
       await page.addStyleTag({ content: "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}" });
+      await settlePage(page);
       const state = await page.evaluate(() => ({
         lang: document.documentElement.lang || null,
         title: document.title,
