@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 36
-Updated: 2026-09-13T07:19:00Z
+Version: 37
+Updated: 2026-09-13T07:34:00Z
 
 ## Session rule
 
@@ -22,19 +22,22 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 ## Current stage
 
-The active work remains **visual QA and refinement of the generated site**, not a wholesale redesign.
+The first human-approved visual baseline is established and the first accessibility/token layer is now browser-validated.
 
-The first visual baseline is now approved by the owner. The reproducible browser QA system remains:
+The Visual QA command remains:
 
-- command: `bash tools/visual/run.sh`;
-- source projection: validated `.deploy-dist` served over local HTTP;
+- `bash tools/visual/run.sh`;
+- validated `.deploy-dist` served in a local browser context;
 - fixed viewports: 390×844, 768×1024, 1440×1000;
 - targets: ES/EN/RU homepages, the bathroom Article in all three languages, gallery and El Raval project;
 - extra state: open mobile menu;
-- checks: loading failures, broken images, horizontal overflow and Article language links;
+- visual checks: loading failures, broken images, horizontal overflow and Article language links;
+- accessibility checks: semantic-token contract, explicit control target size, real Tab-focus and reduced-motion;
 - screenshots/reports remain diagnostic artifacts and do not enter the release bundle.
 
-The approved baseline corresponds to the refined visual state reproduced by `Visual QA` run #15 on commit `b34f72fd7902235cd24206f9a56ea9e243e89c92`. Production and DNS were not changed by this approval.
+The approved visual baseline corresponds to run #15 on commit `b34f72fd7902235cd24206f9a56ea9e243e89c92`. The new accessibility layer was validated by run #23 on commit `b23f0b9046e359f181f4065cc76665310f9d6188`.
+
+Production and DNS were not changed.
 
 ## Visual review fixes completed
 
@@ -63,24 +66,37 @@ The approved baseline corresponds to the refined visual state reproduced by `Vis
    - Reading column remains 720 px; TOC remains separate and sticky on desktop.
    - Mobile Article layout remains single-column.
 
-Tracked generated `site-next/home.css` and `site-next/article.css` are synchronized with their source styles. No production deployment was performed.
-
 ## Visual baseline status
 
-**Approved.** The current refined screenshots are the first human-approved visual baseline for future comparison.
+**Approved.** Run #15 / `b34f72f…` is the first human-approved visual reference state.
 
-This is a reference state, not a freeze. Future changes should continue to be surgical and rechecked against the same matrix before being accepted.
+It is a comparison point, not a freeze. Future UI changes should remain surgical and be rerun through the same matrix.
 
-## Next visual/accessibility layer
+## Semantic brand tokens / accessibility layer
 
-Proceed with:
+The public page families now share a checked semantic color contract:
 
-- shared semantic brand tokens for color, typography, spacing, focus and borders;
-- target-size checks for interactive elements;
-- keyboard/focus verification;
-- reduced-motion verification.
+```text
+--bg
+--surface
+--text
+--muted
+--accent
+--border
+```
 
-Responsive image derivatives and modern formats remain the next performance layer after this accessibility/token work stabilizes.
+The Article retained its light editorial appearance but moved from its private `ink/gold/line/paper` naming to the common contract. Homepage and Article also define semantic focus helpers and a minimum control-target token.
+
+`tools/visual/accessibility.mjs` runs after the screenshot checker and covers the same 24 route/viewport states. It currently verifies:
+
+- all six semantic tokens resolve on each tested page;
+- explicitly control-like targets are at least 24 × 24 px (inline text links are not treated as blocking target-size findings);
+- sampled keyboard navigation is performed with real `Tab` events and focused controls have a visible indicator;
+- `prefers-reduced-motion: reduce` reaches the page and visible CSS transitions/animations over 1 ms are treated as failures.
+
+Run #23 passed with **0 missing tokens, 0 small-control findings, 0 sampled focus failures and 0 motion-rule findings** across the full matrix.
+
+One small advisory remains: shared secondary pages such as gallery and El Raval still compute `scroll-behavior: smooth` in the reduced-motion context. The accessibility gate records that value but does not currently fail it because it is not a CSS animation/transition. When the shared `styles.css` source is next refactored, add an explicit `prefers-reduced-motion` override for smooth scrolling as well.
 
 ## Published content state
 
@@ -120,7 +136,7 @@ Key rules:
 
 Production hosting direction remains **VPS + Caddy**, with GitHub as source-control/build/validation and static release artifacts served by Caddy.
 
-Production, DNS and original hosting were not changed in this visual-design session.
+Production, DNS and original hosting were not changed in this design/accessibility session.
 
 Before any cutover, follow:
 
@@ -132,4 +148,4 @@ The public server remains static: no CMS, database, PHP runtime or Node applicat
 
 ## Immediate next action
 
-Start the shared semantic brand-token and accessibility layer from the approved baseline, then rerun the same browser matrix before accepting those changes.
+With layout and basic accessibility stable, move to responsive-image/performance work: preserve original Media identities, generate deterministic derivatives, add `srcset/sizes` where useful, protect the approved crops and treat the hero/LCP image separately. Re-run Visual QA after each bounded performance slice.
