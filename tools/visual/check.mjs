@@ -13,8 +13,56 @@ const out = path.join(root, "artifacts", "visual", "latest");
 const shots = path.join(out, "screenshots");
 const viewports = [[390, 844], [768, 1024], [1440, 1000]];
 
-const routes = JSON.parse(await readFile(path.join(root, "architecture", "project-routes.yaml"), "utf8"));
-const constants = JSON.parse(await readFile(path.join(root, "architecture", "constants.yaml"), "utf8"));
+function scalar(value) {
+  const trimmed = value.trim();
+  if (!trimmed) return undefined;
+  if (trimmed === "null") return null;
+  if (trimmed === "true") return true;
+  if (trimmed === "false") return false;
+  if (/^-?\d+(?:\.\d+)?$/.test(trimmed)) return Number(trimmed);
+  if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) return trimmed.slice(1, -1);
+  return trimmed;
+}
+
+function parseConstants(text) {
+  const defaultMatch = text.match(/^\s{2}default_language:\s*(.+?)\s*$/m);
+  const languageBlock = text.match(/^\s{2}supported_languages:\s*\n((?:^\s{4}-\s*.+\n?)+)/m);
+  if (!defaultMatch || !languageBlock) throw new Error("Could not resolve site languages from architecture/constants.yaml");
+  const supportedLanguages = [...languageBlock[1].matchAll(/^\s{4}-\s*(.+?)\s*$/gm)].map((match) => scalar(match[1]));
+  return { site: { default_language: scalar(defaultMatch[1]), supported_languages: supportedLanguages } };
+}
+
+function parseRouteContract(text) {
+  const routes = [];
+  let inRoutes = false;
+  let current = null;
+  for (const line of text.split(/\r?\n/)) {
+    if (!inRoutes) {
+      if (/^routes:\s*$/.test(line)) inRoutes = true;
+      continue;
+    }
+    if (/^[A-Za-z_][A-Za-z0-9_-]*:\s*$/.test(line)) break;
+    let match = line.match(/^\s{2}-\s+([A-Za-z_][A-Za-z0-9_-]*):\s*(.*)$/);
+    if (match) {
+      if (current) routes.push(current);
+      current = {};
+      const value = scalar(match[2]);
+      if (value !== undefined) current[match[1]] = value;
+      continue;
+    }
+    match = line.match(/^\s{4}([A-Za-z_][A-Za-z0-9_-]*):\s*(.*)$/);
+    if (match && current) {
+      const value = scalar(match[2]);
+      if (value !== undefined) current[match[1]] = value;
+    }
+  }
+  if (current) routes.push(current);
+  if (!routes.length) throw new Error("Could not resolve generated routes from architecture/project-routes.yaml");
+  return { routes };
+}
+
+const routes = parseRouteContract(await readFile(path.join(root, "architecture", "project-routes.yaml"), "utf8"));
+const constants = parseConstants(await readFile(path.join(root, "architecture", "constants.yaml"), "utf8"));
 const languages = constants.site.supported_languages;
 const homes = languages.map((lang) => ({ type: "home", lang, path: lang === constants.site.default_language ? "/" : `/${lang}/` }));
 const generated = routes.routes.filter((route) => route.status === "generated");
@@ -117,7 +165,7 @@ for (const result of results) {
   if (result.menu?.overflow > 1) blocking.push(`${label}: open mobile menu overflows +${Math.round(result.menu.overflow)}px`);
 }
 const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-const summary = { generatedAt: new Date().toISOString(), commit, browser: await chromium.executablePath(), viewports, targets, results, blocking };
+const summary = { generatedAt: new Date().toISOString(), commit, browser: chromium.executablePath(), viewports, targets, results, blocking };
 await writeFile(path.join(out, "summary.json"), `${JSON.stringify(summary, null, 2)}\n`);
 const rows = results.map((result) => `| ${result.target.path} | ${result.width}x${result.height} | ${result.state.lang || "-"} | ${Math.round(result.state.overflow)}px | ${result.state.brokenImages.length} | ${result.failures.length} |`).join("\n");
 const report = `# Visual QA report\n\nCommit: \`${commit}\`\n\n${blocking.length ? `**FAIL** - ${blocking.length} blocking finding(s).` : "**PASS** - loading, images, horizontal overflow, mobile menu and article language links passed."}\n\n| Route | Viewport | Lang | Overflow | Broken images | Loading failures |\n| --- | ---: | --- | ---: | ---: | ---: |\n${rows}\n\n${blocking.length ? `## Blocking findings\n\n${blocking.map((item) => `- ${item}`).join("\n")}\n\n` : ""}## Human review required\n\nThese checks do not prove visual quality. Review the screenshots for card/photo boundaries, heading wraps, spacing, crops, captions, language correctness and clipped content before choosing a baseline.\n`;
