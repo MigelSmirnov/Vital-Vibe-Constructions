@@ -1,6 +1,6 @@
 # 001 — воспроизводимая проверка внешнего вида
 
-Статус: первый visual baseline утверждён владельцем 2026-09-13 после двух визуальных проходов и повторной browser-проверки.
+Статус: первый visual baseline утверждён владельцем 2026-09-13; semantic-token/accessibility слой добавлен и прошёл ту же browser-матрицу.
 
 ## Зачем
 
@@ -17,9 +17,10 @@
 
 ## Реализация
 
-- `bash tools/visual/run.sh` запускает существующие проверки, собирает и валидирует `.deploy-dist`, затем запускает браузерную проверку.
+- `bash tools/visual/run.sh` запускает существующие проверки, собирает и валидирует `.deploy-dist`, затем запускает браузерную и accessibility-проверки.
 - Playwright закреплён на версии `1.55.0` и устанавливается изолированно в игнорируемую `.visual-tools/`; зависимость не добавлена к runtime сайта.
 - `tools/visual/check.mjs` поднимает preview, дожидается изображений и шрифтов, отключает анимации и сохраняет диагностические снимки.
+- `tools/visual/accessibility.mjs` повторно использует те же маршруты/viewports и проверяет semantic tokens, размеры основных control targets, реальный Tab-focus и reduced-motion.
 - Результат находится в `artifacts/visual/latest/` и в CI загружается отдельным artifact, но не публикуется на сайте.
 - Chromium-run предусмотрен для GitHub Actions и поддерживаемого desktop Linux/macOS; Termux/Android не считается воспроизводимой браузерной средой.
 
@@ -64,6 +65,16 @@ GitHub Actions `Visual QA` run #14 на коммите `712f180c9a8f7f9f273ec8ea
 - Этот baseline — точка сравнения для дальнейших точечных UI-изменений. Он не означает запрет на улучшения и не вводит popixel-regression автоматически.
 - Production и DNS при утверждении baseline не менялись.
 
+## Semantic tokens и accessibility — 2026-09-13
+
+- Для проверяемых public pages закреплён общий semantic contract: `--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--border`. Article переведён с локальных `ink/gold/line/paper` имён на этот контракт; светлая editorial-тема при этом сохранена.
+- Focus ring вынесен в semantic helper variables на homepage и Article; header/contact controls получили явно достаточную зону нажатия.
+- `tools/visual/accessibility.mjs` проверяет все 24 состояния той же матрицы. Минимум для явно выделенных controls — 24 px; обычные inline text links не блокируются из-за исключения WCAG 2.2 для inline-ссылок.
+- Keyboard-проверка использует настоящий `Tab` traversal и требует видимый focus indicator на sampled controls.
+- Reduced-motion контекст требует отсутствия видимых CSS animation/transition длительностью более 1 ms. Homepage при `reduce` полностью отключает transitions/animations; Article использует практически нулевой animation duration и нулевой transition duration.
+- `Visual QA` run #23 на коммите `b23f0b9046e359f181f4065cc76665310f9d6188` завершился успешно: 0 missing semantic tokens, 0 small-control findings, 0 focus failures и 0 motion-rule findings во всех 24 состояниях.
+- На gallery/El Raval computed `scroll-behavior` остаётся `smooth`; он записывается в отчёт как advisory и не связан с animation/transition gate. Если общий `styles.css` будет рефакториться, стоит также переключать smooth scrolling на `auto` под `prefers-reduced-motion`.
+
 ## Готово, когда
 
 - [x] Есть одна документированная команда, повторяемая из чистой копии репозитория в поддерживаемой среде.
@@ -71,9 +82,11 @@ GitHub Actions `Visual QA` run #14 на коммите `712f180c9a8f7f9f273ec8ea
 - [x] Первый набор просмотрен и конкретные визуальные дефекты исправлены.
 - [x] Второй набор просмотрен; Smart Home mobile и Article desktop исправлены и повторно прошли browser QA.
 - [x] Владелец принимает текущий набор как первый visual baseline.
+- [x] Semantic token contract проверяется браузером на всей матрице.
+- [x] Основные target-size, keyboard/focus и reduced-motion проверки проходят.
 - [x] Сбой загрузки страницы или изображения отмечается как ошибка, а не маскируется пустым снимком.
 - [x] Новые артефакты не попадают в `.deploy-dist`.
 
 ## Следом
 
-Переходить к shared semantic brand tokens и accessibility layer: target-size, keyboard/focus, reduced-motion. Responsive image optimization — после стабилизации следующего UI-слоя. Не внедрять popixel regression-suite без отдельной необходимости.
+Следующий практический слой — responsive image optimization: производные размеры, WebP/AVIF там, где это безопасно, корректные `srcset/sizes` и отдельная проверка LCP-картинки. Не менять исходные Media identities и не ухудшать утверждённые crops/layout. Popixel regression-suite по-прежнему не нужен без отдельной причины.
