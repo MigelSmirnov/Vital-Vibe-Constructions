@@ -1,7 +1,7 @@
-version: 44
-updated_at: 2026-09-13T08:05:00Z
+version: 45
+updated_at: 2026-09-13T08:31:00Z
 phase: homepage-visual-redesign
-stage_status: two-responsive-image-slices-browser-validated
+stage_status: homepage-and-first-project-responsive-images-browser-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: selective-project-detail-responsive-images
+next_proposed_task: premium-project-responsive-images-by-transfer-impact
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -84,18 +84,37 @@ visual_qa:
       chromium_selected_responsive_sources: true
       browser_requested_selected_sources: true
       human_mobile_crop_review: no-visible-regression
+    standard_project_slice:
+      status: success
+      workflow_run_number: 45
+      commit: a47740d5876490df7fa64b970c51449d85a0c8c2
+      route: /projects/reforma-integral-estandar-barcelona/
+      optimized_images: 6
+      standard_visual_qa: success
+      accessibility_qa: success
+      chromium_selected_responsive_sources: true
+      browser_requested_selected_sources: true
+      failed_requests: 0
+      broken_images: 0
+      horizontal_overflow_findings: 0
+      human_orientation_crop_review: no-visible-regression-after-auto-orient-fix
   baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
 responsive_images:
   task: task/002-responsive-images.md
-  status: homepage-high-impact-slices-integrated-and-browser-verified
+  status: homepage-high-impact-and-first-project-detail-slices-integrated-and-browser-verified
   derivative_builder: tools/media/build-home-responsive.sh
   derivative_workflow: .github/workflows/home-image-derivatives.yml
-  release_integration: tools/deploy/build-vps-bundle.mjs
+  release_integration:
+    bundle_builder: tools/deploy/build-vps-bundle.mjs
+    standard_project_patcher: tools/media/patch-standard-project-responsive.mjs
   browser_verifier: tools/visual/responsive-images.mjs
+  standard_project_visual_verifier: tools/visual/standard-project.mjs
   encoder:
-    tool: cwebp
+    orientation_tool: imagemagick-auto-orient
+    metadata_after_orientation: stripped
+    format_tool: cwebp
     quality: 82
     method: 6
   source_policy:
@@ -103,15 +122,13 @@ responsive_images:
     media_ids_changed: false
     approved_crops_changed: false
     fallback_original_required: true
+    exif_orientation_preserved_in_derivatives: true
   slice_1:
     sources:
       - assets/home/bathroom-retouched.png
       - estandar/cocina.jpeg
     original_bytes_total: 3967611
-    selected_1x_bytes:
-      390x844: 29954
-      768x1024: 29954
-      1440x1000: 63476
+    note: encoded byte counts changed slightly after EXIF-aware pipeline; browser delivery remains responsive and verified
   smart_home_slice:
     sources:
       - smart/gira.jpeg
@@ -125,20 +142,44 @@ responsive_images:
         - 320
         - 640
         - 960
-    selected_1x_bytes_total: 50364
-    selected_resources:
-      lead: smart/gira-640.webp
-      panel_marmol: premium/panel-marmol-320.webp
-      partner_gira: premium/gira-320.webp
-      apple_home: premium/apple-home-320.webp
-      lighting_scenes: smart/escenas-320.webp
-  combined_seven_requests:
-    original_bytes_total: 5720244
+  standard_project_slice:
+    route: /projects/reforma-integral-estandar-barcelona/
+    sources:
+      - estandar/cocina.jpeg
+      - estandar/obra.jpeg
+      - estandar/suelo-base.jpeg
+      - estandar/parquet.jpeg
+      - estandar/pintura.jpeg
+      - estandar/pasillo.jpeg
+    original_bytes_total: 13644080
+    derivatives_per_source:
+      widths:
+        - 480
+        - 768
+        - 1200
     selected_1x_bytes:
-      390x844: 80318
-      768x1024: 80318
-      1440x1000: 113840
-    note: bounded-image-request-comparison-not-total-page-weight
+      390x844: 80566
+      768x1024: 93344
+      1440x1000: 214548
+    selected_resources:
+      390x844:
+        cocina: cocina-480.webp
+        obra: obra-480.webp
+        suelo_base: suelo-base-480.webp
+        parquet: parquet-480.webp
+        pintura: pintura-480.webp
+        pasillo: pasillo-480.webp
+      768x1024:
+        cocina: cocina-768.webp
+        gallery_width: 480
+      1440x1000:
+        cocina: cocina-1200.webp
+        gallery_width: 768
+    orientation_regression:
+      detected_by: human-full-page-screenshot-review
+      cause: legacy-jpeg-exif-orientation-lost-in-direct-webp-conversion
+      fix: imagemagick-auto-orient-before-cwebp
+      final_status: fixed-and-reviewed
   markup:
     format: picture-with-webp-width-srcset-and-sizes
     layout_neutral_picture_wrapper: display-contents
@@ -146,6 +187,8 @@ responsive_images:
       - es
       - en
       - ru
+    standard_project_detail: true
+    projects_index_standard_card: true
     original_img_src_fallback_retained: true
     intrinsic_dimensions_retained: true
   mass_gallery_derivatives_deferred: true
@@ -163,7 +206,7 @@ visual_design:
     - --accent
     - --border
   next_review_candidates:
-    - project-detail-responsive-images-by-transfer-impact
+    - premium-project-responsive-images-by-transfer-impact
     - hero-lcp-measurement-and-format-decision
     - shared-secondary-reduced-motion-scroll-cleanup
     - gallery-responsive-images-after-ranking
@@ -208,7 +251,9 @@ vps_bundle:
   builder: tools/deploy/build-vps-bundle.mjs
   validator: tools/deploy/validate-vps-bundle.mjs
   workflow: .github/workflows/vps-bundle-check.yml
-  responsive_derivative_dependency: cwebp-installed-in-ci
+  responsive_derivative_dependencies:
+    - imagemagick
+    - webp
   ignored_outputs:
     - .deploy-dist/
     - vps-site-bundle.tgz
@@ -217,8 +262,11 @@ vps_bundle:
 
 completed_work:
   - date: 2026-09-13
-    summary: Optimized the five Smart Home homepage images with deterministic 320/640/960 WebP candidates and release-only picture/srcset markup. Browser QA verified selected/requested WebP resources across ES/EN/RU and all reference widths without visual or accessibility regression.
-    validation: derivative-run-2-success; visual-qa-run-34-success; responsive-selection-pass; accessibility-pass; production-and-dns-unchanged
+    summary: Optimized the six photographs on the standard renovation project with EXIF-aware 480/768/1200 WebP derivatives and release-only picture/srcset markup. Human review caught and fixed an orientation regression before acceptance.
+    validation: derivative-run-6-success; visual-qa-run-45-success; standard-project-three-viewport-screenshots-pass; responsive-selection-pass; accessibility-pass; production-and-dns-unchanged
+  - date: 2026-09-13
+    summary: Optimized the five Smart Home homepage images with deterministic responsive WebP candidates and browser-verified release delivery.
+    validation: visual-qa-run-34-success; responsive-selection-pass; accessibility-pass
   - date: 2026-09-13
     summary: Integrated responsive WebP delivery for the large bathroom feature and standard-kitchen homepage image.
     validation: visual-qa-run-30-success; responsive-browser-check-success
@@ -230,8 +278,8 @@ completed_work:
     validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Rank project-detail image requests by transfer impact and optimize the largest few while keeping the hero/LCP and gallery as separate decisions.
-  status: homepage-responsive-image-slices-green-ready-for-project-detail-ranking
+  goal: Optimize the premium project images by measured transfer impact while keeping hero/LCP and mass-gallery optimization as separate decisions.
+  status: standard-project-responsive-slice-green-ready-for-premium-ranking
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
@@ -239,6 +287,7 @@ next_verification:
   - visual-qa-must-remain-green
   - accessibility-qa-must-remain-green
   - responsive-browser-selection-must-remain-green
+  - project-detail-screenshot-orientation-must-remain-correct
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
   - media-identities-must-remain-stable
@@ -247,4 +296,4 @@ next_verification:
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Optimize project-detail images by measured transfer impact, then measure hero/LCP separately; VPS cutover remains separate.
+  goal: Rank and optimize premium project images, then measure hero/LCP separately; VPS cutover remains separate.
