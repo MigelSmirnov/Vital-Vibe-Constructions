@@ -1,7 +1,7 @@
-version: 43
-updated_at: 2026-09-13T07:56:00Z
+version: 44
+updated_at: 2026-09-13T08:05:00Z
 phase: homepage-visual-redesign
-stage_status: first-responsive-image-slice-browser-validated
+stage_status: two-responsive-image-slices-browser-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: selective-high-impact-responsive-images
+next_proposed_task: selective-project-detail-responsive-images
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -30,19 +30,10 @@ current_strategy:
   next_runtime: site-next
   source_of_truth: Knowledge Repository
   visual_change_policy: audit-first-surgical-fixes
-  article_sandbox: engineering-document-preview
-  article_sandbox_publication_status: two-remaining-noindex-drafts
   public_articles: validated-knowledge-records-with-es-en-ru-routes
   production_target: vps-caddy-static
-  github_pages_target_status: fallback-only
   production_unchanged: true
   public_path_mode: root-relative
-  application_attack_surface:
-    cms: false
-    database: false
-    php_runtime: false
-    node_runtime_on_server: false
-    public_application_admin: false
   deployment_model:
     build_location: github-actions
     server_build_required: false
@@ -65,10 +56,8 @@ visual_qa:
     - 1440x1000
   approved_baseline:
     status: approved-by-owner
-    approved_at: 2026-09-13T07:19:00Z
     workflow_run_number: 15
     commit: b34f72fd7902235cd24206f9a56ea9e243e89c92
-    purpose: reference-state-for-future-surgical-ui-comparison
   accessibility_run:
     status: success
     workflow_run_number: 23
@@ -79,21 +68,28 @@ visual_qa:
     motion_rule_findings: 0
     advisory:
       - gallery-and-el-raval-still-compute-smooth-scroll-under-reduced-motion
-  responsive_image_run:
-    status: success
-    workflow_run_number: 30
-    commit: 073a29dc01213c9b12c929fa26630d456984d554
-    standard_visual_qa: success
-    accessibility_qa: success
-    chromium_selected_responsive_sources: true
-    browser_requested_selected_sources: true
-    human_crop_layout_review: no-visible-regression-at-390-and-1440
+  responsive_image_runs:
+    first_slice:
+      status: success
+      workflow_run_number: 30
+      commit: 073a29dc01213c9b12c929fa26630d456984d554
+      optimized_images: 2
+    smart_home_slice:
+      status: success
+      workflow_run_number: 34
+      commit: d43d45294efe9169c26361712a2a9b008c231204
+      optimized_images: 5
+      standard_visual_qa: success
+      accessibility_qa: success
+      chromium_selected_responsive_sources: true
+      browser_requested_selected_sources: true
+      human_mobile_crop_review: no-visible-regression
   baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
 responsive_images:
   task: task/002-responsive-images.md
-  status: first-homepage-slice-integrated-and-browser-verified
+  status: homepage-high-impact-slices-integrated-and-browser-verified
   derivative_builder: tools/media/build-home-responsive.sh
   derivative_workflow: .github/workflows/home-image-derivatives.yml
   release_integration: tools/deploy/build-vps-bundle.mjs
@@ -107,37 +103,45 @@ responsive_images:
     media_ids_changed: false
     approved_crops_changed: false
     fallback_original_required: true
-  first_slice:
-    - source: assets/home/bathroom-retouched.png
-      original_bytes: 2135087
-      original_dimensions: 1086x1448
-      derivatives:
-        - width: 480
-          bytes: 22896
-        - width: 768
-          bytes: 56418
-        - width: 1086
-          bytes: 130290
-      selected_in_test_matrix:
-        390x844: 480w
-        768x1024: 480w
-        1440x1000: 768w
-    - source: estandar/cocina.jpeg
-      original_bytes: 1832524
-      original_dimensions: 4032x3024
-      derivatives:
-        - width: 480
-          bytes: 7058
-        - width: 768
-          bytes: 14168
-        - width: 1200
-          bytes: 27268
-      selected_in_test_matrix:
-        390x844: 480w
-        768x1024: 480w
-        1440x1000: 480w
+  slice_1:
+    sources:
+      - assets/home/bathroom-retouched.png
+      - estandar/cocina.jpeg
+    original_bytes_total: 3967611
+    selected_1x_bytes:
+      390x844: 29954
+      768x1024: 29954
+      1440x1000: 63476
+  smart_home_slice:
+    sources:
+      - smart/gira.jpeg
+      - premium/panel-marmol.jpeg
+      - premium/gira.jpeg
+      - premium/apple-home.jpeg
+      - smart/escenas.jpeg
+    original_bytes_total: 1752633
+    derivatives_per_source:
+      widths:
+        - 320
+        - 640
+        - 960
+    selected_1x_bytes_total: 50364
+    selected_resources:
+      lead: smart/gira-640.webp
+      panel_marmol: premium/panel-marmol-320.webp
+      partner_gira: premium/gira-320.webp
+      apple_home: premium/apple-home-320.webp
+      lighting_scenes: smart/escenas-320.webp
+  combined_seven_requests:
+    original_bytes_total: 5720244
+    selected_1x_bytes:
+      390x844: 80318
+      768x1024: 80318
+      1440x1000: 113840
+    note: bounded-image-request-comparison-not-total-page-weight
   markup:
     format: picture-with-webp-width-srcset-and-sizes
+    layout_neutral_picture_wrapper: display-contents
     home_languages:
       - es
       - en
@@ -149,11 +153,6 @@ responsive_images:
 
 visual_design:
   homepage_direction: graphite-gold-split-hero
-  homepage_source_styles: tools/site-next/home.css
-  homepage_source_interactions: tools/site-next/home.js
-  gallery_source_styles: tools/site-next/gallery.css
-  gallery_builder: tools/site-next/build-gallery.mjs
-  article_source_styles: tools/articles/article.css
   gallery_media_coverage_required: 39
   gallery_media_coverage_current: 39
   semantic_color_contract:
@@ -164,8 +163,7 @@ visual_design:
     - --accent
     - --border
   next_review_candidates:
-    - smart-home-responsive-images
-    - project-detail-responsive-images
+    - project-detail-responsive-images-by-transfer-impact
     - hero-lcp-measurement-and-format-decision
     - shared-secondary-reduced-motion-scroll-cleanup
     - gallery-responsive-images-after-ranking
@@ -177,10 +175,6 @@ content_state:
     ru: /ru/
   bathroom_article:
     entity: article-bathroom-sink-relocation
-    languages:
-      es: /articulos/traslado-lavabo-toallero/
-      en: /en/articles/moving-a-bathroom-basin/
-      ru: /ru/articles/perenos-rakoviny/
     public_location: Badalona
     working_days: 4
     labour_cost_eur: 1100
@@ -190,7 +184,6 @@ content_state:
     merged_property: true
     media_count: 16
     pending_technical_media_public: false
-    pending_technical_media_internal_backlog: task/README.md
   solar_collector_material:
     status: deferred-by-owner
     source_branch: agent/add-solar-collector-animation
@@ -210,10 +203,6 @@ vps_security:
     provider_firewall_preferred: true
     host_firewall_required: true
     caddy_admin_port_public: false
-  filesystem:
-    releases_immutable_after_activation: true
-    caddy_site_tree_write_access: false
-    deploy_user_owns_release_activation: true
 
 vps_bundle:
   builder: tools/deploy/build-vps-bundle.mjs
@@ -228,21 +217,21 @@ vps_bundle:
 
 completed_work:
   - date: 2026-09-13
-    summary: Integrated the first two responsive WebP families into generated release homepages while preserving original fallbacks and Media identities. Browser QA confirmed Chromium selected and requested the optimized resources on ES/EN/RU at all three reference widths with visual and accessibility checks still green.
-    validation: visual-qa-run-30-success; responsive-browser-check-success; accessibility-pass; manual-390-and-1440-crop-review-pass; production-and-dns-unchanged
+    summary: Optimized the five Smart Home homepage images with deterministic 320/640/960 WebP candidates and release-only picture/srcset markup. Browser QA verified selected/requested WebP resources across ES/EN/RU and all reference widths without visual or accessibility regression.
+    validation: derivative-run-2-success; visual-qa-run-34-success; responsive-selection-pass; accessibility-pass; production-and-dns-unchanged
   - date: 2026-09-13
-    summary: Added deterministic cwebp derivative builder and read-only CI workflow for the heavy homepage bathroom and standard-kitchen images.
-    validation: homepage-image-derivatives-run-1-success; originals-unchanged
+    summary: Integrated responsive WebP delivery for the large bathroom feature and standard-kitchen homepage image.
+    validation: visual-qa-run-30-success; responsive-browser-check-success
   - date: 2026-09-13
-    summary: Added semantic-token accessibility layer and browser checks for target size, real Tab focus and reduced motion.
+    summary: Added semantic-token accessibility layer and browser checks for target size, Tab focus and reduced motion.
     validation: visual-and-accessibility-run-23-success
   - date: 2026-09-13
     summary: Owner approved the refined browser screenshot set as the first visual baseline.
     validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Rank and optimize the next highest-transfer visible images without changing approved layout/crops or broadening to the whole gallery at once.
-  status: first-responsive-image-slice-green-ready-for-selective-expansion
+  goal: Rank project-detail image requests by transfer impact and optimize the largest few while keeping the hero/LCP and gallery as separate decisions.
+  status: homepage-responsive-image-slices-green-ready-for-project-detail-ranking
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
@@ -258,4 +247,4 @@ next_verification:
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Optimize Smart Home/project-detail images by measured transfer impact, then measure the hero/LCP separately; VPS cutover remains separate.
+  goal: Optimize project-detail images by measured transfer impact, then measure hero/LCP separately; VPS cutover remains separate.
