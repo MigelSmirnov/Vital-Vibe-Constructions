@@ -1,0 +1,17 @@
+/* Mobile-only density refinements for the Smart Home capability section. */
+@media (max-width: 720px) {
+  .home .capabilities { padding-block: 2.25rem; }
+  .home .capability-header { margin-bottom: 1.5rem; }
+  .home .capability-header > p:last-child { font-size: .98rem; }
+  .home .capability-layout { gap: 1.5rem; }
+  .home .capability-list { margin-block: 1rem; }
+  .home .capability-list li { padding-block: .65rem; }
+  .home .capability-note { margin-block: 1rem; }
+  .home .capability-actions { gap: .9rem; }
+  .home .capability-lead img { height: 240px; }
+  .home .capability-gallery-block { margin-top: 1.5rem; padding-top: 1.25rem; }
+  .home .capability-gallery-block > p { margin: 0 0 1rem; font-size: .92rem; }
+  .home .capability-gallery { gap: .65rem; }
+  .home .capability-gallery img { height: 145px; }
+  .home .capability-gallery figcaption { padding-top: .4rem; font-size: .78rem; line-height: 1.35; }
+}
