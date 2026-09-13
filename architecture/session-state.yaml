@@ -1,6 +1,6 @@
-version: 52
+version: 53
 updated_at: 2026-09-13T17:50:00Z
-phase: painting-and-floor-articles
+phase: restore-original-article-narrative
 stage_status: preview-deployed-browser-verified
 active_branch: agent/solar-collector-port
 pull_request:
@@ -234,6 +234,14 @@ visual_design:
     - solar-collector-surgical-port-when-owner-resumes
 
 content_state:
+  article_editorial_policy:
+    original_drafts_preserved: true
+    report_style_rewrites_rejected: true
+    painting_source: sandbox/articles/drafts/pintura-paredes-barcelona.yaml
+    floor_source: sandbox/articles/drafts/coste-reforma-piso-barcelona-2026.md
+    full_renovation_cost_article_restored: true
+    source_passages_verified: true
+    preview_status: deploying
   painting_article:
     status: generated-with-owner-media
     languages: [es, en, ru]

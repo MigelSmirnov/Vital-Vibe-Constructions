@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 49
+Version: 50
 Updated: 2026-09-13T17:50:00Z
 
 ## Session rule
@@ -91,6 +91,10 @@ Knowledge Repository remains public content source of truth. `support.js`/legacy
 ## Production / VPS
 
 Production target remains VPS + Caddy. Production, DNS and original hosting were not changed. VPS cutover remains a separate owner-directed stage.
+
+## Article editorial correction
+
+Owner rejected the condensed report-style rewrites. Restored the original Spanish painting draft (all nine sections plus public FAQs) and full Russian renovation-cost article (eleven sections, including floor preparation). Translations preserve the same narrative. Photographs illustrate the existing paragraphs, with the confirmed 14 cm / 10 m example and labour-only painting price added. Existing URLs are retained. Original paragraphs/list items were compared against both drafts with no omissions; full checks passed. Do not summarize or reframe owner articles without an explicit request.
 
 ## Immediate next action
 
