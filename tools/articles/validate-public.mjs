@@ -13,6 +13,42 @@ const escape = value => String(value).replaceAll("&","&amp;").replaceAll("<","&l
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const required = (html, fragment, label) => assert(html.includes(fragment),`Missing ${label}: ${fragment}`);
 const titles = new Set();
+const catalogs = contract.routes.filter(route => route.family_id === "articles-index");
+const languages = Object.keys(family.path_prefixes);
+assert(catalogs.length === languages.length, "Expected exactly one catalog per supported language");
+for (const language of languages) {
+  const matching = catalogs.filter(route => route.language === language);
+  assert(matching.length === 1, "Duplicate or missing catalog language");
+  const catalog = matching[0];
+  assert(catalog.status === "generated" && catalog.sitemap_eligible === true, "Catalog must be public");
+  assert(catalog.path === family.path_prefixes[language], "Catalog path mismatch");
+  const html = await readFile(path.join(root, catalog.generated_html_path), "utf8");
+  const copy = knowledge.getSite().articleCatalog[language];
+  required(html, `<html lang="${language}">`, "catalog language");
+  required(html, `<h1>${escape(copy.title)}</h1>`, "catalog heading");
+  assert((html.match(/<h1\b/g) || []).length === 1, "Catalog requires one h1");
+  required(html, `content="${escape(copy.description)}"`, "catalog description");
+  required(html, `rel="canonical" href="${catalog.canonical_url}"`, "catalog canonical");
+  for (const sibling of catalogs) {
+    required(html, `hreflang="${sibling.language}" href="${sibling.canonical_url}"`, "catalog alternate");
+    required(html, `href="${sibling.path}" lang="${sibling.language}"`, "catalog language switch");
+  }
+  const expected = knowledge.listArticles().filter(article => article.languages.includes(language))
+    .sort((a, b) => b.localized(language).published_at.localeCompare(a.localized(language).published_at) || a.id.localeCompare(b.id));
+  const cards = [...html.matchAll(/<h2><a href="([^"]+)">([^]*?)<\/a><\/h2>/g)];
+  assert(cards.length === expected.length, "Catalog must list every published article exactly once");
+  for (const [index, article] of expected.entries()) {
+    const route = routes.find(item => item.entity_id === article.id && item.language === language);
+    assert(cards[index][1] === route.path && cards[index][2] === escape(article.localized(language).title), "Catalog order or localized card mismatch");
+    required(await readFile(path.join(root, route.generated_html_path), "utf8"), `href="${catalog.path}"`, "article return link");
+  }
+  const home = await readFile(path.join(root, "site-next", language === "es" ? "index.html" : `${language}/index.html`), "utf8");
+  required(home, `href="${catalog.path}">${escape(copy.title)}</a>`, "homepage catalog navigation");
+  const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([^]*?)<\/script>/)[1]);
+  assert(schema["@type"] === "CollectionPage" && schema.mainEntity.itemListElement.length === expected.length, "Catalog structured data mismatch");
+  assert(schema.mainEntity.itemListElement.every((item, i) => item.url === knowledge.getSite().canonicalOrigin + cards[i][1]), "Catalog schema order mismatch");
+  assert(sitemap.split(`<loc>${catalog.canonical_url}</loc>`).length === 2, "Catalog must appear once in sitemap");
+}
 const descriptions = new Set();
 let checked = 0;
 for (const article of knowledge.listArticles()) {

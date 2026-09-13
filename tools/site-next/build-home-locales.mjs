@@ -8,6 +8,8 @@ const root = process.cwd();
 const outputRoot = path.join(root, "site-next");
 const sourcePath = path.join(outputRoot, "index.html");
 const localizationPath = path.join(root, "content/tables/home-localizations.yaml");
+import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
+
 const canonicalOrigin = "https://vitalvibeconstruction.com";
 
 function escapeRegExp(value) {
@@ -70,11 +72,17 @@ async function main() {
   const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
   const articleRoutes = contract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated");
 
-  await writeFile(sourcePath, addLanguageNavigation(source, "es"), "utf8");
+  const site = createKnowledgeRepository(await loadContentTables({ root })).getSite();
+  const catalogNavigation = (html, language) => {
+    const route = contract.routes.find(item => item.family_id === "articles-index" && item.language === language && item.status === "generated");
+    if (!route) throw new Error(`Missing catalog route for ${language}`);
+    return html.replace("<!-- article-catalog-navigation -->", `<a href="${route.path}">${site.articleCatalog[language].title}</a>`);
+  };
+  await writeFile(sourcePath, catalogNavigation(addLanguageNavigation(source, "es"), "es"), "utf8");
   for (const [language, config] of Object.entries(locales)) {
     const destination = path.join(outputRoot, language);
     await mkdir(destination, { recursive: true });
-    await writeFile(path.join(destination, "index.html"), localize(source, language, config, articleRoutes), "utf8");
+    await writeFile(path.join(destination, "index.html"), catalogNavigation(localize(source, language, config, articleRoutes), language), "utf8");
   }
 
   console.log(`Built localized homepages: ${["es", ...Object.keys(locales)].join(", ")}`);

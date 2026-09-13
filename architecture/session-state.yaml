@@ -1,7 +1,7 @@
-version: 50
-updated_at: 2026-09-13T16:46:26Z
-phase: solar-collector-article-port
-stage_status: implementation-green-preview-pending
+version: 51
+updated_at: 2026-09-13T17:08:00Z
+phase: localized-article-catalog
+stage_status: preview-deployed-browser-verified
 active_branch: agent/solar-collector-port
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: owner-direction-required-before-new-stage
+next_proposed_task: floor-article-awaiting-owner-media
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -234,6 +234,14 @@ visual_design:
     - solar-collector-surgical-port-when-owner-resumes
 
 content_state:
+  article_catalog:
+    status: generated-and-validated
+    locales: [es, en, ru]
+    source: Knowledge-Repository-published-articles
+    ordering: publication-date-descending
+    browser_user_journey: menu-catalog-article-return-and-language-switch-pass
+    homepage_menu_links: true
+    article_return_links: true
   home_locales:
     es: /
     en: /en/
@@ -299,6 +307,9 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - date: 2026-09-13
+    summary: Added localized article catalogs with automatic published cards, homepage menu links and article return navigation.
+    validation: full-checks-pass; netlify-preview-deployed; browser-navigation-and-images-pass
   - date: 2026-09-13
     summary: Closed the shared reduced-motion smooth-scroll advisory with a reproducible release override and blocking browser check for gallery and El Raval.
     validation: visual-qa-run-68-success; computed-scroll-behavior-auto-under-reduce; production-and-dns-unchanged

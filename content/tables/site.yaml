@@ -21,6 +21,23 @@
       "heading": "Hablemos de tu proyecto",
       "summary": "Cuéntanos qué espacio quieres transformar y te ayudaremos a definir el siguiente paso."
     },
-    "featuredMediaId": "media-home-bathroom"
+    "featuredMediaId": "media-home-bathroom",
+    "articleCatalog": {
+      "es": {
+        "title": "Artículos",
+        "description": "Casos de obra y guías técnicas sobre reformas e instalaciones.",
+        "read": "Leer artículo"
+      },
+      "en": {
+        "title": "Articles",
+        "description": "Project stories and technical guides to renovation and building services.",
+        "read": "Read article"
+      },
+      "ru": {
+        "title": "Статьи",
+        "description": "Разборы выполненных работ и технические статьи о ремонте и инженерных системах.",
+        "read": "Читать статью"
+      }
+    }
   }
 }

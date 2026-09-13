@@ -11,6 +11,7 @@ export class Site {
     hero,
     contact,
     featuredMediaId = null,
+    articleCatalog = {},
     source = null,
   }) {
     assertNonEmptyString(name, "name");
@@ -30,6 +31,11 @@ export class Site {
     this.contact = Object.freeze(createContact(contact));
     if (featuredMediaId !== null) assertNonEmptyString(featuredMediaId, "featuredMediaId");
     this.featuredMediaId = featuredMediaId;
+    this.articleCatalog = Object.freeze(Object.fromEntries(Object.entries(articleCatalog).map(([language, copy]) => {
+      if (!["es", "en", "ru"].includes(language)) throw new Error("Unsupported catalog language");
+      for (const key of ["title", "description", "read"]) assertNonEmptyString(copy[key], `articleCatalog.${language}.${key}`);
+      return [language, Object.freeze({ ...copy })];
+    })));
     this.source = source;
 
     Object.freeze(this);
@@ -54,6 +60,7 @@ export class Site {
       hero: { ...this.hero },
       contact: { ...this.contact },
       featuredMediaId: this.featuredMediaId,
+      articleCatalog: this.articleCatalog,
     };
   }
 }

@@ -233,6 +233,7 @@ function renderPage({
             <a href="#proyectos">Proyectos</a>
             <a href="#hogar-inteligente">Domótica</a>
             <a href="#precios">Precios</a>
+            <!-- article-catalog-navigation -->
             <a href="#planificador">Planificador</a>
             <a href="#contacto">Contacto</a>
           </nav>

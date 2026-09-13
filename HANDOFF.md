@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 47
-Updated: 2026-09-13T16:46:26Z
+Version: 48
+Updated: 2026-09-13T17:08:00Z
 
 ## Session rule
 
@@ -70,7 +70,7 @@ Semantic contract: `--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--bord
 
 ## Solar collector material — ported
 
-Historical branch `agent/add-solar-collector-animation` was not merged wholesale. Its technical article was ported into the current Article/content-table architecture on `agent/solar-collector-port`, with ES/EN/RU routes, two owner-provided evidence photographs and verified Bosch/Buderus/IDAE source links. The owner then supplied `solar-collector-updated-v3.html` as the authoritative animation revision. It replaces the simplified first port and is embedded from `tools/articles/solar-collector-v3.html`, with completed ES/EN translations, keyboard-accessible controls and reduced-motion behavior. `node tools/checks/run.mjs` is green. Preview deployment and browser QA of v3 remain the next step.
+Historical branch `agent/add-solar-collector-animation` was not merged wholesale. Its technical article was ported into the current Article/content-table architecture on `agent/solar-collector-port`, with ES/EN/RU routes, two owner-provided evidence photographs and verified Bosch/Buderus/IDAE source links. The owner then supplied `solar-collector-updated-v3.html` as the authoritative animation revision. It replaces the simplified first port and is embedded from `tools/articles/solar-collector-v3.html`, with completed ES/EN translations, keyboard-accessible controls and reduced-motion behavior. `node tools/checks/run.mjs` is green. Revision v3 was deployed to the Netlify preview and its controls and three languages were browser-verified.
 
 The planned floor-leveling guide remains unbuilt. Existing El Raval evidence is recorded in the SEO/AEO matrix; wait for the owner's floor photographs before publishing the guide.
 
@@ -94,4 +94,4 @@ Production target remains VPS + Caddy. Production, DNS and original hosting were
 
 ## Immediate next action
 
-Build the public release bundle, deploy the solar-collector preview, and run browser QA for all three localized routes and the interactive scheme. After owner review, collect the separate floor photographs and build `/guias/nivelar-suelo-piso-antiguo-barcelona/` through content records and route contracts.
+Localized article catalogs are generated at /articulos/, /en/articles/ and /ru/articles/ from published Knowledge Repository records, newest first. Homepage menus and article return links use the matching language. Full checks validate catalog coverage, order, metadata, sitemap and navigation. Preview deployment and browser verification passed (menu → catalog → v3 article → catalog, language switching, both card images loaded). Production and DNS are unchanged. Collect the separate floor photographs and build `/guias/nivelar-suelo-piso-antiguo-barcelona/` through content records and route contracts.

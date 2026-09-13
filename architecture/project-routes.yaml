@@ -66,6 +66,13 @@
         "en": "/en/articles/",
         "ru": "/ru/articles/"
       }
+    },
+    {
+      "id": "articles-index",
+      "path_pattern": "/{localized-article-base}/",
+      "output_pattern": "site-next/{localized-article-base}/index.html",
+      "entity_type": "ArticleCollection",
+      "status": "generated"
     }
   ],
   "routes": [
@@ -273,6 +280,54 @@
         "tools/articles/solar-collector-v3.html"
       ],
       "generated_html_path": "site-next/ru/articles/podklyuchenie-solnechnogo-kollektora/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "articles-index-es",
+      "family_id": "articles-index",
+      "path": "/articulos/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/",
+      "entity_type": "ArticleCollection",
+      "entity_id": null,
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/site.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "articles-index-en",
+      "family_id": "articles-index",
+      "path": "/en/articles/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/",
+      "entity_type": "ArticleCollection",
+      "entity_id": null,
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/site.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "articles-index-ru",
+      "family_id": "articles-index",
+      "path": "/ru/articles/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/",
+      "entity_type": "ArticleCollection",
+      "entity_id": null,
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/site.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/index.html",
       "sitemap_eligible": true
     }
   ],
