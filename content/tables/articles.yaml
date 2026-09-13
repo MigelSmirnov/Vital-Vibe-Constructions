@@ -382,6 +382,219 @@
           ]
         }
       }
+    },
+    {
+      "id": "article-solar-collector-connections",
+      "slug": "conexion-colector-solar",
+      "status": "published",
+      "language": "es",
+      "title": "¿Conexión por un lado o en diagonal para un colector solar?",
+      "seo_title": "Conexión de un colector solar: un lado o diagonal",
+      "summary": "Una conexión por el mismo lado no demuestra por sí sola un error. La respuesta depende del circuito hidráulico interno, el número de captadores y la documentación del fabricante.",
+      "meta_description": "Cómo comprobar la conexión de un colector solar térmico: esquema por un lado o diagonal, posición de la sonda y límites indicados por el fabricante.",
+      "category": "Guía técnica · Energía solar",
+      "body": [
+        {
+          "heading": "La instalación real",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "En la cubierta se ve un captador solar térmico junto a varios paneles fotovoltaicos. Aunque ambos aprovechan el sol, el captador térmico trabaja con un circuito hidráulico que transporta calor hasta el acumulador."
+            },
+            {
+              "type": "image",
+              "media_id": "media-solar-collector-roof",
+              "alt": "Colector solar térmico instalado sobre una cubierta de teja junto a paneles fotovoltaicos",
+              "caption": "El captador solar térmico en la cubierta, junto a los paneles fotovoltaicos."
+            },
+            {
+              "type": "paragraph",
+              "text": "La sala técnica reúne tuberías, bombas, válvulas, instrumentos y control. Una fotografía exterior no basta para reconstruir todo el circuito: hay que seguir las tuberías y comprobar el esquema y la regulación."
+            },
+            {
+              "type": "image",
+              "media_id": "media-solar-collector-plant-room",
+              "alt": "Tuberías, bombas, colectores de distribución y equipos de control en una sala técnica",
+              "caption": "Parte de la instalación hidráulica y de control en la sala técnica."
+            }
+          ]
+        },
+        {
+          "heading": "La forma exterior no da la respuesta",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Dos captadores parecidos pueden tener recorridos internos diferentes. Por eso una entrada y una salida situadas en el mismo lado pueden ser correctas para un modelo y no ser la solución prevista para otro."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Identificar el modelo exacto del captador.",
+                "Consultar el manual de instalación de ese modelo.",
+                "Comprobar el número de captadores conectados en la misma fila.",
+                "Verificar la posición de entrada, salida, purga y sonda de temperatura."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Compare los dos esquemas",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "La animación muestra la diferencia geométrica entre una conexión de ida y retorno por el mismo lado y una conexión en lados opuestos. Es una ayuda visual, no el esquema de montaje de un producto concreto."
+            },
+            {
+              "type": "solar_collector_diagram",
+              "same_side_label": "Mismo lado",
+              "diagonal_label": "Diagonal",
+              "pause_label": "Pausar flujo",
+              "play_label": "Reanudar flujo",
+              "cold_label": "Entrada fría",
+              "hot_label": "Salida caliente",
+              "tank_label": "Acumulador",
+              "sensor_label": "S1 · sonda",
+              "caption": "Esquema interactivo simplificado del recorrido del fluido en un captador solar."
+            }
+          ]
+        },
+        {
+          "heading": "Qué dicen dos fabricantes",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Bosch indica que el absorbedor de doble meandro de su gama citada permite conectar en serie hasta cinco captadores por el mismo lado. Buderus declara para el Logasol SKT 1.0-S hasta diez captadores en una fila y conexión de ida y retorno por el mismo lado para filas de hasta cinco. Son ejemplos de modelos concretos, no una regla universal."
+            },
+            {
+              "type": "source_list",
+              "items": [
+                {"label": "Bosch Home Comfort — Excellence 7000 Plus", "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"},
+                {"label": "Buderus — Logasol SKT 1.0-S", "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"},
+                {"label": "IDAE — Guía Técnica de Energía Solar Térmica", "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"}
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Cómo revisar un montaje",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Leer la placa o etiqueta para confirmar fabricante y modelo.",
+                "Comparar el montaje con el esquema hidráulico del manual.",
+                "Confirmar dónde debe quedar la sonda del captador y el punto de purga.",
+                "Revisar presión, caudal, aislamiento y control con un profesional cualificado."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Ante una duda, tienen prioridad el manual del equipo, el proyecto de la instalación y la comprobación de un técnico cualificado. Esta guía no sustituye esas instrucciones."
+            }
+          ]
+        }
+      ],
+      "published_at": "2026-09-13",
+      "modified_at": "2026-09-13",
+      "author": "Vital Vibe Construction",
+      "related_service_ids": [],
+      "related_project_ids": [],
+      "translations": {
+        "en": {
+          "slug": "solar-collector-connections",
+          "title": "Same-side or diagonal connections for a solar collector?",
+          "seo_title": "Solar collector connections: same side or diagonal",
+          "summary": "Same-side connections are not proof of an installation error. The answer depends on the internal hydraulics, the number of collectors and the manufacturer's documentation.",
+          "meta_description": "How to check a solar thermal collector connection: same-side or diagonal layout, sensor position and the limits specified by the manufacturer.",
+          "category": "Technical guide · Solar energy",
+          "body": [
+            {
+              "heading": "The real installation",
+              "blocks": [
+                {"type": "paragraph", "text": "The roof has a solar thermal collector beside several photovoltaic panels. Both use sunlight, but the thermal collector works with a hydraulic circuit that carries heat to a storage tank."},
+                {"type": "image", "media_id": "media-solar-collector-roof", "alt": "Solar thermal collector installed on a tiled roof beside photovoltaic panels", "caption": "The solar thermal collector on the roof, beside the photovoltaic panels."},
+                {"type": "paragraph", "text": "The plant room brings together pipes, pumps, valves, instruments and controls. An exterior photograph is not enough to reconstruct the entire circuit: the pipework, schematic and controls must also be checked."},
+                {"type": "image", "media_id": "media-solar-collector-plant-room", "alt": "Pipes, pumps, distribution manifolds and control equipment in a plant room", "caption": "Part of the hydraulic and control installation in the plant room."}
+              ]
+            },
+            {
+              "heading": "Appearance alone does not answer the question",
+              "blocks": [
+                {"type": "paragraph", "text": "Two collectors that look alike can have different internal flow paths. Connections on the same side may therefore be correct for one model but not the intended arrangement for another."},
+                {"type": "list", "items": ["Identify the exact collector model.", "Read the installation manual for that model.", "Check how many collectors are connected in the same row.", "Verify the inlet, outlet, air vent and temperature-sensor positions."]}
+              ]
+            },
+            {
+              "heading": "Compare the two layouts",
+              "blocks": [
+                {"type": "paragraph", "text": "The animation shows the geometric difference between flow and return on the same side and connections on opposite sides. It is a visual aid, not a product-specific installation diagram."},
+                {"type": "solar_collector_diagram", "same_side_label": "Same side", "diagonal_label": "Diagonal", "pause_label": "Pause flow", "play_label": "Resume flow", "cold_label": "Cold inlet", "hot_label": "Hot outlet", "tank_label": "Tank", "sensor_label": "S1 · sensor", "caption": "Simplified interactive diagram of fluid flow through a solar collector."}
+              ]
+            },
+            {
+              "heading": "What two manufacturers state",
+              "blocks": [
+                {"type": "paragraph", "text": "Bosch states that the double-meander absorber in the cited range permits same-side series connection of up to five collectors. Buderus states that the Logasol SKT 1.0-S can use up to ten collectors in one row, with flow and return on the same side for rows of up to five. These are model-specific examples, not a universal rule."},
+                {"type": "source_list", "items": [{"label": "Bosch Home Comfort — Excellence 7000 Plus", "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"}, {"label": "Buderus — Logasol SKT 1.0-S", "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"}, {"label": "IDAE — Technical Guide to Solar Thermal Energy", "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"}]}
+              ]
+            },
+            {
+              "heading": "How to review an installation",
+              "blocks": [
+                {"type": "list", "items": ["Read the nameplate or label to confirm the manufacturer and model.", "Compare the installation with the manual's hydraulic diagram.", "Confirm the required collector-sensor and air-vent positions.", "Have a qualified professional check pressure, flow rate, insulation and controls."]},
+                {"type": "paragraph", "text": "If there is any doubt, the equipment manual, the installation design and a qualified technician's inspection take priority. This guide does not replace those instructions."}
+              ]
+            }
+          ]
+        },
+        "ru": {
+          "slug": "podklyuchenie-solnechnogo-kollektora",
+          "title": "Одностороннее или диагональное подключение солнечного коллектора?",
+          "seo_title": "Подключение солнечного коллектора: две схемы",
+          "summary": "Подключение с одной стороны само по себе не доказывает ошибку. Ответ зависит от внутренней гидравлики, числа коллекторов и инструкции производителя.",
+          "meta_description": "Как проверить подключение солнечного коллектора: односторонняя и диагональная схемы, положение датчика и ограничения производителя.",
+          "category": "Техническое руководство · Солнечная энергия",
+          "body": [
+            {
+              "heading": "Реальная установка",
+              "blocks": [
+                {"type": "paragraph", "text": "На крыше установлен плоский солнечный тепловой коллектор рядом с фотоэлектрическими панелями. Оба типа оборудования используют солнце, но тепловой коллектор работает с гидравлическим контуром, который переносит тепло к баку-накопителю."},
+                {"type": "image", "media_id": "media-solar-collector-roof", "alt": "Плоский солнечный тепловой коллектор на черепичной крыше рядом с фотоэлектрическими панелями", "caption": "Солнечный тепловой коллектор на крыше рядом с фотоэлектрическими панелями."},
+                {"type": "paragraph", "text": "В техническом помещении находятся трубы, насосы, арматура, приборы и автоматика. По одной наружной фотографии нельзя восстановить весь контур: нужно проследить трубопроводы и сверить схему и настройки управления."},
+                {"type": "image", "media_id": "media-solar-collector-plant-room", "alt": "Трубопроводы, насосы, распределительные коллекторы и автоматика в техническом помещении", "caption": "Часть гидравлической системы и автоматики в техническом помещении."}
+              ]
+            },
+            {
+              "heading": "По внешнему виду нельзя дать окончательный ответ",
+              "blocks": [
+                {"type": "paragraph", "text": "Внешне похожие коллекторы могут иметь разные внутренние каналы. Поэтому вход и выход с одной стороны могут быть правильными для одной модели, но не соответствовать схеме другой."},
+                {"type": "list", "items": ["Определить точную модель коллектора.", "Открыть инструкцию по монтажу именно этой модели.", "Проверить количество коллекторов в одном ряду.", "Сверить расположение входа, выхода, воздухоотводчика и температурного датчика."]}
+              ]
+            },
+            {
+              "heading": "Сравните две схемы",
+              "blocks": [
+                {"type": "paragraph", "text": "Анимация показывает геометрическую разницу между подачей и обраткой с одной стороны и подключением с противоположных сторон. Это наглядная подсказка, а не монтажная схема конкретного оборудования."},
+                {"type": "solar_collector_diagram", "same_side_label": "Одна сторона", "diagonal_label": "Диагональная", "pause_label": "Остановить поток", "play_label": "Запустить поток", "cold_label": "Холодный вход", "hot_label": "Горячий выход", "tank_label": "Бак", "sensor_label": "S1 · датчик", "caption": "Упрощённая интерактивная схема движения теплоносителя через солнечный коллектор."}
+              ]
+            },
+            {
+              "heading": "Что указывают два производителя",
+              "blocks": [
+                {"type": "paragraph", "text": "Bosch указывает, что двойной меандр абсорбера в приведённой линейке позволяет последовательно подключать с одной стороны до пяти коллекторов. Buderus сообщает, что Logasol SKT 1.0-S допускает до десяти коллекторов в одном ряду, а подачу и обратку с одной стороны — для ряда до пяти. Это примеры конкретных моделей, а не универсальное правило."},
+                {"type": "source_list", "items": [{"label": "Bosch Home Comfort — Excellence 7000 Plus", "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"}, {"label": "Buderus — Logasol SKT 1.0-S", "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"}, {"label": "IDAE — техническое руководство по солнечной тепловой энергии", "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"}]}
+              ]
+            },
+            {
+              "heading": "Как проверить монтаж",
+              "blocks": [
+                {"type": "list", "items": ["Найти шильдик и уточнить производителя и модель.", "Сравнить монтаж с гидравлической схемой из инструкции.", "Уточнить предусмотренное место датчика коллектора и точки удаления воздуха.", "Проверить давление, расход, теплоизоляцию и автоматику с квалифицированным специалистом."]},
+                {"type": "paragraph", "text": "При сомнениях приоритет имеют инструкция оборудования, проект установки и проверка квалифицированного специалиста. Эта статья не заменяет их указания."}
+              ]
+            }
+          ]
+        }
+      }
     }
   ]
 }

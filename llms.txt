@@ -43,6 +43,9 @@ Starting renovation price: from 800 EUR/m2. Los cálculos son orientativos, basa
 - Mover un lavabo significa desmontar y volver a montar el baño (es): https://vitalvibeconstruction.com/articulos/traslado-lavabo-toallero/ - Caso de una reforma parcial de baño: traslado del lavabo, instalaciones y reposición del alicatado. Cuatro días y 1.100 € de mano de obra con retirada de escombros.
 - Moving a basin means taking the bathroom apart and putting it back together (en): https://vitalvibeconstruction.com/en/articles/moving-a-bathroom-basin/ - A bathroom alteration in Badalona: moving the basin, adding a heated towel rail and restoring the walls. Four days and €1,100 for labour with rubble removal.
 - Перенести раковину — это разобрать и снова собрать ванную (ru): https://vitalvibeconstruction.com/ru/articles/perenos-rakoviny/ - Частичный ремонт ванной в Бадалоне: перенос раковины, установка полотенцесушителя и восстановление стен. Четыре дня и 1100 € за работу с выносом мусора.
+- ¿Conexión por un lado o en diagonal para un colector solar? (es): https://vitalvibeconstruction.com/articulos/conexion-colector-solar/ - Cómo comprobar la conexión de un colector solar térmico: esquema por un lado o diagonal, posición de la sonda y límites indicados por el fabricante.
+- Same-side or diagonal connections for a solar collector? (en): https://vitalvibeconstruction.com/en/articles/solar-collector-connections/ - How to check a solar thermal collector connection: same-side or diagonal layout, sensor position and the limits specified by the manufacturer.
+- Одностороннее или диагональное подключение солнечного коллектора? (ru): https://vitalvibeconstruction.com/ru/articles/podklyuchenie-solnechnogo-kollektora/ - Как проверить подключение солнечного коллектора: односторонняя и диагональная схемы, положение датчика и ограничения производителя.
 
 ## Visual Gallery
 

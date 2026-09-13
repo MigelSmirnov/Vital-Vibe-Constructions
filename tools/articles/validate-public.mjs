@@ -46,6 +46,7 @@ for (const article of knowledge.listArticles()) {
     assert(new Set(ids).size===ids.length,"Duplicate article anchors");
     for (const match of html.matchAll(/href="#([^"]+)"/g)) assert(ids.includes(match[1]),"Broken article anchor");
     let imageCount=0;
+    let diagramCount=0;
     for (const section of local.body) {
       required(html,escape(section.heading),"section heading");
       for (const block of section.blocks) {
@@ -58,9 +59,18 @@ for (const article of knowledge.listArticles()) {
           required(html,escape(block.caption),"localized caption");
           await access(path.join(root,media.src));
         }
+        if (block.type==="solar_collector_diagram") {
+          diagramCount++;
+          required(html,"data-solar-diagram","solar collector diagram");
+          for (const field of ["same_side_label","diagonal_label","pause_label","cold_label","hot_label","tank_label","sensor_label","caption"]) required(html,escape(block[field]),`solar collector diagram ${field}`);
+        }
+        if (block.type==="source_list") for (const item of block.items) {
+          required(html,`href="${item.url}"`,`source URL`);
+          required(html,escape(item.label),"source label");
+        }
       }
     }
-    assert((html.match(/<figure>/g)||[]).length===imageCount,"Unexpected article image count");
+    assert((html.match(/<figure(?:\s|>)/g)||[]).length===imageCount+diagramCount,"Unexpected article figure count");
     const schema=JSON.parse(html.match(/<script type="application\/ld\+json">([^]*?)<\/script>/)[1]);
     assert(schema["@type"]==="Article" && schema.headline===local.title && schema.inLanguage===language && schema.mainEntityOfPage===route.canonical_url,"Article structured data mismatch");
     assert(schema.datePublished===local.published_at && schema.dateModified===local.modified_at,"Article dates mismatch");

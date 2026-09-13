@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 45
-Updated: 2026-09-13T11:56:00Z
+Version: 46
+Updated: 2026-09-13T16:28:53Z
 
 ## Session rule
 
@@ -16,7 +16,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 1. Read `AGENTS.md` and its required architecture contracts in order.
 2. Continue from `task/README.md`; responsive-image history is tracked in `task/002-responsive-images.md`.
-3. Work on `agent/architecture-sandbox`; do not use `main` as a working branch.
+3. Continue solar-collector review on `agent/solar-collector-port`; do not use `main` as a working branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
@@ -68,9 +68,11 @@ Completed UI fixes remain: grouped 39-image gallery; El Raval pending-photo stat
 
 Semantic contract: `--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--border`.
 
-## Solar collector material — deferred
+## Solar collector material — ported
 
-Historical branch `agent/add-solar-collector-animation` contains the solar-collector article and interactive animation. Do not merge that diverged branch wholesale. The owner asked to return later; port files surgically into the current architecture/accessibility system when resumed.
+Historical branch `agent/add-solar-collector-animation` was not merged wholesale. Its technical article and animation were ported into the current Article/content-table architecture on `agent/solar-collector-port`, with ES/EN/RU routes, two owner-provided evidence photographs, verified Bosch/Buderus/IDAE source links, keyboard-accessible controls and reduced-motion behavior. `node tools/checks/run.mjs` is green. Preview deployment and visual browser QA remain the next step.
+
+The planned floor-leveling guide remains unbuilt. Existing El Raval evidence is recorded in the SEO/AEO matrix; wait for the owner's floor photographs before publishing the guide.
 
 ## Published content state
 
@@ -92,4 +94,4 @@ Production target remains VPS + Caddy. Production, DNS and original hosting were
 
 ## Immediate next action
 
-No current quality/performance blocker is open in this bounded pass. Await owner direction before starting a new stage. Solar-collector content remains deferred, hero preload remains optional only with separate timing evidence, and the remaining 23 gallery images should not be mass-optimized without new measurements.
+Build the public release bundle, deploy the solar-collector preview, and run browser QA for all three localized routes and the interactive scheme. After owner review, collect the separate floor photographs and build `/guias/nivelar-suelo-piso-antiguo-barcelona/` through content records and route contracts.

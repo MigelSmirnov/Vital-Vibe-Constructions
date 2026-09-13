@@ -223,6 +223,57 @@
       ],
       "generated_html_path": "site-next/ru/articles/perenos-rakoviny/index.html",
       "sitemap_eligible": true
+    },
+    {
+      "id": "article-solar-collector-connections-es",
+      "family_id": "article-detail",
+      "path": "/articulos/conexion-colector-solar/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/conexion-colector-solar/",
+      "entity_type": "Article",
+      "entity_id": "article-solar-collector-connections",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml",
+        "tools/articles/solar-collector.js"
+      ],
+      "generated_html_path": "site-next/articulos/conexion-colector-solar/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-solar-collector-connections-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/solar-collector-connections/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/solar-collector-connections/",
+      "entity_type": "Article",
+      "entity_id": "article-solar-collector-connections",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml",
+        "tools/articles/solar-collector.js"
+      ],
+      "generated_html_path": "site-next/en/articles/solar-collector-connections/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-solar-collector-connections-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "entity_type": "Article",
+      "entity_id": "article-solar-collector-connections",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml",
+        "tools/articles/solar-collector.js"
+      ],
+      "generated_html_path": "site-next/ru/articles/podklyuchenie-solnechnogo-kollektora/index.html",
+      "sitemap_eligible": true
     }
   ],
   "legacy_source_mappings": [

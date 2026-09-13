@@ -79,6 +79,7 @@ export class KnowledgeRepository {
     assertMediaOwnership({
       projects: this.projects,
       capabilitySections: this.capabilitySections,
+      articles: this.articles,
       media: this.media,
     });
     assertProjectMediaConsistency({ projects: this.projects, media: this.media });
@@ -194,17 +195,18 @@ function assertKnownReferences({ services, projects, capabilitySections, externa
   }
 }
 
-function assertMediaOwnership({ projects, capabilitySections, media }) {
+function assertMediaOwnership({ projects, capabilitySections, articles, media }) {
   const referencedMediaIds = new Set([
     ...projects.flatMap((project) => project.imageIds),
     ...capabilitySections.flatMap((section) => section.mediaIds),
+    ...articles.flatMap((article) => article.mediaIds),
   ]);
 
   for (const item of media) {
     const hasOwner = item.projectId !== null || item.serviceIds.length > 0 || referencedMediaIds.has(item.id);
     if (!hasOwner) {
       throw new Error(
-        `Orphan media "${item.id}"; expected project_id, service_ids, or an explicit project/capability reference.`,
+        `Orphan media "${item.id}"; expected project_id, service_ids, or an explicit project/capability/article reference.`,
       );
     }
   }

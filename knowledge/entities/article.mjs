@@ -67,6 +67,18 @@ function validateLocalized(record) {
         block.items.forEach(item => assertNonEmptyString(item, "article list item"));
       } else if (block.type === "image") {
         for (const field of ["media_id", "alt", "caption"]) assertNonEmptyString(block[field], `article image ${field}`);
+      } else if (block.type === "solar_collector_diagram") {
+        for (const field of ["same_side_label", "diagonal_label", "pause_label", "play_label", "cold_label", "hot_label", "tank_label", "sensor_label", "caption"]) {
+          assertNonEmptyString(block[field], `solar collector diagram ${field}`);
+        }
+      } else if (block.type === "source_list") {
+        if (!Array.isArray(block.items) || !block.items.length) throw new Error("Article source list requires items.");
+        for (const item of block.items) {
+          assertNonEmptyString(item.label, "article source label");
+          assertNonEmptyString(item.url, "article source URL");
+          const url = new URL(item.url);
+          if (url.protocol !== "https:") throw new Error("Article sources must use HTTPS.");
+        }
       } else throw new Error(`Unsupported article block: ${block.type}`);
     }
   }

@@ -1,8 +1,8 @@
-version: 48
-updated_at: 2026-09-13T11:56:00Z
-phase: homepage-visual-redesign
-stage_status: bounded-quality-performance-and-accessibility-pass-green
-active_branch: agent/architecture-sandbox
+version: 49
+updated_at: 2026-09-13T16:28:53Z
+phase: solar-collector-article-port
+stage_status: implementation-green-preview-pending
+active_branch: agent/solar-collector-port
 pull_request:
   number: 1
   state: merged-historical
@@ -250,10 +250,21 @@ content_state:
     media_count: 16
     pending_technical_media_public: false
   solar_collector_material:
-    status: deferred-by-owner
+    status: ported-to-current-architecture
     source_branch: agent/add-solar-collector-animation
     merge_branch_wholesale: false
-    future_policy: port-article-and-animation-surgically-into-current-architecture
+    languages:
+      - es
+      - en
+      - ru
+    evidence_images: 2
+    interactive_diagram: true
+    primary_sources_verified: true
+    full_checks: success
+  floor_leveling_guide:
+    status: awaiting-owner-media
+    proposed_route: /guias/nivelar-suelo-piso-antiguo-barcelona/
+    existing_evidence: El Raval floor build-up and leveling records
 
 vps_security:
   artifact: architecture/vps-security-plan.md

@@ -514,6 +514,30 @@
       ],
       "before_after_state": "work",
       "project_id": "project-bathroom-ponent-badalona"
+    },
+    {
+      "id": "media-solar-collector-roof",
+      "slug": "solar-collector-roof",
+      "src": "assets/solar-collector/roof-collector.jpg",
+      "alt": "Colector solar térmico instalado sobre una cubierta de teja junto a paneles fotovoltaicos",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Colector solar térmico instalado en la cubierta del edificio.",
+      "description": "Fotografía facilitada por el propietario del sitio. Archivo conservado sin retoque.",
+      "before_after_state": "after",
+      "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-solar-collector-plant-room",
+      "slug": "solar-collector-plant-room",
+      "src": "assets/solar-collector/plant-room.jpg",
+      "alt": "Tuberías, bombas, colectores de distribución y equipos de control en una sala técnica",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Sala técnica con el circuito hidráulico y sus equipos de control.",
+      "description": "Fotografía facilitada por el propietario del sitio. Archivo conservado sin retoque.",
+      "before_after_state": "after",
+      "published_at": "2026-09-13"
     }
   ]
 }

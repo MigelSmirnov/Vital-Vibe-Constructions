@@ -146,6 +146,19 @@ test("loads current content tables into a repository with project records", asyn
   assert.equal(bathroom.imageIds.length, 6);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
+  assert.equal(repository.findArticleById("article-solar-collector-connections").mediaIds.length, 2);
+});
+
+test("article evidence is an explicit media reference", () => {
+  const tables = structuredClone(baseTables);
+  tables.media.push({ id: "media-article", slug: "media-article", src: "articles/evidence.jpg", alt: "Article evidence", width: 800, height: 600 });
+  tables.articles = [{
+    id: "article-test", slug: "article-test", status: "published", language: "es", title: "Article title",
+    seo_title: "Article SEO title", summary: "Article summary", meta_description: "Article description", category: "Guide",
+    body: [{ heading: "Evidence", blocks: [{ type: "image", media_id: "media-article", alt: "Evidence image", caption: "Evidence caption" }] }],
+    published_at: "2026-09-13", modified_at: "2026-09-13", author: "Vital Vibe Construction",
+  }];
+  assert.equal(createKnowledgeRepository(tables).findMediaById("media-article").src, "articles/evidence.jpg");
 });
 
 test("Project keeps labour cost separate from total cost and rejects invalid amounts", () => {
