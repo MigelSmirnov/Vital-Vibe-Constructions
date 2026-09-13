@@ -36,7 +36,7 @@ async function patch(relativePath, images) {
 const lead = {
   src: "/estandar/cocina.jpeg",
   label: "standard project lead kitchen",
-  source: sourceSet("cocina", "(max-width: 760px) 92vw, 1180px"),
+  source: sourceSet("cocina", "(max-width: 1200px) calc(100vw - 36px), 1180px"),
 };
 const gallery = ["obra", "suelo-base", "parquet", "pintura", "pasillo"].map((name) => ({
   src: `/estandar/${name}.jpeg`,
