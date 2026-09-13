@@ -11,9 +11,7 @@ on:
       - estandar/*.jpeg
       - smart/gira.jpeg
       - smart/escenas.jpeg
-      - premium/panel-marmol.jpeg
-      - premium/gira.jpeg
-      - premium/apple-home.jpeg
+      - premium/*.jpeg
 
 permissions:
   contents: read
