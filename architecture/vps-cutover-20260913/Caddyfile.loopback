@@ -1,0 +1,56 @@
+{
+  # Keep Caddy's administrative API on loopback only. This is not a public web
+  # admin panel and must never be exposed on the VPS network interface.
+  admin 127.0.0.1:2019
+}
+
+{$VVC_DOMAIN:vitalvibeconstruction.com} {
+  bind 127.0.0.1
+  root * {$VVC_WEB_ROOT:/srv/vital-vibe/current}
+
+  log {
+    output stdout
+    format json
+  }
+
+  encode zstd gzip
+
+  # Historical URL compatibility. Keep these until Search Console/backlink data
+  # confirms the old paths no longer need explicit redirects.
+  redir /projects.html /projects/ permanent
+  redir /proyecto-1.html /projects/estudio-reformado-barcelona/ permanent
+  redir /proyecto-2.html /projects/estudio-reformado-barcelona/ permanent
+  redir /projects/piso-reformado-barcelona /projects/estudio-reformado-barcelona/ permanent
+  redir /projects/piso-reformado-barcelona/ /projects/estudio-reformado-barcelona/ permanent
+  redir /galeria-economica.dc.html /gallery/ permanent
+  redir /galeria-estandar.dc.html /gallery/ permanent
+  redir /galeria-premium.dc.html /gallery/ permanent
+  redir /sandbox/articles/reading/traslado-lavabo-toallero-cuatro-dias/ /articulos/traslado-lavabo-toallero/ permanent
+
+  header {
+    # Reduce passive service fingerprinting. This is hygiene, not a substitute
+    # for patching, firewalling, or protecting the origin from DDoS.
+    -Server
+
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    # The solar collector v3 diagram is embedded by same-origin article pages.
+    X-Frame-Options "SAMEORIGIN"
+    Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  }
+
+  @documents not path *.css *.svg *.jpg *.jpeg *.png *.webp *.avif *.woff *.woff2
+  header @documents Cache-Control "no-cache"
+
+  @staticAssets path *.css *.svg *.jpg *.jpeg *.png *.webp *.avif *.woff *.woff2
+  header @staticAssets Cache-Control "public, max-age=86400"
+
+  file_server
+}
+
+# Add a separate www -> apex redirect block only after DNS for www is verified.
+# Caddy will manage HTTPS automatically for configured public hostnames when
+# DNS points to the VPS and ports 80/443 are reachable.
+#
+# HSTS and an enforced CSP are intentionally deferred until production HTTPS,
+# embedded/external resources, and rollback behavior are verified.

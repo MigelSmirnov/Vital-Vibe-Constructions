@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 52
-Updated: 2026-09-13T18:34:06Z
+Version: 53
+Updated: 2026-09-13T19:15:08Z
 
 ## Session rule
 
@@ -20,7 +20,19 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
-## Current stage
+## VPS execution — 2026-09-13
+
+**Prepared and verified on VPS; public cutover is incomplete.** Exact artifact source: `fb31a282e0204bc37d3ced1982675fef0332573f` (clean detached checkout before build). Fresh Node 20 / ImageMagick / WebP build passed. Archive SHA-256: `e49180c37ec3dfe96390eb4162813e4f5ed02797234919e200cf768aee1d63a6`, verified again after upload.
+
+Installed `/srv/vital-vibe/releases/20260913-fb31a282`, with `current` pointing there. Container `vvc-site` runs Caddy as UID 65534, with a read-only release mount, restart policy and bounded logs. It serves **only `127.0.0.1:8890`**, with admin on `127.0.0.1:2019`. Existing nginx owns public 80/443; its virtual hosts and the planner were preserved. The server copy of Caddy adds explicit loopback binding and separate document/asset cache matchers because the template's generic no-cache header overrode asset caching in actual Caddy.
+
+Verified: 35 tests, gallery 39/39, 12 article pages, audit 0 errors / 5 warnings; 23 sitemap routes and 29 bundle HTML files; 69 fresh browser page checks (23 routes × 390/768/1440), no broken images, JS errors or horizontal overflow; all nine historical 301 redirects; solar iframe controls ES/EN/RU at all three widths, SAMEORIGIN. Painting retains 10 sections / 2 photos; renovation cost 11 sections / 6 photos; each catalog has four articles. Generated files and approved site content were not changed.
+
+**Blockers / remaining work:** no DonDominio access configuration was found; the full DNS-zone export and registrar controls cannot be verified. Apex still resolves to GitHub Pages and www still redirects from GitHub Pages; public VPS HTTPS has not been configured or verified. A proposed nginx TLS-to-Caddy integration is saved but NOT enabled or validated as production (certificate not issued). It must be reconciled with the original direct-Caddy plan before public cutover. Shared VPS SSH still permits password authentication and root key login; provider firewall/DDoS protection and registrar MFA remain unverified. Do not claim the security checklist complete or change shared access without checking recovery arrangements.
+
+No older Vital Vibe VPS release exists. Hosting rollback remains the unchanged GitHub Pages site (`main:/`) and recorded apex/www DNS. Private nginx backup and archive are in `/home/ubuntu/vvc-migration-fb31a282/` on the VPS. See [execution record](architecture/vps-cutover-20260913/report.md) for exact state and continuation.
+
+## Previous stage (historical)
 
 The human-approved visual baseline, semantic/accessibility layer, homepage responsive images, Standard/Premium project slices, homepage hero/LCP delivery, bounded gallery high-transfer reuse and shared reduced-motion follow-up are green. Production and DNS remain unchanged.
 
@@ -90,7 +102,7 @@ Knowledge Repository remains public content source of truth. `support.js`/legacy
 
 ## Production / VPS
 
-Production target remains VPS + Caddy. Production, DNS and original hosting were not changed. Owner has now authorized VPS cutover by the local agent with server access. Follow `task/003-vps-cutover.md`; fresh production image build and Caddy validation remain local gates.
+The prepared release and actual blockers are recorded at the top of this handoff and in `architecture/vps-cutover-20260913/report.md`. Public hosting and DNS remain unchanged; VPS cutover is still authorized.
 
 ## Article editorial correction
 
@@ -98,9 +110,7 @@ Owner rejected the condensed report-style rewrites. Restored the original Spanis
 
 ## Immediate next action
 
-Localized article catalogs are generated at /articulos/, /en/articles/ and /ru/articles/ from published Knowledge Repository records, newest first. Homepage menus and article return links use the matching language. Full checks validate catalog coverage, order, metadata, sitemap and navigation. Preview deployment and browser verification passed (menu → catalog → v3 article → catalog, language switching, both card images loaded). Production and DNS are unchanged. Owner approved moving to VPS locally. Continue with `task/003-vps-cutover.md` from `release/vps-migration` at the explicit full release SHA supplied in the handoff. Caddy now permits same-origin framing so solar v3 can render. This session has no cwebp or Caddy: do not treat the preview bundle as a fresh verified production archive.
-
-VPS handoff checks: `node tools/checks/run.mjs` passed in this session (content audit: 0 errors, 5 warnings). Full production WebP build and real Caddy validation were not run here.
+Obtain the existing DonDominio access method and finish the edge/security preparation described in the execution report. The fresh production artifact is already built and verified on VPS; preserve its SHA and archive checksum. Complete DNS/HTTPS cutover and verify the primary domain before declaring publication.
 
 ## Release branch reconciliation — 2026-09-13
 

@@ -1,8 +1,8 @@
-version: 55
-updated_at: 2026-09-13T18:34:06Z
-phase: release-branch-reconciliation
-stage_status: awaiting-local-production-build-and-cutover
-active_branch: release/vps-migration
+version: 56
+updated_at: 2026-09-13T19:15:08Z
+phase: vps-pre-dns-verification
+stage_status: prepared-on-vps-blocked-before-public-cutover
+active_branch: agent/vps-cutover-fb31a282
 pull_request:
   number: 1
   state: merged-historical
@@ -11,6 +11,34 @@ pull_request:
 
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
+
+vps_execution:
+  report: architecture/vps-cutover-20260913/report.md
+  release_sha: fb31a282e0204bc37d3ced1982675fef0332573f
+  archive_sha256: e49180c37ec3dfe96390eb4162813e4f5ed02797234919e200cf768aee1d63a6
+  release_id: 20260913-fb31a282
+  server_current: /srv/vital-vibe/releases/20260913-fb31a282
+  public_cutover_complete: false
+  production_hosting: github-pages-main-root-unchanged
+  dns_changed: false
+  previous_vps_release: null
+  rollback_hosting: unchanged-github-pages
+  caddy_container: vvc-site
+  caddy_listener: 127.0.0.1:8890
+  caddy_admin: 127.0.0.1:2019
+  runtime_uid: 65534
+  release_mount: read-only
+  full_checks: passed-35-tests-0-errors-5-warnings
+  sitemap_routes_checked: 23
+  browser_page_checks: 69
+  solar_language_viewport_checks: 9
+  historical_redirects_checked: 9
+  generated_projections_changed: false
+  remaining:
+    - obtain-dondominio-access-and-full-zone-export
+    - reconcile-public-nginx-tls-to-caddy-with-direct-caddy-plan
+    - complete-shared-vps-and-registrar-security-checklist
+    - dns-cutover-and-public-https-production-acceptance
 
 release_preparation:
   audit: task/004-release-branch-audit.md
@@ -21,8 +49,8 @@ release_preparation:
   reconciliation_site_tree_changed: false
   release_selection: explicit-full-sha-from-handoff
   main_updated: false
-  production_build: pending-webp
-  caddy_validation: pending-on-vps
+  production_build: fresh-webp-build-verified
+  caddy_validation: passed-on-vps-loopback
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -337,6 +365,9 @@ vps_bundle:
 
 completed_work:
   - date: 2026-09-13
+    summary: Built pinned production artifact with WebP; installed and browser-verified release through Caddy on VPS loopback; preserved public hosting and DNS.
+    validation: 35-tests; 23-sitemap-routes; 69-browser-page-checks; 9-solar-control-checks; sha256-matches; public-cutover-blocked
+  - date: 2026-09-13
     summary: Created full-site release branch and integrated main history with identical site tree; aligned handoff and branch contracts.
     validation: canonical-checks-pass-35-tests; audit-0-errors-5-warnings; generated-projections-unchanged; production-webp-and-caddy-pending
   - date: 2026-09-13
@@ -366,7 +397,7 @@ completed_work:
 
 active_stage:
   goal: Local agent with VPS access builds and deploys approved site.
-  status: owner-authorized-local-agent-handoff
+  status: prepared-on-vps-public-cutover-blocked
   production_deployment: authorized-for-local-agent
   vps_preparation: task/003-vps-cutover.md
 
@@ -383,4 +414,4 @@ next_verification:
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Follow task/003-vps-cutover.md; validate fresh release and Caddy before DNS cutover.
+  goal: Obtain DNS access, complete edge/security preparation, then switch DNS and verify public HTTPS for the already prepared release.
