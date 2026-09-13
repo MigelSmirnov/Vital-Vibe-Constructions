@@ -21,3 +21,4 @@ else
 fi
 
 node tools/visual/check.mjs
+node tools/visual/accessibility.mjs
