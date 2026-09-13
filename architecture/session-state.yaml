@@ -1,7 +1,7 @@
-version: 42
-updated_at: 2026-09-13T07:47:00Z
+version: 43
+updated_at: 2026-09-13T07:56:00Z
 phase: homepage-visual-redesign
-stage_status: responsive-image-derivative-pipeline-green-integration-pending
+stage_status: first-responsive-image-slice-browser-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: task/002-responsive-images.md
+next_proposed_task: selective-high-impact-responsive-images
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -59,47 +59,10 @@ visual_qa:
   command: bash tools/visual/run.sh
   workflow: .github/workflows/visual-qa.yml
   playwright_version: 1.55.0
-  browser_environment:
-    github_actions: supported
-    desktop_linux_macos: supported
-    termux_android: unsupported-for-reproducible-run
   viewports:
     - 390x844
     - 768x1024
     - 1440x1000
-  targets:
-    - home-es
-    - home-en
-    - home-ru
-    - article-es
-    - article-en
-    - article-ru
-    - gallery
-    - project-studio-renovation-barcelona
-  first_green_run:
-    run_number: 4
-    commit: 3e6d78acea4bbf51b6901cec2a34c4723db51743
-    loading_failures: 0
-    broken_images: 0
-    horizontal_overflow_findings: 0
-  first_review_fix_run:
-    run_number: 5
-    source_commit: 7b41ed9ac081635f8fe2c7bdd629368b2e2e867e
-    status: success
-    fixes:
-      - gallery-grouped-by-project-or-capability
-      - el-raval-public-pending-photo-status-removed
-      - mobile-home-project-cards-stacked
-  second_review_fix_run:
-    run_number: 14
-    source_commit: 712f180c9a8f7f9f273ec8eada27b0755d659931
-    status: success
-    fixes:
-      - smart-home-mobile-density-reduced
-      - article-desktop-editorial-frame-centered
-    loading_failures: 0
-    broken_images: 0
-    horizontal_overflow_findings: 0
   approved_baseline:
     status: approved-by-owner
     approved_at: 2026-09-13T07:19:00Z
@@ -110,36 +73,31 @@ visual_qa:
     status: success
     workflow_run_number: 23
     commit: b23f0b9046e359f181f4065cc76665310f9d6188
-    semantic_tokens_required:
-      - --bg
-      - --surface
-      - --text
-      - --muted
-      - --accent
-      - --border
-    control_target_min_px: 24
-    inline_text_links_target_gate: excluded-by-inline-link-exception
-    keyboard_test: real-tab-traversal-with-visible-focus-indicator
-    reduced_motion_transition_animation_threshold_ms: 1
     missing_token_findings: 0
     small_control_findings: 0
     sampled_focus_failures: 0
     motion_rule_findings: 0
     advisory:
       - gallery-and-el-raval-still-compute-smooth-scroll-under-reduced-motion
+  responsive_image_run:
+    status: success
+    workflow_run_number: 30
+    commit: 073a29dc01213c9b12c929fa26630d456984d554
+    standard_visual_qa: success
+    accessibility_qa: success
+    chromium_selected_responsive_sources: true
+    browser_requested_selected_sources: true
+    human_crop_layout_review: no-visible-regression-at-390-and-1440
   baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
 responsive_images:
   task: task/002-responsive-images.md
-  status: derivative-builder-green-markup-integration-pending
-  builder: tools/media/build-home-responsive.sh
-  workflow: .github/workflows/home-image-derivatives.yml
-  workflow_permissions: read-only-contents
-  first_run:
-    run_number: 1
-    commit: 663f412f38fd830bb0fe722fb0914642aa85b26c
-    status: success
+  status: first-homepage-slice-integrated-and-browser-verified
+  derivative_builder: tools/media/build-home-responsive.sh
+  derivative_workflow: .github/workflows/home-image-derivatives.yml
+  release_integration: tools/deploy/build-vps-bundle.mjs
+  browser_verifier: tools/visual/responsive-images.mjs
   encoder:
     tool: cwebp
     quality: 82
@@ -160,6 +118,10 @@ responsive_images:
           bytes: 56418
         - width: 1086
           bytes: 130290
+      selected_in_test_matrix:
+        390x844: 480w
+        768x1024: 480w
+        1440x1000: 768w
     - source: estandar/cocina.jpeg
       original_bytes: 1832524
       original_dimensions: 4032x3024
@@ -170,14 +132,20 @@ responsive_images:
           bytes: 14168
         - width: 1200
           bytes: 27268
-  integration_requirements:
-    - picture-webp-source-with-width-srcset
-    - explicit-sizes
-    - original-img-src-fallback
-    - preserve-intrinsic-width-height
-    - visual-qa-after-integration
-    - verify-selected-resource-in-chromium
-  mass-gallery-derivatives_deferred: true
+      selected_in_test_matrix:
+        390x844: 480w
+        768x1024: 480w
+        1440x1000: 480w
+  markup:
+    format: picture-with-webp-width-srcset-and-sizes
+    home_languages:
+      - es
+      - en
+      - ru
+    original_img_src_fallback_retained: true
+    intrinsic_dimensions_retained: true
+  mass_gallery_derivatives_deferred: true
+  hero_lcp_optimization_deferred_for_separate_measurement: true
 
 visual_design:
   homepage_direction: graphite-gold-split-hero
@@ -195,21 +163,12 @@ visual_design:
     - --muted
     - --accent
     - --border
-  smart_home_mobile:
-    content_removed: false
-    lead_image_height_px: 240
-    partner_grid_columns: 2
-    partner_preview_height_px: 145
-  article_desktop:
-    editorial_frame_px: 1040
-    reading_column_px: 720
-    toc_sticky: true
-    mobile_layout_changed: false
   next_review_candidates:
-    - homepage-responsive-image-markup-integration
-    - shared-secondary-reduced-motion-scroll-cleanup
     - smart-home-responsive-images
-    - project-and-gallery-responsive-images
+    - project-detail-responsive-images
+    - hero-lcp-measurement-and-format-decision
+    - shared-secondary-reduced-motion-scroll-cleanup
+    - gallery-responsive-images-after-ranking
 
 content_state:
   home_locales:
@@ -243,157 +202,60 @@ vps_security:
   caddy_admin:
     bind: 127.0.0.1:2019
     public_exposure_allowed: false
-  response_headers:
-    server_banner_removed: true
-    x_content_type_options: nosniff
-    referrer_policy: strict-origin-when-cross-origin
-    x_frame_options: DENY
-    hsts_enabled: false
-    csp_enforced: false
   ssh_target:
     root_login: disabled
     password_authentication: disabled
     key_authentication: required
-    preferred_network_access: private-vpn-or-management-network
   firewall:
     provider_firewall_preferred: true
     host_firewall_required: true
     caddy_admin_port_public: false
-    deny_unused_inbound: true
   filesystem:
     releases_immutable_after_activation: true
     caddy_site_tree_write_access: false
     deploy_user_owns_release_activation: true
-  ddos:
-    host_firewall_is_not_sufficient_for_volumetric_attack: true
-    upstream_protection_required: true
-    edge_options:
-      - provider-protected-direct-caddy
-      - cloudflare-proxied-dns-restricted-origin
-      - cloudflare-tunnel-private-ssh
-  dns_and_registrar:
-    mfa_required: true
-    transfer_lock_required: true
-    export_zone_before_cutover: true
-    dnssec_recommended_when_supported: true
 
 vps_bundle:
   builder: tools/deploy/build-vps-bundle.mjs
   validator: tools/deploy/validate-vps-bundle.mjs
   workflow: .github/workflows/vps-bundle-check.yml
+  responsive_derivative_dependency: cwebp-installed-in-ci
   ignored_outputs:
     - .deploy-dist/
     - vps-site-bundle.tgz
-  excludes:
-    - legacy-root-index-html
-    - task/
-    - README.md
-    - HANDOFF.md
-    - AGENTS.md
-
-vps_server:
-  web_server: caddy
-  caddy_template: deploy/vps/Caddyfile
-  default_web_root: /srv/vital-vibe/current
-  release_installer: deploy/vps/install-release.sh
-  rollback_helper: deploy/vps/rollback-release.sh
-  automatic_https_expected_for_direct-caddy-mode: true
-
-historical_redirects:
-  verification_before_cutover_required: true
-  entries:
-    - from: /projects.html
-      to: /projects/
-      status: 301
-    - from: /proyecto-1.html
-      to: /projects/estudio-reformado-barcelona/
-      status: 301
-    - from: /proyecto-2.html
-      to: /projects/estudio-reformado-barcelona/
-      status: 301
-    - from: /galeria-economica.dc.html
-      to: /gallery/
-      status: 301
-    - from: /galeria-estandar.dc.html
-      to: /gallery/
-      status: 301
-    - from: /galeria-premium.dc.html
-      to: /gallery/
-      status: 301
-
-cutover_policy:
-  before_dns_change:
-    - record-current-apex-and-www-dns
-    - record-github-pages-custom-domain-state
-    - confirm-vps-ipv4
-    - confirm-ipv6-before-aaaa
-    - install-and-smoke-test-vps-release
-    - choose-ddos-and-origin-protection-mode
-    - verify-ssh-and-firewall-hardening
-    - verify-caddy-admin-loopback-only
-    - keep-github-pages-as-hosting-rollback
-  dns_cutover:
-    - update-only-required-apex-and-www-records
-    - verify-public-https
-    - verify-canonical-routes
-    - verify-historical-301s
-  rollback:
-    application: switch-current-symlink-to-previous-release
-    hosting: restore-recorded-github-pages-dns
-    canonical_urls_change_during_rollback: false
-
-seo_aeo_matrix:
-  artifact: architecture/seo-aeo-query-page-matrix.md
-  candidate_count: 15
-  route_expansion_blocked_until_hosting_ready: true
+    - artifacts/responsive-home/
+    - artifacts/responsive-vps/
 
 completed_work:
   - date: 2026-09-13
-    summary: Started the first bounded responsive-image performance slice. Added a deterministic cwebp builder and read-only GitHub Actions workflow; generated and measured WebP width variants for the heavy homepage bathroom PNG and standard kitchen JPEG without replacing originals or changing Media IDs.
-    validation: homepage-image-derivatives-run-1-success; originals-unchanged; markup-integration-pending; production-and-dns-unchanged
+    summary: Integrated the first two responsive WebP families into generated release homepages while preserving original fallbacks and Media identities. Browser QA confirmed Chromium selected and requested the optimized resources on ES/EN/RU at all three reference widths with visual and accessibility checks still green.
+    validation: visual-qa-run-30-success; responsive-browser-check-success; accessibility-pass; manual-390-and-1440-crop-review-pass; production-and-dns-unchanged
   - date: 2026-09-13
-    summary: Added the semantic-token accessibility layer from the approved visual baseline. Article now uses the shared color-token contract; browser QA checks 24 px control targets, real Tab focus and reduced motion across the full matrix.
-    validation: full-checks-pass; vps-bundle-pass; visual-and-accessibility-run-23-success; zero-missing-tokens; zero-small-controls; zero-sampled-focus-failures; zero-motion-rules; production-and-dns-unchanged
+    summary: Added deterministic cwebp derivative builder and read-only CI workflow for the heavy homepage bathroom and standard-kitchen images.
+    validation: homepage-image-derivatives-run-1-success; originals-unchanged
   - date: 2026-09-13
-    summary: Owner approved the refined browser screenshot set as the first visual baseline after the gallery, El Raval, mobile project-card, Smart Home mobile-density and Article desktop refinements.
-    validation: visual-baseline-approved; reference-run-15-success; production-and-dns-unchanged
+    summary: Added semantic-token accessibility layer and browser checks for target size, real Tab focus and reduced motion.
+    validation: visual-and-accessibility-run-23-success
   - date: 2026-09-13
-    summary: Reduced Smart Home mobile density without removing content and centered the desktop Article into a shared 1040 px editorial frame. Source and tracked generated CSS remain synchronized.
-    validation: full-checks-pass; vps-bundle-pass; visual-qa-run-14-success; no-loading-errors; no-broken-images; no-horizontal-overflow; no-production-deploy
-  - date: 2026-09-13
-    summary: Implemented reproducible browser Visual QA and completed the first human review/fix/rerun loop. Grouped the complete gallery into project/capability sections, removed the El Raval internal pending-photo status from public content, and stacked compact homepage project cards on mobile.
-    validation: full-checks-pass; vps-bundle-pass; visual-qa-run-5-success; 39-gallery-media-preserved; no-production-deploy
-  - date: 2026-09-08
-    summary: Published the approved bathroom Article in Spanish, English and Russian with six existing Media references and localized homepage links.
-    validation: 34-knowledge-tests-pass; three-localized-article-pages-validated; full-checks-pass; vps-bundle-pass
-  - date: 2026-09-08
-    summary: Consolidated the confirmed El Raval property into one Project record with 16 photographs while retaining historical redirects.
-    validation: full-checks-pass; vps-bundle-pass; 39-gallery-images-preserved
-  - date: 2026-09-08
-    summary: Implemented the graphite/gold homepage direction with split hero, native service disclosures, project portfolio, responsive menu, pricing and footer.
-    validation: full-checks-pass; vps-bundle-pass
-  - date: 2026-08-20
-    summary: Selected VPS+Caddy as production direction and added deterministic bundle, validator, security plan, Caddy redirects and atomic release/rollback.
-    validation: vps-bundle-check-success
+    summary: Owner approved the refined browser screenshot set as the first visual baseline.
+    validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Integrate the first two responsive WebP image families into homepage markup without changing the approved visual baseline.
-  status: derivatives-built-and-measured-awaiting-picture-srcset-integration
+  goal: Rank and optimize the next highest-transfer visible images without changing approved layout/crops or broadening to the whole gallery at once.
+  status: first-responsive-image-slice-green-ready-for-selective-expansion
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
 next_verification:
-  - responsive-picture-markup-must-retain-original-fallback
-  - selected-responsive-resource-must-be-confirmed-in-chromium
   - visual-qa-must-remain-green
   - accessibility-qa-must-remain-green
+  - responsive-browser-selection-must-remain-green
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
-  - generated-projections-must-remain-clean
   - media-identities-must-remain-stable
   - approved-crops-and-layout-must-remain-visually-equivalent
   - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: After the first homepage responsive-image slice is integrated and visually confirmed, expand the same pattern selectively to Smart Home/project images; VPS cutover remains separate.
+  goal: Optimize Smart Home/project-detail images by measured transfer impact, then measure the hero/LCP separately; VPS cutover remains separate.
