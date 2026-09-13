@@ -22,3 +22,4 @@ fi
 
 node tools/visual/check.mjs
 node tools/visual/accessibility.mjs
+node tools/visual/responsive-images.mjs
