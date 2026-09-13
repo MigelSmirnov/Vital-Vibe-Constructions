@@ -1,7 +1,7 @@
 # HANDOFF
 
 Version: 49
-Updated: 2026-09-13T17:08:00Z
+Updated: 2026-09-13T17:50:00Z
 
 ## Session rule
 
@@ -72,7 +72,7 @@ Semantic contract: `--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--bord
 
 Historical branch `agent/add-solar-collector-animation` was not merged wholesale. Its technical article was ported into the current Article/content-table architecture on `agent/solar-collector-port`, with ES/EN/RU routes, two owner-provided evidence photographs and verified Bosch/Buderus/IDAE source links. The owner then supplied `solar-collector-updated-v3.html` as the authoritative animation revision. It replaces the simplified first port and is embedded from `tools/articles/solar-collector-v3.html`, with completed ES/EN translations, keyboard-accessible controls and reduced-motion behavior. `node tools/checks/run.mjs` is green. Revision v3 was deployed to the Netlify preview and its controls and three languages were browser-verified.
 
-Painting and floor articles now exist in ES/EN/RU. Painting has two owner photographs (crack and loose coating) and an owner-confirmed EUR 4–6/m² labour-only prepared-wall rate; materials and preparation are separate. Floor article has six owner photographs grouped into three distinct jobs, uses the latest approximately 14 cm over 10 m figure, and retains the subcontractor context for the unlevelled floor. All checks passed; preview QA pending. Unselected originals remain in conversation uploads.
+Painting and floor articles now exist in ES/EN/RU. Painting has two owner photographs (crack and loose coating) and an owner-confirmed EUR 4–6/m² labour-only prepared-wall rate; materials and preparation are separate. Floor article has six owner photographs grouped into three distinct jobs, uses the latest approximately 14 cm over 10 m figure, and retains the subcontractor context for the unlevelled floor. Full checks passed. Preview deployed; browser checks confirmed catalog-to-article navigation, the painting price and all six floor photographs. Unselected originals remain in conversation uploads.
 
 ## Published content state
 

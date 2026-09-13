@@ -1,7 +1,7 @@
 version: 52
-updated_at: 2026-09-13T17:08:00Z
+updated_at: 2026-09-13T17:50:00Z
 phase: painting-and-floor-articles
-stage_status: full-checks-green-preview-pending
+stage_status: preview-deployed-browser-verified
 active_branch: agent/solar-collector-port
 pull_request:
   number: 1
@@ -316,6 +316,9 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - date: 2026-09-13
+    summary: Added painting and floor articles in ES/EN/RU with eight owner photographs and confirmed labour-only painting price.
+    validation: full-checks-pass; 12-article-pages; preview-deployed; RU-navigation-price-and-six-floor-images-browser-verified
   - date: 2026-09-13
     summary: Added localized article catalogs with automatic published cards, homepage menu links and article return navigation.
     validation: full-checks-pass; netlify-preview-deployed; browser-navigation-and-images-pass
