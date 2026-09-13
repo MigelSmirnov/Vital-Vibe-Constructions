@@ -1,0 +1,35 @@
+name: Homepage image derivatives
+
+on:
+  push:
+    branches:
+      - agent/architecture-sandbox
+    paths:
+      - .github/workflows/home-image-derivatives.yml
+      - tools/media/build-home-responsive.sh
+      - assets/home/bathroom-retouched.png
+      - estandar/cocina.jpeg
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install WebP encoder
+        run: sudo apt-get update && sudo apt-get install -y webp
+
+      - name: Build derivatives
+        run: bash tools/media/build-home-responsive.sh
+
+      - name: Upload derivatives
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-responsive-${{ github.sha }}
+          path: artifacts/responsive-home
+          if-no-files-found: error
+          retention-days: 7
