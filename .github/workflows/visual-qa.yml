@@ -68,6 +68,7 @@ jobs:
             .deploy-dist/gallery/index.html
             .deploy-dist/projects/estudio-reformado-barcelona/index.html
             .deploy-dist/projects/reforma-integral-estandar-barcelona/index.html
+            .deploy-dist/projects/trabajos-contrata-premium/index.html
             .deploy-dist/assets/responsive
           if-no-files-found: warn
           retention-days: 3
