@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 35
-Updated: 2026-09-13T06:56:00Z
+Version: 36
+Updated: 2026-09-13T07:19:00Z
 
 ## Session rule
 
@@ -22,9 +22,9 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 ## Current stage
 
-The active work is **visual QA and refinement of the generated site**, not a wholesale redesign.
+The active work remains **visual QA and refinement of the generated site**, not a wholesale redesign.
 
-The reproducible browser QA system is in place:
+The first visual baseline is now approved by the owner. The reproducible browser QA system remains:
 
 - command: `bash tools/visual/run.sh`;
 - source projection: validated `.deploy-dist` served over local HTTP;
@@ -34,7 +34,7 @@ The reproducible browser QA system is in place:
 - checks: loading failures, broken images, horizontal overflow and Article language links;
 - screenshots/reports remain diagnostic artifacts and do not enter the release bundle.
 
-GitHub Actions Visual QA run #14 on commit `712f180c9a8f7f9f273ec8eada27b0755d659931` completed successfully after the second visual-refinement slice.
+The approved baseline corresponds to the refined visual state reproduced by `Visual QA` run #15 on commit `b34f72fd7902235cd24206f9a56ea9e243e89c92`. Production and DNS were not changed by this approval.
 
 ## Visual review fixes completed
 
@@ -57,24 +57,30 @@ GitHub Actions Visual QA run #14 on commit `712f180c9a8f7f9f273ec8eada27b0755d65
 4. **Smart Home mobile density**
    - Content was preserved; no capability or partner example was removed.
    - Mobile section spacing was tightened, the lead image reduced to 240 px high and partner examples reduced to compact 2×2 thumbnails.
-   - The ES 390 px full-page capture became materially shorter while keeping the same information hierarchy.
 
 5. **Article desktop composition**
-   - The Article header, TOC/body grid and footer now share a centered 1040 px editorial frame.
+   - The Article header, TOC/body grid and footer share a centered 1040 px editorial frame.
    - Reading column remains 720 px; TOC remains separate and sticky on desktop.
-   - Mobile Article layout is unchanged and remains single-column.
+   - Mobile Article layout remains single-column.
 
-Tracked generated `site-next/home.css` and `site-next/article.css` are synchronized with their source styles. The final diff from the previous approved visual state contains only those four intended CSS files. No production deployment was performed.
+Tracked generated `site-next/home.css` and `site-next/article.css` are synchronized with their source styles. No production deployment was performed.
 
 ## Visual baseline status
 
-The new screenshot set has been technically validated and visually inspected for the intended changes. It is a **baseline candidate**, but owner approval is still required before calling it the first visual baseline.
+**Approved.** The current refined screenshots are the first human-approved visual baseline for future comparison.
 
-Next useful work after baseline approval:
+This is a reference state, not a freeze. Future changes should continue to be surgical and rechecked against the same matrix before being accepted.
+
+## Next visual/accessibility layer
+
+Proceed with:
 
 - shared semantic brand tokens for color, typography, spacing, focus and borders;
-- target-size / keyboard-focus accessibility checks;
-- responsive image derivatives and modern formats after layout stabilizes.
+- target-size checks for interactive elements;
+- keyboard/focus verification;
+- reduced-motion verification.
+
+Responsive image derivatives and modern formats remain the next performance layer after this accessibility/token work stabilizes.
 
 ## Published content state
 
@@ -126,4 +132,4 @@ The public server remains static: no CMS, database, PHP runtime or Node applicat
 
 ## Immediate next action
 
-Review the refined run #14 screenshots as the candidate first baseline. If accepted, mark task 001 baseline-approved and move to shared brand tokens / accessibility checks rather than another broad redesign pass.
+Start the shared semantic brand-token and accessibility layer from the approved baseline, then rerun the same browser matrix before accepting those changes.
