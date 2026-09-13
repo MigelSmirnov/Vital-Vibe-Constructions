@@ -15,7 +15,7 @@ const labels = {
   ru: { home: "На главную", contents: "В этой статье", skip: "Перейти к статье", language: "Язык статьи", published: "Опубликовано", top: "Наверх", contact: "Обсудить похожую работу" },
 };
 
-function blockHtml(block) {
+function blockHtml(block, language) {
   if (block.type === "paragraph") return `<p>${escape(block.text)}</p>`;
   if (block.type === "list") return `<ul>${block.items.map(item => `<li>${escape(item)}</li>`).join("")}</ul>`;
   if (block.type === "image") {
@@ -24,10 +24,7 @@ function blockHtml(block) {
     return `<figure><img src="/${escape(media.src)}" alt="${escape(block.alt)}" width="${media.width}" height="${media.height}" loading="lazy" decoding="async"><figcaption>${escape(block.caption)}</figcaption></figure>`;
   }
   if (block.type === "source_list") return `<ul class="article-sources">${block.items.map(item => `<li><a href="${escape(item.url)}" rel="noopener noreferrer">${escape(item.label)}</a></li>`).join("")}</ul>`;
-  if (block.type === "solar_collector_diagram") return `<figure class="solar-diagram" data-solar-diagram data-playing="true" data-scheme="same" data-play-label="${escape(block.play_label)}" data-pause-label="${escape(block.pause_label)}">
-    <div class="solar-controls" aria-label="${escape(block.caption)}"><div class="solar-segment"><button type="button" data-scheme="same" aria-pressed="true">${escape(block.same_side_label)}</button><button type="button" data-scheme="diagonal" aria-pressed="false">${escape(block.diagonal_label)}</button></div><button type="button" data-solar-toggle>${escape(block.pause_label)}</button></div>
-    <svg viewBox="0 0 800 470" role="img" aria-label="${escape(block.caption)}"><defs><linearGradient id="solar-heat" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#3688c9"/><stop offset=".55" stop-color="#c38255"/><stop offset="1" stop-color="#d85f47"/></linearGradient></defs><circle class="solar-sun" cx="118" cy="78" r="34"/><g class="solar-rays"><path d="M118 24v-15M118 147v-15M64 78H49M187 78h-15M80 40 69 29M167 127l-11-11M80 116l-11 11M167 29l-11 11"/></g><rect class="solar-panel" x="225" y="74" width="390" height="285" rx="12"/><g class="solar-tubes"><path d="M270 323V112M326 323V112M382 323V112M438 323V112M494 323V112M550 323V112"/><path d="M260 112h300M260 323h300"/></g><path class="solar-flow solar-flow-cold" data-cold-path d="M665 398H260V323"/><path class="solar-flow solar-flow-hot" data-hot-path d="M260 112H665V188"/><g class="solar-tank" transform="translate(665 160)"><rect width="82" height="174" rx="18"/><path d="M8 109h66v57H8z"/><text x="41" y="198" text-anchor="middle">${escape(block.tank_label)}</text></g><g class="solar-sensor" transform="translate(548 98)"><circle r="10"/><text x="0" y="-18" text-anchor="middle">${escape(block.sensor_label)}</text></g><text class="solar-cold-label" x="404" y="426" text-anchor="middle">${escape(block.cold_label)}</text><text class="solar-hot-label" x="445" y="92" text-anchor="middle">${escape(block.hot_label)}</text></svg>
-    <figcaption>${escape(block.caption)}</figcaption></figure>`;
+  if (block.type === "solar_collector_diagram") return `<figure class="solar-diagram-embed"><iframe src="/interactive/solar-collector-v3.html?lang=${escape(language)}" title="${escape(block.caption)}" loading="lazy"></iframe><figcaption>${escape(block.caption)}</figcaption></figure>`;
   throw new Error(`Unsupported article block ${block.type}`);
 }
 
@@ -60,7 +57,6 @@ for (const route of routes) {
   <meta property="og:description" content="${escape(local.meta_description)}">
   <meta property="og:url" content="${escape(route.canonical_url)}">
   <link rel="stylesheet" href="/article.css">
-  ${local.body.some(section => section.blocks.some(block => block.type === "solar_collector_diagram")) ? '<script src="/solar-collector.js" defer></script>' : ''}
   <script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script>
 </head>
 <body>
@@ -69,7 +65,7 @@ for (const route of routes) {
   <main id="main-content"><article>
     <header class="article-header"><div class="article-label"><span>${escape(local.category)}</span></div><h1>${escape(local.title)}</h1><p class="introduction">${escape(local.summary)}</p><div class="article-meta"><span>${escape(local.author)}</span><span>${ui.published} <time datetime="${local.published_at}">${escape(date)}</time></span></div></header>
     <div class="reading-layout"><nav class="contents" aria-label="${ui.contents}"><details open><summary>${ui.contents}</summary><ol>${local.body.map((section, index) => `<li><a href="#section-${index + 1}"><span>${String(index + 1).padStart(2, "0")}</span>${escape(section.heading)}</a></li>`).join("")}</ol></details></nav>
-    <div class="article-body">${local.body.map((section, index) => `<section id="section-${index + 1}" class="article-section"><h2><span class="section-number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>${escape(section.heading)}</h2>${section.blocks.map(blockHtml).join("")}</section>`).join("\n")}
+    <div class="article-body">${local.body.map((section, index) => `<section id="section-${index + 1}" class="article-section"><h2><span class="section-number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>${escape(section.heading)}</h2>${section.blocks.map(block => blockHtml(block, route.language)).join("")}</section>`).join("\n")}
       <footer class="article-footer"><a href="${home}#contacto">${ui.contact}</a><a href="#main-content">${ui.top} ↑</a></footer>
     </div></div>
   </article></main>
@@ -83,7 +79,8 @@ for (const route of routes) {
 }
 
 await copyFile(path.join(root, "tools/articles/article.css"), path.join(root, "site-next/article.css"));
-await copyFile(path.join(root, "tools/articles/solar-collector.js"), path.join(root, "site-next/solar-collector.js"));
+await mkdir(path.join(root, "site-next/interactive"), { recursive: true });
+await copyFile(path.join(root, "tools/articles/solar-collector-v3.html"), path.join(root, "site-next/interactive/solar-collector-v3.html"));
 for (const redirect of contract.article_redirects ?? []) {
   const target = routes.find(route => route.path === redirect.to);
   if (!target || redirect.status !== 301 || !/^\/(?:[a-z0-9-]+\/)+$/.test(redirect.from) || contract.routes.some(route => route.path === redirect.from)) throw new Error("Invalid article redirect.");

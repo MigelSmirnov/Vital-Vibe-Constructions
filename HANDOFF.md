@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 46
-Updated: 2026-09-13T16:28:53Z
+Version: 47
+Updated: 2026-09-13T16:46:26Z
 
 ## Session rule
 
@@ -70,7 +70,7 @@ Semantic contract: `--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--bord
 
 ## Solar collector material — ported
 
-Historical branch `agent/add-solar-collector-animation` was not merged wholesale. Its technical article and animation were ported into the current Article/content-table architecture on `agent/solar-collector-port`, with ES/EN/RU routes, two owner-provided evidence photographs, verified Bosch/Buderus/IDAE source links, keyboard-accessible controls and reduced-motion behavior. `node tools/checks/run.mjs` is green. Preview deployment and visual browser QA remain the next step.
+Historical branch `agent/add-solar-collector-animation` was not merged wholesale. Its technical article was ported into the current Article/content-table architecture on `agent/solar-collector-port`, with ES/EN/RU routes, two owner-provided evidence photographs and verified Bosch/Buderus/IDAE source links. The owner then supplied `solar-collector-updated-v3.html` as the authoritative animation revision. It replaces the simplified first port and is embedded from `tools/articles/solar-collector-v3.html`, with completed ES/EN translations, keyboard-accessible controls and reduced-motion behavior. `node tools/checks/run.mjs` is green. Preview deployment and browser QA of v3 remain the next step.
 
 The planned floor-leveling guide remains unbuilt. Existing El Raval evidence is recorded in the SEO/AEO matrix; wait for the owner's floor photographs before publishing the guide.
 

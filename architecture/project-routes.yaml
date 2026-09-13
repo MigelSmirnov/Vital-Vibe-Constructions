@@ -236,7 +236,7 @@
       "source_files": [
         "content/tables/articles.yaml",
         "content/tables/media.yaml",
-        "tools/articles/solar-collector.js"
+        "tools/articles/solar-collector-v3.html"
       ],
       "generated_html_path": "site-next/articulos/conexion-colector-solar/index.html",
       "sitemap_eligible": true
@@ -253,7 +253,7 @@
       "source_files": [
         "content/tables/articles.yaml",
         "content/tables/media.yaml",
-        "tools/articles/solar-collector.js"
+        "tools/articles/solar-collector-v3.html"
       ],
       "generated_html_path": "site-next/en/articles/solar-collector-connections/index.html",
       "sitemap_eligible": true
@@ -270,7 +270,7 @@
       "source_files": [
         "content/tables/articles.yaml",
         "content/tables/media.yaml",
-        "tools/articles/solar-collector.js"
+        "tools/articles/solar-collector-v3.html"
       ],
       "generated_html_path": "site-next/ru/articles/podklyuchenie-solnechnogo-kollektora/index.html",
       "sitemap_eligible": true

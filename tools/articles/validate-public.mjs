@@ -61,8 +61,9 @@ for (const article of knowledge.listArticles()) {
         }
         if (block.type==="solar_collector_diagram") {
           diagramCount++;
-          required(html,"data-solar-diagram","solar collector diagram");
-          for (const field of ["same_side_label","diagonal_label","pause_label","cold_label","hot_label","tank_label","sensor_label","caption"]) required(html,escape(block[field]),`solar collector diagram ${field}`);
+          required(html,`src="/interactive/solar-collector-v3.html?lang=${language}"`,`solar collector v3 embed`);
+          required(html,escape(block.caption),"solar collector diagram caption");
+          await access(path.join(root,"site-next/interactive/solar-collector-v3.html"));
         }
         if (block.type==="source_list") for (const item of block.items) {
           required(html,`href="${item.url}"`,`source URL`);

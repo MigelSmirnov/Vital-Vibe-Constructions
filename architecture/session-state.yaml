@@ -1,5 +1,5 @@
-version: 49
-updated_at: 2026-09-13T16:28:53Z
+version: 50
+updated_at: 2026-09-13T16:46:26Z
 phase: solar-collector-article-port
 stage_status: implementation-green-preview-pending
 active_branch: agent/solar-collector-port
@@ -258,7 +258,12 @@ content_state:
       - en
       - ru
     evidence_images: 2
-    interactive_diagram: true
+    interactive_diagram: revision-v3
+    interactive_source: tools/articles/solar-collector-v3.html
+    responsive_embed_languages:
+      - es
+      - en
+      - ru
     primary_sources_verified: true
     full_checks: success
   floor_leveling_guide:
