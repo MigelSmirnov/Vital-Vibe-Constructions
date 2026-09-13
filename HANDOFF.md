@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 55
-Updated: 2026-09-13T19:53:24Z
+Version: 56
+Updated: 2026-09-13T20:15:58Z
 
 ## Session rule
 
@@ -22,7 +22,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 ## Production — VPS cutover completed 2026-09-13
 
-**Published and verified:** https://vitalvibeconstruction.com serves exact release SHA `fb31a282e0204bc37d3ced1982675fef0332573f`. `/srv/vital-vibe/current` points to release `20260913-fb31a282`. Archive SHA-256: `e49180c37ec3dfe96390eb4162813e4f5ed02797234919e200cf768aee1d63a6`.
+**Published and verified:** https://vitalvibeconstruction.com serves corrected release SHA `13f0f47c92b44c0ab057ae32b453c0e0641052d4`. `/srv/vital-vibe/current` points to release `20260913-13f0f47`. Archive SHA-256: `21900aa69131ffdb401d133f2cd739176f6dadd7d7a8f4d19e345ebe70869a7d`.
 
 Owner changed DonDominio manually: apex now has one A record `152.228.139.236`; www CNAME is `vitalvibeconstruction.com.`. Both authoritative servers agree. Existing app, other subdomains and mail records were preserved. Original zone screenshots and private nginx backup are retained on VPS under `/home/ubuntu/vvc-migration-fb31a282/backup/`.
 
@@ -32,9 +32,15 @@ Certificate covers apex + www until 2026-12-12. **Automatic renewal is configure
 
 Validation: 35 tests, gallery 39/39, 12 localized article pages, audit 0 errors / 5 warnings; 23 sitemap routes and nine historical redirects checked on public HTTPS; 69 pre-cutover browser page checks plus 21 final public browser checks and nine public solar iframe/control checks. No broken images, JS errors or horizontal overflow in the checked pages. Painting retains 10 sections / two photos; renovation-cost article retains 11 sections / six photos. HTTP→HTTPS and www→apex work. Planner `/manual` remained byte-identical. No 5xx or Caddy error messages in the sampled logs; one missing favicon and rejected .env probes were observed.
 
-GitHub Pages configuration remains `main:/` with its custom domain and HTTPS intact for DNS rollback. No earlier Vital Vibe VPS release exists. Site source, generated pages, support.js, main and PR #6 were not changed.
+GitHub Pages configuration remains `main:/` with its custom domain and HTTPS intact for DNS rollback. Previous release `20260913-fb31a282` is retained for symlink rollback (it contains the wide-screen iframe defect). Article source CSS, its builder and generated CSS links changed in the follow-up fix; article copy, animation source, support.js, main and PR #6 remain unchanged.
 
 **Operational follow-ups are not claimed complete:** shared VPS still permits SSH passwords and root key login; provider firewall/DDoS controls, registrar MFA and external uptime monitoring have not been verified/configured in this task. Handle those with the shared-server recovery/access context. See [execution report](architecture/vps-cutover-20260913/report.md). The public website migration itself is complete.
+
+## Solar iframe correction after owner screenshot
+
+Owner reported a blank animation on a wide desktop. Reproduced: the old CSS margin formula reduced the iframe to 202 px at 1440 px and zero width at 1920/2560 px. Earlier checks confirmed loading and controls but did not assert embed width, so their “pass” missed this layout defect. Fixed source CSS to bounded desktop margins, kept mobile margins, and added content-hashed CSS URLs to refresh cached styles. Builders regenerated all affected outputs; article copy and animation are unchanged.
+
+New `tools/visual/solar-embed.mjs` is part of visual QA and checks iframe/caption width, viewport fit and controls on ES/EN/RU at 390/768/1024/1440/1920/2560. It failed on the old artifact and passed all 18 cases locally and all 18 on production after deployment. Wide-screen iframe is now 768 px; an actual 1920 px production screenshot was visually inspected. See `architecture/solar-embed-width-fix.md`. Fresh production bundle and 35 canonical tests passed; public routes and redirects passed. DNS/server/TLS settings did not change for this fix.
 
 ## Previous stage (historical)
 

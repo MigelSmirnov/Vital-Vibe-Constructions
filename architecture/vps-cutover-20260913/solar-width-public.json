@@ -1,0 +1,185 @@
+{
+  "origin": "https://vitalvibeconstruction.com",
+  "results": [
+    {
+      "language": "es",
+      "width": 390,
+      "frameWidth": 346,
+      "columnWidth": 346,
+      "captionWidth": 346,
+      "left": 22,
+      "right": 368,
+      "overflow": false
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "frameWidth": 346,
+      "columnWidth": 346,
+      "captionWidth": 346,
+      "left": 22,
+      "right": 368,
+      "overflow": false
+    },
+    {
+      "language": "ru",
+      "width": 390,
+      "frameWidth": 346,
+      "columnWidth": 346,
+      "captionWidth": 346,
+      "left": 22,
+      "right": 368,
+      "overflow": false
+    },
+    {
+      "language": "es",
+      "width": 768,
+      "frameWidth": 488,
+      "columnWidth": 440,
+      "captionWidth": 488,
+      "left": 272,
+      "right": 760,
+      "overflow": false
+    },
+    {
+      "language": "en",
+      "width": 768,
+      "frameWidth": 488,
+      "columnWidth": 440,
+      "captionWidth": 488,
+      "left": 272,
+      "right": 760,
+      "overflow": false
+    },
+    {
+      "language": "ru",
+      "width": 768,
+      "frameWidth": 488,
+      "columnWidth": 440,
+      "captionWidth": 488,
+      "left": 272,
+      "right": 760,
+      "overflow": false
+    },
+    {
+      "language": "es",
+      "width": 1024,
+      "frameWidth": 736.8125,
+      "columnWidth": 689,
+      "captionWidth": 737,
+      "left": 279.1875,
+      "right": 1016,
+      "overflow": false
+    },
+    {
+      "language": "en",
+      "width": 1024,
+      "frameWidth": 736.8125,
+      "columnWidth": 689,
+      "captionWidth": 737,
+      "left": 279.1875,
+      "right": 1016,
+      "overflow": false
+    },
+    {
+      "language": "ru",
+      "width": 1024,
+      "frameWidth": 736.8125,
+      "columnWidth": 689,
+      "captionWidth": 737,
+      "left": 279.1875,
+      "right": 1016,
+      "overflow": false
+    },
+    {
+      "language": "es",
+      "width": 1440,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 482,
+      "right": 1250,
+      "overflow": false
+    },
+    {
+      "language": "en",
+      "width": 1440,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 482,
+      "right": 1250,
+      "overflow": false
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 482,
+      "right": 1250,
+      "overflow": false
+    },
+    {
+      "language": "es",
+      "width": 1920,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 724,
+      "right": 1492,
+      "overflow": false
+    },
+    {
+      "language": "en",
+      "width": 1920,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 724,
+      "right": 1492,
+      "overflow": false
+    },
+    {
+      "language": "ru",
+      "width": 1920,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 724,
+      "right": 1492,
+      "overflow": false
+    },
+    {
+      "language": "es",
+      "width": 2560,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 1044,
+      "right": 1812,
+      "overflow": false
+    },
+    {
+      "language": "en",
+      "width": 2560,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 1044,
+      "right": 1812,
+      "overflow": false
+    },
+    {
+      "language": "ru",
+      "width": 2560,
+      "frameWidth": 768,
+      "columnWidth": 720,
+      "captionWidth": 768,
+      "left": 1044,
+      "right": 1812,
+      "overflow": false
+    }
+  ]
+}

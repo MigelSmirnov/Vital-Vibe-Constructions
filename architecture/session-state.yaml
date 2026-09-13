@@ -1,8 +1,8 @@
-version: 58
-updated_at: 2026-09-13T19:53:24Z
+version: 59
+updated_at: 2026-09-13T20:15:58Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/vps-cutover-fb31a282
+active_branch: agent/solar-embed-width-fix
 pull_request:
   number: 1
   state: merged-historical
@@ -12,12 +12,29 @@ pull_request:
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
 
+solar_embed_width_fix:
+  report: architecture/solar-embed-width-fix.md
+  source_sha: 13f0f47c92b44c0ab057ae32b453c0e0641052d4
+  cause: viewport-based-positive-margins-collapsed-iframe-on-wide-screens
+  source_fix: bounded-negative-desktop-margins-mobile-unchanged
+  css_cache_versioning: content-hash-in-generated-stylesheet-url
+  regression_script: tools/visual/solar-embed.mjs
+  viewport_widths: [390, 768, 1024, 1440, 1920, 2560]
+  languages: [es, en, ru]
+  previous_release_regression: failed-as-expected
+  local_cases_passed: 18
+  public_cases_passed: 18
+  public_iframe_width_at_1920_and_2560: 768
+  owner_article_copy_changed: false
+  animation_source_changed: false
+
 vps_execution:
   report: architecture/vps-cutover-20260913/report.md
-  release_sha: fb31a282e0204bc37d3ced1982675fef0332573f
-  archive_sha256: e49180c37ec3dfe96390eb4162813e4f5ed02797234919e200cf768aee1d63a6
-  release_id: 20260913-fb31a282
-  server_current: /srv/vital-vibe/releases/20260913-fb31a282
+  release_sha: 13f0f47c92b44c0ab057ae32b453c0e0641052d4
+  initial_migration_sha: fb31a282e0204bc37d3ced1982675fef0332573f
+  archive_sha256: 21900aa69131ffdb401d133f2cd739176f6dadd7d7a8f4d19e345ebe70869a7d
+  release_id: 20260913-13f0f47
+  server_current: /srv/vital-vibe/releases/20260913-13f0f47
   public_cutover_complete: true
   public_url: https://vitalvibeconstruction.com
   production_browser_page_checks: 21
@@ -38,7 +55,7 @@ vps_execution:
   apex_a: 152.228.139.236
   www_cname: vitalvibeconstruction.com
   preserved_app_and_mail_dns: true
-  previous_vps_release: null
+  previous_vps_release: 20260913-fb31a282
   rollback_hosting: unchanged-github-pages
   caddy_container: vvc-site
   caddy_listener: 127.0.0.1:8890
@@ -381,6 +398,9 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - date: 2026-09-13
+    summary: Fixed solar iframe collapsing to zero width on wide displays, versioned article CSS URLs, added browser regression coverage, and deployed the verified replacement release.
+    validation: 35-tests; audit-0-errors-5-warnings; old-bundle-regression-fails; 18-local-and-18-public-embed-checks-pass; public-routes-redirects-pass
   - date: 2026-09-13
     summary: Owner switched apex/www DNS; published exact pinned release on VPS HTTPS and configured tested automatic certificate renewal while preserving existing sites and Pages fallback.
     validation: public-23-sitemap-routes; 9-redirects; 21-browser-pages; 9-solar-controls; deployment-sha-match; webroot-renewal-test-pass

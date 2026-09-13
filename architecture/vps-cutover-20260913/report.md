@@ -1,6 +1,10 @@
 # VPS preparation and pre-DNS acceptance — 2026-09-13
 
-## Final production state — 2026-09-13
+## Current release after the solar-layout fix
+
+The initial migration record below describes `fb31a282`. Production was subsequently updated to `13f0f47c92b44c0ab057ae32b453c0e0641052d4` / release `20260913-13f0f47` to fix a zero-width solar iframe on wide screens. See [fix report](../solar-embed-width-fix.md). The old release is now retained as a symlink rollback target. DNS, TLS and shared-server configuration are unchanged.
+
+## Initial migration completion — 2026-09-13 (historical)
 
 **Website cutover completed.** Public `https://vitalvibeconstruction.com/DEPLOYMENT_COMMIT` returns `fb31a282e0204bc37d3ced1982675fef0332573f` with normal certificate verification and ordinary DNS. The immutable archive/checksum and release ID below are unchanged.
 
