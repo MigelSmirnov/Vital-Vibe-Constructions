@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 58
-Updated: 2026-09-13T21:00:39Z
+Version: 59
+Updated: 2026-09-13T21:09:34Z
 
 ## Session rule
 
@@ -35,6 +35,10 @@ Validation: 35 tests, gallery 39/39, 12 localized article pages, audit 0 errors 
 GitHub Pages configuration remains `main:/` with its custom domain and HTTPS intact for DNS rollback. Previous release `20260913-13f0f47` is retained for symlink rollback (working solar iframe, heavier article photographs). Initial release `20260913-fb31a282` is also retained as historical recovery material. Article source CSS, its builder and generated CSS links changed in the follow-up fix; article copy, animation source, support.js, main and PR #6 remain unchanged.
 
 **Operational follow-ups are not claimed complete:** shared VPS still permits SSH passwords and root key login; provider firewall/DDoS controls, registrar MFA and external uptime monitoring have not been verified/configured in this task. Handle those with the shared-server recovery/access context. See [execution report](architecture/vps-cutover-20260913/report.md). The public website migration itself is complete.
+
+## Netlify preview closed to anonymous access
+
+Owner authorized restricting the preview. Netlify project `vital-vibe-preview` now requires team login for all deploys. Both preview alias and deploy permalink return 401 anonymously; the primary VPS site remains public at SHA 2695336 and planner is unchanged. This supersedes the audit finding that preview was publicly indexable. See [settings, checks and rollback](architecture/netlify-preview-private/report.md).
 
 ## Crawler and AEO audit
 

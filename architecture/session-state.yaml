@@ -1,8 +1,8 @@
-version: 61
-updated_at: 2026-09-13T21:00:39Z
+version: 62
+updated_at: 2026-09-13T21:09:34Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/crawler-aeo-audit
+active_branch: agent/netlify-preview-private
 pull_request:
   number: 1
   state: merged-historical
@@ -12,6 +12,17 @@ pull_request:
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
 
+netlify_preview_access:
+  report: architecture/netlify-preview-private/report.md
+  site_id: 56647124-f7e4-48b4-af01-d4069b069c9a
+  project: vital-vibe-preview
+  team_login_required: true
+  protected_scope: all-deploys-of-this-site
+  anonymous_alias_status: 401
+  anonymous_deploy_permalink_status: 401
+  owner_authenticated_login_tested: false
+  production_and_planner_unchanged: true
+
 crawler_aeo_audit:
   report: architecture/crawler-aeo-audit/report.md
   production_changes: false
@@ -20,7 +31,7 @@ crawler_aeo_audit:
   actual_crawler_visits_verified: false
   new_article_indexing_verified: false
   sitemap_missing: [/en/, /ru/]
-  preview_root_indexable: true
+  preview_root_indexable_at_audit: true
 
 article_photo_delivery:
   report: architecture/article-photo-delivery/report.md
