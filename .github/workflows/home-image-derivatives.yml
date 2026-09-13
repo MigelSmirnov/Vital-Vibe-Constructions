@@ -1,4 +1,4 @@
-name: Homepage image derivatives
+name: Responsive image derivatives
 
 on:
   push:
@@ -8,7 +8,12 @@ on:
       - .github/workflows/home-image-derivatives.yml
       - tools/media/build-home-responsive.sh
       - assets/home/bathroom-retouched.png
-      - estandar/cocina.jpeg
+      - estandar/*.jpeg
+      - smart/gira.jpeg
+      - smart/escenas.jpeg
+      - premium/panel-marmol.jpeg
+      - premium/gira.jpeg
+      - premium/apple-home.jpeg
 
 permissions:
   contents: read
@@ -29,7 +34,7 @@ jobs:
       - name: Upload derivatives
         uses: actions/upload-artifact@v4
         with:
-          name: homepage-responsive-${{ github.sha }}
+          name: responsive-images-${{ github.sha }}
           path: artifacts/responsive-home
           if-no-files-found: error
           retention-days: 7
