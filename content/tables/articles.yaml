@@ -468,9 +468,18 @@
             {
               "type": "source_list",
               "items": [
-                {"label": "Bosch Home Comfort — Excellence 7000 Plus", "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"},
-                {"label": "Buderus — Logasol SKT 1.0-S", "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"},
-                {"label": "IDAE — Guía Técnica de Energía Solar Térmica", "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"}
+                {
+                  "label": "Bosch Home Comfort — Excellence 7000 Plus",
+                  "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"
+                },
+                {
+                  "label": "Buderus — Logasol SKT 1.0-S",
+                  "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"
+                },
+                {
+                  "label": "IDAE — Guía Técnica de Energía Solar Térmica",
+                  "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"
+                }
               ]
             }
           ]
@@ -511,38 +520,109 @@
             {
               "heading": "The real installation",
               "blocks": [
-                {"type": "paragraph", "text": "The roof has a solar thermal collector beside several photovoltaic panels. Both use sunlight, but the thermal collector works with a hydraulic circuit that carries heat to a storage tank."},
-                {"type": "image", "media_id": "media-solar-collector-roof", "alt": "Solar thermal collector installed on a tiled roof beside photovoltaic panels", "caption": "The solar thermal collector on the roof, beside the photovoltaic panels."},
-                {"type": "paragraph", "text": "The plant room brings together pipes, pumps, valves, instruments and controls. An exterior photograph is not enough to reconstruct the entire circuit: the pipework, schematic and controls must also be checked."},
-                {"type": "image", "media_id": "media-solar-collector-plant-room", "alt": "Pipes, pumps, distribution manifolds and control equipment in a plant room", "caption": "Part of the hydraulic and control installation in the plant room."}
+                {
+                  "type": "paragraph",
+                  "text": "The roof has a solar thermal collector beside several photovoltaic panels. Both use sunlight, but the thermal collector works with a hydraulic circuit that carries heat to a storage tank."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-solar-collector-roof",
+                  "alt": "Solar thermal collector installed on a tiled roof beside photovoltaic panels",
+                  "caption": "The solar thermal collector on the roof, beside the photovoltaic panels."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The plant room brings together pipes, pumps, valves, instruments and controls. An exterior photograph is not enough to reconstruct the entire circuit: the pipework, schematic and controls must also be checked."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-solar-collector-plant-room",
+                  "alt": "Pipes, pumps, distribution manifolds and control equipment in a plant room",
+                  "caption": "Part of the hydraulic and control installation in the plant room."
+                }
               ]
             },
             {
               "heading": "Appearance alone does not answer the question",
               "blocks": [
-                {"type": "paragraph", "text": "Two collectors that look alike can have different internal flow paths. Connections on the same side may therefore be correct for one model but not the intended arrangement for another."},
-                {"type": "list", "items": ["Identify the exact collector model.", "Read the installation manual for that model.", "Check how many collectors are connected in the same row.", "Verify the inlet, outlet, air vent and temperature-sensor positions."]}
+                {
+                  "type": "paragraph",
+                  "text": "Two collectors that look alike can have different internal flow paths. Connections on the same side may therefore be correct for one model but not the intended arrangement for another."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Identify the exact collector model.",
+                    "Read the installation manual for that model.",
+                    "Check how many collectors are connected in the same row.",
+                    "Verify the inlet, outlet, air vent and temperature-sensor positions."
+                  ]
+                }
               ]
             },
             {
               "heading": "Compare the two layouts",
               "blocks": [
-                {"type": "paragraph", "text": "The animation shows the geometric difference between flow and return on the same side and connections on opposite sides. It is a visual aid, not a product-specific installation diagram."},
-                {"type": "solar_collector_diagram", "same_side_label": "Same side", "diagonal_label": "Diagonal", "pause_label": "Pause flow", "play_label": "Resume flow", "cold_label": "Cold inlet", "hot_label": "Hot outlet", "tank_label": "Tank", "sensor_label": "S1 · sensor", "caption": "Simplified interactive diagram of fluid flow through a solar collector."}
+                {
+                  "type": "paragraph",
+                  "text": "The animation shows the geometric difference between flow and return on the same side and connections on opposite sides. It is a visual aid, not a product-specific installation diagram."
+                },
+                {
+                  "type": "solar_collector_diagram",
+                  "same_side_label": "Same side",
+                  "diagonal_label": "Diagonal",
+                  "pause_label": "Pause flow",
+                  "play_label": "Resume flow",
+                  "cold_label": "Cold inlet",
+                  "hot_label": "Hot outlet",
+                  "tank_label": "Tank",
+                  "sensor_label": "S1 · sensor",
+                  "caption": "Simplified interactive diagram of fluid flow through a solar collector."
+                }
               ]
             },
             {
               "heading": "What two manufacturers state",
               "blocks": [
-                {"type": "paragraph", "text": "Bosch states that the double-meander absorber in the cited range permits same-side series connection of up to five collectors. Buderus states that the Logasol SKT 1.0-S can use up to ten collectors in one row, with flow and return on the same side for rows of up to five. These are model-specific examples, not a universal rule."},
-                {"type": "source_list", "items": [{"label": "Bosch Home Comfort — Excellence 7000 Plus", "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"}, {"label": "Buderus — Logasol SKT 1.0-S", "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"}, {"label": "IDAE — Technical Guide to Solar Thermal Energy", "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"}]}
+                {
+                  "type": "paragraph",
+                  "text": "Bosch states that the double-meander absorber in the cited range permits same-side series connection of up to five collectors. Buderus states that the Logasol SKT 1.0-S can use up to ten collectors in one row, with flow and return on the same side for rows of up to five. These are model-specific examples, not a universal rule."
+                },
+                {
+                  "type": "source_list",
+                  "items": [
+                    {
+                      "label": "Bosch Home Comfort — Excellence 7000 Plus",
+                      "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"
+                    },
+                    {
+                      "label": "Buderus — Logasol SKT 1.0-S",
+                      "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"
+                    },
+                    {
+                      "label": "IDAE — Technical Guide to Solar Thermal Energy",
+                      "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"
+                    }
+                  ]
+                }
               ]
             },
             {
               "heading": "How to review an installation",
               "blocks": [
-                {"type": "list", "items": ["Read the nameplate or label to confirm the manufacturer and model.", "Compare the installation with the manual's hydraulic diagram.", "Confirm the required collector-sensor and air-vent positions.", "Have a qualified professional check pressure, flow rate, insulation and controls."]},
-                {"type": "paragraph", "text": "If there is any doubt, the equipment manual, the installation design and a qualified technician's inspection take priority. This guide does not replace those instructions."}
+                {
+                  "type": "list",
+                  "items": [
+                    "Read the nameplate or label to confirm the manufacturer and model.",
+                    "Compare the installation with the manual's hydraulic diagram.",
+                    "Confirm the required collector-sensor and air-vent positions.",
+                    "Have a qualified professional check pressure, flow rate, insulation and controls."
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "text": "If there is any doubt, the equipment manual, the installation design and a qualified technician's inspection take priority. This guide does not replace those instructions."
+                }
               ]
             }
           ]
@@ -558,38 +638,778 @@
             {
               "heading": "Реальная установка",
               "blocks": [
-                {"type": "paragraph", "text": "На крыше установлен плоский солнечный тепловой коллектор рядом с фотоэлектрическими панелями. Оба типа оборудования используют солнце, но тепловой коллектор работает с гидравлическим контуром, который переносит тепло к баку-накопителю."},
-                {"type": "image", "media_id": "media-solar-collector-roof", "alt": "Плоский солнечный тепловой коллектор на черепичной крыше рядом с фотоэлектрическими панелями", "caption": "Солнечный тепловой коллектор на крыше рядом с фотоэлектрическими панелями."},
-                {"type": "paragraph", "text": "В техническом помещении находятся трубы, насосы, арматура, приборы и автоматика. По одной наружной фотографии нельзя восстановить весь контур: нужно проследить трубопроводы и сверить схему и настройки управления."},
-                {"type": "image", "media_id": "media-solar-collector-plant-room", "alt": "Трубопроводы, насосы, распределительные коллекторы и автоматика в техническом помещении", "caption": "Часть гидравлической системы и автоматики в техническом помещении."}
+                {
+                  "type": "paragraph",
+                  "text": "На крыше установлен плоский солнечный тепловой коллектор рядом с фотоэлектрическими панелями. Оба типа оборудования используют солнце, но тепловой коллектор работает с гидравлическим контуром, который переносит тепло к баку-накопителю."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-solar-collector-roof",
+                  "alt": "Плоский солнечный тепловой коллектор на черепичной крыше рядом с фотоэлектрическими панелями",
+                  "caption": "Солнечный тепловой коллектор на крыше рядом с фотоэлектрическими панелями."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "В техническом помещении находятся трубы, насосы, арматура, приборы и автоматика. По одной наружной фотографии нельзя восстановить весь контур: нужно проследить трубопроводы и сверить схему и настройки управления."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-solar-collector-plant-room",
+                  "alt": "Трубопроводы, насосы, распределительные коллекторы и автоматика в техническом помещении",
+                  "caption": "Часть гидравлической системы и автоматики в техническом помещении."
+                }
               ]
             },
             {
               "heading": "По внешнему виду нельзя дать окончательный ответ",
               "blocks": [
-                {"type": "paragraph", "text": "Внешне похожие коллекторы могут иметь разные внутренние каналы. Поэтому вход и выход с одной стороны могут быть правильными для одной модели, но не соответствовать схеме другой."},
-                {"type": "list", "items": ["Определить точную модель коллектора.", "Открыть инструкцию по монтажу именно этой модели.", "Проверить количество коллекторов в одном ряду.", "Сверить расположение входа, выхода, воздухоотводчика и температурного датчика."]}
+                {
+                  "type": "paragraph",
+                  "text": "Внешне похожие коллекторы могут иметь разные внутренние каналы. Поэтому вход и выход с одной стороны могут быть правильными для одной модели, но не соответствовать схеме другой."
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "Определить точную модель коллектора.",
+                    "Открыть инструкцию по монтажу именно этой модели.",
+                    "Проверить количество коллекторов в одном ряду.",
+                    "Сверить расположение входа, выхода, воздухоотводчика и температурного датчика."
+                  ]
+                }
               ]
             },
             {
               "heading": "Сравните две схемы",
               "blocks": [
-                {"type": "paragraph", "text": "Анимация показывает геометрическую разницу между подачей и обраткой с одной стороны и подключением с противоположных сторон. Это наглядная подсказка, а не монтажная схема конкретного оборудования."},
-                {"type": "solar_collector_diagram", "same_side_label": "Одна сторона", "diagonal_label": "Диагональная", "pause_label": "Остановить поток", "play_label": "Запустить поток", "cold_label": "Холодный вход", "hot_label": "Горячий выход", "tank_label": "Бак", "sensor_label": "S1 · датчик", "caption": "Упрощённая интерактивная схема движения теплоносителя через солнечный коллектор."}
+                {
+                  "type": "paragraph",
+                  "text": "Анимация показывает геометрическую разницу между подачей и обраткой с одной стороны и подключением с противоположных сторон. Это наглядная подсказка, а не монтажная схема конкретного оборудования."
+                },
+                {
+                  "type": "solar_collector_diagram",
+                  "same_side_label": "Одна сторона",
+                  "diagonal_label": "Диагональная",
+                  "pause_label": "Остановить поток",
+                  "play_label": "Запустить поток",
+                  "cold_label": "Холодный вход",
+                  "hot_label": "Горячий выход",
+                  "tank_label": "Бак",
+                  "sensor_label": "S1 · датчик",
+                  "caption": "Упрощённая интерактивная схема движения теплоносителя через солнечный коллектор."
+                }
               ]
             },
             {
               "heading": "Что указывают два производителя",
               "blocks": [
-                {"type": "paragraph", "text": "Bosch указывает, что двойной меандр абсорбера в приведённой линейке позволяет последовательно подключать с одной стороны до пяти коллекторов. Buderus сообщает, что Logasol SKT 1.0-S допускает до десяти коллекторов в одном ряду, а подачу и обратку с одной стороны — для ряда до пяти. Это примеры конкретных моделей, а не универсальное правило."},
-                {"type": "source_list", "items": [{"label": "Bosch Home Comfort — Excellence 7000 Plus", "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"}, {"label": "Buderus — Logasol SKT 1.0-S", "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"}, {"label": "IDAE — техническое руководство по солнечной тепловой энергии", "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"}]}
+                {
+                  "type": "paragraph",
+                  "text": "Bosch указывает, что двойной меандр абсорбера в приведённой линейке позволяет последовательно подключать с одной стороны до пяти коллекторов. Buderus сообщает, что Logasol SKT 1.0-S допускает до десяти коллекторов в одном ряду, а подачу и обратку с одной стороны — для ряда до пяти. Это примеры конкретных моделей, а не универсальное правило."
+                },
+                {
+                  "type": "source_list",
+                  "items": [
+                    {
+                      "label": "Bosch Home Comfort — Excellence 7000 Plus",
+                      "url": "https://www.bosch-homecomfort.com/pl/pl/ocs/budynki-mieszkalne/3-x-excellence-7000-plus-1221650-p/"
+                    },
+                    {
+                      "label": "Buderus — Logasol SKT 1.0-S",
+                      "url": "https://www.buderus.com/it/it/ocs/residenziale/collettore-solare-piano-verticale-logasol-skt10-s-757702-p/"
+                    },
+                    {
+                      "label": "IDAE — техническое руководство по солнечной тепловой энергии",
+                      "url": "https://www.idae.es/publicaciones/guia-tecnica-de-energia-solar-termica"
+                    }
+                  ]
+                }
               ]
             },
             {
               "heading": "Как проверить монтаж",
               "blocks": [
-                {"type": "list", "items": ["Найти шильдик и уточнить производителя и модель.", "Сравнить монтаж с гидравлической схемой из инструкции.", "Уточнить предусмотренное место датчика коллектора и точки удаления воздуха.", "Проверить давление, расход, теплоизоляцию и автоматику с квалифицированным специалистом."]},
-                {"type": "paragraph", "text": "При сомнениях приоритет имеют инструкция оборудования, проект установки и проверка квалифицированного специалиста. Эта статья не заменяет их указания."}
+                {
+                  "type": "list",
+                  "items": [
+                    "Найти шильдик и уточнить производителя и модель.",
+                    "Сравнить монтаж с гидравлической схемой из инструкции.",
+                    "Уточнить предусмотренное место датчика коллектора и точки удаления воздуха.",
+                    "Проверить давление, расход, теплоизоляцию и автоматику с квалифицированным специалистом."
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "text": "При сомнениях приоритет имеют инструкция оборудования, проект установки и проверка квалифицированного специалиста. Эта статья не заменяет их указания."
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "article-painting-preparation",
+      "status": "published",
+      "language": "es",
+      "body": [
+        {
+          "blocks": [
+            {
+              "text": "Nuestro precio orientativo de 4–6 €/m² corresponde únicamente a la mano de obra sobre paredes ya preparadas, en un solo color. Los materiales se pagan aparte. La reparación de grietas, la retirada de revestimientos desprendidos y otros trabajos de preparación se presupuestan por separado.",
+              "type": "paragraph"
+            },
+            {
+              "text": "Para este alcance, la aplicación contempla imprimación y dos manos de pintura, respetando el secado entre capas. Antes de aceptar el presupuesto se concreta qué superficies se pintan y qué protección necesita el espacio.",
+              "type": "paragraph"
+            }
+          ],
+          "heading": "4–6 €/m²: qué incluye este precio"
+        },
+        {
+          "blocks": [
+            {
+              "text": "En la primera fotografía se ve una grieta fina. En la segunda, el revestimiento se separa y deja visible el soporte. Las imágenes muestran el estado encontrado; no permiten establecer por sí solas la causa de la grieta.",
+              "type": "paragraph"
+            },
+            {
+              "alt": "Grieta fina visible en una pared pintada",
+              "caption": "Grieta fina visible en una pared pintada",
+              "media_id": "media-painting-crack",
+              "type": "image"
+            },
+            {
+              "alt": "Revestimiento desprendido junto a una grieta, con el soporte visible",
+              "caption": "Revestimiento desprendido junto a una grieta, con el soporte visible",
+              "media_id": "media-painting-coating",
+              "type": "image"
+            },
+            {
+              "text": "En nuestro trabajo, la revisión del soporte precede al acabado. Si hay zonas sueltas, el presupuesto debe incluir su retirada y reparación antes de pintar. Tapar la línea visible no describe necesariamente todo el trabajo necesario.",
+              "type": "paragraph"
+            }
+          ],
+          "heading": "Una grieta pequeña puede cambiar el alcance"
+        },
+        {
+          "blocks": [
+            {
+              "text": "Suelos, puertas, ventanas, muebles, cocina, enchufes e interruptores deben protegerse según el alcance de los trabajos. Una vivienda amueblada no exige la misma preparación que una estancia vacía dentro de una reforma integral.",
+              "type": "paragraph"
+            },
+            {
+              "text": "El estado de la pintura anterior también importa: las zonas desprendidas y las reparaciones pendientes se identifican antes de definir el acabado.",
+              "type": "paragraph"
+            }
+          ],
+          "heading": "Una vivienda habitada requiere protección"
+        },
+        {
+          "blocks": [
+            {
+              "text": "Utilizamos pistola cuando resulta adecuada para el espacio y el trabajo. La pulverización exige proteger las superficies que no deben recibir pintura. En una vivienda amueblada o con muchos encuentros, un rodillo puede resultar más conveniente.",
+              "type": "paragraph"
+            },
+            {
+              "text": "La herramienta se elige después de revisar el inmueble. El presupuesto especifica la preparación, la imprimación, el número de manos, los materiales y las protecciones, en lugar de comparar únicamente una cifra por metro cuadrado.",
+              "type": "paragraph"
+            }
+          ],
+          "heading": "Pistola o rodillo"
+        },
+        {
+          "blocks": [
+            {
+              "items": [
+                "Estado de las paredes y reparaciones incluidas.",
+                "Protección del mobiliario y del resto de superficies.",
+                "Imprimación y número de manos.",
+                "Número de colores y método de aplicación.",
+                "Materiales incluidos o facturados aparte.",
+                "Superficie que se mide y alcance de la limpieza final."
+              ],
+              "type": "list"
+            },
+            {
+              "text": "El precio definitivo se confirma tras revisar el espacio. La referencia de 4–6 €/m² no es una tarifa para reparar y repintar cualquier pared.",
+              "type": "paragraph"
+            }
+          ],
+          "heading": "Qué comparar entre presupuestos"
+        }
+      ],
+      "category": "Guía práctica · Pintura y acabados",
+      "meta_description": "Pintura desde 4–6 €/m² de mano de obra sobre paredes preparadas. Materiales aparte. Fotografías de grietas y revestimientos desprendidos.",
+      "seo_title": "Pintura de paredes: precio, grietas y preparación",
+      "slug": "pintura-paredes-precio-preparacion-barcelona",
+      "summary": "Una pared puede parecer lista para pintar hasta que una grieta revela un revestimiento que se desprende. El presupuesto depende del soporte y de la preparación, no solo de aplicar pintura.",
+      "title": "Pintura de paredes: el precio empieza por la preparación",
+      "author": "Vital Vibe Construction",
+      "published_at": "2026-09-13",
+      "modified_at": "2026-09-13",
+      "related_service_ids": [
+        "painting"
+      ],
+      "related_project_ids": [],
+      "translations": {
+        "en": {
+          "body": [
+            {
+              "blocks": [
+                {
+                  "text": "Our indicative €4–6/m² rate covers labour only on already prepared walls, painted in a single colour. Materials cost extra. Crack repairs, removal of loose coatings and other preparation work are priced separately.",
+                  "type": "paragraph"
+                },
+                {
+                  "text": "For this scope, application includes primer and two coats of paint, with drying time between coats. The estimate specifies which surfaces will be painted and what protection the space needs.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "€4–6/m²: what this price covers"
+            },
+            {
+              "blocks": [
+                {
+                  "text": "The first photograph shows a fine crack. The second shows coating coming away and exposing the substrate. These images document the condition found; they do not establish the cause of the crack on their own.",
+                  "type": "paragraph"
+                },
+                {
+                  "alt": "Fine crack visible in a painted wall",
+                  "caption": "Fine crack visible in a painted wall",
+                  "media_id": "media-painting-crack",
+                  "type": "image"
+                },
+                {
+                  "alt": "Loose coating beside a crack, exposing the substrate",
+                  "caption": "Loose coating beside a crack, exposing the substrate",
+                  "media_id": "media-painting-coating",
+                  "type": "image"
+                },
+                {
+                  "text": "We review the substrate before finishing. Where coating is loose, the estimate needs to include removal and repair before painting. Covering the visible line does not necessarily describe all the work required.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "A small crack can change the scope"
+            },
+            {
+              "blocks": [
+                {
+                  "text": "Floors, doors, windows, furniture, kitchen units, sockets and switches need protection appropriate to the work. A furnished home requires different preparation from an empty room within a full renovation.",
+                  "type": "paragraph"
+                },
+                {
+                  "text": "The condition of the existing paint also matters: loose areas and outstanding repairs are identified before the finish is specified.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "An occupied home needs protection"
+            },
+            {
+              "blocks": [
+                {
+                  "text": "We use spray equipment where it suits the space and the work. Spraying requires protecting surfaces that must not receive paint. In a furnished home or around numerous details, a roller may be more convenient.",
+                  "type": "paragraph"
+                },
+                {
+                  "text": "We choose the tool after inspecting the property. An estimate should specify preparation, primer, coat count, materials and protection, so comparisons are not based on a square-metre figure alone.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "Spray gun or roller"
+            },
+            {
+              "blocks": [
+                {
+                  "items": [
+                    "Wall condition and included repairs.",
+                    "Protection of furniture and other surfaces.",
+                    "Primer and number of coats.",
+                    "Number of colours and application method.",
+                    "Whether materials are included or charged separately.",
+                    "The measured surface and final cleaning scope."
+                  ],
+                  "type": "list"
+                },
+                {
+                  "text": "The final price is confirmed after inspecting the space. The €4–6/m² reference is not a rate for repairing and repainting any wall.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "What to compare in estimates"
+            }
+          ],
+          "category": "Practical guide · Painting and finishes",
+          "meta_description": "Indicative painting labour of €4–6/m² on prepared walls. Materials extra. Real photographs of cracks and loose coatings explain preparation costs.",
+          "seo_title": "Wall painting: prices, cracks and preparation",
+          "slug": "wall-painting-price-preparation",
+          "summary": "A wall may look ready for paint until a crack reveals a loose coating. The estimate depends on the substrate and preparation, as well as applying paint.",
+          "title": "Wall painting: the price starts with preparation"
+        },
+        "ru": {
+          "body": [
+            {
+              "blocks": [
+                {
+                  "text": "Наш ориентир 4–6 €/м² — только работа по уже подготовленным стенам, в один цвет. Материалы оплачиваются отдельно. Ремонт трещин, удаление отслаивающегося покрытия и другие подготовительные работы рассчитываются отдельно.",
+                  "type": "paragraph"
+                },
+                {
+                  "text": "При таком объёме работ нанесение включает грунтовку и два слоя краски с выдержкой времени высыхания между ними. До согласования сметы уточняем, какие поверхности красим и какая защита нужна помещению.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "4–6 €/м²: что входит в эту цену"
+            },
+            {
+              "blocks": [
+                {
+                  "text": "На первом фото видна тонкая трещина. На втором покрытие отделяется от стены, открывая основание. Кадры показывают обнаруженное состояние, но сами по себе не устанавливают причину трещины.",
+                  "type": "paragraph"
+                },
+                {
+                  "alt": "Тонкая трещина на окрашенной стене",
+                  "caption": "Тонкая трещина на окрашенной стене",
+                  "media_id": "media-painting-crack",
+                  "type": "image"
+                },
+                {
+                  "alt": "Отслаивающееся покрытие рядом с трещиной; видно основание",
+                  "caption": "Отслаивающееся покрытие рядом с трещиной; видно основание",
+                  "media_id": "media-painting-coating",
+                  "type": "image"
+                },
+                {
+                  "text": "В нашей работе осмотр основания предшествует финишной отделке. Если есть непрочные участки, в смету нужно включить их удаление и восстановление перед покраской. Замазать видимую линию — не обязательно весь необходимый объём работ.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "Маленькая трещина может изменить объём работ"
+            },
+            {
+              "blocks": [
+                {
+                  "text": "Полы, двери, окна, мебель, кухню, розетки и выключатели защищают с учётом объёма работ. Подготовка меблированной квартиры отличается от подготовки пустого помещения в ходе капитального ремонта.",
+                  "type": "paragraph"
+                },
+                {
+                  "text": "Состояние старой краски тоже влияет на работу: отслаивающиеся участки и места, требующие ремонта, выявляем до выбора финишной отделки.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "В жилой квартире нужна защита"
+            },
+            {
+              "blocks": [
+                {
+                  "text": "Мы используем краскопульт там, где он подходит для помещения и задачи. Распыление требует защиты поверхностей, на которые краска попадать не должна. В меблированной квартире или при большом количестве примыканий валик может оказаться удобнее.",
+                  "type": "paragraph"
+                },
+                {
+                  "text": "Инструмент выбираем после осмотра. В смете важно указать подготовку, грунтовку, число слоёв, материалы и защиту помещения, чтобы сравнение не сводилось к одной цене за квадратный метр.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "Краскопульт или валик"
+            },
+            {
+              "blocks": [
+                {
+                  "items": [
+                    "Состояние стен и включённые ремонтные работы.",
+                    "Защиту мебели и остальных поверхностей.",
+                    "Грунтовку и число слоёв.",
+                    "Количество цветов и способ нанесения.",
+                    "Включены материалы или оплачиваются отдельно.",
+                    "Какую поверхность измеряют и что входит в итоговую уборку."
+                  ],
+                  "type": "list"
+                },
+                {
+                  "text": "Окончательную цену подтверждаем после осмотра. Ориентир 4–6 €/м² не является тарифом на ремонт и перекраску любой стены.",
+                  "type": "paragraph"
+                }
+              ],
+              "heading": "Что сравнивать в сметах"
+            }
+          ],
+          "category": "Практическая статья · Покраска и отделка",
+          "meta_description": "Покраска по подготовленным стенам: 4–6 €/м² за работу, материалы отдельно. Фото трещин и отслаивания показывают, почему подготовку считают отдельно.",
+          "seo_title": "Покраска стен: цена, трещины и подготовка",
+          "slug": "pokraska-sten-cena-podgotovka",
+          "summary": "Стена может казаться готовой к покраске, пока тонкая трещина не обнаружит отслаивающееся покрытие. Смета зависит от состояния основания и подготовки, а не только от нанесения краски.",
+          "title": "Покраска стен: цена начинается с подготовки"
+        }
+      }
+    },
+    {
+      "id": "article-floor-leveling",
+      "status": "published",
+      "language": "es",
+      "slug": "nivelacion-suelo-antes-del-pavimento",
+      "title": "El suelo parece terminado, hasta que miras el rodapié",
+      "seo_title": "Nivelar el suelo antes de colocar el pavimento",
+      "summary": "Una habitación puede parecer bien acabada en una vista general. Al acercarse al rodapié, aparece el hueco. Tres ejemplos de obra muestran por qué la preparación del suelo merece su propia partida.",
+      "meta_description": "Fotografías de obra: un desnivel de unos 14 cm en 10 m, una capa fina de autonivelante y huecos bajo el rodapié cuando no se regulariza el suelo.",
+      "category": "Casos de obra · Suelos",
+      "body": [
+        {
+          "heading": "A primera vista, todo parece estar bien",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "En esta habitación, el pavimento está colocado y los rodapiés parecen rematar el conjunto. La vista general no muestra con claridad lo que ocurre a ras del suelo."
+            },
+            {
+              "type": "image",
+              "media_id": "media-floor-overview",
+              "alt": "Vista general de una habitación con pavimento y rodapiés instalados",
+              "caption": "Vista general de una habitación con pavimento y rodapiés instalados"
+            },
+            {
+              "type": "paragraph",
+              "text": "Al acercarse se aprecia un hueco bajo el rodapié. La herramienta sirve para señalarlo; no es una medición de su altura."
+            },
+            {
+              "type": "image",
+              "media_id": "media-floor-gap",
+              "alt": "Detalle del hueco bajo el rodapié, señalado con una herramienta",
+              "caption": "Detalle del hueco bajo el rodapié, señalado con una herramienta"
+            },
+            {
+              "type": "paragraph",
+              "text": "En este encargo participamos como contratistas de la colocación del pavimento. Recomendamos regularizar el soporte antes de instalarlo, pero la decisión sobre esa preparación no correspondía a nuestro equipo. Según el contexto de esta obra, el suelo no se niveló previamente. Este caso es distinto de los dos ejemplos de preparación que aparecen a continuación."
+            }
+          ]
+        },
+        {
+          "heading": "Primer ejemplo: unos 14 cm de desnivel en 10 metros",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "En otro objeto, el desnivel era de aproximadamente 14 cm a lo largo de 10 metros, según la medición comunicada por el responsable de la obra. La fotografía documenta la regularización en curso; la línea láser ayuda a seguir la referencia de nivel, pero la cifra no se deduce de la imagen."
+            },
+            {
+              "type": "image",
+              "media_id": "media-floor-work",
+              "alt": "Regularización del suelo en obra con una línea láser visible",
+              "caption": "Regularización del suelo en obra con una línea láser visible"
+            },
+            {
+              "type": "paragraph",
+              "text": "La siguiente imagen corresponde al mismo objeto después de colocar el pavimento y los rodapiés. Todavía se ven herramientas y trabajos pendientes: muestra el resultado del suelo, no una entrega completa de la vivienda."
+            },
+            {
+              "type": "image",
+              "media_id": "media-floor-finish",
+              "alt": "Pavimento y rodapiés instalados en el pasillo del primer objeto",
+              "caption": "Pavimento y rodapiés instalados en el pasillo del primer objeto"
+            }
+          ]
+        },
+        {
+          "heading": "Segundo ejemplo: una capa fina de autonivelante",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Estas dos fotografías corresponden a otro objeto. Muestran la aplicación de una capa fina de mortero autonivelante y el aspecto de la superficie recién extendida."
+            },
+            {
+              "type": "image",
+              "media_id": "media-floor-thin-work",
+              "alt": "Aplicación de una capa fina de mortero autonivelante en otro objeto",
+              "caption": "Aplicación de una capa fina de mortero autonivelante en otro objeto"
+            },
+            {
+              "type": "image",
+              "media_id": "media-floor-thin-finish",
+              "alt": "Superficie recién cubierta con mortero autonivelante",
+              "caption": "Superficie recién cubierta con mortero autonivelante"
+            },
+            {
+              "type": "paragraph",
+              "text": "No atribuimos a estas imágenes una dosificación o un espesor medido. Este acabado fino y la corrección del gran desnivel del ejemplo anterior son trabajos de distinto alcance; las fotografías no constituyen una receta intercambiable."
+            }
+          ]
+        },
+        {
+          "heading": "Definir el soporte antes de elegir el acabado",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "En nuestros presupuestos separamos la preparación de la base y la colocación del pavimento. Antes de concretar la solución, revisamos el estado del soporte y las diferencias de nivel. En un edificio existente, el peso que se añade y la compatibilidad de los materiales forman parte de la revisión del proyecto."
+            },
+            {
+              "type": "paragraph",
+              "text": "El sistema y el espesor se definen para cada objeto conforme a las indicaciones del producto y a las condiciones del soporte. Las imágenes de estos trabajos muestran casos concretos; no indican qué solución debe utilizarse en cualquier vivienda."
+            }
+          ]
+        },
+        {
+          "heading": "Qué dejar claro en el presupuesto",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Qué irregularidades se han medido y dónde.",
+                "Qué preparación del soporte está incluida.",
+                "Qué sistema y espesor se han previsto para ese objeto.",
+                "Qué condiciones deben cumplirse antes de colocar el pavimento.",
+                "Cómo se resolverán rodapiés, puertas y encuentros con otros suelos."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Una fotografía general del acabado no sustituye la revisión de sus detalles. Por eso mostramos tanto el conjunto como el encuentro entre el pavimento y el rodapié."
+            }
+          ]
+        }
+      ],
+      "author": "Vital Vibe Construction",
+      "published_at": "2026-09-13",
+      "modified_at": "2026-09-13",
+      "related_service_ids": [
+        "masonry"
+      ],
+      "related_project_ids": [],
+      "translations": {
+        "en": {
+          "slug": "floor-leveling-before-covering",
+          "title": "The floor looks finished, until you look at the skirting",
+          "seo_title": "Leveling a floor before installing the covering",
+          "summary": "A room can look well finished from a distance. Closer to the skirting, a gap appears. Three job examples show why floor preparation deserves its own item in the estimate.",
+          "meta_description": "Work photos: around 14 cm of level difference over 10 m, a thin self-leveling layer and skirting gaps where the base was not leveled.",
+          "category": "Project examples · Floors",
+          "body": [
+            {
+              "heading": "At first glance, everything looks fine",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "In this room, the floor covering is installed and the skirting appears to complete the finish. The overall view does not clearly show what happens at floor level."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-overview",
+                  "alt": "Overview of a room with floor covering and skirting installed",
+                  "caption": "Overview of a room with floor covering and skirting installed"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Up close, a gap is visible beneath the skirting. The tool points it out; it does not measure its height."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-gap",
+                  "alt": "Close-up of the gap beneath the skirting, indicated with a tool",
+                  "caption": "Close-up of the gap beneath the skirting, indicated with a tool"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "On this job we worked as the floor-installation contractor. We recommended leveling the base before installation, but the decision about that preparation was not ours. According to the account of this job, the base was not leveled beforehand. This is a separate property from the two preparation examples below."
+                }
+              ]
+            },
+            {
+              "heading": "First example: around 14 cm over 10 metres",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "At another property, the level difference was approximately 14 cm over 10 metres, according to the measurement supplied by the person responsible for the work. The photograph documents leveling in progress. The laser line provides a reference, but the measurement cannot be read from the image."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-work",
+                  "alt": "Floor leveling in progress with a visible laser line",
+                  "caption": "Floor leveling in progress with a visible laser line"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The following photograph shows the same property after the floor covering and skirting were installed. Tools and unfinished work are still visible: this is the floor result, not a completed property handover."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-finish",
+                  "alt": "Floor covering and skirting installed in the first property's corridor",
+                  "caption": "Floor covering and skirting installed in the first property's corridor"
+                }
+              ]
+            },
+            {
+              "heading": "Second example: a thin self-leveling layer",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "These two photographs show another property. They document application of a thin self-leveling compound and the freshly spread surface."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-thin-work",
+                  "alt": "A thin self-leveling layer being applied at another property",
+                  "caption": "A thin self-leveling layer being applied at another property"
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-thin-finish",
+                  "alt": "Surface freshly covered with self-leveling compound",
+                  "caption": "Surface freshly covered with self-leveling compound"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "We do not assign a measured thickness or mixing ratio to these images. This thin finish and correction of the large level difference in the previous example are different scopes of work; the photos are not interchangeable installation instructions."
+                }
+              ]
+            },
+            {
+              "heading": "Define the base before choosing the finish",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Our estimates separate base preparation from floor installation. Before specifying a solution, we review the substrate condition and differences in level. In an existing building, added weight and material compatibility are part of the project review."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The system and thickness are defined for each property according to product instructions and substrate conditions. These photographs document particular jobs; they do not prescribe a solution for every home."
+                }
+              ]
+            },
+            {
+              "heading": "What the estimate should make clear",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Which irregularities were measured and where.",
+                    "What base preparation is included.",
+                    "Which system and thickness are specified for this property.",
+                    "What conditions must be met before installing the covering.",
+                    "How skirting, doors and transitions to other floors will be handled."
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "text": "A general photograph of the finish does not replace checking the details. That is why we show both the room and the joint between the floor and the skirting."
+                }
+              ]
+            }
+          ]
+        },
+        "ru": {
+          "slug": "vyravnivanie-pola-pered-ukladkoy",
+          "title": "С виду пол готов — пока не посмотришь под плинтус",
+          "seo_title": "Выравнивание пола перед укладкой покрытия",
+          "summary": "На общем плане комната выглядит аккуратно. Но стоит приблизиться к плинтусу — становится виден зазор. Три примера с объектов показывают, почему подготовка основания заслуживает отдельной строки в смете.",
+          "meta_description": "Фото с объектов: перепад около 14 см на 10 м, тонкий слой самовыравнивающейся смеси и щели под плинтусом при укладке без выравнивания.",
+          "category": "Примеры с объектов · Полы",
+          "body": [
+            {
+              "heading": "На первый взгляд всё хорошо",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "В этой комнате покрытие уже уложено, плинтусы завершают отделку. Общий вид не позволяет хорошо рассмотреть то, что происходит у самого пола."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-overview",
+                  "alt": "Общий вид комнаты с уложенным покрытием и плинтусами",
+                  "caption": "Общий вид комнаты с уложенным покрытием и плинтусами"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "На крупном плане виден зазор под плинтусом. Инструмент показывает его расположение, но не служит измерением высоты щели."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-gap",
+                  "alt": "Крупный план зазора под плинтусом, показанного инструментом",
+                  "caption": "Крупный план зазора под плинтусом, показанного инструментом"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "На этом объекте мы работали подрядчиком по укладке покрытия. До начала работ рекомендовали выровнять основание, но решение по этой подготовке принимала не наша команда. По обстоятельствам этой работы основание предварительно не выровняли. Это отдельный объект, не связанный с двумя примерами подготовки ниже."
+                }
+              ]
+            },
+            {
+              "heading": "Первый пример: около 14 см на 10 метров",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "На другом объекте перепад составлял примерно 14 см на 10 метров — по замеру, переданному руководителем работ. На фото показан процесс выравнивания. Линия лазера помогает следить за отметкой, но само числовое значение из фотографии не определяется."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-work",
+                  "alt": "Выравнивание пола в процессе работ; видна линия лазерного уровня",
+                  "caption": "Выравнивание пола в процессе работ; видна линия лазерного уровня"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Следующий кадр — тот же объект после укладки покрытия и установки плинтусов. Ещё видны инструменты и незавершённые работы: это результат устройства пола, а не полностью сданная квартира."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-finish",
+                  "alt": "Покрытие и плинтусы в коридоре первого объекта после укладки",
+                  "caption": "Покрытие и плинтусы в коридоре первого объекта после укладки"
+                }
+              ]
+            },
+            {
+              "heading": "Второй пример: тонкий слой самовыравнивающейся смеси",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Эти два кадра относятся к другому объекту. Они показывают нанесение тонкого слоя самовыравнивающейся смеси и поверхность сразу после распределения."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-thin-work",
+                  "alt": "Нанесение тонкого слоя самовыравнивающейся смеси на другом объекте",
+                  "caption": "Нанесение тонкого слоя самовыравнивающейся смеси на другом объекте"
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-floor-thin-finish",
+                  "alt": "Поверхность сразу после нанесения самовыравнивающейся смеси",
+                  "caption": "Поверхность сразу после нанесения самовыравнивающейся смеси"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "По этим снимкам мы не указываем измеренную толщину слоя или пропорции смеси. Тонкое финишное выравнивание и исправление большого перепада из предыдущего примера — разные по объёму задачи; фотографии не являются взаимозаменяемой инструкцией."
+                }
+              ]
+            },
+            {
+              "heading": "Основание определяем до выбора отделки",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "В наших сметах подготовка основания и укладка покрытия разделены. До выбора решения осматриваем основание и проверяем перепады уровня. В существующем здании дополнительный вес и совместимость материалов входят в вопросы, которые нужно рассмотреть при подготовке проекта."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Систему и толщину слоёв определяют для конкретного объекта с учётом инструкции к материалу и состояния основания. На фото показаны отдельные работы, а не универсальное решение для любой квартиры."
+                }
+              ]
+            },
+            {
+              "heading": "Что стоит зафиксировать в смете",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Какие неровности измерены и в каких местах.",
+                    "Какая подготовка основания включена.",
+                    "Какая система и толщина предусмотрены именно для этого объекта.",
+                    "Какие условия должны быть выполнены до укладки покрытия.",
+                    "Как будут устроены примыкания к плинтусам, дверям и другим полам."
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Общий снимок отделки не заменяет осмотра деталей. Поэтому мы показываем и комнату целиком, и примыкание покрытия к плинтусу."
+                }
               ]
             }
           ]

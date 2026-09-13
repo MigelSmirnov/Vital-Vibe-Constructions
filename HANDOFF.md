@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 48
+Version: 49
 Updated: 2026-09-13T17:08:00Z
 
 ## Session rule
@@ -72,7 +72,7 @@ Semantic contract: `--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--bord
 
 Historical branch `agent/add-solar-collector-animation` was not merged wholesale. Its technical article was ported into the current Article/content-table architecture on `agent/solar-collector-port`, with ES/EN/RU routes, two owner-provided evidence photographs and verified Bosch/Buderus/IDAE source links. The owner then supplied `solar-collector-updated-v3.html` as the authoritative animation revision. It replaces the simplified first port and is embedded from `tools/articles/solar-collector-v3.html`, with completed ES/EN translations, keyboard-accessible controls and reduced-motion behavior. `node tools/checks/run.mjs` is green. Revision v3 was deployed to the Netlify preview and its controls and three languages were browser-verified.
 
-The planned floor-leveling guide remains unbuilt. Existing El Raval evidence is recorded in the SEO/AEO matrix; wait for the owner's floor photographs before publishing the guide.
+Painting and floor articles now exist in ES/EN/RU. Painting has two owner photographs (crack and loose coating) and an owner-confirmed EUR 4–6/m² labour-only prepared-wall rate; materials and preparation are separate. Floor article has six owner photographs grouped into three distinct jobs, uses the latest approximately 14 cm over 10 m figure, and retains the subcontractor context for the unlevelled floor. All checks passed; preview QA pending. Unselected originals remain in conversation uploads.
 
 ## Published content state
 
@@ -94,4 +94,4 @@ Production target remains VPS + Caddy. Production, DNS and original hosting were
 
 ## Immediate next action
 
-Localized article catalogs are generated at /articulos/, /en/articles/ and /ru/articles/ from published Knowledge Repository records, newest first. Homepage menus and article return links use the matching language. Full checks validate catalog coverage, order, metadata, sitemap and navigation. Preview deployment and browser verification passed (menu → catalog → v3 article → catalog, language switching, both card images loaded). Production and DNS are unchanged. Collect the separate floor photographs and build `/guias/nivelar-suelo-piso-antiguo-barcelona/` through content records and route contracts.
+Localized article catalogs are generated at /articulos/, /en/articles/ and /ru/articles/ from published Knowledge Repository records, newest first. Homepage menus and article return links use the matching language. Full checks validate catalog coverage, order, metadata, sitemap and navigation. Preview deployment and browser verification passed (menu → catalog → v3 article → catalog, language switching, both card images loaded). Production and DNS are unchanged. Review /ru/articles/pokraska-sten-cena-podgotovka/ and /ru/articles/vyravnivanie-pola-pered-ukladkoy/ before production release.

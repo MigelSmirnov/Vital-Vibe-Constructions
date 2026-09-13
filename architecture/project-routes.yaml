@@ -329,6 +329,102 @@
       ],
       "generated_html_path": "site-next/ru/articles/index.html",
       "sitemap_eligible": true
+    },
+    {
+      "id": "article-painting-preparation-es",
+      "family_id": "article-detail",
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "entity_type": "Article",
+      "entity_id": "article-painting-preparation",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/pintura-paredes-precio-preparacion-barcelona/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-painting-preparation-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/wall-painting-price-preparation/",
+      "entity_type": "Article",
+      "entity_id": "article-painting-preparation",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/wall-painting-price-preparation/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-painting-preparation-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/pokraska-sten-cena-podgotovka/",
+      "entity_type": "Article",
+      "entity_id": "article-painting-preparation",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/pokraska-sten-cena-podgotovka/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-floor-leveling-es",
+      "family_id": "article-detail",
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "entity_type": "Article",
+      "entity_id": "article-floor-leveling",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/nivelacion-suelo-antes-del-pavimento/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-floor-leveling-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/floor-leveling-before-covering/",
+      "entity_type": "Article",
+      "entity_id": "article-floor-leveling",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/floor-leveling-before-covering/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-floor-leveling-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "entity_type": "Article",
+      "entity_id": "article-floor-leveling",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/vyravnivanie-pola-pered-ukladkoy/index.html",
+      "sitemap_eligible": true
     }
   ],
   "legacy_source_mappings": [

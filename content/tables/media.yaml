@@ -538,6 +538,102 @@
       "description": "Fotografía facilitada por el propietario del sitio. Archivo conservado sin retoque.",
       "before_after_state": "after",
       "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-painting-crack",
+      "slug": "painting-crack",
+      "src": "assets/painting-preparation/wall-crack.jpg",
+      "alt": "Grieta fina visible en una pared pintada",
+      "width": 1536,
+      "height": 1536,
+      "caption": "Grieta fina visible en una pared pintada",
+      "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
+      "before_after_state": "detail",
+      "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-painting-coating",
+      "slug": "painting-coating",
+      "src": "assets/painting-preparation/loose-coating.jpg",
+      "alt": "Revestimiento desprendido junto a una grieta, con el soporte visible",
+      "width": 1536,
+      "height": 1536,
+      "caption": "Revestimiento desprendido junto a una grieta, con el soporte visible",
+      "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
+      "before_after_state": "detail",
+      "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-floor-work",
+      "slug": "floor-work",
+      "src": "assets/floor-leveling/leveling-work.jpg",
+      "alt": "Regularización del suelo en obra con una línea láser visible",
+      "width": 1148,
+      "height": 1536,
+      "caption": "Regularización del suelo en obra con una línea láser visible",
+      "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
+      "before_after_state": "detail",
+      "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-floor-finish",
+      "slug": "floor-finish",
+      "src": "assets/floor-leveling/finished-floor.jpg",
+      "alt": "Pavimento y rodapiés instalados en el pasillo del primer objeto",
+      "width": 1157,
+      "height": 1536,
+      "caption": "Pavimento y rodapiés instalados en el pasillo del primer objeto",
+      "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
+      "before_after_state": "detail",
+      "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-floor-thin-work",
+      "slug": "floor-thin-work",
+      "src": "assets/floor-leveling/thin-layer-work.jpg",
+      "alt": "Aplicación de una capa fina de mortero autonivelante en otro objeto",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Aplicación de una capa fina de mortero autonivelante en otro objeto",
+      "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
+      "before_after_state": "detail",
+      "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-floor-thin-finish",
+      "slug": "floor-thin-finish",
+      "src": "assets/floor-leveling/thin-layer-finish.jpg",
+      "alt": "Superficie recién cubierta con mortero autonivelante",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Superficie recién cubierta con mortero autonivelante",
+      "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
+      "before_after_state": "detail",
+      "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-floor-overview",
+      "slug": "floor-overview",
+      "src": "assets/floor-leveling/room-overview.jpg",
+      "alt": "Vista general de una habitación con pavimento y rodapiés instalados",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Vista general de una habitación con pavimento y rodapiés instalados",
+      "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
+      "before_after_state": "detail",
+      "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-floor-gap",
+      "slug": "floor-gap",
+      "src": "assets/floor-leveling/skirting-gap.jpg",
+      "alt": "Detalle del hueco bajo el rodapié, señalado con una herramienta",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Detalle del hueco bajo el rodapié, señalado con una herramienta",
+      "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
+      "before_after_state": "detail",
+      "published_at": "2026-09-13"
     }
   ]
 }

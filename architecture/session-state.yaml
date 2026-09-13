@@ -1,7 +1,7 @@
-version: 51
+version: 52
 updated_at: 2026-09-13T17:08:00Z
-phase: localized-article-catalog
-stage_status: preview-deployed-browser-verified
+phase: painting-and-floor-articles
+stage_status: full-checks-green-preview-pending
 active_branch: agent/solar-collector-port
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: floor-article-awaiting-owner-media
+next_proposed_task: review-new-articles-before-production
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -234,6 +234,13 @@ visual_design:
     - solar-collector-surgical-port-when-owner-resumes
 
 content_state:
+  painting_article:
+    status: generated-with-owner-media
+    languages: [es, en, ru]
+    photographs: 2
+    price_eur_per_m2: 4-6
+    price_scope: labour-only-prepared-walls-one-colour
+    materials_and_preparation: charged-separately
   article_catalog:
     status: generated-and-validated
     locales: [es, en, ru]
@@ -275,8 +282,10 @@ content_state:
     primary_sources_verified: true
     full_checks: success
   floor_leveling_guide:
-    status: awaiting-owner-media
-    proposed_route: /guias/nivelar-suelo-piso-antiguo-barcelona/
+    status: generated-with-owner-media
+    public_route: /articulos/nivelacion-suelo-antes-del-pavimento/
+    confirmed_level_difference: approximately-14-cm-over-10-m
+    photographs: 6
     existing_evidence: El Raval floor build-up and leveling records
 
 vps_security:
