@@ -21,6 +21,7 @@ else
 fi
 
 node tools/visual/check.mjs
+node tools/visual/solar-embed.mjs
 node tools/visual/standard-project.mjs
 node tools/visual/premium-project.mjs
 node tools/visual/gallery-responsive.mjs

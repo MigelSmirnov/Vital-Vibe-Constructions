@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import { readFile, writeFile, mkdir, copyFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
 
 const root = process.cwd();
+const articleCssVersion = createHash("sha256").update(await readFile(path.join(root, "tools/articles/article.css"))).digest("hex").slice(0, 12);
 const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
 const site = knowledge.getSite();
 const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
@@ -59,7 +61,7 @@ for (const route of routes) {
   <meta property="og:title" content="${escape(local.title)}">
   <meta property="og:description" content="${escape(local.meta_description)}">
   <meta property="og:url" content="${escape(route.canonical_url)}">
-  <link rel="stylesheet" href="/article.css">
+  <link rel="stylesheet" href="/article.css?v=${articleCssVersion}">
   <script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script>
 </head>
 <body>
@@ -111,7 +113,7 @@ for (const catalog of catalogs) {
 <link rel="canonical" href="${catalog.canonical_url}">
 ${catalogs.map(item => `<link rel="alternate" hreflang="${item.language}" href="${item.canonical_url}">`).join("\n")}
 <link rel="alternate" hreflang="x-default" href="${catalogs.find(item => item.language === site.defaultLanguage).canonical_url}">
-<link rel="stylesheet" href="/article.css">
+<link rel="stylesheet" href="/article.css?v=${articleCssVersion}">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script></head>
 <body><a class="skip-link" href="#main-content">${labels[language].skip}</a>
 <header class="site-header"><div class="header-inner"><a href="${home}" aria-label="Vital Vibe"><img src="/VVC_primary_logo.svg" alt="Vital Vibe Construcción" width="230" height="65"></a>
