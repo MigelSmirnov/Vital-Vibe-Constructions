@@ -1,7 +1,7 @@
-version: 53
-updated_at: 2026-09-13T17:50:00Z
-phase: restore-original-article-narrative
-stage_status: preview-deployed-browser-verified
+version: 54
+updated_at: 2026-09-13T18:34:06Z
+phase: local-agent-vps-handoff
+stage_status: awaiting-local-production-build-and-cutover
 active_branch: agent/solar-collector-port
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: review-new-articles-before-production
+next_proposed_task: task/003-vps-cutover.md
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -34,7 +34,7 @@ current_strategy:
   production_unchanged: true
   public_path_mode: root-relative
   deployment_model:
-    build_location: github-actions
+    build_location: local-agent-or-github-actions
     server_build_required: false
     artifact: vps-site-bundle.tgz
     bundle_directory: .deploy-dist
@@ -326,6 +326,9 @@ vps_bundle:
 
 completed_work:
   - date: 2026-09-13
+    summary: Prepared owner-authorized local VPS handoff and allowed same-origin solar v3 framing in Caddy.
+    validation: full-checks-pass; production-build-with-cwebp-and-caddy-validation-pending-on-local-agent
+  - date: 2026-09-13
     summary: Added painting and floor articles in ES/EN/RU with eight owner photographs and confirmed labour-only painting price.
     validation: full-checks-pass; 12-article-pages; preview-deployed; RU-navigation-price-and-six-floor-images-browser-verified
   - date: 2026-09-13
@@ -348,10 +351,10 @@ completed_work:
     validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Hold current green quality/performance state until owner selects the next stage.
-  status: no-open-quality-blocker-awaiting-owner-direction
-  production_deployment: not-requested
-  vps_preparation: retained-as-separate-pending-work
+  goal: Local agent with VPS access builds and deploys approved site.
+  status: owner-authorized-local-agent-handoff
+  production_deployment: authorized-for-local-agent
+  vps_preparation: task/003-vps-cutover.md
 
 next_verification:
   - visual-qa-must-remain-green
@@ -366,4 +369,4 @@ next_verification:
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Owner chooses among deferred solar-collector port, separate VPS work, or another measured content/quality task.
+  goal: Follow task/003-vps-cutover.md; validate fresh release and Caddy before DNS cutover.

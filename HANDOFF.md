@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 50
-Updated: 2026-09-13T17:50:00Z
+Version: 51
+Updated: 2026-09-13T18:34:06Z
 
 ## Session rule
 
@@ -90,7 +90,7 @@ Knowledge Repository remains public content source of truth. `support.js`/legacy
 
 ## Production / VPS
 
-Production target remains VPS + Caddy. Production, DNS and original hosting were not changed. VPS cutover remains a separate owner-directed stage.
+Production target remains VPS + Caddy. Production, DNS and original hosting were not changed. Owner has now authorized VPS cutover by the local agent with server access. Follow `task/003-vps-cutover.md`; fresh production image build and Caddy validation remain local gates.
 
 ## Article editorial correction
 
@@ -98,4 +98,6 @@ Owner rejected the condensed report-style rewrites. Restored the original Spanis
 
 ## Immediate next action
 
-Localized article catalogs are generated at /articulos/, /en/articles/ and /ru/articles/ from published Knowledge Repository records, newest first. Homepage menus and article return links use the matching language. Full checks validate catalog coverage, order, metadata, sitemap and navigation. Preview deployment and browser verification passed (menu → catalog → v3 article → catalog, language switching, both card images loaded). Production and DNS are unchanged. Review /ru/articles/pokraska-sten-cena-podgotovka/ and /ru/articles/vyravnivanie-pola-pered-ukladkoy/ before production release.
+Localized article catalogs are generated at /articulos/, /en/articles/ and /ru/articles/ from published Knowledge Repository records, newest first. Homepage menus and article return links use the matching language. Full checks validate catalog coverage, order, metadata, sitemap and navigation. Preview deployment and browser verification passed (menu → catalog → v3 article → catalog, language switching, both card images loaded). Production and DNS are unchanged. Owner approved moving to VPS locally. Continue with `task/003-vps-cutover.md` from `agent/solar-collector-port`. Caddy now permits same-origin framing so solar v3 can render. This session has no cwebp or Caddy: do not treat the preview bundle as a fresh verified production archive.
+
+VPS handoff checks: `node tools/checks/run.mjs` passed in this session (content audit: 0 errors, 5 warnings). Full production WebP build and real Caddy validation were not run here.
