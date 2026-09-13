@@ -21,6 +21,31 @@ const expected = [
     selector: 'img[src="/estandar/cocina.jpeg"]',
     selectedPrefix: "/assets/responsive/estandar/cocina-",
   },
+  {
+    label: "Smart Home lead panel",
+    selector: 'img[src="/smart/gira.jpeg"]',
+    selectedPrefix: "/assets/responsive/smart/gira-",
+  },
+  {
+    label: "Smart Home marble panel",
+    selector: 'img[src="/premium/panel-marmol.jpeg"]',
+    selectedPrefix: "/assets/responsive/premium/panel-marmol-",
+  },
+  {
+    label: "Smart Home partner panel",
+    selector: 'img[src="/premium/gira.jpeg"]',
+    selectedPrefix: "/assets/responsive/premium/gira-",
+  },
+  {
+    label: "Smart Home integration panel",
+    selector: 'img[src="/premium/apple-home.jpeg"]',
+    selectedPrefix: "/assets/responsive/premium/apple-home-",
+  },
+  {
+    label: "Smart Home lighting scenes",
+    selector: 'img[src="/smart/escenas.jpeg"]',
+    selectedPrefix: "/assets/responsive/smart/escenas-",
+  },
 ];
 
 const types = {
@@ -122,7 +147,7 @@ try {
 }
 
 const rows = results.map((result) => `| ${result.route} | ${result.width}x${result.height} | ${result.label} | ${result.selected ?? "-"} | ${result.requested ? "yes" : "no"} | ${result.bytes ?? "-"} |`).join("\n");
-const report = `# Responsive image browser report\n\n${blocking.length ? `**FAIL** - ${blocking.length} blocking finding(s).` : "**PASS** - Chromium selected and requested responsive WebP sources for the first homepage slice."}\n\n| Route | Viewport | Image | Selected resource | Requested | Bytes |\n| --- | ---: | --- | --- | --- | ---: |\n${rows}\n\n${blocking.length ? `## Blocking findings\n\n${blocking.map((item) => `- ${item}`).join("\n")}\n` : ""}`;
+const report = `# Responsive image browser report\n\n${blocking.length ? `**FAIL** - ${blocking.length} blocking finding(s).` : "**PASS** - Chromium selected and requested responsive WebP sources for the optimized homepage images."}\n\n| Route | Viewport | Image | Selected resource | Requested | Bytes |\n| --- | ---: | --- | --- | --- | ---: |\n${rows}\n\n${blocking.length ? `## Blocking findings\n\n${blocking.map((item) => `- ${item}`).join("\n")}\n` : ""}`;
 
 await writeFile(path.join(out, "responsive-images.json"), `${JSON.stringify({ results, blocking }, null, 2)}\n`, "utf8");
 await writeFile(path.join(out, "responsive-images.md"), report, "utf8");
