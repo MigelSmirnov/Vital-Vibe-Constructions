@@ -25,5 +25,6 @@ node tools/visual/standard-project.mjs
 node tools/visual/premium-project.mjs
 node tools/visual/gallery-responsive.mjs
 node tools/visual/accessibility.mjs
+node tools/visual/reduced-motion.mjs
 node tools/visual/responsive-images.mjs
 node tools/visual/hero-lcp.mjs
