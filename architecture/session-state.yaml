@@ -1,7 +1,7 @@
-version: 47
-updated_at: 2026-09-13T11:43:00Z
+version: 48
+updated_at: 2026-09-13T11:56:00Z
 phase: homepage-visual-redesign
-stage_status: homepage-project-hero-and-bounded-gallery-responsive-images-browser-validated
+stage_status: bounded-quality-performance-and-accessibility-pass-green
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: shared-secondary-reduced-motion-scroll-cleanup
+next_proposed_task: owner-direction-required-before-new-stage
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -57,16 +57,18 @@ visual_qa:
     status: approved-by-owner
     workflow_run_number: 15
     commit: b34f72fd7902235cd24206f9a56ea9e243e89c92
-  accessibility_run:
+  accessibility:
     status: success
-    workflow_run_number: 23
-    commit: b23f0b9046e359f181f4065cc76665310f9d6188
+    semantic_target_focus_run_number: 23
+    semantic_target_focus_commit: b23f0b9046e359f181f4065cc76665310f9d6188
+    reduced_motion_followup_run_number: 68
+    reduced_motion_followup_commit: c583479bfbd639856143212c52876e949b5ccf40
     missing_token_findings: 0
     small_control_findings: 0
     sampled_focus_failures: 0
     motion_rule_findings: 0
-    advisory:
-      - gallery-and-el-raval-still-compute-smooth-scroll-under-reduced-motion
+    shared_secondary_scroll_behavior_under_reduce: auto
+    previous_smooth_scroll_advisory: closed
   responsive_image_runs:
     first_slice:
       status: success
@@ -155,6 +157,19 @@ visual_qa:
       horizontal_overflow_findings: 0
       human_crop_orientation_review: no-visible-regression
       note: bounded-16-full-scroll-comparison-not-complete-page-weight
+    gallery_docs_control:
+      status: success
+      workflow_run_number: 67
+      commit: 75517e4276cafe96b50fb2caae72a428f263b8a6
+    reduced_motion_cleanup:
+      status: success
+      workflow_run_number: 68
+      commit: c583479bfbd639856143212c52876e949b5ccf40
+      routes:
+        - /gallery/
+        - /projects/estudio-reformado-barcelona/
+      expected_computed_scroll_behavior: auto
+      normal_motion_behavior_changed: false
   baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
@@ -190,8 +205,16 @@ responsive_images:
   gallery_policy:
     mass_39xN_generation: deferred
     current_reuse_subset: standard-six-plus-premium-top-ten
-    reason: these-16-dominate-source-transfer-and-already-have-verified-derivatives
-    remaining_23_require_new-measured-reason-before-optimization: true
+    remaining_23_require_new_measured_reason_before_optimization: true
+
+reduced_motion:
+  status: closed-and-browser-verified
+  release_patcher: tools/media/patch-reduced-motion.mjs
+  browser_verifier: tools/visual/reduced-motion.mjs
+  release_rule: '@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }'
+  normal_motion_smooth_scroll_retained: true
+  verification_run_number: 68
+  verification_commit: c583479bfbd639856143212c52876e949b5ccf40
 
 visual_design:
   homepage_direction: graphite-gold-split-hero
@@ -204,9 +227,10 @@ visual_design:
     - --muted
     - --accent
     - --border
-  next_review_candidates:
-    - shared-secondary-reduced-motion-scroll-cleanup
-    - optional-hero-preload-only-if-separate-timing-evidence
+  open_quality_blockers: 0
+  optional_followups:
+    - hero-preload-only-if-separate-timing-evidence
+    - remaining-gallery-images-only-if-new-measured-benefit
     - solar-collector-surgical-port-when-owner-resumes
 
 content_state:
@@ -260,27 +284,24 @@ vps_bundle:
 
 completed_work:
   - date: 2026-09-13
+    summary: Closed the shared reduced-motion smooth-scroll advisory with a reproducible release override and blocking browser check for gallery and El Raval.
+    validation: visual-qa-run-68-success; computed-scroll-behavior-auto-under-reduce; production-and-dns-unchanged
+  - date: 2026-09-13
     summary: Reused existing Standard and Premium responsive derivatives for the 16 heaviest gallery sources without generating 39xN variants.
-    validation: visual-qa-run-66-success; gallery-responsive-selection-16-of-16; failed-requests-0; broken-images-0; overflow-0; human-three-viewport-review-pass; production-and-dns-unchanged
+    validation: visual-qa-run-66-success; gallery-responsive-selection-16-of-16; failed-requests-0; broken-images-0; overflow-0; human-three-viewport-review-pass
   - date: 2026-09-13
-    summary: Measured the homepage hero as LCP at all reference widths, then added responsive WebP delivery while retaining JPEG fallback, approved crop and fetchpriority high.
-    validation: derivative-run-9-success; visual-qa-run-64-success; hero-responsive-selected-all-reference-viewports; production-and-dns-unchanged
+    summary: Measured and optimized homepage hero LCP delivery while retaining JPEG fallback, approved crop and fetchpriority high.
+    validation: visual-qa-run-64-success; hero-responsive-selected-all-reference-viewports
   - date: 2026-09-13
-    summary: Completed bounded Premium top-ten responsive-image slice and browser verification.
-    validation: visual-qa-run-64-success; failed-requests-0; broken-images-0; overflow-0
-  - date: 2026-09-13
-    summary: Completed Standard six-image responsive slice with EXIF-aware conversion after human review caught orientation regression.
-    validation: visual-qa-run-45-success; standard-project-three-viewport-screenshots-pass
-  - date: 2026-09-13
-    summary: Added semantic-token accessibility layer and browser checks for target size, Tab focus and reduced motion.
-    validation: visual-and-accessibility-run-23-success
+    summary: Completed bounded Premium and Standard responsive image slices with browser verification and EXIF-aware orientation handling.
+    validation: standard-run-45-success; premium-run-64-success
   - date: 2026-09-13
     summary: Owner approved the refined browser screenshot set as the first visual baseline.
     validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Remove the remaining shared reduced-motion smooth-scroll advisory without changing layout or behavior for normal-motion users.
-  status: responsive-image-current-release-scope-green-ready-for-small-accessibility-cleanup
+  goal: Hold current green quality/performance state until owner selects the next stage.
+  status: no-open-quality-blocker-awaiting-owner-direction
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
@@ -297,4 +318,4 @@ next_verification:
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Clean shared reduced-motion scroll behavior; after that resume solar-collector material only when owner requests it.
+  goal: Owner chooses among deferred solar-collector port, separate VPS work, or another measured content/quality task.
