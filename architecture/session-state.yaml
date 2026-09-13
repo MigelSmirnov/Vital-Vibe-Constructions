@@ -1,14 +1,28 @@
-version: 25
-
-updated_at: 2026-09-06T14:44:00Z
-phase: multilingual-site-foundation
-stage_status: localized-homepages-generated-secondary-routes-pending
-active_branch: agent/architecture-sandbox
+version: 55
+updated_at: 2026-09-13T18:34:06Z
+phase: release-branch-reconciliation
+stage_status: awaiting-local-production-build-and-cutover
+active_branch: release/vps-migration
 pull_request:
   number: 1
-  state: ready-for-review
+  state: merged-historical
   base: main
   head: agent/architecture-sandbox
+
+task_queue: task/README.md
+next_proposed_task: task/003-vps-cutover.md
+
+release_preparation:
+  audit: task/004-release-branch-audit.md
+  source_branch: agent/solar-collector-port
+  source_sha: 06ebb34b33b5b3a6d06359bf53af16607e94e4f2
+  integrated_main_sha: b89f003784b81ad6cf8efe672d6cc78446c07954
+  reconciliation_merge_sha: f13a031958e1782c96eaa9533cc4392898755fc2
+  reconciliation_site_tree_changed: false
+  release_selection: explicit-full-sha-from-handoff
+  main_updated: false
+  production_build: pending-webp
+  caddy_validation: pending-on-vps
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -27,20 +41,12 @@ current_strategy:
   legacy_runtime: read-only
   next_runtime: site-next
   source_of_truth: Knowledge Repository
-  article_sandbox: engineering-document-preview
-  article_sandbox_publication_status: noindex-draft-only
+  visual_change_policy: audit-first-surgical-fixes
   production_target: vps-caddy-static
-  github_pages_target_status: fallback-only
   production_unchanged: true
   public_path_mode: root-relative
-  application_attack_surface:
-    cms: false
-    database: false
-    php_runtime: false
-    node_runtime_on_server: false
-    public_application_admin: false
   deployment_model:
-    build_location: github-actions
+    build_location: local-agent-or-github-actions
     server_build_required: false
     artifact: vps-site-bundle.tgz
     bundle_directory: .deploy-dist
@@ -50,176 +56,331 @@ current_strategy:
     initial_deploy_mode: manual-artifact-upload
     automatic_ssh_deploy_enabled: false
 
+visual_qa:
+  status: implemented-and-green
+  command: bash tools/visual/run.sh
+  workflow: .github/workflows/visual-qa.yml
+  playwright_version: 1.55.0
+  viewports:
+    - 390x844
+    - 768x1024
+    - 1440x1000
+  approved_baseline:
+    status: approved-by-owner
+    workflow_run_number: 15
+    commit: b34f72fd7902235cd24206f9a56ea9e243e89c92
+  accessibility:
+    status: success
+    semantic_target_focus_run_number: 23
+    semantic_target_focus_commit: b23f0b9046e359f181f4065cc76665310f9d6188
+    reduced_motion_followup_run_number: 68
+    reduced_motion_followup_commit: c583479bfbd639856143212c52876e949b5ccf40
+    missing_token_findings: 0
+    small_control_findings: 0
+    sampled_focus_failures: 0
+    motion_rule_findings: 0
+    shared_secondary_scroll_behavior_under_reduce: auto
+    previous_smooth_scroll_advisory: closed
+  responsive_image_runs:
+    first_slice:
+      status: success
+      workflow_run_number: 30
+      commit: 073a29dc01213c9b12c929fa26630d456984d554
+      optimized_images: 2
+    smart_home_slice:
+      status: success
+      workflow_run_number: 34
+      commit: d43d45294efe9169c26361712a2a9b008c231204
+      optimized_images: 5
+    standard_project_slice:
+      status: success
+      workflow_run_number: 45
+      commit: a47740d5876490df7fa64b970c51449d85a0c8c2
+      route: /projects/reforma-integral-estandar-barcelona/
+      optimized_images: 6
+      original_bytes_total: 13644080
+      selected_1x_bytes:
+        390x844: 80566
+        768x1024: 93344
+        1440x1000: 214548
+      human_orientation_crop_review: no-visible-regression-after-auto-orient-fix
+    premium_project_slice:
+      status: success
+      workflow_run_number: 64
+      commit: bfbcb7bd7dde15d2f69a663c3c7160f861ec81af
+      route: /projects/trabajos-contrata-premium/
+      optimized_images: 10
+      original_bytes_total: 26312747
+      selected_1x_bytes:
+        390x844: 177286
+        768x1024: 177286
+        1440x1000: 382392
+      failed_requests: 0
+      broken_images: 0
+      horizontal_overflow_findings: 0
+    hero_lcp_slice:
+      status: success
+      baseline_workflow_run_number: 63
+      baseline_commit: 2d04103065dc1c9c50f469024f8836511d503833
+      optimized_workflow_run_number: 64
+      optimized_commit: bfbcb7bd7dde15d2f69a663c3c7160f861ec81af
+      lcp_element_all_reference_viewports: hero-image
+      fetchpriority: high
+      preload_added: false
+      human_crop_review: no-visible-regression
+      synthetic_profile:
+        cache: cold
+        dpr: 1
+        latency_ms: 150
+        download_mbps: 1.6
+        upload_kbps: 750
+        cpu_throttling: false
+      baseline:
+        resource: /assets/home/kitchen-living.jpg
+        bytes: 264764
+        synthetic_lcp_ms:
+          390x844: 1892
+          768x1024: 3044
+          1440x1000: 3240
+      optimized:
+        selected_bytes:
+          390x844: 28102
+          768x1024: 28102
+          1440x1000: 55556
+        synthetic_lcp_ms:
+          390x844: 632
+          768x1024: 640
+          1440x1000: 892
+    gallery_bounded_slice:
+      status: success
+      workflow_run_number: 66
+      commit: 2c38471b8cd31af0c02137c40df6e16f479e4cac
+      route: /gallery/
+      contract_media_count: 39
+      responsive_reused_images: 16
+      remaining_original_images: 23
+      original_bytes_total_for_bounded_16: 39956827
+      selected_1x_bytes:
+        390x844: 257852
+        768x1024: 257852
+        1440x1000: 257852
+      failed_requests: 0
+      broken_images: 0
+      horizontal_overflow_findings: 0
+      human_crop_orientation_review: no-visible-regression
+      note: bounded-16-full-scroll-comparison-not-complete-page-weight
+    gallery_docs_control:
+      status: success
+      workflow_run_number: 67
+      commit: 75517e4276cafe96b50fb2caae72a428f263b8a6
+    reduced_motion_cleanup:
+      status: success
+      workflow_run_number: 68
+      commit: c583479bfbd639856143212c52876e949b5ccf40
+      routes:
+        - /gallery/
+        - /projects/estudio-reformado-barcelona/
+      expected_computed_scroll_behavior: auto
+      normal_motion_behavior_changed: false
+  baseline_status: approved
+  diagnostics_publication: ci-artifact-only
+
+responsive_images:
+  task: task/002-responsive-images.md
+  status: bounded-current-release-scope-browser-verified
+  derivative_builder: tools/media/build-home-responsive.sh
+  derivative_workflow: .github/workflows/home-image-derivatives.yml
+  release_integration:
+    bundle_builder: tools/deploy/build-vps-bundle.mjs
+    home_hero_patcher: tools/media/patch-home-hero-responsive.mjs
+    standard_project_patcher: tools/media/patch-standard-project-core.mjs
+    premium_project_patcher: tools/media/patch-premium-project-responsive.mjs
+    gallery_reuse_patcher: tools/media/patch-gallery-responsive.mjs
+  browser_verifiers:
+    responsive_images: tools/visual/responsive-images.mjs
+    standard_project: tools/visual/standard-project.mjs
+    premium_project: tools/visual/premium-project.mjs
+    gallery: tools/visual/gallery-responsive.mjs
+    hero_lcp: tools/visual/hero-lcp.mjs
+  encoder:
+    orientation_tool: imagemagick-auto-orient
+    metadata_after_orientation: stripped
+    format_tool: cwebp
+    quality: 82
+    method: 6
+  source_policy:
+    originals_replaced: false
+    media_ids_changed: false
+    approved_crops_changed: false
+    fallback_original_required: true
+    exif_orientation_preserved_in_derivatives: true
+  gallery_policy:
+    mass_39xN_generation: deferred
+    current_reuse_subset: standard-six-plus-premium-top-ten
+    remaining_23_require_new_measured_reason_before_optimization: true
+
+reduced_motion:
+  status: closed-and-browser-verified
+  release_patcher: tools/media/patch-reduced-motion.mjs
+  browser_verifier: tools/visual/reduced-motion.mjs
+  release_rule: '@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }'
+  normal_motion_smooth_scroll_retained: true
+  verification_run_number: 68
+  verification_commit: c583479bfbd639856143212c52876e949b5ccf40
+
+visual_design:
+  homepage_direction: graphite-gold-split-hero
+  gallery_media_coverage_required: 39
+  gallery_media_coverage_current: 39
+  semantic_color_contract:
+    - --bg
+    - --surface
+    - --text
+    - --muted
+    - --accent
+    - --border
+  open_quality_blockers: 0
+  optional_followups:
+    - hero-preload-only-if-separate-timing-evidence
+    - remaining-gallery-images-only-if-new-measured-benefit
+
+content_state:
+  article_editorial_policy:
+    original_drafts_preserved: true
+    report_style_rewrites_rejected: true
+    painting_source: sandbox/articles/drafts/pintura-paredes-barcelona.yaml
+    floor_source: sandbox/articles/drafts/coste-reforma-piso-barcelona-2026.md
+    full_renovation_cost_article_restored: true
+    source_passages_verified: true
+    preview_status: deployed-and-browser-verified
+    verified_sections: painting-10-renovation-cost-11
+  painting_article:
+    status: generated-with-owner-media
+    languages: [es, en, ru]
+    photographs: 2
+    price_eur_per_m2: 4-6
+    price_scope: labour-only-prepared-walls-one-colour
+    materials_and_preparation: charged-separately
+  article_catalog:
+    status: generated-and-validated
+    locales: [es, en, ru]
+    source: Knowledge-Repository-published-articles
+    ordering: publication-date-descending
+    browser_user_journey: menu-catalog-article-return-and-language-switch-pass
+    homepage_menu_links: true
+    article_return_links: true
+  home_locales:
+    es: /
+    en: /en/
+    ru: /ru/
+  bathroom_article:
+    entity: article-bathroom-sink-relocation
+    public_location: Badalona
+    working_days: 4
+    labour_cost_eur: 1100
+    final_photo_ai_retouch_disclosed: true
+  el_raval_project:
+    entity: project-studio-renovation-barcelona
+    merged_property: true
+    media_count: 16
+    pending_technical_media_public: false
+  solar_collector_material:
+    status: ported-to-current-architecture
+    source_branch: agent/add-solar-collector-animation
+    merge_branch_wholesale: false
+    languages:
+      - es
+      - en
+      - ru
+    evidence_images: 2
+    interactive_diagram: revision-v3
+    interactive_source: tools/articles/solar-collector-v3.html
+    responsive_embed_languages:
+      - es
+      - en
+      - ru
+    primary_sources_verified: true
+    full_checks: success
+  floor_leveling_guide:
+    status: generated-with-owner-media
+    public_route: /articulos/nivelacion-suelo-antes-del-pavimento/
+    confirmed_level_difference: approximately-14-cm-over-10-m
+    photographs: 6
+    existing_evidence: El Raval floor build-up and leveling records
+
 vps_security:
   artifact: architecture/vps-security-plan.md
   caddy_admin:
     bind: 127.0.0.1:2019
     public_exposure_allowed: false
-  response_headers:
-    server_banner_removed: true
-    x_content_type_options: nosniff
-    referrer_policy: strict-origin-when-cross-origin
-    x_frame_options: DENY
-    permissions_policy:
-      - camera-disabled
-      - microphone-disabled
-      - geolocation-disabled
-    hsts_enabled: false
-    hsts_reason: defer-until-https-cutover-and-rollback-proven
-    csp_enforced: false
-    csp_policy: audit-resources-and-test-report-only-before-enforcement
   ssh_target:
     root_login: disabled
     password_authentication: disabled
     key_authentication: required
-    preferred_network_access: private-vpn-or-management-network
-    fail2ban: optional-secondary-if-public-ssh
-    secret_keys_in_repository: forbidden
   firewall:
     provider_firewall_preferred: true
     host_firewall_required: true
     caddy_admin_port_public: false
-    deny_unused_inbound: true
-  operating_system:
-    supported_lts_required: true
-    automatic_security_updates_required: true
-    unused_services_should_be_removed: true
-  filesystem:
-    releases_immutable_after_activation: true
-    caddy_site_tree_write_access: false
-    deploy_user_owns_release_activation: true
-  ddos:
-    host_firewall_is_not_sufficient_for_volumetric_attack: true
-    upstream_protection_required: true
-    edge_options:
-      - provider-protected-direct-caddy
-      - cloudflare-proxied-dns-restricted-origin
-      - cloudflare-tunnel-private-ssh
-    strongest_practical_origin_isolation: cloudflare-tunnel-private-ssh
-  dns_and_registrar:
-    mfa_required: true
-    transfer_lock_required: true
-    export_zone_before_cutover: true
-    dnssec_recommended_when_supported: true
-    least_privilege_dns_tokens_if_automated: true
 
 vps_bundle:
   builder: tools/deploy/build-vps-bundle.mjs
   validator: tools/deploy/validate-vps-bundle.mjs
   workflow: .github/workflows/vps-bundle-check.yml
+  responsive_derivative_dependencies:
+    - imagemagick
+    - webp
   ignored_outputs:
     - .deploy-dist/
     - vps-site-bundle.tgz
-  excludes:
-    - legacy-root-index-html
-
-vps_server:
-  web_server: caddy
-  caddy_template: deploy/vps/Caddyfile
-  default_web_root: /srv/vital-vibe/current
-  release_installer: deploy/vps/install-release.sh
-  rollback_helper: deploy/vps/rollback-release.sh
-  automatic_https_expected_for_direct-caddy-mode: true
-
-historical_redirects:
-  - from: /projects.html
-    to: /projects/
-    status: 301
-  - from: /proyecto-1.html
-    to: /projects/estudio-reformado-barcelona/
-    status: 301
-  - from: /proyecto-2.html
-    to: /projects/piso-reformado-barcelona/
-    status: 301
-  - from: /galeria-economica.dc.html
-    to: /gallery/
-    status: 301
-  - from: /galeria-estandar.dc.html
-    to: /gallery/
-    status: 301
-  - from: /galeria-premium.dc.html
-    to: /gallery/
-    status: 301
-  verification_before_cutover_required: true
-
-cutover_policy:
-  before_dns_change:
-    - record-current-apex-and-www-dns
-    - record-github-pages-custom-domain-state
-    - confirm-vps-ipv4
-    - confirm-ipv6-before-aaaa
-    - install-and-smoke-test-vps-release
-    - choose-ddos-and-origin-protection-mode
-    - verify-ssh-and-firewall-hardening
-    - verify-caddy-admin-loopback-only
-    - keep-github-pages-as-hosting-rollback
-  dns_cutover:
-    - update-only-required-apex-and-www-records
-    - verify-public-https
-    - verify-canonical-routes
-    - verify-historical-301s
-  rollback:
-    application: switch-current-symlink-to-previous-release
-    hosting: restore-recorded-github-pages-dns
-    canonical_urls_change_during_rollback: false
-
-seo_aeo_matrix:
-  artifact: architecture/seo-aeo-query-page-matrix.md
-  candidate_count: 15
-  route_expansion_blocked_until_hosting_ready: true
+    - artifacts/responsive-home/
+    - artifacts/responsive-vps/
 
 completed_work:
-  - date: 2026-09-06
-    summary: Reworked the private article sandbox into a reusable engineering-document preview system with drawing-sheet framing, title blocks, numbered sections, technical notes, FAQ sheet navigation, stable VVC article document numbers, and the existing VVC brand header. No public Article entity, route, sitemap entry, llms.txt entry, site-next output, production setting, or legacy runtime was changed.
-    validation: article-sandbox-ci-success; project-checks-success; vps-bundle-check-success
-  - date: 2026-09-02
-    summary: Added centralized English and Russian homepage translations, static /en/ and /ru/ outputs, a crawlable ES/EN/RU language switcher, hreflang alternates, and build validation. Secondary project, gallery, service, and article routes remain Spanish until their localized records and route contracts are completed.
-    validation: full-project-checks-success
-  - date: 2026-08-20
-    commits:
-      - 21c4a70b98440f58dadc057d04fc509d8795639a
-      - 1657467d56f9e152e7e4620d8005a41014eaf4f4
-      - b3306f13d2864f08f55a7c9fa98a935ee4036f03
-    summary: Added VPS security threat model and hardening plan; explicitly bound Caddy admin API to loopback, removed HTTP server banner, added baseline response security headers, and documented SSH/firewall/update/DDoS/DNS/CI controls.
-    validation: pending-final-ci-after-security-docs
-  - date: 2026-08-20
-    commits:
-      - abb80ba05f1ef42b08c523af8508240deab4fb7b
-      - 13578882a29b370fb44008b4291074966bdb2b36
-      - ab33b925053a8d52f53c4f0cdf6a8fe4e04de34f
-      - aa11b43af5e3b81b691ccaf82c93c610bacd96e5
-      - cf48a9851e790c91eef7c5a6cca9a6549bc0d0e3
-      - e897d33859bb4a134ff7b51b4cbadc51760146c8
-      - 822c508d56ce36c03d7e878bff5785b31f89ef29
-    summary: Selected VPS+Caddy as production direction and added deterministic bundle, validator, CI artifact, Caddy redirects, and atomic release/rollback.
-    validation: vps-bundle-check-success
+  - date: 2026-09-13
+    summary: Created full-site release branch and integrated main history with identical site tree; aligned handoff and branch contracts.
+    validation: canonical-checks-pass-35-tests; audit-0-errors-5-warnings; generated-projections-unchanged; production-webp-and-caddy-pending
+  - date: 2026-09-13
+    summary: Prepared owner-authorized local VPS handoff and allowed same-origin solar v3 framing in Caddy.
+    validation: full-checks-pass; production-build-with-cwebp-and-caddy-validation-pending-on-local-agent
+  - date: 2026-09-13
+    summary: Added painting and floor articles in ES/EN/RU with eight owner photographs and confirmed labour-only painting price.
+    validation: full-checks-pass; 12-article-pages; preview-deployed; RU-navigation-price-and-six-floor-images-browser-verified
+  - date: 2026-09-13
+    summary: Added localized article catalogs with automatic published cards, homepage menu links and article return navigation.
+    validation: full-checks-pass; netlify-preview-deployed; browser-navigation-and-images-pass
+  - date: 2026-09-13
+    summary: Closed the shared reduced-motion smooth-scroll advisory with a reproducible release override and blocking browser check for gallery and El Raval.
+    validation: visual-qa-run-68-success; computed-scroll-behavior-auto-under-reduce; production-and-dns-unchanged
+  - date: 2026-09-13
+    summary: Reused existing Standard and Premium responsive derivatives for the 16 heaviest gallery sources without generating 39xN variants.
+    validation: visual-qa-run-66-success; gallery-responsive-selection-16-of-16; failed-requests-0; broken-images-0; overflow-0; human-three-viewport-review-pass
+  - date: 2026-09-13
+    summary: Measured and optimized homepage hero LCP delivery while retaining JPEG fallback, approved crop and fetchpriority high.
+    validation: visual-qa-run-64-success; hero-responsive-selected-all-reference-viewports
+  - date: 2026-09-13
+    summary: Completed bounded Premium and Standard responsive image slices with browser verification and EXIF-aware orientation handling.
+    validation: standard-run-45-success; premium-run-64-success
+  - date: 2026-09-13
+    summary: Owner approved the refined browser screenshot set as the first visual baseline.
+    validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Provision or identify the VPS, choose the public-edge/DDoS mode, perform a manual hardened release smoke test, then prepare reversible DNS cutover.
-  status: waiting-for-non-secret-vps-and-edge-facts
-  required_non_secret_inputs:
-    - linux-distribution-and-version
-    - public-ipv4
-    - ipv6-enabled-or-not
-    - ssh-username
-    - ssh-port
-    - caddy-installed-or-not
-    - dns-provider
-    - current-apex-and-www-records
-    - selected-edge-mode
-  secrets_not_to_commit_or_share_in-repo:
-    - ssh-private-key
-    - passwords
-    - recovery-codes
-    - provider-api-tokens
+  goal: Local agent with VPS access builds and deploys approved site.
+  status: owner-authorized-local-agent-handoff
+  production_deployment: authorized-for-local-agent
+  vps_preparation: task/003-vps-cutover.md
 
 next_verification:
-  - article-sandbox-workflow-must-pass
+  - visual-qa-must-remain-green
+  - accessibility-qa-must-remain-green
+  - reduced-motion-scroll-behavior-must-compute-auto-on-shared-secondary-pages
+  - responsive-browser-selection-must-remain-green
+  - media-identities-must-remain-stable
+  - approved-crops-and-layout-must-remain-visually-equivalent
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
-  - generated-projections-must-remain-clean
   - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Harden the real VPS according to architecture/vps-security-plan.md, install a validated CI artifact, smoke-test Caddy and origin protection, then execute the DNS cutover with GitHub Pages preserved as rollback.
+  goal: Follow task/003-vps-cutover.md; validate fresh release and Caddy before DNS cutover.

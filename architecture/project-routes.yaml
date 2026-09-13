@@ -54,6 +54,25 @@
       "output_pattern": "site-next/projects/{project.slug}/images/{media.slug}/index.html",
       "entity_type": "Media",
       "status": "deferred"
+    },
+    {
+      "id": "article-detail",
+      "path_pattern": "/{localized-article-base}/{article.localized-slug}/",
+      "output_pattern": "site-next/{localized-article-base}/{article.localized-slug}/index.html",
+      "entity_type": "Article",
+      "status": "generated",
+      "path_prefixes": {
+        "es": "/articulos/",
+        "en": "/en/articles/",
+        "ru": "/ru/articles/"
+      }
+    },
+    {
+      "id": "articles-index",
+      "path_pattern": "/{localized-article-base}/",
+      "output_pattern": "site-next/{localized-article-base}/index.html",
+      "entity_type": "ArticleCollection",
+      "status": "generated"
     }
   ],
   "routes": [
@@ -65,20 +84,10 @@
       "entity_type": "ProjectCollection",
       "entity_id": null,
       "status": "generated",
-      "source_files": ["content/tables/projects.yaml"],
+      "source_files": [
+        "content/tables/projects.yaml"
+      ],
       "generated_html_path": "site-next/projects/index.html",
-      "sitemap_eligible": true
-    },
-    {
-      "id": "project-piso-reformado-barcelona",
-      "family_id": "project-detail",
-      "path": "/projects/piso-reformado-barcelona/",
-      "canonical_url": "https://vitalvibeconstruction.com/projects/piso-reformado-barcelona/",
-      "entity_type": "Project",
-      "entity_id": "project-piso-reformado-barcelona",
-      "status": "generated",
-      "source_files": ["galeria-economica.dc.html"],
-      "generated_html_path": "site-next/projects/piso-reformado-barcelona/index.html",
       "sitemap_eligible": true
     },
     {
@@ -89,7 +98,9 @@
       "entity_type": "Project",
       "entity_id": "project-studio-renovation-barcelona",
       "status": "generated",
-      "source_files": ["galeria-economica.dc.html"],
+      "source_files": [
+        "galeria-economica.dc.html"
+      ],
       "generated_html_path": "site-next/projects/estudio-reformado-barcelona/index.html",
       "sitemap_eligible": true
     },
@@ -101,7 +112,9 @@
       "entity_type": "Project",
       "entity_id": "project-reforma-integral-estandar-barcelona",
       "status": "generated",
-      "source_files": ["galeria-estandar.dc.html"],
+      "source_files": [
+        "galeria-estandar.dc.html"
+      ],
       "generated_html_path": "site-next/projects/reforma-integral-estandar-barcelona/index.html",
       "sitemap_eligible": true
     },
@@ -113,7 +126,9 @@
       "entity_type": "Project",
       "entity_id": "project-trabajos-contrata-premium",
       "status": "generated",
-      "source_files": ["galeria-premium.dc.html"],
+      "source_files": [
+        "galeria-premium.dc.html"
+      ],
       "generated_html_path": "site-next/projects/trabajos-contrata-premium/index.html",
       "sitemap_eligible": true
     },
@@ -152,12 +167,272 @@
       ],
       "generated_html_path": "site-next/servicios/reformas-integrales-barcelona/index.html",
       "sitemap_eligible": true
+    },
+    {
+      "id": "project-bathroom-ponent-badalona",
+      "family_id": "project-detail",
+      "path": "/projects/traslado-lavabo-toallero-badalona/",
+      "canonical_url": "https://vitalvibeconstruction.com/projects/traslado-lavabo-toallero-badalona/",
+      "entity_type": "Project",
+      "entity_id": "project-bathroom-ponent-badalona",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/projects/traslado-lavabo-toallero-badalona/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-bathroom-sink-relocation-es",
+      "family_id": "article-detail",
+      "path": "/articulos/traslado-lavabo-toallero/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/traslado-lavabo-toallero/",
+      "entity_type": "Article",
+      "entity_id": "article-bathroom-sink-relocation",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/traslado-lavabo-toallero/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-bathroom-sink-relocation-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/moving-a-bathroom-basin/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/moving-a-bathroom-basin/",
+      "entity_type": "Article",
+      "entity_id": "article-bathroom-sink-relocation",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/moving-a-bathroom-basin/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-bathroom-sink-relocation-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/perenos-rakoviny/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/perenos-rakoviny/",
+      "entity_type": "Article",
+      "entity_id": "article-bathroom-sink-relocation",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/perenos-rakoviny/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-solar-collector-connections-es",
+      "family_id": "article-detail",
+      "path": "/articulos/conexion-colector-solar/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/conexion-colector-solar/",
+      "entity_type": "Article",
+      "entity_id": "article-solar-collector-connections",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml",
+        "tools/articles/solar-collector-v3.html"
+      ],
+      "generated_html_path": "site-next/articulos/conexion-colector-solar/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-solar-collector-connections-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/solar-collector-connections/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/solar-collector-connections/",
+      "entity_type": "Article",
+      "entity_id": "article-solar-collector-connections",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml",
+        "tools/articles/solar-collector-v3.html"
+      ],
+      "generated_html_path": "site-next/en/articles/solar-collector-connections/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-solar-collector-connections-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "entity_type": "Article",
+      "entity_id": "article-solar-collector-connections",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml",
+        "tools/articles/solar-collector-v3.html"
+      ],
+      "generated_html_path": "site-next/ru/articles/podklyuchenie-solnechnogo-kollektora/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "articles-index-es",
+      "family_id": "articles-index",
+      "path": "/articulos/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/",
+      "entity_type": "ArticleCollection",
+      "entity_id": null,
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/site.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "articles-index-en",
+      "family_id": "articles-index",
+      "path": "/en/articles/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/",
+      "entity_type": "ArticleCollection",
+      "entity_id": null,
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/site.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "articles-index-ru",
+      "family_id": "articles-index",
+      "path": "/ru/articles/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/",
+      "entity_type": "ArticleCollection",
+      "entity_id": null,
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/site.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-painting-preparation-es",
+      "family_id": "article-detail",
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "entity_type": "Article",
+      "entity_id": "article-painting-preparation",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/pintura-paredes-precio-preparacion-barcelona/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-painting-preparation-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/wall-painting-price-preparation/",
+      "entity_type": "Article",
+      "entity_id": "article-painting-preparation",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/wall-painting-price-preparation/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-painting-preparation-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/pokraska-sten-cena-podgotovka/",
+      "entity_type": "Article",
+      "entity_id": "article-painting-preparation",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/pokraska-sten-cena-podgotovka/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-floor-leveling-es",
+      "family_id": "article-detail",
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "entity_type": "Article",
+      "entity_id": "article-floor-leveling",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/nivelacion-suelo-antes-del-pavimento/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-floor-leveling-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/floor-leveling-before-covering/",
+      "entity_type": "Article",
+      "entity_id": "article-floor-leveling",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/floor-leveling-before-covering/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-floor-leveling-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "entity_type": "Article",
+      "entity_id": "article-floor-leveling",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/vyravnivanie-pola-pered-ukladkoy/index.html",
+      "sitemap_eligible": true
     }
   ],
   "legacy_source_mappings": [
     {
       "source_file": "galeria-economica.dc.html",
-      "project_ids": ["project-studio-renovation-barcelona", "project-piso-reformado-barcelona"],
+      "project_ids": [
+        "project-studio-renovation-barcelona"
+      ],
       "unmodeled_project_titles": [],
       "content_media_count": 16,
       "project_owned_media_count": 16,
@@ -165,7 +440,9 @@
     },
     {
       "source_file": "galeria-estandar.dc.html",
-      "project_ids": ["project-reforma-integral-estandar-barcelona"],
+      "project_ids": [
+        "project-reforma-integral-estandar-barcelona"
+      ],
       "unmodeled_project_titles": [],
       "content_media_count": 6,
       "project_owned_media_count": 6,
@@ -173,11 +450,28 @@
     },
     {
       "source_file": "galeria-premium.dc.html",
-      "project_ids": ["project-trabajos-contrata-premium"],
+      "project_ids": [
+        "project-trabajos-contrata-premium"
+      ],
       "unmodeled_project_titles": [],
       "content_media_count": 17,
       "project_owned_media_count": 15,
       "modeled_non_project_media_count": 2
+    }
+  ],
+  "redirects": [
+    {
+      "from": "/projects/piso-reformado-barcelona/",
+      "to": "/projects/estudio-reformado-barcelona/",
+      "status": 301,
+      "reason": "Owner confirmed both legacy photo groups belong to the same El Raval property."
+    }
+  ],
+  "article_redirects": [
+    {
+      "from": "/sandbox/articles/reading/traslado-lavabo-toallero-cuatro-dias/",
+      "to": "/articulos/traslado-lavabo-toallero/",
+      "status": 301
     }
   ]
 }

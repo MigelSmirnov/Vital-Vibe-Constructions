@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { cp, copyFile, mkdir, readdir, rm, writeFile } from "node:fs/promises";
+import { cp, copyFile, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import process from "node:process";
@@ -8,6 +8,7 @@ import process from "node:process";
 const root = process.cwd();
 const sourceRoot = path.join(root, "site-next");
 const outputRoot = path.join(root, ".deploy-dist");
+const responsiveWorkRoot = path.join(root, "artifacts", "responsive-vps");
 
 const rootFiles = [
   "sitemap.xml",
@@ -19,6 +20,7 @@ const rootFiles = [
 ];
 
 const assetDirectories = [
+  "assets",
   "proyecto-1",
   "proyecto-2",
   "estandar",
@@ -26,12 +28,97 @@ const assetDirectories = [
   "smart",
 ];
 
+const homeDocuments = ["index.html", "en/index.html", "ru/index.html"];
+
 async function copyRequired(source, destination) {
   await copyFile(path.join(root, source), path.join(outputRoot, destination ?? source));
 }
 
+function replaceOnce(html, pattern, replacement, label) {
+  let count = 0;
+  const updated = html.replace(pattern, (...args) => {
+    count += 1;
+    return typeof replacement === "function" ? replacement(...args) : replacement;
+  });
+  if (count !== 1) throw new Error(`Expected one ${label} image in homepage projection, found ${count}.`);
+  return updated;
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function wrapResponsiveImage(html, { src, source, label }) {
+  const pattern = new RegExp(`<img([^>]*?)src="${escapeRegExp(src)}"([^>]*?)>`);
+  return replaceOnce(
+    html,
+    pattern,
+    (_match, before, after) => `<picture style="display:contents">${source}<img${before}src="${src}"${after}></picture>`,
+    label,
+  );
+}
+
+async function integrateHomepageResponsiveImages() {
+  execFileSync("bash", [path.join(root, "tools/media/build-home-responsive.sh"), responsiveWorkRoot], {
+    cwd: root,
+    stdio: "inherit",
+  });
+
+  await cp(
+    path.join(responsiveWorkRoot, "assets", "responsive"),
+    path.join(outputRoot, "assets", "responsive"),
+    { recursive: true, force: true },
+  );
+
+  const images = [
+    {
+      src: "/assets/home/bathroom-retouched.png",
+      label: "featured bathroom",
+      source: `<source type="image/webp" srcset="/assets/responsive/home/bathroom-retouched-480.webp 480w, /assets/responsive/home/bathroom-retouched-768.webp 768w, /assets/responsive/home/bathroom-retouched-1086.webp 1086w" sizes="(max-width: 720px) 92vw, (max-width: 1400px) 48vw, 650px">`,
+    },
+    {
+      src: "/estandar/cocina.jpeg",
+      label: "standard kitchen",
+      source: `<source type="image/webp" srcset="/assets/responsive/estandar/cocina-480.webp 480w, /assets/responsive/estandar/cocina-768.webp 768w, /assets/responsive/estandar/cocina-1200.webp 1200w" sizes="(max-width: 720px) 92vw, (max-width: 1000px) 35vw, 300px">`,
+    },
+    {
+      src: "/smart/gira.jpeg",
+      label: "Smart Home lead panel",
+      source: `<source type="image/webp" srcset="/assets/responsive/smart/gira-320.webp 320w, /assets/responsive/smart/gira-640.webp 640w, /assets/responsive/smart/gira-960.webp 960w" sizes="(max-width: 720px) 92vw, (max-width: 1000px) 42vw, 420px">`,
+    },
+    {
+      src: "/premium/panel-marmol.jpeg",
+      label: "Smart Home marble panel",
+      source: `<source type="image/webp" srcset="/assets/responsive/premium/panel-marmol-320.webp 320w, /assets/responsive/premium/panel-marmol-640.webp 640w, /assets/responsive/premium/panel-marmol-960.webp 960w" sizes="(max-width: 720px) 44vw, (max-width: 1400px) 23vw, 300px">`,
+    },
+    {
+      src: "/premium/gira.jpeg",
+      label: "Smart Home partner panel",
+      source: `<source type="image/webp" srcset="/assets/responsive/premium/gira-320.webp 320w, /assets/responsive/premium/gira-640.webp 640w, /assets/responsive/premium/gira-960.webp 960w" sizes="(max-width: 720px) 44vw, (max-width: 1400px) 23vw, 300px">`,
+    },
+    {
+      src: "/premium/apple-home.jpeg",
+      label: "Smart Home integration panel",
+      source: `<source type="image/webp" srcset="/assets/responsive/premium/apple-home-320.webp 320w, /assets/responsive/premium/apple-home-640.webp 640w, /assets/responsive/premium/apple-home-960.webp 960w" sizes="(max-width: 720px) 44vw, (max-width: 1400px) 23vw, 300px">`,
+    },
+    {
+      src: "/smart/escenas.jpeg",
+      label: "Smart Home lighting scenes",
+      source: `<source type="image/webp" srcset="/assets/responsive/smart/escenas-320.webp 320w, /assets/responsive/smart/escenas-640.webp 640w, /assets/responsive/smart/escenas-960.webp 960w" sizes="(max-width: 720px) 44vw, (max-width: 1400px) 23vw, 300px">`,
+    },
+  ];
+
+  for (const relativePath of homeDocuments) {
+    const file = path.join(outputRoot, relativePath);
+    let html = await readFile(file, "utf8");
+    for (const image of images) html = wrapResponsiveImage(html, image);
+    await writeFile(file, html, "utf8");
+  }
+}
+
 async function main() {
   await rm(outputRoot, { recursive: true, force: true });
+  await rm(responsiveWorkRoot, { recursive: true, force: true });
   await mkdir(outputRoot, { recursive: true });
 
   for (const entry of await readdir(sourceRoot)) {
@@ -51,6 +138,12 @@ async function main() {
       force: true,
     });
   }
+
+  await integrateHomepageResponsiveImages();
+  execFileSync("node", [path.join(root, "tools/media/patch-standard-project-responsive.mjs")], {
+    cwd: root,
+    stdio: "inherit",
+  });
 
   const commit = process.env.GITHUB_SHA || execFileSync("git", ["rev-parse", "HEAD"], {
     cwd: root,

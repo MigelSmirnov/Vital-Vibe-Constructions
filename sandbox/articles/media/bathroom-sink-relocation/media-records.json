@@ -1,0 +1,90 @@
+{
+  "media": [
+    {
+      "id": "media-bathroom-sink-relocation-open-wall-utilities",
+      "slug": "bathroom-sink-relocation-open-wall-utilities",
+      "src": "assets/bathroom-sink-relocation/01-open-wall-utilities.jpg",
+      "alt": "Instalaciones de agua y desagüe visibles dentro del tabique abierto del baño",
+      "width": 1536,
+      "height": 1152,
+      "caption": "Traslado de las instalaciones antes de cerrar el tabique.",
+      "description": "Fotografía de obra facilitada por el propietario del sitio. Archivo conservado sin retoque.",
+      "service_ids": [
+        "bathrooms"
+      ],
+      "before_after_state": "work"
+    },
+    {
+      "id": "media-bathroom-sink-relocation-wallboard-wide",
+      "slug": "bathroom-sink-relocation-wallboard-wide",
+      "src": "assets/bathroom-sink-relocation/02-wallboard-wide.jpg",
+      "alt": "Placas de yeso laminado visibles en la pared derecha del baño durante los trabajos",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Reposición del soporte de la pared antes de recuperar el alicatado.",
+      "description": "Fotografía de obra facilitada por el propietario del sitio. Archivo conservado sin retoque.",
+      "service_ids": [
+        "bathrooms"
+      ],
+      "before_after_state": "work"
+    },
+    {
+      "id": "media-bathroom-sink-relocation-wallboard-detail",
+      "slug": "bathroom-sink-relocation-wallboard-detail",
+      "src": "assets/bathroom-sink-relocation/03-wallboard-detail.jpg",
+      "alt": "Pared del baño con placas de yeso laminado y salidas de instalaciones antes del alicatado",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Otro ángulo del soporte preparado y las salidas de instalaciones.",
+      "description": "Fotografía de obra facilitada por el propietario del sitio. Archivo conservado sin retoque.",
+      "service_ids": [
+        "bathrooms"
+      ],
+      "before_after_state": "work"
+    },
+    {
+      "id": "media-bathroom-sink-relocation-tiling-corner",
+      "slug": "bathroom-sink-relocation-tiling-corner",
+      "src": "assets/bathroom-sink-relocation/04-tiling-corner.jpg",
+      "alt": "Encuentro de las paredes alicatadas del baño, con tomas de agua y salidas eléctricas visibles",
+      "width": 1536,
+      "height": 1152,
+      "caption": "Alicatado repuesto antes de instalar definitivamente los equipos.",
+      "description": "Fotografía de obra facilitada por el propietario del sitio. Archivo conservado sin retoque.",
+      "service_ids": [
+        "bathrooms"
+      ],
+      "before_after_state": "work"
+    },
+    {
+      "id": "media-bathroom-sink-relocation-tiling-wall",
+      "slug": "bathroom-sink-relocation-tiling-wall",
+      "src": "assets/bathroom-sink-relocation/05-tiling-wall.jpg",
+      "alt": "Pared derecha del baño alicatada con tomas de agua, desagüe y salida para el espejo",
+      "width": 1536,
+      "height": 1152,
+      "caption": "Puntos de conexión en la pared derecha después de recuperar el revestimiento.",
+      "description": "Fotografía de obra facilitada por el propietario del sitio. Archivo conservado sin retoque.",
+      "service_ids": [
+        "bathrooms"
+      ],
+      "before_after_state": "work"
+    }
+  ],
+  "reused_media": [
+    {
+      "id": "media-home-bathroom",
+      "slug": "bano-ducha-acabados",
+      "src": "assets/home/bathroom-retouched.png",
+      "alt": "Baño con ducha de cristal, lavabo suspendido y espejo iluminado",
+      "width": 1086,
+      "height": 1448,
+      "caption": "Baño reformado",
+      "description": "Fotografía facilitada por el propietario del sitio. Versión retocada con IA; original 1000003350.jpg. Ubicación y proyecto sin confirmar.",
+      "service_ids": [
+        "bathrooms"
+      ],
+      "before_after_state": "after"
+    }
+  ]
+}

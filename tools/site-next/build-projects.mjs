@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
@@ -116,7 +116,7 @@ function renderProjectIndex({ site, projects, mediaById }) {
   });
 }
 
-function renderProjectDetail({ site, project, mediaById, serviceById }) {
+function renderProjectDetail({ site, project, mediaById, serviceById, articleRoutes }) {
   const media = project.image_ids.map((mediaId) => mediaById.get(mediaId)).filter(Boolean);
   const services = project.service_ids.map((serviceId) => serviceById.get(serviceId)).filter(Boolean);
 
@@ -138,6 +138,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
     project.project_type ? ["Tipo de proyecto", project.project_type] : null,
     project.area_m2 ? ["Superficie", `${project.area_m2} m²`] : null,
     duration ? ["Duración", duration] : null,
+    project.labour_cost_eur ? ["Mano de obra", formatCurrency(project.labour_cost_eur, site.currency ?? "EUR")] : null,
     project.estimated_total_cost_eur
       ? ["Coste aproximado", formatCurrency(project.estimated_total_cost_eur, site.currency ?? "EUR")]
       : null,
@@ -177,6 +178,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
         <p class="eyebrow">Proyecto · ${escapeHtml(project.budget_range ?? project.location ?? site.serviceArea)}</p>
         <h1>${escapeHtml(project.title)}</h1>
         <p class="project-detail-summary">${escapeHtml(project.summary)}</p>
+        ${articleRoutes.some(route => project.article_ids?.includes(route.entity_id)) ? `<p class="project-article-links">Leer la historia de esta obra: ${articleRoutes.filter(route => project.article_ids?.includes(route.entity_id)).map(route => `<a class="text-link" href="${escapeHtml(route.path)}" lang="${route.language}" hreflang="${route.language}">${({es:"Español", en:"English", ru:"Русский"})[route.language]}</a>`).join(" · ")}</p>` : ""}
         <dl class="project-facts">${facts
           .map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`)
           .join("")}</dl>
@@ -185,6 +187,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById }) {
     <section class="project-detail-lead">
       <div class="container">
         <img src="../../../${escapeHtml(leadImage.src)}" alt="${escapeHtml(leadImage.alt)}" width="${escapeHtml(leadImage.width)}" height="${escapeHtml(leadImage.height)}">
+        ${leadImage.caption ? `<p class="project-lead-caption">${escapeHtml(leadImage.caption)}</p>` : ""}
       </div>
     </section>
     ${evidenceSections}
@@ -247,7 +250,7 @@ function renderEvidenceSections(project) {
   if (project.project_objective) {
     sections.push(renderTextAndListSection({
       eyebrow: "Objetivo",
-      title: "Dos estudios independientes con un presupuesto controlado",
+      title: "Objetivo de la intervención",
       text: project.project_objective,
     }));
   }
@@ -298,10 +301,12 @@ function renderEvidenceSections(project) {
     </section>`);
   }
 
-  if (project.estimated_total_cost_eur || project.cost_note) {
+  if (project.estimated_total_cost_eur || project.labour_cost_eur || project.cost_note) {
     sections.push(renderTextAndListSection({
       eyebrow: "Coste del caso",
-      title: project.estimated_total_cost_eur
+      title: project.labour_cost_eur
+        ? `Mano de obra: ${formatCurrency(project.labour_cost_eur, "EUR")}`
+        : project.estimated_total_cost_eur
         ? `Orden de magnitud: ${formatCurrency(project.estimated_total_cost_eur, "EUR")}`
         : "Coste aproximado",
       text: project.cost_note,
@@ -366,6 +371,8 @@ function formatCurrency(value, currency) {
 
 async function main() {
   const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
+  const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
+  const articleRoutes = contract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated");
   const site = knowledge.getSite().toRecord();
   const projects = knowledge.listProjects().map((project) => project.toRecord());
   const mediaById = new Map(knowledge.listMedia().map((item) => [item.id, item.toRecord()]));
@@ -379,9 +386,33 @@ async function main() {
     await mkdir(projectOutputDir, { recursive: true });
     await writeFile(
       path.join(projectOutputDir, "index.html"),
-      renderProjectDetail({ site, project, mediaById, serviceById }),
+      renderProjectDetail({ site, project, mediaById, serviceById, articleRoutes }),
       "utf8",
     );
+  }
+
+  for (const redirect of contract.redirects ?? []) {
+    const target = contract.routes.find((route) => route.path === redirect.to && route.family_id === "project-detail");
+    if (!/^\/projects\/[a-z0-9-]+\/$/.test(redirect.from) || !target || contract.routes.some((route) => route.path === redirect.from)) {
+      throw new Error(`Invalid project redirect: ${redirect.from}`);
+    }
+    const project = projects.find((item) => item.id === target.entity_id);
+    const directory = path.join(root, "site-next", redirect.from.slice(1));
+    await mkdir(directory, { recursive: true });
+    await writeFile(path.join(directory, "index.html"), `<!doctype html>
+<html lang="${escapeHtml(site.defaultLanguage)}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto actualizado | ${escapeHtml(site.name)}</title>
+  <meta name="description" content="Las fotografías de este inmueble se han reunido en una única página de proyecto.">
+  <meta name="robots" content="noindex, follow">
+  <meta http-equiv="refresh" content="0; url=${escapeHtml(redirect.to)}">
+  <link rel="canonical" href="${escapeHtml(target.canonical_url)}">
+</head>
+<body><main id="main-content"><h1>${escapeHtml(project.title)}</h1><p><a href="${escapeHtml(redirect.to)}">Ver el proyecto completo</a></p></main></body>
+</html>
+`, "utf8");
   }
 
   console.log(`Built project index and ${projects.length} project detail pages`);
