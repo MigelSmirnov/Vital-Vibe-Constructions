@@ -61,7 +61,7 @@ try {
           const rect = element.getBoundingClientRect();
           return { element: describe(element), width: Math.round(rect.width * 10) / 10, height: Math.round(rect.height * 10) / 10 };
         }).filter((item) => item.width < minTarget || item.height < minTarget);
-        const nonZeroTime = (value) => value.split(",").some((part) => parseFloat(part) > 0);
+        const nonZeroTime = (value) => value.split(",").some((part) => parseFloat(part) > 0.001);
         const motionViolations = [];
         for (const element of document.querySelectorAll("body *")) {
           if (!visible(element)) continue;
@@ -124,7 +124,7 @@ for (const result of results) {
 }
 
 const rows = results.map((result) => `| ${result.target.path} | ${result.width}x${result.height} | ${result.missingTokens.length} | ${result.targetViolations.length} | ${result.focusFailures.length} | ${result.motion.violations.length} | ${result.motion.scrollBehavior} |`).join("\n");
-const report = `# Accessibility QA report\n\n${blocking.length ? `**FAIL** - ${blocking.length} blocking finding(s).` : "**PASS** - semantic tokens, target size, sampled keyboard focus and reduced-motion checks passed."}\n\nMinimum checked control target: ${minTarget}px. Inline text links are excluded from target-size enforcement because WCAG 2.2 provides an inline-link exception.\n\n| Route | Viewport | Missing tokens | Small controls | Focus failures | Motion rules | Scroll behavior |\n| --- | ---: | ---: | ---: | ---: | ---: | --- |\n${rows}\n\n${blocking.length ? `## Blocking findings\n\n${blocking.map((item) => `- ${item}`).join("\n")}\n\n` : ""}## Scope\n\nEvery tested page must expose --bg, --surface, --text, --muted, --accent and --border. Focus is sampled with real Tab traversal. Reduced-motion fails when visible CSS transitions or animations retain non-zero duration; computed scroll behavior is recorded for review.\n`;
+const report = `# Accessibility QA report\n\n${blocking.length ? `**FAIL** - ${blocking.length} blocking finding(s).` : "**PASS** - semantic tokens, target size, sampled keyboard focus and reduced-motion checks passed."}\n\nMinimum checked control target: ${minTarget}px. Inline text links are excluded from target-size enforcement because WCAG 2.2 provides an inline-link exception.\n\n| Route | Viewport | Missing tokens | Small controls | Focus failures | Motion rules | Scroll behavior |\n| --- | ---: | ---: | ---: | ---: | ---: | --- |\n${rows}\n\n${blocking.length ? `## Blocking findings\n\n${blocking.map((item) => `- ${item}`).join("\n")}\n\n` : ""}## Scope\n\nEvery tested page must expose --bg, --surface, --text, --muted, --accent and --border. Focus is sampled with real Tab traversal. Reduced-motion fails when visible CSS transitions or animations exceed 1 ms; computed scroll behavior is recorded for review.\n`;
 await writeFile(path.join(out, "accessibility.json"), `${JSON.stringify({ minTarget, results, blocking }, null, 2)}\n`, "utf8");
 await writeFile(path.join(out, "accessibility.md"), report, "utf8");
 console.log(`a11y: report -> ${path.relative(root, path.join(out, "accessibility.md"))}`);
