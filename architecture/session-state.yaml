@@ -241,7 +241,8 @@ content_state:
     floor_source: sandbox/articles/drafts/coste-reforma-piso-barcelona-2026.md
     full_renovation_cost_article_restored: true
     source_passages_verified: true
-    preview_status: deploying
+    preview_status: deployed-and-browser-verified
+    verified_sections: painting-10-renovation-cost-11
   painting_article:
     status: generated-with-owner-media
     languages: [es, en, ru]

@@ -94,7 +94,7 @@ Production target remains VPS + Caddy. Production, DNS and original hosting were
 
 ## Article editorial correction
 
-Owner rejected the condensed report-style rewrites. Restored the original Spanish painting draft (all nine sections plus public FAQs) and full Russian renovation-cost article (eleven sections, including floor preparation). Translations preserve the same narrative. Photographs illustrate the existing paragraphs, with the confirmed 14 cm / 10 m example and labour-only painting price added. Existing URLs are retained. Original paragraphs/list items were compared against both drafts with no omissions; full checks passed. Do not summarize or reframe owner articles without an explicit request.
+Owner rejected the condensed report-style rewrites. Restored the original Spanish painting draft (all nine sections plus public FAQs) and full Russian renovation-cost article (eleven sections, including floor preparation). Translations preserve the same narrative. Photographs illustrate the existing paragraphs, with the confirmed 14 cm / 10 m example and labour-only painting price added. Existing URLs are retained. Original paragraphs/list items were compared against both drafts with no omissions; full checks passed. Preview deployed and browser verified: 10 painting sections, 11 renovation-cost sections, six floor images. Do not summarize or reframe owner articles without an explicit request.
 
 ## Immediate next action
 
