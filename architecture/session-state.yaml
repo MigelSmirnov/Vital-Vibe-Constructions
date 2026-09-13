@@ -1,7 +1,7 @@
-version: 40
-updated_at: 2026-09-13T07:19:00Z
+version: 41
+updated_at: 2026-09-13T07:34:00Z
 phase: homepage-visual-redesign
-stage_status: first-visual-baseline-approved
+stage_status: visual-baseline-and-accessibility-layer-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
@@ -10,7 +10,7 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
-next_proposed_task: shared-brand-tokens-and-accessibility
+next_proposed_task: responsive-image-optimization
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -106,6 +106,27 @@ visual_qa:
     workflow_run_number: 15
     commit: b34f72fd7902235cd24206f9a56ea9e243e89c92
     purpose: reference-state-for-future-surgical-ui-comparison
+  accessibility_run:
+    status: success
+    workflow_run_number: 23
+    commit: b23f0b9046e359f181f4065cc76665310f9d6188
+    semantic_tokens_required:
+      - --bg
+      - --surface
+      - --text
+      - --muted
+      - --accent
+      - --border
+    control_target_min_px: 24
+    inline_text_links_target_gate: excluded-by-inline-link-exception
+    keyboard_test: real-tab-traversal-with-visible-focus-indicator
+    reduced_motion_transition_animation_threshold_ms: 1
+    missing_token_findings: 0
+    small_control_findings: 0
+    sampled_focus_failures: 0
+    motion_rule_findings: 0
+    advisory:
+      - gallery-and-el-raval-still-compute-smooth-scroll-under-reduced-motion
   baseline_status: approved
   diagnostics_publication: ci-artifact-only
 
@@ -118,6 +139,13 @@ visual_design:
   article_source_styles: tools/articles/article.css
   gallery_media_coverage_required: 39
   gallery_media_coverage_current: 39
+  semantic_color_contract:
+    - --bg
+    - --surface
+    - --text
+    - --muted
+    - --accent
+    - --border
   smart_home_mobile:
     content_removed: false
     lead_image_height_px: 240
@@ -129,10 +157,8 @@ visual_design:
     toc_sticky: true
     mobile_layout_changed: false
   next_review_candidates:
-    - shared-semantic-brand-tokens
-    - target-size-keyboard-focus-accessibility
-    - reduced-motion-verification
     - responsive-image-optimization
+    - shared-secondary-reduced-motion-scroll-cleanup
 
 content_state:
   home_locales:
@@ -267,6 +293,9 @@ seo_aeo_matrix:
 
 completed_work:
   - date: 2026-09-13
+    summary: Added the semantic-token accessibility layer from the approved visual baseline. Article now uses the shared color-token contract; browser QA checks 24 px control targets, real Tab focus and reduced motion across the full matrix.
+    validation: full-checks-pass; vps-bundle-pass; visual-and-accessibility-run-23-success; zero-missing-tokens; zero-small-controls; zero-sampled-focus-failures; zero-motion-rules; production-and-dns-unchanged
+  - date: 2026-09-13
     summary: Owner approved the refined browser screenshot set as the first visual baseline after the gallery, El Raval, mobile project-card, Smart Home mobile-density and Article desktop refinements.
     validation: visual-baseline-approved; reference-run-15-success; production-and-dns-unchanged
   - date: 2026-09-13
@@ -289,21 +318,21 @@ completed_work:
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Introduce shared semantic brand tokens and accessibility checks from the approved first visual baseline.
-  status: baseline-approved-ready-for-accessibility-layer
+  goal: Optimize responsive images and modern formats without changing approved layout, crops or Media identities.
+  status: accessibility-layer-green-ready-for-performance-work
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
 next_verification:
   - visual-qa-must-remain-green
+  - accessibility-qa-must-remain-green
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
   - generated-projections-must-remain-clean
-  - target-size-checks-must-pass-or-document-exceptions
-  - keyboard-focus-must-be-visible-and-operable
-  - reduced-motion-must-not-hide-content
+  - media-identities-must-remain-stable
+  - approved-crops-and-layout-must-remain-visually-equivalent
   - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: After brand-token/accessibility validation, optimize responsive images and modern formats; VPS cutover remains a separate future stage.
+  goal: Add deterministic responsive image derivatives and modern formats, then re-run the approved visual/accessibility matrix; VPS cutover remains a separate future stage.
