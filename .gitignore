@@ -1,2 +1,4 @@
 .deploy-dist/
 vps-site-bundle.tgz
+.visual-tools/
+artifacts/visual/
