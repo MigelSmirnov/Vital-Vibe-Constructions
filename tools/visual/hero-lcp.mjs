@@ -141,20 +141,35 @@ try {
         ? performance.getEntriesByType("resource").find((entry) => entry.name === currentSrc)
         : null;
       const nav = performance.getEntriesByType("navigation")[0];
+      const picture = image?.closest("picture");
+      const pictureSources = picture
+        ? [...picture.querySelectorAll("source")].map((source) => ({
+            type: source.getAttribute("type"),
+            srcset: source.getAttribute("srcset"),
+            sizes: source.getAttribute("sizes"),
+          }))
+        : [];
+      const sourceSrcsets = pictureSources.map((source) => source.srcset).filter(Boolean);
+      const responsiveCandidates = Boolean(image?.getAttribute("srcset") || sourceSrcsets.length);
+      const effectiveSizes = image?.getAttribute("sizes") || pictureSources.find((source) => source.sizes)?.sizes || null;
       const preload = currentSrc
         ? [...document.querySelectorAll('link[rel="preload"][as="image"]')].some((link) => {
             const href = link.href;
-            return href === currentSrc || link.imageSrcset === image?.srcset;
+            return href === currentSrc
+              || (link.imageSrcset && link.imageSrcset === image?.srcset)
+              || (link.imageSrcset && sourceSrcsets.includes(link.imageSrcset));
           })
         : false;
-      const picture = image?.closest("picture");
       return {
         title: document.title,
         hero: image ? {
           src: image.getAttribute("src"),
           currentSrc,
-          srcset: image.getAttribute("srcset"),
-          sizes: image.getAttribute("sizes"),
+          imgSrcset: image.getAttribute("srcset"),
+          imgSizes: image.getAttribute("sizes"),
+          pictureSources,
+          responsiveCandidates,
+          effectiveSizes,
           loading: image.getAttribute("loading") || "eager-default",
           fetchPriority: image.fetchPriority || image.getAttribute("fetchpriority") || "auto",
           decoding: image.decoding || image.getAttribute("decoding") || "auto",
@@ -167,7 +182,7 @@ try {
           objectFit: computed?.objectFit || null,
           objectPosition: computed?.objectPosition || null,
           inInitialViewport: rect ? rect.top < innerHeight && rect.bottom > 0 : false,
-          pictureSourceCount: picture ? picture.querySelectorAll("source").length : 0,
+          pictureSourceCount: pictureSources.length,
           preload,
         } : null,
         lcp: latestLcp,
@@ -190,8 +205,10 @@ try {
 
     let heroFileBytes = null;
     let heroPathname = null;
+    let selectedResponsive = false;
     if (measurement.hero?.currentSrc) {
       heroPathname = new URL(measurement.hero.currentSrc, origin).pathname;
+      selectedResponsive = heroPathname.startsWith("/assets/responsive/home/kitchen-living-") && heroPathname.endsWith(".webp");
       try {
         heroFileBytes = (await stat(path.join(dist, decodeURIComponent(heroPathname)))).size;
       } catch {
@@ -201,6 +218,7 @@ try {
     if (!measurement.hero) advisories.push(`${width}x${height}: .hero-image not found`);
     if (measurement.hero && (!measurement.hero.complete || measurement.hero.naturalWidth === 0)) advisories.push(`${width}x${height}: hero image did not decode`);
     if (!measurement.lcp) advisories.push(`${width}x${height}: Chromium exposed no LCP entry; delivery metrics remain valid`);
+    if (measurement.hero?.responsiveCandidates && !selectedResponsive) advisories.push(`${width}x${height}: responsive hero markup exists but currentSrc remained ${heroPathname}`);
     if (failures.length) advisories.push(`${width}x${height}: ${failures.length} request/navigation failure(s)`);
 
     const screenshot = `hero-lcp--${width}x${height}.png`;
@@ -212,6 +230,7 @@ try {
       failures,
       heroPathname,
       heroFileBytes,
+      selectedResponsive,
       ...measurement,
     });
     await context.close();
@@ -236,22 +255,26 @@ const rows = results.map((result) => {
   const lcpMs = result.lcp?.startTime != null ? Math.round(result.lcp.startTime) : "-";
   const rendered = result.hero?.rendered ? `${Math.round(result.hero.rendered.width)}x${Math.round(result.hero.rendered.height)}` : "-";
   const natural = result.hero ? `${result.hero.naturalWidth}x${result.hero.naturalHeight}` : "-";
-  return `| ${result.width}x${result.height} | ${lcpElement} | ${lcpMs} | ${result.heroPathname || "-"} | ${result.heroFileBytes ?? "-"} | ${rendered} | ${natural} | ${result.hero?.srcset ? "yes" : "no"} | ${result.hero?.preload ? "yes" : "no"} | ${result.hero?.fetchPriority || "-"} |`;
+  return `| ${result.width}x${result.height} | ${lcpElement} | ${lcpMs} | ${result.heroPathname || "-"} | ${result.heroFileBytes ?? "-"} | ${rendered} | ${natural} | ${result.hero?.responsiveCandidates ? "yes" : "no"} | ${result.selectedResponsive ? "yes" : "no"} | ${result.hero?.preload ? "yes" : "no"} | ${result.hero?.fetchPriority || "-"} |`;
 }).join("\n");
 
 const lcpCount = results.filter(heroIsLcp).length;
 const sameSourceEverywhere = new Set(results.map((result) => result.heroPathname).filter(Boolean)).size === 1;
-const noSrcsetEverywhere = results.every((result) => !result.hero?.srcset);
+const noResponsiveMarkupEverywhere = results.every((result) => !result.hero?.responsiveCandidates);
+const selectedResponsiveEverywhere = results.every((result) => result.selectedResponsive);
 const recommendations = [];
-if (lcpCount > 0 && sameSourceEverywhere && noSrcsetEverywhere) {
-  recommendations.push("The hero participates in LCP and the same single source is delivered at every reference width with no srcset/sizes. The next experiment should be width-based responsive hero candidates while retaining the existing JPEG fallback and crop behavior.");
+if (lcpCount > 0 && sameSourceEverywhere && noResponsiveMarkupEverywhere) {
+  recommendations.push("The hero participates in LCP and the same single source is delivered at every reference width with no responsive candidates. The next experiment should be width-based responsive hero candidates while retaining the existing JPEG fallback and crop behavior.");
+}
+if (selectedResponsiveEverywhere) {
+  recommendations.push("Chromium selected the responsive WebP hero at every reference width. Compare these timings and bytes with the prior single-JPEG baseline before changing preload or fetch strategy.");
 }
 if (results.some((result) => result.hero?.fetchPriority === "high")) {
   recommendations.push("fetchpriority=high is already present. Do not add preload by default; compare resource start timing after responsive delivery before deciding whether preload adds value or only duplicates discovery hints.");
 }
 recommendations.push("Treat the reported LCP milliseconds as a controlled network-only synthetic comparison, not field Core Web Vitals. No CPU throttling is applied and the origin is a local release bundle server.");
 
-const report = `# Homepage hero / LCP measurement\n\nProfile: **${profile.name}** — cold cache, DPR 1, ${profile.latencyMs} ms latency, ${(profile.downloadBps * 8 / 1024 / 1024).toFixed(1)} Mbps down, ${(profile.uploadBps * 8 / 1024).toFixed(0)} kbps up, no CPU throttling.\n\n| Viewport | Observed LCP element | Synthetic LCP ms | Hero resource | File bytes | Rendered px | Natural px | srcset | preload | fetchpriority |\n| --- | --- | ---: | --- | ---: | --- | --- | --- | --- | --- |\n${rows}\n\nHero image was the observed LCP element in **${lcpCount}/${results.length}** reference viewports.\n\n## Decision notes\n\n${recommendations.map((item) => `- ${item}`).join("\n")}\n\n${advisories.length ? `## Advisories\n\n${advisories.map((item) => `- ${item}`).join("\n")}\n` : ""}`;
+const report = `# Homepage hero / LCP measurement\n\nProfile: **${profile.name}** — cold cache, DPR 1, ${profile.latencyMs} ms latency, ${(profile.downloadBps * 8 / 1024 / 1024).toFixed(1)} Mbps down, ${(profile.uploadBps * 8 / 1024).toFixed(0)} kbps up, no CPU throttling.\n\n| Viewport | Observed LCP element | Synthetic LCP ms | Hero resource | File bytes | Rendered px | Natural px | Responsive candidates | Selected responsive | preload | fetchpriority |\n| --- | --- | ---: | --- | ---: | --- | --- | --- | --- | --- | --- |\n${rows}\n\nHero image was the observed LCP element in **${lcpCount}/${results.length}** reference viewports.\n\n## Decision notes\n\n${recommendations.map((item) => `- ${item}`).join("\n")}\n\n${advisories.length ? `## Advisories\n\n${advisories.map((item) => `- ${item}`).join("\n")}\n` : ""}`;
 
 await writeFile(path.join(out, "hero-lcp.json"), `${JSON.stringify({ profile, results, advisories, recommendations }, null, 2)}\n`, "utf8");
 await writeFile(path.join(out, "hero-lcp.md"), report, "utf8");

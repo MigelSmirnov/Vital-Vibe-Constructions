@@ -38,6 +38,11 @@ make_webp() {
   trap - RETURN
 }
 
+# Homepage LCP hero. Keep the source JPEG as fallback and preserve the approved object-fit crop in CSS.
+make_webp "assets/home/kitchen-living.jpg" "assets/responsive/home/kitchen-living-480.webp" 480
+make_webp "assets/home/kitchen-living.jpg" "assets/responsive/home/kitchen-living-768.webp" 768
+make_webp "assets/home/kitchen-living.jpg" "assets/responsive/home/kitchen-living-1152.webp" 1152
+
 # Homepage featured bathroom.
 make_webp "assets/home/bathroom-retouched.png" "assets/responsive/home/bathroom-retouched-480.webp" 480
 make_webp "assets/home/bathroom-retouched.png" "assets/responsive/home/bathroom-retouched-768.webp" 768

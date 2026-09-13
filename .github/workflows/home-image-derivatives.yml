@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/home-image-derivatives.yml
       - tools/media/build-home-responsive.sh
+      - assets/home/kitchen-living.jpg
       - assets/home/bathroom-retouched.png
       - estandar/*.jpeg
       - smart/gira.jpeg
