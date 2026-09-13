@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 40
-Updated: 2026-09-13T08:05:00Z
+Version: 41
+Updated: 2026-09-13T08:31:00Z
 
 ## Session rule
 
@@ -22,47 +22,52 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 ## Current stage
 
-The first human-approved visual baseline, accessibility/token layer and two bounded responsive-image homepage slices are green. Production and DNS remain unchanged.
+The human-approved visual baseline, accessibility/token layer, homepage responsive-image slices and first project-detail performance slice are green. Production and DNS remain unchanged.
 
 Reference states:
 
 - visual baseline: run #15 / `b34f72fd7902235cd24206f9a56ea9e243e89c92`;
 - accessibility: run #23 / `b23f0b9046e359f181f4065cc76665310f9d6188`;
-- first image slice: run #30 / `073a29dc01213c9b12c929fa26630d456984d554`;
-- Smart Home image slice: run #34 / `d43d45294efe9169c26361712a2a9b008c231204`.
+- first homepage image slice: run #30 / `073a29dc01213c9b12c929fa26630d456984d554`;
+- Smart Home image slice: run #34 / `d43d45294efe9169c26361712a2a9b008c231204`;
+- standard project responsive slice: run #45 / `a47740d5876490df7fa64b970c51449d85a0c8c2`.
 
 ## Responsive-image system
 
-`tools/media/build-home-responsive.sh` uses `cwebp` with fixed q=82 / method 6. `.github/workflows/home-image-derivatives.yml` verifies derivative generation, while the release builder generates the actual files into `.deploy-dist/assets/responsive/`.
+`tools/media/build-home-responsive.sh` now auto-orients source photos with ImageMagick before stripping metadata and encoding WebP with `cwebp` q=82 / method 6. CI installs `imagemagick` + `webp`. This is required because some legacy JPEGs store their intended display orientation in EXIF metadata.
 
-`tools/deploy/build-vps-bundle.mjs` injects release-only `<picture>` markup into ES/EN/RU homepages. Original `<img src>` paths, intrinsic dimensions, Media IDs, alt text and CSS crops remain unchanged. The picture wrapper uses `display: contents` so existing layout/crop rules remain authoritative.
+`tools/deploy/build-vps-bundle.mjs` generates responsive assets into `.deploy-dist/assets/responsive/`. Homepage delivery is patched into ES/EN/RU release copies. `tools/media/patch-standard-project-responsive.mjs` applies the same release-only `<picture>` / width-`srcset` / `sizes` pattern to the standard renovation project detail and its project-index card.
 
-`tools/visual/responsive-images.mjs` uses Chromium to verify the optimized source was selected, requested and present in the release bundle.
+Original `<img src>` paths, intrinsic dimensions, Media IDs and alt text remain unchanged. `<picture>` is layout-neutral (`display: contents`) so existing CSS object-fit/crop rules remain authoritative. Generated `site-next` source is not hand-edited for these delivery changes.
 
-### Slice 1
+`tools/visual/responsive-images.mjs` verifies Chromium `currentSrc`, confirms the selected file was actually requested, and confirms it exists in the release bundle. `tools/visual/standard-project.mjs` adds full-page screenshots and failed-request/broken-image/overflow checks at 390×844, 768×1024 and 1440×1000.
 
-Optimized:
+### Homepage slices
 
-- bathroom feature PNG: 2,135,087 B original;
-- standard-kitchen JPEG: 1,832,524 B original.
+The seven already optimized homepage image requests retain their previous browser-verified delivery. The auto-orientation safeguard slightly changes encoded byte counts versus the earlier direct-cwebp measurements, but does not change source identities or layout.
 
-In the 1× reference matrix Chromium chose 480w for both on 390/768, and at 1440 chose 768w bathroom + 480w kitchen.
+### Standard project slice
 
-### Slice 2 — Smart Home
+`/projects/reforma-integral-estandar-barcelona/` displays six large source photographs totaling **13,644,080 B**:
 
-Optimized the five images actually used by the Smart Home capability block:
+- cocina 1,832,524 B;
+- obra 3,566,671 B;
+- suelo-base 2,283,159 B;
+- parquet 2,333,650 B;
+- pintura 2,038,332 B;
+- pasillo 1,589,744 B.
 
-- lead `smart/gira.jpeg`;
-- `premium/panel-marmol.jpeg`;
-- `premium/gira.jpeg`;
-- `premium/apple-home.jpeg`;
-- `smart/escenas.jpeg`.
+All six now have 480w / 768w / 1200w WebP candidates. Run #45 confirmed Chromium selected/requested responsive sources with combined selected 1× bytes:
 
-Their original URL payload totals 1,752,633 B. In the tested 1× layouts Chromium selected a 640w lead (18,654 B) and four 320w partner examples (12,674 / 4,920 / 6,106 / 8,010 B), totaling 50,364 B for this image set — roughly 97% less than the five originals. This is a bounded request comparison, not total page weight.
+- 390×844: **80,566 B**;
+- 768×1024: **93,344 B**;
+- 1440×1000: **214,548 B**.
 
-Visual QA run #34 passed standard visual checks, accessibility checks and responsive-resource selection across ES/EN/RU at 390, 768 and 1440 widths. Manual review of the 390 screenshot found the approved Smart Home layout/crops intact.
+This is a bounded six-request comparison, not total page weight or a higher-DPR claim.
 
-Across the seven optimized homepage image requests from slices 1+2, the original files total about 5.72 MB. The selected 1× resources total about 80 KB at 390/768 and 114 KB at 1440. The hero and other page images are not included in those numbers.
+The initial conversion pass revealed an EXIF-orientation bug that structural QA alone did not catch: several WebPs appeared rotated. Human screenshot review caught it before acceptance. The builder now performs `-auto-orient`; final mobile and desktop review shows the lead kitchen and process photos upright with existing crops intact.
+
+Run #45 also passed the normal Visual QA, accessibility QA and responsive-resource verifier. Dedicated standard-project screenshots reported 0 failed requests, 0 broken images and 0 horizontal overflow at all three reference widths.
 
 ## Visual/accessibility reference
 
@@ -98,8 +103,8 @@ Knowledge Repository remains public content source of truth. `support.js`/legacy
 
 ## Production / VPS
 
-Production target remains VPS + Caddy. Release/Visual CI now installs the Ubuntu `webp` encoder explicitly because derivative generation is part of packaging. Production, DNS and original hosting were not changed.
+Production target remains VPS + Caddy. Responsive-image generation is now an explicit packaging dependency: relevant CI workflows install ImageMagick and the WebP tools. Production, DNS and original hosting were not changed.
 
 ## Immediate next action
 
-Rank project-detail images by real transfer size and visible usage and optimize only the highest-impact few. Keep the hero/LCP as a separate measured decision and avoid generating variants for all 39 gallery images until their actual benefit is established.
+Rank the premium project-detail photographs by source size and visible usage and optimize the highest-impact subset as another bounded slice. Keep the homepage hero/LCP as a separate measured decision. Do not mass-generate variants for all 39 gallery images until their real transfer benefit is ranked.
