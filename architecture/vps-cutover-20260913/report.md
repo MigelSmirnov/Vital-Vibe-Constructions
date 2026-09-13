@@ -1,6 +1,23 @@
 # VPS preparation and pre-DNS acceptance — 2026-09-13
 
-## HTTPS follow-up (supersedes the initial blockers below)
+## Final production state — 2026-09-13
+
+**Website cutover completed.** Public `https://vitalvibeconstruction.com/DEPLOYMENT_COMMIT` returns `fb31a282e0204bc37d3ced1982675fef0332573f` with normal certificate verification and ordinary DNS. The immutable archive/checksum and release ID below are unchanged.
+
+Owner changed DNS in DonDominio: replaced the four GitHub Pages apex A records with `152.228.139.236`, and www CNAME with `vitalvibeconstruction.com.`. Both authoritative servers confirmed the final state. No apex AAAA was added. App, all other subdomains and MX/TXT were preserved except the two owner-added ACME TXT challenges. Three owner screenshots of the original zone are retained in the private VPS backup directory (not published in Git).
+
+Production TLS terminates at existing nginx, proxying the dedicated Caddy container. All pre-existing nginx files were compared with the backup and remained identical. Certificate expiration is 2026-12-12. Certbot reconfigure passed a simulated renewal with `--webroot -w /var/lib/letsencrypt --preferred-challenges http --run-deploy-hooks`; renewal config now has `authenticator = webroot` and `pref_challs = http-01`. The active twice-daily Certbot timer and dedicated certificate-scoped nginx reload hook provide automatic renewal. Manual DNS challenges are no longer needed. An initial reconfigure attempt retained DNS preference and failed; explicitly selecting HTTP corrected it before final acceptance.
+
+Public acceptance: 23 sitemap routes plus seven support/assets paths returned 200; nine historical redirects matched exact 301 targets; HTTP→HTTPS and www→apex preserved paths. Public Chromium checks passed for seven targets at three widths (21 pages) and nine solar language/viewport control cases, without broken images, JS errors or horizontal overflow. All three languages are covered. Full painting and renovation-cost section/photo counts were rechecked on the public site. See `production-smoke.json`, `production-browser.json` and `dns-production.txt`.
+
+Caddy's sampled logs showed no 5xx or error messages. 404s were .env probes and the existing missing favicon; no site content modification was made to the pinned artifact. Planner `/manual` remained byte-identical. GitHub Pages source `main:/`, custom domain, build type and HTTPS-enforced setting were rechecked and unchanged; main and PR #6 remain untouched.
+
+Rollback: restore the four original apex A addresses and www CNAME recorded below to return traffic to unchanged GitHub Pages. There is no older Vital Vibe VPS release to switch to. Retain release `20260913-fb31a282`, its source archive and nginx backup. No rollback was required during cutover.
+
+Remaining operational work: the owner may delete the two temporary ACME TXT records. Shared SSH password authentication/root-key policy, provider firewall/DDoS controls, registrar safeguards and external uptime monitoring were not completed/verified here. Public migration acceptance does **not** assert that the entire security-plan checklist is closed. No shared-server access changes or reboot were performed. The nginx edge emits a Server header, so the direct-Caddy banner-removal behavior does not apply to the final edge; HTTPS hides the version.
+
+## Historical HTTPS preparation (superseded by final state)
+
 
 Owner confirmed manual DonDominio operation. Owner added the requested ACME TXT records; certificate issuance succeeded for apex and www, expiration 2026-12-12. A dedicated `/etc/nginx/sites-available/vital-vibe.conf` was installed, linked, validated and reloaded; no existing virtual host was rewritten. TLS terminates at the existing nginx edge and proxies to private Caddy, preserving other sites. Nginx sends its own Server header (HTTPS hides version); automatic Caddy ACME is not used in this topology.
 

@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 54
-Updated: 2026-09-13T19:38:05Z
+Version: 55
+Updated: 2026-09-13T19:53:24Z
 
 ## Session rule
 
@@ -20,21 +20,21 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
-## HTTPS preparation — owner-operated DNS
+## Production — VPS cutover completed 2026-09-13
 
-Owner manages DonDominio manually. Added temporary ACME TXT records and obtained a certificate for apex + www, valid until 2026-12-12. Enabled a dedicated nginx TLS virtual host proxying to the unchanged private Caddy release; existing sites were preserved. All sitemap routes and nine redirects passed HTTPS checks forced to the VPS, with normal certificate verification. HTTP redirects to HTTPS and www redirects to apex. **Public routing A/CNAME records still point to GitHub Pages.** Next: owner switches apex/www DNS; then configure Certbot webroot renewal and complete public-domain acceptance. Initial manual certificate renewal is not yet automatic; the dedicated reload hook and existing Certbot timer are ready.
+**Published and verified:** https://vitalvibeconstruction.com serves exact release SHA `fb31a282e0204bc37d3ced1982675fef0332573f`. `/srv/vital-vibe/current` points to release `20260913-fb31a282`. Archive SHA-256: `e49180c37ec3dfe96390eb4162813e4f5ed02797234919e200cf768aee1d63a6`.
 
-## VPS execution — 2026-09-13
+Owner changed DonDominio manually: apex now has one A record `152.228.139.236`; www CNAME is `vitalvibeconstruction.com.`. Both authoritative servers agree. Existing app, other subdomains and mail records were preserved. Original zone screenshots and private nginx backup are retained on VPS under `/home/ubuntu/vvc-migration-fb31a282/backup/`.
 
-**Prepared and verified on VPS; public cutover is incomplete.** Exact artifact source: `fb31a282e0204bc37d3ced1982675fef0332573f` (clean detached checkout before build). Fresh Node 20 / ImageMagick / WebP build passed. Archive SHA-256: `e49180c37ec3dfe96390eb4162813e4f5ed02797234919e200cf768aee1d63a6`, verified again after upload.
+Existing nginx handles public TLS and forwards to dedicated Caddy on `127.0.0.1:8890`; Caddy admin remains loopback-only and releases are mounted read-only under UID 65534. A dedicated nginx virtual host was added; all previous nginx files remain byte-identical. Caddy runtime config fixes asset-cache header precedence, retains SAMEORIGIN and preserves the approved site artifact. This shared-server topology uses Certbot/nginx TLS instead of direct Caddy ACME. Nginx emits its own Server header; HTTPS omits its version.
 
-Installed `/srv/vital-vibe/releases/20260913-fb31a282`, with `current` pointing there. Container `vvc-site` runs Caddy as UID 65534, with a read-only release mount, restart policy and bounded logs. It serves **only `127.0.0.1:8890`**, with admin on `127.0.0.1:2019`. Existing nginx owns public 80/443; its virtual hosts and the planner were preserved. The server copy of Caddy adds explicit loopback binding and separate document/asset cache matchers because the template's generic no-cache header overrode asset caching in actual Caddy.
+Certificate covers apex + www until 2026-12-12. **Automatic renewal is configured and test-verified** with webroot HTTP-01, active Certbot timer and a certificate-scoped nginx reload hook. The two manual ACME TXT entries are obsolete and may be removed by the owner; no automatic DNS access is configured.
 
-Verified: 35 tests, gallery 39/39, 12 article pages, audit 0 errors / 5 warnings; 23 sitemap routes and 29 bundle HTML files; 69 fresh browser page checks (23 routes × 390/768/1440), no broken images, JS errors or horizontal overflow; all nine historical 301 redirects; solar iframe controls ES/EN/RU at all three widths, SAMEORIGIN. Painting retains 10 sections / 2 photos; renovation cost 11 sections / 6 photos; each catalog has four articles. Generated files and approved site content were not changed.
+Validation: 35 tests, gallery 39/39, 12 localized article pages, audit 0 errors / 5 warnings; 23 sitemap routes and nine historical redirects checked on public HTTPS; 69 pre-cutover browser page checks plus 21 final public browser checks and nine public solar iframe/control checks. No broken images, JS errors or horizontal overflow in the checked pages. Painting retains 10 sections / two photos; renovation-cost article retains 11 sections / six photos. HTTP→HTTPS and www→apex work. Planner `/manual` remained byte-identical. No 5xx or Caddy error messages in the sampled logs; one missing favicon and rejected .env probes were observed.
 
-**Blockers / remaining work:** no DonDominio access configuration was found; the full DNS-zone export and registrar controls cannot be verified. Apex still resolves to GitHub Pages and www still redirects from GitHub Pages; public VPS HTTPS has not been configured or verified. A proposed nginx TLS-to-Caddy integration is saved but NOT enabled or validated as production (certificate not issued). It must be reconciled with the original direct-Caddy plan before public cutover. Shared VPS SSH still permits password authentication and root key login; provider firewall/DDoS protection and registrar MFA remain unverified. Do not claim the security checklist complete or change shared access without checking recovery arrangements.
+GitHub Pages configuration remains `main:/` with its custom domain and HTTPS intact for DNS rollback. No earlier Vital Vibe VPS release exists. Site source, generated pages, support.js, main and PR #6 were not changed.
 
-No older Vital Vibe VPS release exists. Hosting rollback remains the unchanged GitHub Pages site (`main:/`) and recorded apex/www DNS. Private nginx backup and archive are in `/home/ubuntu/vvc-migration-fb31a282/` on the VPS. See [execution record](architecture/vps-cutover-20260913/report.md) for exact state and continuation.
+**Operational follow-ups are not claimed complete:** shared VPS still permits SSH passwords and root key login; provider firewall/DDoS controls, registrar MFA and external uptime monitoring have not been verified/configured in this task. Handle those with the shared-server recovery/access context. See [execution report](architecture/vps-cutover-20260913/report.md). The public website migration itself is complete.
 
 ## Previous stage (historical)
 
@@ -114,7 +114,7 @@ Owner rejected the condensed report-style rewrites. Restored the original Spanis
 
 ## Immediate next action
 
-Obtain the existing DonDominio access method and finish the edge/security preparation described in the execution report. The fresh production artifact is already built and verified on VPS; preserve its SHA and archive checksum. Complete DNS/HTTPS cutover and verify the primary domain before declaring publication.
+Observe production, retain GitHub Pages and the prepared rollback records, and close the operational security/monitoring follow-ups in the execution report. Owner can remove the two temporary ACME TXT records; renewal now uses HTTP-01. Further content/design changes require a separate task.
 
 ## Release branch reconciliation — 2026-09-13
 

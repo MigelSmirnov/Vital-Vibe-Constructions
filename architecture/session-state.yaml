@@ -1,7 +1,7 @@
-version: 57
-updated_at: 2026-09-13T19:38:05Z
-phase: vps-pre-dns-verification
-stage_status: https-ready-awaiting-owner-dns-cutover
+version: 58
+updated_at: 2026-09-13T19:53:24Z
+phase: vps-production
+stage_status: public-cutover-complete-operational-followups-open
 active_branch: agent/vps-cutover-fb31a282
 pull_request:
   number: 1
@@ -18,18 +18,26 @@ vps_execution:
   archive_sha256: e49180c37ec3dfe96390eb4162813e4f5ed02797234919e200cf768aee1d63a6
   release_id: 20260913-fb31a282
   server_current: /srv/vital-vibe/releases/20260913-fb31a282
-  public_cutover_complete: false
+  public_cutover_complete: true
+  public_url: https://vitalvibeconstruction.com
+  production_browser_page_checks: 21
+  production_solar_control_checks: 9
   public_tls_pre_dns: verified-with-explicit-vps-address
   https_browser_page_checks: 21
   https_solar_checks: 9
   certificate_expires: 2026-12-12
   tls_edge: existing-nginx-to-loopback-caddy
   certificate_initial_auth: manual-dns-owner-created-txt
-  certificate_auto_renewal: pending-webroot-reconfigure-after-dns
+  certificate_auto_renewal: webroot-http01-reconfigure-dry-run-passed
+  certificate_renewal_timer: active-enabled
+  certificate_reload_hook: certificate-scoped-nginx-reload
   dns_operator: owner-manual-dondominio
   public_nginx_config: /etc/nginx/sites-available/vital-vibe.conf
-  production_hosting: github-pages-main-root-unchanged
-  dns_changed: acme-txt-added-by-owner-apex-and-www-routing-unchanged
+  production_hosting: vps-nginx-tls-to-caddy-static
+  dns_changed: owner-set-apex-a-and-www-cname
+  apex_a: 152.228.139.236
+  www_cname: vitalvibeconstruction.com
+  preserved_app_and_mail_dns: true
   previous_vps_release: null
   rollback_hosting: unchanged-github-pages
   caddy_container: vvc-site
@@ -44,10 +52,10 @@ vps_execution:
   historical_redirects_checked: 9
   generated_projections_changed: false
   remaining:
-    - owner-save-zone-and-switch-apex-www-records
-    - configure-and-test-webroot-certificate-renewal-after-dns
-    - complete-shared-vps-and-registrar-security-checklist
-    - dns-cutover-and-public-https-production-acceptance
+    - owner-may-remove-obsolete-two-acme-txt-records
+    - close-shared-vps-ssh-provider-and-registrar-security-followups
+    - configure-external-uptime-monitoring
+    - observe-production-and-retain-github-pages-rollback
 
 release_preparation:
   audit: task/004-release-branch-audit.md
@@ -59,7 +67,7 @@ release_preparation:
   release_selection: explicit-full-sha-from-handoff
   main_updated: false
   production_build: fresh-webp-build-verified
-  caddy_validation: passed-on-vps-loopback
+  caddy_validation: passed-on-vps-and-public-https
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -80,7 +88,7 @@ current_strategy:
   source_of_truth: Knowledge Repository
   visual_change_policy: audit-first-surgical-fixes
   production_target: vps-caddy-static
-  production_unchanged: true
+  production_unchanged: false
   public_path_mode: root-relative
   deployment_model:
     build_location: local-agent-or-github-actions
@@ -374,6 +382,9 @@ vps_bundle:
 
 completed_work:
   - date: 2026-09-13
+    summary: Owner switched apex/www DNS; published exact pinned release on VPS HTTPS and configured tested automatic certificate renewal while preserving existing sites and Pages fallback.
+    validation: public-23-sitemap-routes; 9-redirects; 21-browser-pages; 9-solar-controls; deployment-sha-match; webroot-renewal-test-pass
+  - date: 2026-09-13
     summary: Built pinned production artifact with WebP; installed and browser-verified release through Caddy on VPS loopback; preserved public hosting and DNS.
     validation: 35-tests; 23-sitemap-routes; 69-browser-page-checks; 9-solar-control-checks; sha256-matches; public-cutover-blocked
   - date: 2026-09-13
@@ -405,8 +416,8 @@ completed_work:
     validation: visual-baseline-approved; reference-run-15-success
 
 active_stage:
-  goal: Local agent with VPS access builds and deploys approved site.
-  status: prepared-on-vps-public-cutover-blocked
+  goal: Approved pinned site is published and verified on VPS.
+  status: public-cutover-complete
   production_deployment: authorized-for-local-agent
   vps_preparation: task/003-vps-cutover.md
 
@@ -423,4 +434,4 @@ next_verification:
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Obtain DNS access, complete edge/security preparation, then switch DNS and verify public HTTPS for the already prepared release.
+  goal: Observe production, retain rollback, and close documented shared-server security and monitoring followups.
