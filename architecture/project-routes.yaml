@@ -21,6 +21,13 @@
   ],
   "route_families": [
     {
+      "id": "homepage",
+      "path_pattern": "/{home-language-prefix}/",
+      "output_pattern": "site-next/{home-language-prefix}/index.html",
+      "entity_type": "Site",
+      "status": "generated"
+    },
+    {
       "id": "projects-index",
       "path_pattern": "/projects/",
       "output_pattern": "site-next/projects/index.html",
@@ -76,6 +83,54 @@
     }
   ],
   "routes": [
+    {
+      "id": "homepage-es",
+      "family_id": "homepage",
+      "path": "/",
+      "canonical_url": "https://vitalvibeconstruction.com/",
+      "entity_type": "Site",
+      "entity_id": null,
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/site.yaml",
+        "content/tables/home-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "homepage-en",
+      "family_id": "homepage",
+      "path": "/en/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/",
+      "entity_type": "Site",
+      "entity_id": null,
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/site.yaml",
+        "content/tables/home-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/en/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "homepage-ru",
+      "family_id": "homepage",
+      "path": "/ru/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/",
+      "entity_type": "Site",
+      "entity_id": null,
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/site.yaml",
+        "content/tables/home-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/ru/index.html",
+      "sitemap_eligible": true
+    },
     {
       "id": "projects-index",
       "family_id": "projects-index",

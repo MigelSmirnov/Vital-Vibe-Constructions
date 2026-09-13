@@ -3,7 +3,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
-import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
 
 const root = process.cwd();
 const outputPath = path.join(root, "sitemap.xml");
@@ -29,14 +28,12 @@ ${entries}
 }
 
 async function main() {
-  const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
-  const homepageUrl = new URL("/", knowledge.getSite().canonicalOrigin).href;
   const routeContract = JSON.parse(await readFile(routeContractPath, "utf8"));
   const eligibleRouteUrls = routeContract.routes
     .filter((route) => route.sitemap_eligible === true)
     .map((route) => route.canonical_url);
 
-  await writeFile(outputPath, renderSitemap([homepageUrl, ...eligibleRouteUrls]), "utf8");
+  await writeFile(outputPath, renderSitemap(eligibleRouteUrls), "utf8");
   console.log("Built sitemap.xml");
 }
 
