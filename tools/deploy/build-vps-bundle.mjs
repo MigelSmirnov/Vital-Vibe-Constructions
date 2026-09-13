@@ -144,6 +144,10 @@ async function main() {
     cwd: root,
     stdio: "inherit",
   });
+  execFileSync("node", [path.join(root, "tools/media/build-article-responsive.mjs")], {
+    cwd: root,
+    stdio: "inherit",
+  });
 
   const commit = process.env.GITHUB_SHA || execFileSync("git", ["rev-parse", "HEAD"], {
     cwd: root,
