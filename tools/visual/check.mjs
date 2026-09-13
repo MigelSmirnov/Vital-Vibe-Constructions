@@ -13,6 +13,10 @@ const out = path.join(root, "artifacts", "visual", "latest");
 const shots = path.join(out, "screenshots");
 const viewports = [[390, 844], [768, 1024], [1440, 1000]];
 
+await rm(out, { recursive: true, force: true });
+await mkdir(out, { recursive: true });
+await writeFile(path.join(out, "status.txt"), "Visual QA started; see workflow logs if no report was produced.\n", "utf8");
+
 function scalar(value) {
   const trimmed = value.trim();
   if (!trimmed) return undefined;
@@ -24,7 +28,7 @@ function scalar(value) {
   return trimmed;
 }
 
-function parseConstants(text) {
+function parseConstantsYaml(text) {
   const defaultMatch = text.match(/^\s{2}default_language:\s*(.+?)\s*$/m);
   const languageBlock = text.match(/^\s{2}supported_languages:\s*\n((?:^\s{4}-\s*.+\n?)+)/m);
   if (!defaultMatch || !languageBlock) throw new Error("Could not resolve site languages from architecture/constants.yaml");
@@ -32,7 +36,7 @@ function parseConstants(text) {
   return { site: { default_language: scalar(defaultMatch[1]), supported_languages: supportedLanguages } };
 }
 
-function parseRouteContract(text) {
+function parseRouteContractYaml(text) {
   const routes = [];
   let inRoutes = false;
   let current = null;
@@ -61,8 +65,15 @@ function parseRouteContract(text) {
   return { routes };
 }
 
-const routes = parseRouteContract(await readFile(path.join(root, "architecture", "project-routes.yaml"), "utf8"));
-const constants = parseConstants(await readFile(path.join(root, "architecture", "constants.yaml"), "utf8"));
+function parseDocument(text, yamlFallback) {
+  try { return JSON.parse(text); }
+  catch { return yamlFallback(text); }
+}
+
+const routeText = await readFile(path.join(root, "architecture", "project-routes.yaml"), "utf8");
+const constantsText = await readFile(path.join(root, "architecture", "constants.yaml"), "utf8");
+const routes = parseDocument(routeText, parseRouteContractYaml);
+const constants = parseDocument(constantsText, parseConstantsYaml);
 const languages = constants.site.supported_languages;
 const homes = languages.map((lang) => ({ type: "home", lang, path: lang === constants.site.default_language ? "/" : `/${lang}/` }));
 const generated = routes.routes.filter((route) => route.status === "generated");
@@ -95,7 +106,6 @@ const server = http.createServer(async (req, res) => {
 await new Promise((resolve, reject) => { server.once("error", reject); server.listen(0, "127.0.0.1", resolve); });
 const origin = `http://127.0.0.1:${server.address().port}`;
 
-await rm(out, { recursive: true, force: true });
 await mkdir(shots, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const results = [];
@@ -170,5 +180,6 @@ await writeFile(path.join(out, "summary.json"), `${JSON.stringify(summary, null,
 const rows = results.map((result) => `| ${result.target.path} | ${result.width}x${result.height} | ${result.state.lang || "-"} | ${Math.round(result.state.overflow)}px | ${result.state.brokenImages.length} | ${result.failures.length} |`).join("\n");
 const report = `# Visual QA report\n\nCommit: \`${commit}\`\n\n${blocking.length ? `**FAIL** - ${blocking.length} blocking finding(s).` : "**PASS** - loading, images, horizontal overflow, mobile menu and article language links passed."}\n\n| Route | Viewport | Lang | Overflow | Broken images | Loading failures |\n| --- | ---: | --- | ---: | ---: | ---: |\n${rows}\n\n${blocking.length ? `## Blocking findings\n\n${blocking.map((item) => `- ${item}`).join("\n")}\n\n` : ""}## Human review required\n\nThese checks do not prove visual quality. Review the screenshots for card/photo boundaries, heading wraps, spacing, crops, captions, language correctness and clipped content before choosing a baseline.\n`;
 await writeFile(path.join(out, "report.md"), report);
+await writeFile(path.join(out, "status.txt"), `${blocking.length ? "FAIL" : "PASS"}: ${blocking.length} blocking finding(s).\n`, "utf8");
 console.log(`visual: report -> ${path.relative(root, path.join(out, "report.md"))}`);
 if (blocking.length) process.exitCode = 1;
