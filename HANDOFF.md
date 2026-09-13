@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 37
-Updated: 2026-09-13T07:34:00Z
+Version: 38
+Updated: 2026-09-13T07:47:00Z
 
 ## Session rule
 
@@ -15,66 +15,56 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 ## Start here
 
 1. Read `AGENTS.md` and its required architecture contracts in order.
-2. Continue from `task/README.md` and `task/001-visual-checks.md`.
+2. Continue from `task/README.md`; the active bounded task is `task/002-responsive-images.md`.
 3. Work on `agent/architecture-sandbox`; do not use `main` as a working branch.
 4. Do not hand-edit generated `site-next` output instead of changing the builder/source.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
 ## Current stage
 
-The first human-approved visual baseline is established and the first accessibility/token layer is now browser-validated.
+The first human-approved visual baseline and the semantic-token/accessibility layer are established. Work has moved to **responsive-image/performance optimization without changing approved crops or Media identities**.
 
-The Visual QA command remains:
+The Visual QA command remains `bash tools/visual/run.sh` and covers 390×844, 768×1024 and 1440×1000 across ES/EN/RU homepages, the Article in all three languages, gallery and El Raval. It checks loading, broken images, overflow, language switching, semantic tokens, explicit control target-size, real Tab focus and reduced-motion.
 
-- `bash tools/visual/run.sh`;
-- validated `.deploy-dist` served in a local browser context;
-- fixed viewports: 390×844, 768×1024, 1440×1000;
-- targets: ES/EN/RU homepages, the bathroom Article in all three languages, gallery and El Raval project;
-- extra state: open mobile menu;
-- visual checks: loading failures, broken images, horizontal overflow and Article language links;
-- accessibility checks: semantic-token contract, explicit control target size, real Tab-focus and reduced-motion;
-- screenshots/reports remain diagnostic artifacts and do not enter the release bundle.
+The approved visual baseline is run #15 / `b34f72fd7902235cd24206f9a56ea9e243e89c92`. Accessibility run #23 / `b23f0b9046e359f181f4065cc76665310f9d6188` passed with zero blocking findings. Production and DNS remain unchanged.
 
-The approved visual baseline corresponds to run #15 on commit `b34f72fd7902235cd24206f9a56ea9e243e89c92`. The new accessibility layer was validated by run #23 on commit `b23f0b9046e359f181f4065cc76665310f9d6188`.
+## Responsive image slice
 
-Production and DNS were not changed.
+A first bounded derivative pipeline is now implemented but **not yet wired into public HTML**.
 
-## Visual review fixes completed
+- New builder: `tools/media/build-home-responsive.sh`.
+- New CI: `.github/workflows/home-image-derivatives.yml` with read-only repository permissions.
+- GitHub Actions run #1 on `663f412f38fd830bb0fe722fb0914642aa85b26c` completed successfully.
+- The first targets are the two highest-value homepage files from the prior static review:
+  - `assets/home/bathroom-retouched.png` — 2,135,087 bytes, 1086×1448;
+  - `estandar/cocina.jpeg` — 1,832,524 bytes, 4032×3024.
+- Originals remain canonical fallbacks and are not recompressed in place.
+- WebP derivatives are generated at fixed widths with `cwebp q=82`, method 6.
 
-### First slice
+Measured derivative sizes:
 
-1. **Gallery length and sameness**
-   - All 39/39 contract media remain present.
-   - Gallery media are grouped by Project or capability instead of one flat stream.
-   - Responsive previews use 3 columns on desktop and 2 columns on tablet/mobile.
+```text
+bathroom 480   22,896 B
+bathroom 768   56,418 B
+bathroom 1086 130,290 B
+kitchen  480    7,058 B
+kitchen  768   14,168 B
+kitchen 1200   27,268 B
+```
 
-2. **Internal status exposed on El Raval**
-   - `pending_technical_media` was removed from the public Project record.
-   - Missing-photo subjects remain internal backlog only.
+The file-size opportunity is large, but no performance claim should be made until `<picture>/srcset/sizes` is integrated and Chromium confirms which resource is actually selected. The next implementation step is to wire only these two sources, then rerun the approved screenshot/accessibility matrix before expanding the pipeline to Smart Home, project pages or the 39-image gallery.
 
-3. **Cramped mobile homepage project cards**
-   - Under 720 px compact project cards stack vertically: media above, metadata/title below.
+## Visual/accessibility reference
 
-### Second slice
+The previous visual fixes remain:
 
-4. **Smart Home mobile density**
-   - Content was preserved; no capability or partner example was removed.
-   - Mobile section spacing was tightened, the lead image reduced to 240 px high and partner examples reduced to compact 2×2 thumbnails.
+1. grouped 39-image gallery;
+2. El Raval public pending-photo status removed;
+3. mobile project cards stacked;
+4. Smart Home mobile density reduced without content removal;
+5. Article desktop centered in a 1040 px editorial frame.
 
-5. **Article desktop composition**
-   - The Article header, TOC/body grid and footer share a centered 1040 px editorial frame.
-   - Reading column remains 720 px; TOC remains separate and sticky on desktop.
-   - Mobile Article layout remains single-column.
-
-## Visual baseline status
-
-**Approved.** Run #15 / `b34f72f…` is the first human-approved visual reference state.
-
-It is a comparison point, not a freeze. Future UI changes should remain surgical and be rerun through the same matrix.
-
-## Semantic brand tokens / accessibility layer
-
-The public page families now share a checked semantic color contract:
+The semantic color contract remains:
 
 ```text
 --bg
@@ -85,28 +75,21 @@ The public page families now share a checked semantic color contract:
 --border
 ```
 
-The Article retained its light editorial appearance but moved from its private `ink/gold/line/paper` naming to the common contract. Homepage and Article also define semantic focus helpers and a minimum control-target token.
+One non-blocking accessibility advisory remains: gallery and El Raval still compute `scroll-behavior: smooth` under reduced-motion. Clean this up when the shared secondary stylesheet is next edited.
 
-`tools/visual/accessibility.mjs` runs after the screenshot checker and covers the same 24 route/viewport states. It currently verifies:
+## Solar collector material — deferred
 
-- all six semantic tokens resolve on each tested page;
-- explicitly control-like targets are at least 24 × 24 px (inline text links are not treated as blocking target-size findings);
-- sampled keyboard navigation is performed with real `Tab` events and focused controls have a visible indicator;
-- `prefers-reduced-motion: reduce` reaches the page and visible CSS transitions/animations over 1 ms are treated as failures.
-
-Run #23 passed with **0 missing tokens, 0 small-control findings, 0 sampled focus failures and 0 motion-rule findings** across the full matrix.
-
-One small advisory remains: shared secondary pages such as gallery and El Raval still compute `scroll-behavior: smooth` in the reduced-motion context. The accessibility gate records that value but does not currently fail it because it is not a CSS animation/transition. When the shared `styles.css` source is next refactored, add an explicit `prefers-reduced-motion` override for smooth scrolling as well.
+A separate historical branch `agent/add-solar-collector-animation` contains the prepared Russian solar-collector article and interactive animation. The branch is old/diverged and must not be merged wholesale. The owner asked to return to it later; when resumed, treat those two files as source material and port them surgically into the current architecture/accessibility system.
 
 ## Published content state
 
 - Homepages: ES `/`, EN `/en/`, RU `/ru/`.
 - Bathroom Article: ES `/articulos/traslado-lavabo-toallero/`, EN `/en/articles/moving-a-bathroom-basin/`, RU `/ru/articles/perenos-rakoviny/`.
-- The bathroom public location is **Badalona only**.
+- Bathroom public location is **Badalona only**.
 - Four working days and EUR 1,100 labour including rubbish removal are confirmed; do not present that amount as total renovation cost including materials.
 - Preserve the existing disclosure that the final bathroom image was AI-retouched.
-- El Raval is one property represented by the merged `project-studio-renovation-barcelona` record and 16 photographs.
-- Gallery legacy coverage remains complete at 39 images.
+- El Raval is one property represented by `project-studio-renovation-barcelona` and 16 photographs.
+- Gallery coverage remains complete at 39 images.
 
 ## Architecture boundaries
 
@@ -136,16 +119,8 @@ Key rules:
 
 Production hosting direction remains **VPS + Caddy**, with GitHub as source-control/build/validation and static release artifacts served by Caddy.
 
-Production, DNS and original hosting were not changed in this design/accessibility session.
-
-Before any cutover, follow:
-
-- `architecture/vps-migration-plan.md`
-- `architecture/vps-security-plan.md`
-- `architecture/production-deployment-plan.md`
-
-The public server remains static: no CMS, database, PHP runtime or Node application server is required. Caddy admin must remain loopback-only. First production-adjacent deployment remains manual validated-artifact upload + smoke test before DNS cutover.
+Production, DNS and original hosting were not changed in this performance session. Before any cutover follow `architecture/vps-migration-plan.md`, `architecture/vps-security-plan.md` and `architecture/production-deployment-plan.md`.
 
 ## Immediate next action
 
-With layout and basic accessibility stable, move to responsive-image/performance work: preserve original Media identities, generate deterministic derivatives, add `srcset/sizes` where useful, protect the approved crops and treat the hero/LCP image separately. Re-run Visual QA after each bounded performance slice.
+Wire the two generated WebP image families into homepage source markup using `<picture>` + width `srcset` + explicit `sizes`, retain the existing original `<img src>` fallback/intrinsic dimensions, and rerun Visual QA. Only after the crop/layout baseline remains equivalent should the same pattern be expanded to more images.
