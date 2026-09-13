@@ -1,12 +1,11 @@
-version: 37
-
-updated_at: 2026-09-08T22:02:39Z
+version: 38
+updated_at: 2026-09-13T06:36:00Z
 phase: homepage-visual-redesign
-stage_status: first-design-slice-built-and-locally-validated
+stage_status: first-visual-review-fixes-built-and-browser-validated
 active_branch: agent/architecture-sandbox
 pull_request:
   number: 1
-  state: ready-for-review
+  state: merged-historical
   base: main
   head: agent/architecture-sandbox
 
@@ -30,6 +29,7 @@ current_strategy:
   legacy_runtime: read-only
   next_runtime: site-next
   source_of_truth: Knowledge Repository
+  visual_change_policy: audit-first-surgical-fixes
   article_sandbox: engineering-document-preview
   article_sandbox_publication_status: two-remaining-noindex-drafts
   public_articles: validated-knowledge-records-with-es-en-ru-routes
@@ -54,6 +54,81 @@ current_strategy:
     initial_deploy_mode: manual-artifact-upload
     automatic_ssh_deploy_enabled: false
 
+visual_qa:
+  status: implemented-and-green
+  command: bash tools/visual/run.sh
+  workflow: .github/workflows/visual-qa.yml
+  playwright_version: 1.55.0
+  browser_environment:
+    github_actions: supported
+    desktop_linux_macos: supported
+    termux_android: unsupported-for-reproducible-run
+  viewports:
+    - 390x844
+    - 768x1024
+    - 1440x1000
+  targets:
+    - home-es
+    - home-en
+    - home-ru
+    - article-es
+    - article-en
+    - article-ru
+    - gallery
+    - project-studio-renovation-barcelona
+  first_green_run:
+    run_number: 4
+    commit: 3e6d78acea4bbf51b6901cec2a34c4723db51743
+    loading_failures: 0
+    broken_images: 0
+    horizontal_overflow_findings: 0
+  first_review_fix_run:
+    run_number: 5
+    source_commit: 7b41ed9ac081635f8fe2c7bdd629368b2e2e867e
+    status: success
+    fixes:
+      - gallery-grouped-by-project-or-capability
+      - el-raval-public-pending-photo-status-removed
+      - mobile-home-project-cards-stacked
+  baseline_status: awaiting-human-review-of-improved-screenshots
+  diagnostics_publication: ci-artifact-only
+
+visual_design:
+  homepage_direction: graphite-gold-split-hero
+  homepage_source_styles: tools/site-next/home.css
+  homepage_source_interactions: tools/site-next/home.js
+  gallery_source_styles: tools/site-next/gallery.css
+  gallery_builder: tools/site-next/build-gallery.mjs
+  gallery_media_coverage_required: 39
+  gallery_media_coverage_current: 39
+  next_review_candidates:
+    - smart-home-mobile-density
+    - article-desktop-centering
+    - shared-semantic-brand-tokens
+    - responsive-image-optimization
+
+content_state:
+  home_locales:
+    es: /
+    en: /en/
+    ru: /ru/
+  bathroom_article:
+    entity: article-bathroom-sink-relocation
+    languages:
+      es: /articulos/traslado-lavabo-toallero/
+      en: /en/articles/moving-a-bathroom-basin/
+      ru: /ru/articles/perenos-rakoviny/
+    public_location: Badalona
+    working_days: 4
+    labour_cost_eur: 1100
+    final_photo_ai_retouch_disclosed: true
+  el_raval_project:
+    entity: project-studio-renovation-barcelona
+    merged_property: true
+    media_count: 16
+    pending_technical_media_public: false
+    pending_technical_media_internal_backlog: task/README.md
+
 vps_security:
   artifact: architecture/vps-security-plan.md
   caddy_admin:
@@ -64,30 +139,18 @@ vps_security:
     x_content_type_options: nosniff
     referrer_policy: strict-origin-when-cross-origin
     x_frame_options: DENY
-    permissions_policy:
-      - camera-disabled
-      - microphone-disabled
-      - geolocation-disabled
     hsts_enabled: false
-    hsts_reason: defer-until-https-cutover-and-rollback-proven
     csp_enforced: false
-    csp_policy: audit-resources-and-test-report-only-before-enforcement
   ssh_target:
     root_login: disabled
     password_authentication: disabled
     key_authentication: required
     preferred_network_access: private-vpn-or-management-network
-    fail2ban: optional-secondary-if-public-ssh
-    secret_keys_in_repository: forbidden
   firewall:
     provider_firewall_preferred: true
     host_firewall_required: true
     caddy_admin_port_public: false
     deny_unused_inbound: true
-  operating_system:
-    supported_lts_required: true
-    automatic_security_updates_required: true
-    unused_services_should_be_removed: true
   filesystem:
     releases_immutable_after_activation: true
     caddy_site_tree_write_access: false
@@ -99,13 +162,11 @@ vps_security:
       - provider-protected-direct-caddy
       - cloudflare-proxied-dns-restricted-origin
       - cloudflare-tunnel-private-ssh
-    strongest_practical_origin_isolation: cloudflare-tunnel-private-ssh
   dns_and_registrar:
     mfa_required: true
     transfer_lock_required: true
     export_zone_before_cutover: true
     dnssec_recommended_when_supported: true
-    least_privilege_dns_tokens_if_automated: true
 
 vps_bundle:
   builder: tools/deploy/build-vps-bundle.mjs
@@ -130,25 +191,26 @@ vps_server:
   automatic_https_expected_for_direct-caddy-mode: true
 
 historical_redirects:
-  - from: /projects.html
-    to: /projects/
-    status: 301
-  - from: /proyecto-1.html
-    to: /projects/estudio-reformado-barcelona/
-    status: 301
-  - from: /proyecto-2.html
-    to: /projects/estudio-reformado-barcelona/
-    status: 301
-  - from: /galeria-economica.dc.html
-    to: /gallery/
-    status: 301
-  - from: /galeria-estandar.dc.html
-    to: /gallery/
-    status: 301
-  - from: /galeria-premium.dc.html
-    to: /gallery/
-    status: 301
   verification_before_cutover_required: true
+  entries:
+    - from: /projects.html
+      to: /projects/
+      status: 301
+    - from: /proyecto-1.html
+      to: /projects/estudio-reformado-barcelona/
+      status: 301
+    - from: /proyecto-2.html
+      to: /projects/estudio-reformado-barcelona/
+      status: 301
+    - from: /galeria-economica.dc.html
+      to: /gallery/
+      status: 301
+    - from: /galeria-estandar.dc.html
+      to: /gallery/
+      status: 301
+    - from: /galeria-premium.dc.html
+      to: /gallery/
+      status: 301
 
 cutover_policy:
   before_dns_change:
@@ -177,93 +239,36 @@ seo_aeo_matrix:
   route_expansion_blocked_until_hosting_ready: true
 
 completed_work:
+  - date: 2026-09-13
+    summary: Implemented reproducible browser Visual QA and completed the first human review/fix/rerun loop. Grouped the complete gallery into project/capability sections, removed the El Raval internal pending-photo status from public content, and stacked compact homepage project cards on mobile.
+    validation: full-checks-pass; vps-bundle-pass; visual-qa-run-5-success; 39-gallery-media-preserved; no-production-deploy
   - date: 2026-09-08
-    summary: Added repository-only task entry point linked from the root README and AGENTS, a bounded visual-check brief, automation backlog and the selected logo decision. Corrected legacy root-deployment guidance and added a deployment-documentation exclusion gate.
-    validation: full-checks-pass; 34-tests-pass; bundle-pass; task-contamination-rejected; documentation-links-valid; public-generated-files-unchanged
+    summary: Published the approved bathroom Article in Spanish, English and Russian with six existing Media references and localized homepage links.
+    validation: 34-knowledge-tests-pass; three-localized-article-pages-validated; full-checks-pass; vps-bundle-pass
   - date: 2026-09-08
-    summary: Promoted the approved bathroom story to a published Knowledge Article in Spanish, English and Russian. Added localized routes, captions, language navigation, homepage links, sitemap and llms entries; the former draft URL redirects to the Spanish article. Only Badalona is displayed as the location.
-    validation: 34-knowledge-tests-pass; three-localized-article-pages-validated; full-checks-pass; vps-bundle-pass; 11-sitemap-routes; two-remaining-drafts-valid
-    review_delivery: owner-private-site-version-6-published; original-production-unchanged
+    summary: Consolidated the confirmed El Raval property into one Project record with 16 photographs while retaining historical redirects.
+    validation: full-checks-pass; vps-bundle-pass; 39-gallery-images-preserved
   - date: 2026-09-08
-    summary: Integrated the approved narrative title, reader-focused story, mirror outlet height clarification and revised section headings into the Spanish bathroom reading draft. Clarification also updates the Project evidence; city-only location and all six photographs are retained.
-    validation: three-drafts-valid; 30-knowledge-tests-pass; full-checks-pass; vps-bundle-pass
-    review_delivery: owner-private-site-update-requested
-  - date: 2026-09-08
-    summary: At owner request, generalized bathroom location to Badalona across active content, draft, media notes and generated homepages/project page. Street and house number are omitted from current files; stable IDs and route are retained.
-    validation: three-drafts-valid; full-checks-pass; vps-bundle-pass; exact-address-absent-from-active-content-and-bundle
-  - date: 2026-09-08
-    summary: Connected the existing homepage bathroom feature to a real Project record for Badalona. Added location, four working days and labelled labour cost to ES/EN/RU homepages; generated a route with case evidence and all six owned photographs, without duplicating the homepage card.
-    validation: 30-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; six-media-and-four-homepage-projects-verified; eight-sitemap-routes
-    limitation: browser-visual-qa-not-performed; hosting-not-redeployed
-  - date: 2026-09-08
-    summary: Added owner-confirmed bathroom location Badalona to the article facts, document scope and media case index; rebuilt the reading draft.
-    validation: three-drafts-valid; reading-draft-rebuilt; full-checks-pass
-  - date: 2026-09-08
-    summary: Added a Spanish bathroom case draft in the approved reading layout using all six indexed photographs from the owner photo import. Describes the sink relocation, added towel rail, affected walls, four working days and EUR 1100 labour including rubbish removal. Existing result-image AI retouch is disclosed; no location or technical test claims were invented.
-    validation: three-drafts-valid; six-photo-hashes-alt-dimensions-and-reading-anchors-valid; 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; public-generated-outputs-unchanged
-    limitation: no-browser-visual-qa; draft-only-no-public-article-route; private-review-site-not-redeployed
-  - date: 2026-09-08
-    summary: Added a sandbox-only reading sample of the Spanish painting article with compact technical metadata, continuous text, numbered sections, responsive contents and FAQ. Preserved the original sheet preview; no public Article route or production output was added.
-    validation: two-drafts-valid; reading-sample-headings-anchors-styles-noindex-valid; 29-knowledge-tests-pass; full-checks-pass; public-generated-outputs-unchanged
-    limitation: browser-visual-review-unavailable; draft-prices-and-text-still-await-editorial-factual-approval
-  - date: 2026-09-08
-    summary: Owner confirmed the kitchen and toilet-door cards are one El Raval property. Consolidated the projects and all 16 photographs, using the kitchen as cover; retained the former URL as a noindex static redirect and prepared permanent Caddy redirects.
-    validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; 39-gallery-images-preserved; three-homepage-cards-per-language; seven-sitemap-routes
-    limitation: browser-visual-review-unavailable; original-production-unchanged
-  - date: 2026-09-08
-    summary: Fixed homepage project-card widths from the user's mobile screenshot by overriding inherited cross-axis alignment in the homepage flex column. Rebuilt the shared ES/EN/RU homepage stylesheet.
-    validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass
-    limitation: browser-visual-review-unavailable; user-review-via-separate-private-site
-  - date: 2026-09-08
-    summary: Rechecked the saved homepage commit locally and built the preview release at the user request. No application source edits, remote writes or deployments were made.
-    validation: 29-knowledge-tests-pass; full-checks-pass; generated-tracked-files-clean; vps-bundle-pass
-    limitation: supervised-session-preview-service-unavailable; browser-visual-review-not-performed
-  - date: 2026-09-08
-    summary: Implemented the user-supplied graphite/gold homepage direction with split kitchen hero, native service disclosures, a retouched bathroom feature, compact existing project index, responsive header/menu, pricing and footer. Centralized media/content and all three homepage languages retained. Article routes and production remain unchanged.
-    validation: 29-knowledge-tests-pass; full-checks-pass; vps-bundle-pass; homepage-html-and-asset-checks-pass
-    limitation: browser-visual-review-not-performed
-  - date: 2026-09-06
-    summary: Reworked the private article sandbox into a reusable engineering-document preview system with drawing-sheet framing, title blocks, numbered sections, technical notes, FAQ sheet navigation, stable VVC article document numbers, and the existing VVC brand header. No public Article entity, route, sitemap entry, llms.txt entry, site-next output, production setting, or legacy runtime was changed.
-    validation: article-sandbox-ci-success; project-checks-success; vps-bundle-check-success
-  - date: 2026-09-02
-    summary: Added centralized English and Russian homepage translations, static /en/ and /ru/ outputs, a crawlable ES/EN/RU language switcher, hreflang alternates, and build validation. Secondary project, gallery, service, and article routes remain Spanish until their localized records and route contracts are completed.
-    validation: full-project-checks-success
+    summary: Implemented the graphite/gold homepage direction with split hero, native service disclosures, project portfolio, responsive menu, pricing and footer.
+    validation: full-checks-pass; vps-bundle-pass
   - date: 2026-08-20
-    commits:
-      - 21c4a70b98440f58dadc057d04fc509d8795639a
-      - 1657467d56f9e152e7e4620d8005a41014eaf4f4
-      - b3306f13d2864f08f55a7c9fa98a935ee4036f03
-    summary: Added VPS security threat model and hardening plan; explicitly bound Caddy admin API to loopback, removed HTTP server banner, added baseline response security headers, and documented SSH/firewall/update/DDoS/DNS/CI controls.
-    validation: pending-final-ci-after-security-docs
-  - date: 2026-08-20
-    commits:
-      - abb80ba05f1ef42b08c523af8508240deab4fb7b
-      - 13578882a29b370fb44008b4291074966bdb2b36
-      - ab33b925053a8d52f53c4f0cdf6a8fe4e04de34f
-      - aa11b43af5e3b81b691ccaf82c93c610bacd96e5
-      - cf48a9851e790c91eef7c5a6cca9a6549bc0d0e3
-      - e897d33859bb4a134ff7b51b4cbadc51760146c8
-      - 822c508d56ce36c03d7e878bff5785b31f89ef29
-    summary: Selected VPS+Caddy as production direction and added deterministic bundle, validator, CI artifact, Caddy redirects, and atomic release/rollback.
+    summary: Selected VPS+Caddy as production direction and added deterministic bundle, validator, security plan, Caddy redirects and atomic release/rollback.
     validation: vps-bundle-check-success
 
 active_stage:
-  goal: Review the published bathroom Article in Spanish, English and Russian on the private review Site.
-  status: multilingual-bathroom-article-published-in-working-site
-  source_styles: tools/site-next/home.css
-  source_interactions: tools/site-next/home.js
-  featured_bathroom_project: project-bathroom-ponent-badalona
-  article_links: localized-homepage-features-and-project-page
+  goal: Review improved browser screenshots and approve the first visual baseline before starting the next UI refinement.
+  status: first-review-fixes-browser-validated-awaiting-human-baseline-approval
   production_deployment: not-requested
   vps_preparation: retained-as-separate-pending-work
 
 next_verification:
-  - article-sandbox-workflow-must-pass
+  - visual-qa-must-remain-green
   - project-checks-must-remain-green
   - vps-bundle-check-must-remain-green
   - generated-projections-must-remain-clean
+  - human-review-required-before-baseline
   - caddy-config-must-be-validated-on-real-vps-before-cutover
   - first-real-vps-release-must-pass-manual-http-smoke-test-before-dns-cutover
 
 next_stage:
-  goal: Harden the real VPS according to architecture/vps-security-plan.md, install a validated CI artifact, smoke-test Caddy and origin protection, then execute the DNS cutover with GitHub Pages preserved as rollback.
+  goal: After visual baseline approval, address the next confirmed UI issue; VPS cutover remains a separate future stage.
