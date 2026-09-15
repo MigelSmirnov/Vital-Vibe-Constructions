@@ -1,6 +1,17 @@
 name: Redirect SEO audit
 
 on:
+  push:
+    branches:
+      - "agent/**"
+      - "release/**"
+    paths:
+      - ".github/workflows/redirect-audit.yml"
+      - "deploy/vps/Caddyfile"
+      - "robots.txt"
+      - "sitemap.xml"
+      - "tools/seo/audit-redirects.mjs"
+      - "tools/seo/audit-redirects.test.mjs"
   workflow_dispatch:
 
 permissions:
