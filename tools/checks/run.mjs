@@ -24,6 +24,7 @@ const checks = [
   ["root path validation", "node", ["tools/site-next/validate-root-paths.mjs"]],
   ["project pages validation", "node", ["tools/site-next/validate-project-pages.mjs"]],
   ["gallery page validation", "node", ["tools/site-next/validate-gallery-page.mjs"]],
+  ["Redirect audit tests", "node", ["--test", "tools/seo/audit-redirects.test.mjs"]],
   ["sitemap build", "node", ["tools/seo/build-sitemap.mjs"]],
   ["sitemap validation", "node", ["tools/seo/validate-sitemap.mjs"]],
   ["article pages validation", "node", ["tools/articles/validate-public.mjs"]],

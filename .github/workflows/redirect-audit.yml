@@ -1,0 +1,25 @@
+name: Redirect SEO audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test tools/seo/audit-redirects.test.mjs
+      - run: node tools/seo/audit-redirects.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: redirect-audit
+          path: artifacts/redirect-audit/latest.json
+          if-no-files-found: error

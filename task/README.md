@@ -30,6 +30,7 @@
 
 | Приоритет | Задача | Статус / результат |
 | --- | --- | --- |
+| Готово | Redirect SEO audit | 9 production redirects: прямые 301→200; 25 sitemap URL: прямые 200; настоящий 404; robots и browser/Googlebot/OAI parity проверяются инструментом и ручным workflow. |
 | Следующий шаг | [Crawler / AEO](../architecture/crawler-aeo-audit/report.md) | Netlify preview закрыт (401); /en/ и /ru/ добавлены в production sitemap, 25 URL проверены, релиз f25d27b. Далее: проверить индексацию через кабинеты поисковиков. |
 | Готово | Shared secondary reduced-motion scroll cleanup | Run #68 зелёный; gallery + El Raval получают `scroll-behavior: auto` при reduced motion. |
 | Готово | [002 — responsive image optimization](002-responsive-images.md) | Текущий bounded scope закрыт: homepage + Standard + Premium + hero/LCP + top-16 gallery reuse зелёные. |
@@ -74,6 +75,7 @@
 
 ## Что уже автоматизировано
 
+- `node tools/seo/audit-redirects.mjs` — live-аудит каждого redirect hop, robots.txt, sitemap, 404 и различий между browser/Googlebot/OAI-SearchBot; `Redirect SEO audit` запускается вручную в GitHub Actions и сохраняет JSON-отчёт.
 - `node tools/checks/run.mjs` — сборка и проверки записей, маршрутов, страниц, языковых метаданных и поисковых файлов.
 - `node tools/articles/validate-drafts.mjs` — валидация оставшихся черновиков.
 - `node tools/deploy/build-vps-bundle.mjs` и `validate-vps-bundle.mjs` — публичный release bundle и его проверка.

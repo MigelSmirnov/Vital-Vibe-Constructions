@@ -1,5 +1,10 @@
 # HANDOFF
 
+## Redirect SEO audit — 2026-09-15
+
+Added a dependency-free live redirect auditor and manual GitHub Actions workflow on `agent/redirect-seo-audit`. The production run checked nine Caddy redirects, 25 sitemap URLs, robots access, a generated 404 probe and redirect parity for browser, Googlebot and OAI-SearchBot: zero errors and zero warnings. Unit tests cover Caddy parsing, configured-chain detection, robots longest-match behavior, manual hops and loops. The full repository check was not run because this change was made through the connected GitHub workflow rather than a local checkout.
+
+
 Version: 60
 Updated: 2026-09-13T21:13:30Z
 

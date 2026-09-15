@@ -1,8 +1,8 @@
-version: 63
-updated_at: 2026-09-13T21:13:30Z
+version: 64
+updated_at: 2026-09-15T19:34:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/localized-home-sitemap
+active_branch: agent/redirect-seo-audit
 pull_request:
   number: 1
   state: merged-historical
@@ -10,6 +10,20 @@ pull_request:
   head: agent/architecture-sandbox
 
 task_queue: task/README.md
+
+redirect_seo_audit:
+  tool: tools/seo/audit-redirects.mjs
+  workflow: .github/workflows/redirect-audit.yml
+  production_checked_at: 2026-09-15T19:31:05Z
+  configured_redirects: 9
+  sitemap_urls: 25
+  redirect_errors: 0
+  redirect_warnings: 0
+  browser_googlebot_oai_redirect_parity: true
+  not_found_status: 404
+  unit_tests: passed-3
+  full_project_checks: not-run-connector-only
+
 next_proposed_task: task/003-vps-cutover.md
 
 localized_home_sitemap:
