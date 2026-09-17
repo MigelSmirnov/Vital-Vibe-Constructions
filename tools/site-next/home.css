@@ -195,3 +195,116 @@
   html { scroll-behavior: auto; }
   .home *, .home *::before, .home *::after { animation: none !important; transition: none !important; }
 }
+
+/* Venetian mineral concept v1 — visual-only override for the concept branch. */
+.home {
+  --bg: #eee7db;
+  --surface: #e3d8c8;
+  --text: #2b2722;
+  --muted: #70685f;
+  --accent: #aa6246;
+  --border: #c8b9a5;
+  background: #d2c7b8;
+}
+.home main {
+  border-inline-color: #c5b6a2;
+  box-shadow: 0 24px 70px rgba(72, 56, 39, .12);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 12% 6%, rgba(255,255,255,.62), transparent 38%),
+    radial-gradient(ellipse at 78% 32%, rgba(132,98,69,.08), transparent 44%),
+    radial-gradient(ellipse at 34% 84%, rgba(255,255,255,.36), transparent 38%),
+    linear-gradient(112deg, rgba(255,255,255,.14), rgba(117,88,64,.035) 42%, rgba(255,255,255,.12));
+}
+.home .site-header {
+  --text: #f4efe7;
+  --muted: #c8c0b5;
+  --accent: #d18866;
+  --border: #474b46;
+  border-inline-color: #343834;
+  color: var(--text);
+  background-color: #282c29;
+  background-image:
+    radial-gradient(ellipse at 18% 0%, rgba(255,255,255,.055), transparent 34%),
+    linear-gradient(115deg, rgba(255,255,255,.025), rgba(0,0,0,.07));
+}
+.home .site-header .menu nav {
+  background: #2b2f2c;
+  border-color: var(--border);
+  box-shadow: 0 18px 44px rgba(0,0,0,.28);
+}
+.home .hero-content {
+  background-color: #eee7db;
+  background-image:
+    radial-gradient(ellipse at 10% 14%, rgba(255,255,255,.72), transparent 42%),
+    radial-gradient(ellipse at 88% 80%, rgba(151,109,77,.11), transparent 44%),
+    linear-gradient(118deg, rgba(255,255,255,.10), rgba(111,82,60,.025) 54%, rgba(255,255,255,.08));
+}
+.home .hero-summary { color: #5e574f; }
+.home h1 span { color: #a95f43; }
+.home .button-primary {
+  background: linear-gradient(110deg, #bd7454, #9d5039);
+  color: #fffaf4;
+  box-shadow: 0 8px 20px rgba(113, 66, 46, .14);
+}
+.home .button-secondary { color: #342f2a; border-color: #a86146; }
+.home .hero-visual figcaption { background: rgba(37, 39, 35, .84); color: #f5f0e8; }
+.home .projects { background: transparent; }
+.home .featured-bathroom,
+.home .project-card {
+  background: rgba(255,255,255,.16);
+  border-color: #c2b29d;
+}
+.home .service-row { border-bottom-color: #c7b8a5; }
+.home .service-toggle,
+.home .featured-bathroom figcaption > span,
+.home .featured-bathroom-body > span { color: #a95f43; }
+.home .capabilities,
+.home .planner,
+.home .site-footer {
+  --text: #f3eee6;
+  --muted: #c7c0b5;
+  --accent: #d18968;
+  --border: #4b504b;
+  color: var(--text);
+  background-color: #303531;
+  background-image:
+    radial-gradient(ellipse at 12% 8%, rgba(255,255,255,.055), transparent 38%),
+    radial-gradient(ellipse at 84% 72%, rgba(166,112,81,.08), transparent 42%),
+    linear-gradient(122deg, rgba(255,255,255,.018), rgba(0,0,0,.08));
+}
+.home .capabilities .button-secondary,
+.home .planner .button-secondary,
+.home .site-footer .button-secondary { color: var(--text); }
+.home .tiers {
+  --text: #2b2722;
+  --muted: #625a51;
+  --accent: #945b43;
+  --border: #b8a58d;
+  color: var(--text);
+  background-color: #d9c9b3;
+  background-image:
+    radial-gradient(ellipse at 18% 12%, rgba(255,255,255,.38), transparent 40%),
+    radial-gradient(ellipse at 78% 66%, rgba(129,91,61,.10), transparent 44%),
+    linear-gradient(112deg, rgba(255,255,255,.08), rgba(106,76,54,.04));
+}
+.home .tiers .eyebrow { color: #655b50; }
+.home .tiers .eyebrow::after { border-color: #945b43; }
+.home .tier-grid { border-block-color: #b39f86; }
+.home .tier-card, .home .tier-card-featured { border-right-color: #b39f86; }
+.home .tier-card > p { color: #554d44; }
+.home .tier-card .tier-label { color: #2b2722; }
+.home .tier-disclaimer { color: #5d544a; }
+.home .tier-badge { background: #8f5943; color: #fff8f1; }
+.home .contact {
+  background-color: #f1eadf;
+  background-image:
+    radial-gradient(ellipse at 12% 18%, rgba(255,255,255,.7), transparent 38%),
+    linear-gradient(120deg, rgba(255,255,255,.08), rgba(141,101,70,.04));
+}
+.home .site-footer { border-color: var(--border); }
+.home .footer-main > p,
+.home .footer-bottom { border-color: var(--border); }
+@media (max-width: 720px) {
+  .home .tier-card, .home .tier-card-featured { border-bottom-color: #b39f86; }
+}
