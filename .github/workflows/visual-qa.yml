@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - agent/architecture-sandbox
+      - agent/venetian-home-concept
     paths:
       - ".github/workflows/visual-qa.yml"
       - "tools/visual/**"
