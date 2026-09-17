@@ -21,6 +21,7 @@ else
 fi
 
 node tools/visual/check.mjs
+node tools/visual/project-locales.mjs
 node tools/visual/solar-embed.mjs
 node tools/visual/article-images.mjs
 node tools/visual/standard-project.mjs

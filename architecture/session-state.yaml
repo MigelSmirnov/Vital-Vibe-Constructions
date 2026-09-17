@@ -1,8 +1,8 @@
-version: 63
-updated_at: 2026-09-13T21:13:30Z
+version: 64
+updated_at: 2026-09-17T00:00:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/localized-home-sitemap
+active_branch: agent/project-translations
 pull_request:
   number: 1
   state: merged-historical
@@ -11,6 +11,15 @@ pull_request:
 
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
+
+project_localizations:
+  report: architecture/project-localizations/report.md
+  status: implemented-awaiting-browser-and-production-verification
+  languages: [es, en, ru]
+  project_pages: 12
+  catalog_pages: 3
+  sitemap_urls: 35
+  full_checks: 37-tests-0-errors-5-existing-warnings
 
 localized_home_sitemap:
   report: architecture/localized-home-sitemap/report.md

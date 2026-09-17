@@ -9,6 +9,16 @@
     "page_entity": {
       "decision": "deferred",
       "reason": "Current route metadata is derivable from Site and Project records; introduce Page only when page-owned metadata has more than one real consumer."
+    },
+    "project_localization": {
+      "source_language": "es",
+      "languages": [
+        "es",
+        "en",
+        "ru"
+      ],
+      "strategy": "Explicit localized projections of the existing project-detail and projects-index routes; one sibling per language, shared media and original Spanish URLs retained.",
+      "missing_translation": "fail-build"
     }
   },
   "required_page_output": [
@@ -80,6 +90,20 @@
       "output_pattern": "site-next/{localized-article-base}/index.html",
       "entity_type": "ArticleCollection",
       "status": "generated"
+    },
+    {
+      "id": "projects-index-localized",
+      "path_pattern": "/{language}/projects/",
+      "output_pattern": "site-next/{language}/projects/index.html",
+      "entity_type": "ProjectCollection",
+      "status": "generated"
+    },
+    {
+      "id": "project-detail-localized",
+      "path_pattern": "/{language}/projects/{project.slug}/",
+      "output_pattern": "site-next/{language}/projects/{project.slug}/index.html",
+      "entity_type": "Project",
+      "status": "generated"
     }
   ],
   "routes": [
@@ -143,7 +167,8 @@
         "content/tables/projects.yaml"
       ],
       "generated_html_path": "site-next/projects/index.html",
-      "sitemap_eligible": true
+      "sitemap_eligible": true,
+      "language": "es"
     },
     {
       "id": "project-studio-renovation-barcelona",
@@ -157,7 +182,8 @@
         "galeria-economica.dc.html"
       ],
       "generated_html_path": "site-next/projects/estudio-reformado-barcelona/index.html",
-      "sitemap_eligible": true
+      "sitemap_eligible": true,
+      "language": "es"
     },
     {
       "id": "project-reforma-integral-estandar-barcelona",
@@ -171,7 +197,8 @@
         "galeria-estandar.dc.html"
       ],
       "generated_html_path": "site-next/projects/reforma-integral-estandar-barcelona/index.html",
-      "sitemap_eligible": true
+      "sitemap_eligible": true,
+      "language": "es"
     },
     {
       "id": "project-trabajos-contrata-premium",
@@ -185,7 +212,8 @@
         "galeria-premium.dc.html"
       ],
       "generated_html_path": "site-next/projects/trabajos-contrata-premium/index.html",
-      "sitemap_eligible": true
+      "sitemap_eligible": true,
+      "language": "es"
     },
     {
       "id": "gallery-index",
@@ -236,7 +264,8 @@
         "content/tables/media.yaml"
       ],
       "generated_html_path": "site-next/projects/traslado-lavabo-toallero-badalona/index.html",
-      "sitemap_eligible": true
+      "sitemap_eligible": true,
+      "language": "es"
     },
     {
       "id": "article-bathroom-sink-relocation-es",
@@ -480,6 +509,166 @@
       ],
       "generated_html_path": "site-next/ru/articles/vyravnivanie-pola-pered-ukladkoy/index.html",
       "sitemap_eligible": true
+    },
+    {
+      "id": "projects-index-en",
+      "family_id": "projects-index-localized",
+      "path": "/en/projects/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/projects/",
+      "entity_type": "ProjectCollection",
+      "entity_id": null,
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/en/projects/index.html",
+      "sitemap_eligible": true,
+      "language": "en"
+    },
+    {
+      "id": "projects-index-ru",
+      "family_id": "projects-index-localized",
+      "path": "/ru/projects/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/projects/",
+      "entity_type": "ProjectCollection",
+      "entity_id": null,
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/ru/projects/index.html",
+      "sitemap_eligible": true,
+      "language": "ru"
+    },
+    {
+      "id": "project-studio-renovation-barcelona-en",
+      "family_id": "project-detail-localized",
+      "path": "/en/projects/estudio-reformado-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/projects/estudio-reformado-barcelona/",
+      "entity_type": "Project",
+      "entity_id": "project-studio-renovation-barcelona",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/en/projects/estudio-reformado-barcelona/index.html",
+      "sitemap_eligible": true,
+      "language": "en"
+    },
+    {
+      "id": "project-studio-renovation-barcelona-ru",
+      "family_id": "project-detail-localized",
+      "path": "/ru/projects/estudio-reformado-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/projects/estudio-reformado-barcelona/",
+      "entity_type": "Project",
+      "entity_id": "project-studio-renovation-barcelona",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/ru/projects/estudio-reformado-barcelona/index.html",
+      "sitemap_eligible": true,
+      "language": "ru"
+    },
+    {
+      "id": "project-reforma-integral-estandar-barcelona-en",
+      "family_id": "project-detail-localized",
+      "path": "/en/projects/reforma-integral-estandar-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/projects/reforma-integral-estandar-barcelona/",
+      "entity_type": "Project",
+      "entity_id": "project-reforma-integral-estandar-barcelona",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/en/projects/reforma-integral-estandar-barcelona/index.html",
+      "sitemap_eligible": true,
+      "language": "en"
+    },
+    {
+      "id": "project-reforma-integral-estandar-barcelona-ru",
+      "family_id": "project-detail-localized",
+      "path": "/ru/projects/reforma-integral-estandar-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/projects/reforma-integral-estandar-barcelona/",
+      "entity_type": "Project",
+      "entity_id": "project-reforma-integral-estandar-barcelona",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/ru/projects/reforma-integral-estandar-barcelona/index.html",
+      "sitemap_eligible": true,
+      "language": "ru"
+    },
+    {
+      "id": "project-trabajos-contrata-premium-en",
+      "family_id": "project-detail-localized",
+      "path": "/en/projects/trabajos-contrata-premium/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/projects/trabajos-contrata-premium/",
+      "entity_type": "Project",
+      "entity_id": "project-trabajos-contrata-premium",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/en/projects/trabajos-contrata-premium/index.html",
+      "sitemap_eligible": true,
+      "language": "en"
+    },
+    {
+      "id": "project-trabajos-contrata-premium-ru",
+      "family_id": "project-detail-localized",
+      "path": "/ru/projects/trabajos-contrata-premium/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/projects/trabajos-contrata-premium/",
+      "entity_type": "Project",
+      "entity_id": "project-trabajos-contrata-premium",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/ru/projects/trabajos-contrata-premium/index.html",
+      "sitemap_eligible": true,
+      "language": "ru"
+    },
+    {
+      "id": "project-bathroom-ponent-badalona-en",
+      "family_id": "project-detail-localized",
+      "path": "/en/projects/traslado-lavabo-toallero-badalona/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/projects/traslado-lavabo-toallero-badalona/",
+      "entity_type": "Project",
+      "entity_id": "project-bathroom-ponent-badalona",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/en/projects/traslado-lavabo-toallero-badalona/index.html",
+      "sitemap_eligible": true,
+      "language": "en"
+    },
+    {
+      "id": "project-bathroom-ponent-badalona-ru",
+      "family_id": "project-detail-localized",
+      "path": "/ru/projects/traslado-lavabo-toallero-badalona/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/projects/traslado-lavabo-toallero-badalona/",
+      "entity_type": "Project",
+      "entity_id": "project-bathroom-ponent-badalona",
+      "status": "generated",
+      "source_files": [
+        "content/tables/projects.yaml",
+        "content/tables/project-localizations.yaml"
+      ],
+      "generated_html_path": "site-next/ru/projects/traslado-lavabo-toallero-badalona/index.html",
+      "sitemap_eligible": true,
+      "language": "ru"
     }
   ],
   "legacy_source_mappings": [

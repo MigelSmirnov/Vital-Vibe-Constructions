@@ -6,6 +6,7 @@ import process from "node:process";
 const checks = [
   ["Knowledge tests", "node", [
     "--test",
+    "knowledge/project-localizations.test.mjs",
     "knowledge/entities/media.test.mjs",
     "knowledge/entities/service.test.mjs",
     "knowledge/entities/article.test.mjs",
@@ -21,6 +22,8 @@ const checks = [
   ["service pages build", "node", ["tools/site-next/build-services.mjs"]],
   ["article pages build", "node", ["tools/articles/build-public.mjs"]],
   ["root path normalization", "node", ["tools/site-next/normalize-root-paths.mjs"]],
+  ["localized project pages build", "node", ["tools/site-next/build-project-locales.mjs"]],
+  ["localized project pages validation", "node", ["tools/site-next/validate-project-locales.mjs"]],
   ["root path validation", "node", ["tools/site-next/validate-root-paths.mjs"]],
   ["project pages validation", "node", ["tools/site-next/validate-project-pages.mjs"]],
   ["gallery page validation", "node", ["tools/site-next/validate-gallery-page.mjs"]],

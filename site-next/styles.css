@@ -78,7 +78,7 @@ h3 { font-size: 1.3rem; }
 .capability-gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
 .capability-gallery figcaption { padding-top: 9px; color: var(--muted); font-size: .82rem; }
 .page-intro, .project-detail-intro { padding: 72px 0 54px; background: #181c20; }
-.page-intro h1, .project-detail-intro h1 { max-width: 900px; margin-bottom: 22px; font-size: 3.4rem; }
+.page-intro h1, .project-detail-intro h1 { overflow-wrap: anywhere; max-width: 900px; margin-bottom: 22px; font-size: 3.4rem; }
 .page-intro .container > p:last-child, .project-detail-summary { max-width: 780px; color: var(--muted); font-size: 1.08rem; }
 .project-index-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 18px; }
 .project-index-card { overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }

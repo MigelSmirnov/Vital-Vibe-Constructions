@@ -44,11 +44,13 @@ const gallery = ["obra", "suelo-base", "parquet", "pintura", "pasillo"].map((nam
   source: sourceSet(name, "(max-width: 760px) 92vw, (max-width: 1220px) 48vw, 581px"),
 }));
 
-await patch("projects/reforma-integral-estandar-barcelona/index.html", [lead, ...gallery]);
-await patch("projects/index.html", [{
-  ...lead,
-  label: "standard project index kitchen",
-  source: sourceSet("cocina", "(max-width: 760px) 92vw, 32vw"),
-}]);
+for (const prefix of ["", "en/", "ru/"]) {
+  await patch(prefix + "projects/reforma-integral-estandar-barcelona/index.html", [lead, ...gallery]);
+  await patch(prefix + "projects/index.html", [{
+    ...lead,
+    label: "standard project index kitchen",
+    source: sourceSet("cocina", "(max-width: 760px) 92vw, 32vw"),
+  }]);
+}
 
 console.log("Integrated responsive WebP sources for the standard project detail and project index.");

@@ -62,6 +62,7 @@ invariants:
     route_paths_unique: true
     canonical_urls_unique: true
     every_current_project_has_exactly_one_detail_route: true
+    every_project_has_one_localized_detail_route_per_supported_language: true
     eligible_routes_appear_once_in_sitemap: true
 
   external_apps:

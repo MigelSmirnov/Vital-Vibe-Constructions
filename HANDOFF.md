@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 60
-Updated: 2026-09-13T21:13:30Z
+Version: 61
+Updated: 2026-09-17
 
 ## Session rule
 
@@ -19,6 +19,11 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Project translations — active task
+
+Working branch: `agent/project-translations` in `/tmp/vital-vibe-vps-fb31a282`.
+Complete EN/RU project/catalog projections are implemented; homepage links keep the selected language. Canonical checks pass with 37 tests. Production f25d27b is still the rollback baseline until the new artifact is published and verified. See [translation report](architecture/project-localizations/report.md) for current validation and release evidence.
 
 ## Production — VPS cutover completed 2026-09-13
 

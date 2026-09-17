@@ -38,16 +38,18 @@ const names = [
   "techo-4",
 ];
 
-const file = path.join(dist, relativePath);
-let html = await readFile(file, "utf8");
-for (const name of names) {
-  html = wrapOnce(
-    html,
-    `/premium/${name}.jpeg`,
-    sourceSet(name),
-    `premium project ${name}`,
-  );
+for (const prefix of ["", "en/", "ru/"]) {
+  const file = path.join(dist, prefix + relativePath);
+  let html = await readFile(file, "utf8");
+  for (const name of names) {
+    html = wrapOnce(
+      html,
+      `/premium/${name}.jpeg`,
+      sourceSet(name),
+      `premium project ${name}`,
+    );
+  }
+  await writeFile(file, html, "utf8");
 }
-await writeFile(file, html, "utf8");
 
 console.log(`Integrated responsive WebP sources for ${names.length} premium project gallery images.`);
