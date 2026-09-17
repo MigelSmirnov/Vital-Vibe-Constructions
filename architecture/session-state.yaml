@@ -14,7 +14,12 @@ next_proposed_task: task/003-vps-cutover.md
 
 project_localizations:
   report: architecture/project-localizations/report.md
-  status: implemented-awaiting-browser-and-production-verification
+  status: published-and-verified
+  source_sha: ebd51356a925e84984bdfa2f520979fd11a44362
+  release_id: 20260917-ebd5135
+  local_browser_cases: 45
+  public_browser_cases: 45
+  public_routes_passed: 35
   languages: [es, en, ru]
   project_pages: 12
   catalog_pages: 3
@@ -87,11 +92,11 @@ solar_embed_width_fix:
 
 vps_execution:
   report: architecture/vps-cutover-20260913/report.md
-  release_sha: f25d27baa3abef644eedd87b4fcda614c828855d
+  release_sha: ebd51356a925e84984bdfa2f520979fd11a44362
   initial_migration_sha: fb31a282e0204bc37d3ced1982675fef0332573f
-  archive_sha256: 0775aef73e0fb6b0a9ca8224128d8106996cf251b8b939c1fae5860e279b555c
-  release_id: 20260913-f25d27b
-  server_current: /srv/vital-vibe/releases/20260913-f25d27b
+  archive_sha256: 671fb0812000daf3ce99503b8f98e9605fad9700feaac179a58762042a1a0315
+  release_id: 20260917-ebd5135
+  server_current: /srv/vital-vibe/releases/20260917-ebd5135
   public_cutover_complete: true
   public_url: https://vitalvibeconstruction.com
   production_browser_page_checks: 21
@@ -112,7 +117,7 @@ vps_execution:
   apex_a: 152.228.139.236
   www_cname: vitalvibeconstruction.com
   preserved_app_and_mail_dns: true
-  previous_vps_release: 20260913-2695336
+  previous_vps_release: 20260913-f25d27b
   rollback_hosting: unchanged-github-pages
   caddy_container: vvc-site
   caddy_listener: 127.0.0.1:8890

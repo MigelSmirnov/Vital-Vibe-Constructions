@@ -20,14 +20,14 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
-## Project translations — active task
+## Project translations — published 2026-09-17
 
 Working branch: `agent/project-translations` in `/tmp/vital-vibe-vps-fb31a282`.
-Complete EN/RU project/catalog projections are implemented; homepage links keep the selected language. Canonical checks pass with 37 tests. Production f25d27b is still the rollback baseline until the new artifact is published and verified. See [translation report](architecture/project-localizations/report.md) for current validation and release evidence.
+Production now serves `ebd51356a925e84984bdfa2f520979fd11a44362` from `/srv/vital-vibe/releases/20260917-ebd5135`. Complete EN/RU project/catalog pages and homepage links preserve language; image captions and metadata are translated. Canonical checks: 37 tests, 0 errors / 5 existing warnings. Local and production browser checks: 45 cases each; public sitemap: all 35 routes verified. Rollback release: `20260913-f25d27b`. See [translation report](architecture/project-localizations/report.md) for archive checksum and evidence.
 
-## Production — VPS cutover completed 2026-09-13
+## Previous production — VPS cutover completed 2026-09-13
 
-**Published and verified:** https://vitalvibeconstruction.com serves release SHA `f25d27baa3abef644eedd87b4fcda614c828855d` with all localized homepages in the sitemap. `/srv/vital-vibe/current` points to release `20260913-f25d27b`. Archive SHA-256: `0775aef73e0fb6b0a9ca8224128d8106996cf251b8b939c1fae5860e279b555c`.
+**Historical release (superseded above):** https://vitalvibeconstruction.com served release SHA `f25d27baa3abef644eedd87b4fcda614c828855d` with all localized homepages in the sitemap. `/srv/vital-vibe/current` points to release `20260913-f25d27b`. Archive SHA-256: `0775aef73e0fb6b0a9ca8224128d8106996cf251b8b939c1fae5860e279b555c`.
 
 Owner changed DonDominio manually: apex now has one A record `152.228.139.236`; www CNAME is `vitalvibeconstruction.com.`. Both authoritative servers agree. Existing app, other subdomains and mail records were preserved. Original zone screenshots and private nginx backup are retained on VPS under `/home/ubuntu/vvc-migration-fb31a282/backup/`.
 

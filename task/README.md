@@ -30,7 +30,7 @@
 
 | Приоритет | Задача | Статус / результат |
 | --- | --- | --- |
-| В работе | [Переводы проектов](../architecture/project-localizations/report.md) | ES/EN/RU: 4 проекта и каталог; проверки исходников пройдены, проверка браузера и публикация выполняются. |
+| Готово | [Переводы проектов](../architecture/project-localizations/report.md) | ES/EN/RU: 4 проекта и каталог опубликованы на VPS, релиз ebd5135; 37 тестов, 45 локальных и 45 production browser cases, 35 публичных маршрутов проверены. |
 | Следующий шаг | [Crawler / AEO](../architecture/crawler-aeo-audit/report.md) | Netlify preview закрыт (401); /en/ и /ru/ добавлены в production sitemap, 25 URL проверены, релиз f25d27b. Далее: проверить индексацию через кабинеты поисковиков. |
 | Готово | Shared secondary reduced-motion scroll cleanup | Run #68 зелёный; gallery + El Raval получают `scroll-behavior: auto` при reduced motion. |
 | Готово | [002 — responsive image optimization](002-responsive-images.md) | Текущий bounded scope закрыт: homepage + Standard + Premium + hero/LCP + top-16 gallery reuse зелёные. |
