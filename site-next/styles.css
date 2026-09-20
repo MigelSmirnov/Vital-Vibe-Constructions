@@ -96,6 +96,7 @@ h3 { font-size: 1.3rem; }
 .project-facts dd { margin: 3px 0 0; font-weight: 750; }
 .project-detail-lead { padding: 34px 0 0; background: #181c20; }
 .project-detail-lead img { width: 100%; height: 560px; object-fit: cover; border-radius: 8px; }
+.project-lead-caption { color: var(--muted); font-size: .85rem; margin: 12px 0 0; }
 .project-detail-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 440px); gap: 56px; }
 .project-detail-grid p, .project-service-list span { color: var(--muted); }
 .project-service-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }

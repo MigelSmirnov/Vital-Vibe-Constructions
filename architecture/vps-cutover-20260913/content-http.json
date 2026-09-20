@@ -1,0 +1,22 @@
+{
+  "/ru/articles/pokraska-sten-cena-podgotovka/": {
+    "sections": 10,
+    "photographs": 2
+  },
+  "/ru/articles/vyravnivanie-pola-pered-ukladkoy/": {
+    "sections": 11,
+    "photographs": 6
+  },
+  "/articulos/": {
+    "cards": 4
+  },
+  "/en/articles/": {
+    "cards": 4
+  },
+  "/ru/articles/": {
+    "cards": 4
+  },
+  "gallery": {
+    "images": 40
+  }
+}

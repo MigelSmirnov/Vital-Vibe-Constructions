@@ -13,10 +13,13 @@
   # confirms the old paths no longer need explicit redirects.
   redir /projects.html /projects/ permanent
   redir /proyecto-1.html /projects/estudio-reformado-barcelona/ permanent
-  redir /proyecto-2.html /projects/piso-reformado-barcelona/ permanent
+  redir /proyecto-2.html /projects/estudio-reformado-barcelona/ permanent
+  redir /projects/piso-reformado-barcelona /projects/estudio-reformado-barcelona/ permanent
+  redir /projects/piso-reformado-barcelona/ /projects/estudio-reformado-barcelona/ permanent
   redir /galeria-economica.dc.html /gallery/ permanent
   redir /galeria-estandar.dc.html /gallery/ permanent
   redir /galeria-premium.dc.html /gallery/ permanent
+  redir /sandbox/articles/reading/traslado-lavabo-toallero-cuatro-dias/ /articulos/traslado-lavabo-toallero/ permanent
 
   header {
     # Reduce passive service fingerprinting. This is hygiene, not a substitute
@@ -25,7 +28,8 @@
 
     X-Content-Type-Options "nosniff"
     Referrer-Policy "strict-origin-when-cross-origin"
-    X-Frame-Options "DENY"
+    # The solar collector v3 diagram is embedded by same-origin article pages.
+    X-Frame-Options "SAMEORIGIN"
     Permissions-Policy "camera=(), microphone=(), geolocation=()"
     Cache-Control "no-cache"
   }
