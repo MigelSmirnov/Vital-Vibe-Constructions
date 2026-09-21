@@ -19,7 +19,7 @@ export function localizeServiceHtml(source, route, routes, localization, origin)
     return `${sibling?.path ?? pathname}${hash}`;
   };
 
-  let html = source.replace(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/g, (_match, json) => {
+  let html = source.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (_match, json) => {
     const value = JSON.parse(json, (key, item) => {
       if (typeof item !== "string") return item;
       if (["name", "description", "locationCreated", "areaServed", "serviceType", "text"].includes(key)) {
@@ -36,12 +36,12 @@ export function localizeServiceHtml(source, route, routes, localization, origin)
     return `<script type="application/ld+json">${JSON.stringify(value, null, 2).replaceAll("<", "\\u003c")}</script>`;
   });
 
-  html = html.split(/(<script\\b[^>]*>[\\s\\S]*?<\\/script>|<[^>]+>)/g).map((token) => {
+  html = html.split(/(<script\b[^>]*>[\s\S]*?<\/script>|<[^>]+>)/g).map((token) => {
     if (token.startsWith("<script")) return token;
-    if (!token.startsWith("<")) return token.replace(/\\S[\\s\\S]*\\S|\\S/g, (text) => translate(text));
+    if (!token.startsWith("<")) return token.replace(/\S[\s\S]*\S|\S/g, (text) => translate(text));
     if (token.startsWith("<html ")) return `<html lang="${language}">`;
-    const textualMeta = /^<meta\\b/.test(token) && /(?:name|property)="(?:description|og:title|og:description)"/.test(token);
-    return token.replace(/\\b(alt|aria-label|content|href)="([^"]*)"/g, (match, attr, value) => {
+    const textualMeta = /^<meta\b/.test(token) && /(?:name|property)="(?:description|og:title|og:description)"/.test(token);
+    return token.replace(/\b(alt|aria-label|content|href)="([^"]*)"/g, (match, attr, value) => {
       if (attr === "alt" || attr === "aria-label" || (attr === "content" && textualMeta)) {
         return `${attr}="${translate(value)}"`;
       }
