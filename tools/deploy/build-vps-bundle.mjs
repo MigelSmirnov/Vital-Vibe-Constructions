@@ -58,6 +58,14 @@ function wrapResponsiveImage(html, { src, source, label }) {
   );
 }
 
+async function normalizeLegacyLegalCompatibility() {
+  const file = path.join(outputRoot, "aviso-legal.dc.html");
+  let html = await readFile(file, "utf8");
+  html = html.replaceAll("Vital Vibe Constructions", "Vital Vibe Construction");
+  html = html.replace(/©\s+\d{4}\s+Vital Vibe Construction/g, `© ${new Date().getUTCFullYear()} Vital Vibe Construction`);
+  await writeFile(file, html, "utf8");
+}
+
 async function integrateHomepageResponsiveImages() {
   execFileSync("bash", [path.join(root, "tools/media/build-home-responsive.sh"), responsiveWorkRoot], {
     cwd: root,
@@ -131,6 +139,8 @@ async function main() {
   for (const file of rootFiles) {
     await copyRequired(file);
   }
+
+  await normalizeLegacyLegalCompatibility();
 
   for (const directory of assetDirectories) {
     await cp(path.join(root, directory), path.join(outputRoot, directory), {
