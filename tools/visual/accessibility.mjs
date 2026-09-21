@@ -90,12 +90,33 @@ try {
         const focus = await page.evaluate(() => {
           const active = document.activeElement;
           if (!active || active === document.body || active === document.documentElement) return null;
-          const style = getComputedStyle(active);
-          const text = (active.getAttribute("aria-label") || active.textContent || "").trim().replace(/\s+/g, " ").slice(0, 60);
-          const key = `${active.tagName}:${active.getAttribute("href") || ""}:${text}`;
-          const outlineVisible = style.outlineStyle !== "none" && parseFloat(style.outlineWidth || "0") > 0;
-          const shadowVisible = style.boxShadow && style.boxShadow !== "none";
-          return { key, element: `${active.tagName.toLowerCase()}${text ? ` \"${text}\"` : ""}`, outline: `${style.outlineWidth} ${style.outlineStyle} ${style.outlineColor}`, visibleIndicator: outlineVisible || shadowVisible };
+
+          const inspect = (element, style, insideFrame = false) => {
+            const text = (element.getAttribute("aria-label") || element.textContent || "").trim().replace(/\s+/g, " ").slice(0, 60);
+            const key = `${insideFrame ? "IFRAME>" : ""}${element.tagName}:${element.getAttribute("href") || ""}:${text}`;
+            const outlineVisible = style.outlineStyle !== "none" && parseFloat(style.outlineWidth || "0") > 0;
+            const shadowVisible = style.boxShadow && style.boxShadow !== "none";
+            return {
+              key,
+              element: `${insideFrame ? "iframe → " : ""}${element.tagName.toLowerCase()}${text ? ` "${text}"` : ""}`,
+              outline: `${style.outlineWidth} ${style.outlineStyle} ${style.outlineColor}`,
+              visibleIndicator: outlineVisible || shadowVisible,
+            };
+          };
+
+          if (active.tagName === "IFRAME") {
+            try {
+              const frameDocument = active.contentDocument;
+              const frameActive = frameDocument?.activeElement;
+              if (frameActive && frameActive !== frameDocument.body && frameActive !== frameDocument.documentElement) {
+                return inspect(frameActive, active.contentWindow.getComputedStyle(frameActive), true);
+              }
+            } catch {
+              // Cross-origin frames cannot be inspected; fall back to the outer browsing context.
+            }
+          }
+
+          return inspect(active, getComputedStyle(active));
         });
         if (!focus || seen.has(focus.key)) continue;
         seen.add(focus.key);
@@ -124,7 +145,7 @@ for (const result of results) {
 }
 
 const rows = results.map((result) => `| ${result.target.path} | ${result.width}x${result.height} | ${result.missingTokens.length} | ${result.targetViolations.length} | ${result.focusFailures.length} | ${result.motion.violations.length} | ${result.motion.scrollBehavior} |`).join("\n");
-const report = `# Accessibility QA report\n\n${blocking.length ? `**FAIL** - ${blocking.length} blocking finding(s).` : "**PASS** - semantic tokens, target size, sampled keyboard focus and reduced-motion checks passed."}\n\nMinimum checked control target: ${minTarget}px. Inline text links are excluded from target-size enforcement because WCAG 2.2 provides an inline-link exception.\n\n| Route | Viewport | Missing tokens | Small controls | Focus failures | Motion rules | Scroll behavior |\n| --- | ---: | ---: | ---: | ---: | ---: | --- |\n${rows}\n\n${blocking.length ? `## Blocking findings\n\n${blocking.map((item) => `- ${item}`).join("\n")}\n\n` : ""}## Scope\n\nEvery tested page must expose --bg, --surface, --text, --muted, --accent and --border. Focus is sampled with real Tab traversal. Reduced-motion fails when visible CSS transitions or animations exceed 1 ms; computed scroll behavior is recorded for review.\n`;
+const report = `# Accessibility QA report\n\n${blocking.length ? `**FAIL** - ${blocking.length} blocking finding(s).` : "**PASS** - semantic tokens, target size, sampled keyboard focus and reduced-motion checks passed."}\n\nMinimum checked control target: ${minTarget}px. Inline text links are excluded from target-size enforcement because WCAG 2.2 provides an inline-link exception.\n\n| Route | Viewport | Missing tokens | Small controls | Focus failures | Motion rules | Scroll behavior |\n| --- | ---: | ---: | ---: | ---: | ---: | --- |\n${rows}\n\n${blocking.length ? `## Blocking findings\n\n${blocking.map((item) => `- ${item}`).join("\n")}\n\n` : ""}## Scope\n\nEvery tested page must expose --bg, --surface, --text, --muted, --accent and --border. Focus is sampled with real Tab traversal, including the active control inside same-origin iframes. Reduced-motion fails when visible CSS transitions or animations exceed 1 ms; computed scroll behavior is recorded for review.\n`;
 await writeFile(path.join(out, "accessibility.json"), `${JSON.stringify({ minTarget, results, blocking }, null, 2)}\n`, "utf8");
 await writeFile(path.join(out, "accessibility.md"), report, "utf8");
 console.log(`a11y: report -> ${path.relative(root, path.join(out, "accessibility.md"))}`);
