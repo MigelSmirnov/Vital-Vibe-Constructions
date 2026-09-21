@@ -32,7 +32,7 @@ test("service localization rewrites canonical, project links and JSON-LD languag
   assert.ok(html.includes('href="https://example.com/en/servicios/test/"'));
   assert.ok(html.includes('href="/en/projects/test/"'));
   assert.ok(html.includes(">Hello<"));
-  const data = JSON.parse(html.match(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/)[1]);
+  const data = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   assert.equal(data["@graph"][0].inLanguage, "en");
   assert.equal(data["@graph"][0].url, "https://example.com/en/servicios/test/");
 });
