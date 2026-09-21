@@ -1,4 +1,5 @@
 import { ProjectLocalizations } from "../project-localizations.mjs";
+import { ServiceLocalizations } from "../service-localizations.mjs";
 import { assertUniqueEntityKeys, assertUniqueField } from "../core/collection-invariants.mjs";
 import { CapabilitySection } from "../entities/capability-section.mjs";
 import { ContactDetails } from "../entities/contact-details.mjs";
@@ -11,8 +12,9 @@ import { Site } from "../entities/site.mjs";
 import { Article } from "../entities/article.mjs";
 
 export class KnowledgeRepository {
-  constructor({ site, capabilitySections, contactDetails, services, renovationTiers, projects, externalApps, media, articles = [], projectLocalizations }) {
+  constructor({ site, capabilitySections, contactDetails, services, renovationTiers, projects, externalApps, media, articles = [], projectLocalizations, serviceLocalizations }) {
     this.projectLocalizations = new ProjectLocalizations(projectLocalizations);
+    this.serviceLocalizations = new ServiceLocalizations(serviceLocalizations);
     this.site = Site.fromRecord(site, "content/tables/site.yaml#site");
     this.capabilitySections = Object.freeze(
       capabilitySections.map((record, index) =>
