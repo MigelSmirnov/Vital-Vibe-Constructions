@@ -19,6 +19,16 @@
       ],
       "strategy": "Explicit localized projections of the existing project-detail and projects-index routes; one sibling per language, shared media and original Spanish URLs retained.",
       "missing_translation": "fail-build"
+    },
+    "service_localization": {
+      "source_language": "es",
+      "languages": [
+        "es",
+        "en",
+        "ru"
+      ],
+      "strategy": "Explicit localized projections of generated service-detail routes; language-prefixed siblings keep the stable Spanish service slug.",
+      "missing_translation": "fail-build"
     }
   },
   "required_page_output": [
@@ -62,6 +72,13 @@
       "id": "service-detail",
       "path_pattern": "/servicios/{service.slug}-barcelona/",
       "output_pattern": "site-next/servicios/{service.slug}-barcelona/index.html",
+      "entity_type": "Service",
+      "status": "generated"
+    },
+    {
+      "id": "service-detail-localized",
+      "path_pattern": "/{language}/servicios/{service.slug}-barcelona/",
+      "output_pattern": "site-next/{language}/servicios/{service.slug}-barcelona/index.html",
       "entity_type": "Service",
       "status": "generated"
     },
@@ -249,7 +266,8 @@
         "content/tables/contact-details.yaml"
       ],
       "generated_html_path": "site-next/servicios/reformas-integrales-barcelona/index.html",
-      "sitemap_eligible": true
+      "sitemap_eligible": true,
+      "language": "es"
     },
     {
       "id": "project-bathroom-ponent-badalona",
@@ -669,6 +687,46 @@
       "generated_html_path": "site-next/ru/projects/traslado-lavabo-toallero-badalona/index.html",
       "sitemap_eligible": true,
       "language": "ru"
+    },
+    {
+      "id": "service-integral-renovation-barcelona-en",
+      "family_id": "service-detail-localized",
+      "path": "/en/servicios/reformas-integrales-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/servicios/reformas-integrales-barcelona/",
+      "entity_type": "Service",
+      "entity_id": "integral-renovation",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/services.yaml",
+        "content/tables/service-localizations.yaml",
+        "content/tables/projects.yaml",
+        "content/tables/media.yaml",
+        "content/tables/site.yaml",
+        "content/tables/contact-details.yaml"
+      ],
+      "generated_html_path": "site-next/en/servicios/reformas-integrales-barcelona/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "service-integral-renovation-barcelona-ru",
+      "family_id": "service-detail-localized",
+      "path": "/ru/servicios/reformas-integrales-barcelona/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/servicios/reformas-integrales-barcelona/",
+      "entity_type": "Service",
+      "entity_id": "integral-renovation",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/services.yaml",
+        "content/tables/service-localizations.yaml",
+        "content/tables/projects.yaml",
+        "content/tables/media.yaml",
+        "content/tables/site.yaml",
+        "content/tables/contact-details.yaml"
+      ],
+      "generated_html_path": "site-next/ru/servicios/reformas-integrales-barcelona/index.html",
+      "sitemap_eligible": true
     }
   ],
   "legacy_source_mappings": [
