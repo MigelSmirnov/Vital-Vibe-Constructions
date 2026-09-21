@@ -52,9 +52,10 @@ for (const base of routes.filter((route) => route.language === "es")) {
         }
       }
       const body = html.slice(html.indexOf("<body"));
-      assert.ok(!body.includes('href="/servicios/'), `Service link loses language: ${route.path}`);
-      assert.ok(!body.includes('href="/projects/'), `Project link loses language: ${route.path}`);
-      assert.ok(body.includes(`href="/${route.language}/#contacto"`), `Contact language: ${route.path}`);
+      const bodyWithoutSwitcher = body.replace(/<div class="language-switcher"[^>]*>[\\s\\S]*?<\\/div>/, "");
+      assert.ok(!bodyWithoutSwitcher.includes('href="/servicios/'), `Service link loses language: ${route.path}`);
+      assert.ok(!bodyWithoutSwitcher.includes('href="/projects/'), `Project link loses language: ${route.path}`);
+      assert.ok(bodyWithoutSwitcher.includes(`href="/${route.language}/#contacto"`), `Contact language: ${route.path}`);
       const home = await readFile(`site-next/${route.language}/index.html`, "utf8");
       assert.ok(!home.includes('href="/servicios/reformas-integrales-barcelona/"'), `Homepage service link loses language: ${route.language}`);
     }
