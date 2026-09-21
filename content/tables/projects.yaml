@@ -1,10 +1,10 @@
 {
   "projects": [
     {
-      "id": "project-piso-reformado-barcelona",
-      "slug": "piso-reformado-barcelona",
-      "title": "Piso reformado en Barcelona",
-      "summary": "Reforma integral de un piso en Barcelona con cocina renovada y entrega llave en mano.",
+      "id": "project-studio-renovation-barcelona",
+      "slug": "estudio-reformado-barcelona",
+      "title": "Dos estudios independientes en un piso de 50 m² en El Raval",
+      "summary": "Conversión en dos fases de una vivienda de 50 m² sin instalaciones funcionales en dos estudios independientes, priorizando la ingeniería sobre los acabados decorativos.",
       "image_ids": [
         "media-proyecto-2-cocina-despues",
         "media-proyecto-2-cocina-antes",
@@ -13,18 +13,7 @@
         "media-proyecto-2-dormitorio-reformado",
         "media-proyecto-2-bano-reformado",
         "media-proyecto-2-cocina-reformada",
-        "media-proyecto-2-pasillo-reformado"
-      ],
-      "service_ids": ["integral-renovation", "kitchens"],
-      "location": "Barcelona",
-      "budget_range": "Económico"
-    },
-    {
-      "id": "project-studio-renovation-barcelona",
-      "slug": "estudio-reformado-barcelona",
-      "title": "Dos estudios independientes en un piso de 50 m² en El Raval",
-      "summary": "Conversión en dos fases de una vivienda de 50 m² sin instalaciones funcionales en dos estudios independientes, priorizando la ingeniería sobre los acabados decorativos.",
-      "image_ids": [
+        "media-proyecto-2-pasillo-reformado",
         "media-proyecto-1-estudio-reformado",
         "media-proyecto-1-estado-original",
         "media-proyecto-1-estudio-antes",
@@ -34,7 +23,14 @@
         "media-proyecto-1-aseo-reformado",
         "media-proyecto-1-pladur-preinstalacion"
       ],
-      "service_ids": ["integral-renovation", "bathrooms", "masonry", "painting", "electrical"],
+      "service_ids": [
+        "integral-renovation",
+        "bathrooms",
+        "masonry",
+        "painting",
+        "electrical",
+        "kitchens"
+      ],
       "location": "El Raval, Barcelona",
       "budget_range": "Económico",
       "area_m2": 50,
@@ -112,32 +108,6 @@
       },
       "estimated_total_cost_eur": 48000,
       "cost_note": "Importe aproximado. Algunos materiales fueron comprados directamente por el propietario, por lo que no es posible reconstruir un coste total exacto ni utilizar esta cifra como tarifa para otros proyectos.",
-      "pending_technical_media": [
-        {
-          "subject": "Formación y vertido de los suelos",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Suelos en fase de obra y cerramientos de yeso laminado",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Restauración de la pared",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Impermeabilización de los baños",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Instalación con tubo corrugado blanco",
-          "status": "pending-upload"
-        },
-        {
-          "subject": "Cuadro eléctrico",
-          "status": "pending-upload"
-        }
-      ],
       "transformation_summary": "Una vivienda de 50 m² sin servicios funcionales se convirtió en dos estudios independientes mediante una obra por fases, diseñada para que la segunda fase no interrumpiera la primera unidad ya terminada."
     },
     {
@@ -153,7 +123,13 @@
         "media-estandar-pintura-iluminacion",
         "media-estandar-pasillo"
       ],
-      "service_ids": ["integral-renovation", "kitchens", "electrical", "painting", "masonry"],
+      "service_ids": [
+        "integral-renovation",
+        "kitchens",
+        "electrical",
+        "painting",
+        "masonry"
+      ],
       "location": "Barcelona",
       "budget_range": "Estándar"
     },
@@ -179,9 +155,60 @@
         "media-premium-led-escalera",
         "media-premium-cuadro-villa"
       ],
-      "service_ids": ["electrical", "painting", "masonry"],
+      "service_ids": [
+        "electrical",
+        "painting",
+        "masonry"
+      ],
       "location": "Barcelona",
       "budget_range": "Premium"
+    },
+    {
+      "id": "project-bathroom-ponent-badalona",
+      "slug": "traslado-lavabo-toallero-badalona",
+      "title": "Traslado de lavabo y toallero en Badalona",
+      "summary": "Reforma parcial de baño en Badalona: traslado del lavabo a la pared derecha, instalación de toallero y reposición de las paredes afectadas en cuatro días.",
+      "image_ids": [
+        "media-home-bathroom",
+        "media-bathroom-sink-relocation-open-wall-utilities",
+        "media-bathroom-sink-relocation-wallboard-wide",
+        "media-bathroom-sink-relocation-wallboard-detail",
+        "media-bathroom-sink-relocation-tiling-corner",
+        "media-bathroom-sink-relocation-tiling-wall"
+      ],
+      "service_ids": [
+        "bathrooms"
+      ],
+      "location": "Badalona",
+      "duration": "4 días de trabajo",
+      "labour_cost_eur": 1100,
+      "project_type": "Reforma parcial de baño",
+      "initial_condition": {
+        "summary": "El lavabo estaba en la pared destinada al nuevo toallero. Al retirarlo quedaban a la vista la salida eléctrica del espejo y los orificios de las fijaciones; había que recuperar el acabado."
+      },
+      "project_objective": "Trasladar el lavabo a la pared derecha y añadir un toallero en su antigua ubicación, adaptando las conexiones y recuperando la parte afectada del revestimiento.",
+      "engineering_challenges": [
+        "Modificar las tomas de agua y el desagüe para la nueva posición del lavabo.",
+        "Reubicar el sensor de fugas, la toma eléctrica del toallero y la salida para el espejo.",
+        "Mantener la altura de la salida eléctrica del espejo en la nueva pared exigió retirar dos filas adicionales de azulejos por encima del lavabo."
+      ],
+      "engineering_decisions": {
+        "water_and_drainage": [
+          "Adaptación de las tomas de agua y del desagüe dentro de la pared abierta antes de cerrar el tabique."
+        ],
+        "electrical": [
+          "Traslado del sensor de fugas, la toma eléctrica del toallero y la salida prevista para el espejo."
+        ],
+        "partition_and_finish": [
+          "Retirada del alicatado en las paredes afectadas, incluidas dos filas adicionales para conservar la altura de la salida del espejo.",
+          "Reposición del soporte de yeso laminado y recuperación del alicatado."
+        ]
+      },
+      "cost_note": "La mano de obra de esta intervención costó 1.100 €, con retirada de escombros incluida. Los residuos casi llenaron un big bag. El importe corresponde a este encargo; no es un precio total de reforma con materiales ni una tarifa para otros baños.",
+      "transformation_summary": "En cuatro días de trabajo, el lavabo quedó en la pared derecha y se añadió el toallero en su antigua ubicación. Se adaptaron las instalaciones y se recuperó el alicatado de las zonas intervenidas.",
+      "article_ids": [
+        "article-bathroom-sink-relocation"
+      ]
     }
   ]
 }

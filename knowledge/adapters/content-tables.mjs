@@ -10,6 +10,7 @@ const TABLES = {
   projects: "content/tables/projects.yaml",
   externalApps: "content/tables/external-apps.yaml",
   media: "content/tables/media.yaml",
+  articles: "content/tables/articles.yaml",
 };
 
 export async function loadContentTables({ root = process.cwd() } = {}) {
@@ -22,6 +23,7 @@ export async function loadContentTables({ root = process.cwd() } = {}) {
     projectsTable,
     appsTable,
     mediaTable,
+    articlesTable,
   ] =
     await Promise.all([
       readJsonCompatibleTable(root, TABLES.site),
@@ -32,9 +34,12 @@ export async function loadContentTables({ root = process.cwd() } = {}) {
       readJsonCompatibleTable(root, TABLES.projects),
       readJsonCompatibleTable(root, TABLES.externalApps),
       readJsonCompatibleTable(root, TABLES.media),
+      readJsonCompatibleTable(root, TABLES.articles),
     ]);
 
   return {
+    projectLocalizations: await readJsonCompatibleTable(root, "content/tables/project-localizations.yaml"),
+    serviceLocalizations: await readJsonCompatibleTable(root, "content/tables/service-localizations.yaml"),
     site: requireObject(siteTable.site, "site"),
     capabilitySections: requireArray(capabilitySectionsTable.capabilitySections, "capabilitySections"),
     contactDetails: requireObject(contactDetailsTable.contactDetails, "contactDetails"),
@@ -43,6 +48,7 @@ export async function loadContentTables({ root = process.cwd() } = {}) {
     projects: requireArray(projectsTable.projects, "projects"),
     externalApps: requireArray(appsTable.externalApps, "externalApps"),
     media: requireArray(mediaTable.media, "media"),
+    articles: requireArray(articlesTable.articles, "articles"),
   };
 }
 

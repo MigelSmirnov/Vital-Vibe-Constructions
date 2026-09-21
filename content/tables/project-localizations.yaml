@@ -1,0 +1,774 @@
+{
+  "version": 1,
+  "unchanged": [
+    "Vital Vibe Construction",
+    "50 m²",
+    "© 2026 Vital Vibe Construction",
+    "Español",
+    "·",
+    "English",
+    "Русский"
+  ],
+  "translations": {
+    "Dos estudios independientes en un piso de 50 m² en El Raval | Vital Vibe Construction": {
+      "en": "Two independent studios in a 50 m² apartment in El Raval | Vital Vibe Construction",
+      "ru": "Две независимые студии в квартире 50 м² в Эль-Равале | Vital Vibe Construction"
+    },
+    "Conversión en dos fases de una vivienda de 50 m² sin instalaciones funcionales en dos estudios independientes, priorizando la ingeniería sobre los acabados decorativos.": {
+      "en": "Conversion of a 50 m² home with no working utilities into two independent studios in two phases, prioritising essential systems over decorative finishes.",
+      "ru": "Переустройство квартиры 50 м² без работающих коммуникаций в две независимые студии за два этапа, с приоритетом инженерных систем перед декоративной отделкой."
+    },
+    "Navegación principal": {
+      "en": "Main navigation",
+      "ru": "Основная навигация"
+    },
+    "Servicios": {
+      "en": "Services",
+      "ru": "Услуги"
+    },
+    "Proyectos": {
+      "en": "Projects",
+      "ru": "Проекты"
+    },
+    "Domótica": {
+      "en": "Smart home",
+      "ru": "Умный дом"
+    },
+    "Precios": {
+      "en": "Prices",
+      "ru": "Цены"
+    },
+    "Contacto": {
+      "en": "Contact",
+      "ru": "Контакты"
+    },
+    "Todos los proyectos": {
+      "en": "All projects",
+      "ru": "Все проекты"
+    },
+    "Proyecto · Económico": {
+      "en": "Project · Economy",
+      "ru": "Проект · Эконом"
+    },
+    "Dos estudios independientes en un piso de 50 m² en El Raval": {
+      "en": "Two independent studios in a 50 m² apartment in El Raval",
+      "ru": "Две независимые студии в квартире 50 м² в Эль-Равале"
+    },
+    "Ubicación": {
+      "en": "Location",
+      "ru": "Расположение"
+    },
+    "El Raval, Barcelona": {
+      "en": "El Raval, Barcelona",
+      "ru": "Эль-Раваль, Барселона"
+    },
+    "Tipo de proyecto": {
+      "en": "Project type",
+      "ru": "Тип проекта"
+    },
+    "Conversión de una vivienda en dos estudios independientes": {
+      "en": "Conversion of one home into two independent studios",
+      "ru": "Переустройство квартиры в две независимые студии"
+    },
+    "Superficie": {
+      "en": "Floor area",
+      "ru": "Площадь"
+    },
+    "Duración": {
+      "en": "Duration",
+      "ru": "Срок работ"
+    },
+    "2 fases de 2 meses": {
+      "en": "2 phases of 2 months each",
+      "ru": "2 этапа по 2 месяца"
+    },
+    "Coste aproximado": {
+      "en": "Approximate cost",
+      "ru": "Примерная стоимость"
+    },
+    "48.000 €": {
+      "en": "€48,000",
+      "ru": "48 000 €"
+    },
+    "Cocina reformada en Barcelona": {
+      "en": "Renovated kitchen in Barcelona",
+      "ru": "Кухня после ремонта в Барселоне"
+    },
+    "Punto de partida": {
+      "en": "Starting point",
+      "ru": "Исходное состояние"
+    },
+    "Estado inicial": {
+      "en": "Initial condition",
+      "ru": "Состояние до ремонта"
+    },
+    "Vivienda en estado muy deteriorado, sin instalaciones funcionales y sin puertas ni ventanas.": {
+      "en": "A severely deteriorated home with no working utilities, doors or windows.",
+      "ru": "Квартира в сильно запущенном состоянии, без работающих коммуникаций, дверей и окон."
+    },
+    "No había instalación funcional de agua.": {
+      "en": "There was no working water supply.",
+      "ru": "Работающего водоснабжения не было."
+    },
+    "No había instalación funcional de saneamiento.": {
+      "en": "There was no working drainage system.",
+      "ru": "Работающей канализации не было."
+    },
+    "No había instalación eléctrica funcional.": {
+      "en": "There was no working electrical installation.",
+      "ru": "Работающей электропроводки не было."
+    },
+    "El agua tuvo que subirse a través del rellano.": {
+      "en": "Water had to be brought up via the landing.",
+      "ru": "Воду приходилось поднимать через лестничную площадку."
+    },
+    "La alimentación eléctrica inicial se tomó desde la zona común de la escalera.": {
+      "en": "The initial electricity supply came from the shared stairwell area.",
+      "ru": "На начальном этапе электричество брали из общей зоны лестничной клетки."
+    },
+    "Faltaban puertas y ventanas.": {
+      "en": "Doors and windows were missing.",
+      "ru": "Двери и окна отсутствовали."
+    },
+    "El suelo presentaba un desnivel aproximado de 15 cm a lo largo de 10 metros.": {
+      "en": "The floor had a level difference of approximately 15 cm over 10 metres.",
+      "ru": "Перепад уровня пола составлял примерно 15 см на протяжении 10 метров."
+    },
+    "Al ver el estado inicial, se bromeó con el propietario diciendo que podía alquilar la vivienda a Hollywood como decorado para una película de terror.": {
+      "en": "Seeing the initial condition, we joked with the owner that the apartment could be rented to Hollywood as a horror film set.",
+      "ru": "Увидев исходное состояние, мы пошутили с владельцем, что квартиру можно сдавать Голливуду как декорацию для фильма ужасов."
+    },
+    "Objetivo": {
+      "en": "Objective",
+      "ru": "Задача"
+    },
+    "Objetivo de la intervención": {
+      "en": "Aim of the work",
+      "ru": "Цель работ"
+    },
+    "Crear dos estudios independientes y fiables para alquiler, manteniendo un presupuesto contenido y reservando la mayor parte del esfuerzo para resolver la ingeniería.": {
+      "en": "Create two reliable, independent rental studios on a limited budget, directing most of the effort towards resolving the building systems.",
+      "ru": "Создать две независимые и надёжные студии для сдачи в аренду при ограниченном бюджете, направив основные усилия на инженерные системы."
+    },
+    "Diagnóstico": {
+      "en": "Assessment",
+      "ru": "Диагностика"
+    },
+    "Principales desafíos de la obra": {
+      "en": "Main construction challenges",
+      "ru": "Основные сложности ремонта"
+    },
+    "Reconstruir desde cero las instalaciones de agua, electricidad y saneamiento.": {
+      "en": "Rebuild the water supply, electrical and drainage systems from scratch.",
+      "ru": "Полностью заново выполнить водоснабжение, электрику и канализацию."
+    },
+    "Corregir una instalación de saneamiento anterior que había abierto verticalmente una pared para ocultar una tubería.": {
+      "en": "Correct an earlier drainage installation that had cut vertically into a wall to conceal a pipe.",
+      "ru": "Исправить ранее проложенную канализацию, ради которой стену прорезали вертикально, чтобы скрыть трубу."
+    },
+    "Restaurar la pared afectada después de corregir el recorrido del saneamiento.": {
+      "en": "Restore the affected wall after correcting the drainage route.",
+      "ru": "Восстановить повреждённую стену после исправления трассы канализации."
+    },
+    "Corregir un desnivel de suelo aproximado de 15 cm en 10 metros.": {
+      "en": "Correct a floor level difference of approximately 15 cm over 10 metres.",
+      "ru": "Устранить перепад уровня пола примерно 15 см на 10 метрах."
+    },
+    "Planificar las redes para ejecutar la segunda fase sin desconectar el primer estudio.": {
+      "en": "Plan the systems so the second phase could proceed without disconnecting the first studio.",
+      "ru": "Спланировать коммуникации так, чтобы второй этап можно было выполнить без отключения первой студии."
+    },
+    "Decisiones de ingeniería": {
+      "en": "Engineering decisions",
+      "ru": "Инженерные решения"
+    },
+    "Soluciones adoptadas y motivo de cada prioridad": {
+      "en": "Chosen solutions and the reasons behind each priority",
+      "ru": "Принятые решения и причины выбора приоритетов"
+    },
+    "Instalación eléctrica": {
+      "en": "Electrical installation",
+      "ru": "Электрика"
+    },
+    "Instalación eléctrica completamente nueva.": {
+      "en": "Completely new electrical installation.",
+      "ru": "Полностью новая электропроводка."
+    },
+    "Tubo corrugado blanco.": {
+      "en": "White corrugated conduit.",
+      "ru": "Белая гофрированная труба."
+    },
+    "Líneas independientes para las tomas de corriente, evitando conexiones en cadena.": {
+      "en": "Separate circuits for socket outlets, avoiding daisy-chain connections.",
+      "ru": "Отдельные линии к розеткам без шлейфовых соединений."
+    },
+    "Cuadro eléctrico nuevo.": {
+      "en": "New electrical distribution board.",
+      "ru": "Новый электрический щит."
+    },
+    "Líneas eléctricas preparadas para futuros equipos de aire acondicionado.": {
+      "en": "Electrical circuits prepared for future air-conditioning units.",
+      "ru": "Электрические линии под будущие кондиционеры."
+    },
+    "Interruptores maestros con conexión Wi-Fi.": {
+      "en": "Master switches with Wi-Fi connectivity.",
+      "ru": "Мастер-выключатели с подключением по Wi-Fi."
+    },
+    "Fontanería, saneamiento y ventilación": {
+      "en": "Water supply, drainage and ventilation",
+      "ru": "Водоснабжение, канализация и вентиляция"
+    },
+    "Tuberías de agua colocadas dentro de una envolvente protectora con aislamiento térmico.": {
+      "en": "Water pipes installed in protective sleeves with thermal insulation.",
+      "ru": "Водопроводные трубы в защитной оболочке с теплоизоляцией."
+    },
+    "Red de saneamiento rehecha con las pendientes necesarias.": {
+      "en": "Drainage rebuilt with the required falls.",
+      "ru": "Заново выполненная канализация с необходимыми уклонами."
+    },
+    "Conexiones de saneamiento previstas para futuros equipos de aire acondicionado.": {
+      "en": "Drainage connections provided for future air-conditioning units.",
+      "ru": "Выводы канализации под будущие кондиционеры."
+    },
+    "Extracción instalada en cocinas y cuartos de baño.": {
+      "en": "Extract ventilation installed in kitchens and bathrooms.",
+      "ru": "Вытяжная вентиляция в кухнях и санузлах."
+    },
+    "Impermeabilización de las zonas húmedas antes del revestimiento.": {
+      "en": "Wet areas waterproofed before tiling.",
+      "ru": "Гидроизоляция мокрых зон до облицовки."
+    },
+    "Nivelación y formación de los suelos": {
+      "en": "Floor levelling and build-up",
+      "ru": "Формирование и выравнивание полов"
+    },
+    "Paneles de XPS como capa separadora y de relleno ligero.": {
+      "en": "XPS boards used as a separating layer and lightweight fill.",
+      "ru": "Плиты XPS в качестве разделительного слоя и лёгкого заполнения."
+    },
+    "Malla metálica de refuerzo sobre la capa separadora de XPS.": {
+      "en": "Reinforcing metal mesh over the XPS separating layer.",
+      "ru": "Металлическая армирующая сетка поверх разделительного слоя XPS."
+    },
+    "Regularización mediante mezcla ligera con arcilla expandida.": {
+      "en": "Levelling with a lightweight expanded-clay mixture.",
+      "ru": "Выравнивание лёгкой смесью с керамзитом."
+    },
+    "Capa final de mortero autonivelante de aproximadamente 5 mm.": {
+      "en": "Final self-levelling mortar layer approximately 5 mm thick.",
+      "ru": "Финишный слой самовыравнивающегося раствора толщиной примерно 5 мм."
+    },
+    "Divisiones y acabados": {
+      "en": "Partitions and finishes",
+      "ru": "Перегородки и отделка"
+    },
+    "Divisiones y trasdosados ejecutados con placas de yeso laminado.": {
+      "en": "Partitions and wall linings built with plasterboard.",
+      "ru": "Перегородки и облицовка стен из гипсокартона."
+    },
+    "Tratamiento de juntas sin enlucido completo de todas las placas.": {
+      "en": "Joints finished without skim-coating every board.",
+      "ru": "Обработка швов без сплошного шпаклевания всех листов."
+    },
+    "Suelo laminado en el primer estudio.": {
+      "en": "Laminate flooring in the first studio.",
+      "ru": "Ламинат в первой студии."
+    },
+    "Pavimento de PVC o cuarzo-vinilo en el segundo estudio.": {
+      "en": "PVC or quartz-vinyl flooring in the second studio.",
+      "ru": "ПВХ или кварцвиниловое покрытие во второй студии."
+    },
+    "Criterio de presupuesto": {
+      "en": "Budget approach",
+      "ru": "Подход к бюджету"
+    },
+    "Simplificar los acabados visibles sin reducir la calidad de las instalaciones ocultas.": {
+      "en": "Simplify visible finishes without reducing the quality of concealed systems.",
+      "ru": "Упростить видимую отделку без снижения качества скрытых коммуникаций."
+    },
+    "Dónde se redujo el presupuesto": {
+      "en": "Where costs were reduced",
+      "ru": "На чём сэкономили"
+    },
+    "Acabados decorativos sencillos.": {
+      "en": "Simple decorative finishes.",
+      "ru": "Простая декоративная отделка."
+    },
+    "Placas de yeso laminado con tratamiento de juntas, sin enlucido completo.": {
+      "en": "Plasterboard with finished joints, without a full skim coat.",
+      "ru": "Гипсокартон с обработкой швов без сплошного шпаклевания."
+    },
+    "Pavimentos económicos adaptados a cada estudio.": {
+      "en": "Affordable flooring suited to each studio.",
+      "ru": "Недорогие напольные покрытия, подобранные для каждой студии."
+    },
+    "Dónde no se aceptó ningún compromiso": {
+      "en": "Where no compromises were accepted",
+      "ru": "На чём не экономили"
+    },
+    "Distribución eléctrica y protección de los circuitos.": {
+      "en": "Electrical distribution and circuit protection.",
+      "ru": "Разводка электрики и защита цепей."
+    },
+    "Fontanería y aislamiento de tuberías.": {
+      "en": "Water supply and pipe insulation.",
+      "ru": "Водоснабжение и изоляция труб."
+    },
+    "Pendientes de saneamiento.": {
+      "en": "Drainage falls.",
+      "ru": "Уклоны канализации."
+    },
+    "Impermeabilización de baños.": {
+      "en": "Bathroom waterproofing.",
+      "ru": "Гидроизоляция санузлов."
+    },
+    "Ventilación de cocinas y baños.": {
+      "en": "Kitchen and bathroom ventilation.",
+      "ru": "Вентиляция кухонь и санузлов."
+    },
+    "Preinstalación para futuros equipos de aire acondicionado.": {
+      "en": "Provision for future air-conditioning units.",
+      "ru": "Подготовка под будущие кондиционеры."
+    },
+    "Coste del caso": {
+      "en": "Cost of this project",
+      "ru": "Стоимость этого объекта"
+    },
+    "Orden de magnitud: 48.000 €": {
+      "en": "Approximate amount: €48,000",
+      "ru": "Ориентировочная сумма: 48 000 €"
+    },
+    "Importe aproximado. Algunos materiales fueron comprados directamente por el propietario, por lo que no es posible reconstruir un coste total exacto ni utilizar esta cifra como tarifa para otros proyectos.": {
+      "en": "Approximate amount. Some materials were purchased directly by the owner, so an exact total cannot be reconstructed and this figure cannot be used as a rate for other projects.",
+      "ru": "Сумма приблизительная. Часть материалов владелец покупал напрямую, поэтому восстановить точную общую стоимость невозможно. Эту цифру нельзя использовать как расценку для других объектов."
+    },
+    "Resultado": {
+      "en": "Result",
+      "ru": "Результат"
+    },
+    "Transformación conseguida": {
+      "en": "The completed transformation",
+      "ru": "Что изменилось"
+    },
+    "Una vivienda de 50 m² sin servicios funcionales se convirtió en dos estudios independientes mediante una obra por fases, diseñada para que la segunda fase no interrumpiera la primera unidad ya terminada.": {
+      "en": "A 50 m² home without working utilities was converted into two independent studios through phased work designed so that the second phase would not interrupt the already completed first unit.",
+      "ru": "Квартиру 50 м² без работающих коммуникаций превратили в две независимые студии. Работы организовали поэтапно, чтобы второй этап не мешал уже завершённой первой студии."
+    },
+    "Servicios relacionados": {
+      "en": "Related services",
+      "ru": "Связанные услуги"
+    },
+    "Trabajos vinculados al proyecto": {
+      "en": "Work carried out on the project",
+      "ru": "Работы на объекте"
+    },
+    "Reformas integrales": {
+      "en": "Complete renovations",
+      "ru": "Комплексный ремонт"
+    },
+    "Coordinación completa de la reforma, desde la preparación y las instalaciones hasta los acabados finales.": {
+      "en": "Full coordination of the renovation, from preparation and building systems to the final finishes.",
+      "ru": "Полная координация ремонта: от подготовки и инженерных систем до чистовой отделки."
+    },
+    "Baños": {
+      "en": "Bathrooms",
+      "ru": "Ванные комнаты"
+    },
+    "Renovación de baños con atención a impermeabilización, fontanería, ventilación y acabados.": {
+      "en": "Bathroom renovation with attention to waterproofing, plumbing, ventilation and finishes.",
+      "ru": "Ремонт ванных комнат с вниманием к гидроизоляции, сантехнике, вентиляции и отделке."
+    },
+    "Albañilería": {
+      "en": "Masonry and building work",
+      "ru": "Общестроительные работы"
+    },
+    "Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida.": {
+      "en": "Demolition, partitions, levelling and base preparation for a sound renovation.",
+      "ru": "Демонтаж, перегородки, выравнивание и подготовка оснований для качественного ремонта."
+    },
+    "Pintura": {
+      "en": "Painting",
+      "ru": "Покраска"
+    },
+    "Preparación de superficies y acabados de pintura para viviendas y espacios comerciales.": {
+      "en": "Surface preparation and paint finishes for homes and commercial spaces.",
+      "ru": "Подготовка поверхностей и покраска жилых и коммерческих помещений."
+    },
+    "Electricidad": {
+      "en": "Electrical work",
+      "ru": "Электромонтаж"
+    },
+    "Planificación de puntos, iluminación, mecanismos y cuadro eléctrico para reformas actuales y futuras.": {
+      "en": "Planning of electrical points, lighting, switches, sockets and the distribution board for present and future renovations.",
+      "ru": "Планирование электрических точек, освещения, розеток, выключателей и щита с учётом текущего ремонта и будущих изменений."
+    },
+    "Cocinas": {
+      "en": "Kitchens",
+      "ru": "Кухни"
+    },
+    "Redistribución, instalaciones, revestimientos, iluminación y montaje para cocinas funcionales y duraderas.": {
+      "en": "Layout changes, building systems, surfaces, lighting and installation for functional, durable kitchens.",
+      "ru": "Перепланировка, коммуникации, покрытия, освещение и монтаж для удобных и долговечных кухонь."
+    },
+    "Imágenes del proyecto": {
+      "en": "Project photographs",
+      "ru": "Фотографии объекта"
+    },
+    "Proceso y resultado": {
+      "en": "Process and result",
+      "ru": "Процесс и результат"
+    },
+    "Cocina antes de la reforma": {
+      "en": "Kitchen before renovation",
+      "ru": "Кухня до ремонта"
+    },
+    "Habitación antes de la reforma": {
+      "en": "Room before renovation",
+      "ru": "Комната до ремонта"
+    },
+    "Demolición y obra": {
+      "en": "Demolition and construction work",
+      "ru": "Демонтаж и строительные работы"
+    },
+    "Dormitorio reformado": {
+      "en": "Renovated bedroom",
+      "ru": "Спальня после ремонта"
+    },
+    "Baño reformado": {
+      "en": "Renovated bathroom",
+      "ru": "Ванная после ремонта"
+    },
+    "Cocina reformada": {
+      "en": "Renovated kitchen",
+      "ru": "Кухня после ремонта"
+    },
+    "Pasillo reformado": {
+      "en": "Renovated hallway",
+      "ru": "Коридор после ремонта"
+    },
+    "Estudio reformado": {
+      "en": "Renovated studio",
+      "ru": "Студия после ремонта"
+    },
+    "Estado original": {
+      "en": "Original condition",
+      "ru": "Исходное состояние"
+    },
+    "Estudio antes de la reforma": {
+      "en": "Studio before renovation",
+      "ru": "Студия до ремонта"
+    },
+    "Solera y base de suelo": {
+      "en": "Screed and floor base",
+      "ru": "Стяжка и основание пола"
+    },
+    "Paredes enlucidas en obra": {
+      "en": "Plastered walls during construction",
+      "ru": "Оштукатуренные стены в процессе работ"
+    },
+    "Aseo reformado": {
+      "en": "Renovated toilet room",
+      "ru": "Туалет после ремонта"
+    },
+    "Pladur y preinstalación": {
+      "en": "Plasterboard and first-fix installation",
+      "ru": "Гипсокартон и подготовка коммуникаций"
+    },
+    "Volver a todos los proyectos": {
+      "en": "Back to all projects",
+      "ru": "Вернуться ко всем проектам"
+    },
+    "Consultar un proyecto": {
+      "en": "Discuss a project",
+      "ru": "Обсудить проект"
+    },
+    "Proyectos de reforma en Barcelona | Vital Vibe Construction": {
+      "en": "Renovation projects in Barcelona | Vital Vibe Construction",
+      "ru": "Проекты ремонта в Барселоне | Vital Vibe Construction"
+    },
+    "Proyectos de reforma realizados por Vital Vibe Construction en Barcelona y alrededores, con trabajos, acabados e imágenes de cada proyecto.": {
+      "en": "Renovation projects completed by Vital Vibe Construction in Barcelona and the surrounding area, with work details, finishes and photographs of each project.",
+      "ru": "Проекты ремонта Vital Vibe Construction в Барселоне и окрестностях: выполненные работы, отделка и фотографии каждого объекта."
+    },
+    "Reformas y trabajos realizados en Barcelona": {
+      "en": "Renovations and completed work in Barcelona",
+      "ru": "Ремонт и выполненные работы в Барселоне"
+    },
+    "Consulta proyectos reales documentados con información e imágenes verificadas en nuestro repositorio de contenidos.": {
+      "en": "Explore real projects documented with verified information and photographs.",
+      "ru": "Посмотрите реальные проекты с проверенной информацией и фотографиями."
+    },
+    "El Raval, Barcelona · Económico": {
+      "en": "El Raval, Barcelona · Economy",
+      "ru": "Эль-Раваль, Барселона · Эконом"
+    },
+    "Ver proyecto": {
+      "en": "View project",
+      "ru": "Смотреть проект"
+    },
+    "Cocina a medida terminada con suelo de roble": {
+      "en": "Completed bespoke kitchen with oak flooring",
+      "ru": "Готовая кухня на заказ с дубовым полом"
+    },
+    "Barcelona · Estándar": {
+      "en": "Barcelona · Standard",
+      "ru": "Барселона · Стандарт"
+    },
+    "Reforma integral estándar en Barcelona": {
+      "en": "Standard complete renovation in Barcelona",
+      "ru": "Комплексный ремонт стандартного уровня в Барселоне"
+    },
+    "Reforma completa de vivienda con instalaciones, suelo de roble, pasillo terminado y cocina a medida.": {
+      "en": "Complete home renovation including building systems, oak flooring, a finished hallway and a bespoke kitchen.",
+      "ru": "Полный ремонт квартиры: инженерные системы, дубовый пол, отделка коридора и кухня на заказ."
+    },
+    "Pintura de techo a pistola con acabado uniforme": {
+      "en": "Spray-painted ceiling with an even finish",
+      "ru": "Равномерная покраска потолка краскопультом"
+    },
+    "Barcelona · Premium": {
+      "en": "Barcelona · Premium",
+      "ru": "Барселона · Премиум"
+    },
+    "Trabajos de contrata en proyectos premium": {
+      "en": "Specialist contracting for premium projects",
+      "ru": "Подрядные работы в премиальных проектах"
+    },
+    "Trabajos especializados de pladur, enlucido, pintura e iluminación LED integrada para viviendas de alta gama.": {
+      "en": "Specialist plasterboard, plastering, painting and integrated LED lighting work for high-end homes.",
+      "ru": "Специализированные работы с гипсокартоном, штукатуркой, покраской и встроенным LED-освещением в жилье высокого класса."
+    },
+    "Baño con ducha de cristal, lavabo suspendido y espejo iluminado": {
+      "en": "Bathroom with a glass shower enclosure, wall-hung basin and illuminated mirror",
+      "ru": "Ванная со стеклянной душевой перегородкой, подвесной раковиной и зеркалом с подсветкой"
+    },
+    "Badalona": {
+      "en": "Badalona",
+      "ru": "Бадалона"
+    },
+    "Traslado de lavabo y toallero en Badalona": {
+      "en": "Sink relocation and towel rail in Badalona",
+      "ru": "Перенос раковины и полотенцесушитель в Бадалоне"
+    },
+    "Reforma parcial de baño en Badalona: traslado del lavabo a la pared derecha, instalación de toallero y reposición de las paredes afectadas en cuatro días.": {
+      "en": "Partial bathroom renovation in Badalona: moving the basin to the right-hand wall, installing a towel rail and restoring the affected walls in four days.",
+      "ru": "Частичный ремонт ванной в Бадалоне: перенос раковины на правую стену, установка полотенцесушителя и восстановление затронутых стен за четыре дня."
+    },
+    "Reforma integral estándar en Barcelona | Vital Vibe Construction": {
+      "en": "Standard complete renovation in Barcelona | Vital Vibe Construction",
+      "ru": "Комплексный ремонт стандартного уровня в Барселоне | Vital Vibe Construction"
+    },
+    "Proyecto · Estándar": {
+      "en": "Project · Standard",
+      "ru": "Проект · Стандарт"
+    },
+    "Barcelona": {
+      "en": "Barcelona",
+      "ru": "Барселона"
+    },
+    "Cocina en obra, estructura e instalaciones": {
+      "en": "Kitchen during construction, structure and building systems",
+      "ru": "Кухня в процессе ремонта: конструкции и коммуникации"
+    },
+    "Base de suelo antes del parquet": {
+      "en": "Floor base before parquet installation",
+      "ru": "Основание пола перед укладкой паркета"
+    },
+    "Instalación del suelo de roble": {
+      "en": "Oak flooring installation",
+      "ru": "Укладка дубового пола"
+    },
+    "Pintura e instalación de iluminación": {
+      "en": "Painting and lighting installation",
+      "ru": "Покраска и монтаж освещения"
+    },
+    "Pasillo terminado con suelo de roble": {
+      "en": "Completed hallway with oak flooring",
+      "ru": "Готовый коридор с дубовым полом"
+    },
+    "Trabajos de contrata en proyectos premium | Vital Vibe Construction": {
+      "en": "Specialist contracting for premium projects | Vital Vibe Construction",
+      "ru": "Подрядные работы в премиальных проектах | Vital Vibe Construction"
+    },
+    "Proyecto · Premium": {
+      "en": "Project · Premium",
+      "ru": "Проект · Премиум"
+    },
+    "Pladur y preinstalación en villa premium": {
+      "en": "Plasterboard and first-fix installation in a premium villa",
+      "ru": "Гипсокартон и подготовка коммуникаций на вилле премиум-класса"
+    },
+    "Tabiquería de pladur en obra": {
+      "en": "Plasterboard partitions under construction",
+      "ru": "Монтаж гипсокартонных перегородок"
+    },
+    "Trazado de instalaciones y canalizaciones": {
+      "en": "Routing of building services and conduits",
+      "ru": "Прокладка коммуникаций и каналов"
+    },
+    "Imprimación del techo por zonas junto a registro": {
+      "en": "Ceiling primer applied in sections beside an access hatch",
+      "ru": "Грунтование участков потолка рядом с ревизионным люком"
+    },
+    "Enmasillado de juntas y cajas en techo y pared": {
+      "en": "Filling joints and boxes in the ceiling and wall",
+      "ru": "Шпаклевание стыков и коробов на потолке и стене"
+    },
+    "Protección con plástico y enmasillado alrededor del LED": {
+      "en": "Plastic protection and filling around the LED lighting",
+      "ru": "Защита плёнкой и шпаклевание вокруг LED-подсветки"
+    },
+    "Techo preparado con LED lineal y protección": {
+      "en": "Prepared ceiling with linear LED lighting and protective covering",
+      "ru": "Подготовленный потолок с линейной LED-подсветкой и защитой"
+    },
+    "Pintura de pared a pistola en tono oscuro": {
+      "en": "Wall spray-painted in a dark shade",
+      "ru": "Покраска стены краскопультом в тёмный цвет"
+    },
+    "Techo con iluminación LED lineal": {
+      "en": "Ceiling with linear LED lighting",
+      "ru": "Потолок с линейной LED-подсветкой"
+    },
+    "Detalle de techo técnico": {
+      "en": "Technical ceiling detail",
+      "ru": "Деталь потолочной конструкции"
+    },
+    "Iluminación lineal integrada en techo": {
+      "en": "Linear lighting integrated into the ceiling",
+      "ru": "Линейное освещение, встроенное в потолок"
+    },
+    "Composición de techos con luz": {
+      "en": "Ceiling composition with lighting",
+      "ru": "Композиция потолков с освещением"
+    },
+    "Iluminación LED en escalera": {
+      "en": "LED lighting on the staircase",
+      "ru": "LED-подсветка лестницы"
+    },
+    "Resultado final de la villa": {
+      "en": "Completed villa",
+      "ru": "Вилла после завершения работ"
+    },
+    "Traslado de lavabo y toallero en Badalona | Vital Vibe Construction": {
+      "en": "Sink relocation and towel rail in Badalona | Vital Vibe Construction",
+      "ru": "Перенос раковины и полотенцесушитель в Бадалоне | Vital Vibe Construction"
+    },
+    "Proyecto · Badalona": {
+      "en": "Project · Badalona",
+      "ru": "Проект · Бадалона"
+    },
+    "Leer la historia de esta obra:": {
+      "en": "Read the story of this project:",
+      "ru": "История работ на этом объекте:"
+    },
+    "Reforma parcial de baño": {
+      "en": "Partial bathroom renovation",
+      "ru": "Частичный ремонт ванной"
+    },
+    "4 días de trabajo": {
+      "en": "4 working days",
+      "ru": "4 рабочих дня"
+    },
+    "Mano de obra": {
+      "en": "Labour",
+      "ru": "Работа"
+    },
+    "1100 €": {
+      "en": "€1,100",
+      "ru": "1100 €"
+    },
+    "Resultado de la intervención. Fotografía retocada previamente con IA; las fotografías de obra se conservan sin retoque.": {
+      "en": "Result of the work. This photograph was previously retouched using AI; the construction photographs remain unretouched.",
+      "ru": "Результат работ. Эта фотография ранее была отретуширована с помощью ИИ; фотографии процесса работ сохранены без ретуши."
+    },
+    "El lavabo estaba en la pared destinada al nuevo toallero. Al retirarlo quedaban a la vista la salida eléctrica del espejo y los orificios de las fijaciones; había que recuperar el acabado.": {
+      "en": "The basin was on the wall intended for the new towel rail. Removing it exposed the mirror's electrical outlet and fixing holes, so the finish had to be restored.",
+      "ru": "Раковина находилась на стене, предназначенной для нового полотенцесушителя. После её снятия оставались видны электрический вывод для зеркала и крепёжные отверстия — отделку нужно было восстановить."
+    },
+    "Trasladar el lavabo a la pared derecha y añadir un toallero en su antigua ubicación, adaptando las conexiones y recuperando la parte afectada del revestimiento.": {
+      "en": "Move the basin to the right-hand wall and add a towel rail in its former position, adapting the connections and restoring the affected wall covering.",
+      "ru": "Перенести раковину на правую стену и установить полотенцесушитель на её прежнем месте, адаптировав подключения и восстановив затронутую часть облицовки."
+    },
+    "Modificar las tomas de agua y el desagüe para la nueva posición del lavabo.": {
+      "en": "Modify the water supply and drainage connections for the basin's new position.",
+      "ru": "Переделать водоснабжение и слив под новое положение раковины."
+    },
+    "Reubicar el sensor de fugas, la toma eléctrica del toallero y la salida para el espejo.": {
+      "en": "Relocate the leak sensor, the towel rail's electrical socket and the mirror connection.",
+      "ru": "Перенести датчик протечки, розетку для полотенцесушителя и вывод для зеркала."
+    },
+    "Mantener la altura de la salida eléctrica del espejo en la nueva pared exigió retirar dos filas adicionales de azulejos por encima del lavabo.": {
+      "en": "Keeping the mirror's electrical connection at the same height on the new wall required removing two additional rows of tiles above the basin.",
+      "ru": "Чтобы сохранить высоту электрического вывода для зеркала на новой стене, пришлось снять два дополнительных ряда плитки над раковиной."
+    },
+    "Traslado del sensor de fugas, la toma eléctrica del toallero y la salida prevista para el espejo.": {
+      "en": "Relocation of the leak sensor, the towel rail's electrical socket and the planned mirror connection.",
+      "ru": "Перенос датчика протечки, розетки полотенцесушителя и вывода для зеркала."
+    },
+    "Adaptación de las tomas de agua y del desagüe dentro de la pared abierta antes de cerrar el tabique.": {
+      "en": "Adaptation of the water supply and drainage inside the opened wall before closing the partition.",
+      "ru": "Переделка водоснабжения и слива внутри вскрытой стены до закрытия перегородки."
+    },
+    "Retirada del alicatado en las paredes afectadas, incluidas dos filas adicionales para conservar la altura de la salida del espejo.": {
+      "en": "Removal of tiles from the affected walls, including two extra rows to retain the mirror connection height.",
+      "ru": "Снятие плитки на затронутых стенах, включая два дополнительных ряда для сохранения высоты вывода зеркала."
+    },
+    "Reposición del soporte de yeso laminado y recuperación del alicatado.": {
+      "en": "Replacement of the plasterboard backing and restoration of the tiling.",
+      "ru": "Восстановление гипсокартонного основания и плиточной облицовки."
+    },
+    "Mano de obra: 1100 €": {
+      "en": "Labour: €1,100",
+      "ru": "Работа: 1100 €"
+    },
+    "La mano de obra de esta intervención costó 1.100 €, con retirada de escombros incluida. Los residuos casi llenaron un big bag. El importe corresponde a este encargo; no es un precio total de reforma con materiales ni una tarifa para otros baños.": {
+      "en": "Labour for this job cost €1,100, including rubble removal. The waste almost filled a bulk bag. This amount applies to this specific job; it is not a total renovation price including materials or a rate for other bathrooms.",
+      "ru": "Работа на этом объекте стоила 1100 € с выносом строительного мусора. Отходы почти заполнили биг-бэг. Сумма относится к этому заказу: это не полная стоимость ремонта с материалами и не расценка для других ванных."
+    },
+    "En cuatro días de trabajo, el lavabo quedó en la pared derecha y se añadió el toallero en su antigua ubicación. Se adaptaron las instalaciones y se recuperó el alicatado de las zonas intervenidas.": {
+      "en": "In four working days, the basin was moved to the right-hand wall and a towel rail added in its former position. The building services were adapted and tiling restored in the affected areas.",
+      "ru": "За четыре рабочих дня раковину перенесли на правую стену, а на её прежнем месте установили полотенцесушитель. Коммуникации адаптировали, плитку на затронутых участках восстановили."
+    },
+    "Instalaciones de agua y desagüe visibles dentro del tabique abierto del baño": {
+      "en": "Water supply and drainage visible inside the opened bathroom partition",
+      "ru": "Водоснабжение и слив внутри вскрытой перегородки ванной"
+    },
+    "Traslado de las instalaciones antes de cerrar el tabique.": {
+      "en": "Relocating the utilities before closing the partition.",
+      "ru": "Перенос коммуникаций до закрытия перегородки."
+    },
+    "Placas de yeso laminado visibles en la pared derecha del baño durante los trabajos": {
+      "en": "Plasterboard visible on the bathroom's right-hand wall during the work",
+      "ru": "Гипсокартон на правой стене ванной в процессе работ"
+    },
+    "Reposición del soporte de la pared antes de recuperar el alicatado.": {
+      "en": "Replacing the wall backing before restoring the tiling.",
+      "ru": "Восстановление основания стены перед укладкой плитки."
+    },
+    "Pared del baño con placas de yeso laminado y salidas de instalaciones antes del alicatado": {
+      "en": "Bathroom wall with plasterboard and utility outlets before tiling",
+      "ru": "Стена ванной с гипсокартоном и выводами коммуникаций перед облицовкой"
+    },
+    "Otro ángulo del soporte preparado y las salidas de instalaciones.": {
+      "en": "Another view of the prepared backing and utility outlets.",
+      "ru": "Другой ракурс подготовленного основания и выводов коммуникаций."
+    },
+    "Encuentro de las paredes alicatadas del baño, con tomas de agua y salidas eléctricas visibles": {
+      "en": "Junction of the tiled bathroom walls, with visible water and electrical outlets",
+      "ru": "Стык облицованных стен ванной с выводами воды и электрики"
+    },
+    "Alicatado repuesto antes de instalar definitivamente los equipos.": {
+      "en": "Tiling restored before the final installation of the fittings.",
+      "ru": "Восстановленная плитка перед окончательной установкой оборудования."
+    },
+    "Pared derecha del baño alicatada con tomas de agua, desagüe y salida para el espejo": {
+      "en": "Tiled right-hand bathroom wall with water, drainage and mirror connection points",
+      "ru": "Правая стена ванной после облицовки с выводами воды, слива и зеркала"
+    },
+    "Puntos de conexión en la pared derecha después de recuperar el revestimiento.": {
+      "en": "Connection points on the right-hand wall after restoring the finish.",
+      "ru": "Точки подключения на правой стене после восстановления облицовки."
+    }
+  }
+}
