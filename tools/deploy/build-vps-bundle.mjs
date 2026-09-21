@@ -159,7 +159,7 @@ async function main() {
     stdio: "inherit",
   });
 
-  const commit = process.env.GITHUB_SHA || execFileSync("git", ["rev-parse", "HEAD"], {
+  const commit = process.env.RELEASE_SHA || process.env.GITHUB_SHA || execFileSync("git", ["rev-parse", "HEAD"], {
     cwd: root,
     encoding: "utf8",
   }).trim();
