@@ -130,6 +130,12 @@ async function main() {
     throw new Error("robots.txt does not reference the production sitemap URL.");
   }
 
+  const legal = await readFile(path.join(outputRoot, "aviso-legal.dc.html"), "utf8");
+  const currentYear = new Date().getUTCFullYear();
+  if (!legal.includes(`© ${currentYear} Vital Vibe Construction`) || legal.includes("Vital Vibe Constructions")) {
+    throw new Error("Public legal compatibility page has a stale year or legacy brand name.");
+  }
+
   const htmlFiles = await collectHtmlFiles();
   for (const htmlPath of htmlFiles) {
     const html = await readFile(path.join(outputRoot, htmlPath), "utf8");
