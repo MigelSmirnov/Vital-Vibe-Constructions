@@ -77,6 +77,7 @@ async function main() {
 
   assertProjectRouteCoverage(routes, knowledge.listProjects());
   assertServiceRouteCoverage(routes, knowledge.listServices());
+  assertLocalizedServiceRouteCoverage(routes, knowledge.listServices());
   assertDeferredImageRoutes(familyById, routes);
 
   for (const redirect of contract.redirects ?? []) {
@@ -153,6 +154,7 @@ function assertRequiredFamilies(familyById) {
     ["project-detail", "/projects/{project.slug}/"],
     ["gallery-index", "/gallery/"],
     ["service-detail", "/servicios/{service.slug}-barcelona/"],
+    ["service-detail-localized", "/{language}/servicios/{service.slug}-barcelona/"],
     ["project-image-detail", "/projects/{project.slug}/images/{media.slug}/"],
   ]);
 
@@ -179,6 +181,27 @@ function assertServiceRouteCoverage(routes, services) {
     [...pageServiceIds].some((serviceId) => !routedServiceIds.has(serviceId))
   ) {
     throw new Error("Service detail routes must cover every Service with page content exactly once.");
+  }
+}
+
+function assertLocalizedServiceRouteCoverage(routes, services) {
+  const pageServiceIds = services.filter((service) => service.seoTitle !== null).map((service) => service.id);
+  const localizedRoutes = routes.filter((route) => route.family_id === "service-detail-localized");
+  const expectedLanguages = ["en", "ru"];
+
+  if (localizedRoutes.length !== pageServiceIds.length * expectedLanguages.length) {
+    throw new Error("Localized service detail routes must provide EN and RU siblings for every Service with page content.");
+  }
+
+  for (const serviceId of pageServiceIds) {
+    const siblings = localizedRoutes.filter((route) => route.entity_id === serviceId);
+    const languages = siblings.map((route) => route.language).sort();
+    if (
+      siblings.length !== expectedLanguages.length ||
+      languages.some((language, index) => language !== expectedLanguages[index])
+    ) {
+      throw new Error(`Localized service routes for "${serviceId}" must contain exactly EN and RU siblings.`);
+    }
   }
 }
 
