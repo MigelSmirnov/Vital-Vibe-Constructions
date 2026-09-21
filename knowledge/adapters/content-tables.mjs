@@ -39,6 +39,7 @@ export async function loadContentTables({ root = process.cwd() } = {}) {
 
   return {
     projectLocalizations: await readJsonCompatibleTable(root, "content/tables/project-localizations.yaml"),
+    serviceLocalizations: await readJsonCompatibleTable(root, "content/tables/service-localizations.yaml"),
     site: requireObject(siteTable.site, "site"),
     capabilitySections: requireArray(capabilitySectionsTable.capabilitySections, "capabilitySections"),
     contactDetails: requireObject(contactDetailsTable.contactDetails, "contactDetails"),
