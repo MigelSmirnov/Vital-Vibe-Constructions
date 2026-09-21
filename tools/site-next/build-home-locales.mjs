@@ -8,6 +8,8 @@ const root = process.cwd();
 const outputRoot = path.join(root, "site-next");
 const sourcePath = path.join(outputRoot, "index.html");
 const localizationPath = path.join(root, "content/tables/home-localizations.yaml");
+import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
+
 const canonicalOrigin = "https://vitalvibeconstruction.com";
 
 function escapeRegExp(value) {
@@ -35,12 +37,14 @@ function alternateLinks() {
 }
 
 function addLanguageNavigation(html, activeLanguage) {
-  return html
-    .replace("  <meta name=\"twitter:card\" content=\"summary_large_image\">", `  <meta name="twitter:card" content="summary_large_image">\n${alternateLinks()}`)
-    .replace("      </nav>", `      </nav>\n      ${languageLinks(activeLanguage)}`);
+  const navigation = html.includes("<!-- home-language-switcher -->")
+    ? html.replace("<!-- home-language-switcher -->", languageLinks(activeLanguage))
+    : html.replace("      </nav>", `      </nav>\n      ${languageLinks(activeLanguage)}`);
+  return navigation
+    .replace("  <meta name=\"twitter:card\" content=\"summary_large_image\">", `  <meta name="twitter:card" content="summary_large_image">\n${alternateLinks()}`);
 }
 
-function localize(source, language, config) {
+function localize(source, language, config, articleRoutes, projectRoutes, serviceRoutes) {
   let html = source
     .replace('<html lang="es">', `<html lang="${language}">`)
     .replace('href="./styles.css"', 'href="/styles.css"')
@@ -48,6 +52,14 @@ function localize(source, language, config) {
     .replace(`<link rel="canonical" href="${canonicalOrigin}/">`, `<link rel="canonical" href="${canonicalOrigin}${config.path}">`)
     .replace(`<meta property="og:url" content="${canonicalOrigin}/">`, `<meta property="og:url" content="${canonicalOrigin}${config.path}">`);
 
+  for (const route of articleRoutes.filter(item => item.language === "es")) {
+    const translated = articleRoutes.find(item => item.entity_id === route.entity_id && item.language === language);
+    if (translated) html = html.replaceAll(`href="${route.path}"`, `href="${translated.path}"`);
+  }
+  for (const route of [...projectRoutes, ...serviceRoutes].filter(item => item.language === language)) {
+    const sourcePath = route.path.replace(`/${language}`, "");
+    html = html.replaceAll(`href="${sourcePath}"`, `href="${route.path}"`);
+  }
   const entries = Object.entries(config.replacements).sort(([a], [b]) => b.length - a.length);
   for (const [spanish, translation] of entries) {
     html = html.replace(new RegExp(escapeRegExp(spanish), "g"), translation);
@@ -61,12 +73,22 @@ async function main() {
     readFile(localizationPath, "utf8"),
   ]);
   const { locales } = JSON.parse(localizationRaw);
+  const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
+  const articleRoutes = contract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated");
 
-  await writeFile(sourcePath, addLanguageNavigation(source, "es"), "utf8");
+  const projectRoutes = contract.routes.filter(route => ["projects-index-localized", "project-detail-localized"].includes(route.family_id) && route.status === "generated");
+  const serviceRoutes = contract.routes.filter(route => route.family_id === "service-detail-localized" && route.status === "generated");
+  const site = createKnowledgeRepository(await loadContentTables({ root })).getSite();
+  const catalogNavigation = (html, language) => {
+    const route = contract.routes.find(item => item.family_id === "articles-index" && item.language === language && item.status === "generated");
+    if (!route) throw new Error(`Missing catalog route for ${language}`);
+    return html.replace("<!-- article-catalog-navigation -->", `<a href="${route.path}">${site.articleCatalog[language].title}</a>`);
+  };
+  await writeFile(sourcePath, catalogNavigation(addLanguageNavigation(source, "es"), "es"), "utf8");
   for (const [language, config] of Object.entries(locales)) {
     const destination = path.join(outputRoot, language);
     await mkdir(destination, { recursive: true });
-    await writeFile(path.join(destination, "index.html"), localize(source, language, config), "utf8");
+    await writeFile(path.join(destination, "index.html"), catalogNavigation(localize(source, language, config, articleRoutes, projectRoutes, serviceRoutes), language), "utf8");
   }
 
   console.log(`Built localized homepages: ${["es", ...Object.keys(locales)].join(", ")}`);

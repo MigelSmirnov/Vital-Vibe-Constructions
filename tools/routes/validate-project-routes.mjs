@@ -53,6 +53,9 @@ async function main() {
     if (route.entity_type === "Service" && !knowledge.findServiceById(route.entity_id)) {
       throw new Error(`Route "${route.id}" references unknown Service "${route.entity_id}".`);
     }
+    if (route.entity_type === "Article" && !knowledge.findArticleById(route.entity_id)?.languages.includes(route.language)) {
+      throw new Error(`Route "${route.id}" references an unknown Article or translation.`);
+    }
 
     for (const sourceFile of requireArray(route.source_files, `${route.id}.source_files`)) {
       await assertFileExists(sourceFile, `Route "${route.id}" source file`);
@@ -74,7 +77,23 @@ async function main() {
 
   assertProjectRouteCoverage(routes, knowledge.listProjects());
   assertServiceRouteCoverage(routes, knowledge.listServices());
+  assertLocalizedServiceRouteCoverage(routes, knowledge.listServices());
   assertDeferredImageRoutes(familyById, routes);
+
+  for (const redirect of contract.redirects ?? []) {
+    assertConcretePath(redirect.from, "redirect source");
+    const target = routes.find((route) => route.path === redirect.to && route.sitemap_eligible);
+    if (!target || routes.some((route) => route.path === redirect.from) || redirect.status !== 301) {
+      throw new Error(`Invalid permanent redirect: ${redirect.from}`);
+    }
+    if (sitemapLocations.has(new URL(redirect.from, canonicalOrigin).href)) {
+      throw new Error(`Redirect source must not appear in sitemap: ${redirect.from}`);
+    }
+    const html = await readFile(path.join(root, "site-next", redirect.from.slice(1), "index.html"), "utf8");
+    if (!html.includes('content="noindex, follow"') || !html.includes(`content="0; url=${redirect.to}"`) || !html.includes(`href="${target.canonical_url}"`)) {
+      throw new Error(`Static redirect does not match its contract: ${redirect.from}`);
+    }
+  }
 
   for (const mapping of mappings) {
     await assertFileExists(mapping.source_file, "Legacy mapping source file");
@@ -135,6 +154,7 @@ function assertRequiredFamilies(familyById) {
     ["project-detail", "/projects/{project.slug}/"],
     ["gallery-index", "/gallery/"],
     ["service-detail", "/servicios/{service.slug}-barcelona/"],
+    ["service-detail-localized", "/{language}/servicios/{service.slug}-barcelona/"],
     ["project-image-detail", "/projects/{project.slug}/images/{media.slug}/"],
   ]);
 
@@ -161,6 +181,27 @@ function assertServiceRouteCoverage(routes, services) {
     [...pageServiceIds].some((serviceId) => !routedServiceIds.has(serviceId))
   ) {
     throw new Error("Service detail routes must cover every Service with page content exactly once.");
+  }
+}
+
+function assertLocalizedServiceRouteCoverage(routes, services) {
+  const pageServiceIds = services.filter((service) => service.seoTitle !== null).map((service) => service.id);
+  const localizedRoutes = routes.filter((route) => route.family_id === "service-detail-localized");
+  const expectedLanguages = ["en", "ru"];
+
+  if (localizedRoutes.length !== pageServiceIds.length * expectedLanguages.length) {
+    throw new Error("Localized service detail routes must provide EN and RU siblings for every Service with page content.");
+  }
+
+  for (const serviceId of pageServiceIds) {
+    const siblings = localizedRoutes.filter((route) => route.entity_id === serviceId);
+    const languages = siblings.map((route) => route.language).sort();
+    if (
+      siblings.length !== expectedLanguages.length ||
+      languages.some((language, index) => language !== expectedLanguages[index])
+    ) {
+      throw new Error(`Localized service routes for "${serviceId}" must contain exactly EN and RU siblings.`);
+    }
   }
 }
 

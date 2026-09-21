@@ -5,7 +5,21 @@ import { CapabilitySection } from "../entities/capability-section.mjs";
 import { ContactDetails } from "../entities/contact-details.mjs";
 import { Project } from "../entities/project.mjs";
 import { RenovationTier } from "../entities/renovation-tier.mjs";
+import { Site } from "../entities/site.mjs";
 import { createKnowledgeRepository } from "./knowledge-repository.mjs";
+
+test("homepage feature must resolve to a known media record", () => {
+  const tables = structuredClone(baseTables);
+  tables.site.featuredMediaId = "unknown-media";
+  assert.throws(() => createKnowledgeRepository(tables), /featuredMediaId/);
+  tables.site.featuredMediaId = "media-test";
+  assert.equal(createKnowledgeRepository(tables).getSite().featuredMediaId, "media-test");
+});
+
+test("site presentation metadata survives a round trip with optional fields absent", () => {
+  const record = Site.fromRecord(baseTables.site).toRecord();
+  assert.deepEqual(Site.fromRecord(record).toRecord(), record);
+});
 
 const baseTables = Object.freeze({
   site: {
@@ -126,8 +140,35 @@ test("loads current content tables into a repository with project records", asyn
   assert.equal(repository.listRenovationTiers()[0].id, "economical");
   assert.equal(repository.findRenovationTierById("standard").pricePerM2, 1200);
   assert.equal(repository.listProjects().length, 4);
+  const bathroom = repository.findProjectById("project-bathroom-ponent-badalona");
+  assert.equal(bathroom.labourCostEur, 1100);
+  assert.equal(bathroom.estimatedTotalCostEur, null);
+  assert.equal(bathroom.imageIds.length, 6);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
+  assert.equal(repository.findArticleById("article-solar-collector-connections").mediaIds.length, 2);
+});
+
+test("article evidence is an explicit media reference", () => {
+  const tables = structuredClone(baseTables);
+  tables.media.push({ id: "media-article", slug: "media-article", src: "articles/evidence.jpg", alt: "Article evidence", width: 800, height: 600 });
+  tables.articles = [{
+    id: "article-test", slug: "article-test", status: "published", language: "es", title: "Article title",
+    seo_title: "Article SEO title", summary: "Article summary", meta_description: "Article description", category: "Guide",
+    body: [{ heading: "Evidence", blocks: [{ type: "image", media_id: "media-article", alt: "Evidence image", caption: "Evidence caption" }] }],
+    published_at: "2026-09-13", modified_at: "2026-09-13", author: "Vital Vibe Construction",
+  }];
+  assert.equal(createKnowledgeRepository(tables).findMediaById("media-article").src, "articles/evidence.jpg");
+});
+
+test("Project keeps labour cost separate from total cost and rejects invalid amounts", () => {
+  const record = { ...baseTables.projects[0], labour_cost_eur: 1100 };
+  const project = Project.fromRecord(record);
+  assert.equal(project.toRecord().labour_cost_eur, 1100);
+  assert.equal(project.toRecord().estimated_total_cost_eur, undefined);
+  for (const amount of [0, -1, "1100", NaN]) {
+    assert.throws(() => Project.fromRecord({ ...record, labour_cost_eur: amount }), /labourCostEur/);
+  }
 });
 
 test("CapabilitySection requires explicit content and preserves references", () => {

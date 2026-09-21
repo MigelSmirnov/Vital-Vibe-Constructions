@@ -62,9 +62,11 @@ async function main() {
 
   assertUnique(allItems, "src");
 
-  const studioImages = allItems.filter((item) => item.owner === "project-studio-renovation-barcelona");
-  if (studioImages.length !== 8) {
-    throw new Error(`Studio project must own 8 legacy images; found ${studioImages.length}.`);
+  for (const [projectId, expectedCount] of Object.entries(contract.policy.expected_project_media_counts ?? {})) {
+    const ownedImages = allItems.filter((item) => item.owner === projectId);
+    if (ownedImages.length !== expectedCount) {
+      throw new Error(`${projectId} must own ${expectedCount} legacy images; found ${ownedImages.length}.`);
+    }
   }
 
   console.log(`Validated complete gallery contract: ${allItems.length} of ${expectedTotal} images`);

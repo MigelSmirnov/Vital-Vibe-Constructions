@@ -12,15 +12,22 @@ permissions:
 jobs:
   bundle:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_SHA }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Install image tools
+        run: sudo apt-get update && sudo apt-get install -y webp imagemagick
 
       - name: Run canonical project checks
         run: node tools/checks/run.mjs
@@ -29,10 +36,15 @@ jobs:
         run: git diff --exit-code
 
       - name: Build VPS deployment bundle
+        env:
+          GITHUB_SHA: ${{ env.RELEASE_SHA }}
         run: node tools/deploy/build-vps-bundle.mjs
 
       - name: Validate VPS deployment bundle
         run: node tools/deploy/validate-vps-bundle.mjs
+
+      - name: Verify deployment commit
+        run: test "$(cat .deploy-dist/DEPLOYMENT_COMMIT)" = "$RELEASE_SHA"
 
       - name: Package VPS deployment bundle
         run: tar -C .deploy-dist -czf vps-site-bundle.tgz .

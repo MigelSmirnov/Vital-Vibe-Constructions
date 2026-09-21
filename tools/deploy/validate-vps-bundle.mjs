@@ -90,6 +90,13 @@ function extractLocalReferences(html, htmlPath) {
 }
 
 async function main() {
+  // Repository handoff and task notes must never become public site files.
+  for (const internalPath of ["task", "HANDOFF.md", "AGENTS.md", "README.md"]) {
+    if (await exists(internalPath)) {
+      throw new Error(`Repository-only documentation leaked into deployment bundle: ${internalPath}`);
+    }
+  }
+
   for (const file of requiredFiles) {
     if (!(await exists(file))) {
       throw new Error(`Required deployment file is missing: ${file}`);
@@ -121,6 +128,12 @@ async function main() {
   const robots = await readFile(path.join(outputRoot, "robots.txt"), "utf8");
   if (!robots.includes(`${productionOrigin}/sitemap.xml`)) {
     throw new Error("robots.txt does not reference the production sitemap URL.");
+  }
+
+  const legal = await readFile(path.join(outputRoot, "aviso-legal.dc.html"), "utf8");
+  const currentYear = new Date().getUTCFullYear();
+  if (!legal.includes(`© ${currentYear} Vital Vibe Construction`) || legal.includes("Vital Vibe Constructions")) {
+    throw new Error("Public legal compatibility page has a stale year or legacy brand name.");
   }
 
   const htmlFiles = await collectHtmlFiles();

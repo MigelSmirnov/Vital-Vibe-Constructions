@@ -26,6 +26,7 @@ async function main() {
     knowledge.getSite().canonicalOrigin,
     knowledge.getContactDetails().email,
     planner.url,
+    ...routeContract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated").flatMap(route => [route.canonical_url, knowledge.findArticleById(route.entity_id).localized(route.language).title]),
     ...knowledge.listServices().map((service) => service.title),
     ...routeContract.routes
       .filter((route) => route.family_id === "service-detail" && route.status === "generated")

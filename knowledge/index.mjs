@@ -9,4 +9,5 @@ export { Project } from "./entities/project.mjs";
 export { RenovationTier } from "./entities/renovation-tier.mjs";
 export { Service } from "./entities/service.mjs";
 export { Site } from "./entities/site.mjs";
+export { Article } from "./entities/article.mjs";
 export { KnowledgeRepository, createKnowledgeRepository } from "./repository/knowledge-repository.mjs";

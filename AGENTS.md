@@ -12,6 +12,10 @@ Before changing application code, content records, routes, builders, or reposito
 6. `architecture/gallery-media-coverage.yaml` when media or gallery work is involved
 7. `HANDOFF.md` for human-readable context only
 
+Then read `task/README.md` for the current task queue and the linked task brief
+before starting new work. Task notes do not override the contracts above.
+Keep `task/` in the repository only; never copy it into `site-next` or deployment artifacts.
+
 ## Rules
 
 1. Treat architecture YAML files as machine-readable contracts, not prose documentation.
