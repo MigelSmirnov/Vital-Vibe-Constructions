@@ -14,15 +14,15 @@ for (const base of routes.filter((route) => route.language === "es")) {
   const siblings = routes.filter((route) => route.source_path === base.path);
   assert.deepEqual(siblings.map((route) => route.language).sort(), ["en", "es", "ru"]);
   const source = pages.get(base.path);
-  const media = [...source.matchAll(/<img\\b[^>]*src="([^"]+)"[^>]*width="(\\d+)" height="(\\d+)"/g)].map((match) => match.slice(1));
+  const media = [...source.matchAll(/<img\b[^>]*src="([^"]+)"[^>]*width="(\d+)" height="(\d+)"/g)].map((match) => match.slice(1));
 
   for (const route of siblings) {
     const html = pages.get(route.path);
     assert.ok(html.includes(`<html lang="${route.language}">`), route.path);
     assert.ok(html.includes(`<link rel="canonical" href="${route.canonical_url}">`), route.path);
-    assert.equal((html.match(/<h1\\b/g) ?? []).length, 1, route.path);
+    assert.equal((html.match(/<h1\b/g) ?? []).length, 1, route.path);
     assert.deepEqual(
-      [...html.matchAll(/<img\\b[^>]*src="([^"]+)"[^>]*width="(\\d+)" height="(\\d+)"/g)].map((match) => match.slice(1)),
+      [...html.matchAll(/<img\b[^>]*src="([^"]+)"[^>]*width="(\d+)" height="(\d+)"/g)].map((match) => match.slice(1)),
       media,
       `Media changed: ${route.path}`,
     );
@@ -34,7 +34,7 @@ for (const base of routes.filter((route) => route.language === "es")) {
     assert.ok(title && !metadata.has(title), `Duplicate or absent title: ${route.path}`);
     metadata.add(title);
 
-    const data = JSON.parse(html.match(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/)[1]);
+    const data = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
     const webPage = data["@graph"].find((item) => item["@type"] === "WebPage");
     const service = data["@graph"].find((item) => item["@type"] === "Service");
     assert.equal(webPage.inLanguage, route.language, route.path);
@@ -52,7 +52,7 @@ for (const base of routes.filter((route) => route.language === "es")) {
         }
       }
       const body = html.slice(html.indexOf("<body"));
-      const bodyWithoutSwitcher = body.replace(/<div class="language-switcher"[^>]*>[\\s\\S]*?<\\/div>/, "");
+      const bodyWithoutSwitcher = body.replace(/<div class="language-switcher"[^>]*>[\s\S]*?<\/div>/, "");
       assert.ok(!bodyWithoutSwitcher.includes('href="/servicios/'), `Service link loses language: ${route.path}`);
       assert.ok(!bodyWithoutSwitcher.includes('href="/projects/'), `Project link loses language: ${route.path}`);
       assert.ok(bodyWithoutSwitcher.includes(`href="/${route.language}/#contacto"`), `Contact language: ${route.path}`);
