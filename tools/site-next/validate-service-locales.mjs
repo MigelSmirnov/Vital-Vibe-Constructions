@@ -30,7 +30,7 @@ for (const base of routes.filter((route) => route.language === "es")) {
       assert.ok(html.includes(`hreflang="${sibling.language}" href="${sibling.canonical_url}"`), route.path);
       assert.ok(html.includes(`href="${sibling.path}" lang="${sibling.language}"`), route.path);
     }
-    const title = html.match(/<title>([^<]+)<\\/title>/)?.[1];
+    const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
     assert.ok(title && !metadata.has(title), `Duplicate or absent title: ${route.path}`);
     metadata.add(title);
 
