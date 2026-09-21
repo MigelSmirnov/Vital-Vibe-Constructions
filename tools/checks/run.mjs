@@ -7,6 +7,7 @@ const checks = [
   ["Knowledge tests", "node", [
     "--test",
     "knowledge/project-localizations.test.mjs",
+    "knowledge/service-localizations.test.mjs",
     "knowledge/entities/media.test.mjs",
     "knowledge/entities/service.test.mjs",
     "knowledge/entities/article.test.mjs",
@@ -24,6 +25,7 @@ const checks = [
   ["root path normalization", "node", ["tools/site-next/normalize-root-paths.mjs"]],
   ["localized project pages build", "node", ["tools/site-next/build-project-locales.mjs"]],
   ["localized project pages validation", "node", ["tools/site-next/validate-project-locales.mjs"]],
+  ["localized service pages build", "node", ["tools/site-next/build-service-locales.mjs"]],
   ["root path validation", "node", ["tools/site-next/validate-root-paths.mjs"]],
   ["project pages validation", "node", ["tools/site-next/validate-project-pages.mjs"]],
   ["gallery page validation", "node", ["tools/site-next/validate-gallery-page.mjs"]],
@@ -31,6 +33,7 @@ const checks = [
   ["sitemap validation", "node", ["tools/seo/validate-sitemap.mjs"]],
   ["article pages validation", "node", ["tools/articles/validate-public.mjs"]],
   ["service pages validation", "node", ["tools/site-next/validate-service-pages.mjs"]],
+  ["localized service pages validation", "node", ["tools/site-next/validate-service-locales.mjs"]],
   ["Route contract", "node", ["tools/routes/validate-project-routes.mjs"]],
   ["content audit", "node", ["tools/content-extractor/run.mjs"]],
   ["diff whitespace check", "git", ["diff", "--check"]],
