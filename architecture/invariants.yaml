@@ -49,6 +49,7 @@ invariants:
     stable_slug_required_for_public_entities: true
     public_references_must_resolve: true
     draft_content_must_not_be_publicly_indexed: true
+    published_articles_require_all_supported_languages: true
     fake_articles_forbidden: true
     fake_testimonials_forbidden: true
 
