@@ -65,4 +65,34 @@ for (const base of routes.filter(route => route.language === 'es')) {
     }
   }
 }
+
+for (const service of knowledge.listServices()) {
+  for (const projectId of service.relatedProjectIds) {
+    const project = knowledge.findProjectById(projectId);
+    assert.ok(project, `Missing service-related project: ${projectId}`);
+    const globalCardMarker = `<article class="project-card" id="${project.slug}">`;
+    assert.ok(!spanishHome.includes(globalCardMarker), `Service-related project remains in global homepage list: ${project.slug}`);
+
+    const spanishServiceMarker = `<details class="service-row" id="${service.slug}">`;
+    const spanishServiceBlock = spanishHome.split(spanishServiceMarker)[1]?.split('</details>')[0];
+    assert.ok(spanishServiceBlock, `Homepage service block missing: es ${service.slug}`);
+    assert.ok(spanishServiceBlock.includes(`href="/projects/${project.slug}/"`), `Service project link missing: es ${project.slug}`);
+    assert.ok(spanishServiceBlock.includes(escape(project.title)), `Service project title missing: es ${project.slug}`);
+
+    for (const language of ['en', 'ru']) {
+      const home = await readFile(`site-next/${language}/index.html`, 'utf8');
+      assert.ok(!home.includes(globalCardMarker), `Service-related project remains in global homepage list: ${language} ${project.slug}`);
+      const serviceMarker = `<details class="service-row" id="${service.slug}">`;
+      const serviceBlock = home.split(serviceMarker)[1]?.split('</details>')[0];
+      assert.ok(serviceBlock, `Homepage service block missing: ${language} ${service.slug}`);
+      const projectRoute = routes.find(route => route.entity_id === project.id && route.language === language);
+      assert.ok(projectRoute, `Localized service project route missing: ${language} ${project.slug}`);
+      assert.ok(serviceBlock.includes(`href="${projectRoute.path}"`), `Service project link missing: ${language} ${project.slug}`);
+      const replacements = homeLocales[language]?.replacements ?? {};
+      const localizedTitle = replacements[project.title];
+      assert.ok(localizedTitle, `Missing service project homepage translation: ${language} ${project.title}`);
+      assert.ok(serviceBlock.includes(escape(localizedTitle)), `Service project title untranslated: ${language} ${project.slug}`);
+    }
+  }
+}
 console.log(`Validated ${routes.length} project pages: translations, media, language navigation, metadata and homepage links.`);
