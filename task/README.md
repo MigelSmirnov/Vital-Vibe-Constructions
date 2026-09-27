@@ -15,6 +15,8 @@
 
 ## Текущая точка
 
+- Актуальный preview с 4 исправными фото Joanic и WebP: https://6ab90b1e6482ef013606aa31--vital-vibe-preview.netlify.app/ru/ . 480px-варианты: 92 КБ вместо 795 КБ оригиналов; проверки сборки и декодирование прошли.
+
 - Joanic: получены 4 исправных оригинала владельца, повреждённое фото заменено; добавлены кадры подготовки и результата, подписи ES/EN/RU и адаптивный WebP. Явные локализованные ссылки на статью о покраске добавлены внутри 06 и на detail page; проверки прошли. Обновлённый preview: https://6ab909042cf8dce189ae9c7c--vital-vibe-preview.netlify.app/ru/
 
 - Netlify branch preview Joanic готов: https://6ab90592e5118bd6bf6c6c55--vital-vibe-preview.netlify.app/ru/ . Checks и bundle validation прошли; live browser QA ожидает входа команды Netlify. Защита доступа, production и main не менялись.
