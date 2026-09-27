@@ -15,7 +15,7 @@
 
 ## Текущая точка
 
-- Joanic: JPEG в репозитории повреждён/обрезан, нужен исправный оригинал владельца. Явные локализованные ссылки на статью о покраске добавлены внутри 06 и на detail page; проверки прошли.
+- Joanic: JPEG в репозитории повреждён/обрезан, нужен исправный оригинал владельца. Явные локализованные ссылки на статью о покраске добавлены внутри 06 и на detail page; проверки прошли. Обновлённый preview: https://6ab909042cf8dce189ae9c7c--vital-vibe-preview.netlify.app/ru/
 
 - Netlify branch preview Joanic готов: https://6ab90592e5118bd6bf6c6c55--vital-vibe-preview.netlify.app/ru/ . Checks и bundle validation прошли; live browser QA ожидает входа команды Netlify. Защита доступа, production и main не менялись.
 

@@ -20,6 +20,10 @@ joanic_staircase_project:
     related_articles: explicit-localized-titles-in-service-06-and-detail
     link_regression_checks: passed-es-en-ru
     previous_image_file_existence_check_insufficient: true
+    preview_deploy_id: 6ab909042cf8dce189ae9c7c
+    preview_state: ready
+    preview_source_sha: 7ea7a7174b40e2330677b1b31c7bc64cac36d833
+    preview_ru_url: https://6ab909042cf8dce189ae9c7c--vital-vibe-preview.netlify.app/ru/
   netlify_preview:
     site_id: 56647124-f7e4-48b4-af01-d4069b069c9a
     source_sha: 1444f923cc0d5b6782126064cf5bcf3770b4a300

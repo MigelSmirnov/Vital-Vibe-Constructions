@@ -24,7 +24,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 Owner reported missing photo and painting-article links. The committed `assets/projects/joanic-staircase/final-staircase.jpg` is truncated (6,593 bytes); ImageMagick reports premature JPEG end and visual inspection shows a narrow image strip followed by gray. File existence checks did not catch this. A valid owner original is required; do not invent/reconstruct the photograph. The image issue is still open.
 
-Added explicitly titled, language-matched Article links inside service 06 and on the service-owned Joanic detail page, resolved from existing Article records. Added localized link regression checks; canonical checks pass (0 errors / 5 existing warnings). Copy and design unchanged. Preview update in progress; production/main and access protection unchanged.
+Added explicitly titled, language-matched Article links inside service 06 and on the service-owned Joanic detail page, resolved from existing Article records. Added localized link regression checks; canonical checks pass (0 errors / 5 existing warnings). Copy and design unchanged. Updated branch preview ready: https://6ab909042cf8dce189ae9c7c--vital-vibe-preview.netlify.app/ru/ . Source: 7ea7a7174b40e2330677b1b31c7bc64cac36d833. Bundle validation passed (40 routes / 44 HTML files). Live browser QA remains blocked by team sign-in. Production/main and access protection unchanged.
 
 ## Joanic Netlify preview — 2026-09-27
 
