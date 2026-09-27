@@ -1,5 +1,11 @@
 # Joanic VPS release — 2026-09-27
 
+## Subsequent card layout correction
+
+The owner reported a malformed preview after the initial release. The previous checks missed the internal grid error: a source element inside display:contents occupied a grid cell. PR #12 fixes this, preserves the photo aspect ratio, enlarges desktop previews and versions homepage CSS. Production now serves `765856d7e113d83dd4d6e2c8f0a559e86a6e9df8` / `20260927-765856d`. Archive SHA-256: `d2b78bead4637091b71bfd459531f7d22379e2555b0aa86ea7cb811a4925c732` (`/home/ubuntu/vital-vibe-vps-card-fix.tgz`).
+
+The new regression fails on the old release and passes all 15 ES/EN/RU × five-width cases locally and publicly. Mobile/desktop screenshots inspected; 43 canonical tests, 40-route/44-HTML bundle validation and decoding of 105 WebP files pass. All 40 public HTML responses and versioned CSS match the artifact. Immediate rollback target: `20260927-a1b83ad`, retained with its known layout defect. The rest of this document records the initial content deployment.
+
 Published on https://vitalvibeconstruction.com following the owner's request to inspect GitHub changes and deploy from the local machine.
 
 ## Provenance

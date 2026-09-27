@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 69
+Version: 70
 Updated: 2026-09-27
 
 ## Session rule
@@ -24,7 +24,9 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 Owner reported the malformed mobile/desktop service card after deployment. Reproduced: inside `picture { display:contents }`, the `source` element generated a grid item, shifting the image into column two and forcing the title into the narrow first column of a second row. Earlier functional acceptance missed internal card geometry. Explicitly hide source metadata in the card, retain the full photo's intrinsic aspect ratio, and enlarge desktop previews to 128px (92px on narrower screens). Homepage CSS now has a content-hashed URL to invalidate the previous cached stylesheet.
 
-`tools/visual/service-project-cards.mjs` reproduces the old failure and asserts source has no box, image/text share a row, readable title width, photo aspect ratio, WebP selection and no overflow at 360/390/768/1024/1440 px in ES/EN/RU. It is included in the regular visual workflow. Canonical checks pass (43 tests, 0 audit errors / 5 existing warnings). Production verification of this correction is pending.
+`tools/visual/service-project-cards.mjs` reproduces the old failure and asserts source has no box, image/text share a row, readable title width, photo aspect ratio, WebP selection and no overflow at 360/390/768/1024/1440 px in ES/EN/RU. It is included in the regular visual workflow. Canonical checks pass (43 tests, 0 audit errors / 5 existing warnings).
+
+Published and verified as `765856d7e113d83dd4d6e2c8f0a559e86a6e9df8` / `20260927-765856d`, after PR #12 merged into the release branch. All 15 layout cases pass locally and on production; mobile/desktop screenshots inspected. All 40 public route bodies and versioned CSS match the artifact. Bundle validation and decoding of all 105 WebP files pass. Archive SHA-256: `d2b78bead4637091b71bfd459531f7d22379e2555b0aa86ea7cb811a4925c732`; VPS archive `/home/ubuntu/vital-vibe-vps-card-fix.tgz`. Rollback: `20260927-a1b83ad` (retained; contains the prior preview layout bug). Source photos and article text unchanged; DNS/server configuration unchanged.
 
 ## Joanic published on VPS — 2026-09-27
 
