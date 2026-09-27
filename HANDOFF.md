@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 61
-Updated: 2026-09-17
+Version: 62
+Updated: 2026-09-27
 
 ## Session rule
 
@@ -19,6 +19,17 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Joanic staircase painting — ready for review 2026-09-27
+
+Working branch: `agent/joanic-staircase-project`. PR #9 targets `release/vps-migration`.
+
+Added `project-escalera-joanic-pintura`: repair and painting of a 92 m² communal stairwell in Joanic, completed in four working days. The project price recorded for this specific job is 900 € + IVA and includes labour, materials purchase/transport, repairs, primer and two roller coats. It is linked to both `painting` and `masonry` (Russian public label: «Общестроительные работы») and to the existing painting-preparation article. One owner-provided finished photograph is published.
+
+ES/EN/RU project routes and project/home cards are generated and sitemap-eligible. A missed EN/RU homepage-card localization was found during continuation, fixed in `home-localizations.yaml`, and covered by a regression check in `tools/site-next/validate-project-locales.mjs`. Canonical validation passed in Joanic workflow run #9 (run id 36314964648). Generated projection was committed as `ed0bbde19f65892e8856fb82f6e69557a02ca88e`; the temporary Joanic workflow was removed afterwards. Production and `main` were not changed.
+
+Next action for this feature: review PR #9, then merge/release through the normal `release/vps-migration` process if approved. Do not deploy this branch directly.
+
 
 ## Project translations — published 2026-09-17
 
