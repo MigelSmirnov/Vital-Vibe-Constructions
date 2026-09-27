@@ -1,5 +1,5 @@
-version: 70
-updated_at: 2026-09-27T12:01:37Z
+version: 72
+updated_at: 2026-09-27T19:53:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -9,22 +9,39 @@ pull_request:
   base: release/vps-migration
   head: agent/joanic-staircase-project
 
+joanic_card_layout_fix:
+  status: implemented-production-verification-pending
+  cause: picture-display-contents-exposed-source-as-grid-item
+  correction: hide-source-preserve-photo-ratio-readable-copy-column
+  homepage_css_cache: content-hashed-query
+  regression: tools/visual/service-project-cards.mjs
+  previous_release_regression: failed-as-expected-source-occupies-grid-cell
+  canonical_checks: pass-43-tests-0-errors-5-existing-warnings
+
 joanic_vps_release:
-  status: prepared-not-deployed
+  status: published-and-verified
   task: task/005-joanic-vps-release.md
   release_sha: a1b83ad864b90ba5f055a6a59df1412179d14f7f
   archive: vital-vibe-vps-a1b83ad.tgz
-  archive_sha256: 20149047fd59a0f1bebc4fcff0a7a66baa5162577ed4fb217c5b166f86add691
-  canonical_checks: pass-0-errors-5-existing-warnings
+  archive_sha256: b34232c2ba3f4240f9bc133b0ecdec21833ed3586113c2a953cf4e6af8da3799
+  canonical_checks: pass-43-tests-0-errors-5-existing-warnings
   bundle_validation: pass-40-routes-44-html
   webp_decoded: 105
-  production_changed: false
+  production_changed: true
   main_changed: false
-  server_activation_performed: false
-  live_mobile_qa: pending
+  server_activation_performed: true
+  live_mobile_qa: passed-390-768-1440-es-en-ru
+  release_id: 20260927-a1b83ad
+  rollback_release_id: 20260921-83dcb9f
+  public_routes_exact_html_match: 40
+  local_project_browser_cases: 54
+  production_project_browser_cases: 54
+  local_joanic_journeys: 9
+  production_joanic_journeys: 9
+  report: architecture/joanic-vps-release-20260927.md
 
 task_queue: task/README.md
-next_proposed_task: task/005-joanic-vps-release.md
+next_proposed_task: observe-production-and-retain-rollback
 
 joanic_staircase_project:
   owner_photographs:
@@ -178,6 +195,10 @@ solar_embed_width_fix:
   animation_source_changed: false
 
 vps_execution:
+  latest_release_report: architecture/joanic-vps-release-20260927.md
+  latest_release_sha: a1b83ad864b90ba5f055a6a59df1412179d14f7f
+  latest_release_id: 20260927-a1b83ad
+  latest_server_current: /srv/vital-vibe/releases/20260927-a1b83ad
   report: architecture/vps-cutover-20260913/report.md
   release_sha: ebd51356a925e84984bdfa2f520979fd11a44362
   initial_migration_sha: fb31a282e0204bc37d3ced1982675fef0332573f
