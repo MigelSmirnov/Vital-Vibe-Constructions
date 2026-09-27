@@ -139,11 +139,16 @@ test("loads current content tables into a repository with project records", asyn
   assert.equal(repository.listRenovationTiers().length, 3);
   assert.equal(repository.listRenovationTiers()[0].id, "economical");
   assert.equal(repository.findRenovationTierById("standard").pricePerM2, 1200);
-  assert.equal(repository.listProjects().length, 4);
+  assert.equal(repository.listProjects().length, 5);
   const bathroom = repository.findProjectById("project-bathroom-ponent-badalona");
   assert.equal(bathroom.labourCostEur, 1100);
   assert.equal(bathroom.estimatedTotalCostEur, null);
   assert.equal(bathroom.imageIds.length, 6);
+  const joanic = repository.findProjectById("project-escalera-joanic-pintura");
+  assert.equal(joanic.totalCostEur, 900);
+  assert.equal(joanic.vatIncluded, false);
+  assert.equal(joanic.areaM2, 92);
+  assert.deepEqual(joanic.serviceIds, ["painting", "masonry"]);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
   assert.equal(repository.findArticleById("article-solar-collector-connections").mediaIds.length, 2);
