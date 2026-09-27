@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 68
+Version: 69
 Updated: 2026-09-27
 
 ## Session rule
@@ -19,6 +19,12 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Joanic preview layout correction — 2026-09-27
+
+Owner reported the malformed mobile/desktop service card after deployment. Reproduced: inside `picture { display:contents }`, the `source` element generated a grid item, shifting the image into column two and forcing the title into the narrow first column of a second row. Earlier functional acceptance missed internal card geometry. Explicitly hide source metadata in the card, retain the full photo's intrinsic aspect ratio, and enlarge desktop previews to 128px (92px on narrower screens). Homepage CSS now has a content-hashed URL to invalidate the previous cached stylesheet.
+
+`tools/visual/service-project-cards.mjs` reproduces the old failure and asserts source has no box, image/text share a row, readable title width, photo aspect ratio, WebP selection and no overflow at 360/390/768/1024/1440 px in ES/EN/RU. It is included in the regular visual workflow. Canonical checks pass (43 tests, 0 audit errors / 5 existing warnings). Production verification of this correction is pending.
 
 ## Joanic published on VPS — 2026-09-27
 

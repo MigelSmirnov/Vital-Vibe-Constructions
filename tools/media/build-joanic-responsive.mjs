@@ -43,7 +43,7 @@ for (const route of routes) {
     const projection = projections.get(image.match(/\bsrc="([^"]+)"/)?.[1]);
     if (!projection) return image;
     count++;
-    const sizes = route.family_id === 'homepage' ? '92px' : '(max-width: 720px) 92vw, 768px';
+    const sizes = route.family_id === 'homepage' ? '(min-width: 1100px) 128px, 92px' : '(max-width: 720px) 92vw, 768px';
     return `<picture style="display:contents"><source type="image/webp" srcset="${projection.variants.map(v => `${v.url} ${v.width}w`).join(', ')}" sizes="${sizes}">${image}</picture>`;
   });
   const expected = route.entity_id === project.id ? media.length : 1;

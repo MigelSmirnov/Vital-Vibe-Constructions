@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import process from "node:process";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
@@ -8,6 +9,7 @@ import { createKnowledgeRepository, loadContentTables } from "../../knowledge/in
 const root = process.cwd();
 const outputDir = path.join(root, "site-next");
 const routeContractPath = path.join(root, "architecture/project-routes.yaml");
+const homeStyleVersion = createHash("sha256").update(await readFile(path.join(root, "tools/site-next/home.css"))).digest("hex").slice(0, 12);
 
 function escapeHtml(value) {
   return String(value)
@@ -231,7 +233,7 @@ function renderPage({
   <meta property="og:image" content="${escapeHtml(site.canonicalOrigin + site.hero.image)}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="/home.css?v=${homeStyleVersion}">
   <script src="/home.js" defer></script>
   <script type="application/ld+json">${organizationSchema}</script>
 </head>

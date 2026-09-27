@@ -1,4 +1,4 @@
-version: 71
+version: 72
 updated_at: 2026-09-27T19:53:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
@@ -8,6 +8,15 @@ pull_request:
   state: merged
   base: release/vps-migration
   head: agent/joanic-staircase-project
+
+joanic_card_layout_fix:
+  status: implemented-production-verification-pending
+  cause: picture-display-contents-exposed-source-as-grid-item
+  correction: hide-source-preserve-photo-ratio-readable-copy-column
+  homepage_css_cache: content-hashed-query
+  regression: tools/visual/service-project-cards.mjs
+  previous_release_regression: failed-as-expected-source-occupies-grid-cell
+  canonical_checks: pass-43-tests-0-errors-5-existing-warnings
 
 joanic_vps_release:
   status: published-and-verified
