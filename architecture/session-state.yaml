@@ -1,4 +1,4 @@
-version: 68
+version: 69
 updated_at: 2026-09-27T12:01:37Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
@@ -13,8 +13,19 @@ task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
 
 joanic_staircase_project:
+  owner_photographs:
+    count: 4
+    lead_upload: 1000004923.jpg
+    remaining_uploads: [1000005156.jpg, 1000005157.jpg, 1000005032.jpg]
+    originals_preserved: true
+    responsive_builder: tools/media/build-joanic-responsive.mjs
+    format: webp
+    quality: 82
+    widths: [480, 768, 1152]
+    widths_capped_at_source: true
+    truncated_jpeg_decoder_warnings_fatal: true
   owner_review_followup:
-    photo_status: blocked-truncated-source-jpeg-owner-original-required
+    photo_status: replaced-with-valid-owner-original-and-three-process-result-images
     image_bytes: 6593
     decoder_result: premature-end-of-jpeg-and-data-segment
     related_articles: explicit-localized-titles-in-service-06-and-detail

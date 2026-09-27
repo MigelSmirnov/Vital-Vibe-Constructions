@@ -159,6 +159,11 @@ async function main() {
     stdio: "inherit",
   });
 
+  execFileSync("node", [path.join(root, "tools/media/build-joanic-responsive.mjs")], {
+    cwd: root,
+    stdio: "inherit",
+  });
+
   const commit = process.env.RELEASE_SHA || process.env.GITHUB_SHA || execFileSync("git", ["rev-parse", "HEAD"], {
     cwd: root,
     encoding: "utf8",

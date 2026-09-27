@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 65
+Version: 66
 Updated: 2026-09-27
 
 ## Session rule
@@ -19,6 +19,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Joanic owner photographs — 2026-09-27
+
+Received four valid owner JPEGs: loose coating removal, filler repair, finished landing and finished staircase. Replaced the truncated lead image with 1000004923.jpg; added the other three to the existing Joanic Media/Project records with ES/EN/RU captions. Original JPEGs remain intact. `tools/media/build-joanic-responsive.mjs` generates EXIF-oriented 480/768/1152 (capped at source width) WebP q82 variants and integrates srcset into the existing localized homepage card, catalog and project pages. It rejects decoder warnings to catch truncated JPEGs. No crop, design or project-copy changes. Canonical checks pass; preview refresh in progress. This supersedes the missing-original blocker below.
 
 ## Joanic photo and article-link follow-up — 2026-09-27
 
