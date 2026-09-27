@@ -5,6 +5,7 @@ import { escape, projectLocaleRoutes } from './project-locales.mjs';
 
 const knowledge = createKnowledgeRepository(await loadContentTables());
 const contract = JSON.parse(await readFile('architecture/project-routes.yaml', 'utf8'));
+const homeLocales = JSON.parse(await readFile('content/tables/home-localizations.yaml', 'utf8')).locales;
 const routes = projectLocaleRoutes(contract);
 const metadata = new Set();
 const spanishHome = await readFile('site-next/index.html', 'utf8');
@@ -51,8 +52,14 @@ for (const base of routes.filter(route => route.language === 'es')) {
         const card = home.split(cardMarker)[1]?.split('</article>')[0];
         assert.ok(card, `Homepage project card missing: ${route.language} ${project.slug}`);
         const leadMedia = project.imageIds.length ? knowledge.findMediaById(project.imageIds[0]) : null;
-        for (const spanish of [project.title, project.summary, leadMedia?.alt].filter(Boolean)) {
-          assert.ok(!card.includes(escape(spanish)), `Homepage project copy remains Spanish: ${route.language} ${spanish}`);
+        const replacements = homeLocales[route.language]?.replacements ?? {};
+        for (const spanish of [project.title, project.summary]) {
+          const localized = replacements[spanish];
+          assert.ok(localized, `Missing homepage project translation: ${route.language} ${spanish}`);
+          assert.ok(card.includes(escape(localized)), `Homepage project translation missing: ${route.language} ${spanish}`);
+        }
+        if (leadMedia?.alt && replacements[leadMedia.alt]) {
+          assert.ok(card.includes(escape(replacements[leadMedia.alt])), `Homepage project alt translation missing: ${route.language} ${leadMedia.alt}`);
         }
       }
     }
