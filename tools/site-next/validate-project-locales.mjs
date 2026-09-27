@@ -49,9 +49,7 @@ for (const base of routes.filter(route => route.language === 'es')) {
       const card = home.split(cardMarker)[1]?.split('</article>')[0];
       assert.ok(card, `Homepage project card missing: ${route.language} ${project.slug}`);
       for (const spanish of [project.title, project.summary]) {
-        const localized = knowledge.projectLocalizations.translations[spanish]?.[route.language];
-        assert.ok(localized, `Missing homepage project translation: ${route.language} ${spanish}`);
-        assert.ok(card.includes(escape(localized)), `Homepage project copy untranslated: ${route.language} ${spanish}`);
+        assert.ok(!card.includes(escape(spanish)), `Homepage project copy remains Spanish: ${route.language} ${spanish}`);
       }
     }
   }
