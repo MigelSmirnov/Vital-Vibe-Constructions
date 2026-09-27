@@ -7,6 +7,7 @@ const knowledge = createKnowledgeRepository(await loadContentTables());
 const contract = JSON.parse(await readFile('architecture/project-routes.yaml', 'utf8'));
 const routes = projectLocaleRoutes(contract);
 const metadata = new Set();
+const spanishHome = await readFile('site-next/index.html', 'utf8');
 const pages = new Map(await Promise.all(routes.map(async route => [route.path, await readFile(route.generated_html_path, 'utf8')])));
 for (const base of routes.filter(route => route.language === 'es')) {
   const siblings = routes.filter(route => route.source_path === base.path);
@@ -46,10 +47,13 @@ for (const base of routes.filter(route => route.language === 'es')) {
     assert.ok(!/href="\/projects\//.test(home), `Homepage project link loses language: ${route.language}`);
     if (project) {
       const cardMarker = `<article class="project-card" id="${project.slug}">`;
-      const card = home.split(cardMarker)[1]?.split('</article>')[0];
-      assert.ok(card, `Homepage project card missing: ${route.language} ${project.slug}`);
-      for (const spanish of [project.title, project.summary]) {
-        assert.ok(!card.includes(escape(spanish)), `Homepage project copy remains Spanish: ${route.language} ${spanish}`);
+      if (spanishHome.includes(cardMarker)) {
+        const card = home.split(cardMarker)[1]?.split('</article>')[0];
+        assert.ok(card, `Homepage project card missing: ${route.language} ${project.slug}`);
+        const leadMedia = project.imageIds.length ? knowledge.findMediaById(project.imageIds[0]) : null;
+        for (const spanish of [project.title, project.summary, leadMedia?.alt].filter(Boolean)) {
+          assert.ok(!card.includes(escape(spanish)), `Homepage project copy remains Spanish: ${route.language} ${spanish}`);
+        }
       }
     }
   }
