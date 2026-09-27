@@ -1,16 +1,39 @@
-version: 64
-updated_at: 2026-09-17T00:00:00Z
+version: 65
+updated_at: 2026-09-27T11:17:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/project-translations
+active_branch: agent/joanic-staircase-project
 pull_request:
-  number: 1
-  state: merged-historical
-  base: main
-  head: agent/architecture-sandbox
+  number: 9
+  state: open
+  base: release/vps-migration
+  head: agent/joanic-staircase-project
 
 task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
+
+joanic_staircase_project:
+  status: ready-for-review
+  branch: agent/joanic-staircase-project
+  pull_request: 9
+  base_branch: release/vps-migration
+  entity_id: project-escalera-joanic-pintura
+  routes:
+    es: /projects/reparacion-pintura-escalera-joanic-barcelona/
+    en: /en/projects/reparacion-pintura-escalera-joanic-barcelona/
+    ru: /ru/projects/reparacion-pintura-escalera-joanic-barcelona/
+  service_ids: [painting, masonry]
+  area_m2: 92
+  duration: 4-working-days
+  project_price_eur_ex_vat: 900
+  generated_projection_commit: ed0bbde19f65892e8856fb82f6e69557a02ca88e
+  temporary_workflow_removed_commit: 845cfe7fae61a6e1689825855cb2fa7bd11fcedb
+  canonical_validation:
+    workflow_run_number: 9
+    workflow_run_id: 36314964648
+    status: success
+  homepage_card_localization_regression_check: added-and-green
+  production_changed: false
 
 project_localizations:
   report: architecture/project-localizations/report.md
@@ -460,6 +483,9 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - date: 2026-09-27
+    summary: Added the Joanic communal-staircase painting project in ES/EN/RU, linked it to painting and masonry/building work, fixed localized homepage-card copy, committed generated pages and opened PR #9.
+    validation: canonical-workflow-run-9-success; generated-projection-committed; temporary-workflow-removed; production-unchanged
   - Published responsive WebP for eight painting/floor photos; 36 local and 36 public browser cases passed; release 2695336.
   - date: 2026-09-13
     summary: Fixed solar iframe collapsing to zero width on wide displays, versioned article CSS URLs, added browser regression coverage, and deployed the verified replacement release.
