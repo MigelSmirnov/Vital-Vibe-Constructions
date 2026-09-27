@@ -21,6 +21,28 @@ test("site presentation metadata survives a round trip with optional fields abse
   assert.deepEqual(Site.fromRecord(record).toRecord(), record);
 });
 
+test("service related projects must resolve and belong to the service", () => {
+  const tables = structuredClone(baseTables);
+  tables.services[0].related_project_ids = ["project-test"];
+  assert.deepEqual(
+    createKnowledgeRepository(tables).findServiceById("integral-renovation").relatedProjectIds,
+    ["project-test"],
+  );
+
+  tables.services[0].related_project_ids = ["missing-project"];
+  assert.throws(
+    () => createKnowledgeRepository(tables),
+    /Unknown services "integral-renovation" related_project_ids reference "missing-project"/,
+  );
+
+  tables.services[0].related_project_ids = ["project-test"];
+  tables.projects[0].service_ids = [];
+  assert.throws(
+    () => createKnowledgeRepository(tables),
+    /Service-project mismatch for service "integral-renovation" and project "project-test"/,
+  );
+});
+
 const baseTables = Object.freeze({
   site: {
     name: "Vital Vibe Construction",
