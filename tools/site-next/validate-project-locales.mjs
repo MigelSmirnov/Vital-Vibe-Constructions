@@ -12,6 +12,8 @@ for (const base of routes.filter(route => route.language === 'es')) {
   const siblings = routes.filter(route => route.source_path === base.path);
   assert.deepEqual(siblings.map(route => route.language).sort(), ['en', 'es', 'ru']);
   const source = pages.get(base.path);
+  const project = knowledge.findProjectById(base.entity_id);
+  assert.ok(project, `Missing project record: ${base.entity_id}`);
   const media = [...source.matchAll(/<img\b[^>]*src="([^"]+)"[^>]*width="(\d+)" height="(\d+)"/g)].map(match => match.slice(1));
   for (const route of siblings) {
     const html = pages.get(route.path);
@@ -42,6 +44,14 @@ for (const base of routes.filter(route => route.language === 'es')) {
     assert.ok(!/href="\/projects\//.test(content), `Project link loses language: ${route.path}`);
     const home = await readFile(`site-next/${route.language}/index.html`, 'utf8');
     assert.ok(!/href="\/projects\//.test(home), `Homepage project link loses language: ${route.language}`);
+    const cardMarker = `<article class="project-card" id="${project.slug}">`;
+    const card = home.split(cardMarker)[1]?.split('</article>')[0];
+    assert.ok(card, `Homepage project card missing: ${route.language} ${project.slug}`);
+    for (const spanish of [project.title, project.summary]) {
+      const localized = knowledge.projectLocalizations.translations[spanish]?.[route.language];
+      assert.ok(localized, `Missing homepage project translation: ${route.language} ${spanish}`);
+      assert.ok(card.includes(escape(localized)), `Homepage project copy untranslated: ${route.language} ${spanish}`);
+    }
   }
 }
 console.log(`Validated ${routes.length} project pages: translations, media, language navigation, metadata and homepage links.`);
