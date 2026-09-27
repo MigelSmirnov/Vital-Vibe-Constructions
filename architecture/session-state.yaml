@@ -1,16 +1,30 @@
-version: 69
+version: 70
 updated_at: 2026-09-27T12:01:37Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: agent/joanic-staircase-project
+active_branch: release/vps-migration
 pull_request:
   number: 9
-  state: open
+  state: merged
   base: release/vps-migration
   head: agent/joanic-staircase-project
 
+joanic_vps_release:
+  status: prepared-not-deployed
+  task: task/005-joanic-vps-release.md
+  release_sha: a1b83ad864b90ba5f055a6a59df1412179d14f7f
+  archive: vital-vibe-vps-a1b83ad.tgz
+  archive_sha256: 20149047fd59a0f1bebc4fcff0a7a66baa5162577ed4fb217c5b166f86add691
+  canonical_checks: pass-0-errors-5-existing-warnings
+  bundle_validation: pass-40-routes-44-html
+  webp_decoded: 105
+  production_changed: false
+  main_changed: false
+  server_activation_performed: false
+  live_mobile_qa: pending
+
 task_queue: task/README.md
-next_proposed_task: task/003-vps-cutover.md
+next_proposed_task: task/005-joanic-vps-release.md
 
 joanic_staircase_project:
   owner_photographs:
@@ -59,7 +73,7 @@ joanic_staircase_project:
     mobile_overflow_checked: false
     access_settings_changed: false
     published_deploy_unchanged: 6aa6e79ae275bb6ae5c7c792
-  status: ready-for-review
+  status: merged-release-prepared
   branch: agent/joanic-staircase-project
   pull_request: 9
   base_branch: release/vps-migration

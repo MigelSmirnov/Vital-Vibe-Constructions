@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 66
+Version: 67
 Updated: 2026-09-27
 
 ## Session rule
@@ -19,6 +19,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Joanic VPS release prepared — 2026-09-27
+
+Owner reviewed preview and requested VPS branch preparation. PR #9 merged into `release/vps-migration`. Pinned release SHA: `a1b83ad864b90ba5f055a6a59df1412179d14f7f`. Fresh checked archive: `vital-vibe-vps-a1b83ad.tgz`; SHA-256 `20149047fd59a0f1bebc4fcff0a7a66baa5162577ed4fb217c5b166f86add691`. Canonical checks pass (0 errors / 5 existing warnings), tracked projections unchanged; bundle validates 40 sitemap routes / 44 HTML files; all 105 WebP decode cleanly. See `task/005-joanic-vps-release.md` for handoff, build limitations, regenerated derivative and pre-activation/rollback checks. Production, main, DNS and server configuration were not changed. Deployment is the next separate action; do not repeat the historical DNS cutover steps.
 
 ## Joanic owner photographs — 2026-09-27
 
