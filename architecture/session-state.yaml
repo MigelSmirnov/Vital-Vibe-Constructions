@@ -1,5 +1,5 @@
-version: 65
-updated_at: 2026-09-27T11:17:00Z
+version: 66
+updated_at: 2026-09-27T11:30:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: agent/joanic-staircase-project
@@ -26,13 +26,17 @@ joanic_staircase_project:
   area_m2: 92
   duration: 4-working-days
   project_price_eur_ex_vat: 900
-  generated_projection_commit: ed0bbde19f65892e8856fb82f6e69557a02ca88e
-  temporary_workflow_removed_commit: 845cfe7fae61a6e1689825855cb2fa7bd11fcedb
+  generated_projection_commit: 085c12d38f8d790d3f3c1347745be9827b8eefb7
+  temporary_workflow_removed_commit: 942f753cbd8eefef64a163d68420aef59ca8b745
   canonical_validation:
-    workflow_run_number: 9
-    workflow_run_id: 36314964648
+    workflow_name: Joanic service placement
+    workflow_run_number: 1
+    workflow_run_id: 36315845180
     status: success
   homepage_card_localization_regression_check: added-and-green
+  homepage_placement: masonry-service-accordion-only
+  masonry_public_label_ru: Общестроительные работы
+  global_homepage_project_card: removed
   production_changed: false
 
 project_localizations:
@@ -483,6 +487,9 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - date: 2026-09-27
+    summary: Owner clarified that Joanic belongs inside the masonry / Общестроительные работы accordion on the homepage, not as a separate global homepage project card. Added a validated service-to-project relationship, embedded the localized project card under service 06 and removed the duplicate global homepage card.
+    validation: canonical-workflow-36315845180-success; ru-service-06-project-link-and-copy-verified; global-home-card-absent; production-unchanged
   - date: 2026-09-27
     summary: Added the Joanic communal-staircase painting project in ES/EN/RU, linked it to painting and masonry/building work, fixed localized homepage-card copy, committed generated pages and opened PR #9.
     validation: canonical-workflow-run-9-success; generated-projection-committed; temporary-workflow-removed; production-unchanged
