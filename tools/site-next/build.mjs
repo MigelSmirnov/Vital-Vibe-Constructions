@@ -18,12 +18,27 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function renderServices(services, serviceRouteById) {
+function renderServices(services, serviceRouteById, projectById, mediaById) {
   return services.map((service, index) => {
     const route = serviceRouteById.get(service.id);
+    const relatedProjects = (service.related_project_ids ?? []).map((projectId) => {
+      const project = projectById.get(projectId);
+      if (!project) throw new Error(`Service "${service.id}" references missing project "${projectId}".`);
+      const image = mediaById.get(project.image_ids[0]);
+      if (!image) throw new Error(`Service project "${project.id}" does not have a resolvable lead image.`);
+      return `
+        <a class="service-project-card" href="./projects/${escapeHtml(project.slug)}/">
+          <img src="../${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" width="${escapeHtml(image.width)}" height="${escapeHtml(image.height)}" loading="lazy">
+          <span class="service-project-copy">
+            <strong>${escapeHtml(project.title)}</strong>
+            <span>Ver proyecto <span aria-hidden="true">→</span></span>
+          </span>
+        </a>`;
+    }).join("");
+
     return `<details class="service-row" id="${escapeHtml(service.slug)}">
       <summary><span class="service-number">${String(index + 1).padStart(2, "0")}</span><h3>${escapeHtml(service.title)}</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
-      <div class="service-description"><p>${escapeHtml(service.summary)}</p>${route ? `<a class="text-link" href="${escapeHtml(route.path)}">${escapeHtml(service.title)} <span aria-hidden="true">→</span></a>` : ""}</div>
+      <div class="service-description"><p>${escapeHtml(service.summary)}</p>${relatedProjects}${route ? `<a class="text-link" href="${escapeHtml(route.path)}">${escapeHtml(service.title)} <span aria-hidden="true">→</span></a>` : ""}</div>
     </details>`;
   }).join("");
 }
@@ -160,7 +175,11 @@ function renderPage({
   const mediaById = new Map(media.map((item) => [item.id, item]));
   const featuredMedia = mediaById.get(site.featuredMediaId);
   const featuredProject = projects.find((project) => project.id === featuredMedia?.project_id);
-  const otherProjects = projects.filter((project) => project.id !== featuredProject?.id);
+  const projectById = new Map(projects.map((project) => [project.id, project]));
+  const serviceProjectIds = new Set(services.flatMap((service) => service.related_project_ids ?? []));
+  const otherProjects = projects.filter(
+    (project) => project.id !== featuredProject?.id && !serviceProjectIds.has(project.id),
+  );
   const featuredArticleRoute = articleRoutes.find(route => featuredProject?.article_ids?.includes(route.entity_id) && route.language === site.defaultLanguage);
   const featuredProjectHref = featuredArticleRoute?.path ?? (featuredProject ? `/projects/${featuredProject.slug}/` : null);
   const featuredCost = featuredProject?.labour_cost_eur
@@ -262,7 +281,7 @@ function renderPage({
     <section class="section" id="servicios">
       <div class="container">
         <div class="section-heading"><h2>Nuestros servicios</h2><p>Todo lo que tu reforma necesita</p></div>
-        <div class="service-grid">${renderServices(services, serviceRouteById)}</div>
+        <div class="service-grid">${renderServices(services, serviceRouteById, projectById, mediaById)}</div>
       </div>
     </section>
 

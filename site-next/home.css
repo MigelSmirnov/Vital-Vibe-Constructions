@@ -73,6 +73,12 @@
 .home .service-row[open] .service-toggle { transform: rotate(45deg); }
 .home .service-description { padding: 0 0 1.25rem 3.7rem; }
 .home .service-description p { margin: 0 0 .75rem; color: var(--muted); font-size: 1rem; }
+.home .service-project-card { display: grid; grid-template-columns: 92px minmax(0,1fr); gap: .9rem; align-items: stretch; margin: 1rem 0 .25rem; border: 1px solid var(--border); text-decoration: none; background: #181c1a; }
+.home .service-project-card img { width: 92px; height: 92px; object-fit: cover; }
+.home .service-project-copy { min-width: 0; padding: .8rem .9rem .8rem 0; display: flex; flex-direction: column; justify-content: center; gap: .35rem; }
+.home .service-project-copy strong { font-size: .95rem; line-height: 1.3; font-weight: 550; }
+.home .service-project-copy > span { color: var(--accent); font-size: .82rem; }
+.home .service-project-card:hover strong, .home .service-project-card:focus-visible strong { color: var(--accent); }
 .home .projects { background: var(--bg); }
 .home .portfolio-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch; }
 .home .featured-bathroom { margin: 0; border: 1px solid var(--border); display: flex; flex-direction: column; min-width: 0; }

@@ -188,6 +188,20 @@ function assertKnownReferences({ services, projects, capabilitySections, externa
       `services "${service.id}" included_service_ids`,
       "services",
     );
+    assertAllKnown(
+      service.relatedProjectIds,
+      projectIds,
+      `services "${service.id}" related_project_ids`,
+      "projects",
+    );
+    for (const projectId of service.relatedProjectIds) {
+      const project = projects.find((item) => item.id === projectId);
+      if (!project.serviceIds.includes(service.id)) {
+        throw new Error(
+          `Service-project mismatch for service "${service.id}" and project "${projectId}"; expected project.service_ids to include "${service.id}".`,
+        );
+      }
+    }
   }
 
   for (const item of media) {

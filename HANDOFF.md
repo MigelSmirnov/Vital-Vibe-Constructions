@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 61
-Updated: 2026-09-17
+Version: 66
+Updated: 2026-09-27
 
 ## Session rule
 
@@ -19,6 +19,33 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Joanic owner photographs — 2026-09-27
+
+Received four valid owner JPEGs: loose coating removal, filler repair, finished landing and finished staircase. Replaced the truncated lead image with 1000004923.jpg; added the other three to the existing Joanic Media/Project records with ES/EN/RU captions. Original JPEGs remain intact. `tools/media/build-joanic-responsive.mjs` generates EXIF-oriented 480/768/1152 (capped at source width) WebP q82 variants and integrates srcset into the existing localized homepage card, catalog and project pages. It rejects decoder warnings to catch truncated JPEGs. No crop, design or project-copy changes. Canonical checks pass (0 errors / 5 existing warnings); bundle validation passes (40 routes / 44 HTML files). All 12 WebP files decode cleanly and were visually inspected; 480px versions total 92,000 bytes versus 795,128 bytes of originals (88% smaller). Updated branch preview ready: https://6ab90b1e6482ef013606aa31--vital-vibe-preview.netlify.app/ru/ . Source SHA 49dd002a533a943fbceb651c86eee64e33bcb4c6. Live browser/mobile QA remains unverified behind team login. This supersedes the missing-original blocker below.
+
+## Joanic photo and article-link follow-up — 2026-09-27
+
+Owner reported missing photo and painting-article links. The committed `assets/projects/joanic-staircase/final-staircase.jpg` is truncated (6,593 bytes); ImageMagick reports premature JPEG end and visual inspection shows a narrow image strip followed by gray. File existence checks did not catch this. A valid owner original is required; do not invent/reconstruct the photograph. The image issue is still open.
+
+Added explicitly titled, language-matched Article links inside service 06 and on the service-owned Joanic detail page, resolved from existing Article records. Added localized link regression checks; canonical checks pass (0 errors / 5 existing warnings). Copy and design unchanged. Updated branch preview ready: https://6ab909042cf8dce189ae9c7c--vital-vibe-preview.netlify.app/ru/ . Source: 7ea7a7174b40e2330677b1b31c7bc64cac36d833. Bundle validation passed (40 routes / 44 HTML files). Live browser QA remains blocked by team sign-in. Production/main and access protection unchanged.
+
+## Joanic Netlify preview — 2026-09-27
+
+Netlify branch preview deployed from source `1444f923cc0d5b6782126064cf5bcf3770b4a300` to existing `vital-vibe-preview`; deploy `6ab90592e5118bd6bf6c6c55` is ready in `branch-deploy` context. RU URL: https://6ab90592e5118bd6bf6c6c55--vital-vibe-preview.netlify.app/ru/ . Canonical checks passed (0 errors / 5 existing warnings), tracked projections unchanged; bundle validation passed (40 sitemap routes / 44 HTML files). Static artifact confirms Joanic inside masonry service 06, RU detail link, no lower homepage duplicate and referenced image files present. Live accordion, image rendering and mobile overflow verification remain blocked by Netlify team sign-in in the browser. Team-login protection and published deploy `6aa6e79ae275bb6ae5c7c792` are unchanged; production/main untouched.
+
+## Joanic staircase painting — ready for review 2026-09-27
+
+Working branch: `agent/joanic-staircase-project`. PR #9 targets `release/vps-migration`.
+
+Added `project-escalera-joanic-pintura`: repair and painting of a 92 m² communal stairwell in Joanic, completed in four working days. The project price recorded for this specific job is 900 € + IVA and includes labour, materials purchase/transport, repairs, primer and two roller coats. It is linked to both `painting` and `masonry` (Russian public label: «Общестроительные работы») and to the existing painting-preparation article. One owner-provided finished photograph is published.
+
+Owner clarified the intended homepage placement: Joanic belongs **inside service 06, masonry / «Общестроительные работы»**, not as another card in the global «Выполненные проекты» list. `services.yaml` now links masonry to Joanic through `related_project_ids`; the homepage builder renders a compact localized project card inside that accordion and excludes service-owned featured projects from the lower global list. The project remains in the full project catalog and retains ES/EN/RU detail routes.
+
+EN/RU copy and the service-placement behavior are covered by `tools/site-next/validate-project-locales.mjs`, and repository validation requires every service-related project to exist and include the same service in its `service_ids`. Canonical validation passed in workflow `Joanic service placement` run #1 (run id 36315845180). Generated projection was committed as `085c12d38f8d790d3f3c1347745be9827b8eefb7`; the temporary workflow was removed in `942f753cbd8eefef64a163d68420aef59ca8b745`. Production and `main` were not changed.
+
+Next action for this feature: review PR #9, then merge/release through the normal `release/vps-migration` process if approved. Do not deploy this branch directly.
+
 
 ## Project translations — published 2026-09-17
 

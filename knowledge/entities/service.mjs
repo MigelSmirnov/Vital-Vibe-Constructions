@@ -13,6 +13,7 @@ export class Service extends EntityCore {
     pageH1 = null,
     introduction = null,
     includedServiceIds = [],
+    relatedProjectIds = [],
     processSteps = [],
     faq = [],
     source = null,
@@ -33,6 +34,7 @@ export class Service extends EntityCore {
     this.pageH1 = pageH1;
     this.introduction = introduction;
     this.includedServiceIds = Object.freeze(requireUniqueIdArray(includedServiceIds, "includedServiceIds"));
+    this.relatedProjectIds = Object.freeze(requireUniqueIdArray(relatedProjectIds, "relatedProjectIds"));
     this.processSteps = Object.freeze(requireContentItems(processSteps, "processSteps", ["title", "description"]));
     this.faq = Object.freeze(requireContentItems(faq, "faq", ["question", "answer"]));
 
@@ -88,6 +90,7 @@ export class Service extends EntityCore {
       pageH1: record.page_h1 ?? null,
       introduction: record.introduction ?? null,
       includedServiceIds: record.included_service_ids ?? [],
+      relatedProjectIds: record.related_project_ids ?? [],
       processSteps: record.process_steps ?? [],
       faq: record.faq ?? [],
       source,
@@ -104,6 +107,7 @@ export class Service extends EntityCore {
       page_h1: this.pageH1,
       introduction: this.introduction,
       included_service_ids: this.includedServiceIds.length ? [...this.includedServiceIds] : null,
+      related_project_ids: this.relatedProjectIds.length ? [...this.relatedProjectIds] : null,
       process_steps: this.processSteps.length ? this.processSteps.map((item) => ({ ...item })) : null,
       faq: this.faq.length ? this.faq.map((item) => ({ ...item })) : null,
     });

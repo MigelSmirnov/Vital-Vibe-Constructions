@@ -634,6 +634,70 @@
       "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
       "before_after_state": "detail",
       "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-joanic-staircase-finished",
+      "slug": "escalera-joanic-resultado",
+      "src": "assets/projects/joanic-staircase/final-staircase.jpg",
+      "alt": "Escalera comunitaria en Joanic después de la reparación y pintura de las paredes",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Vista general de la escalera después de terminar las reparaciones y la pintura.",
+      "project_id": "project-escalera-joanic-pintura",
+      "service_ids": [
+        "painting",
+        "masonry"
+      ],
+      "before_after_state": "after",
+      "published_at": "2026-09-27"
+    },
+    {
+      "id": "media-joanic-wall-preparation",
+      "slug": "joanic-saneado-pared",
+      "src": "assets/projects/joanic-staircase/wall-preparation.jpg",
+      "alt": "Retirada de pintura y masilla sueltas en la escalera de Joanic",
+      "caption": "Retirada de pintura y masilla sueltas en la escalera de Joanic",
+      "width": 864,
+      "height": 1536,
+      "project_id": "project-escalera-joanic-pintura",
+      "service_ids": [
+        "painting",
+        "masonry"
+      ],
+      "before_after_state": "work",
+      "published_at": "2026-09-27"
+    },
+    {
+      "id": "media-joanic-wall-filler",
+      "slug": "joanic-reparacion-masilla",
+      "src": "assets/projects/joanic-staircase/wall-filler.jpg",
+      "alt": "Reparación de la pared con masilla antes de pintar",
+      "caption": "Reparación de la pared con masilla antes de pintar",
+      "width": 864,
+      "height": 1536,
+      "project_id": "project-escalera-joanic-pintura",
+      "service_ids": [
+        "painting",
+        "masonry"
+      ],
+      "before_after_state": "work",
+      "published_at": "2026-09-27"
+    },
+    {
+      "id": "media-joanic-finished-landing",
+      "slug": "joanic-rellano-terminado",
+      "src": "assets/projects/joanic-staircase/finished-landing.jpg",
+      "alt": "Pared del rellano de Joanic después de la reparación y pintura",
+      "caption": "Pared del rellano de Joanic después de la reparación y pintura",
+      "width": 1536,
+      "height": 1536,
+      "project_id": "project-escalera-joanic-pintura",
+      "service_ids": [
+        "painting",
+        "masonry"
+      ],
+      "before_after_state": "after",
+      "published_at": "2026-09-27"
     }
   ]
 }

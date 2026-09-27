@@ -920,7 +920,9 @@
       "meta_description": "Cuándo pintar cuesta 4–6 €/m² de mano de obra, sin materiales: preparación, grietas, pintura antigua y elección entre pistola y rodillo.",
       "modified_at": "2026-09-13",
       "published_at": "2026-09-13",
-      "related_project_ids": [],
+      "related_project_ids": [
+        "project-escalera-joanic-pintura"
+      ],
       "related_service_ids": [
         "painting"
       ],

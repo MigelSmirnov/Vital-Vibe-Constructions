@@ -15,6 +15,13 @@
 
 ## Текущая точка
 
+- Актуальный preview с 4 исправными фото Joanic и WebP: https://6ab90b1e6482ef013606aa31--vital-vibe-preview.netlify.app/ru/ . 480px-варианты: 92 КБ вместо 795 КБ оригиналов; проверки сборки и декодирование прошли.
+
+- Joanic: получены 4 исправных оригинала владельца, повреждённое фото заменено; добавлены кадры подготовки и результата, подписи ES/EN/RU и адаптивный WebP. Явные локализованные ссылки на статью о покраске добавлены внутри 06 и на detail page; проверки прошли. Обновлённый preview: https://6ab909042cf8dce189ae9c7c--vital-vibe-preview.netlify.app/ru/
+
+- Netlify branch preview Joanic готов: https://6ab90592e5118bd6bf6c6c55--vital-vibe-preview.netlify.app/ru/ . Checks и bundle validation прошли; live browser QA ожидает входа команды Netlify. Защита доступа, production и main не менялись.
+
+- Проект покраски лестницы Joanic подготовлен в `agent/joanic-staircase-project`: на главной он размещён внутри раскрывающегося пункта 06 `masonry` / «Общестроительные работы» и убран из нижнего общего списка проектов; в каталоге проектов и на ES/EN/RU detail pages остаётся. 92 м², 4 рабочих дня, 900 € + IVA; PR #9 открыт в `release/vps-migration`. Production не менялся.
 - Опубликованная статья о ванной существует на ES / EN / RU; главные страницы ведут на соответствующую языковую версию.
 - Visual QA воспроизводимо запускается в GitHub Actions на 390×844, 768×1024 и 1440×1000.
 - Human-approved baseline: run #15 / `b34f72fd7902235cd24206f9a56ea9e243e89c92`.
@@ -30,6 +37,7 @@
 
 | Приоритет | Задача | Статус / результат |
 | --- | --- | --- |
+| Готово к ревью | Покраска подъезда Joanic | PR #9: на главной карточка находится внутри 06 «Общестроительные работы», не дублируется в нижнем списке; ES/EN/RU detail pages и каталог сохранены. 92 м², 4 рабочих дня, 900 € + IVA; workflow 36315845180 зелёный, production не менялся. |
 | Готово | [Переводы проектов](../architecture/project-localizations/report.md) | ES/EN/RU: 4 проекта и каталог опубликованы на VPS, релиз ebd5135; 37 тестов, 45 локальных и 45 production browser cases, 35 публичных маршрутов проверены. |
 | Следующий шаг | [Crawler / AEO](../architecture/crawler-aeo-audit/report.md) | Netlify preview закрыт (401); /en/ и /ru/ добавлены в production sitemap, 25 URL проверены, релиз f25d27b. Далее: проверить индексацию через кабинеты поисковиков. |
 | Готово | Shared secondary reduced-motion scroll cleanup | Run #68 зелёный; gallery + El Raval получают `scroll-behavior: auto` при reduced motion. |

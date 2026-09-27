@@ -21,6 +21,28 @@ test("site presentation metadata survives a round trip with optional fields abse
   assert.deepEqual(Site.fromRecord(record).toRecord(), record);
 });
 
+test("service related projects must resolve and belong to the service", () => {
+  const tables = structuredClone(baseTables);
+  tables.services[0].related_project_ids = ["project-test"];
+  assert.deepEqual(
+    createKnowledgeRepository(tables).findServiceById("integral-renovation").relatedProjectIds,
+    ["project-test"],
+  );
+
+  tables.services[0].related_project_ids = ["missing-project"];
+  assert.throws(
+    () => createKnowledgeRepository(tables),
+    /Unknown services "integral-renovation" related_project_ids reference "missing-project"/,
+  );
+
+  tables.services[0].related_project_ids = ["project-test"];
+  tables.projects[0].service_ids = [];
+  assert.throws(
+    () => createKnowledgeRepository(tables),
+    /Service-project mismatch for service "integral-renovation" and project "project-test"/,
+  );
+});
+
 const baseTables = Object.freeze({
   site: {
     name: "Vital Vibe Construction",
@@ -139,11 +161,16 @@ test("loads current content tables into a repository with project records", asyn
   assert.equal(repository.listRenovationTiers().length, 3);
   assert.equal(repository.listRenovationTiers()[0].id, "economical");
   assert.equal(repository.findRenovationTierById("standard").pricePerM2, 1200);
-  assert.equal(repository.listProjects().length, 4);
+  assert.equal(repository.listProjects().length, 5);
   const bathroom = repository.findProjectById("project-bathroom-ponent-badalona");
   assert.equal(bathroom.labourCostEur, 1100);
   assert.equal(bathroom.estimatedTotalCostEur, null);
   assert.equal(bathroom.imageIds.length, 6);
+  const joanic = repository.findProjectById("project-escalera-joanic-pintura");
+  assert.equal(joanic.totalCostEur, 900);
+  assert.equal(joanic.vatIncluded, false);
+  assert.equal(joanic.areaM2, 92);
+  assert.deepEqual(joanic.serviceIds, ["painting", "masonry"]);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
   assert.equal(repository.findArticleById("article-solar-collector-connections").mediaIds.length, 2);

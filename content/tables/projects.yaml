@@ -209,6 +209,61 @@
       "article_ids": [
         "article-bathroom-sink-relocation"
       ]
+    },
+    {
+      "id": "project-escalera-joanic-pintura",
+      "slug": "reparacion-pintura-escalera-joanic-barcelona",
+      "title": "Reparación y pintura de escalera comunitaria en Joanic, Barcelona",
+      "summary": "Saneado y pintura de 92 m² en una escalera comunitaria de la zona de Joanic: reparación de zonas con desprendimientos, imprimación y dos manos a rodillo en cuatro días de trabajo.",
+      "image_ids": [
+        "media-joanic-staircase-finished",
+        "media-joanic-wall-preparation",
+        "media-joanic-wall-filler",
+        "media-joanic-finished-landing"
+      ],
+      "service_ids": [
+        "painting",
+        "masonry"
+      ],
+      "article_ids": [
+        "article-painting-preparation"
+      ],
+      "location": "Joanic, Barcelona",
+      "area_m2": 92,
+      "duration": "4 días laborables",
+      "project_type": "Reparación y pintura de escalera comunitaria",
+      "initial_condition": {
+        "summary": "Las paredes presentaban desgaste, roces, golpes y desconchados. En algunas zonas la pintura se desprendía junto con la masilla, por lo que no era suficiente aplicar una capa nueva encima.",
+        "verified_facts": [
+          "Había zonas con pérdida de adherencia entre el acabado existente y el soporte.",
+          "Fue necesario retirar el material suelto antes de reparar y volver a pintar.",
+          "La comunidad tiene dos viviendas, pero la caja de escalera recorre tres plantas más el acceso a la terraza."
+        ]
+      },
+      "project_objective": "Recuperar las superficies deterioradas y renovar la pintura de toda la caja de escalera, manteniendo el trabajo dentro de un alcance de 92 m² y cuatro días laborables.",
+      "engineering_challenges": [
+        "El recorrido de trabajo abarcaba tres plantas y el acceso a la terraza, prácticamente cuatro niveles de escalera.",
+        "No se trataba solo de repintar: las zonas con pintura y masilla desprendidas tenían que sanearse y recuperarse antes del acabado.",
+        "La geometría de la escalera y la cantidad de encuentros hacían poco eficiente proteger todo el espacio para pintar con pistola."
+      ],
+      "engineering_decisions": {
+        "partition_and_finish": [
+          "Se sanearon las zonas sin adherencia y se recuperó la superficie con masilla preparada.",
+          "Se aplicó imprimación antes del acabado de pintura.",
+          "La pintura se aplicó en dos manos con rodillo. En este espacio, el tiempo de protección necesario para pulverizar habría sido desproporcionado respecto al volumen de trabajo."
+        ]
+      },
+      "total_cost_eur": 900,
+      "vat_included": false,
+      "cost_includes": [
+        "Mano de obra.",
+        "Compra de los materiales.",
+        "Transporte de los materiales hasta la obra.",
+        "Saneado y reparación de las zonas deterioradas.",
+        "Imprimación y dos manos de pintura a rodillo."
+      ],
+      "cost_note": "El precio de este proyecto fue de 900 € + IVA e incluyó la mano de obra, la compra de materiales y su transporte. Se utilizaron pintura interior, masilla preparada e imprimación; el cubo de pintura empleado rondaba los 50 €. Este importe corresponde a este encargo concreto y no es una tarifa fija para otras escaleras.",
+      "transformation_summary": "Tras sanear y reparar las zonas con problemas de adherencia, se imprimaron las superficies y se aplicaron dos manos de pintura con rodillo. La intervención de 92 m² quedó terminada en cuatro días laborables."
     }
   ]
 }
