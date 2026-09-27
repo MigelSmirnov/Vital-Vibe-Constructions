@@ -15,6 +15,8 @@
 
 ## Текущая точка
 
+- Netlify branch preview Joanic готов: https://6ab90592e5118bd6bf6c6c55--vital-vibe-preview.netlify.app/ru/ . Checks и bundle validation прошли; live browser QA ожидает входа команды Netlify. Защита доступа, production и main не менялись.
+
 - Проект покраски лестницы Joanic подготовлен в `agent/joanic-staircase-project`: на главной он размещён внутри раскрывающегося пункта 06 `masonry` / «Общестроительные работы» и убран из нижнего общего списка проектов; в каталоге проектов и на ES/EN/RU detail pages остаётся. 92 м², 4 рабочих дня, 900 € + IVA; PR #9 открыт в `release/vps-migration`. Production не менялся.
 - Опубликованная статья о ванной существует на ES / EN / RU; главные страницы ведут на соответствующую языковую версию.
 - Visual QA воспроизводимо запускается в GitHub Actions на 390×844, 768×1024 и 1440×1000.

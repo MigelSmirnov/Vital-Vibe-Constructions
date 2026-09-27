@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 63
+Version: 64
 Updated: 2026-09-27
 
 ## Session rule
@@ -19,6 +19,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Joanic Netlify preview — 2026-09-27
+
+Netlify branch preview deployed from source `1444f923cc0d5b6782126064cf5bcf3770b4a300` to existing `vital-vibe-preview`; deploy `6ab90592e5118bd6bf6c6c55` is ready in `branch-deploy` context. RU URL: https://6ab90592e5118bd6bf6c6c55--vital-vibe-preview.netlify.app/ru/ . Canonical checks passed (0 errors / 5 existing warnings), tracked projections unchanged; bundle validation passed (40 sitemap routes / 44 HTML files). Static artifact confirms Joanic inside masonry service 06, RU detail link, no lower homepage duplicate and referenced image files present. Live accordion, image rendering and mobile overflow verification remain blocked by Netlify team sign-in in the browser. Team-login protection and published deploy `6aa6e79ae275bb6ae5c7c792` are unchanged; production/main untouched.
 
 ## Joanic staircase painting — ready for review 2026-09-27
 

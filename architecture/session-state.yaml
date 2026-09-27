@@ -1,5 +1,5 @@
-version: 66
-updated_at: 2026-09-27T11:30:00Z
+version: 67
+updated_at: 2026-09-27T12:01:37Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: agent/joanic-staircase-project
@@ -13,6 +13,20 @@ task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
 
 joanic_staircase_project:
+  netlify_preview:
+    site_id: 56647124-f7e4-48b4-af01-d4069b069c9a
+    source_sha: 1444f923cc0d5b6782126064cf5bcf3770b4a300
+    deploy_id: 6ab90592e5118bd6bf6c6c55
+    context: branch-deploy
+    state: ready
+    ru_url: https://6ab90592e5118bd6bf6c6c55--vital-vibe-preview.netlify.app/ru/
+    canonical_checks: passed-0-errors-5-existing-warnings
+    bundle_validation: passed-40-sitemap-routes-44-html-files
+    static_placement_and_image_files: passed
+    live_browser_checks: blocked-by-team-login
+    mobile_overflow_checked: false
+    access_settings_changed: false
+    published_deploy_unchanged: 6aa6e79ae275bb6ae5c7c792
   status: ready-for-review
   branch: agent/joanic-staircase-project
   pull_request: 9
