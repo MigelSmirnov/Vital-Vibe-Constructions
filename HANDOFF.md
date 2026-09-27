@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 62
+Version: 63
 Updated: 2026-09-27
 
 ## Session rule
@@ -26,7 +26,9 @@ Working branch: `agent/joanic-staircase-project`. PR #9 targets `release/vps-mig
 
 Added `project-escalera-joanic-pintura`: repair and painting of a 92 m² communal stairwell in Joanic, completed in four working days. The project price recorded for this specific job is 900 € + IVA and includes labour, materials purchase/transport, repairs, primer and two roller coats. It is linked to both `painting` and `masonry` (Russian public label: «Общестроительные работы») and to the existing painting-preparation article. One owner-provided finished photograph is published.
 
-ES/EN/RU project routes and project/home cards are generated and sitemap-eligible. A missed EN/RU homepage-card localization was found during continuation, fixed in `home-localizations.yaml`, and covered by a regression check in `tools/site-next/validate-project-locales.mjs`. Canonical validation passed in Joanic workflow run #9 (run id 36314964648). Generated projection was committed as `ed0bbde19f65892e8856fb82f6e69557a02ca88e`; the temporary Joanic workflow was removed afterwards. Production and `main` were not changed.
+Owner clarified the intended homepage placement: Joanic belongs **inside service 06, masonry / «Общестроительные работы»**, not as another card in the global «Выполненные проекты» list. `services.yaml` now links masonry to Joanic through `related_project_ids`; the homepage builder renders a compact localized project card inside that accordion and excludes service-owned featured projects from the lower global list. The project remains in the full project catalog and retains ES/EN/RU detail routes.
+
+EN/RU copy and the service-placement behavior are covered by `tools/site-next/validate-project-locales.mjs`, and repository validation requires every service-related project to exist and include the same service in its `service_ids`. Canonical validation passed in workflow `Joanic service placement` run #1 (run id 36315845180). Generated projection was committed as `085c12d38f8d790d3f3c1347745be9827b8eefb7`; the temporary workflow was removed in `942f753cbd8eefef64a163d68420aef59ca8b745`. Production and `main` were not changed.
 
 Next action for this feature: review PR #9, then merge/release through the normal `release/vps-migration` process if approved. Do not deploy this branch directly.
 
