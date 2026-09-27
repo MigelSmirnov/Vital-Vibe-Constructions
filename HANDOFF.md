@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 67
+Version: 68
 Updated: 2026-09-27
 
 ## Session rule
@@ -20,7 +20,13 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
-## Joanic VPS release prepared — 2026-09-27
+## Joanic published on VPS — 2026-09-27
+
+Production now serves `a1b83ad864b90ba5f055a6a59df1412179d14f7f` from `/srv/vital-vibe/releases/20260927-a1b83ad`. The owner requested repository verification and deployment from the local machine. A fresh pinned build passed 43 tests, bundle validation (40 routes / 44 HTML files), and decoding of all 105 WebP images. All 40 public route responses match the built HTML exactly. Local and production browser checks each passed 54 project page/viewport cases and nine Joanic homepage-to-project-to-article journeys in ES/EN/RU at 390/768/1440 px. Four photos load, language links work, service 06 opens, and no page-level horizontal overflow was detected.
+
+Actual previous release, checked on the VPS before activation: `20260921-83dcb9f`, SHA `83dcb9f4e77ce65346f7df33060f4a47377b38d1`; retained for rollback. This supersedes the older previous-release assumption in the preparation note. DNS, nginx/Caddy configuration and main were unchanged. See `architecture/joanic-vps-release-20260927.md` for checksum and acceptance evidence. The following preparation notes are historical.
+
+## Joanic VPS release prepared — 2026-09-27 (historical)
 
 Owner reviewed preview and requested VPS branch preparation. PR #9 merged into `release/vps-migration`. Pinned release SHA: `a1b83ad864b90ba5f055a6a59df1412179d14f7f`. Fresh checked archive: `vital-vibe-vps-a1b83ad.tgz`; SHA-256 `20149047fd59a0f1bebc4fcff0a7a66baa5162577ed4fb217c5b166f86add691`. Canonical checks pass (0 errors / 5 existing warnings), tracked projections unchanged; bundle validates 40 sitemap routes / 44 HTML files; all 105 WebP decode cleanly. See `task/005-joanic-vps-release.md` for handoff, build limitations, regenerated derivative and pre-activation/rollback checks. Production, main, DNS and server configuration were not changed. Deployment is the next separate action; do not repeat the historical DNS cutover steps.
 

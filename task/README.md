@@ -15,7 +15,7 @@
 
 ## Текущая точка
 
-- PR #9 merged в `release/vps-migration`. [VPS-релиз Joanic](005-joanic-vps-release.md) подготовлен: SHA `a1b83ad864b90ba5f055a6a59df1412179d14f7f`, свежий архив проверен. Production не развёрнут.
+- [VPS-релиз Joanic опубликован и проверен](../architecture/joanic-vps-release-20260927.md): SHA `a1b83ad864b90ba5f055a6a59df1412179d14f7f`, release `20260927-a1b83ad`. Все 40 публичных маршрутов совпадают со сборкой; 54 browser cases и 9 Joanic journeys прошли локально и в production. Откат: `20260921-83dcb9f`. Следующие пункты подготовки Joanic — история.
 
 - Актуальный preview с 4 исправными фото Joanic и WebP: https://6ab90b1e6482ef013606aa31--vital-vibe-preview.netlify.app/ru/ . 480px-варианты: 92 КБ вместо 795 КБ оригиналов; проверки сборки и декодирование прошли.
 
