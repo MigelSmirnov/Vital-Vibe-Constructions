@@ -35,4 +35,5 @@ jobs:
           name: joanic-netlify-preview
           path: .deploy-dist
           if-no-files-found: error
+          include-hidden-files: true
           retention-days: 3
