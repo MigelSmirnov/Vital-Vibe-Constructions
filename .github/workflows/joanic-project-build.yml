@@ -1,0 +1,39 @@
+name: Joanic project build
+
+on:
+  push:
+    branches:
+      - agent/joanic-staircase-project
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install image tools
+        run: sudo apt-get update && sudo apt-get install -y webp imagemagick
+      - name: Run canonical project checks
+        run: node tools/checks/run.mjs
+      - name: Show generated diff
+        if: always()
+        run: git diff --stat && git diff --check
+      - name: Upload generated projection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: joanic-generated
+          path: |
+            site-next
+            sitemap.xml
+            llms.txt
+          if-no-files-found: error
+          retention-days: 3
