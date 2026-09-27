@@ -70,6 +70,19 @@ for (const service of knowledge.listServices()) {
   for (const projectId of service.relatedProjectIds) {
     const project = knowledge.findProjectById(projectId);
     assert.ok(project, `Missing service-related project: ${projectId}`);
+    for (const language of ['es', 'en', 'ru']) {
+      const home = language === 'es' ? spanishHome : await readFile(`site-next/${language}/index.html`, 'utf8');
+      const block = home.split(`<details class="service-row" id="${service.slug}">`)[1]?.split('</details>')[0];
+      const detail = pages.get(routes.find(route => route.entity_id === project.id && route.language === language).path);
+      for (const articleId of project.articleIds) {
+        const articleRoute = contract.routes.find(route => route.entity_id === articleId && route.language === language && route.status === 'generated');
+        const title = escape(knowledge.findArticleById(articleId).localized(language).title);
+        for (const html of [block, detail]) {
+          assert.ok(html.includes(`href="${articleRoute.path}"`), `Missing related article link: ${language} ${project.id}`);
+          assert.ok(html.includes(`>${title}</a>`), `Missing visible article title: ${language} ${project.id}`);
+        }
+      }
+    }
     const globalCardMarker = `<article class="project-card" id="${project.slug}">`;
     assert.ok(!spanishHome.includes(globalCardMarker), `Service-related project remains in global homepage list: ${project.slug}`);
 

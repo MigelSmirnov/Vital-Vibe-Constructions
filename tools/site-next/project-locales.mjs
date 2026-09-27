@@ -47,3 +47,11 @@ export function localizeProjectHtml(source, route, siblings, localization, origi
 export function projectLocaleRoutes(contract) {
   return contract.routes.filter(route => ['projects-index', 'project-detail', 'projects-index-localized', 'project-detail-localized'].includes(route.family_id) && route.status === 'generated').map(route => ({ ...route, source_path: route.language === 'es' ? route.path : route.path.replace(`/${route.language}`, '') }));
 }
+
+// Resolve visible article labels from the existing localized Article records.
+export function projectArticleLinks(knowledge, contract, project, language) {
+  const links = contract.routes.filter(route => route.family_id === 'article-detail' &&
+    route.status === 'generated' && route.language === language && project.articleIds.includes(route.entity_id))
+    .map(route => `<a class="text-link" href="${escape(route.path)}" lang="${language}">${escape(knowledge.findArticleById(route.entity_id).localized(language).title)}</a>`);
+  return links.length ? `<p class="project-article-links">${links.join(' · ')}</p>` : '';
+}

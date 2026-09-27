@@ -1,4 +1,4 @@
-version: 67
+version: 68
 updated_at: 2026-09-27T12:01:37Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
@@ -13,6 +13,13 @@ task_queue: task/README.md
 next_proposed_task: task/003-vps-cutover.md
 
 joanic_staircase_project:
+  owner_review_followup:
+    photo_status: blocked-truncated-source-jpeg-owner-original-required
+    image_bytes: 6593
+    decoder_result: premature-end-of-jpeg-and-data-segment
+    related_articles: explicit-localized-titles-in-service-06-and-detail
+    link_regression_checks: passed-es-en-ru
+    previous_image_file_existence_check_insufficient: true
   netlify_preview:
     site_id: 56647124-f7e4-48b4-af01-d4069b069c9a
     source_sha: 1444f923cc0d5b6782126064cf5bcf3770b4a300

@@ -10,6 +10,8 @@ const sourcePath = path.join(outputRoot, "index.html");
 const localizationPath = path.join(root, "content/tables/home-localizations.yaml");
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
 
+import { projectArticleLinks } from "./project-locales.mjs";
+
 const canonicalOrigin = "https://vitalvibeconstruction.com";
 
 function escapeRegExp(value) {
@@ -78,8 +80,19 @@ async function main() {
 
   const projectRoutes = contract.routes.filter(route => ["projects-index-localized", "project-detail-localized"].includes(route.family_id) && route.status === "generated");
   const serviceRoutes = contract.routes.filter(route => route.family_id === "service-detail-localized" && route.status === "generated");
-  const site = createKnowledgeRepository(await loadContentTables({ root })).getSite();
+  const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
+  const site = knowledge.getSite();
   const catalogNavigation = (html, language) => {
+    for (const service of knowledge.listServices()) {
+      const links = service.relatedProjectIds.map(id => projectArticleLinks(knowledge, contract, knowledge.findProjectById(id), language)).join('');
+      if (!links) continue;
+      const marker = `<details class="service-row" id="${service.slug}">`;
+      const start = html.indexOf(marker);
+      if (start < 0) throw new Error(`Missing service block: ${service.slug}`);
+      const end = html.indexOf('</details>', start) + '</details>'.length;
+      const block = html.slice(start, end);
+      html = html.slice(0, start) + block.replace(/<\/div>\s*<\/details>$/, `${links}</div></details>`) + html.slice(end);
+    }
     const route = contract.routes.find(item => item.family_id === "articles-index" && item.language === language && item.status === "generated");
     if (!route) throw new Error(`Missing catalog route for ${language}`);
     return html.replace("<!-- article-catalog-navigation -->", `<a href="${route.path}">${site.articleCatalog[language].title}</a>`);

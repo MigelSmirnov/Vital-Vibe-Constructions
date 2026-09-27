@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { createKnowledgeRepository, loadContentTables } from '../../knowledge/index.mjs';
-import { localizeProjectHtml, projectLocaleRoutes } from './project-locales.mjs';
+import { localizeProjectHtml, projectLocaleRoutes, projectArticleLinks } from './project-locales.mjs';
 
 const knowledge = createKnowledgeRepository(await loadContentTables());
 const contract = JSON.parse(await readFile('architecture/project-routes.yaml', 'utf8'));
@@ -11,7 +11,11 @@ const styleVersion = createHash("sha256").update(await readFile("site-next/style
 for (const base of routes.filter(route => route.language === 'es')) {
   const source = await readFile(base.generated_html_path, 'utf8');
   for (const route of routes.filter(route => route.source_path === base.path)) {
-    const html = localizeProjectHtml(source, route, routes, knowledge.projectLocalizations, knowledge.getSite().canonicalOrigin).replace('href="/styles.css"', `href="/styles.css?v=${styleVersion}"`);
+    let html = localizeProjectHtml(source, route, routes, knowledge.projectLocalizations, knowledge.getSite().canonicalOrigin).replace('href="/styles.css"', `href="/styles.css?v=${styleVersion}"`);
+    if (route.entity_id && knowledge.listServices().some(service => service.relatedProjectIds.includes(route.entity_id))) {
+      const project = knowledge.findProjectById(route.entity_id);
+      html = html.replace(/<p class="project-article-links">[\s\S]*?<\/p>/, projectArticleLinks(knowledge, contract, project, route.language));
+    }
     await mkdir(path.dirname(route.generated_html_path), { recursive: true });
     await writeFile(route.generated_html_path, html);
   }

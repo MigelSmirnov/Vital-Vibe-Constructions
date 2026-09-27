@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 64
+Version: 65
 Updated: 2026-09-27
 
 ## Session rule
@@ -19,6 +19,12 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Joanic photo and article-link follow-up — 2026-09-27
+
+Owner reported missing photo and painting-article links. The committed `assets/projects/joanic-staircase/final-staircase.jpg` is truncated (6,593 bytes); ImageMagick reports premature JPEG end and visual inspection shows a narrow image strip followed by gray. File existence checks did not catch this. A valid owner original is required; do not invent/reconstruct the photograph. The image issue is still open.
+
+Added explicitly titled, language-matched Article links inside service 06 and on the service-owned Joanic detail page, resolved from existing Article records. Added localized link regression checks; canonical checks pass (0 errors / 5 existing warnings). Copy and design unchanged. Preview update in progress; production/main and access protection unchanged.
 
 ## Joanic Netlify preview — 2026-09-27
 
