@@ -634,6 +634,22 @@
       "description": "Fotografía facilitada por el propietario del sitio. Sin retoque. Los grupos de objetos se describen por separado en el artículo.",
       "before_after_state": "detail",
       "published_at": "2026-09-13"
+    },
+    {
+      "id": "media-joanic-staircase-finished",
+      "slug": "escalera-joanic-resultado",
+      "src": "assets/projects/joanic-staircase/final-staircase.jpg",
+      "alt": "Escalera comunitaria en Joanic después de la reparación y pintura de las paredes",
+      "width": 1152,
+      "height": 1536,
+      "caption": "Vista general de la escalera después de terminar las reparaciones y la pintura.",
+      "project_id": "project-escalera-joanic-pintura",
+      "service_ids": [
+        "painting",
+        "masonry"
+      ],
+      "before_after_state": "after",
+      "published_at": "2026-09-27"
     }
   ]
 }

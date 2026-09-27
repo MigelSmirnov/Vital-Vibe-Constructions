@@ -32,6 +32,9 @@ entities:
       - budget_strategy
       - estimated_total_cost_eur
       - labour_cost_eur
+      - total_cost_eur
+      - vat_included
+      - cost_includes
       - cost_note
       - pending_technical_media
       - transformation_summary

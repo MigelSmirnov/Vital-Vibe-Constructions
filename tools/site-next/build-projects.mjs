@@ -138,6 +138,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById, articleRou
     project.project_type ? ["Tipo de proyecto", project.project_type] : null,
     project.area_m2 ? ["Superficie", `${project.area_m2} m²`] : null,
     duration ? ["Duración", duration] : null,
+    project.total_cost_eur ? ["Precio del proyecto", formatProjectCost(project, site.currency ?? "EUR")] : null,
     project.labour_cost_eur ? ["Mano de obra", formatCurrency(project.labour_cost_eur, site.currency ?? "EUR")] : null,
     project.estimated_total_cost_eur
       ? ["Coste aproximado", formatCurrency(project.estimated_total_cost_eur, site.currency ?? "EUR")]
@@ -178,7 +179,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById, articleRou
         <p class="eyebrow">Proyecto · ${escapeHtml(project.budget_range ?? project.location ?? site.serviceArea)}</p>
         <h1>${escapeHtml(project.title)}</h1>
         <p class="project-detail-summary">${escapeHtml(project.summary)}</p>
-        ${articleRoutes.some(route => project.article_ids?.includes(route.entity_id)) ? `<p class="project-article-links">Leer la historia de esta obra: ${articleRoutes.filter(route => project.article_ids?.includes(route.entity_id)).map(route => `<a class="text-link" href="${escapeHtml(route.path)}" lang="${route.language}" hreflang="${route.language}">${({es:"Español", en:"English", ru:"Русский"})[route.language]}</a>`).join(" · ")}</p>` : ""}
+        ${articleRoutes.some(route => project.article_ids?.includes(route.entity_id)) ? `<p class="project-article-links">Información relacionada: ${articleRoutes.filter(route => project.article_ids?.includes(route.entity_id)).map(route => `<a class="text-link" href="${escapeHtml(route.path)}" lang="${route.language}" hreflang="${route.language}">${({es:"Español", en:"English", ru:"Русский"})[route.language]}</a>`).join(" · ")}</p>` : ""}
         <dl class="project-facts">${facts
           .map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`)
           .join("")}</dl>
@@ -301,15 +302,18 @@ function renderEvidenceSections(project) {
     </section>`);
   }
 
-  if (project.estimated_total_cost_eur || project.labour_cost_eur || project.cost_note) {
+  if (project.total_cost_eur || project.estimated_total_cost_eur || project.labour_cost_eur || project.cost_note) {
     sections.push(renderTextAndListSection({
       eyebrow: "Coste del caso",
-      title: project.labour_cost_eur
+      title: project.total_cost_eur
+        ? `Precio del proyecto: ${formatProjectCost(project, "EUR")}`
+        : project.labour_cost_eur
         ? `Mano de obra: ${formatCurrency(project.labour_cost_eur, "EUR")}`
         : project.estimated_total_cost_eur
         ? `Orden de magnitud: ${formatCurrency(project.estimated_total_cost_eur, "EUR")}`
         : "Coste aproximado",
       text: project.cost_note,
+      items: project.cost_includes ?? [],
     }));
   }
 
@@ -359,6 +363,11 @@ function renderExecutionDuration(execution) {
   if (!execution?.phase_count || !execution?.duration_per_phase_months) return null;
 
   return `${execution.phase_count} fases de ${execution.duration_per_phase_months} meses`;
+}
+
+function formatProjectCost(project, currency) {
+  const amount = formatCurrency(project.total_cost_eur, currency);
+  return project.vat_included === false ? `${amount} + IVA` : amount;
 }
 
 function formatCurrency(value, currency) {
