@@ -1,0 +1,135 @@
+{
+  "id": "preparacion-suelo-parquet-barcelona",
+  "slug": "preparacion-suelo-parquet-barcelona-coste-real",
+  "status": "draft",
+  "language": "es",
+  "category": "Suelos y parquet",
+  "title": "Preparar el suelo antes de colocar parquet: un caso real en Barcelona",
+  "seo_title": "Preparar el suelo para parquet en Barcelona: caso y precio real",
+  "meta_description": "Caso real de preparación de un suelo antes de colocar parquet: cotas, demolición local, mortero, autonivelante, residuos, 3 días de trabajo y costes documentados.",
+  "h1": "Preparar el suelo antes de colocar parquet: cotas, nivelación y coste real",
+  "introduction": "Antes de colocar el nuevo pavimento en esta reforma integral tuvimos que resolver la geometría del suelo existente. El trabajo no consistió simplemente en verter autonivelante: primero medimos las cotas, localizamos los puntos altos, decidimos una altura viable para el pavimento terminado y corregimos la base por zonas.",
+  "author": "Vital Vibe Construction",
+  "updated_at": "2026-10-01",
+  "related_service_ids": ["integral-renovation"],
+  "related_project_ids": [],
+  "editorial_notes": [
+    "El pavimento final fue elegido por el cliente. Añadir fabricante/modelo solo cuando se confirme Stage 3.",
+    "La medición de cotas se hizo antes, dentro del levantamiento general de la reforma integral; no forma parte de los tres días de ejecución.",
+    "Enlazar a la guía técnica existente sobre nivelación de suelos en vez de duplicar su explicación.",
+    "Las cifras de materiales proceden de facturas del proyecto en Cabinet_web. Mantener separadas las cifras reales de cualquier orientación comercial.",
+    "Pendiente incorporar las dos fotografías aportadas por el propietario al repositorio de medios del artículo."
+  ],
+  "sections": [
+    {
+      "heading": "Primero se decide la cota, después se nivela",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Antes de empezar esta fase ya habíamos medido las cotas dentro del levantamiento general de la vivienda. Una referencia lógica es el nivel del rellano de la escalera, porque permite entender a qué altura llegará el pavimento terminado en la entrada."
+        },
+        {
+          "type": "paragraph",
+          "text": "En esta vivienda encontramos varios puntos altos del suelo existente por encima de la cota del rellano. Simplemente subir el resto del suelo hasta esos puntos habría aumentado innecesariamente la altura final, así que decidimos rebajar localmente las zonas más altas."
+        },
+        {
+          "type": "paragraph",
+          "text": "La demolición también tenía un límite práctico. En algunas zonas retiramos aproximadamente 3 cm de la construcción existente y, aun así, el espesor disponible para reconstruir la base quedaba en torno a 1 cm. Bajar toda la vivienda hasta la cota exacta del rellano habría requerido una intervención mucho más profunda."
+        },
+        {
+          "type": "paragraph",
+          "text": "Por eso definimos una cota viable ligeramente superior a la del rellano. La puerta de entrada tendrá que adaptarse y recortarse a la nueva altura del pavimento terminado."
+        }
+      ]
+    },
+    {
+      "heading": "Demolición localizada y reconstrucción de la base",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "No demolimos todo el suelo. Retiramos aproximadamente 10 m² correspondientes a las zonas más altas que impedían obtener una base uniforme."
+        },
+        {
+          "type": "paragraph",
+          "text": "Después de retirar el material existente, reconstruimos y regularizamos localmente esas zonas con mortero de cemento. Una vez endurecidas las reparaciones, preparamos el soporte para la nivelación final."
+        },
+        {
+          "type": "paragraph",
+          "text": "La demolición generó aproximadamente 2 m³ de escombros. Utilizamos dos sacas de obra de 1 m³. Las dos sacas con su retirada y gestión costaron 118 €. Además hay que considerar la mano de obra necesaria para sacar los escombros de la vivienda y cargarlos. Para un cálculo comercial equivalente consideramos aproximadamente 160 € por una jornada oficial de peón."
+        }
+      ]
+    },
+    {
+      "heading": "Autonivelante antes del nuevo pavimento",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Con los desniveles principales ya corregidos, imprimamos el soporte, colocamos la cinta perimetral y ejecutamos la nivelación final de aproximadamente 40 m²."
+        },
+        {
+          "type": "paragraph",
+          "text": "En gran parte de la superficie buscábamos una capa fina, alrededor de 5 mm. Sin embargo, el soporte no era idéntico en todos los puntos. Las facturas del proyecto confirman el uso tanto de mortero autonivelante para 0–10 mm como de material para zonas de mayor espesor, de 20–50 mm."
+        },
+        {
+          "type": "paragraph",
+          "text": "El objetivo era obtener una base continua y suficientemente plana para la siguiente fase del proyecto: la instalación del pavimento elegido por el cliente."
+        }
+      ]
+    },
+    {
+      "heading": "Cuánto costó preparar este suelo",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "La ejecución de esta fase duró 3 días laborables. La medición inicial y el estudio de cotas se realizaron anteriormente como parte del levantamiento general de la reforma integral y no se contabilizan dentro de esos tres días."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Trabajos de preparación, demolición localizada, regularización, imprimación y autonivelante: 1.089 € IVA incluido.",
+            "Materiales de preparación del suelo documentados en facturas: 447,81 € IVA incluido.",
+            "Dos sacas de 1 m³ con retirada y gestión de residuos: 118 €.",
+            "Jornada equivalente de peón para sacar y cargar los escombros: aproximadamente 160 €.",
+            "Transporte de materiales y subida a la vivienda: 150 €.",
+            "Referencia total para este caso: aproximadamente 1.965 €."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Los 447,81 € de materiales documentados incluyen mortero y cemento para reparaciones locales, imprimaciones, cinta perimetral y morteros autonivelantes de distintos espesores."
+        }
+      ]
+    },
+    {
+      "heading": "Por qué no damos simplemente un precio por metro cuadrado",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Dividir el coste total entre 40 m² produciría una cifra aparentemente sencilla, pero poco útil para otra vivienda. Aquí fue necesario demoler unos 10 m² de puntos altos, reconstruir parte de la base, retirar alrededor de 2 m³ de escombros y después nivelar aproximadamente 40 m²."
+        },
+        {
+          "type": "paragraph",
+          "text": "En otra vivienda de la misma superficie puede no ser necesario demoler nada, o puede ocurrir lo contrario: que el desnivel sea demasiado grande para resolverlo con una capa fina. El precio depende de las cotas existentes, del estado del soporte y de la construcción necesaria antes de colocar el acabado."
+        },
+        {
+          "type": "paragraph",
+          "text": "La explicación técnica detallada de cuándo basta una capa fina y cuándo es necesario reconstruir la base se mantiene en nuestra guía específica sobre nivelación de suelos antes de colocar el pavimento."
+        }
+      ]
+    },
+    {
+      "heading": "El pavimento final lo eligió el cliente",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "El acabado final de esta vivienda fue elegido por el cliente. Nuestra responsabilidad es comprobar cómo condiciona la instalación, preparar una base compatible y ejecutar la colocación según las características del producto y las instrucciones aplicables."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cuando incorporemos a este caso el fabricante y el modelo exactos, se indicarán como parte de la documentación de un proyecto real y no como una recomendación comercial."
+        }
+      ]
+    }
+  ],
+  "faq": []
+}
