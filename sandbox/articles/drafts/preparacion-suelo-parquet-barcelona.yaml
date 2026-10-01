@@ -20,7 +20,11 @@
     "La medición de cotas se hizo antes, dentro del levantamiento general de la reforma integral; no forma parte de los tres días de ejecución.",
     "Enlazar a la guía técnica existente sobre nivelación de suelos en vez de duplicar su explicación.",
     "Las cifras de materiales proceden de facturas del proyecto en Cabinet_web. Mantener separadas las cifras reales de cualquier orientación comercial.",
-    "Pendiente incorporar las dos fotografías aportadas por el propietario al repositorio de medios del artículo."
+    "Pendiente incorporar las dos fotografías aportadas por el propietario al repositorio de medios del artículo.",
+    "Media pending: 1000005373.jpg y 1000005372.jpg — comprobación del plano general del parquet con regla-nivel de 2 m.",
+    "Media pending: 1000005369.jpg — encuentro del parquet con el pavimento cerámico del baño; la cerámica se colocó antes y ambas cotas se planificaron previamente.",
+    "Caption ES nivel: Comprobación con regla-nivel de 2 m durante la colocación: la preparación previa permite mantener el pavimento en el plano previsto.",
+    "Caption ES baño: Encuentro entre el parquet y el pavimento cerámico del baño, cuyas cotas se habían previsto antes de colocar ambos acabados."
   ],
   "sections": [
     {
@@ -181,6 +185,36 @@
             "Rodapié comprado, 26,4 ml: 70,80 € con IVA.",
             "Montaje de rodapié previsto en la estimación aceptada: 150 € sin IVA / 181,50 € con IVA, sobre una medición inicial de 20 ml."
           ]
+        }
+      ]
+    },
+    {
+      "heading": "La cota del baño se decidió antes de colocar el parquet",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "El pavimento cerámico del baño se colocó antes que el parquet. Por eso las alturas de ambos acabados no podían resolverse como dos trabajos independientes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Al definir las cotas tuvimos que considerar por adelantado la construcción terminada de cada zona: en el baño, el soporte, el adhesivo y la baldosa; en el resto de la vivienda, la base y el parquet multicapa de 13 mm. El objetivo era que, una vez terminadas ambas fases, los dos pavimentos llegaran al encuentro en la cota prevista."
+        },
+        {
+          "type": "paragraph",
+          "text": "La fotografía del paso al baño muestra el resultado antes del acabado definitivo del encuentro: el parquet llega al pavimento cerámico que ya estaba colocado y las alturas se corresponden porque se habían previsto desde la preparación de la base."
+        }
+      ]
+    },
+    {
+      "heading": "Comprobamos el plano general con una regla de 2 metros",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Durante la colocación comprobamos la superficie terminada con una regla-nivel de 2 metros. No buscamos demostrar que una tabla aislada esté horizontal, sino verificar que el pavimento mantiene el plano general que habíamos definido para la vivienda."
+        },
+        {
+          "type": "paragraph",
+          "text": "Estas comprobaciones conectan directamente con la preparación anterior. Localizar los puntos altos, demoler solo donde era necesario, reconstruir la base y ejecutar la nivelación final tenía un objetivo práctico: que el acabado pudiera instalarse sobre una superficie continua y que la cota funcionara también en los encuentros con otros pavimentos."
         }
       ]
     }
