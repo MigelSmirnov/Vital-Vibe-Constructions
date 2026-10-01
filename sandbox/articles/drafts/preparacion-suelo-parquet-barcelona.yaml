@@ -11,10 +11,12 @@
   "introduction": "Antes de colocar el nuevo pavimento en esta reforma integral tuvimos que resolver la geometría del suelo existente. El trabajo no consistió simplemente en verter autonivelante: primero medimos las cotas, localizamos los puntos altos, decidimos una altura viable para el pavimento terminado y corregimos la base por zonas.",
   "author": "Vital Vibe Construction",
   "updated_at": "2026-10-01",
-  "related_service_ids": ["integral-renovation"],
+  "related_service_ids": [
+    "integral-renovation"
+  ],
   "related_project_ids": [],
   "editorial_notes": [
-    "El pavimento final fue elegido por el cliente. Añadir fabricante/modelo solo cuando se confirme Stage 3.",
+    "El pavimento final fue elegido por el cliente: TILO Trend Marcanto Oak Natur L1278. No publicar manufacturer_article hasta resolver la discrepancia entre Cabinet Stage 3 (100024203) y la ficha actual de Parmovil para L1278 (100011301).",
     "La medición de cotas se hizo antes, dentro del levantamiento general de la reforma integral; no forma parte de los tres días de ejecución.",
     "Enlazar a la guía técnica existente sobre nivelación de suelos en vez de duplicar su explicación.",
     "Las cifras de materiales proceden de facturas del proyecto en Cabinet_web. Mantener separadas las cifras reales de cualquier orientación comercial.",
@@ -118,15 +120,51 @@
       ]
     },
     {
-      "heading": "El pavimento final lo eligió el cliente",
+      "heading": "El parquet lo eligió el cliente",
       "blocks": [
         {
           "type": "paragraph",
-          "text": "El acabado final de esta vivienda fue elegido por el cliente. Nuestra responsabilidad es comprobar cómo condiciona la instalación, preparar una base compatible y ejecutar la colocación según las características del producto y las instrucciones aplicables."
+          "text": "Después de preparar la base, el cliente eligió para esta vivienda el parquet multicapa TILO Trend Marcanto Oak Natur L1278. Indicamos la marca y el modelo porque forman parte de este caso real, no como recomendación comercial."
         },
         {
           "type": "paragraph",
-          "text": "Cuando incorporemos a este caso el fabricante y el modelo exactos, se indicarán como parte de la documentación de un proyecto real y no como una recomendación comercial."
+          "text": "Para el proyecto se encargaron 20 cajas, equivalentes a 46,56 m², para una superficie de instalación estimada de unos 40 m². La diferencia deja margen para cortes, selección de tablas y reserva durante el montaje."
+        },
+        {
+          "type": "paragraph",
+          "text": "La tabla tiene formato 2205 × 176 × 13 mm y una capa noble de madera de aproximadamente 3,2 mm. La documentación del fabricante admite instalación flotante o encolada y exige un soporte seco, estable, correctamente preparado y suficientemente plano."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Ficha del producto utilizado en Parmovil: https://parmovil.com/parquet-trend-marcanto/155-tilo-trend-marcanto-oak-natur-l1278.html",
+            "Ficha técnica oficial TILO de MARCANTO TREND Oak Natur: https://cdn.tilo.com/assets/produkt-dokumente/TD/en/en_td_marcanto-trend-oak-natur_100011301_3.03.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Precio del parquet, la base y la colocación",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "El parquet se compró a través de Parmovil. La oferta profesional aplicada al proyecto fue de 49,92 €/m² sin IVA. Para 46,56 m², el suministro de las 20 cajas asciende a 2.324,28 € sin IVA y 2.812,38 € con IVA."
+        },
+        {
+          "type": "paragraph",
+          "text": "La entrega de la partida de parquet al proyecto costó 70 €. La subida del material a la vivienda se contabiliza aparte y se añadirá al caso cuando quede fijado su importe definitivo."
+        },
+        {
+          "type": "paragraph",
+          "text": "La base o underlay se compró por separado. Como referencia del proyecto, su material está en torno a 2 €/m²; antes de publicar el importe final se sustituirá este valor por la factura exacta."
+        },
+        {
+          "type": "paragraph",
+          "text": "Para la ejecución usamos como precio de trabajo 15 €/m² para la colocación flotante del parquet junto con la colocación de la base. Sobre unos 40 m² son 600 € sin IVA, 726 € con IVA."
+        },
+        {
+          "type": "paragraph",
+          "text": "El rodapié, los perfiles y los encuentros se tratarán aparte porque dependen de la medición y de las soluciones finales de cada zona."
         }
       ]
     }
