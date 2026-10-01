@@ -1,0 +1,167 @@
+{
+  "id": "seguimiento-control-reforma",
+  "slug": "seguimiento-control-reforma-avance-gastos-cambios",
+  "status": "draft",
+  "language": "es",
+  "category": "Gestión de proyecto",
+  "title": "Cómo seguimos una reforma: avance, gastos y cambios sin perder el hilo",
+  "seo_title": "Cómo controlamos una reforma: avance, gastos y cambios",
+  "meta_description": "Cómo registramos avance, pagos, compras y cambios durante una reforma para mantener una visión actualizada del proyecto y poder explicar su evolución.",
+  "h1": "Cómo seguimos una reforma: avance, gastos y cambios sin perder el hilo",
+  "introduction": "Una reforma cambia mientras avanza. Aparecen decisiones, compras reales, trabajos adicionales y ajustes de alcance. Nuestro objetivo es que esa evolución quede registrada y pueda entenderse después, sin depender de mensajes sueltos ni de la memoria.",
+  "author": "Vital Vibe Construction",
+  "updated_at": "2026-09-27",
+  "related_service_ids": [
+    "integral-renovation"
+  ],
+  "related_project_ids": [],
+  "sections": [
+    {
+      "heading": "Una obra se mueve; el registro no debería perderse",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Durante una reforma, la información cambia constantemente. Una partida puede ejecutarse de otra manera, un material puede sustituirse, una compra real puede diferir de la previsión y puede aparecer un trabajo que no estaba definido al inicio."
+        },
+        {
+          "type": "paragraph",
+          "text": "Por eso mantenemos un registro de trabajo del proyecto. La idea no es llenar al cliente de datos, sino conservar una historia coherente de lo que se decidió, lo que se ejecutó y lo que cambió."
+        }
+      ]
+    },
+    {
+      "heading": "Partimos de una referencia clara",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "El seguimiento necesita un punto de partida. La estimación o presupuesto aceptado sirve como referencia del alcance previsto, mientras que la evolución posterior se registra sin borrar esa base."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Qué estaba incluido al inicio.",
+            "Qué se ha ejecutado.",
+            "Qué ha cambiado durante la obra.",
+            "Qué sigue pendiente de decisión o confirmación."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "El avance se sigue por etapas",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Un porcentaje general puede ser útil, pero por sí solo dice poco. Por eso el avance se relaciona con etapas y partidas concretas: qué parte está pendiente, en curso o terminada y qué importe de trabajo corresponde a cada bloque."
+        },
+        {
+          "type": "paragraph",
+          "text": "Las fotografías de obra ayudan a completar esa lectura. No sustituyen el registro técnico o económico, pero permiten ver cómo evoluciona el objeto junto con los datos del proyecto."
+        }
+      ]
+    },
+    {
+      "heading": "Presupuesto, gastos y pagos no son la misma cosa",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Para entender bien un proyecto conviene separar conceptos. El presupuesto describe lo previsto; una compra o gasto registra un coste real; un pago confirma dinero recibido o entregado. Mezclar estas capas hace difícil reconstruir después qué ocurrió."
+        },
+        {
+          "type": "quote",
+          "text": "La información útil no es solo cuánto cuesta el proyecto, sino de dónde viene cada cifra y a qué corresponde."
+        }
+      ]
+    },
+    {
+      "heading": "Materiales: comparar el plan con lo que realmente se compra",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Los materiales previstos pueden cambiar por elección del cliente, disponibilidad, cantidades reales o necesidades que aparecen durante la ejecución. Mantener separada la previsión de las compras reales permite ver sustituciones, diferencias de cantidad y variaciones de coste."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Material previsto y material finalmente elegido.",
+            "Cantidad planificada frente a cantidad comprada.",
+            "Coste previsto frente a coste real.",
+            "Compras nuevas que no estaban en la previsión original."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Los trabajos adicionales se registran como cambios",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Un trabajo puede ser necesario en obra antes de que su tratamiento comercial esté completamente cerrado. Por eso distinguimos entre lo que físicamente se ha decidido o ejecutado y el estado de su precio o aprobación."
+        },
+        {
+          "type": "paragraph",
+          "text": "Esto permite seguir trabajando sin perder la trazabilidad y, al mismo tiempo, evita presentar como definitivo algo que todavía está pendiente de confirmar."
+        }
+      ]
+    },
+    {
+      "heading": "El cliente necesita una imagen clara, no toda la maquinaria interna",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "El registro interno puede ser detallado, pero la vista del cliente debe ser sencilla: avance, presupuesto, gastos, pagos y fotografías recientes. El objetivo es que pueda entender el estado del proyecto sin tener que reconstruirlo a partir de conversaciones dispersas."
+        },
+        {
+          "type": "paragraph",
+          "text": "La información operativa más técnica permanece detrás de esa vista y sirve para mantener consistentes los datos que se muestran."
+        }
+      ]
+    },
+    {
+      "heading": "Cuando cambia el coste, el cambio debe poder explicarse",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "En una reforma real el importe puede moverse. Lo importante es poder reconstruir ese movimiento: qué parte procede de trabajos adicionales, qué parte de materiales, qué decisiones redujeron el coste y qué posiciones siguen abiertas."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cuando hace falta revisar la evolución económica, podemos partir de la referencia inicial y construir un puente hasta la situación actual sin borrar las decisiones intermedias."
+        }
+      ]
+    },
+    {
+      "heading": "Qué buscamos con este sistema",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "Que el estado del proyecto no dependa de la memoria.",
+            "Que los cambios de alcance queden identificados.",
+            "Que las compras y los pagos puedan relacionarse con el proyecto.",
+            "Que el cliente tenga una visión actualizada sin recibir información innecesariamente compleja.",
+            "Que, si una cifra cambia, sea posible explicar por qué."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "No se trata de convertir una obra en un informe permanente. Se trata de conservar suficiente información para trabajar con orden y poder explicar el proyecto cuando sea necesario."
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿El cliente ve todos los registros internos?",
+      "answer": "No. La vista del cliente se centra en la información útil para seguir el proyecto. El detalle operativo se utiliza para mantener el seguimiento y preparar explicaciones o informes cuando hacen falta."
+    },
+    {
+      "question": "¿Este sistema significa que el precio de una reforma nunca cambia?",
+      "answer": "No. Una reforma puede cambiar por decisiones, materiales o trabajos adicionales. El objetivo del registro es identificar esos cambios y conservar su relación con la referencia inicial."
+    },
+    {
+      "question": "¿El seguimiento sustituye una factura o un presupuesto aprobado?",
+      "answer": "No. El seguimiento organiza la evolución del proyecto, pero los documentos comerciales y fiscales mantienen su función propia."
+    }
+  ]
+}
