@@ -4,6 +4,7 @@
     "coverage_mode": "complete-legacy-coverage",
     "expected_content_media_count": 39,
     "curated_exclusions_allowed": false,
+    "expected_project_media_counts": {"project-studio-renovation-barcelona": 16},
     "gallery_route_status": "blocked-on-media-migration",
     "unlock_condition": "Every listed source image has one validated Media record and every project-owned image resolves to a Project."
   },
@@ -20,14 +21,14 @@
         {"src":"proyecto-1/p6.jpeg","alt":"Aseo reformado","owner":"project-studio-renovation-barcelona","state":"after"},
         {"src":"proyecto-1/p7.jpeg","alt":"Estudio reformado","owner":"project-studio-renovation-barcelona","state":"after"},
         {"src":"proyecto-1/p8.jpeg","alt":"Pladur y preinstalación","owner":"project-studio-renovation-barcelona","state":"work"},
-        {"src":"proyecto-2/b1.jpeg","alt":"Cocina antes de la reforma","owner":"project-piso-reformado-barcelona","state":"before"},
-        {"src":"proyecto-2/b2.jpeg","alt":"Habitación antes de la reforma","owner":"project-piso-reformado-barcelona","state":"before"},
-        {"src":"proyecto-2/b3.jpeg","alt":"Demolición y obra","owner":"project-piso-reformado-barcelona","state":"work"},
-        {"src":"proyecto-2/b4.jpeg","alt":"Dormitorio reformado","owner":"project-piso-reformado-barcelona","state":"after"},
-        {"src":"proyecto-2/b5.jpeg","alt":"Baño reformado","owner":"project-piso-reformado-barcelona","state":"after"},
-        {"src":"proyecto-2/b6.jpeg","alt":"Cocina reformada","owner":"project-piso-reformado-barcelona","state":"after"},
-        {"src":"proyecto-2/b7.jpeg","alt":"Pasillo reformado","owner":"project-piso-reformado-barcelona","state":"after"},
-        {"src":"proyecto-2/b8.jpeg","alt":"Cocina reformada","owner":"project-piso-reformado-barcelona","state":"after"}
+        {"src":"proyecto-2/b1.jpeg","alt":"Cocina antes de la reforma","owner":"project-studio-renovation-barcelona","state":"before"},
+        {"src":"proyecto-2/b2.jpeg","alt":"Habitación antes de la reforma","owner":"project-studio-renovation-barcelona","state":"before"},
+        {"src":"proyecto-2/b3.jpeg","alt":"Demolición y obra","owner":"project-studio-renovation-barcelona","state":"work"},
+        {"src":"proyecto-2/b4.jpeg","alt":"Dormitorio reformado","owner":"project-studio-renovation-barcelona","state":"after"},
+        {"src":"proyecto-2/b5.jpeg","alt":"Baño reformado","owner":"project-studio-renovation-barcelona","state":"after"},
+        {"src":"proyecto-2/b6.jpeg","alt":"Cocina reformada","owner":"project-studio-renovation-barcelona","state":"after"},
+        {"src":"proyecto-2/b7.jpeg","alt":"Pasillo reformado","owner":"project-studio-renovation-barcelona","state":"after"},
+        {"src":"proyecto-2/b8.jpeg","alt":"Cocina reformada","owner":"project-studio-renovation-barcelona","state":"after"}
       ]
     },
     {

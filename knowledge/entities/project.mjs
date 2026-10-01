@@ -21,6 +21,10 @@ export class Project extends EntityCore {
     engineeringDecisions = null,
     budgetStrategy = null,
     estimatedTotalCostEur = null,
+    labourCostEur = null,
+    totalCostEur = null,
+    vatIncluded = null,
+    costIncludes = [],
     costNote = null,
     pendingTechnicalMedia = [],
     transformationSummary = null,
@@ -39,6 +43,9 @@ export class Project extends EntityCore {
     if (projectType !== null) assertNonEmptyString(projectType, "projectType");
     if (projectObjective !== null) assertNonEmptyString(projectObjective, "projectObjective");
     if (estimatedTotalCostEur !== null) assertPositiveInteger(estimatedTotalCostEur, "estimatedTotalCostEur");
+    if (labourCostEur !== null) assertPositiveInteger(labourCostEur, "labourCostEur");
+    if (totalCostEur !== null) assertPositiveInteger(totalCostEur, "totalCostEur");
+    if (vatIncluded !== null && typeof vatIncluded !== "boolean") throw new Error("Expected vatIncluded to be a boolean or null.");
     if (costNote !== null) assertNonEmptyString(costNote, "costNote");
     if (transformationSummary !== null) assertNonEmptyString(transformationSummary, "transformationSummary");
 
@@ -54,6 +61,10 @@ export class Project extends EntityCore {
     this.engineeringDecisions = freezeOptionalRecord(engineeringDecisions, "engineeringDecisions");
     this.budgetStrategy = freezeOptionalRecord(budgetStrategy, "budgetStrategy");
     this.estimatedTotalCostEur = estimatedTotalCostEur;
+    this.labourCostEur = labourCostEur;
+    this.totalCostEur = totalCostEur;
+    this.vatIncluded = vatIncluded;
+    this.costIncludes = Object.freeze(requireStringArray(costIncludes, "costIncludes"));
     this.costNote = costNote;
     this.pendingTechnicalMedia = Object.freeze(requireRecordArray(pendingTechnicalMedia, "pendingTechnicalMedia"));
     this.transformationSummary = transformationSummary;
@@ -86,6 +97,10 @@ export class Project extends EntityCore {
       engineeringDecisions: record.engineering_decisions ?? null,
       budgetStrategy: record.budget_strategy ?? null,
       estimatedTotalCostEur: record.estimated_total_cost_eur ?? null,
+      labourCostEur: record.labour_cost_eur ?? null,
+      totalCostEur: record.total_cost_eur ?? null,
+      vatIncluded: record.vat_included ?? null,
+      costIncludes: record.cost_includes ?? [],
       costNote: record.cost_note ?? null,
       pendingTechnicalMedia: record.pending_technical_media ?? [],
       transformationSummary: record.transformation_summary ?? null,
@@ -111,6 +126,10 @@ export class Project extends EntityCore {
       engineering_decisions: cloneOptionalRecord(this.engineeringDecisions),
       budget_strategy: cloneOptionalRecord(this.budgetStrategy),
       estimated_total_cost_eur: this.estimatedTotalCostEur,
+      labour_cost_eur: this.labourCostEur,
+      total_cost_eur: this.totalCostEur,
+      vat_included: this.vatIncluded,
+      cost_includes: this.costIncludes.length ? [...this.costIncludes] : null,
       cost_note: this.costNote,
       pending_technical_media: this.pendingTechnicalMedia.length
         ? this.pendingTechnicalMedia.map((item) => ({ ...item }))

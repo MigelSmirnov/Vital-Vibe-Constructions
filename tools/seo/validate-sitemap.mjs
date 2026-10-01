@@ -29,12 +29,11 @@ async function main() {
     loadContentTables({ root }).then((tables) => createKnowledgeRepository(tables)),
   ]);
   const canonicalOrigin = new URL(knowledge.getSite().canonicalOrigin).origin;
-  const homepageUrl = new URL("/", canonicalOrigin).href;
   const locations = extractLocations(xml);
   const eligibleRouteUrls = routeContract.routes
     .filter((route) => route.sitemap_eligible === true)
     .map((route) => route.canonical_url);
-  const expectedUrls = new Set([homepageUrl, ...eligibleRouteUrls]);
+  const expectedUrls = new Set(eligibleRouteUrls);
 
   if (!xml.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')) {
     throw new Error("sitemap.xml is missing the sitemap protocol urlset namespace.");

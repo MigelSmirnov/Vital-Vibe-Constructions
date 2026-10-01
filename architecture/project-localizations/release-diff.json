@@ -1,0 +1,27 @@
+{
+  "changed": [
+    "sitemap.xml",
+    "DEPLOYMENT_COMMIT",
+    "en/index.html",
+    "ru/index.html",
+    "projects/index.html",
+    "projects/trabajos-contrata-premium/index.html",
+    "projects/estudio-reformado-barcelona/index.html",
+    "projects/reforma-integral-estandar-barcelona/index.html",
+    "projects/traslado-lavabo-toallero-badalona/index.html",
+    "styles.css"
+  ],
+  "new": [
+    "en/projects/estudio-reformado-barcelona/index.html",
+    "en/projects/index.html",
+    "en/projects/reforma-integral-estandar-barcelona/index.html",
+    "en/projects/trabajos-contrata-premium/index.html",
+    "en/projects/traslado-lavabo-toallero-badalona/index.html",
+    "ru/projects/estudio-reformado-barcelona/index.html",
+    "ru/projects/index.html",
+    "ru/projects/reforma-integral-estandar-barcelona/index.html",
+    "ru/projects/trabajos-contrata-premium/index.html",
+    "ru/projects/traslado-lavabo-toallero-badalona/index.html"
+  ],
+  "unchanged": 193
+}

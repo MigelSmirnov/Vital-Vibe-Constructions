@@ -1,0 +1,159 @@
+{
+  "release_sha": "f25d27baa3abef644eedd87b4fcda614c828855d",
+  "sitemap_urls": 25,
+  "pages": [
+    {
+      "url": "https://vitalvibeconstruction.com/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/en/",
+      "status": 200,
+      "lang": "en",
+      "canonical": "https://vitalvibeconstruction.com/en/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/ru/",
+      "status": 200,
+      "lang": "ru",
+      "canonical": "https://vitalvibeconstruction.com/ru/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/projects/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/projects/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/projects/estudio-reformado-barcelona/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/projects/estudio-reformado-barcelona/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/projects/reforma-integral-estandar-barcelona/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/projects/reforma-integral-estandar-barcelona/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/projects/trabajos-contrata-premium/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/projects/trabajos-contrata-premium/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/gallery/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/gallery/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/servicios/reformas-integrales-barcelona/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/servicios/reformas-integrales-barcelona/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/projects/traslado-lavabo-toallero-badalona/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/projects/traslado-lavabo-toallero-badalona/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/articulos/traslado-lavabo-toallero/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/articulos/traslado-lavabo-toallero/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/en/articles/moving-a-bathroom-basin/",
+      "status": 200,
+      "lang": "en",
+      "canonical": "https://vitalvibeconstruction.com/en/articles/moving-a-bathroom-basin/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/ru/articles/perenos-rakoviny/",
+      "status": 200,
+      "lang": "ru",
+      "canonical": "https://vitalvibeconstruction.com/ru/articles/perenos-rakoviny/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/articulos/conexion-colector-solar/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/articulos/conexion-colector-solar/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/en/articles/solar-collector-connections/",
+      "status": 200,
+      "lang": "en",
+      "canonical": "https://vitalvibeconstruction.com/en/articles/solar-collector-connections/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "status": 200,
+      "lang": "ru",
+      "canonical": "https://vitalvibeconstruction.com/ru/articles/podklyuchenie-solnechnogo-kollektora/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/articulos/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/articulos/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/en/articles/",
+      "status": 200,
+      "lang": "en",
+      "canonical": "https://vitalvibeconstruction.com/en/articles/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/ru/articles/",
+      "status": 200,
+      "lang": "ru",
+      "canonical": "https://vitalvibeconstruction.com/ru/articles/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/articulos/pintura-paredes-precio-preparacion-barcelona/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/en/articles/wall-painting-price-preparation/",
+      "status": 200,
+      "lang": "en",
+      "canonical": "https://vitalvibeconstruction.com/en/articles/wall-painting-price-preparation/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/ru/articles/pokraska-sten-cena-podgotovka/",
+      "status": 200,
+      "lang": "ru",
+      "canonical": "https://vitalvibeconstruction.com/ru/articles/pokraska-sten-cena-podgotovka/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "status": 200,
+      "lang": "es",
+      "canonical": "https://vitalvibeconstruction.com/articulos/nivelacion-suelo-antes-del-pavimento/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/en/articles/floor-leveling-before-covering/",
+      "status": 200,
+      "lang": "en",
+      "canonical": "https://vitalvibeconstruction.com/en/articles/floor-leveling-before-covering/"
+    },
+    {
+      "url": "https://vitalvibeconstruction.com/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "status": 200,
+      "lang": "ru",
+      "canonical": "https://vitalvibeconstruction.com/ru/articles/vyravnivanie-pola-pered-ukladkoy/"
+    }
+  ],
+  "preview_status": 401,
+  "planner_byte_identical": true,
+  "robots_allows_crawling": true
+}

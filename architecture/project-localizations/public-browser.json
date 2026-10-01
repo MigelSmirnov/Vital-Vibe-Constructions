@@ -1,0 +1,1085 @@
+{
+  "base": "https://vitalvibeconstruction.com",
+  "results": [
+    {
+      "path": "/projects/",
+      "width": 390,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Reformas y trabajos realizados en Barcelona",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/estudio-reformado-barcelona/",
+      "width": 390,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Dos estudios independientes en un piso de 50 m² en El Raval",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/reforma-integral-estandar-barcelona/",
+      "width": 390,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Reforma integral estándar en Barcelona",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/trabajos-contrata-premium/",
+      "width": 390,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Trabajos de contrata en proyectos premium",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/traslado-lavabo-toallero-badalona/",
+      "width": 390,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Traslado de lavabo y toallero en Badalona",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/",
+      "width": 390,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Renovations and completed work in Barcelona",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/",
+      "width": 390,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Ремонт и выполненные работы в Барселоне",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/estudio-reformado-barcelona/",
+      "width": 390,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Two independent studios in a 50 m² apartment in El Raval",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/estudio-reformado-barcelona/",
+      "width": 390,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Две независимые студии в квартире 50 м² в Эль-Равале",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/reforma-integral-estandar-barcelona/",
+      "width": 390,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Standard complete renovation in Barcelona",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/reforma-integral-estandar-barcelona/",
+      "width": 390,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Комплексный ремонт стандартного уровня в Барселоне",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/trabajos-contrata-premium/",
+      "width": 390,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Specialist contracting for premium projects",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/trabajos-contrata-premium/",
+      "width": 390,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Подрядные работы в премиальных проектах",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/traslado-lavabo-toallero-badalona/",
+      "width": 390,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Sink relocation and towel rail in Badalona",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/traslado-lavabo-toallero-badalona/",
+      "width": 390,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Перенос раковины и полотенцесушитель в Бадалоне",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/",
+      "width": 768,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Reformas y trabajos realizados en Barcelona",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/estudio-reformado-barcelona/",
+      "width": 768,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Dos estudios independientes en un piso de 50 m² en El Raval",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/reforma-integral-estandar-barcelona/",
+      "width": 768,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Reforma integral estándar en Barcelona",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/trabajos-contrata-premium/",
+      "width": 768,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Trabajos de contrata en proyectos premium",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/traslado-lavabo-toallero-badalona/",
+      "width": 768,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Traslado de lavabo y toallero en Badalona",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/",
+      "width": 768,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Renovations and completed work in Barcelona",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/",
+      "width": 768,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Ремонт и выполненные работы в Барселоне",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/estudio-reformado-barcelona/",
+      "width": 768,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Two independent studios in a 50 m² apartment in El Raval",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/estudio-reformado-barcelona/",
+      "width": 768,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Две независимые студии в квартире 50 м² в Эль-Равале",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/reforma-integral-estandar-barcelona/",
+      "width": 768,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Standard complete renovation in Barcelona",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/reforma-integral-estandar-barcelona/",
+      "width": 768,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Комплексный ремонт стандартного уровня в Барселоне",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/trabajos-contrata-premium/",
+      "width": 768,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Specialist contracting for premium projects",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/trabajos-contrata-premium/",
+      "width": 768,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Подрядные работы в премиальных проектах",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/traslado-lavabo-toallero-badalona/",
+      "width": 768,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Sink relocation and towel rail in Badalona",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/traslado-lavabo-toallero-badalona/",
+      "width": 768,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Перенос раковины и полотенцесушитель в Бадалоне",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/",
+      "width": 1440,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Reformas y trabajos realizados en Barcelona",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/estudio-reformado-barcelona/",
+      "width": 1440,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Dos estudios independientes en un piso de 50 m² en El Raval",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/reforma-integral-estandar-barcelona/",
+      "width": 1440,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Reforma integral estándar en Barcelona",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/trabajos-contrata-premium/",
+      "width": 1440,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Trabajos de contrata en proyectos premium",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/projects/traslado-lavabo-toallero-badalona/",
+      "width": 1440,
+      "language": "es",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Traslado de lavabo y toallero en Badalona",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/",
+      "width": 1440,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Renovations and completed work in Barcelona",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/",
+      "width": 1440,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Ремонт и выполненные работы в Барселоне",
+      "webp": 1,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/estudio-reformado-barcelona/",
+      "width": 1440,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Two independent studios in a 50 m² apartment in El Raval",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/estudio-reformado-barcelona/",
+      "width": 1440,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Две независимые студии в квартире 50 м² в Эль-Равале",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/estudio-reformado-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/estudio-reformado-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/reforma-integral-estandar-barcelona/",
+      "width": 1440,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Standard complete renovation in Barcelona",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/reforma-integral-estandar-barcelona/",
+      "width": 1440,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Комплексный ремонт стандартного уровня в Барселоне",
+      "webp": 6,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/reforma-integral-estandar-barcelona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/reforma-integral-estandar-barcelona/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/trabajos-contrata-premium/",
+      "width": 1440,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Specialist contracting for premium projects",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/trabajos-contrata-premium/",
+      "width": 1440,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Подрядные работы в премиальных проектах",
+      "webp": 10,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/trabajos-contrata-premium/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/trabajos-contrata-premium/"
+        }
+      ]
+    },
+    {
+      "path": "/en/projects/traslado-lavabo-toallero-badalona/",
+      "width": 1440,
+      "language": "en",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Sink relocation and towel rail in Badalona",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    },
+    {
+      "path": "/ru/projects/traslado-lavabo-toallero-badalona/",
+      "width": 1440,
+      "language": "ru",
+      "overflow": false,
+      "overflowElements": [],
+      "broken": [],
+      "heading": "Перенос раковины и полотенцесушитель в Бадалоне",
+      "webp": 0,
+      "switches": [
+        {
+          "lang": "es",
+          "path": "/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "en",
+          "path": "/en/projects/traslado-lavabo-toallero-badalona/"
+        },
+        {
+          "lang": "ru",
+          "path": "/ru/projects/traslado-lavabo-toallero-badalona/"
+        }
+      ]
+    }
+  ]
+}

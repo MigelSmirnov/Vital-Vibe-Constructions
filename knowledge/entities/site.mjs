@@ -10,6 +10,8 @@ export class Site {
     serviceArea,
     hero,
     contact,
+    featuredMediaId = null,
+    articleCatalog = {},
     source = null,
   }) {
     assertNonEmptyString(name, "name");
@@ -27,6 +29,13 @@ export class Site {
     this.serviceArea = serviceArea;
     this.hero = Object.freeze(createHero(hero));
     this.contact = Object.freeze(createContact(contact));
+    if (featuredMediaId !== null) assertNonEmptyString(featuredMediaId, "featuredMediaId");
+    this.featuredMediaId = featuredMediaId;
+    this.articleCatalog = Object.freeze(Object.fromEntries(Object.entries(articleCatalog).map(([language, copy]) => {
+      if (!["es", "en", "ru"].includes(language)) throw new Error("Unsupported catalog language");
+      for (const key of ["title", "description", "read"]) assertNonEmptyString(copy[key], `articleCatalog.${language}.${key}`);
+      return [language, Object.freeze({ ...copy })];
+    })));
     this.source = source;
 
     Object.freeze(this);
@@ -50,6 +59,8 @@ export class Site {
       serviceArea: this.serviceArea,
       hero: { ...this.hero },
       contact: { ...this.contact },
+      featuredMediaId: this.featuredMediaId,
+      articleCatalog: this.articleCatalog,
     };
   }
 }
@@ -65,7 +76,19 @@ function createHero(hero) {
   assertNonEmptyString(hero.image, "hero.image");
   assertNonEmptyString(hero.imageAlt, "hero.imageAlt");
 
+  for (const key of ["titleAccent", "caption"]) {
+    if (hero[key] != null) assertNonEmptyString(hero[key], `hero.${key}`);
+  }
+  for (const key of ["imageWidth", "imageHeight"]) {
+    if (hero[key] !== undefined && (!Number.isInteger(hero[key]) || hero[key] <= 0)) {
+      throw new Error(`Expected positive integer hero.${key}`);
+    }
+  }
   return {
+    titleAccent: hero.titleAccent ?? null,
+    caption: hero.caption ?? null,
+    imageWidth: hero.imageWidth ?? 1600,
+    imageHeight: hero.imageHeight ?? 1000,
     eyebrow: hero.eyebrow,
     title: hero.title,
     summary: hero.summary,

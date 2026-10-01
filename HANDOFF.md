@@ -1,276 +1,195 @@
 # HANDOFF
 
-Version: 21
-Updated: 2026-09-06T14:40:00Z
+Version: 70
+Updated: 2026-09-27
 
-## Session Rule
+## Session rule
 
 Every working session must end by updating:
 
 - `HANDOFF.md`
 - `architecture/session-state.yaml`
 
-This file is a living handoff, not a changelog. Historical detail belongs in commits and architecture artifacts.
+This is a living handoff. Historical detail belongs in commits and architecture artifacts.
 
-## Current Status
+## Start here
 
-`agent/architecture-sandbox` is on a reproducible green architecture baseline with VPS migration and security preparation in place.
+1. Read `AGENTS.md` and its required architecture contracts in order.
+2. Continue from `task/README.md`; responsive-image history is tracked in `task/002-responsive-images.md`.
+3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
+4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
+5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
-Current capabilities:
+## Joanic preview layout correction — 2026-09-27
 
-- generated Spanish, English and Russian homepages with crawlable language switching and hreflang alternates;
-- validated Knowledge Repository architecture;
-- eight generated public HTML routes in `site-next`;
-- complete 39/39 legacy media coverage;
-- ranked 15-page SEO/AEO query-to-page matrix;
-- engineering-style article sandbox with stable draft document numbers, drawing-sheet framing, title blocks, sheet navigation and FAQ notes;
-- VPS + Caddy selected as the production hosting direction;
-- deterministic VPS release bundle produced and validated in PR CI;
-- atomic server release/rollback scripts;
-- explicit VPS security hardening plan;
-- production, DNS, GitHub Pages settings and canonical URLs remain unchanged.
+Owner reported the malformed mobile/desktop service card after deployment. Reproduced: inside `picture { display:contents }`, the `source` element generated a grid item, shifting the image into column two and forcing the title into the narrow first column of a second row. Earlier functional acceptance missed internal card geometry. Explicitly hide source metadata in the card, retain the full photo's intrinsic aspect ratio, and enlarge desktop previews to 128px (92px on narrower screens). Homepage CSS now has a content-hashed URL to invalidate the previous cached stylesheet.
 
-The article technical-document system is intentionally sandbox-only. It renders existing draft records from `sandbox/articles/drafts/` and does not add Article entities, public article routes, sitemap entries or `llms.txt` entries. `VVC-ART-001` and `VVC-ART-002` are stable presentation identifiers stored in the draft manifest rather than derived from ordering.
+`tools/visual/service-project-cards.mjs` reproduces the old failure and asserts source has no box, image/text share a row, readable title width, photo aspect ratio, WebP selection and no overflow at 360/390/768/1024/1440 px in ES/EN/RU. It is included in the regular visual workflow. Canonical checks pass (43 tests, 0 audit errors / 5 existing warnings).
 
-The multilingual rollout is intentionally staged. The homepage is available in ES at `/`, EN at `/en/`, and RU at `/ru/`. Project, gallery, service and article routes still require localized content records and route contracts before they can be published as complete language variants.
+Published and verified as `765856d7e113d83dd4d6e2c8f0a559e86a6e9df8` / `20260927-765856d`, after PR #12 merged into the release branch. All 15 layout cases pass locally and on production; mobile/desktop screenshots inspected. All 40 public route bodies and versioned CSS match the artifact. Bundle validation and decoding of all 105 WebP files pass. Archive SHA-256: `d2b78bead4637091b71bfd459531f7d22379e2555b0aa86ea7cb811a4925c732`; VPS archive `/home/ubuntu/vital-vibe-vps-card-fix.tgz`. Rollback: `20260927-a1b83ad` (retained; contains the prior preview layout bug). Source photos and article text unchanged; DNS/server configuration unchanged.
 
-Key artifacts:
+## Joanic published on VPS — 2026-09-27
 
-- `sandbox/articles/README.md`
-- `sandbox/articles/drafts/index.json`
-- `architecture/seo-aeo-query-page-matrix.md`
-- `architecture/vps-migration-plan.md`
-- `architecture/vps-security-plan.md`
-- `architecture/production-deployment-plan.md` — GitHub Pages fallback evaluation
-- `tools/deploy/build-vps-bundle.mjs`
-- `tools/deploy/validate-vps-bundle.mjs`
-- `deploy/vps/Caddyfile`
-- `deploy/vps/install-release.sh`
-- `deploy/vps/rollback-release.sh`
-- `.github/workflows/vps-bundle-check.yml`
+Production now serves `a1b83ad864b90ba5f055a6a59df1412179d14f7f` from `/srv/vital-vibe/releases/20260927-a1b83ad`. The owner requested repository verification and deployment from the local machine. A fresh pinned build passed 43 tests, bundle validation (40 routes / 44 HTML files), and decoding of all 105 WebP images. All 40 public route responses match the built HTML exactly. Local and production browser checks each passed 54 project page/viewport cases and nine Joanic homepage-to-project-to-article journeys in ES/EN/RU at 390/768/1440 px. Four photos load, language links work, service 06 opens, and no page-level horizontal overflow was detected.
 
-## Production Hosting Decision
+Actual previous release, checked on the VPS before activation: `20260921-83dcb9f`, SHA `83dcb9f4e77ce65346f7df33060f4a47377b38d1`; retained for rollback. This supersedes the older previous-release assumption in the preparation note. DNS, nginx/Caddy configuration and main were unchanged. See `architecture/joanic-vps-release-20260927.md` for checksum and acceptance evidence. The following preparation notes are historical.
 
-Long-term target: **VPS + Caddy**.
+## Joanic VPS release prepared — 2026-09-27 (historical)
 
-GitHub remains the source-control, validation and artifact-build system. The VPS serves only validated static release bundles.
+Owner reviewed preview and requested VPS branch preparation. PR #9 merged into `release/vps-migration`. Pinned release SHA: `a1b83ad864b90ba5f055a6a59df1412179d14f7f`. Fresh checked archive: `vital-vibe-vps-a1b83ad.tgz`; SHA-256 `20149047fd59a0f1bebc4fcff0a7a66baa5162577ed4fb217c5b166f86add691`. Canonical checks pass (0 errors / 5 existing warnings), tracked projections unchanged; bundle validates 40 sitemap routes / 44 HTML files; all 105 WebP decode cleanly. See `task/005-joanic-vps-release.md` for handoff, build limitations, regenerated derivative and pre-activation/rollback checks. Production, main, DNS and server configuration were not changed. Deployment is the next separate action; do not repeat the historical DNS cutover steps.
 
-```text
-Knowledge Repository
-        -> builders/checks
-        -> site-next + sitemap.xml + llms.txt
-        -> .deploy-dist
-        -> vps-site-bundle.tgz
-        -> /srv/vital-vibe/releases/<release-id>/
-        -> /srv/vital-vibe/current
-        -> Caddy / protected edge
-        -> https://vitalvibeconstruction.com
-```
+## Joanic owner photographs — 2026-09-27
 
-The production web tier requires no CMS, database, PHP runtime or Node application server.
+Received four valid owner JPEGs: loose coating removal, filler repair, finished landing and finished staircase. Replaced the truncated lead image with 1000004923.jpg; added the other three to the existing Joanic Media/Project records with ES/EN/RU captions. Original JPEGs remain intact. `tools/media/build-joanic-responsive.mjs` generates EXIF-oriented 480/768/1152 (capped at source width) WebP q82 variants and integrates srcset into the existing localized homepage card, catalog and project pages. It rejects decoder warnings to catch truncated JPEGs. No crop, design or project-copy changes. Canonical checks pass (0 errors / 5 existing warnings); bundle validation passes (40 routes / 44 HTML files). All 12 WebP files decode cleanly and were visually inspected; 480px versions total 92,000 bytes versus 795,128 bytes of originals (88% smaller). Updated branch preview ready: https://6ab90b1e6482ef013606aa31--vital-vibe-preview.netlify.app/ru/ . Source SHA 49dd002a533a943fbceb651c86eee64e33bcb4c6. Live browser/mobile QA remains unverified behind team login. This supersedes the missing-original blocker below.
 
-## Security Model
+## Joanic photo and article-link follow-up — 2026-09-27
 
-The static architecture removes the most common CMS/application attack surfaces, including plugin exploits, database injection paths and browser-accessible admin login brute force.
+Owner reported missing photo and painting-article links. The committed `assets/projects/joanic-staircase/final-staircase.jpg` is truncated (6,593 bytes); ImageMagick reports premature JPEG end and visual inspection shows a narrow image strip followed by gray. File existence checks did not catch this. A valid owner original is required; do not invent/reconstruct the photograph. The image issue is still open.
 
-Remaining material boundaries are:
+Added explicitly titled, language-matched Article links inside service 06 and on the service-owned Joanic detail page, resolved from existing Article records. Added localized link regression checks; canonical checks pass (0 errors / 5 existing warnings). Copy and design unchanged. Updated branch preview ready: https://6ab909042cf8dce189ae9c7c--vital-vibe-preview.netlify.app/ru/ . Source: 7ea7a7174b40e2330677b1b31c7bc64cac36d833. Bundle validation passed (40 routes / 44 HTML files). Live browser QA remains blocked by team sign-in. Production/main and access protection unchanged.
 
-1. VPS operating system and SSH;
-2. Caddy/network exposure;
-3. DNS/domain-account integrity;
-4. upstream DDoS/origin protection;
-5. GitHub/CI deployment credentials after automation is eventually enabled.
+## Joanic Netlify preview — 2026-09-27
 
-Detailed plan:
+Netlify branch preview deployed from source `1444f923cc0d5b6782126064cf5bcf3770b4a300` to existing `vital-vibe-preview`; deploy `6ab90592e5118bd6bf6c6c55` is ready in `branch-deploy` context. RU URL: https://6ab90592e5118bd6bf6c6c55--vital-vibe-preview.netlify.app/ru/ . Canonical checks passed (0 errors / 5 existing warnings), tracked projections unchanged; bundle validation passed (40 sitemap routes / 44 HTML files). Static artifact confirms Joanic inside masonry service 06, RU detail link, no lower homepage duplicate and referenced image files present. Live accordion, image rendering and mobile overflow verification remain blocked by Netlify team sign-in in the browser. Team-login protection and published deploy `6aa6e79ae275bb6ae5c7c792` are unchanged; production/main untouched.
 
-```text
-architecture/vps-security-plan.md
-```
+## Joanic staircase painting — ready for review 2026-09-27
 
-### No public admin panel
+Working branch: `agent/joanic-staircase-project`. PR #9 targets `release/vps-migration`.
 
-Do not introduce a hosting/CMS admin panel without a real requirement.
+Added `project-escalera-joanic-pintura`: repair and painting of a 92 m² communal stairwell in Joanic, completed in four working days. The project price recorded for this specific job is 900 € + IVA and includes labour, materials purchase/transport, repairs, primer and two roller coats. It is linked to both `painting` and `masonry` (Russian public label: «Общестроительные работы») and to the existing painting-preparation article. One owner-provided finished photograph is published.
 
-Caddy's configuration API is not a browser admin UI. The Caddyfile now explicitly binds it to:
+Owner clarified the intended homepage placement: Joanic belongs **inside service 06, masonry / «Общестроительные работы»**, not as another card in the global «Выполненные проекты» list. `services.yaml` now links masonry to Joanic through `related_project_ids`; the homepage builder renders a compact localized project card inside that accordion and excludes service-owned featured projects from the lower global list. The project remains in the full project catalog and retains ES/EN/RU detail routes.
 
-```text
-127.0.0.1:2019
-```
+EN/RU copy and the service-placement behavior are covered by `tools/site-next/validate-project-locales.mjs`, and repository validation requires every service-related project to exist and include the same service in its `service_ids`. Canonical validation passed in workflow `Joanic service placement` run #1 (run id 36315845180). Generated projection was committed as `085c12d38f8d790d3f3c1347745be9827b8eefb7`; the temporary workflow was removed in `942f753cbd8eefef64a163d68420aef59ca8b745`. Production and `main` were not changed.
 
-Never expose port 2019 through host or provider firewall rules.
+Next action for this feature: review PR #9, then merge/release through the normal `release/vps-migration` process if approved. Do not deploy this branch directly.
 
-### Caddy baseline hardening
 
-`deploy/vps/Caddyfile` now includes:
+## Project translations — published 2026-09-17
 
-- `Server` response header removal;
-- `X-Content-Type-Options: nosniff`;
-- `Referrer-Policy: strict-origin-when-cross-origin`;
-- `X-Frame-Options: DENY`;
-- restrictive `Permissions-Policy` for camera, microphone and geolocation;
-- compression and conservative cache controls;
-- HTTP 301 redirects for known historical URLs.
+Working branch: `agent/project-translations` in `/tmp/vital-vibe-vps-fb31a282`.
+Production now serves `ebd51356a925e84984bdfa2f520979fd11a44362` from `/srv/vital-vibe/releases/20260917-ebd5135`. Complete EN/RU project/catalog pages and homepage links preserve language; image captions and metadata are translated. Canonical checks: 37 tests, 0 errors / 5 existing warnings. Local and production browser checks: 45 cases each; public sitemap: all 35 routes verified. Rollback release: `20260913-f25d27b`. See [translation report](architecture/project-localizations/report.md) for archive checksum and evidence.
 
-Banner hiding reduces passive fingerprinting only; it is not treated as a primary security control.
+## Previous production — VPS cutover completed 2026-09-13
 
-Do not enable HSTS before first production HTTPS and rollback behavior are verified.
+**Historical release (superseded above):** https://vitalvibeconstruction.com served release SHA `f25d27baa3abef644eedd87b4fcda614c828855d` with all localized homepages in the sitemap. `/srv/vital-vibe/current` points to release `20260913-f25d27b`. Archive SHA-256: `0775aef73e0fb6b0a9ca8224128d8106996cf251b8b939c1fae5860e279b555c`.
 
-Do not enforce a CSP blindly. Inventory inline JSON-LD/external resources first and test a report-only policy before enforcement.
+Owner changed DonDominio manually: apex now has one A record `152.228.139.236`; www CNAME is `vitalvibeconstruction.com.`. Both authoritative servers agree. Existing app, other subdomains and mail records were preserved. Original zone screenshots and private nginx backup are retained on VPS under `/home/ubuntu/vvc-migration-fb31a282/backup/`.
 
-### SSH baseline
+Existing nginx handles public TLS and forwards to dedicated Caddy on `127.0.0.1:8890`; Caddy admin remains loopback-only and releases are mounted read-only under UID 65534. A dedicated nginx virtual host was added; all previous nginx files remain byte-identical. Caddy runtime config fixes asset-cache header precedence, retains SAMEORIGIN and preserves the approved site artifact. This shared-server topology uses Certbot/nginx TLS instead of direct Caddy ACME. Nginx emits its own Server header; HTTPS omits its version.
 
-Preferred:
+Certificate covers apex + www until 2026-12-12. **Automatic renewal is configured and test-verified** with webroot HTTP-01, active Certbot timer and a certificate-scoped nginx reload hook. The two manual ACME TXT entries are obsolete and may be removed by the owner; no automatic DNS access is configured.
 
-- non-root admin/deploy account;
-- public-key authentication only;
-- `PasswordAuthentication no`;
-- `PermitRootLogin no`;
-- private/VPN management path such as Tailscale/WireGuard where practical;
-- provider console/rescue access retained as break-glass recovery.
+Validation: 35 tests, gallery 39/39, 12 localized article pages, audit 0 errors / 5 warnings; 23 sitemap routes and nine historical redirects checked on public HTTPS; 69 pre-cutover browser page checks plus 21 final public browser checks and nine public solar iframe/control checks. No broken images, JS errors or horizontal overflow in the checked pages. Painting retains 10 sections / two photos; renovation-cost article retains 11 sections / six photos. HTTP→HTTPS and www→apex work. Planner `/manual` remained byte-identical. No 5xx or Caddy error messages in the sampled logs; one missing favicon and rejected .env probes were observed.
 
-Fail2ban is optional secondary protection if SSH remains public. It is not a substitute for keys-only authentication and firewall restrictions.
+GitHub Pages configuration remains `main:/` with its custom domain and HTTPS intact for DNS rollback. Previous release `20260913-2695336` is retained for symlink rollback (same pages and optimized images; EN/RU homepage entries missing from sitemap). Initial release `20260913-fb31a282` is also retained as historical recovery material. Article source CSS, its builder and generated CSS links changed in the follow-up fix; article copy, animation source, support.js, main and PR #6 remain unchanged.
 
-### Firewall baseline
+**Operational follow-ups are not claimed complete:** shared VPS still permits SSH passwords and root key login; provider firewall/DDoS controls, registrar MFA and external uptime monitoring have not been verified/configured in this task. Handle those with the shared-server recovery/access context. See [execution report](architecture/vps-cutover-20260913/report.md). The public website migration itself is complete.
 
-Use provider firewall plus host firewall where available.
+## Localized homepage sitemap published
 
-Direct-origin mode allows only required HTTP/HTTPS and the approved SSH management path. Caddy admin port 2019 remains loopback-only.
+All three homepages now belong to the route contract; sitemap generation/validation has no separate root exception. Public sitemap contains 25 unique canonical URLs including /en/ and /ru/. Full 35 tests, bundle validation and all 25 public route checks passed. Only sitemap.xml and DEPLOYMENT_COMMIT differ from previous production; 201 other files remain identical. Netlify stays protected, planner unchanged. See [release report](architecture/localized-home-sitemap/report.md). Search Console/Bing indexing verification remains the next step.
 
-If Cloudflare Tunnel is selected, the preferred final state can expose no public inbound web ports and no public SSH when management also uses a private VPN path.
+## Netlify preview closed to anonymous access
 
-### Updates and filesystem permissions
+Owner authorized restricting the preview. Netlify project `vital-vibe-preview` now requires team login for all deploys. Both preview alias and deploy permalink return 401 anonymously; the primary VPS site remained public at SHA 2695336 during that change and planner was unchanged. This supersedes the audit finding that preview was publicly indexable. See [settings, checks and rollback](architecture/netlify-preview-private/report.md).
 
-Use a supported LTS Linux release and automatic security updates.
+## Crawler and AEO audit
 
-Release directories are immutable after activation. Caddy receives read-only access to deployed HTML/assets; the deploy user owns release creation and the `current` symlink.
+Read-only audit of current production completed: all 25 checked canonical pages accessible in raw HTML; 24 user-agent probes passed. Two sitemap omissions (/en/, /ru/) and an indexable Netlify preview identified. Article content has useful first-hand evidence; actual new-page indexing and AI citations remain unverified without webmaster data. See [audit and priorities](architecture/crawler-aeo-audit/report.md). No production changes were made.
 
-## DDoS / Origin Protection
+## Painting and floor photograph delivery
 
-Caddy and a host firewall cannot stop a volumetric attack that saturates the VPS/provider uplink before traffic reaches the server.
+The eight photographs added after earlier responsive-image work still used full JPEG files. Production now generates 24 WebP derivatives and responsive sources for six localized article pages and three catalogs. Originals, text, captions, crop, layout and lazy-loading policy are preserved. The selected eight-photo payload falls from 2,074,102 bytes to 144,364 at 390/768 px DPR1 or 314,868 at 1440 px DPR1 (about 93% / 85% smaller); these are file sizes, not load-time measurements.
 
-Before cutover choose one explicit edge model:
+All 36 browser cases passed locally and all 36 on public HTTPS, including desktop DPR2. Canonical 35 tests and production bundle validation passed; 23 public routes and nine redirects passed. Scope comparison confirmed every other release file unchanged, including the solar fix. Planner remained byte-identical. DNS and server configuration did not change. See [report and evidence](architecture/article-photo-delivery/report.md).
 
-1. provider-protected direct Caddy — simplest, public origin IP;
-2. Cloudflare proxied DNS + restricted origin — strong practical compromise;
-3. Cloudflare Tunnel + private SSH — smallest public origin attack surface if Cloudflare dependency is acceptable.
+## Solar iframe correction after owner screenshot
 
-For this static site, option 3 is the strongest practical isolation; option 2 is the simpler strong default.
+Owner reported a blank animation on a wide desktop. Reproduced: the old CSS margin formula reduced the iframe to 202 px at 1440 px and zero width at 1920/2560 px. Earlier checks confirmed loading and controls but did not assert embed width, so their “pass” missed this layout defect. Fixed source CSS to bounded desktop margins, kept mobile margins, and added content-hashed CSS URLs to refresh cached styles. Builders regenerated all affected outputs; article copy and animation are unchanged.
 
-If origin hiding is desired, do not leak the new VPS IP through temporary DNS records, public test hostnames, mail infrastructure, repository files or documentation.
+New `tools/visual/solar-embed.mjs` is part of visual QA and checks iframe/caption width, viewport fit and controls on ES/EN/RU at 390/768/1024/1440/1920/2560. It failed on the old artifact and passed all 18 cases locally and all 18 on production after deployment. Wide-screen iframe is now 768 px; an actual 1920 px production screenshot was visually inspected. See `architecture/solar-embed-width-fix.md`. Fresh production bundle and 35 canonical tests passed; public routes and redirects passed. DNS/server/TLS settings did not change for this fix.
 
-## Domain / DNS Security
+## Previous stage (historical)
 
-Before migration:
+The human-approved visual baseline, semantic/accessibility layer, homepage responsive images, Standard/Premium project slices, homepage hero/LCP delivery, bounded gallery high-transfer reuse and shared reduced-motion follow-up are green. Production and DNS remain unchanged.
 
-- strong MFA on registrar and DNS provider;
-- unique credentials;
-- registrar/domain transfer lock;
-- review recovery channels;
-- DNSSEC where supported and operationally understood;
-- export the full pre-cutover DNS zone;
-- use scoped least-privilege API tokens only if DNS automation is added later.
+Reference states:
 
-Domain/DNS account takeover can bypass every VPS control, so this is a first-class part of the security model.
+- visual baseline: run #15 / `b34f72fd7902235cd24206f9a56ea9e243e89c92`;
+- accessibility baseline: run #23 / `b23f0b9046e359f181f4065cc76665310f9d6188`;
+- Standard project responsive slice: run #45 / `a47740d5876490df7fa64b970c51449d85a0c8c2`;
+- hero/LCP baseline: run #63 / `2d04103065dc1c9c50f469024f8836511d503833`;
+- Premium + responsive hero acceptance: run #64 / `bfbcb7bd7dde15d2f69a663c3c7160f861ec81af`;
+- gallery top-16 responsive reuse: run #66 / `2c38471b8cd31af0c02137c40df6e16f479e4cac`;
+- docs/state control after gallery: run #67 / `75517e4276cafe96b50fb2caae72a428f263b8a6`;
+- reduced-motion cleanup: run #68 / `c583479bfbd639856143212c52876e949b5ccf40`.
 
-## VPS Release Bundle
+## Responsive-image system
 
-Build:
+`tools/media/build-home-responsive.sh` auto-orients source photos with ImageMagick before stripping metadata and encoding WebP with `cwebp` q=82 / method 6. CI installs `imagemagick` + `webp` because some legacy JPEGs store intended orientation in EXIF metadata.
 
-```bash
-node tools/deploy/build-vps-bundle.mjs
-node tools/deploy/validate-vps-bundle.mjs
-```
+`tools/deploy/build-vps-bundle.mjs` generates responsive assets into `.deploy-dist/assets/responsive/`. Delivery changes are release-only and preserve original `<img src>` fallbacks, intrinsic dimensions, Media IDs and alt text. `<picture>` is layout-neutral (`display: contents`) so existing crop rules remain authoritative.
 
-The bundle contains the generated site, discovery files, logo/media assets, required temporary legal/runtime compatibility and `DEPLOYMENT_COMMIT`. Legacy root `index.html` is excluded.
+Current release helpers/verifiers include homepage hero, Standard project, Premium project and gallery top-16 reuse. The gallery keeps all 39 contract images; only the six Standard + ten heavy Premium images reuse responsive project derivatives. The remaining 23 stay original until a new measured reason justifies more work.
 
-`VPS bundle check` packages this as `vps-site-bundle.tgz` and uploads a short-lived CI artifact. The workflow has read-only repository permissions and no SSH/deployment credentials.
+### Key measured results
 
-The first successful bundle artifact was approximately 47.9 MB and passed canonical checks, generated-file reproducibility, route/asset validation and packaging.
+- Standard six: **13,644,080 B** originals → **80,566 / 93,344 / 214,548 B** selected at 390 / 768 / 1440 in run #45.
+- Premium top ten: **26,312,747 B** originals → **177,286 / 177,286 / 382,392 B** in run #64.
+- Hero: **264,764 B** JPEG baseline → **28,102 / 28,102 / 55,556 B** selected after responsive delivery. Controlled synthetic LCP changed **1,892/3,044/3,240 ms → 632/640/892 ms**. These are comparative synthetic timings, not field CWV.
+- Gallery bounded top 16: **39,956,827 B** original source payload → **257,852 B** selected in each 1× reference viewport during the full-scroll verification in run #66. This is not complete page weight; 23 other images remain original/lazy-loaded.
 
-## Release / Rollback
+## Reduced motion
 
-```text
-/srv/vital-vibe/
-  current -> /srv/vital-vibe/releases/<release-id>
-  releases/
-    <release-id>/
-```
+The remaining advisory came from shared secondary CSS computing `scroll-behavior: smooth` even when the browser requested `prefers-reduced-motion: reduce`.
 
-Install:
+`tools/media/patch-reduced-motion.mjs` now appends a deterministic release-only override to `.deploy-dist/styles.css`:
 
-```bash
-deploy/vps/install-release.sh vps-site-bundle.tgz <release-id>
-```
+`@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }`
 
-Rollback:
+`tools/visual/reduced-motion.mjs` is a blocking check in `tools/visual/run.sh`. It verifies `/gallery/` and `/projects/estudio-reformado-barcelona/` under a real reduced-motion browser context and fails unless computed scroll behavior is `auto`.
 
-```bash
-deploy/vps/rollback-release.sh <previous-release-id>
-```
+Run #68 completed successfully, so the previous gallery/El Raval smooth-scroll advisory is closed. Normal-motion smooth scrolling remains unchanged.
 
-Normal application rollback is an atomic symlink switch and does not require a DNS change.
+## Visual/accessibility reference
 
-GitHub Pages remains available as a hosting-level rollback until the VPS architecture is proven stable.
+Completed UI fixes remain: grouped 39-image gallery; El Raval pending-photo status removed; mobile project cards stacked; Smart Home mobile density reduced; Article desktop centered in a 1040 px editorial frame.
 
-## Active Stage
+Semantic contract: `--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--border`.
 
-Repository-side VPS and security preparation is complete enough for a real server smoke test.
+## Solar collector material — ported
 
-Next required input is non-secret VPS/DNS information:
+Historical branch `agent/add-solar-collector-animation` was not merged wholesale. Its technical article was ported into the current Article/content-table architecture on `agent/solar-collector-port`, with ES/EN/RU routes, two owner-provided evidence photographs and verified Bosch/Buderus/IDAE source links. The owner then supplied `solar-collector-updated-v3.html` as the authoritative animation revision. It replaces the simplified first port and is embedded from `tools/articles/solar-collector-v3.html`, with completed ES/EN translations, keyboard-accessible controls and reduced-motion behavior. `node tools/checks/run.mjs` is green. Revision v3 was deployed to the Netlify preview and its controls and three languages were browser-verified.
 
-- Linux distribution/version;
-- public IPv4;
-- whether IPv6 is enabled;
-- SSH username and port;
-- whether Caddy is installed;
-- DNS provider;
-- current apex and `www` DNS records;
-- chosen edge/DDoS mode: direct provider protection, Cloudflare proxy, or Cloudflare Tunnel.
+Painting and floor articles now exist in ES/EN/RU. Painting has two owner photographs (crack and loose coating) and an owner-confirmed EUR 4–6/m² labour-only prepared-wall rate; materials and preparation are separate. Floor article has six owner photographs grouped into three distinct jobs, uses the latest approximately 14 cm over 10 m figure, and retains the subcontractor context for the unlevelled floor. Full checks passed. Preview deployed; browser checks confirmed catalog-to-article navigation, the painting price and all six floor photographs. Unselected originals remain in conversation uploads.
 
-Do not commit or paste private SSH keys, passwords, recovery codes or provider API tokens.
+## Published content state
 
-The first production-adjacent deployment remains **manual artifact upload + smoke test before DNS cutover**. Automatic GitHub-to-VPS deployment is deferred until one cutover and rollback are proven.
+- Homepages: ES `/`, EN `/en/`, RU `/ru/`.
+- Bathroom Article: ES `/articulos/traslado-lavabo-toallero/`, EN `/en/articles/moving-a-bathroom-basin/`, RU `/ru/articles/perenos-rakoviny/`.
+- Bathroom public location is **Badalona only**.
+- Four working days and EUR 1,100 labour including rubbish removal are confirmed; do not present that as total cost including materials.
+- Preserve the final bathroom image AI-retouch disclosure.
+- El Raval remains one property with 16 photographs.
+- Gallery coverage remains 39/39.
 
-## SEO / AEO
+## Architecture boundaries
 
-Top priorities remain:
+Knowledge Repository remains public content source of truth. `support.js`/legacy entrypoints stay read-only. Routes activate only through `architecture/project-routes.yaml`. Generated public files must remain reproducible. Keep `task/` and development notes out of the release bundle.
 
-1. existing `/servicios/reformas-integrales-barcelona/`;
-2. proposed `/guias/precio-reforma-integral-barcelona/`;
-3. proposed `/servicios/cocinas-barcelona/`;
-4. proposed `/servicios/banos-barcelona/`;
-5. proposed `/servicios/electricidad-barcelona/`.
+## Production / VPS
 
-Do not activate Wave 1 routes until hosting and cutover are ready.
+The prepared release and actual blockers are recorded at the top of this handoff and in `architecture/vps-cutover-20260913/report.md`. Public hosting and DNS remain unchanged; VPS cutover is still authorized.
 
-## Non-Negotiable Constraints
+## Article editorial correction
 
-- Do not edit `support.js`.
-- Do not evolve legacy entrypoints.
-- Do not bypass the Knowledge Repository.
-- Do not hand-edit generated output instead of its source/builder.
-- Do not activate speculative routes from the SEO/AEO matrix.
-- Do not deploy from pull requests.
-- Do not add production SSH secrets before a real host exists and its host key can be pinned.
-- Do not use `StrictHostKeyChecking=no` in future automation.
-- Do not expose Caddy admin API publicly.
-- Do not add a CMS/admin panel merely for deployment convenience.
-- Do not enable HSTS before the initial HTTPS/rollback path is verified.
+Owner rejected the condensed report-style rewrites. Restored the original Spanish painting draft (all nine sections plus public FAQs) and full Russian renovation-cost article (eleven sections, including floor preparation). Translations preserve the same narrative. Photographs illustrate the existing paragraphs, with the confirmed 14 cm / 10 m example and labour-only painting price added. Existing URLs are retained. Original paragraphs/list items were compared against both drafts with no omissions; full checks passed. Preview deployed and browser verified: 10 painting sections, 11 renovation-cost sections, six floor images. Do not summarize or reframe owner articles without an explicit request.
 
-## Verification
+## Immediate next action
 
-For article-sandbox-only changes run or rely on `.github/workflows/article-sandbox.yml`:
+Observe production, retain GitHub Pages and the prepared rollback records, and close the operational security/monitoring follow-ups in the execution report. Owner can remove the two temporary ACME TXT records; renewal now uses HTTP-01. Further content/design changes require a separate task.
 
-```bash
-node tools/articles/validate-drafts.mjs
-```
+## Release branch reconciliation — 2026-09-13
 
-After content, route, builder, generated-output, structural, deployment or security changes run:
-
-```bash
-node tools/checks/run.mjs
-node tools/deploy/build-vps-bundle.mjs
-node tools/deploy/validate-vps-bundle.mjs
-```
-
-Tracked generated projections must remain clean.
+Created `release/vps-migration` from preserved source `06ebb34b33b5b3a6d06359bf53af16607e94e4f2`. Integrated `main` at `b89f003784b81ad6cf8efe672d6cc78446c07954` in merge `f13a031958e1782c96eaa9533cc4392898755fc2`, with exactly the source tree unchanged. The 33 main-only commits have zero net file changes against common ancestor `56ba3ec959a371ea1eb283d835ab5da7dc0be3d9`; no rejected redesign was restored by the merge. See `task/004-release-branch-audit.md`. Full canonical checks passed before and after reconciliation: 35 tests, gallery 39/39, 12 article pages, audit 0 errors / 5 warnings; generated projections unchanged. WebP production build and real Caddy checks remain pending. `main`, original feature branches, production and DNS were not changed.

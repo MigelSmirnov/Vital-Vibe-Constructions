@@ -1,0 +1,28 @@
+vitalvibeconstruction.com. 60	IN	A	185.199.108.153
+vitalvibeconstruction.com. 60	IN	A	185.199.110.153
+vitalvibeconstruction.com. 60	IN	A	185.199.109.153
+vitalvibeconstruction.com. 60	IN	A	185.199.111.153
+vitalvibeconstruction.com. 60	IN	MX	10 mx01.dondominio.com.
+vitalvibeconstruction.com. 60	IN	TXT	"v=spf1 include:spf.dondominio.com"
+vitalvibeconstruction.com. 60	IN	TXT	"google-site-verification=S2z9euoADsSTGc6tLHu7CV4KH1qbckRm5Bv7S-_S570"
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+app.vitalvibeconstruction.com. 60 IN	A	152.228.139.236
+vitalvibeconstruction.com. 60	IN	A	185.199.111.153
+vitalvibeconstruction.com. 60	IN	A	185.199.108.153
+vitalvibeconstruction.com. 60	IN	A	185.199.109.153
+vitalvibeconstruction.com. 60	IN	A	185.199.110.153
+vitalvibeconstruction.com. 60	IN	MX	10 mx01.dondominio.com.
+vitalvibeconstruction.com. 60	IN	TXT	"google-site-verification=S2z9euoADsSTGc6tLHu7CV4KH1qbckRm5Bv7S-_S570"
+vitalvibeconstruction.com. 60	IN	TXT	"v=spf1 include:spf.dondominio.com"
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+www.vitalvibeconstruction.com. 60 IN	CNAME	migelsmirnov.github.io.
+app.vitalvibeconstruction.com. 60 IN	A	152.228.139.236

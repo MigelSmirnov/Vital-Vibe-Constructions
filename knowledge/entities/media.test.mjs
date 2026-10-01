@@ -74,7 +74,7 @@ test("repository rejects orphan media", () => {
 
   assert.throws(
     () => createKnowledgeRepository(tables),
-    /Orphan media "media-orphan"; expected project_id, service_ids, or an explicit project\/capability reference/,
+    /Orphan media "media-orphan"; expected project_id, service_ids, or an explicit project\/capability\/article reference/,
   );
 });
 

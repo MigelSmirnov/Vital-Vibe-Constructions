@@ -162,7 +162,8 @@
     },
     {
       "question": "¿Este contenido ya está publicado en la web principal?",
-      "answer": "No. Es un borrador de trabajo dentro del sandbox de artículos y todavía no forma parte de las rutas públicas del sitio."
+      "answer": "No. Es un borrador de trabajo dentro del sandbox de artículos y todavía no forma parte de las rutas públicas del sitio.",
+      "internal": true
     }
   ]
 }

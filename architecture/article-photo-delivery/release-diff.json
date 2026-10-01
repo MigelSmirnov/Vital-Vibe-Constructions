@@ -1,0 +1,42 @@
+{
+  "added": [
+    "assets/responsive/articles/media-floor-finish-308909b92ea5-1157.webp",
+    "assets/responsive/articles/media-floor-finish-308909b92ea5-480.webp",
+    "assets/responsive/articles/media-floor-finish-308909b92ea5-768.webp",
+    "assets/responsive/articles/media-floor-gap-c14a0ef77a85-1152.webp",
+    "assets/responsive/articles/media-floor-gap-c14a0ef77a85-480.webp",
+    "assets/responsive/articles/media-floor-gap-c14a0ef77a85-768.webp",
+    "assets/responsive/articles/media-floor-overview-90fb880f0274-1152.webp",
+    "assets/responsive/articles/media-floor-overview-90fb880f0274-480.webp",
+    "assets/responsive/articles/media-floor-overview-90fb880f0274-768.webp",
+    "assets/responsive/articles/media-floor-thin-finish-65e3c7367250-1152.webp",
+    "assets/responsive/articles/media-floor-thin-finish-65e3c7367250-480.webp",
+    "assets/responsive/articles/media-floor-thin-finish-65e3c7367250-768.webp",
+    "assets/responsive/articles/media-floor-thin-work-af5875e37322-1152.webp",
+    "assets/responsive/articles/media-floor-thin-work-af5875e37322-480.webp",
+    "assets/responsive/articles/media-floor-thin-work-af5875e37322-768.webp",
+    "assets/responsive/articles/media-floor-work-1f38bdaac3e3-1148.webp",
+    "assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+    "assets/responsive/articles/media-floor-work-1f38bdaac3e3-768.webp",
+    "assets/responsive/articles/media-painting-coating-63e3b83873ba-1440.webp",
+    "assets/responsive/articles/media-painting-coating-63e3b83873ba-480.webp",
+    "assets/responsive/articles/media-painting-coating-63e3b83873ba-768.webp",
+    "assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-1440.webp",
+    "assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+    "assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-768.webp"
+  ],
+  "changed": [
+    "DEPLOYMENT_COMMIT",
+    "articulos/index.html",
+    "articulos/nivelacion-suelo-antes-del-pavimento/index.html",
+    "articulos/pintura-paredes-precio-preparacion-barcelona/index.html",
+    "en/articles/floor-leveling-before-covering/index.html",
+    "en/articles/index.html",
+    "en/articles/wall-painting-price-preparation/index.html",
+    "ru/articles/index.html",
+    "ru/articles/pokraska-sten-cena-podgotovka/index.html",
+    "ru/articles/vyravnivanie-pola-pered-ukladkoy/index.html"
+  ],
+  "removed": [],
+  "other_release_files": "byte-identical"
+}

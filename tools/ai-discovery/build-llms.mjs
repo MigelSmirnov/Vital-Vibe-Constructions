@@ -18,6 +18,7 @@ function renderLlms({
   contactDetails,
   services,
   servicePages,
+  articlePages,
   renovationTiers,
   projects,
   capabilitySections,
@@ -68,6 +69,10 @@ ${renderList(
   projects,
   (project) => `${project.title}: ${site.canonicalOrigin}/projects/${project.slug}/ - ${project.summary}`,
 )}
+
+## Articles
+
+${renderList(articlePages, ({ article, route }) => `${article.title} (${route.language}): ${route.canonical_url} - ${article.meta_description}`)}
 
 ## Visual Gallery
 
@@ -135,6 +140,7 @@ async function main() {
     contactDetails: knowledge.getContactDetails().toRecord(),
     services: knowledge.listServices().map((service) => service.toRecord()),
     servicePages,
+    articlePages: routeContract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated").map(route => ({ route, article: knowledge.findArticleById(route.entity_id).localized(route.language) })),
     renovationTiers: knowledge.listRenovationTiers().map((tier) => tier.toRecord()),
     projects: knowledge.listProjects().map((project) => project.toRecord()),
     capabilitySections: knowledge.listCapabilitySections().map((section) => section.toRecord()),

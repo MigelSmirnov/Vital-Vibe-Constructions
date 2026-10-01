@@ -49,6 +49,7 @@ invariants:
     stable_slug_required_for_public_entities: true
     public_references_must_resolve: true
     draft_content_must_not_be_publicly_indexed: true
+    published_articles_require_all_supported_languages: true
     fake_articles_forbidden: true
     fake_testimonials_forbidden: true
 
@@ -62,6 +63,8 @@ invariants:
     route_paths_unique: true
     canonical_urls_unique: true
     every_current_project_has_exactly_one_detail_route: true
+    every_project_has_one_localized_detail_route_per_supported_language: true
+    every_service_page_has_one_localized_detail_route_per_supported_language: true
     eligible_routes_appear_once_in_sitemap: true
 
   external_apps:

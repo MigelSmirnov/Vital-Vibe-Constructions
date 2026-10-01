@@ -7,8 +7,8 @@ Use Termux for commands that require a real local checkout, image files, shell t
 ```bash
 git status -sb
 git fetch origin
-git switch agent/architecture-sandbox
-git pull --ff-only origin agent/architecture-sandbox
+git switch release/vps-migration
+git pull --ff-only origin release/vps-migration
 ```
 
 Do not use `reset --hard` or `clean -fd` unless local changes have been reviewed and are disposable.

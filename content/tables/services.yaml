@@ -10,7 +10,13 @@
       "page_h1": "Reformas integrales en Barcelona",
       "introduction": "Coordinamos los trabajos necesarios para transformar viviendas y locales en Barcelona, desde la revisión inicial y la definición del alcance hasta las instalaciones, los acabados y la revisión final.",
       "body": "Una reforma integral reúne la preparación del espacio, la albañilería, las instalaciones y los acabados dentro de un alcance coordinado. Cada proyecto se revisa para definir qué trabajos son necesarios antes de preparar el presupuesto.",
-      "included_service_ids": ["masonry", "electrical", "kitchens", "bathrooms", "painting"],
+      "included_service_ids": [
+        "masonry",
+        "electrical",
+        "kitchens",
+        "bathrooms",
+        "painting"
+      ],
       "process_steps": [
         {
           "title": "Contacto inicial",
@@ -92,7 +98,10 @@
       "id": "masonry",
       "slug": "albanileria",
       "title": "Albañilería",
-      "summary": "Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida."
+      "summary": "Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida.",
+      "related_project_ids": [
+        "project-escalera-joanic-pintura"
+      ]
     }
   ]
 }

@@ -32,6 +32,20 @@ test("Service preserves complete page-owned content", () => {
   assert.equal(service.faq.length, 4);
 });
 
+
+test("Service preserves related project references", () => {
+  const service = Service.fromRecord({
+    id: "masonry",
+    slug: "albanileria",
+    title: "Albañilería",
+    summary: "Trabajos de base.",
+    related_project_ids: ["project-staircase"],
+  });
+
+  assert.deepEqual(service.relatedProjectIds, ["project-staircase"]);
+  assert.deepEqual(service.toRecord().related_project_ids, ["project-staircase"]);
+});
+
 test("Service rejects incomplete page content", () => {
   assert.throws(
     () => Service.fromRecord({ ...pageRecord, meta_description: undefined }),

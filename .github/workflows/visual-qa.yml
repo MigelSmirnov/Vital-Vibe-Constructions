@@ -1,0 +1,74 @@
+name: Visual QA
+
+on:
+  push:
+    branches:
+      - agent/architecture-sandbox
+    paths:
+      - ".github/workflows/visual-qa.yml"
+      - "tools/visual/**"
+      - "tools/media/**"
+      - "tools/site-next/**"
+      - "tools/articles/**"
+      - "tools/deploy/**"
+      - "content/**"
+      - "architecture/**"
+      - "site-next/**"
+      - "assets/**"
+      - "estandar/**"
+      - "premium/**"
+      - "smart/**"
+      - "sitemap.xml"
+      - "llms.txt"
+      - "VVC_primary_logo.svg"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install image tools
+        run: sudo apt-get update && sudo apt-get install -y webp imagemagick
+
+      - name: Run visual QA
+        run: bash tools/visual/run.sh
+
+      - name: Upload visual QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-qa-${{ github.sha }}
+          path: artifacts/visual/latest
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload generated review projection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-projection-${{ github.sha }}
+          path: |
+            .deploy-dist/home.css
+            .deploy-dist/gallery.css
+            .deploy-dist/gallery/index.html
+            .deploy-dist/projects/estudio-reformado-barcelona/index.html
+            .deploy-dist/projects/reforma-integral-estandar-barcelona/index.html
+            .deploy-dist/projects/trabajos-contrata-premium/index.html
+            .deploy-dist/assets/responsive
+          if-no-files-found: warn
+          retention-days: 3

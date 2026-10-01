@@ -1,0 +1,38 @@
+# Prepared only; NOT enabled. Preserve all existing nginx virtual hosts.
+# Enable HTTP ACME challenge routing before requesting an apex/www certificate.
+# Enable these TLS blocks only after the certificate exists and nginx -t succeeds.
+server {
+    listen 80;
+    listen [::]:80;
+    server_name vitalvibeconstruction.com www.vitalvibeconstruction.com;
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/lib/letsencrypt;
+    }
+    location / { return 301 https://vitalvibeconstruction.com$request_uri; }
+}
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name vitalvibeconstruction.com;
+    ssl_certificate /etc/letsencrypt/live/vitalvibeconstruction.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/vitalvibeconstruction.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    server_tokens off;
+    location / {
+        proxy_pass http://127.0.0.1:8890;
+        proxy_set_header Host 127.0.0.1;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name www.vitalvibeconstruction.com;
+    ssl_certificate /etc/letsencrypt/live/vitalvibeconstruction.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/vitalvibeconstruction.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    server_tokens off;
+    return 301 https://vitalvibeconstruction.com$request_uri;
+}

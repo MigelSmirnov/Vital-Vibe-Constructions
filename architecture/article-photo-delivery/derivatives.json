@@ -1,0 +1,170 @@
+{
+  "/assets/painting-preparation/wall-crack.jpg": {
+    "id": "media-painting-crack",
+    "originalBytes": 390475,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+        "bytes": 12450
+      },
+      {
+        "width": 768,
+        "url": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-768.webp",
+        "bytes": 35444
+      },
+      {
+        "width": 1440,
+        "url": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-1440.webp",
+        "bytes": 108552
+      }
+    ]
+  },
+  "/assets/painting-preparation/loose-coating.jpg": {
+    "id": "media-painting-coating",
+    "originalBytes": 457095,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-480.webp",
+        "bytes": 12450
+      },
+      {
+        "width": 768,
+        "url": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-768.webp",
+        "bytes": 45556
+      },
+      {
+        "width": 1440,
+        "url": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-1440.webp",
+        "bytes": 169938
+      }
+    ]
+  },
+  "/assets/floor-leveling/leveling-work.jpg": {
+    "id": "media-floor-work",
+    "originalBytes": 340876,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+        "bytes": 51868
+      },
+      {
+        "width": 768,
+        "url": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-768.webp",
+        "bytes": 95080
+      },
+      {
+        "width": 1148,
+        "url": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-1148.webp",
+        "bytes": 155848
+      }
+    ]
+  },
+  "/assets/floor-leveling/finished-floor.jpg": {
+    "id": "media-floor-finish",
+    "originalBytes": 154670,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/responsive/articles/media-floor-finish-308909b92ea5-480.webp",
+        "bytes": 12950
+      },
+      {
+        "width": 768,
+        "url": "/assets/responsive/articles/media-floor-finish-308909b92ea5-768.webp",
+        "bytes": 23684
+      },
+      {
+        "width": 1157,
+        "url": "/assets/responsive/articles/media-floor-finish-308909b92ea5-1157.webp",
+        "bytes": 40846
+      }
+    ]
+  },
+  "/assets/floor-leveling/room-overview.jpg": {
+    "id": "media-floor-overview",
+    "originalBytes": 168144,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/responsive/articles/media-floor-overview-90fb880f0274-480.webp",
+        "bytes": 8572
+      },
+      {
+        "width": 768,
+        "url": "/assets/responsive/articles/media-floor-overview-90fb880f0274-768.webp",
+        "bytes": 18590
+      },
+      {
+        "width": 1152,
+        "url": "/assets/responsive/articles/media-floor-overview-90fb880f0274-1152.webp",
+        "bytes": 41130
+      }
+    ]
+  },
+  "/assets/floor-leveling/skirting-gap.jpg": {
+    "id": "media-floor-gap",
+    "originalBytes": 229163,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-480.webp",
+        "bytes": 12936
+      },
+      {
+        "width": 768,
+        "url": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-768.webp",
+        "bytes": 34218
+      },
+      {
+        "width": 1152,
+        "url": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-1152.webp",
+        "bytes": 77104
+      }
+    ]
+  },
+  "/assets/floor-leveling/thin-layer-work.jpg": {
+    "id": "media-floor-thin-work",
+    "originalBytes": 201653,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-480.webp",
+        "bytes": 21114
+      },
+      {
+        "width": 768,
+        "url": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-768.webp",
+        "bytes": 40592
+      },
+      {
+        "width": 1152,
+        "url": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-1152.webp",
+        "bytes": 68076
+      }
+    ]
+  },
+  "/assets/floor-leveling/thin-layer-finish.jpg": {
+    "id": "media-floor-thin-finish",
+    "originalBytes": 132026,
+    "variants": [
+      {
+        "width": 480,
+        "url": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-480.webp",
+        "bytes": 12024
+      },
+      {
+        "width": 768,
+        "url": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-768.webp",
+        "bytes": 21704
+      },
+      {
+        "width": 1152,
+        "url": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-1152.webp",
+        "bytes": 36728
+      }
+    ]
+  }
+}

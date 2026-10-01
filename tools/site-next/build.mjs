@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import process from "node:process";
 import { createKnowledgeRepository, loadContentTables } from "../../knowledge/index.mjs";
@@ -8,6 +9,7 @@ import { createKnowledgeRepository, loadContentTables } from "../../knowledge/in
 const root = process.cwd();
 const outputDir = path.join(root, "site-next");
 const routeContractPath = path.join(root, "architecture/project-routes.yaml");
+const homeStyleVersion = createHash("sha256").update(await readFile(path.join(root, "tools/site-next/home.css"))).digest("hex").slice(0, 12);
 
 function escapeHtml(value) {
   return String(value)
@@ -18,21 +20,29 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function renderServices(services, serviceRouteById) {
-  return services
-    .map((service) => {
-      const route = serviceRouteById.get(service.id);
-      const title = route
-        ? `<a href="${escapeHtml(route.path)}">${escapeHtml(service.title)}</a>`
-        : escapeHtml(service.title);
-
+function renderServices(services, serviceRouteById, projectById, mediaById) {
+  return services.map((service, index) => {
+    const route = serviceRouteById.get(service.id);
+    const relatedProjects = (service.related_project_ids ?? []).map((projectId) => {
+      const project = projectById.get(projectId);
+      if (!project) throw new Error(`Service "${service.id}" references missing project "${projectId}".`);
+      const image = mediaById.get(project.image_ids[0]);
+      if (!image) throw new Error(`Service project "${project.id}" does not have a resolvable lead image.`);
       return `
-        <article class="service-card" id="${escapeHtml(service.slug)}">
-          <h3>${title}</h3>
-          <p>${escapeHtml(service.summary)}</p>
-        </article>`;
-    })
-    .join("");
+        <a class="service-project-card" href="./projects/${escapeHtml(project.slug)}/">
+          <img src="../${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" width="${escapeHtml(image.width)}" height="${escapeHtml(image.height)}" loading="lazy">
+          <span class="service-project-copy">
+            <strong>${escapeHtml(project.title)}</strong>
+            <span>Ver proyecto <span aria-hidden="true">→</span></span>
+          </span>
+        </a>`;
+    }).join("");
+
+    return `<details class="service-row" id="${escapeHtml(service.slug)}">
+      <summary><span class="service-number">${String(index + 1).padStart(2, "0")}</span><h3>${escapeHtml(service.title)}</h3><span class="service-toggle" aria-hidden="true">+</span></summary>
+      <div class="service-description"><p>${escapeHtml(service.summary)}</p>${relatedProjects}${route ? `<a class="text-link" href="${escapeHtml(route.path)}">${escapeHtml(service.title)} <span aria-hidden="true">→</span></a>` : ""}</div>
+    </details>`;
+  }).join("");
 }
 
 function renderProjects(projects, mediaById, serviceById) {
@@ -161,9 +171,22 @@ function renderPage({
   media,
   planner,
   serviceRoutes,
+  articleRoutes,
 }) {
   const serviceById = new Map(services.map((service) => [service.id, service]));
   const mediaById = new Map(media.map((item) => [item.id, item]));
+  const featuredMedia = mediaById.get(site.featuredMediaId);
+  const featuredProject = projects.find((project) => project.id === featuredMedia?.project_id);
+  const projectById = new Map(projects.map((project) => [project.id, project]));
+  const serviceProjectIds = new Set(services.flatMap((service) => service.related_project_ids ?? []));
+  const otherProjects = projects.filter(
+    (project) => project.id !== featuredProject?.id && !serviceProjectIds.has(project.id),
+  );
+  const featuredArticleRoute = articleRoutes.find(route => featuredProject?.article_ids?.includes(route.entity_id) && route.language === site.defaultLanguage);
+  const featuredProjectHref = featuredArticleRoute?.path ?? (featuredProject ? `/projects/${featuredProject.slug}/` : null);
+  const featuredCost = featuredProject?.labour_cost_eur
+    ? `Mano de obra: ${new Intl.NumberFormat("es-ES", { style: "currency", currency: site.currency ?? "EUR", maximumFractionDigits: 0 }).format(featuredProject.labour_cost_eur)}`
+    : null;
   const externalAppById = new Map(externalApps.map((app) => [app.id, app]));
   const serviceRouteById = new Map(serviceRoutes.map((route) => [route.entity_id, route]));
   const renovationTierDisclaimer = renovationTiers.find((tier) => tier.disclaimer)?.disclaimer ?? null;
@@ -210,57 +233,70 @@ function renderPage({
   <meta property="og:image" content="${escapeHtml(site.canonicalOrigin + site.hero.image)}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="/home.css?v=${homeStyleVersion}">
+  <script src="/home.js" defer></script>
   <script type="application/ld+json">${organizationSchema}</script>
 </head>
-<body>
+<body class="home">
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="./" aria-label="${escapeHtml(site.name)}">
         <img src="../VVC_primary_logo.svg" alt="${escapeHtml(site.name)}" width="170" height="48">
       </a>
-      <nav aria-label="Navegación principal">
-        <a href="#servicios">Servicios</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#hogar-inteligente">Domótica</a>
-        <a href="#precios">Precios</a>
-        <a href="#planificador">Planificador</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+      <div class="header-tools">
+        <!-- home-language-switcher -->
+        <a class="header-contact" href="#contacto">Contacto</a>
+        <details class="menu">
+          <summary aria-label="Menú"><span class="menu-lines" aria-hidden="true"></span><span class="sr-only">Menú</span></summary>
+          <nav aria-label="Navegación principal">
+            <a href="#servicios">Servicios</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#hogar-inteligente">Domótica</a>
+            <a href="#precios">Precios</a>
+            <!-- article-catalog-navigation -->
+            <a href="#planificador">Planificador</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+        </details>
+      </div>
     </div>
   </header>
 
   <main id="main-content">
     <section class="hero">
-      <img class="hero-image" src="..${escapeHtml(site.hero.image)}" alt="${escapeHtml(site.hero.imageAlt)}" width="1600" height="1000">
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
+      <div class="hero-content">
         <p class="eyebrow">${escapeHtml(site.hero.eyebrow)}</p>
-        <h1>${escapeHtml(site.hero.title)}</h1>
+        <h1>${escapeHtml(site.hero.title)}${site.hero.titleAccent ? ` <span>${escapeHtml(site.hero.titleAccent)}</span>` : ""}</h1>
         <p class="hero-summary">${escapeHtml(site.hero.summary)}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#contacto">Solicitar presupuesto</a>
-          <a class="button button-secondary" href="${escapeHtml(planner.url)}" target="_blank" rel="noopener">
-            ${escapeHtml(planner.label)} <span class="badge">${escapeHtml(planner.status)}</span>
-          </a>
+          <a class="button button-primary" href="#contacto">Solicitar presupuesto <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#proyectos">Ver proyectos <span aria-hidden="true">→</span></a>
         </div>
       </div>
+      <figure class="hero-visual">
+        <img class="hero-image" src="${escapeHtml(site.hero.image)}" alt="${escapeHtml(site.hero.imageAlt)}" width="${site.hero.imageWidth}" height="${site.hero.imageHeight}" fetchpriority="high">
+        ${site.hero.caption ? `<figcaption>${escapeHtml(site.hero.caption)}</figcaption>` : ""}
+      </figure>
     </section>
 
     <section class="section" id="servicios">
       <div class="container">
-        <p class="eyebrow">Servicios</p>
-        <h2>Todo lo que tu reforma necesita</h2>
-        <div class="service-grid">${renderServices(services, serviceRouteById)}</div>
+        <div class="section-heading"><h2>Nuestros servicios</h2><p>Todo lo que tu reforma necesita</p></div>
+        <div class="service-grid">${renderServices(services, serviceRouteById, projectById, mediaById)}</div>
       </div>
     </section>
 
     <section class="section projects" id="proyectos">
       <div class="container">
-        <p class="eyebrow">Proyectos</p>
-        <h2>Trabajos realizados</h2>
-        <p class="section-summary">Reformas reales de pisos y trabajos especializados en Barcelona.</p>
-        <div class="project-grid">${renderProjects(projects, mediaById, serviceById)}</div>
+        <div class="section-heading"><h2>Trabajos realizados</h2><a class="text-link" href="/projects/">Ver proyectos <span aria-hidden="true">→</span></a></div>
+        <div class="portfolio-layout">
+          ${featuredProject ? `<article class="featured-bathroom" id="${escapeHtml(featuredProject.slug)}">
+            <a class="featured-bathroom-media" href="${escapeHtml(featuredProjectHref)}"><img src="/${escapeHtml(featuredMedia.src)}" alt="${escapeHtml(featuredMedia.alt)}" width="${featuredMedia.width}" height="${featuredMedia.height}" loading="lazy"></a>
+            <div class="featured-bathroom-body"><span>${escapeHtml(featuredProject.location)}</span><h3><a href="${escapeHtml(featuredProjectHref)}">${escapeHtml(featuredProject.title)}</a></h3><p class="featured-project-facts">${escapeHtml([featuredProject.duration, featuredCost].filter(Boolean).join(" · "))}</p><a class="text-link" href="${escapeHtml(featuredProjectHref)}">Ver proyecto <span aria-hidden="true">→</span></a></div>
+          </article>` : featuredMedia ? `<figure class="featured-bathroom"><img src="/${escapeHtml(featuredMedia.src)}" alt="${escapeHtml(featuredMedia.alt)}" width="${featuredMedia.width}" height="${featuredMedia.height}" loading="lazy"><figcaption><span>Baños</span><h3>${escapeHtml(featuredMedia.caption)}</h3></figcaption></figure>` : ""}
+          <div class="project-grid">${renderProjects(otherProjects, mediaById, serviceById)}</div>
+        </div>
       </div>
     </section>
 
@@ -304,7 +340,12 @@ ${renderCapabilitySections(capabilitySections, mediaById, serviceById, externalA
   </main>
 
   <footer class="site-footer">
-    <div class="container">© ${new Date().getUTCFullYear()} ${escapeHtml(site.name)}</div>
+    <div class="container footer-main">
+      <a class="brand" href="/" aria-label="${escapeHtml(site.name)}"><img src="/VVC_primary_logo.svg" alt="${escapeHtml(site.name)}" width="240" height="83" loading="lazy"></a>
+      <p>${escapeHtml(site.serviceArea)}</p>
+      <div><a href="mailto:${escapeHtml(contactDetails.email)}">${escapeHtml(contactDetails.email)}</a><a href="${escapeHtml(contactDetails.phone_href)}">${escapeHtml(contactDetails.phone_display)}</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© ${new Date().getUTCFullYear()} ${escapeHtml(site.name)}</span><a href="/aviso-legal.dc.html">Aviso legal</a></div>
   </footer>
 </body>
 </html>`;
@@ -390,7 +431,7 @@ h3 { font-size: 1.3rem; }
 .capability-gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
 .capability-gallery figcaption { padding-top: 9px; color: var(--muted); font-size: .82rem; }
 .page-intro, .project-detail-intro { padding: 72px 0 54px; background: #181c20; }
-.page-intro h1, .project-detail-intro h1 { max-width: 900px; margin-bottom: 22px; font-size: 3.4rem; }
+.page-intro h1, .project-detail-intro h1 { overflow-wrap: anywhere; max-width: 900px; margin-bottom: 22px; font-size: 3.4rem; }
 .page-intro .container > p:last-child, .project-detail-summary { max-width: 780px; color: var(--muted); font-size: 1.08rem; }
 .project-index-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 18px; }
 .project-index-card { overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
@@ -408,6 +449,7 @@ h3 { font-size: 1.3rem; }
 .project-facts dd { margin: 3px 0 0; font-weight: 750; }
 .project-detail-lead { padding: 34px 0 0; background: #181c20; }
 .project-detail-lead img { width: 100%; height: 560px; object-fit: cover; border-radius: 8px; }
+.project-lead-caption { color: var(--muted); font-size: .85rem; margin: 12px 0 0; }
 .project-detail-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 440px); gap: 56px; }
 .project-detail-grid p, .project-service-list span { color: var(--muted); }
 .project-service-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
@@ -540,11 +582,14 @@ async function main() {
       media,
       planner,
       serviceRoutes,
+      articleRoutes: routeContract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated"),
     }),
     "utf8",
   );
   await writeFile(path.join(outputDir, "styles.css"), styles, "utf8");
-  console.log("Built site-next/index.html and site-next/styles.css");
+  await writeFile(path.join(outputDir, "home.css"), await readFile(path.join(root, "tools/site-next/home.css"), "utf8"), "utf8");
+  await writeFile(path.join(outputDir, "home.js"), await readFile(path.join(root, "tools/site-next/home.js"), "utf8"), "utf8");
+  console.log("Built site-next homepage and styles/scripts");
 }
 
 main().catch((error) => {

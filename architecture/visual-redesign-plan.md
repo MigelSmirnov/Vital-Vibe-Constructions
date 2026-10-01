@@ -1,10 +1,14 @@
 # Visual Redesign Plan
 
-Status: proposed
+Status: in progress — first homepage implementation, 2026-09-08
 
 Target: `site-next`
 
 Branch: `agent/architecture-sandbox`
+
+## Current implementation
+
+The user supplied a graphite/gold homepage reference and kitchen/bathroom assets. This explicit direction supersedes the proposed warm-neutral palette below. The first implemented slice uses a split hero, service disclosures, a bathroom feature with the existing project index, and coordinated pricing/contact/footer. Existing smart-home and planner capabilities remain. Browser review and further design iterations are pending; article publication remains deferred.
 
 ## Purpose
 

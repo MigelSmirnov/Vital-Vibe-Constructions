@@ -1,0 +1,1733 @@
+{
+  "origin": "https://vitalvibeconstruction.com",
+  "results": [
+    {
+      "path": "/articulos/",
+      "language": "es",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 344,
+          "height": 240,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 344,
+          "height": 240,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/",
+      "language": "en",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 344,
+          "height": 240,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 344,
+          "height": 240,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/",
+      "language": "ru",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 344,
+          "height": 240,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 344,
+          "height": 240,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "language": "es",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 346,
+          "height": 346,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-480.webp",
+          "width": 346,
+          "height": 346,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 457095,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "language": "en",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 346,
+          "height": 346,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-480.webp",
+          "width": 346,
+          "height": 346,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 457095,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "language": "ru",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 346,
+          "height": 346,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-480.webp",
+          "width": 346,
+          "height": 346,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 457095,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "language": "es",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 346,
+          "height": 463,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-480.webp",
+          "width": 346,
+          "height": 459,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 154670,
+          "selectedBytes": 12950
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 168144,
+          "selectedBytes": 8572
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 229163,
+          "selectedBytes": 12936
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 201653,
+          "selectedBytes": 21114
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 132026,
+          "selectedBytes": 12024
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "language": "en",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 346,
+          "height": 463,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-480.webp",
+          "width": 346,
+          "height": 459,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 154670,
+          "selectedBytes": 12950
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 168144,
+          "selectedBytes": 8572
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 229163,
+          "selectedBytes": 12936
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 201653,
+          "selectedBytes": 21114
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 132026,
+          "selectedBytes": 12024
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "language": "ru",
+      "width": 390,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 346,
+          "height": 463,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-480.webp",
+          "width": 346,
+          "height": 459,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 154670,
+          "selectedBytes": 12950
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 168144,
+          "selectedBytes": 8572
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 229163,
+          "selectedBytes": 12936
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 201653,
+          "selectedBytes": 21114
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-480.webp",
+          "width": 346,
+          "height": 461,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 132026,
+          "selectedBytes": 12024
+        }
+      ]
+    },
+    {
+      "path": "/articulos/",
+      "language": "es",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 336,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 336,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/",
+      "language": "en",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 336,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 336,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/",
+      "language": "ru",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 336,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 336,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "language": "es",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 440,
+          "height": 440,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-480.webp",
+          "width": 440,
+          "height": 440,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 457095,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "language": "en",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 440,
+          "height": 440,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-480.webp",
+          "width": 440,
+          "height": 440,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 457095,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "language": "ru",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-480.webp",
+          "width": 440,
+          "height": 440,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 390475,
+          "selectedBytes": 12450
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-480.webp",
+          "width": 440,
+          "height": 440,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 457095,
+          "selectedBytes": 12450
+        }
+      ]
+    },
+    {
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "language": "es",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 440,
+          "height": 589,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-480.webp",
+          "width": 440,
+          "height": 584,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 154670,
+          "selectedBytes": 12950
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 168144,
+          "selectedBytes": 8572
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 229163,
+          "selectedBytes": 12936
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 201653,
+          "selectedBytes": 21114
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 132026,
+          "selectedBytes": 12024
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "language": "en",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 440,
+          "height": 589,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-480.webp",
+          "width": 440,
+          "height": 584,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 154670,
+          "selectedBytes": 12950
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 168144,
+          "selectedBytes": 8572
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 229163,
+          "selectedBytes": 12936
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 201653,
+          "selectedBytes": 21114
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 132026,
+          "selectedBytes": 12024
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "language": "ru",
+      "width": 768,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-480.webp",
+          "width": 440,
+          "height": 589,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 340876,
+          "selectedBytes": 51868
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-480.webp",
+          "width": 440,
+          "height": 584,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 154670,
+          "selectedBytes": 12950
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 168144,
+          "selectedBytes": 8572
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 229163,
+          "selectedBytes": 12936
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 201653,
+          "selectedBytes": 21114
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-480.webp",
+          "width": 440,
+          "height": 587,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 480,
+          "originalBytes": 132026,
+          "selectedBytes": 12024
+        }
+      ]
+    },
+    {
+      "path": "/articulos/",
+      "language": "es",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-768.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 768,
+          "originalBytes": 340876,
+          "selectedBytes": 95080
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-768.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 768,
+          "originalBytes": 390475,
+          "selectedBytes": 35444
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/",
+      "language": "en",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-768.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 768,
+          "originalBytes": 340876,
+          "selectedBytes": 95080
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-768.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 768,
+          "originalBytes": 390475,
+          "selectedBytes": 35444
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/",
+      "language": "ru",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-768.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 768,
+          "originalBytes": 340876,
+          "selectedBytes": 95080
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-768.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 768,
+          "originalBytes": 390475,
+          "selectedBytes": 35444
+        }
+      ]
+    },
+    {
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "language": "es",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-768.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 390475,
+          "selectedBytes": 35444
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-768.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 457095,
+          "selectedBytes": 45556
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "language": "en",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-768.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 390475,
+          "selectedBytes": 35444
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-768.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 457095,
+          "selectedBytes": 45556
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "language": "ru",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-768.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 390475,
+          "selectedBytes": 35444
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-768.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 457095,
+          "selectedBytes": 45556
+        }
+      ]
+    },
+    {
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "language": "es",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-768.webp",
+          "width": 720,
+          "height": 964,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 340876,
+          "selectedBytes": 95080
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-768.webp",
+          "width": 720,
+          "height": 956,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 154670,
+          "selectedBytes": 23684
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 168144,
+          "selectedBytes": 18590
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 229163,
+          "selectedBytes": 34218
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 201653,
+          "selectedBytes": 40592
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 132026,
+          "selectedBytes": 21704
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "language": "en",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-768.webp",
+          "width": 720,
+          "height": 964,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 340876,
+          "selectedBytes": 95080
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-768.webp",
+          "width": 720,
+          "height": 956,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 154670,
+          "selectedBytes": 23684
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 168144,
+          "selectedBytes": 18590
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 229163,
+          "selectedBytes": 34218
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 201653,
+          "selectedBytes": 40592
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 132026,
+          "selectedBytes": 21704
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "language": "ru",
+      "width": 1440,
+      "dpr": 1,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-768.webp",
+          "width": 720,
+          "height": 964,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 340876,
+          "selectedBytes": 95080
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-768.webp",
+          "width": 720,
+          "height": 956,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 154670,
+          "selectedBytes": 23684
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 168144,
+          "selectedBytes": 18590
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 229163,
+          "selectedBytes": 34218
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 201653,
+          "selectedBytes": 40592
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-768.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 768,
+          "originalBytes": 132026,
+          "selectedBytes": 21704
+        }
+      ]
+    },
+    {
+      "path": "/articulos/",
+      "language": "es",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-1148.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 1148,
+          "originalBytes": 340876,
+          "selectedBytes": 155848
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-1440.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 1440,
+          "originalBytes": 390475,
+          "selectedBytes": 108552
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/",
+      "language": "en",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-1148.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 1148,
+          "originalBytes": 340876,
+          "selectedBytes": 155848
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-1440.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 1440,
+          "originalBytes": 390475,
+          "selectedBytes": 108552
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/",
+      "language": "ru",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-1148.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 1148,
+          "originalBytes": 340876,
+          "selectedBytes": 155848
+        },
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-1440.webp",
+          "width": 504,
+          "height": 280,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "cover",
+          "sourceWidth": 1440,
+          "originalBytes": 390475,
+          "selectedBytes": 108552
+        }
+      ]
+    },
+    {
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "language": "es",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-1440.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1440,
+          "originalBytes": 390475,
+          "selectedBytes": 108552
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-1440.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1440,
+          "originalBytes": 457095,
+          "selectedBytes": 169938
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "language": "en",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-1440.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1440,
+          "originalBytes": 390475,
+          "selectedBytes": 108552
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-1440.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1440,
+          "originalBytes": 457095,
+          "selectedBytes": 169938
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "language": "ru",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/painting-preparation/wall-crack.jpg",
+          "selected": "/assets/responsive/articles/media-painting-crack-c4dae1f7e3eb-1440.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1440,
+          "originalBytes": 390475,
+          "selectedBytes": 108552
+        },
+        {
+          "src": "/assets/painting-preparation/loose-coating.jpg",
+          "selected": "/assets/responsive/articles/media-painting-coating-63e3b83873ba-1440.webp",
+          "width": 720,
+          "height": 720,
+          "declaredWidth": 1536,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1440,
+          "originalBytes": 457095,
+          "selectedBytes": 169938
+        }
+      ]
+    },
+    {
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "language": "es",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-1148.webp",
+          "width": 720,
+          "height": 963,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1148,
+          "originalBytes": 340876,
+          "selectedBytes": 155848
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-1157.webp",
+          "width": 720,
+          "height": 956,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1157,
+          "originalBytes": 154670,
+          "selectedBytes": 40846
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 168144,
+          "selectedBytes": 41130
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 229163,
+          "selectedBytes": 77104
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 201653,
+          "selectedBytes": 68076
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 132026,
+          "selectedBytes": 36728
+        }
+      ]
+    },
+    {
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "language": "en",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-1148.webp",
+          "width": 720,
+          "height": 963,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1148,
+          "originalBytes": 340876,
+          "selectedBytes": 155848
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-1157.webp",
+          "width": 720,
+          "height": 956,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1157,
+          "originalBytes": 154670,
+          "selectedBytes": 40846
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 168144,
+          "selectedBytes": 41130
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 229163,
+          "selectedBytes": 77104
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 201653,
+          "selectedBytes": 68076
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 132026,
+          "selectedBytes": 36728
+        }
+      ]
+    },
+    {
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "language": "ru",
+      "width": 1440,
+      "dpr": 2,
+      "photos": [
+        {
+          "src": "/assets/floor-leveling/leveling-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-work-1f38bdaac3e3-1148.webp",
+          "width": 720,
+          "height": 963,
+          "declaredWidth": 1148,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1148,
+          "originalBytes": 340876,
+          "selectedBytes": 155848
+        },
+        {
+          "src": "/assets/floor-leveling/finished-floor.jpg",
+          "selected": "/assets/responsive/articles/media-floor-finish-308909b92ea5-1157.webp",
+          "width": 720,
+          "height": 956,
+          "declaredWidth": 1157,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1157,
+          "originalBytes": 154670,
+          "selectedBytes": 40846
+        },
+        {
+          "src": "/assets/floor-leveling/room-overview.jpg",
+          "selected": "/assets/responsive/articles/media-floor-overview-90fb880f0274-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 168144,
+          "selectedBytes": 41130
+        },
+        {
+          "src": "/assets/floor-leveling/skirting-gap.jpg",
+          "selected": "/assets/responsive/articles/media-floor-gap-c14a0ef77a85-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 229163,
+          "selectedBytes": 77104
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-work.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-work-af5875e37322-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 201653,
+          "selectedBytes": 68076
+        },
+        {
+          "src": "/assets/floor-leveling/thin-layer-finish.jpg",
+          "selected": "/assets/responsive/articles/media-floor-thin-finish-65e3c7367250-1152.webp",
+          "width": 720,
+          "height": 960,
+          "declaredWidth": 1152,
+          "declaredHeight": 1536,
+          "objectFit": "fill",
+          "sourceWidth": 1152,
+          "originalBytes": 132026,
+          "selectedBytes": 36728
+        }
+      ]
+    }
+  ]
+}

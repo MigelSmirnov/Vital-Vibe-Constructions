@@ -1,4 +1,4 @@
-version: 2
+version: 3
 application:
   id: vital-vibe-constructions
   name: Vital Vibe Constructions Website
@@ -83,6 +83,7 @@ modules:
       - site records
       - services
       - projects
+      - articles and their localized content
       - media
       - renovation tiers
       - contact details
@@ -109,6 +110,16 @@ modules:
       - project detail generation
       - service detail generation
       - generated-page validation
+    depends_on:
+      - knowledge-repository
+      - route-contracts
+
+  - id: public-article-builders
+    root: tools/articles
+    owns:
+      - localized published Article generation
+      - article language navigation and metadata validation
+      - historical draft URL redirects
     depends_on:
       - knowledge-repository
       - route-contracts

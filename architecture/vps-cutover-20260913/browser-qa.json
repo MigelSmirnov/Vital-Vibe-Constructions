@@ -1,0 +1,810 @@
+{
+  "routes": [
+    "/",
+    "/projects/",
+    "/projects/estudio-reformado-barcelona/",
+    "/projects/reforma-integral-estandar-barcelona/",
+    "/projects/trabajos-contrata-premium/",
+    "/gallery/",
+    "/servicios/reformas-integrales-barcelona/",
+    "/projects/traslado-lavabo-toallero-badalona/",
+    "/articulos/traslado-lavabo-toallero/",
+    "/en/articles/moving-a-bathroom-basin/",
+    "/ru/articles/perenos-rakoviny/",
+    "/articulos/conexion-colector-solar/",
+    "/en/articles/solar-collector-connections/",
+    "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+    "/articulos/",
+    "/en/articles/",
+    "/ru/articles/",
+    "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+    "/en/articles/wall-painting-price-preparation/",
+    "/ru/articles/pokraska-sten-cena-podgotovka/",
+    "/articulos/nivelacion-suelo-antes-del-pavimento/",
+    "/en/articles/floor-leveling-before-covering/",
+    "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+    "/robots.txt",
+    "/llms.txt",
+    "/styles.css",
+    "/VVC_primary_logo.svg",
+    "/aviso-legal.dc.html",
+    "/DEPLOYMENT_COMMIT"
+  ],
+  "redirects": [
+    {
+      "from": "/projects.html",
+      "to": "/projects/"
+    },
+    {
+      "from": "/proyecto-1.html",
+      "to": "/projects/estudio-reformado-barcelona/"
+    },
+    {
+      "from": "/proyecto-2.html",
+      "to": "/projects/estudio-reformado-barcelona/"
+    },
+    {
+      "from": "/projects/piso-reformado-barcelona",
+      "to": "/projects/estudio-reformado-barcelona/"
+    },
+    {
+      "from": "/projects/piso-reformado-barcelona/",
+      "to": "/projects/estudio-reformado-barcelona/"
+    },
+    {
+      "from": "/galeria-economica.dc.html",
+      "to": "/gallery/"
+    },
+    {
+      "from": "/galeria-estandar.dc.html",
+      "to": "/gallery/"
+    },
+    {
+      "from": "/galeria-premium.dc.html",
+      "to": "/gallery/"
+    },
+    {
+      "from": "/sandbox/articles/reading/traslado-lavabo-toallero-cuatro-dias/",
+      "to": "/articulos/traslado-lavabo-toallero/"
+    }
+  ],
+  "pages": [
+    {
+      "path": "/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/projects/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 5,
+      "sections": 0,
+      "webp": 1
+    },
+    {
+      "path": "/projects/estudio-reformado-barcelona/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 17,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/projects/reforma-integral-estandar-barcelona/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 0,
+      "webp": 6
+    },
+    {
+      "path": "/projects/trabajos-contrata-premium/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 16,
+      "sections": 0,
+      "webp": 10
+    },
+    {
+      "path": "/gallery/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 40,
+      "sections": 0,
+      "webp": 16
+    },
+    {
+      "path": "/servicios/reformas-integrales-barcelona/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 4,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/projects/traslado-lavabo-toallero-badalona/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/traslado-lavabo-toallero/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/moving-a-bathroom-basin/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/perenos-rakoviny/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/conexion-colector-solar/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/solar-collector-connections/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "width": 390,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/projects/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 5,
+      "sections": 0,
+      "webp": 1
+    },
+    {
+      "path": "/projects/estudio-reformado-barcelona/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 17,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/projects/reforma-integral-estandar-barcelona/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 0,
+      "webp": 6
+    },
+    {
+      "path": "/projects/trabajos-contrata-premium/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 16,
+      "sections": 0,
+      "webp": 10
+    },
+    {
+      "path": "/gallery/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 40,
+      "sections": 0,
+      "webp": 16
+    },
+    {
+      "path": "/servicios/reformas-integrales-barcelona/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 4,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/projects/traslado-lavabo-toallero-badalona/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/traslado-lavabo-toallero/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/moving-a-bathroom-basin/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/perenos-rakoviny/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/conexion-colector-solar/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/solar-collector-connections/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "width": 768,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 12,
+      "sections": 0,
+      "webp": 8
+    },
+    {
+      "path": "/projects/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 5,
+      "sections": 0,
+      "webp": 1
+    },
+    {
+      "path": "/projects/estudio-reformado-barcelona/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 17,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/projects/reforma-integral-estandar-barcelona/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 0,
+      "webp": 6
+    },
+    {
+      "path": "/projects/trabajos-contrata-premium/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 16,
+      "sections": 0,
+      "webp": 10
+    },
+    {
+      "path": "/gallery/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 40,
+      "sections": 0,
+      "webp": 16
+    },
+    {
+      "path": "/servicios/reformas-integrales-barcelona/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 4,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/projects/traslado-lavabo-toallero-badalona/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/traslado-lavabo-toallero/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/moving-a-bathroom-basin/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/perenos-rakoviny/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 7,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/conexion-colector-solar/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/solar-collector-connections/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/podklyuchenie-solnechnogo-kollektora/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 5,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 5,
+      "sections": 0,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/pintura-paredes-precio-preparacion-barcelona/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/wall-painting-price-preparation/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/pokraska-sten-cena-podgotovka/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 3,
+      "sections": 10,
+      "webp": 0
+    },
+    {
+      "path": "/articulos/nivelacion-suelo-antes-del-pavimento/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "es",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    },
+    {
+      "path": "/en/articles/floor-leveling-before-covering/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "en",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    },
+    {
+      "path": "/ru/articles/vyravnivanie-pola-pered-ukladkoy/",
+      "width": 1440,
+      "broken": [],
+      "overflow": false,
+      "lang": "ru",
+      "images": 7,
+      "sections": 11,
+      "webp": 0
+    }
+  ],
+  "solar": [
+    {
+      "lang": "es",
+      "width": 390,
+      "controls": "pass"
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "controls": "pass"
+    },
+    {
+      "lang": "ru",
+      "width": 390,
+      "controls": "pass"
+    },
+    {
+      "lang": "es",
+      "width": 768,
+      "controls": "pass"
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "controls": "pass"
+    },
+    {
+      "lang": "ru",
+      "width": 768,
+      "controls": "pass"
+    },
+    {
+      "lang": "es",
+      "width": 1440,
+      "controls": "pass"
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "controls": "pass"
+    },
+    {
+      "lang": "ru",
+      "width": 1440,
+      "controls": "pass"
+    }
+  ]
+}
