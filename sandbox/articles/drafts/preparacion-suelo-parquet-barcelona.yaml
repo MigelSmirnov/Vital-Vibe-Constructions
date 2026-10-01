@@ -152,7 +152,7 @@
         },
         {
           "type": "paragraph",
-          "text": "La entrega de la partida de parquet al proyecto costó 70 €. La subida del material a la vivienda se contabiliza aparte y se añadirá al caso cuando quede fijado su importe definitivo."
+          "text": "La entrega de la partida de parquet al proyecto costó 70 €. La subida del material a la vivienda requiere trabajo adicional; para un cálculo comercial equivalente consideramos aproximadamente 160 € por una jornada oficial de peón."
         },
         {
           "type": "paragraph",
@@ -164,11 +164,23 @@
         },
         {
           "type": "paragraph",
-          "text": "En la misma factura se compraron 12 barras de rodapié de poliestireno lacado blanco de 2200 × 80 × 14 mm: 26,4 metros lineales de material por 70,80 € con IVA. Los perfiles, encuentros y el trabajo de montaje se contabilizan aparte."
+          "text": "En la misma factura se compraron 12 barras de rodapié de poliestireno lacado blanco de 2200 × 80 × 14 mm: 26,4 metros lineales de material por 70,80 € con IVA. La estimación aceptada contemplaba 150 € sin IVA para el montaje de rodapié (medición inicial de 20 ml). El material finalmente elegido y su longitud son distintos de aquella previsión, por lo que mantenemos separadas la compra real y la mano de obra prevista."
         },
         {
           "type": "paragraph",
           "text": "La factura 036-0009-504563 es una compra mixta del proyecto. Para este capítulo solo atribuimos al suelo las líneas identificadas de base EVA (64,00 €) y rodapié (70,80 €); mampara, pinturas y fijadores de la misma factura pertenecen a otros trabajos."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Parquet TILO, 46,56 m²: 2.812,38 € con IVA.",
+            "Base EVA 2 mm, 40 m²: 64,00 € con IVA.",
+            "Entrega del parquet: 70 €.",
+            "Subida del material: referencia comercial de aproximadamente 160 € por una jornada de peón.",
+            "Colocación flotante del parquet y colocación de la base, 40 m²: 600 € sin IVA / 726 € con IVA.",
+            "Rodapié comprado, 26,4 ml: 70,80 € con IVA.",
+            "Montaje de rodapié previsto en la estimación aceptada: 150 € sin IVA / 181,50 € con IVA, sobre una medición inicial de 20 ml."
+          ]
         }
       ]
     }
