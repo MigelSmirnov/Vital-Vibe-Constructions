@@ -156,7 +156,7 @@
         },
         {
           "type": "paragraph",
-          "text": "La base o underlay se compró por separado. Como referencia del proyecto, su material está en torno a 2 €/m²; antes de publicar el importe final se sustituirá este valor por la factura exacta."
+          "text": "La base de EVA de 2 mm se compró por separado: 2 rollos de 20 m², 40 m² en total, por 64,00 € con IVA. El coste real del material fue por tanto de 1,60 €/m²."
         },
         {
           "type": "paragraph",
@@ -164,7 +164,11 @@
         },
         {
           "type": "paragraph",
-          "text": "El rodapié, los perfiles y los encuentros se tratarán aparte porque dependen de la medición y de las soluciones finales de cada zona."
+          "text": "En la misma factura se compraron 12 barras de rodapié de poliestireno lacado blanco de 2200 × 80 × 14 mm: 26,4 metros lineales de material por 70,80 € con IVA. Los perfiles, encuentros y el trabajo de montaje se contabilizan aparte."
+        },
+        {
+          "type": "paragraph",
+          "text": "La factura 036-0009-504563 es una compra mixta del proyecto. Para este capítulo solo atribuimos al suelo las líneas identificadas de base EVA (64,00 €) y rodapié (70,80 €); mampara, pinturas y fijadores de la misma factura pertenecen a otros trabajos."
         }
       ]
     }
