@@ -40,26 +40,6 @@
         "Pistola, rodillo y precio final"
       ],
       "reading_preview": true
-    },
-    {
-      "id": "preparacion-suelo-parquet-barcelona",
-      "title": "Preparar el suelo antes de colocar parquet: un caso real en Barcelona",
-      "status": "draft",
-      "language": "es",
-      "source": "./drafts/preparacion-suelo-parquet-barcelona.yaml",
-      "document": {
-        "number": "VVC-ART-005",
-        "revision": "0",
-        "status": "Borrador",
-        "service_label": "Suelos y parquet",
-        "scope": "Barcelona · caso real",
-        "stamp_title": "Preparación del suelo antes del parquet"
-      },
-      "sheet_titles": [
-        "Cotas y decisión de altura",
-        "Demolición y nivelación",
-        "Coste real y preparación para el pavimento"
-      ]
     }
   ]
 }

@@ -9,8 +9,8 @@ import { createKnowledgeRepository, loadContentTables } from "../../knowledge/in
 const root = process.cwd();
 const dist = path.join(root, ".deploy-dist");
 const repository = createKnowledgeRepository(await loadContentTables({ root }));
-// Bounded delivery optimization for the eight recently added owner photographs.
-const articleIds = new Set(["article-painting-preparation", "article-floor-leveling"]);
+// Explicit article photograph delivery scope; source records own media and captions.
+const articleIds = new Set(["article-painting-preparation", "article-floor-leveling", "article-parquet-floor"]);
 const articles = repository.listArticles().filter(article => articleIds.has(article.id));
 if (articles.length !== articleIds.size) throw new Error("Missing article image optimization scope");
 const mediaIds = [...new Set(articles.flatMap(article => article.mediaIds))];

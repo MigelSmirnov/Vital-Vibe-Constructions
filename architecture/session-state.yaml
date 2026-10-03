@@ -1,5 +1,5 @@
-version: 73
-updated_at: 2026-09-27T19:53:00Z
+version: 74
+updated_at: 2026-10-03T13:45:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -640,3 +640,22 @@ next_verification:
 
 next_stage:
   goal: Observe production, retain rollback, and close documented shared-server security and monitoring followups.
+
+parquet_floor_article:
+  status: prepared-for-publication
+  branch: agent/parquet-floor-article
+  pull_request: 14
+  entity_id: article-parquet-floor
+  languages: [es, en, ru]
+  sections_per_language: 9
+  owner_photographs: 5
+  original_photographs_preserved: true
+  responsive_webp_derivatives: 15
+  report: architecture/parquet-floor-publication.md
+  canonical_checks: pass-43-tests-0-errors-5-existing-warnings
+  bundle_validation: pass-43-routes-47-html
+  webp_decoded: 120
+  browser_verification: pending-github-actions
+  production_changed: false
+  vps_activation: pending-owner-termux
+  historical_order_article_number: unresolved-not-published

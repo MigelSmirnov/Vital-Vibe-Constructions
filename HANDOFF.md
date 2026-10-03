@@ -20,6 +20,12 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
+## Parquet floor article prepared — 2026-10-03
+
+Owner requested repository integration and website publication. PR #14 now promotes VVC-ART-005 to article-parquet-floor with full ES/EN/RU narrative, nine sections per language and five owner-selected photographs. Originals retained under assets/parquet-floor; fifteen responsive WebP variants are generated in the release bundle. Public records, routes, catalogs, sitemap and llms are prepared. The old sandbox source is retained as history and removed from the draft manifest. Costs distinguish documented purchases, estimated labour and commercial reference amounts. The historical order code remains unresolved and is not published; the technical paragraph attributes dimensions to the linked official specification.
+
+Local checks: 43 tests, 0 audit errors / 5 existing warnings; bundle 43 routes / 47 HTML; all 120 WebP files decode. Browser launch is unavailable in this local runtime; extended article image QA will run in GitHub Actions. Production is unchanged; activate only the verified pinned bundle through the existing VPS release helper via the owner’s Termux.
+
 ## Joanic preview layout correction — 2026-09-27
 
 Owner reported the malformed mobile/desktop service card after deployment. Reproduced: inside `picture { display:contents }`, the `source` element generated a grid item, shifting the image into column two and forcing the title into the narrow first column of a second row. Earlier functional acceptance missed internal card geometry. Explicitly hide source metadata in the card, retain the full photo's intrinsic aspect ratio, and enlarge desktop previews to 128px (92px on narrower screens). Homepage CSS now has a content-hashed URL to invalidate the previous cached stylesheet.
