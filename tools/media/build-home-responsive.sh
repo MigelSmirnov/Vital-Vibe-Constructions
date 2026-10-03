@@ -91,11 +91,11 @@ done
   echo
   echo "| File | Bytes |"
   echo "| --- | ---: |"
-  while IFS= read -r file; do
+  find "$OUT/assets" -type f -name '*.webp' | sort | while IFS= read -r file; do
     rel="${file#$OUT/}"
     bytes="$(wc -c < "$file" | tr -d ' ')"
     echo "| $rel | $bytes |"
-  done < <(find "$OUT/assets" -type f -name '*.webp' | sort)
+  done
 } > "$OUT/report.md"
 
 cat "$OUT/report.md"

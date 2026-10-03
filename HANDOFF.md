@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 70
-Updated: 2026-09-27
+Version: 71
+Updated: 2026-10-03
 
 ## Session rule
 
@@ -19,6 +19,16 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Browser QA recovery — 2026-10-03
+
+Fixed the Joanic service-card test to scroll its lazy image into view and wait for successful loading before strict decoding. The two previous runs failed at image.decode on different locales; all 120 artifact WebP files decoded independently. On source a1608e22ee07e16364a6d77f277ba53eb1660bff all four GitHub workflows passed. Visual QA run 37130573908 passed all 15 service-card layout cases and 48 article image page/viewport/DPR cases, including the parquet article. Production activation remains pending; no public page content was changed by this test fix.
+
+## Parquet floor article prepared — 2026-10-03
+
+Owner requested repository integration and website publication. PR #14 now promotes VVC-ART-005 to article-parquet-floor with full ES/EN/RU narrative, nine sections per language and five owner-selected photographs. Originals retained under assets/parquet-floor; fifteen responsive WebP variants are generated in the release bundle. Public records, routes, catalogs, sitemap and llms are prepared. The old sandbox source is retained as history and removed from the draft manifest. Costs distinguish documented purchases, estimated labour and commercial reference amounts. The historical order code remains unresolved and is not published; the technical paragraph attributes dimensions to the linked official specification.
+
+Local checks: 43 tests, 0 audit errors / 5 existing warnings; bundle 43 routes / 47 HTML; all 120 WebP files decode. Browser launch is unavailable in this local runtime; extended article image QA will run in GitHub Actions. Production is unchanged; activate only the verified pinned bundle through the existing VPS release helper via the owner’s Termux.
 
 ## Joanic preview layout correction — 2026-09-27
 

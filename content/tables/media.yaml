@@ -698,6 +698,76 @@
       ],
       "before_after_state": "after",
       "published_at": "2026-09-27"
+    },
+    {
+      "id": "media-parquet-floor-levelling",
+      "slug": "parquet-floor-levelling",
+      "src": "assets/parquet-floor/levelling.jpg",
+      "width": 4096,
+      "height": 3072,
+      "alt": "Suelo con mortero autonivelante durante la obra",
+      "caption": "Aplicación del mortero autonivelante antes de colocar el nuevo pavimento.",
+      "service_ids": [
+        "integral-renovation"
+      ],
+      "before_after_state": "work",
+      "published_at": "2026-10-03"
+    },
+    {
+      "id": "media-parquet-floor-installation",
+      "slug": "parquet-floor-installation",
+      "src": "assets/parquet-floor/installation.jpg",
+      "width": 3072,
+      "height": 3072,
+      "alt": "Parquet parcialmente colocado y zona protegida con cartón",
+      "caption": "Parquet durante la colocación, antes del montaje de los rodapiés y de los remates finales.",
+      "service_ids": [
+        "integral-renovation"
+      ],
+      "before_after_state": "work",
+      "published_at": "2026-10-03"
+    },
+    {
+      "id": "media-parquet-floor-bathroom-junction",
+      "slug": "parquet-floor-bathroom-junction",
+      "src": "assets/parquet-floor/bathroom-junction.jpg",
+      "width": 3072,
+      "height": 3072,
+      "alt": "Regla-nivel sobre el encuentro del parquet y la baldosa del baño",
+      "caption": "Comprobación del encuentro entre el parquet y el pavimento cerámico del baño, antes del remate definitivo.",
+      "service_ids": [
+        "integral-renovation"
+      ],
+      "before_after_state": "work",
+      "published_at": "2026-10-03"
+    },
+    {
+      "id": "media-parquet-floor-straightedge",
+      "slug": "parquet-floor-straightedge",
+      "src": "assets/parquet-floor/straightedge.jpg",
+      "width": 3072,
+      "height": 3072,
+      "alt": "Regla-nivel larga apoyada sobre el parquet durante la colocación",
+      "caption": "Comprobación de la superficie del parquet con una regla-nivel de 2 m durante la colocación.",
+      "service_ids": [
+        "integral-renovation"
+      ],
+      "before_after_state": "work",
+      "published_at": "2026-10-03"
+    },
+    {
+      "id": "media-parquet-floor-spirit-level",
+      "slug": "parquet-floor-spirit-level",
+      "src": "assets/parquet-floor/spirit-level.jpg",
+      "width": 3072,
+      "height": 3072,
+      "alt": "Detalle de la burbuja del nivel sobre el parquet",
+      "caption": "Detalle del nivel de burbuja durante la comprobación del pavimento.",
+      "service_ids": [
+        "integral-renovation"
+      ],
+      "before_after_state": "work",
+      "published_at": "2026-10-03"
     }
   ]
 }
