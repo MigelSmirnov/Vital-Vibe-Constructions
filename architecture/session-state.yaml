@@ -1,5 +1,5 @@
-version: 74
-updated_at: 2026-10-03T13:45:00Z
+version: 75
+updated_at: 2026-10-03T14:50:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -655,7 +655,10 @@ parquet_floor_article:
   canonical_checks: pass-43-tests-0-errors-5-existing-warnings
   bundle_validation: pass-43-routes-47-html
   webp_decoded: 120
-  browser_verification: pending-github-actions
+  browser_verification: passed-github-actions-run-37130573908
+  browser_verified_source_sha: a1608e22ee07e16364a6d77f277ba53eb1660bff
+  service_card_layout_cases: 15
+  article_image_page_viewport_dpr_cases: 48
   production_changed: false
   vps_activation: pending-owner-termux
   historical_order_article_number: unresolved-not-published
