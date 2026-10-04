@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 74
+Version: 75
 Updated: 2026-10-04
 
 ## Session rule
@@ -20,9 +20,15 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
+## Joanic masonry classification removed — 2026-10-04
+
+The owner's production screenshot showed that the Joanic detail page still inherited the generic masonry description about demolition and partitions, although that work was not performed. The Project and all four associated Media records are now classified only as `painting`; the homepage placement remains under Painting. PR #20 merged into `main` as `a708049f523ab803e0646b193067c46dede42875`.
+
+Production serves source `013c8b18855d0076534331db4971e55f616c70dd` from `/srv/vital-vibe/releases/20261004-013c8b1`. All 43 public route bodies match the CI artifact exactly, and the ES, EN and RU project pages list only Painting / «Покраска», with no masonry / Building work / «Общестроительные работы». Archive SHA-256: `9a3761b56d4dd9dbfe5a0afeb3b33a18a190cb661f3a38a86579a2b7125c4abb`. Rollback: `20261004-6b0061d`. DNS and server configuration were unchanged.
+
 ## Joanic card moved to Painting — 2026-10-04
 
-At the owner's request, the Joanic communal-staircase project card in the homepage Services block moved from masonry / Building work / «Общестроительные работы» to painting / Painting / «Малярные работы». The Project remains classified under both `painting` and `masonry`; only the single homepage-owned placement changed. PR #18 merged into `main` as `bbbfbff082b7e6cf543fe28976ea7f6acc808844`.
+At the owner's request, the Joanic communal-staircase project card in the homepage Services block moved from masonry / Building work / «Общестроительные работы» to painting / Painting / «Малярные работы». At this release the Project still had both classifications; that metadata was corrected in the later release recorded above. PR #18 merged into `main` as `bbbfbff082b7e6cf543fe28976ea7f6acc808844`.
 
 Production serves `6b0061df1b4efbf0895d58556cbe55d4dff3fc6f` from `/srv/vital-vibe/releases/20261004-6b0061d`. All 43 public route bodies match the CI artifact exactly. Browser QA asserts that the card appears exactly once under `#pintura` and never under `#albanileria` in ES, EN and RU. Archive SHA-256: `a5150335e8f570944050885ba451e5f0095bccb35be33f24b7a13240372936ae`. Rollback: `20261004-d482617`. DNS and server configuration were unchanged.
 
