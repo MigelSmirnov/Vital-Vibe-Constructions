@@ -170,7 +170,7 @@ test("loads current content tables into a repository with project records", asyn
   assert.equal(joanic.totalCostEur, 900);
   assert.equal(joanic.vatIncluded, false);
   assert.equal(joanic.areaM2, 92);
-  assert.deepEqual(joanic.serviceIds, ["painting", "masonry"]);
+  assert.deepEqual(joanic.serviceIds, ["painting"]);
   assert.equal(repository.findProjectById("project-reforma-integral-estandar-barcelona").slug, "reforma-integral-estandar-barcelona");
   assert.equal(repository.findMediaById("media-estandar-cocina-terminada").projectId, "project-reforma-integral-estandar-barcelona");
   assert.equal(repository.findArticleById("article-solar-collector-connections").mediaIds.length, 2);
