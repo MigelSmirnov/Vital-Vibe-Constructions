@@ -1,5 +1,5 @@
-version: 77
-updated_at: 2026-10-04T09:55:53Z
+version: 78
+updated_at: 2026-10-04T10:22:38Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -119,10 +119,23 @@ joanic_staircase_project:
     workflow_run_id: 36315845180
     status: success
   homepage_card_localization_regression_check: added-and-green
-  homepage_placement: masonry-service-accordion-only
-  masonry_public_label_ru: Общестроительные работы
+  homepage_placement: painting-service-accordion-only
+  homepage_service_id: painting
+  homepage_public_label_ru: Малярные работы
   global_homepage_project_card: removed
-  production_changed: false
+  production_changed: true
+  placement_change:
+    status: published-and-verified
+    pull_request: 18
+    main_merge_commit: bbbfbff082b7e6cf543fe28976ea7f6acc808844
+    release_sha: 6b0061df1b4efbf0895d58556cbe55d4dff3fc6f
+    release_id: 20261004-6b0061d
+    archive_sha256: a5150335e8f570944050885ba451e5f0095bccb35be33f24b7a13240372936ae
+    rollback_release_id: 20261004-d482617
+    public_routes_exact_html_match: 43
+    locales: [es, en, ru]
+    browser_regression: joanic-once-under-painting-never-under-masonry
+    dns_or_server_configuration_changed: false
 
 project_localizations:
   report: architecture/project-localizations/report.md
