@@ -1,5 +1,5 @@
-version: 75
-updated_at: 2026-10-03T14:50:00Z
+version: 76
+updated_at: 2026-10-04T09:07:33Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -642,7 +642,7 @@ next_stage:
   goal: Observe production, retain rollback, and close documented shared-server security and monitoring followups.
 
 parquet_floor_article:
-  status: prepared-for-publication
+  status: published-and-verified
   branch: agent/parquet-floor-article
   pull_request: 14
   entity_id: article-parquet-floor
@@ -659,6 +659,20 @@ parquet_floor_article:
   browser_verified_source_sha: a1608e22ee07e16364a6d77f277ba53eb1660bff
   service_card_layout_cases: 15
   article_image_page_viewport_dpr_cases: 48
-  production_changed: false
-  vps_activation: pending-owner-termux
+  production_changed: true
+  main_merge_commit: 122ecfb5f84b18ed0570fd528fb7e4bc83b94e8e
+  release_sha: e35b7e437cb83b7c5941e7ffccf978f7b1e141ec
+  release_id: 20261004-e35b7e4
+  archive_sha256: 94500d160d0a5bedebb5244ae1d59052d01448d62693d30539666d4289508f22
+  server_current: /srv/vital-vibe/releases/20261004-e35b7e4
+  rollback_release_id: 20260927-765856d
+  public_routes_exact_html_match: 43
+  public_locales_verified: [es, en, ru]
+  public_responsive_webp_verified: true
+  canonical_redirects_verified: true
+  planner_status: 200
+  sampled_caddy_errors_or_5xx: 0
+  dns_or_server_configuration_changed: false
+  deployment_report: architecture/parquet-floor-vps-release-20261004.md
+  vps_activation: complete
   historical_order_article_number: unresolved-not-published
