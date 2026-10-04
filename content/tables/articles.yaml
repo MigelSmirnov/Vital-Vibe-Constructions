@@ -2593,7 +2593,7 @@
             },
             {
               "type": "paragraph",
-              "text": "La factura 036-0009-504563 es una compra mixta del proyecto. Para este capítulo solo atribuimos al suelo las líneas identificadas de base EVA (64,00 €) y rodapié (70,80 €); mampara, pinturas y fijadores de la misma factura pertenecen a otros trabajos."
+              "text": "En el cálculo de esta fase incluimos únicamente los materiales relacionados directamente con el suelo. Las demás compras del proyecto no forman parte de este importe."
             },
             {
               "type": "list",
@@ -2843,7 +2843,7 @@
                 },
                 {
                   "type": "paragraph",
-                  "text": "Invoice 036-0009-504563 covers a mixed project purchase. For this chapter, we attribute only the identified EVA underlay (€64.00) and skirting (€70.80) lines to the flooring; the shower screen, paints and primers on the same invoice belong to other work."
+                  "text": "The calculation for this phase includes only materials directly related to the flooring. Other project purchases are not included in this amount."
                 },
                 {
                   "type": "list",
@@ -3093,7 +3093,7 @@
                 },
                 {
                   "type": "paragraph",
-                  "text": "Счёт 036-0009-504563 включает смешанную закупку для проекта. В этом разделе относим к полу только определённые строки подложки EVA (64,00 €) и плинтуса (70,80 €); душевая перегородка, краски и грунтовки из того же счёта относятся к другим работам."
+                  "text": "В расчёт этого этапа включены только материалы, напрямую относящиеся к полу. Остальные закупки по проекту в эту сумму не входят."
                 },
                 {
                   "type": "list",
