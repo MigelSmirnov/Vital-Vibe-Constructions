@@ -92,16 +92,16 @@
       "id": "painting",
       "slug": "pintura",
       "title": "Pintura",
-      "summary": "Preparación de superficies y acabados de pintura para viviendas y espacios comerciales."
+      "summary": "Preparación de superficies y acabados de pintura para viviendas y espacios comerciales.",
+      "related_project_ids": [
+        "project-escalera-joanic-pintura"
+      ]
     },
     {
       "id": "masonry",
       "slug": "albanileria",
       "title": "Albañilería",
-      "summary": "Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida.",
-      "related_project_ids": [
-        "project-escalera-joanic-pintura"
-      ]
+      "summary": "Demoliciones, particiones, nivelación y trabajos de base necesarios para una reforma sólida."
     }
   ]
 }
