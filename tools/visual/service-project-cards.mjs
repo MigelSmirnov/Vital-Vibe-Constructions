@@ -27,7 +27,18 @@ try {
     for (const card of await cards.all()) {
       const row = card.locator('xpath=ancestor::details');
       await row.locator('summary').click();
-      await card.locator('img').evaluate(image => image.decode());
+      const photo = card.locator('img');
+      // Opening details exposes a lazy image; wait for its selected resource to load.
+      // A failed image still times out here, and decode remains a strict check.
+      await photo.scrollIntoViewIfNeeded();
+      const imageHandle = await photo.elementHandle();
+      try {
+        await page.waitForFunction(image => image.complete && image.naturalWidth > 0,
+          imageHandle, { timeout:10000 });
+        await photo.evaluate(image => image.decode());
+      } finally {
+        await imageHandle.dispose();
+      }
       const state = await card.evaluate(element => {
         const image = element.querySelector('img');
         const copy = element.querySelector('.service-project-copy');

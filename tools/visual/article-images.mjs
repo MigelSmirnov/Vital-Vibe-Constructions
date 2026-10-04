@@ -10,7 +10,7 @@ const root = process.cwd();
 const dist = path.join(root, ".deploy-dist");
 const out = path.join(root, "artifacts/visual/latest");
 const repository = createKnowledgeRepository(await loadContentTables({ root }));
-const articleIds = ["article-painting-preparation", "article-floor-leveling"];
+const articleIds = ["article-painting-preparation", "article-floor-leveling", "article-parquet-floor"];
 const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
 const routes = contract.routes.filter(route => articleIds.includes(route.entity_id) || route.family_id === "articles-index");
 const media = [...new Set(articleIds.flatMap(id => repository.findArticleById(id).mediaIds))].map(id => repository.findMediaById(id));
@@ -44,8 +44,8 @@ try {
       page.on("request", request => requested.add(new URL(request.url()).pathname));
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(new URL(route.path, origin).href, { waitUntil: "networkidle" });
-      const images = page.locator('img[src^="/assets/painting-preparation/"], img[src^="/assets/floor-leveling/"]');
-      const expected = route.family_id === "articles-index" ? 2 : repository.findArticleById(route.entity_id).mediaIds.length;
+      const images = page.locator('img[src^="/assets/painting-preparation/"], img[src^="/assets/floor-leveling/"], img[src^="/assets/parquet-floor/"]');
+      const expected = route.family_id === "articles-index" ? articleIds.length : repository.findArticleById(route.entity_id).mediaIds.length;
       assert.equal(await images.count(), expected);
       const photos = [];
       for (const img of await images.all()) {
