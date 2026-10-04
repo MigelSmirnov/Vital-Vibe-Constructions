@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 73
+Version: 74
 Updated: 2026-10-04
 
 ## Session rule
@@ -19,6 +19,12 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Joanic card moved to Painting — 2026-10-04
+
+At the owner's request, the Joanic communal-staircase project card in the homepage Services block moved from masonry / Building work / «Общестроительные работы» to painting / Painting / «Малярные работы». The Project remains classified under both `painting` and `masonry`; only the single homepage-owned placement changed. PR #18 merged into `main` as `bbbfbff082b7e6cf543fe28976ea7f6acc808844`.
+
+Production serves `6b0061df1b4efbf0895d58556cbe55d4dff3fc6f` from `/srv/vital-vibe/releases/20261004-6b0061d`. All 43 public route bodies match the CI artifact exactly. Browser QA asserts that the card appears exactly once under `#pintura` and never under `#albanileria` in ES, EN and RU. Archive SHA-256: `a5150335e8f570944050885ba451e5f0095bccb35be33f24b7a13240372936ae`. Rollback: `20261004-d482617`. DNS and server configuration were unchanged.
 
 ## Parquet article copy correction published — 2026-10-04
 
