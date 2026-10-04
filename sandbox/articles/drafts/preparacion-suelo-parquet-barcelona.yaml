@@ -172,7 +172,7 @@
         },
         {
           "type": "paragraph",
-          "text": "La factura 036-0009-504563 es una compra mixta del proyecto. Para este capítulo solo atribuimos al suelo las líneas identificadas de base EVA (64,00 €) y rodapié (70,80 €); mampara, pinturas y fijadores de la misma factura pertenecen a otros trabajos."
+          "text": "En el cálculo de esta fase incluimos únicamente los materiales relacionados directamente con el suelo. Las demás compras del proyecto no forman parte de este importe."
         },
         {
           "type": "list",
