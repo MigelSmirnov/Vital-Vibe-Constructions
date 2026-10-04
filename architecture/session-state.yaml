@@ -1,5 +1,5 @@
-version: 78
-updated_at: 2026-10-04T10:22:38Z
+version: 79
+updated_at: 2026-10-04T10:56:15Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -107,7 +107,7 @@ joanic_staircase_project:
     es: /projects/reparacion-pintura-escalera-joanic-barcelona/
     en: /en/projects/reparacion-pintura-escalera-joanic-barcelona/
     ru: /ru/projects/reparacion-pintura-escalera-joanic-barcelona/
-  service_ids: [painting, masonry]
+  service_ids: [painting]
   area_m2: 92
   duration: 4-working-days
   project_price_eur_ex_vat: 900
@@ -135,6 +135,21 @@ joanic_staircase_project:
     public_routes_exact_html_match: 43
     locales: [es, en, ru]
     browser_regression: joanic-once-under-painting-never-under-masonry
+    dns_or_server_configuration_changed: false
+  classification_correction:
+    status: published-and-verified
+    reason: no-demolition-or-partition-work-was-performed
+    project_service_ids: [painting]
+    media_service_ids: [painting]
+    pull_request: 20
+    main_merge_commit: a708049f523ab803e0646b193067c46dede42875
+    release_sha: 013c8b18855d0076534331db4971e55f616c70dd
+    release_id: 20261004-013c8b1
+    archive_sha256: 9a3761b56d4dd9dbfe5a0afeb3b33a18a190cb661f3a38a86579a2b7125c4abb
+    rollback_release_id: 20261004-6b0061d
+    public_routes_exact_html_match: 43
+    locales: [es, en, ru]
+    project_detail_services: painting-only
     dns_or_server_configuration_changed: false
 
 project_localizations:
@@ -216,10 +231,10 @@ solar_embed_width_fix:
   animation_source_changed: false
 
 vps_execution:
-  latest_release_report: architecture/joanic-vps-release-20260927.md
-  latest_release_sha: 765856d7e113d83dd4d6e2c8f0a559e86a6e9df8
-  latest_release_id: 20260927-765856d
-  latest_server_current: /srv/vital-vibe/releases/20260927-765856d
+  latest_release_record: HANDOFF.md
+  latest_release_sha: 013c8b18855d0076534331db4971e55f616c70dd
+  latest_release_id: 20261004-013c8b1
+  latest_server_current: /srv/vital-vibe/releases/20261004-013c8b1
   report: architecture/vps-cutover-20260913/report.md
   release_sha: ebd51356a925e84984bdfa2f520979fd11a44362
   initial_migration_sha: fb31a282e0204bc37d3ced1982675fef0332573f
