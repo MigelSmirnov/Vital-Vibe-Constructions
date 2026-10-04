@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 71
-Updated: 2026-10-03
+Version: 72
+Updated: 2026-10-04
 
 ## Session rule
 
@@ -20,15 +20,21 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
+## Parquet floor article published on VPS — 2026-10-04
+
+PR #14 was merged into `main` as `122ecfb5f84b18ed0570fd528fb7e4bc83b94e8e`. Production serves the pinned, CI-verified feature commit `e35b7e437cb83b7c5941e7ffccf978f7b1e141ec` from `/srv/vital-vibe/releases/20261004-e35b7e4`; the merge commit has the identical tree. The GitHub Actions bundle was revalidated locally (43 sitemap routes / 47 HTML files, 120 WebP files) and uploaded with SHA-256 `94500d160d0a5bedebb5244ae1d59052d01448d62693d30539666d4289508f22`.
+
+All 43 public sitemap route bodies match the release artifact exactly. The ES, EN and RU parquet article routes return the new content and responsive WebP photograph; HTTP and `www` redirect to canonical HTTPS. The electrical planner still returns 200, and the sampled Caddy log contains no error-level entries or 5xx responses. DNS, nginx/Caddy configuration and the planner were not changed. Rollback remains `20260927-765856d`. See `architecture/parquet-floor-vps-release-20261004.md`.
+
 ## Browser QA recovery — 2026-10-03
 
-Fixed the Joanic service-card test to scroll its lazy image into view and wait for successful loading before strict decoding. The two previous runs failed at image.decode on different locales; all 120 artifact WebP files decoded independently. On source a1608e22ee07e16364a6d77f277ba53eb1660bff all four GitHub workflows passed. Visual QA run 37130573908 passed all 15 service-card layout cases and 48 article image page/viewport/DPR cases, including the parquet article. Production activation remains pending; no public page content was changed by this test fix.
+Fixed the Joanic service-card test to scroll its lazy image into view and wait for successful loading before strict decoding. The two previous runs failed at image.decode on different locales; all 120 artifact WebP files decoded independently. On source a1608e22ee07e16364a6d77f277ba53eb1660bff all four GitHub workflows passed. Visual QA run 37130573908 passed all 15 service-card layout cases and 48 article image page/viewport/DPR cases, including the parquet article. This test fix itself changed no public page content; the verified article release was subsequently activated as recorded above.
 
-## Parquet floor article prepared — 2026-10-03
+## Parquet floor article prepared — 2026-10-03 (historical)
 
 Owner requested repository integration and website publication. PR #14 now promotes VVC-ART-005 to article-parquet-floor with full ES/EN/RU narrative, nine sections per language and five owner-selected photographs. Originals retained under assets/parquet-floor; fifteen responsive WebP variants are generated in the release bundle. Public records, routes, catalogs, sitemap and llms are prepared. The old sandbox source is retained as history and removed from the draft manifest. Costs distinguish documented purchases, estimated labour and commercial reference amounts. The historical order code remains unresolved and is not published; the technical paragraph attributes dimensions to the linked official specification.
 
-Local checks: 43 tests, 0 audit errors / 5 existing warnings; bundle 43 routes / 47 HTML; all 120 WebP files decode. Browser launch is unavailable in this local runtime; extended article image QA will run in GitHub Actions. Production is unchanged; activate only the verified pinned bundle through the existing VPS release helper via the owner’s Termux.
+Local checks: 43 tests, 0 audit errors / 5 existing warnings; bundle 43 routes / 47 HTML; all 120 WebP files decode. Browser launch was unavailable in that local runtime; extended article image QA subsequently passed in GitHub Actions. Production was unchanged at preparation time; the verified pinned bundle was later activated as recorded above.
 
 ## Joanic preview layout correction — 2026-09-27
 
