@@ -645,8 +645,7 @@
       "caption": "Vista general de la escalera después de terminar las reparaciones y la pintura.",
       "project_id": "project-escalera-joanic-pintura",
       "service_ids": [
-        "painting",
-        "masonry"
+        "painting"
       ],
       "before_after_state": "after",
       "published_at": "2026-09-27"
@@ -661,8 +660,7 @@
       "height": 1536,
       "project_id": "project-escalera-joanic-pintura",
       "service_ids": [
-        "painting",
-        "masonry"
+        "painting"
       ],
       "before_after_state": "work",
       "published_at": "2026-09-27"
@@ -677,8 +675,7 @@
       "height": 1536,
       "project_id": "project-escalera-joanic-pintura",
       "service_ids": [
-        "painting",
-        "masonry"
+        "painting"
       ],
       "before_after_state": "work",
       "published_at": "2026-09-27"
@@ -693,8 +690,7 @@
       "height": 1536,
       "project_id": "project-escalera-joanic-pintura",
       "service_ids": [
-        "painting",
-        "masonry"
+        "painting"
       ],
       "before_after_state": "after",
       "published_at": "2026-09-27"
