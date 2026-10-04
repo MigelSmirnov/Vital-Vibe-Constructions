@@ -36,3 +36,17 @@ The repository release helper installed the archive into a new directory and ato
 - The sampled Caddy log after verification contains no error-level entries or 5xx responses.
 
 The previous release remains installed for immediate symlink rollback with `deploy/vps/rollback-release.sh 20260927-765856d`.
+
+## Copy correction follow-up
+
+Later on 2026-10-04, the owner requested removal of an internal invoice identifier and unrelated purchase details from the article. PR #16 replaced that paragraph in ES, EN and RU with a concise explanation that only flooring-related materials belong to the phase calculation. The retained sandbox draft was corrected too.
+
+The follow-up release supersedes the initial release above:
+
+- deployed source: `d482617769de9d565463f26f9eb3455bdaa9e6ef`
+- `main` merge: `156057a33527bc18cc0b50f72743cdcc05b9f2d7`
+- release: `20261004-d482617`
+- archive SHA-256: `eef2c174810fd1497a1612af1aa10e084510995a00c483226cb65af309f2bc6f`
+- rollback release: `20261004-e35b7e4`
+
+All four pull-request checks passed. After activation, all 43 public route bodies matched the artifact exactly, the removed identifier was absent from all three public article locales, and responsive WebP delivery remained valid. DNS and server configuration did not change.

@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 72
+Version: 73
 Updated: 2026-10-04
 
 ## Session rule
@@ -19,6 +19,12 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Parquet article copy correction published — 2026-10-04
+
+At the owner's request, the internal invoice identifier and the list of unrelated purchases were removed from the parquet case in ES, EN and RU. The paragraph now states only that the phase calculation includes materials directly related to the floor; the retained sandbox draft was corrected as well to prevent reintroduction. PR #16 merged into `main` as `156057a33527bc18cc0b50f72743cdcc05b9f2d7`.
+
+Production serves source `d482617769de9d565463f26f9eb3455bdaa9e6ef` from `/srv/vital-vibe/releases/20261004-d482617`. All 43 public route bodies match the new CI artifact exactly, the removed identifier is absent from all three public locales, and responsive WebP delivery remains valid. Archive SHA-256: `eef2c174810fd1497a1612af1aa10e084510995a00c483226cb65af309f2bc6f`. Rollback: `20261004-e35b7e4`. DNS and server configuration were unchanged.
 
 ## Parquet floor article published on VPS — 2026-10-04
 

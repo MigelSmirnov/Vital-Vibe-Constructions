@@ -1,5 +1,5 @@
-version: 76
-updated_at: 2026-10-04T09:07:33Z
+version: 77
+updated_at: 2026-10-04T09:55:53Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -661,11 +661,11 @@ parquet_floor_article:
   article_image_page_viewport_dpr_cases: 48
   production_changed: true
   main_merge_commit: 122ecfb5f84b18ed0570fd528fb7e4bc83b94e8e
-  release_sha: e35b7e437cb83b7c5941e7ffccf978f7b1e141ec
-  release_id: 20261004-e35b7e4
-  archive_sha256: 94500d160d0a5bedebb5244ae1d59052d01448d62693d30539666d4289508f22
-  server_current: /srv/vital-vibe/releases/20261004-e35b7e4
-  rollback_release_id: 20260927-765856d
+  release_sha: d482617769de9d565463f26f9eb3455bdaa9e6ef
+  release_id: 20261004-d482617
+  archive_sha256: eef2c174810fd1497a1612af1aa10e084510995a00c483226cb65af309f2bc6f
+  server_current: /srv/vital-vibe/releases/20261004-d482617
+  rollback_release_id: 20261004-e35b7e4
   public_routes_exact_html_match: 43
   public_locales_verified: [es, en, ru]
   public_responsive_webp_verified: true
@@ -676,3 +676,11 @@ parquet_floor_article:
   deployment_report: architecture/parquet-floor-vps-release-20261004.md
   vps_activation: complete
   historical_order_article_number: unresolved-not-published
+  copy_correction:
+    status: published-and-verified
+    pull_request: 16
+    main_merge_commit: 156057a33527bc18cc0b50f72743cdcc05b9f2d7
+    removed_public_detail: internal-invoice-identifier-and-unrelated-purchase-list
+    locales: [es, en, ru]
+    retained_draft_corrected: true
+    removed_identifier_occurrences: 0
