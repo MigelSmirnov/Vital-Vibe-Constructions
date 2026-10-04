@@ -24,6 +24,10 @@ try {
     assert.equal((await page.goto(origin+prefix+'/')).status(),200);
     const cards = page.locator('.service-project-card');
     assert.ok(await cards.count() > 0);
+    const joanicCard = page.locator('.service-project-card[href$="/projects/reparacion-pintura-escalera-joanic-barcelona/"]');
+    assert.equal(await joanicCard.count(), 1);
+    assert.equal(await joanicCard.locator('xpath=ancestor::details').getAttribute('id'), 'pintura');
+    assert.equal(await page.locator('#albanileria .service-project-card').count(), 0);
     for (const card of await cards.all()) {
       const row = card.locator('xpath=ancestor::details');
       await row.locator('summary').click();
