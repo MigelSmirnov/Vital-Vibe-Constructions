@@ -105,7 +105,7 @@ function renderProjectIndex({ site, projects, mediaById }) {
       <div class="container">
         <p class="eyebrow">Proyectos</p>
         <h1>Reformas y trabajos realizados en Barcelona</h1>
-        <p>Consulta proyectos reales documentados con información e imágenes verificadas en nuestro repositorio de contenidos.</p>
+        <p>Consulta proyectos reales documentados con información e imágenes verificadas.</p>
       </div>
     </section>
     <section class="section">
