@@ -198,6 +198,7 @@ function renderPage({
       url: `${site.canonicalOrigin}/`,
       logo: `${site.canonicalOrigin}/VVC_primary_logo.svg`,
       areaServed: site.serviceArea,
+      ...(contactDetails.facebook_url ? { sameAs: [contactDetails.facebook_url] } : {}),
       contactPoint: {
         "@type": "ContactPoint",
         telephone: contactDetails.phone_display,
@@ -334,6 +335,7 @@ ${renderCapabilitySections(capabilitySections, mediaById, serviceById, externalA
           <a class="button button-secondary" href="${escapeHtml(contactDetails.phone_href)}">${escapeHtml(contactDetails.phone_display)}</a>
           <a class="button button-secondary" href="mailto:${escapeHtml(contactDetails.email)}">${escapeHtml(contactDetails.email)}</a>
           <a class="button button-secondary" href="${escapeHtml(contactDetails.map_url)}" target="_blank" rel="noopener">${escapeHtml(contactDetails.map_label)}</a>
+          ${contactDetails.facebook_url ? `<a class="button button-secondary" href="${escapeHtml(contactDetails.facebook_url)}" target="_blank" rel="noopener">Facebook</a>` : ""}
         </div>
       </div>
     </section>
@@ -343,7 +345,7 @@ ${renderCapabilitySections(capabilitySections, mediaById, serviceById, externalA
     <div class="container footer-main">
       <a class="brand" href="/" aria-label="${escapeHtml(site.name)}"><img src="/VVC_primary_logo.svg" alt="${escapeHtml(site.name)}" width="240" height="83" loading="lazy"></a>
       <p>${escapeHtml(site.serviceArea)}</p>
-      <div><a href="mailto:${escapeHtml(contactDetails.email)}">${escapeHtml(contactDetails.email)}</a><a href="${escapeHtml(contactDetails.phone_href)}">${escapeHtml(contactDetails.phone_display)}</a></div>
+      <div><a href="mailto:${escapeHtml(contactDetails.email)}">${escapeHtml(contactDetails.email)}</a><a href="${escapeHtml(contactDetails.phone_href)}">${escapeHtml(contactDetails.phone_display)}</a>${contactDetails.facebook_url ? `<a href="${escapeHtml(contactDetails.facebook_url)}" target="_blank" rel="noopener">Facebook</a>` : ""}</div>
     </div>
     <div class="container footer-bottom"><span>© ${new Date().getUTCFullYear()} ${escapeHtml(site.name)}</span><a href="/aviso-legal.dc.html">Aviso legal</a></div>
   </footer>
