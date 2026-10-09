@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 76
+Version: 77
 Updated: 2026-10-09
 
 ## Session rule
@@ -19,6 +19,14 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Google Business Profile contact correction — 2026-10-09
+
+Owner confirmed the primary phone +34 691 07 46 18 and authorized correcting the new Google profile and the website map link. The old site map link points to Vital Vibe Constructions at Portal de l’Àngel, 40 with a different place ID. The owner-supplied new Search URL encodes 0x4be5f7c373ee0cfd (decimal 5469049741346999549), matching fid in all four June–September performance emails. The owner's screenshot shows the new profile phone as 672 17 99 25, a renovation category, Barcelona service area, and closing time 18:00; it does not establish the full weekly schedule or the website button target.
+
+Branch agent/google-business-contact-fix replaces the canonical map_url with https://www.google.com/maps?cid=5469049741346999549 and regenerates ES/EN/RU homepages and llms.txt. Existing primary phone, WhatsApp, Facebook and copy are preserved. Full checks passed: 43 tests, 0 errors and 5 existing warnings. Destination identity is derived from the supplied URL and matching email fid; live destination viewing remains blocked by Google's unusual-traffic page. Verify the link opens the new profile before production activation.
+
+Google profile phone change remains pending: no connected tool supports editing the number and the cloud browser is blocked. No Google profile edits, duplicate closure/merge, advertising, VPS deployment or DNS changes were performed. Production deployment requires the existing home-machine VPS workflow; this workspace has no supplied deployment connection.
 
 ## Combined Facebook / copy release — 2026-10-09
 
