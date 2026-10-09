@@ -1,5 +1,5 @@
 version: 80
-updated_at: 2026-10-09T13:20:00Z
+updated_at: 2026-10-09T13:21:28Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -724,3 +724,13 @@ facebook_page_link:
   structured_data: organization-sameAs
   canonical_checks: pass-43-tests-0-errors-5-existing-warnings
   production_changed: false
+
+combined_facebook_copy_release:
+  status: prepared-awaiting-ci-not-deployed
+  pull_request: 22
+  branch: agent/facebook-page-link
+  copy_source_sha: 3e6d809710c4aed6c4051c0e33b0fa2bc268652e
+  deployment_handoff: task/006-facebook-copy-release.md
+  excluded_draft_pull_request: 10
+  production_changed: false
+  live_sha_at_preparation: 013c8b18855d0076534331db4971e55f616c70dd

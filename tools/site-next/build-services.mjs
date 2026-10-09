@@ -128,7 +128,7 @@ function renderProjects(projects, mediaById, projectRouteById) {
         <div class="service-section-heading">
           <p class="eyebrow">Proyectos reales</p>
           <h2>Reformas integrales documentadas</h2>
-          <p>Estos proyectos del repositorio están relacionados directamente con el servicio de reformas integrales.</p>
+          <p>Estos proyectos documentados están relacionados directamente con el servicio de reformas integrales.</p>
         </div>
         <div class="project-index-grid">${cards}</div>
       </div>
@@ -141,7 +141,7 @@ function renderFaq(service) {
         <div class="service-section-heading">
           <p class="eyebrow">Preguntas frecuentes</p>
           <h2>Antes de plantear la reforma</h2>
-          <p>Respuestas basadas en el alcance y los servicios que actualmente figuran en nuestro repositorio.</p>
+          <p>Respuestas basadas en el alcance y los servicios que ofrecemos actualmente.</p>
         </div>
         <div class="service-faq-list">${service.faq
           .map(

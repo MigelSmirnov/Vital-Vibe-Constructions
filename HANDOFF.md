@@ -20,6 +20,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
+## Combined Facebook / copy release — 2026-10-09
+
+PR #22 now combines the Facebook link with the Spanish customer-facing copy correction from `3e6d809710c4aed6c4051c0e33b0fa2bc268652e`. PR #10 draft remains excluded. See `task/006-facebook-copy-release.md` for the pinned-artifact workflow and home-machine deployment handoff. Production remains unchanged.
+
 ## Facebook page link — 2026-10-09
 
 Owner requested a visible link to the connected Vital Vibe Construction Facebook page (1497572453430978). Branch `agent/facebook-page-link` adds it to homepage contacts and footer in ES/EN/RU and Organization `sameAs`. The URL is centralized in the ContactDetails source record and carried through the Knowledge Repository; no Facebook scripts or advertising tracking are added. Canonical checks passed with 43 tests, 0 errors and 5 existing warnings. Production is not deployed: this workspace has GitHub access but no supplied VPS deployment connection.
