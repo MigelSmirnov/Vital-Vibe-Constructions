@@ -43,22 +43,22 @@
     },
     {
       "id": "seguimiento-control-reforma",
-      "title": "Cómo seguimos una reforma: avance, gastos y cambios sin perder el hilo",
+      "title": "Cómo seguir tu reforma y saber en qué se gasta el dinero",
       "status": "draft",
       "language": "es",
       "source": "./drafts/seguimiento-control-reforma.yaml",
       "document": {
         "number": "VVC-ART-004",
-        "revision": "0",
+        "revision": "1",
         "status": "Borrador",
         "service_label": "Gestión de obra",
         "scope": "Proceso de proyecto",
         "stamp_title": "Seguimiento y control de la reforma"
       },
       "sheet_titles": [
-        "Referencia, avance y estado del proyecto",
-        "Gastos, compras y cambios",
-        "Visibilidad para el cliente"
+        "Acceso gratuito y seguimiento del gasto",
+        "Compras reales y cambios de presupuesto",
+        "Informes y previsión hasta el final"
       ]
     }
   ]

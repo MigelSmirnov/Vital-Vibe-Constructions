@@ -640,3 +640,16 @@ next_verification:
 
 next_stage:
   goal: Observe production, retain rollback, and close documented shared-server security and monitoring followups.
+
+project_tracking_editorial_20261009:
+  status: draft-rewritten-not-published
+  branch: agent/project-tracking-article
+  pull_request: 10
+  spanish_draft: sandbox/articles/drafts/seguimiento-control-reforma.yaml
+  approved_russian_copy: sandbox/articles/drafts/seguimiento-control-reforma.ru.md
+  editorial_focus: free-client-area-progress-expenses-payments-and-cost-forecast
+  original_images: sandbox/articles/assets/seguimiento-control-reforma/
+  screenshot_data: demo-not-real-project-financials
+  checks: drafts-valid-3-full-checks-pass-0-errors-5-existing-warnings
+  production_changed: false
+  next_step: owner-editorial-patches-before-publication

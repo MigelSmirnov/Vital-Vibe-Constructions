@@ -96,3 +96,7 @@
 ## Граница публикации
 
 `task/` не добавлять в `content/tables`, `site-next`, маршруты, sitemap, llms.txt или навигацию сайта. Публиковать только проверенный release artifact, а не корень репозитория.
+
+## Article editing — 2026-10-09
+
+Continue the owner-approved project-tracking article in `agent/project-tracking-article` / draft PR #10. Patch `sandbox/articles/drafts/seguimiento-control-reforma.ru.md` and keep the Spanish YAML and manifest title consistent. The free client area is the main client benefit; real purchases and budget revisions explain it. Two photographs remain sandbox-only. The full-cost report is a provisional reconstruction, not an approved final price. Checks passed; publication remains a later task.
