@@ -9,6 +9,7 @@ export class ContactDetails {
     email,
     mapUrl,
     mapLabel,
+    facebookUrl = null,
     legalSummary = null,
     source = null,
   }) {
@@ -21,6 +22,13 @@ export class ContactDetails {
     assertNonEmptyString(mapLabel, "mapLabel");
     if (legalSummary !== null) assertNonEmptyString(legalSummary, "legalSummary");
 
+    if (facebookUrl !== null) {
+      const url = new URL(facebookUrl);
+      if (url.protocol !== "https:" || url.hostname !== "www.facebook.com" || url.pathname === "/" || url.username || url.password || url.search || url.hash) {
+        throw new Error("Expected facebookUrl to be an HTTPS Facebook page URL.");
+      }
+    }
+
     this.id = id;
     this.phoneDisplay = phoneDisplay;
     this.phoneHref = phoneHref;
@@ -28,6 +36,7 @@ export class ContactDetails {
     this.email = email;
     this.mapUrl = mapUrl;
     this.mapLabel = mapLabel;
+    this.facebookUrl = facebookUrl;
     this.legalSummary = legalSummary;
     this.source = source;
 
@@ -47,6 +56,7 @@ export class ContactDetails {
       email: record.email,
       mapUrl: record.map_url,
       mapLabel: record.map_label,
+      facebookUrl: record.facebook_url ?? null,
       legalSummary: record.legal_summary ?? null,
       source,
     });
@@ -61,6 +71,7 @@ export class ContactDetails {
       email: this.email,
       map_url: this.mapUrl,
       map_label: this.mapLabel,
+      facebook_url: this.facebookUrl,
       legal_summary: this.legalSummary,
     });
   }

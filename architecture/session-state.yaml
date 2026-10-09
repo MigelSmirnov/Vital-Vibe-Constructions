@@ -1,5 +1,5 @@
-version: 79
-updated_at: 2026-10-04T10:56:15Z
+version: 80
+updated_at: 2026-10-09T13:20:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -712,3 +712,15 @@ parquet_floor_article:
     locales: [es, en, ru]
     retained_draft_corrected: true
     removed_identifier_occurrences: 0
+
+facebook_page_link:
+  status: prepared-for-review-not-deployed
+  branch: agent/facebook-page-link
+  page_id: "1497572453430978"
+  source: connected-meta-ad-account-pages
+  url: https://www.facebook.com/1497572453430978
+  placement: homepage-contact-actions-and-footer
+  languages: [es, en, ru]
+  structured_data: organization-sameAs
+  canonical_checks: pass-43-tests-0-errors-5-existing-warnings
+  production_changed: false

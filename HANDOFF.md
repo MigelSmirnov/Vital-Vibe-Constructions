@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 75
-Updated: 2026-10-04
+Version: 76
+Updated: 2026-10-09
 
 ## Session rule
 
@@ -19,6 +19,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Facebook page link — 2026-10-09
+
+Owner requested a visible link to the connected Vital Vibe Construction Facebook page (1497572453430978). Branch `agent/facebook-page-link` adds it to homepage contacts and footer in ES/EN/RU and Organization `sameAs`. The URL is centralized in the ContactDetails source record and carried through the Knowledge Repository; no Facebook scripts or advertising tracking are added. Canonical checks passed with 43 tests, 0 errors and 5 existing warnings. Production is not deployed: this workspace has GitHub access but no supplied VPS deployment connection.
 
 ## Joanic masonry classification removed — 2026-10-04
 
