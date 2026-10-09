@@ -1,5 +1,5 @@
-version: 80
-updated_at: 2026-10-09T13:21:28Z
+version: 81
+updated_at: 2026-10-09T14:12:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -734,3 +734,20 @@ combined_facebook_copy_release:
   excluded_draft_pull_request: 10
   production_changed: false
   live_sha_at_preparation: 013c8b18855d0076534331db4971e55f616c70dd
+
+google_business_contact_fix:
+  branch: agent/google-business-contact-fix
+  status: prepared-not-deployed
+  target_profile_id: "5469049741346999549"
+  id_evidence: owner-search-link-hex-id-matches-four-email-fid-values
+  primary_phone: "+34 691 07 46 18"
+  observed_google_phone: "+34 672 17 99 25"
+  website_map_source: content/tables/contact-details.yaml
+  map_url: https://www.google.com/maps?cid=5469049741346999549
+  generated_outputs: [site-next/index.html, site-next/en/index.html, site-next/ru/index.html, llms.txt]
+  canonical_checks: pass-43-tests-0-errors-5-existing-warnings
+  live_destination_check: blocked-google-unusual-traffic
+  google_phone_change: pending-no-supported-connected-editor-browser-blocked
+  production_changed: false
+  duplicate_profile_changed: false
+  advertising_started: false
