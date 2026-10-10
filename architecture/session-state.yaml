@@ -1,5 +1,5 @@
-version: 80
-updated_at: 2026-10-09T13:21:28Z
+version: 81
+updated_at: 2026-10-10T09:01:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -232,9 +232,9 @@ solar_embed_width_fix:
 
 vps_execution:
   latest_release_record: HANDOFF.md
-  latest_release_sha: 013c8b18855d0076534331db4971e55f616c70dd
-  latest_release_id: 20261004-013c8b1
-  latest_server_current: /srv/vital-vibe/releases/20261004-013c8b1
+  latest_release_sha: 7fbbe65b00be3ec477782914857ac8e6de6abe90
+  latest_release_id: 20261010-7fbbe65
+  latest_server_current: /srv/vital-vibe/releases/20261010-7fbbe65
   report: architecture/vps-cutover-20260913/report.md
   release_sha: ebd51356a925e84984bdfa2f520979fd11a44362
   initial_migration_sha: fb31a282e0204bc37d3ced1982675fef0332573f
@@ -714,7 +714,7 @@ parquet_floor_article:
     removed_identifier_occurrences: 0
 
 facebook_page_link:
-  status: prepared-for-review-not-deployed
+  status: published-and-verified
   branch: agent/facebook-page-link
   page_id: "1497572453430978"
   source: connected-meta-ad-account-pages
@@ -723,14 +723,28 @@ facebook_page_link:
   languages: [es, en, ru]
   structured_data: organization-sameAs
   canonical_checks: pass-43-tests-0-errors-5-existing-warnings
-  production_changed: false
+  production_changed: true
+  release_id: 20261010-7fbbe65
+  release_sha: 7fbbe65b00be3ec477782914857ac8e6de6abe90
 
 combined_facebook_copy_release:
-  status: prepared-awaiting-ci-not-deployed
+  status: published-and-verified
   pull_request: 22
   branch: agent/facebook-page-link
   copy_source_sha: 3e6d809710c4aed6c4051c0e33b0fa2bc268652e
   deployment_handoff: task/006-facebook-copy-release.md
   excluded_draft_pull_request: 10
-  production_changed: false
+  production_changed: true
   live_sha_at_preparation: 013c8b18855d0076534331db4971e55f616c70dd
+  main_merge_commit: 139a0191a2783f57aa83816120ea9f49a15db2e0
+  release_sha: 7fbbe65b00be3ec477782914857ac8e6de6abe90
+  release_id: 20261010-7fbbe65
+  rollback_release_id: 20261004-013c8b1
+  archive_sha256: 122dadcd0486883c6b8abee899338bfe474c71704b677e4bc227f9ac2cc91d88
+  bundle_validation: pass-43-routes-47-html
+  public_routes_exact_html_match: 43
+  production_project_page_viewport_checks: 54
+  production_service_card_checks: 15
+  visible_facebook_links_per_homepage: 2
+  organization_same_as_languages: [es, en, ru]
+  dns_or_server_configuration_changed: false
