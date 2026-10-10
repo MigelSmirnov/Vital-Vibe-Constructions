@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 76
-Updated: 2026-10-09
+Version: 77
+Updated: 2026-10-10
 
 ## Session rule
 
@@ -20,13 +20,15 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
-## Combined Facebook / copy release — 2026-10-09
+## Combined Facebook / copy release published — 2026-10-10
 
-PR #22 now combines the Facebook link with the Spanish customer-facing copy correction from `3e6d809710c4aed6c4051c0e33b0fa2bc268652e`. PR #10 draft remains excluded. See `task/006-facebook-copy-release.md` for the pinned-artifact workflow and home-machine deployment handoff. Production remains unchanged.
+PR #22 combines the Facebook link with the Spanish customer-facing copy correction from `3e6d809710c4aed6c4051c0e33b0fa2bc268652e`; PR #10 remains excluded. Production now serves the CI-verified source `7fbbe65b00be3ec477782914857ac8e6de6abe90` from `/srv/vital-vibe/releases/20261010-7fbbe65`. Main merge `139a0191a2783f57aa83816120ea9f49a15db2e0` has the identical tree.
+
+The downloaded VPS bundle was revalidated locally (43 sitemap routes / 47 HTML files) and on the VPS with SHA-256 `122dadcd0486883c6b8abee899338bfe474c71704b677e4bc227f9ac2cc91d88`. All 43 public route bodies match the artifact. Production browser checks passed for 54 localized project page/viewport cases and 15 service-card cases; images, language navigation and horizontal overflow are clean. Each ES/EN/RU homepage contains two visible Facebook links plus Organization `sameAs`; the corrected Spanish copy is live. HTTP and `www` redirect to canonical HTTPS, and no recent Caddy 5xx responses were found. Rollback: `20261004-013c8b1`. DNS, nginx/Caddy configuration and the planner were unchanged. See `task/006-facebook-copy-release.md`.
 
 ## Facebook page link — 2026-10-09
 
-Owner requested a visible link to the connected Vital Vibe Construction Facebook page (1497572453430978). Branch `agent/facebook-page-link` adds it to homepage contacts and footer in ES/EN/RU and Organization `sameAs`. The URL is centralized in the ContactDetails source record and carried through the Knowledge Repository; no Facebook scripts or advertising tracking are added. Canonical checks passed with 43 tests, 0 errors and 5 existing warnings. Production is not deployed: this workspace has GitHub access but no supplied VPS deployment connection.
+Owner requested a visible link to the connected Vital Vibe Construction Facebook page (1497572453430978). Branch `agent/facebook-page-link` added it to homepage contacts and footer in ES/EN/RU and Organization `sameAs`. The URL is centralized in the ContactDetails source record and carried through the Knowledge Repository; no Facebook scripts or advertising tracking were added. Canonical checks passed with 43 tests, 0 errors and 5 existing warnings. The change is published in release `20261010-7fbbe65`.
 
 ## Joanic masonry classification removed — 2026-10-04
 
