@@ -55,3 +55,9 @@ Tracking also helps you look ahead: purchased materials are recorded at actual c
 ![Vital Vibe Construction demonstration of the private client area](../assets/seguimiento-control-reforma/area-cliente-demo.png)
 
 Example of the private client area: progress, expenses, payments and photographs in one place. The screenshot uses demonstration data.
+
+## Related reading
+
+- [Renovation costs in Barcelona: understanding the estimate](https://vitalvibeconstruction.com/en/articles/floor-leveling-before-covering/)
+- [Painting walls: preparation and costs](https://vitalvibeconstruction.com/en/articles/wall-painting-price-preparation/)
+- [Moving a bathroom basin: the work involved](https://vitalvibeconstruction.com/en/articles/moving-a-bathroom-basin/)
