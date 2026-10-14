@@ -1,0 +1,146 @@
+{
+  "id": "seguimiento-control-reforma",
+  "slug": "seguimiento-control-reforma-avance-gastos-cambios",
+  "status": "draft",
+  "language": "es",
+  "category": "Gestión de proyecto",
+  "title": "Cómo seguir tu reforma y saber en qué se gasta el dinero",
+  "seo_title": "Tu reforma: gastos y seguimiento en un área de cliente gratuita",
+  "meta_description": "Acceso gratuito al área de cliente para seguir las obras, consultar fotos, compras y pagos, y entender cómo cambia el presupuesto de tu reforma.",
+  "h1": "Cómo seguir tu reforma y saber en qué se gasta el dinero",
+  "introduction": "Durante una reforma quieres saber qué se ha hecho, en qué se ha gastado el dinero y cuánto falta para terminar.",
+  "author": "Vital Vibe Construction",
+  "updated_at": "2026-10-09",
+  "related_service_ids": [
+    "integral-renovation"
+  ],
+  "related_project_ids": [],
+  "sections": [
+    {
+      "heading": "Tu reforma en un área de cliente gratuita",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nuestros clientes tienen acceso gratuito a su área de cliente. Allí pueden seguir el avance de las obras, ver fotografías, consultar los gastos en materiales y los pagos realizados. La información se actualiza durante la reforma y los cambios de coste se pueden comparar con el presupuesto inicial."
+        },
+        {
+          "type": "paragraph",
+          "text": "Detrás de esas cifras hay compras y decisiones concretas. Veamos cómo se incorporan al cálculo en una reforma real."
+        }
+      ]
+    },
+    {
+      "heading": "Por qué no basta con sumar los tickets",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Cinco sacos de adhesivo para baldosas a 14 € son 70 €. Parece un gasto sencillo."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pero en el presupuesto figuraba un fabricante y se compró otro. ¿Es una sustitución para el mismo trabajo? ¿Hizo falta más material? ¿O cambió la forma de colocación?"
+        },
+        {
+          "type": "paragraph",
+          "text": "La respuesta determina cómo revisar el presupuesto. Una sustitución actualiza la partida anterior. Si cambia el trabajo, hay que incluir lo nuevo y retirar lo que ya no hace falta. De lo contrario, una compra puede contarse dos veces y un material descartado puede seguir en el precio final."
+        },
+        {
+          "type": "paragraph",
+          "text": "En varios meses de reforma se acumulan decenas de cambios así."
+        }
+      ]
+    },
+    {
+      "heading": "El suelo está nivelado: toca actualizar el cálculo",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Para preparar el suelo se había previsto un mortero autonivelante. En la compra real se utilizaron dos productos Capafloor para distintos espesores: 16 sacos de uno y 6 del otro."
+        },
+        {
+          "type": "paragraph",
+          "text": "Los materiales de ese trabajo ya estaban incluidos en el presupuesto. Por eso hay que relacionar la compra con la partida anterior y recalcular el coste, conservando el cálculo inicial para compararlo."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cada ticket se incorpora al seguimiento del proyecto: qué se compró, para qué trabajo y cuánto costó. Tanto las compras grandes como los pequeños gastos de imprimación, accesorios o consumibles."
+        },
+        {
+          "type": "paragraph",
+          "text": "La preparación del soporte y el desglose de costes se explican en nuestro artículo sobre preparación del suelo y colocación de parquet: https://vitalvibeconstruction.com/articulos/preparacion-suelo-parquet-barcelona-coste-real/"
+        },
+        {
+          "type": "image",
+          "src": "/sandbox/articles/assets/seguimiento-control-reforma/tickets-compras.jpg",
+          "alt": "Tickets de tiendas de materiales y un albarán manuscrito sobre una mesa de trabajo",
+          "width": 1536,
+          "height": 1536,
+          "caption": "Cada ticket forma parte del coste de la reforma, también una compra de pocos euros."
+        }
+      ]
+    },
+    {
+      "heading": "Las decisiones pueden subir o bajar el precio",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "En esta reforma se eligió parquet multicapa en lugar del SPC previsto inicialmente. El coste del pavimento aumentó en 1.847,72 €."
+        },
+        {
+          "type": "paragraph",
+          "text": "Otras decisiones redujeron el gasto. Descartar el circuito de calefacción anterior retiró 472,05 € de materiales del cálculo. Y los 400 € asignados a la preparación de paredes quedaron dentro del alcance inicial, sin convertirse en un cargo adicional."
+        },
+        {
+          "type": "paragraph",
+          "text": "El presupuesto evoluciona con el proyecto: incorpora nuevas partidas, descuenta las canceladas y sustituye previsiones por compras reales. En este caso pasó por cinco versiones. La historia permite volver a la primera y explicar la diferencia."
+        }
+      ]
+    },
+    {
+      "heading": "Cuando el cliente pide un informe detallado",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A petición del cliente preparamos un desglose del cambio de coste. El primer presupuesto era de 19.532,77 € y el cálculo provisional a 23 de septiembre de 2026 era de 23.144,40 €."
+        },
+        {
+          "type": "paragraph",
+          "text": "La diferencia de 3.611,63 € se desglosó por motivos: sustituciones de materiales, cambios de trabajo, entregas y ahorros. Los importes pendientes de comprobación o aprobación se señalaron por separado. Un cálculo provisional no se presenta como precio definitivo."
+        }
+      ]
+    },
+    {
+      "heading": "Qué te aporta este seguimiento",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "En tu área de cliente puedes consultar el estado de la reforma sin reconstruirlo a partir de mensajes: trabajos realizados, fotografías, gastos y pagos."
+        },
+        {
+          "type": "paragraph",
+          "text": "Si cambia el coste, la conversación parte de una compra concreta o de un cambio en el alcance. Cuando hace falta, esos mismos datos sirven para preparar un informe detallado."
+        },
+        {
+          "type": "paragraph",
+          "text": "El seguimiento también permite mirar hacia delante: los materiales comprados se contabilizan por su coste real y las compras y los trabajos pendientes forman la previsión de gasto. Así puedes entender cuánto se ha gastado y cuánto hará falta para terminar la reforma."
+        },
+        {
+          "type": "image",
+          "src": "/sandbox/articles/assets/seguimiento-control-reforma/area-cliente-demo.png",
+          "alt": "Captura de una publicación de Vital Vibe Construction con un área de cliente de demostración",
+          "width": 1220,
+          "height": 2712,
+          "caption": "Ejemplo del área de cliente: avance, gastos, pagos y fotografías. Los datos mostrados son de demostración."
+        }
+      ]
+    }
+  ],
+  "faq": [],
+  "related_article_links": [
+    {
+      "language": "es",
+      "label": "Preparación del suelo y colocación de parquet: caso real y costes",
+      "url": "https://vitalvibeconstruction.com/articulos/preparacion-suelo-parquet-barcelona-coste-real/"
+    }
+  ]
+}
