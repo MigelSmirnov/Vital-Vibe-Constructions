@@ -55,3 +55,9 @@
 ![Публикация Vital Vibe Construction с примером личного кабинета](../assets/seguimiento-control-reforma/area-cliente-demo.png)
 
 Пример личного кабинета: ход работ, расходы, платежи и фотографии в одном месте. На скриншоте демонстрационный проект.
+
+## Связанные материалы
+
+- [Стоимость ремонта квартиры в Барселоне: как формируется смета](https://vitalvibeconstruction.com/ru/articles/vyravnivanie-pola-pered-ukladkoy/)
+- [Покраска стен: подготовка и стоимость](https://vitalvibeconstruction.com/ru/articles/pokraska-sten-cena-podgotovka/)
+- [Перенос раковины: реальные работы в ванной](https://vitalvibeconstruction.com/ru/articles/perenos-rakoviny/)
