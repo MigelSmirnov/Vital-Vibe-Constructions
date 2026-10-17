@@ -44,6 +44,11 @@ export function localizeProjectHtml(source, route, siblings, localization, origi
   return html.replace('</head>', `${alternates.join('\n')}\n</head>`).replace('</nav>', `</nav>\n${switcher}`);
 }
 
+// Service pages linked from project pages; used only to localize hrefs, never as pages to build here.
+export function serviceLocaleRoutes(contract) {
+  return contract.routes.filter(route => ['service-detail', 'service-detail-localized'].includes(route.family_id) && route.status === 'generated').map(route => ({ ...route, source_path: route.language === 'es' ? route.path : route.path.replace(`/${route.language}`, '') }));
+}
+
 export function projectLocaleRoutes(contract) {
   return contract.routes.filter(route => ['projects-index', 'project-detail', 'projects-index-localized', 'project-detail-localized'].includes(route.family_id) && route.status === 'generated').map(route => ({ ...route, source_path: route.language === 'es' ? route.path : route.path.replace(`/${route.language}`, '') }));
 }

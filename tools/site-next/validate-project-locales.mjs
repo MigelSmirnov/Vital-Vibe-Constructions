@@ -44,6 +44,7 @@ for (const base of routes.filter(route => route.language === 'es')) {
     assert.ok(html.includes(`href="${prefix}/#contacto"`), `Contact language: ${route.path}`);
     const content = html.replace(/<div class="language-switcher"[^>]*>[\s\S]*?<\/div>/, '');
     assert.ok(!/href="\/projects\//.test(content), `Project link loses language: ${route.path}`);
+    assert.ok(!/href="\/servicios\//.test(content), `Service link loses language: ${route.path}`);
     const home = await readFile(`site-next/${route.language}/index.html`, 'utf8');
     assert.ok(!/href="\/projects\//.test(home), `Homepage project link loses language: ${route.language}`);
     if (project) {

@@ -11,10 +11,6 @@
     "92 m²"
   ],
   "translations": {
-    "Dos estudios independientes en un piso de 50 m² en El Raval | Vital Vibe Construction": {
-      "en": "Two independent studios in a 50 m² apartment in El Raval | Vital Vibe Construction",
-      "ru": "Две независимые студии в квартире 50 м² в Эль-Равале | Vital Vibe Construction"
-    },
     "Conversión en dos fases de una vivienda de 50 m² sin instalaciones funcionales en dos estudios independientes, priorizando la ingeniería sobre los acabados decorativos.": {
       "en": "Conversion of a 50 m² home with no working utilities into two independent studios in two phases, prioritising essential systems over decorative finishes.",
       "ru": "Переустройство квартиры 50 м² без работающих коммуникаций в две независимые студии за два этапа, с приоритетом инженерных систем перед декоративной отделкой."
@@ -555,10 +551,6 @@
       "en": "Partial bathroom renovation in Badalona: moving the basin to the right-hand wall, installing a towel rail and restoring the affected walls in four days.",
       "ru": "Частичный ремонт ванной в Бадалоне: перенос раковины на правую стену, установка полотенцесушителя и восстановление затронутых стен за четыре дня."
     },
-    "Reforma integral estándar en Barcelona | Vital Vibe Construction": {
-      "en": "Standard complete renovation in Barcelona | Vital Vibe Construction",
-      "ru": "Комплексный ремонт стандартного уровня в Барселоне | Vital Vibe Construction"
-    },
     "Proyecto · Estándar": {
       "en": "Project · Standard",
       "ru": "Проект · Стандарт"
@@ -586,10 +578,6 @@
     "Pasillo terminado con suelo de roble": {
       "en": "Completed hallway with oak flooring",
       "ru": "Готовый коридор с дубовым полом"
-    },
-    "Trabajos de contrata en proyectos premium | Vital Vibe Construction": {
-      "en": "Specialist contracting for premium projects | Vital Vibe Construction",
-      "ru": "Подрядные работы в премиальных проектах | Vital Vibe Construction"
     },
     "Proyecto · Premium": {
       "en": "Project · Premium",
@@ -650,10 +638,6 @@
     "Resultado final de la villa": {
       "en": "Completed villa",
       "ru": "Вилла после завершения работ"
-    },
-    "Traslado de lavabo y toallero en Badalona | Vital Vibe Construction": {
-      "en": "Sink relocation and towel rail in Badalona | Vital Vibe Construction",
-      "ru": "Перенос раковины и полотенцесушитель в Бадалоне | Vital Vibe Construction"
     },
     "Proyecto · Badalona": {
       "en": "Project · Badalona",
@@ -891,10 +875,6 @@
       "en": "Project price: €900 + VAT",
       "ru": "Стоимость проекта: 900 € + НДС"
     },
-    "Reparación y pintura de escalera comunitaria en Joanic, Barcelona | Vital Vibe Construction": {
-      "en": "Repair and painting of a communal staircase in Joanic, Barcelona | Vital Vibe Construction",
-      "ru": "Ремонт и покраска лестницы общего пользования в районе Joanic, Барселона | Vital Vibe Construction"
-    },
     "Retirada de pintura y masilla sueltas en la escalera de Joanic": {
       "en": "Removing loose paint and filler in the Joanic stairwell",
       "ru": "Удаление отслаивающейся краски и шпаклёвки на лестнице Joanic"
@@ -906,6 +886,34 @@
     "Pared del rellano de Joanic después de la reparación y pintura": {
       "en": "Joanic landing wall after repair and painting",
       "ru": "Стена лестничной площадки Joanic после ремонта и покраски"
+    },
+    "Dos estudios en un piso de 50 m² en El Raval | Vital Vibe": {
+      "en": "Two studios in a 50 m² apartment in El Raval | Vital Vibe",
+      "ru": "Две студии в квартире 50 м² в Эль-Равале | Vital Vibe"
+    },
+    "Reforma integral estándar en Barcelona | Vital Vibe": {
+      "en": "Standard complete renovation in Barcelona | Vital Vibe",
+      "ru": "Стандартный комплексный ремонт в Барселоне | Vital Vibe"
+    },
+    "Trabajos de contrata en proyectos premium | Vital Vibe": {
+      "en": "Specialist contracting for premium projects | Vital Vibe",
+      "ru": "Подрядные работы в премиальных проектах | Vital Vibe"
+    },
+    "Traslado de lavabo y toallero en Badalona | Vital Vibe": {
+      "en": "Sink relocation and towel rail in Badalona | Vital Vibe",
+      "ru": "Перенос раковины и полотенцесушитель в Бадалоне | Vital Vibe"
+    },
+    "Reparación y pintura de escalera en Joanic | Vital Vibe": {
+      "en": "Staircase repair and painting in Joanic | Vital Vibe",
+      "ru": "Ремонт и покраска подъезда в районе Joanic | Vital Vibe"
+    },
+    "Piso de 50 m² sin instalaciones funcionales convertido en dos estudios independientes, en dos fases y priorizando la ingeniería sobre los acabados.": {
+      "en": "A 50 m² flat with no working utilities converted into two independent studios in two phases, putting essential systems before decorative finishes.",
+      "ru": "Квартира 50 м² без работающих коммуникаций переустроена в две независимые студии за два этапа, с приоритетом инженерных систем над отделкой."
+    },
+    "Saneado y pintura de 92 m² en una escalera comunitaria de Joanic: reparación de desprendimientos, imprimación y dos manos a rodillo en cuatro días.": {
+      "en": "Repair and painting of 92 m² in a communal staircase in Joanic: damaged areas made sound, primed and given two roller coats in four working days.",
+      "ru": "Восстановление и покраска 92 м² в подъезде в районе Joanic: очистка повреждённых участков, грунтовка и окраска валиком в два слоя за четыре дня."
     }
   }
 }

@@ -46,7 +46,7 @@ function addLanguageNavigation(html, activeLanguage) {
     .replace("  <meta name=\"twitter:card\" content=\"summary_large_image\">", `  <meta name="twitter:card" content="summary_large_image">\n${alternateLinks()}`);
 }
 
-function localize(source, language, config, articleRoutes, projectRoutes, serviceRoutes) {
+function localize(source, language, config, unchanged, articleRoutes, projectRoutes, serviceRoutes) {
   let html = source
     .replace('<html lang="es">', `<html lang="${language}">`)
     .replace('href="./styles.css"', 'href="/styles.css"')
@@ -66,7 +66,21 @@ function localize(source, language, config, articleRoutes, projectRoutes, servic
   for (const [spanish, translation] of entries) {
     html = html.replace(new RegExp(escapeRegExp(spanish), "g"), translation);
   }
+  assertMediaTextTranslated(html, language, config, unchanged);
   return addLanguageNavigation(html, language);
+}
+
+// Replacements match substrings, so a shorter key can half-translate a longer alt
+// ("Pintura de techo…" → "Painting de techo…"). Every image text must be a full translation.
+function assertMediaTextTranslated(html, language, config, unchanged) {
+  const allowed = new Set([...Object.values(config.replacements), ...unchanged]);
+  const values = [
+    ...[...html.matchAll(/<img\b[^>]*\balt="([^"]*)"/g)].map(match => match[1]),
+    ...[...html.matchAll(/<figcaption>([^<]*)<\/figcaption>/g)].map(match => match[1].trim()),
+  ];
+  for (const value of values) {
+    if (!allowed.has(value)) throw new Error(`Image text is not fully translated (${language}): ${value}`);
+  }
 }
 
 async function main() {
@@ -74,7 +88,7 @@ async function main() {
     readFile(sourcePath, "utf8"),
     readFile(localizationPath, "utf8"),
   ]);
-  const { locales } = JSON.parse(localizationRaw);
+  const { locales, unchanged = [] } = JSON.parse(localizationRaw);
   const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
   const articleRoutes = contract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated");
 
@@ -101,7 +115,7 @@ async function main() {
   for (const [language, config] of Object.entries(locales)) {
     const destination = path.join(outputRoot, language);
     await mkdir(destination, { recursive: true });
-    await writeFile(path.join(destination, "index.html"), catalogNavigation(localize(source, language, config, articleRoutes, projectRoutes, serviceRoutes), language), "utf8");
+    await writeFile(path.join(destination, "index.html"), catalogNavigation(localize(source, language, config, unchanged, articleRoutes, projectRoutes, serviceRoutes), language), "utf8");
   }
 
   console.log(`Built localized homepages: ${["es", ...Object.keys(locales)].join(", ")}`);

@@ -108,7 +108,9 @@
       },
       "estimated_total_cost_eur": 48000,
       "cost_note": "Importe aproximado. Algunos materiales fueron comprados directamente por el propietario, por lo que no es posible reconstruir un coste total exacto ni utilizar esta cifra como tarifa para otros proyectos.",
-      "transformation_summary": "Una vivienda de 50 m² sin servicios funcionales se convirtió en dos estudios independientes mediante una obra por fases, diseñada para que la segunda fase no interrumpiera la primera unidad ya terminada."
+      "transformation_summary": "Una vivienda de 50 m² sin servicios funcionales se convirtió en dos estudios independientes mediante una obra por fases, diseñada para que la segunda fase no interrumpiera la primera unidad ya terminada.",
+      "seo_title": "Dos estudios en un piso de 50 m² en El Raval",
+      "meta_description": "Piso de 50 m² sin instalaciones funcionales convertido en dos estudios independientes, en dos fases y priorizando la ingeniería sobre los acabados."
     },
     {
       "id": "project-reforma-integral-estandar-barcelona",
@@ -262,7 +264,9 @@
         "Imprimación y dos manos de pintura a rodillo."
       ],
       "cost_note": "El precio de este proyecto fue de 900 € + IVA e incluyó la mano de obra, la compra de materiales y su transporte. Se utilizaron pintura interior, masilla preparada e imprimación; el cubo de pintura empleado rondaba los 50 €. Este importe corresponde a este encargo concreto y no es una tarifa fija para otras escaleras.",
-      "transformation_summary": "Tras sanear y reparar las zonas con problemas de adherencia, se imprimaron las superficies y se aplicaron dos manos de pintura con rodillo. La intervención de 92 m² quedó terminada en cuatro días laborables."
+      "transformation_summary": "Tras sanear y reparar las zonas con problemas de adherencia, se imprimaron las superficies y se aplicaron dos manos de pintura con rodillo. La intervención de 92 m² quedó terminada en cuatro días laborables.",
+      "seo_title": "Reparación y pintura de escalera en Joanic",
+      "meta_description": "Saneado y pintura de 92 m² en una escalera comunitaria de Joanic: reparación de desprendimientos, imprimación y dos manos a rodillo en cuatro días."
     }
   ]
 }
