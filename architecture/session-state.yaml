@@ -71,8 +71,8 @@ seo_audit_followup:
     sitemap_xhtml_alternates: redundant-with-head-hreflang
     gallery_hreflang: single-language-page
     robots_txt: harmless
-    article_author: needs-owner-decision-on-named-author
-    local_business_street_address_and_hours: need-owner-data
+    article_author: owner-decided-keep-organization
+    local_business_street_address_and_hours: owner-deferred
   canonical_checks: pass-0-errors-5-existing-warnings
   bundle_validation: pass-43-routes-47-html
   local_browser_checks: pass-check-project-locales-service-cards-solar-article-images-standard-premium-gallery-a11y-reduced-motion-responsive-images
