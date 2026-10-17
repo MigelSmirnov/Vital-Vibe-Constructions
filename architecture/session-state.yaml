@@ -1,5 +1,5 @@
-version: 81
-updated_at: 2026-10-10T09:01:00Z
+version: 82
+updated_at: 2026-10-17T12:00:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -47,6 +47,36 @@ joanic_vps_release:
   local_joanic_journeys: 9
   production_joanic_journeys: 9
   report: architecture/joanic-vps-release-20260927.md
+
+seo_audit_followup:
+  status: built-and-verified-not-deployed
+  branch: claude/focused-keller-0fo9z5
+  date: 2026-10-17
+  audit_claims_rejected:
+    hreflang: already-present-on-all-localized-pages
+    json_ld: already-present-organization-faqpage-article-breadcrumblist
+    broken_proyectos_link: absent-only-#proyectos-anchors
+    www_redirect: already-301-per-release-records
+  changes:
+    home_image_text: full-en-ru-translations-and-build-guard-against-partial-substring-translation
+    home_schema: HomeAndConstructionBusiness-with-locality-region-country-only
+    contact_address_record: locality-region-country-no-street
+    og_image: articles-projects-project-index-article-catalogs
+    project_titles: optional-seo_title-meta_description-and-short-vital-vibe-suffix
+    article_titles: suffix-dropped-when-over-60-characters
+    meta_lengths: titles-max-60-descriptions-max-160-on-all-sitemap-pages
+    internal_links: articles-and-project-service-lists-link-service-page-or-homepage-service-section
+    sitemap_lastmod: article-routes-and-article-catalogs-only-from-modified_at
+  not_changed:
+    sitemap_xhtml_alternates: redundant-with-head-hreflang
+    gallery_hreflang: single-language-page
+    robots_txt: harmless
+    article_author: needs-owner-decision-on-named-author
+    local_business_street_address_and_hours: need-owner-data
+  canonical_checks: pass-0-errors-5-existing-warnings
+  bundle_validation: pass-43-routes-47-html
+  local_browser_checks: pass-check-project-locales-service-cards-solar-article-images-standard-premium-gallery-a11y-reduced-motion-responsive-images
+  production_changed: false
 
 task_queue: task/README.md
 next_proposed_task: observe-production-and-retain-rollback

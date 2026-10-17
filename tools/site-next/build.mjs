@@ -193,10 +193,22 @@ function renderPage({
   const organizationSchema = JSON.stringify(
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "HomeAndConstructionBusiness",
       name: site.name,
       url: `${site.canonicalOrigin}/`,
       logo: `${site.canonicalOrigin}/VVC_primary_logo.svg`,
+      image: `${site.canonicalOrigin}${site.hero.image}`,
+      telephone: contactDetails.phone_display,
+      email: contactDetails.email,
+      ...(contactDetails.address ? {
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: contactDetails.address.locality,
+          addressRegion: contactDetails.address.region,
+          addressCountry: contactDetails.address.country,
+        },
+      } : {}),
+      hasMap: contactDetails.map_url,
       areaServed: site.serviceArea,
       ...(contactDetails.facebook_url ? { sameAs: [contactDetails.facebook_url] } : {}),
       contactPoint: {

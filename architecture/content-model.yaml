@@ -38,6 +38,8 @@ entities:
       - cost_note
       - pending_technical_media
       - transformation_summary
+      - seo_title
+      - meta_description
   article:
     required_fields: [id, slug, status, language, title, seo_title, summary, meta_description, category, body, published_at, modified_at, author]
     optional_fields: [translations, related_service_ids, related_project_ids]
@@ -53,7 +55,7 @@ entities:
     optional_fields: [project_id, service_id, published_at]
   contact_details:
     required_fields: [id, phone_display, phone_href, whatsapp_url, email, map_url, map_label]
-    optional_fields: [legal_summary]
+    optional_fields: [legal_summary, facebook_url, address]
   capability_section:
     required_fields: [id, slug, eyebrow, title, summary, capability_title, capabilities, note, partners_summary, service_ids, media_ids, related_external_app_id]
     optional_fields: []

@@ -82,6 +82,12 @@ async function main() {
     }
   }
 
+  for (const [, lastmod] of xml.matchAll(/<lastmod>([^<]*)<\/lastmod>/g)) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod) || Number.isNaN(Date.parse(lastmod))) {
+      throw new Error(`sitemap.xml contains an invalid lastmod date: ${lastmod}`);
+    }
+  }
+
   console.log("Validated sitemap.xml");
 }
 

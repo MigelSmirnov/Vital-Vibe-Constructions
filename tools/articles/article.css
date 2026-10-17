@@ -65,6 +65,8 @@ figcaption { border-top: 1px solid var(--border); margin-top: 10px; padding-top:
 .faq-section details { border-bottom: 1px solid var(--border); }
 .faq-section summary { min-height: var(--target-min); padding: 18px 0; cursor: pointer; font-size: 18px; font-weight: 600; line-height: 1.5; }
 .faq-section p { color: var(--muted); }
+.article-related { max-width: 1040px; margin: 34px auto 0; font-size: 15px; line-height: 1.6; }
+.article-related span { color: var(--muted); }
 .article-footer { max-width: 1040px; margin-inline: auto; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; padding: 34px 0 48px; font-size: 14px; color: var(--muted); }
 @media (max-width: 760px) {
   .header-inner { padding: 18px 22px; gap: 16px; }

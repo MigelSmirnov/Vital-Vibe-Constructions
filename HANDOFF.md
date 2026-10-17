@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 77
-Updated: 2026-10-10
+Version: 78
+Updated: 2026-10-17
 
 ## Session rule
 
@@ -19,6 +19,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## SEO audit follow-up — 2026-10-17 (not deployed)
+
+An external audit read rendered text only, so its "missing hreflang / JSON-LD" and "broken /proyectos/" findings were false; both tags already exist and only `#proyectos` anchors are used. Branch `claude/focused-keller-0fo9z5` fixes the confirmed gaps through builders and content tables: fully translated EN/RU homepage image text (with a build guard against half-translated alts), `HomeAndConstructionBusiness` with city/region/country only, `og:image` on articles, projects and catalogs, titles ≤60 and descriptions ≤160 on every sitemap page, article and project links to the service page or homepage service section, and sitemap `<lastmod>` for article routes. Full checks, VPS bundle validation and local browser checks passed. Open owner questions: named article author, street address and opening hours.
 
 ## Combined Facebook / copy release published — 2026-10-10
 

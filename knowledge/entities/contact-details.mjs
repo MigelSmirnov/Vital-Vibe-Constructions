@@ -10,6 +10,7 @@ export class ContactDetails {
     mapUrl,
     mapLabel,
     facebookUrl = null,
+    address = null,
     legalSummary = null,
     source = null,
   }) {
@@ -36,7 +37,18 @@ export class ContactDetails {
     this.email = email;
     this.mapUrl = mapUrl;
     this.mapLabel = mapLabel;
+    if (address !== null) {
+      // Service-area business: locality, region and country only, never a street address.
+      if (typeof address !== "object" || Array.isArray(address) || Object.keys(address).some(key => !["locality", "region", "country"].includes(key))) {
+        throw new Error("Expected address to contain only locality, region and country.");
+      }
+      assertNonEmptyString(address.locality, "address.locality");
+      assertNonEmptyString(address.region, "address.region");
+      if (!/^[A-Z]{2}$/.test(address.country)) throw new Error("Expected address.country to be an ISO 3166-1 alpha-2 code.");
+    }
+
     this.facebookUrl = facebookUrl;
+    this.address = address === null ? null : Object.freeze({ ...address });
     this.legalSummary = legalSummary;
     this.source = source;
 
@@ -57,6 +69,7 @@ export class ContactDetails {
       mapUrl: record.map_url,
       mapLabel: record.map_label,
       facebookUrl: record.facebook_url ?? null,
+      address: record.address ?? null,
       legalSummary: record.legal_summary ?? null,
       source,
     });
@@ -72,6 +85,7 @@ export class ContactDetails {
       map_url: this.mapUrl,
       map_label: this.mapLabel,
       facebook_url: this.facebookUrl,
+      address: this.address,
       legal_summary: this.legalSummary,
     });
   }

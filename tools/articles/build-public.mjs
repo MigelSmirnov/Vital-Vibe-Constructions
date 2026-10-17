@@ -11,11 +11,13 @@ const site = knowledge.getSite();
 const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
 const routes = contract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated");
 const catalogs = contract.routes.filter(route => route.family_id === "articles-index" && route.status === "generated");
+const serviceRoutes = contract.routes.filter(route => ["service-detail", "service-detail-localized"].includes(route.family_id) && route.status === "generated");
+const projectRoutes = contract.routes.filter(route => ["project-detail", "project-detail-localized"].includes(route.family_id) && route.status === "generated");
 const escape = value => String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#39;");
 const labels = {
-  es: { home: "Volver al sitio", contents: "En este artículo", skip: "Saltar al contenido", language: "Idioma del artículo", published: "Publicado el", top: "Volver arriba", contact: "Consultar un trabajo similar" },
-  en: { home: "Back to the site", contents: "In this article", skip: "Skip to content", language: "Article language", published: "Published on", top: "Back to top", contact: "Discuss a similar job" },
-  ru: { home: "На главную", contents: "В этой статье", skip: "Перейти к статье", language: "Язык статьи", published: "Опубликовано", top: "Наверх", contact: "Обсудить похожую работу" },
+  es: { home: "Volver al sitio", contents: "En este artículo", skip: "Saltar al contenido", language: "Idioma del artículo", published: "Publicado el", top: "Volver arriba", contact: "Consultar un trabajo similar", related: "Ver también" },
+  en: { home: "Back to the site", contents: "In this article", skip: "Skip to content", language: "Article language", published: "Published on", top: "Back to top", contact: "Discuss a similar job", related: "See also" },
+  ru: { home: "На главную", contents: "В этой статье", skip: "Перейти к статье", language: "Язык статьи", published: "Опубликовано", top: "Наверх", contact: "Обсудить похожую работу", related: "См. также" },
 };
 
 function blockHtml(block, language) {
@@ -31,6 +33,25 @@ function blockHtml(block, language) {
   throw new Error(`Unsupported article block ${block.type}`);
 }
 
+// Services without their own page link to their homepage section, which carries the same id as the slug.
+function relatedLinks(article, language, home) {
+  const services = article.relatedServiceIds.map(id => {
+    const service = knowledge.findServiceById(id);
+    if (!service) throw new Error(`Unknown related service ${id} in ${article.id}`);
+    const route = serviceRoutes.find(item => item.entity_id === id && item.language === language);
+    return { href: route?.path ?? `${home}#${service.slug}`, label: knowledge.serviceLocalizations.translate(service.title, language) };
+  });
+  const projects = article.relatedProjectIds.map(id => {
+    const project = knowledge.findProjectById(id);
+    const route = projectRoutes.find(item => item.entity_id === id && item.language === language);
+    if (!project || !route) throw new Error(`Unknown related project ${id} in ${article.id}/${language}`);
+    return { href: route.path, label: knowledge.projectLocalizations.translate(project.title, language) };
+  });
+  const links = [...services, ...projects];
+  if (!links.length) return "";
+  return `<p class="article-related"><span>${labels[language].related}:</span> ${links.map(link => `<a href="${escape(link.href)}">${escape(link.label)}</a>`).join(" · ")}</p>`;
+}
+
 for (const route of routes) {
   const article = knowledge.findArticleById(route.entity_id);
   if (!article) throw new Error(`Unknown article route ${route.id}`);
@@ -43,6 +64,10 @@ for (const route of routes) {
   const defaultRoute = siblings.find(item => item.language === article.language);
   if (!defaultRoute || siblings.length !== article.languages.length) throw new Error(`Incomplete article routes for ${article.id}`);
   const date = new Intl.DateTimeFormat(route.language, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(local.published_at));
+  const coverBlock = local.body.flatMap(section => section.blocks).find(block => block.type === "image");
+  const cover = knowledge.findMediaById(coverBlock?.media_id ?? article.mediaIds[0]);
+  // The brand suffix is dropped when it would push the search title past ~60 characters.
+  const pageTitle = local.seo_title.length + " | Vital Vibe".length <= 60 ? `${local.seo_title} | Vital Vibe` : local.seo_title;
   const schema = { "@context": "https://schema.org", "@type": "Article", headline: local.title, description: local.meta_description,
     inLanguage: route.language, datePublished: local.published_at, dateModified: local.modified_at, mainEntityOfPage: route.canonical_url,
     author: { "@type": "Organization", name: local.author, url: site.canonicalOrigin },
@@ -52,7 +77,7 @@ for (const route of routes) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escape(local.seo_title)} | Vital Vibe</title>
+  <title>${escape(pageTitle)}</title>
   <meta name="description" content="${escape(local.meta_description)}">
   <link rel="canonical" href="${escape(route.canonical_url)}">
   ${siblings.map(item => `<link rel="alternate" hreflang="${item.language}" href="${escape(item.canonical_url)}">`).join("\n  ")}
@@ -61,6 +86,8 @@ for (const route of routes) {
   <meta property="og:title" content="${escape(local.title)}">
   <meta property="og:description" content="${escape(local.meta_description)}">
   <meta property="og:url" content="${escape(route.canonical_url)}">
+  ${cover ? `<meta property="og:image" content="${escape(`${site.canonicalOrigin}/${cover.src}`)}">
+  <meta name="twitter:card" content="summary_large_image">` : ""}
   <link rel="stylesheet" href="/article.css?v=${articleCssVersion}">
   <script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script>
 </head>
@@ -71,6 +98,7 @@ for (const route of routes) {
     <header class="article-header"><div class="article-label"><span>${escape(local.category)}</span></div><h1>${escape(local.title)}</h1><p class="introduction">${escape(local.summary)}</p><div class="article-meta"><span>${escape(local.author)}</span><span>${ui.published} <time datetime="${local.published_at}">${escape(date)}</time></span></div></header>
     <div class="reading-layout"><nav class="contents" aria-label="${ui.contents}"><details open><summary>${ui.contents}</summary><ol>${local.body.map((section, index) => `<li><a href="#section-${index + 1}"><span>${String(index + 1).padStart(2, "0")}</span>${escape(section.heading)}</a></li>`).join("")}</ol></details></nav>
     <div class="article-body">${local.body.map((section, index) => `<section id="section-${index + 1}" class="article-section"><h2><span class="section-number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>${escape(section.heading)}</h2>${section.blocks.map(block => blockHtml(block, route.language)).join("")}</section>`).join("\n")}
+      ${relatedLinks(article, route.language, home)}
       <footer class="article-footer"><a href="${home}#contacto">${ui.contact}</a><a href="#main-content">${ui.top} ↑</a></footer>
     </div></div>
   </article></main>
@@ -94,6 +122,8 @@ for (const catalog of catalogs) {
   }).sort((a, b) => b.local.published_at.localeCompare(a.local.published_at) || a.article.id.localeCompare(b.article.id));
   const schema = { "@context": "https://schema.org", "@type": "CollectionPage", name: copy.title, description: copy.description, url: catalog.canonical_url, inLanguage: language,
     mainEntity: { "@type": "ItemList", itemListElement: items.map(({ local, route }, index) => ({ "@type": "ListItem", position: index + 1, name: local.title, url: route.canonical_url })) } };
+  const newest = items[0]?.local.body.flatMap(section => section.blocks).find(block => block.type === "image");
+  const catalogCover = newest && knowledge.findMediaById(newest.media_id);
   const cards = items.map(({ article, route, local }) => {
     const cover = local.body.flatMap(section => section.blocks).find(block => block.type === "image");
     const media = cover && knowledge.findMediaById(cover.media_id);
@@ -111,6 +141,7 @@ for (const catalog of catalogs) {
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escape(copy.title)} | Vital Vibe</title><meta name="description" content="${escape(copy.description)}">
 <link rel="canonical" href="${catalog.canonical_url}">
+${catalogCover ? `<meta property="og:type" content="website"><meta property="og:title" content="${escape(copy.title)} | Vital Vibe"><meta property="og:description" content="${escape(copy.description)}"><meta property="og:url" content="${catalog.canonical_url}"><meta property="og:image" content="${escape(`${site.canonicalOrigin}/${catalogCover.src}`)}"><meta name="twitter:card" content="summary_large_image">` : ""}
 ${catalogs.map(item => `<link rel="alternate" hreflang="${item.language}" href="${item.canonical_url}">`).join("\n")}
 <link rel="alternate" hreflang="x-default" href="${catalogs.find(item => item.language === site.defaultLanguage).canonical_url}">
 <link rel="stylesheet" href="/article.css?v=${articleCssVersion}">

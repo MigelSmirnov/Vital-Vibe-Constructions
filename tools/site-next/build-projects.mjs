@@ -40,7 +40,7 @@ function renderFooter(site) {
   </footer>`;
 }
 
-function renderDocument({ language, title, description, canonicalUrl, stylesheetHref, structuredData, body }) {
+function renderDocument({ language, title, description, canonicalUrl, image, stylesheetHref, structuredData, body }) {
   return `<!doctype html>
 <html lang="${escapeHtml(language)}">
 <head>
@@ -53,6 +53,8 @@ function renderDocument({ language, title, description, canonicalUrl, stylesheet
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}">
+  <meta property="og:image" content="${escapeHtml(image)}">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="${stylesheetHref}">
   <script type="application/ld+json">${JSON.stringify(structuredData, null, 2)}</script>
 </head>
@@ -91,6 +93,7 @@ function renderProjectIndex({ site, projects, mediaById }) {
     title,
     description,
     canonicalUrl,
+    image: `${site.canonicalOrigin}/${mediaById.get(projects[0].image_ids[0]).src}`,
     stylesheetHref: "../styles.css",
     structuredData: {
       "@context": "https://schema.org",
@@ -116,7 +119,12 @@ function renderProjectIndex({ site, projects, mediaById }) {
   });
 }
 
-function renderProjectDetail({ site, project, mediaById, serviceById, articleRoutes }) {
+// Services without their own page link to their homepage section, whose id is the service slug.
+function serviceHref(service, serviceRoutes) {
+  return serviceRoutes.find((route) => route.entity_id === service.id)?.path ?? `/#${service.slug}`;
+}
+
+function renderProjectDetail({ site, project, mediaById, serviceById, articleRoutes, serviceRoutes }) {
   const media = project.image_ids.map((mediaId) => mediaById.get(mediaId)).filter(Boolean);
   const services = project.service_ids.map((serviceId) => serviceById.get(serviceId)).filter(Boolean);
 
@@ -129,8 +137,9 @@ function renderProjectDetail({ site, project, mediaById, serviceById, articleRou
   }
 
   const canonicalUrl = `${site.canonicalOrigin}/projects/${project.slug}/`;
-  const title = `${project.title} | ${site.name}`;
-  const description = project.summary;
+  // Short brand suffix, as on article pages, keeps search titles near 60 characters.
+  const title = `${project.seo_title ?? project.title} | Vital Vibe`;
+  const description = project.meta_description ?? project.summary;
   const [leadImage, ...galleryImages] = media;
   const duration = project.duration ?? renderExecutionDuration(project.execution);
   const facts = [
@@ -152,6 +161,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById, articleRou
     title,
     description,
     canonicalUrl,
+    image: `${site.canonicalOrigin}/${leadImage.src}`,
     stylesheetHref: "../../styles.css",
     structuredData: {
       "@context": "https://schema.org",
@@ -200,7 +210,7 @@ function renderProjectDetail({ site, project, mediaById, serviceById, articleRou
           <p>${escapeHtml(project.transformation_summary ?? project.summary)}</p>
         </div>
         <ul class="project-service-list">${services
-          .map((service) => `<li><strong>${escapeHtml(service.title)}</strong><span>${escapeHtml(service.summary)}</span></li>`)
+          .map((service) => `<li><strong><a href="${escapeHtml(serviceHref(service, serviceRoutes))}">${escapeHtml(service.title)}</a></strong><span>${escapeHtml(service.summary)}</span></li>`)
           .join("")}</ul>
       </div>
     </section>
@@ -382,6 +392,7 @@ async function main() {
   const knowledge = createKnowledgeRepository(await loadContentTables({ root }));
   const contract = JSON.parse(await readFile(path.join(root, "architecture/project-routes.yaml"), "utf8"));
   const articleRoutes = contract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated");
+  const serviceRoutes = contract.routes.filter(route => route.family_id === "service-detail" && route.status === "generated");
   const site = knowledge.getSite().toRecord();
   const projects = knowledge.listProjects().map((project) => project.toRecord());
   const mediaById = new Map(knowledge.listMedia().map((item) => [item.id, item.toRecord()]));
@@ -395,7 +406,7 @@ async function main() {
     await mkdir(projectOutputDir, { recursive: true });
     await writeFile(
       path.join(projectOutputDir, "index.html"),
-      renderProjectDetail({ site, project, mediaById, serviceById, articleRoutes }),
+      renderProjectDetail({ site, project, mediaById, serviceById, articleRoutes, serviceRoutes }),
       "utf8",
     );
   }

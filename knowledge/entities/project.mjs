@@ -28,6 +28,8 @@ export class Project extends EntityCore {
     costNote = null,
     pendingTechnicalMedia = [],
     transformationSummary = null,
+    seoTitle = null,
+    metaDescription = null,
     source = null,
   }) {
     super({ id, slug, title, summary, source });
@@ -48,6 +50,8 @@ export class Project extends EntityCore {
     if (vatIncluded !== null && typeof vatIncluded !== "boolean") throw new Error("Expected vatIncluded to be a boolean or null.");
     if (costNote !== null) assertNonEmptyString(costNote, "costNote");
     if (transformationSummary !== null) assertNonEmptyString(transformationSummary, "transformationSummary");
+    if (seoTitle !== null) assertNonEmptyString(seoTitle, "seoTitle");
+    if (metaDescription !== null) assertNonEmptyString(metaDescription, "metaDescription");
 
     this.location = location;
     this.areaM2 = areaM2;
@@ -68,6 +72,8 @@ export class Project extends EntityCore {
     this.costNote = costNote;
     this.pendingTechnicalMedia = Object.freeze(requireRecordArray(pendingTechnicalMedia, "pendingTechnicalMedia"));
     this.transformationSummary = transformationSummary;
+    this.seoTitle = seoTitle;
+    this.metaDescription = metaDescription;
 
     Object.freeze(this);
   }
@@ -104,6 +110,8 @@ export class Project extends EntityCore {
       costNote: record.cost_note ?? null,
       pendingTechnicalMedia: record.pending_technical_media ?? [],
       transformationSummary: record.transformation_summary ?? null,
+      seoTitle: record.seo_title ?? null,
+      metaDescription: record.meta_description ?? null,
       source,
     });
   }
@@ -135,6 +143,8 @@ export class Project extends EntityCore {
         ? this.pendingTechnicalMedia.map((item) => ({ ...item }))
         : null,
       transformation_summary: this.transformationSummary,
+      seo_title: this.seoTitle,
+      meta_description: this.metaDescription,
     });
   }
 }

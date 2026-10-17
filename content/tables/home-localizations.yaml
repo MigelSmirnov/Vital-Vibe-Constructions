@@ -88,7 +88,14 @@
         "Ver proyecto": "View project",
         "Reparación y pintura de escalera comunitaria en Joanic, Barcelona": "Repair and painting of a communal staircase in Joanic, Barcelona",
         "Saneado y pintura de 92 m² en una escalera comunitaria de la zona de Joanic: reparación de zonas con desprendimientos, imprimación y dos manos a rodillo en cuatro días de trabajo.": "Repair and painting of 92 m² in a communal staircase in Joanic: damaged areas were made sound, primed and finished with two roller coats in four working days.",
-        "Escalera comunitaria en Joanic después de la reparación y pintura de las paredes": "Communal staircase in Joanic after wall repairs and painting"
+        "Escalera comunitaria en Joanic después de la reparación y pintura de las paredes": "Communal staircase in Joanic after wall repairs and painting",
+        "Cocina a medida terminada con suelo de roble": "Completed bespoke kitchen with oak flooring",
+        "Pintura de techo a pistola con acabado uniforme": "Spray-painted ceiling with an even finish",
+        "Panel de control del hogar inteligente": "Smart-home control panel",
+        "Panel de mármol retroiluminado": "Backlit marble panel",
+        "Panel de control de la vivienda": "Home control panel",
+        "Domótica integrada": "Integrated smart-home system",
+        "Escenas de iluminación": "Lighting scenes"
       }
     },
     "ru": {
@@ -179,8 +186,18 @@
         "Ver proyecto": "Смотреть объект",
         "Reparación y pintura de escalera comunitaria en Joanic, Barcelona": "Ремонт и покраска лестницы общего пользования в районе Joanic, Барселона",
         "Saneado y pintura de 92 m² en una escalera comunitaria de la zona de Joanic: reparación de zonas con desprendimientos, imprimación y dos manos a rodillo en cuatro días de trabajo.": "Восстановление и покраска 92 м² в подъезде в районе Joanic: повреждённые участки были очищены, загрунтованы и окрашены валиком в два слоя за четыре рабочих дня.",
-        "Escalera comunitaria en Joanic después de la reparación y pintura de las paredes": "Лестница общего пользования в районе Joanic после ремонта стен и покраски"
+        "Escalera comunitaria en Joanic después de la reparación y pintura de las paredes": "Лестница общего пользования в районе Joanic после ремонта стен и покраски",
+        "Cocina a medida terminada con suelo de roble": "Готовая кухня на заказ с дубовым полом",
+        "Pintura de techo a pistola con acabado uniforme": "Равномерная покраска потолка краскопультом",
+        "Panel de control del hogar inteligente": "Панель управления умным домом",
+        "Panel de mármol retroiluminado": "Мраморная панель с подсветкой",
+        "Panel de control de la vivienda": "Панель управления квартирой",
+        "Domótica integrada": "Встроенная система умного дома",
+        "Escenas de iluminación": "Сценарии освещения"
       }
     }
-  }
+  },
+  "unchanged": [
+    "Vital Vibe Construction"
+  ]
 }
