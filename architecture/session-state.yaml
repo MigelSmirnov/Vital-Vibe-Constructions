@@ -49,8 +49,15 @@ joanic_vps_release:
   report: architecture/joanic-vps-release-20260927.md
 
 seo_audit_followup:
-  status: built-and-verified-not-deployed
+  status: merged-awaiting-deploy
   branch: claude/focused-keller-0fo9z5
+  pull_request: 25
+  verified_sha: 3e5c1acb70fde5c3a848c729b539eedd1a4dd16b
+  main_merge_sha: 4d70d31e67b4261ca905b9b7bfcd55e52ced67e5
+  ci_bundle_run: 39029825045
+  proposed_release_id: 20261017-3e5c1ac
+  rollback_release_id: 20261010-7fbbe65
+  task: task/007-seo-release.md
   date: 2026-10-17
   audit_claims_rejected:
     hreflang: already-present-on-all-localized-pages
