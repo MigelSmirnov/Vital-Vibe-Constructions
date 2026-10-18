@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 78
-Updated: 2026-10-17
+Version: 79
+Updated: 2026-10-19
 
 ## Session rule
 
@@ -20,9 +20,22 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
-## SEO audit follow-up — 2026-10-17 (not deployed)
+## 1F916 agent record and current-main release published — 2026-10-19
 
-An external audit read rendered text only, so its "missing hreflang / JSON-LD" and "broken /proyectos/" findings were false; both tags already exist and only `#proyectos` anchors are used. Branch `claude/focused-keller-0fo9z5` fixes the confirmed gaps through builders and content tables: fully translated EN/RU homepage image text (with a build guard against half-translated alts), `HomeAndConstructionBusiness` with city/region/country only, `og:image` on articles, projects and catalogs, titles ≤60 and descriptions ≤160 on every sitemap page, article and project links to the service page or homepage service section, and sitemap `<lastmod>` for article routes. Full checks, VPS bundle validation and local browser checks passed. Owner decisions: articles stay signed by the company; street address and opening hours are deferred.
+Production now serves `a1e18f79844e5363ef083c3af38e0bb1fbbbfe70`
+from `/srv/vital-vibe/releases/20261019-a1e18f7`. It includes current `main`
+through `4d70d31` plus the localized public 1F916 agent-record link. ES, EN and
+RU show their own footer labels; `rel="me"`, Organization `sameAs` and
+`llms.txt` expose the same machine-readable profile URL. Canonical checks, VPS
+bundle CI and Visual QA are green; all 43 public sitemap route bodies match the
+CI artifact exactly. Archive SHA-256:
+`50ffb595a41668454c706879bdfd4b0718581f5006647627ebfe18c69a0ff9ae`.
+Rollback: `20261010-7fbbe65`. DNS and server configuration were unchanged. See
+`architecture/1f916-agent-record-vps-release-20261019.md`.
+
+## SEO audit follow-up — 2026-10-17 (published 2026-10-19)
+
+An external audit read rendered text only, so its "missing hreflang / JSON-LD" and "broken /proyectos/" findings were false; both tags already exist and only `#proyectos` anchors are used. Branch `claude/focused-keller-0fo9z5` fixes the confirmed gaps through builders and content tables: fully translated EN/RU homepage image text (with a build guard against half-translated alts), `HomeAndConstructionBusiness` with city/region/country only, `og:image` on articles, projects and catalogs, titles ≤60 and descriptions ≤160 on every sitemap page, article and project links to the service page or homepage service section, and sitemap `<lastmod>` for article routes. Full checks, VPS bundle validation and local browser checks passed. Owner decisions: articles stay signed by the company; street address and opening hours are deferred. These changes are live in release `20261019-a1e18f7`.
 
 ## Combined Facebook / copy release published — 2026-10-10
 
@@ -228,7 +241,10 @@ Knowledge Repository remains public content source of truth. `support.js`/legacy
 
 ## Production / VPS
 
-The prepared release and actual blockers are recorded at the top of this handoff and in `architecture/vps-cutover-20260913/report.md`. Public hosting and DNS remain unchanged; VPS cutover is still authorized.
+The current release and rollback are recorded at the top of this handoff. VPS
+cutover is complete; production uses nginx TLS in front of loopback Caddy and
+the immutable release tree. DNS and server configuration were unchanged by the
+2026-10-19 release.
 
 ## Article editorial correction
 

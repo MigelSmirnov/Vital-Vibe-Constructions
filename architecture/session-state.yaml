@@ -1,5 +1,5 @@
-version: 82
-updated_at: 2026-10-17T12:00:00Z
+version: 83
+updated_at: 2026-10-19T00:00:00Z
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration
@@ -49,7 +49,7 @@ joanic_vps_release:
   report: architecture/joanic-vps-release-20260927.md
 
 seo_audit_followup:
-  status: built-and-verified-not-deployed
+  status: published-and-verified
   branch: claude/focused-keller-0fo9z5
   date: 2026-10-17
   audit_claims_rejected:
@@ -76,7 +76,25 @@ seo_audit_followup:
   canonical_checks: pass-0-errors-5-existing-warnings
   bundle_validation: pass-43-routes-47-html
   local_browser_checks: pass-check-project-locales-service-cards-solar-article-images-standard-premium-gallery-a11y-reduced-motion-responsive-images
-  production_changed: false
+  production_changed: true
+  production_release_sha: a1e18f79844e5363ef083c3af38e0bb1fbbbfe70
+  production_release_id: 20261019-a1e18f7
+
+agent_record_1f916:
+  status: published-and-verified
+  branch: agent/1f916-agent-record-release
+  source_sha: a1e18f79844e5363ef083c3af38e0bb1fbbbfe70
+  release_id: 20261019-a1e18f7
+  public_url: https://1f916.ai/api/citizen/vital-vibe-construction
+  surfaces: [footer-es-en-ru, html-rel-me, organization-same-as, llms-txt]
+  canonical_checks: pass-43-tests-43-sitemap-routes-46-generated-html-0-errors-5-existing-warnings
+  bundle_workflow_run: 39172682436
+  visual_workflow_run: 39172936339
+  archive_sha256: 50ffb595a41668454c706879bdfd4b0718581f5006647627ebfe18c69a0ff9ae
+  public_routes_exact_html_match: 43
+  rollback_release_id: 20261010-7fbbe65
+  dns_or_server_configuration_changed: false
+  report: architecture/1f916-agent-record-vps-release-20261019.md
 
 task_queue: task/README.md
 next_proposed_task: observe-production-and-retain-rollback
@@ -262,9 +280,9 @@ solar_embed_width_fix:
 
 vps_execution:
   latest_release_record: HANDOFF.md
-  latest_release_sha: 7fbbe65b00be3ec477782914857ac8e6de6abe90
-  latest_release_id: 20261010-7fbbe65
-  latest_server_current: /srv/vital-vibe/releases/20261010-7fbbe65
+  latest_release_sha: a1e18f79844e5363ef083c3af38e0bb1fbbbfe70
+  latest_release_id: 20261019-a1e18f7
+  latest_server_current: /srv/vital-vibe/releases/20261019-a1e18f7
   report: architecture/vps-cutover-20260913/report.md
   release_sha: ebd51356a925e84984bdfa2f520979fd11a44362
   initial_migration_sha: fb31a282e0204bc37d3ced1982675fef0332573f
@@ -634,6 +652,9 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - date: 2026-10-19
+    summary: Published current main plus the localized public 1F916 agent record on the VPS without changing DNS or server configuration.
+    validation: 43-tests; bundle-and-visual-ci-green; 43-public-routes-exact-artifact-match; es-en-ru-agent-labels; rel-me-json-ld-llms-present; rollback-20261010-7fbbe65-retained
   - date: 2026-09-27
     summary: Owner clarified that Joanic belongs inside the masonry / Общестроительные работы accordion on the homepage, not as a separate global homepage project card. Added a validated service-to-project relationship, embedded the localized project card under service 06 and removed the duplicate global homepage card.
     validation: canonical-workflow-36315845180-success; ru-service-06-project-link-and-copy-verified; global-home-card-absent; production-unchanged
