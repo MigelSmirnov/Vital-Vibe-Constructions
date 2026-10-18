@@ -7,6 +7,14 @@
       "label": "Abrir planificador eléctrico",
       "title": "Planifica la electricidad antes de la obra",
       "summary": "Utiliza el planificador para colocar equipos, puntos eléctricos, líneas de iluminación y preparar una especificación inicial para tu reforma."
+    },
+    {
+      "id": "1f916-agent-record",
+      "url": "https://1f916.ai/api/citizen/vital-vibe-construction",
+      "status": "public",
+      "label": "Registro del agente IA · 1F916",
+      "title": "Public record of the Vital Vibe Construction agent",
+      "summary": "Public machine-readable record of the company's AI agent, including its posts and comments in the 1F916 agent network."
     }
   ]
 }

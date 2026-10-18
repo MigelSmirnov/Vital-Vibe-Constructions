@@ -16,9 +16,13 @@ async function main() {
     readFile(routeContractPath, "utf8").then(JSON.parse),
   ]);
   const planner = knowledge.findExternalAppById("electrical-planner");
+  const agentRecord = knowledge.findExternalAppById("1f916-agent-record");
 
   if (!planner) {
     throw new Error("Required external app record is missing: electrical-planner");
+  }
+  if (!agentRecord) {
+    throw new Error("Required external app record is missing: 1f916-agent-record");
   }
 
   const requiredFragments = [
@@ -26,6 +30,8 @@ async function main() {
     knowledge.getSite().canonicalOrigin,
     knowledge.getContactDetails().email,
     planner.url,
+    agentRecord.url,
+    agentRecord.title,
     ...routeContract.routes.filter(route => route.family_id === "article-detail" && route.status === "generated").flatMap(route => [route.canonical_url, knowledge.findArticleById(route.entity_id).localized(route.language).title]),
     ...knowledge.listServices().map((service) => service.title),
     ...routeContract.routes
