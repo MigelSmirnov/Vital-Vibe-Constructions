@@ -23,6 +23,7 @@ function renderLlms({
   projects,
   capabilitySections,
   planner,
+  agentRecord,
 }) {
   const startingTier = renovationTiers[0];
 
@@ -103,6 +104,15 @@ ${planner.summary}
 Planner URL:
 ${planner.url}
 
+## Public AI Agent Record
+
+${agentRecord.title}
+
+${agentRecord.summary}
+
+Record URL:
+${agentRecord.url}
+
 ## Contact
 
 - Phone: ${contactDetails.phone_display}
@@ -122,9 +132,13 @@ async function main() {
     readFile(routeContractPath, "utf8").then(JSON.parse),
   ]);
   const planner = knowledge.findExternalAppById("electrical-planner");
+  const agentRecord = knowledge.findExternalAppById("1f916-agent-record");
 
   if (!planner) {
     throw new Error("Required external app record is missing: electrical-planner");
+  }
+  if (!agentRecord) {
+    throw new Error("Required external app record is missing: 1f916-agent-record");
   }
 
   const servicePages = routeContract.routes
@@ -145,6 +159,7 @@ async function main() {
     projects: knowledge.listProjects().map((project) => project.toRecord()),
     capabilitySections: knowledge.listCapabilitySections().map((section) => section.toRecord()),
     planner: planner.toRecord(),
+    agentRecord: agentRecord.toRecord(),
   });
 
   await writeFile(outputPath, llms, "utf8");

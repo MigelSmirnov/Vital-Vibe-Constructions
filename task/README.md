@@ -26,6 +26,7 @@
 
 | Приоритет | Задача | Статус / результат |
 | --- | --- | --- |
+| Готово | Связать сайт с публичной записью агента VVC в 1F916 | Ссылка моделируется как ExternalApp и генерируется в футер ES/EN/RU, `rel="me"`, Organization `sameAs` и `llms.txt`; полный project check зелёный, production не менялся. |
 | Готово | Shared secondary reduced-motion scroll cleanup | Run #68 зелёный; gallery + El Raval получают `scroll-behavior: auto` при reduced motion. |
 | Готово | [002 — responsive image optimization](002-responsive-images.md) | Текущий bounded scope закрыт: homepage + Standard + Premium + hero/LCP + top-16 gallery reuse зелёные. |
 | Опционально | Hero / preload follow-up | Только если отдельный timing experiment покажет пользу. Responsive hero уже внедрён и измерен; preload сейчас не нужен по умолчанию. |

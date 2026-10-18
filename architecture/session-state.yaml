@@ -1,5 +1,5 @@
-version: 48
-updated_at: 2026-09-13T11:56:00Z
+version: 49
+updated_at: 2026-10-19T00:00:00Z
 phase: homepage-visual-redesign
 stage_status: bounded-quality-performance-and-accessibility-pass-green
 active_branch: agent/architecture-sandbox
@@ -11,6 +11,18 @@ pull_request:
 
 task_queue: task/README.md
 next_proposed_task: owner-direction-required-before-new-stage
+
+latest_change:
+  date: 2026-10-19
+  summary: Added the public 1F916 citizen record as a crawlable external identity for the company agent.
+  source_record: content/tables/external-apps.yaml#1f916-agent-record
+  projections:
+    - visible footer link on ES, EN and RU homepages
+    - HTML rel=me application/json discovery link
+    - Organization JSON-LD sameAs
+    - llms.txt public agent record section
+  public_url: https://1f916.ai/api/citizen/vital-vibe-construction
+  validation: node-tools-checks-run-success; knowledge-tests-34-pass; content-audit-0-errors-5-known-warnings; production-unchanged
 
 contract_references:
   architecture: architecture/app-architecture.yaml
@@ -283,6 +295,9 @@ vps_bundle:
     - artifacts/responsive-vps/
 
 completed_work:
+  - date: 2026-10-19
+    summary: Linked the public 1F916 agent record from visible homepage footers and machine-readable discovery surfaces.
+    validation: project-checks-success; generated-home-locales-es-en-ru; llms-validation-success; content-audit-0-errors; production-unchanged
   - date: 2026-09-13
     summary: Closed the shared reduced-motion smooth-scroll advisory with a reproducible release override and blocking browser check for gallery and El Raval.
     validation: visual-qa-run-68-success; computed-scroll-behavior-auto-under-reduce; production-and-dns-unchanged

@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 45
-Updated: 2026-09-13T11:56:00Z
+Version: 46
+Updated: 2026-10-19T00:00:00Z
 
 ## Session rule
 
@@ -23,6 +23,13 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 ## Current stage
 
 The human-approved visual baseline, semantic/accessibility layer, homepage responsive images, Standard/Premium project slices, homepage hero/LCP delivery, bounded gallery high-transfer reuse and shared reduced-motion follow-up are green. Production and DNS remain unchanged.
+
+The public 1F916 record for `vital-vibe-construction` is now modeled in
+`content/tables/external-apps.yaml` and generated into the ES/EN/RU homepage
+footer, a head-level `rel="me"` link, Organization JSON-LD `sameAs`, and
+`llms.txt`. The full project check passes with 34 Knowledge tests, zero content
+audit errors and the same five known legacy warnings. This change is prepared
+in source only; production has not been deployed.
 
 Reference states:
 

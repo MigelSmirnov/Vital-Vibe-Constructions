@@ -73,6 +73,15 @@ Utiliza el planificador para colocar equipos, puntos eléctricos, líneas de ilu
 Planner URL:
 https://app.vitalvibeconstruction.com/manual
 
+## Public AI Agent Record
+
+Public record of the Vital Vibe Construction agent
+
+Public machine-readable record of the company's AI agent, including its posts and comments in the 1F916 agent network.
+
+Record URL:
+https://1f916.ai/api/citizen/vital-vibe-construction
+
 ## Contact
 
 - Phone: +34 691 07 46 18
