@@ -188,6 +188,10 @@ function renderPage({
     ? `Mano de obra: ${new Intl.NumberFormat("es-ES", { style: "currency", currency: site.currency ?? "EUR", maximumFractionDigits: 0 }).format(featuredProject.labour_cost_eur)}`
     : null;
   const externalAppById = new Map(externalApps.map((app) => [app.id, app]));
+  const agentRecord = externalAppById.get("1f916-agent-record");
+  if (!agentRecord) {
+    throw new Error("Required external app record is missing: 1f916-agent-record");
+  }
   const serviceRouteById = new Map(serviceRoutes.map((route) => [route.entity_id, route]));
   const renovationTierDisclaimer = renovationTiers.find((tier) => tier.disclaimer)?.disclaimer ?? null;
   const organizationSchema = JSON.stringify(
@@ -210,7 +214,7 @@ function renderPage({
       } : {}),
       hasMap: contactDetails.map_url,
       areaServed: site.serviceArea,
-      ...(contactDetails.facebook_url ? { sameAs: [contactDetails.facebook_url] } : {}),
+      sameAs: [contactDetails.facebook_url, agentRecord.url].filter(Boolean),
       contactPoint: {
         "@type": "ContactPoint",
         telephone: contactDetails.phone_display,
@@ -245,6 +249,7 @@ function renderPage({
   <meta property="og:url" content="${escapeHtml(site.canonicalOrigin)}/">
   <meta property="og:image" content="${escapeHtml(site.canonicalOrigin + site.hero.image)}">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="me" type="application/json" href="${escapeHtml(agentRecord.url)}">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="/home.css?v=${homeStyleVersion}">
   <script src="/home.js" defer></script>
@@ -359,7 +364,7 @@ ${renderCapabilitySections(capabilitySections, mediaById, serviceById, externalA
       <p>${escapeHtml(site.serviceArea)}</p>
       <div><a href="mailto:${escapeHtml(contactDetails.email)}">${escapeHtml(contactDetails.email)}</a><a href="${escapeHtml(contactDetails.phone_href)}">${escapeHtml(contactDetails.phone_display)}</a>${contactDetails.facebook_url ? `<a href="${escapeHtml(contactDetails.facebook_url)}" target="_blank" rel="noopener">Facebook</a>` : ""}</div>
     </div>
-    <div class="container footer-bottom"><span>© ${new Date().getUTCFullYear()} ${escapeHtml(site.name)}</span><a href="/aviso-legal.dc.html">Aviso legal</a></div>
+    <div class="container footer-bottom"><span>© ${new Date().getUTCFullYear()} ${escapeHtml(site.name)}</span><a href="${escapeHtml(agentRecord.url)}" rel="me" type="application/json">${escapeHtml(agentRecord.label)}</a><a href="/aviso-legal.dc.html">Aviso legal</a></div>
   </footer>
 </body>
 </html>`;
