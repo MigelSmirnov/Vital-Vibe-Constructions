@@ -4,6 +4,7 @@ import { spawnSync } from "node:child_process";
 import process from "node:process";
 
 const checks = [
+  ["Agent service contract", "node", ["tools/contracts/validate-agent-service.mjs"]],
   ["Knowledge tests", "node", [
     "--test",
     "knowledge/project-localizations.test.mjs",
