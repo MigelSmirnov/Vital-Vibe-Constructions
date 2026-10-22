@@ -1,5 +1,7 @@
 # Production Deployment Plan
 
+> **Архив альтернативного сценария (2026-08-20).** Этот документ описывает прежнее предложение публикации через GitHub Pages. Production работает на VPS/Caddy; не используйте описанные ниже шаги для текущего деплоя. См. [VPS migration plan](vps-migration-plan.md) и [текущий журнал](../HANDOFF.md).
+
 Status: proposed, production unchanged
 Updated: 2026-08-20
 Branch: `agent/architecture-sandbox`
