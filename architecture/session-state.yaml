@@ -11,13 +11,14 @@ documentation_review_20261022:
   historical_migration_branch: release/vps-migration
   followups:
     - verify-live-vps-current-release
+    - confirm-consumers-before-changing-historical-contract-values
     - audit-active_branch-and-migration-contract-consumers-before-changing
     - compare-live-caddy-redirects-with-repository-template
     - confirm-documentation-pr-before-merging
 
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
-active_branch: release/vps-migration
+active_branch: release/vps-migration # Historical migration branch; not the current working branch.
 pull_request:
   number: 9
   state: merged
