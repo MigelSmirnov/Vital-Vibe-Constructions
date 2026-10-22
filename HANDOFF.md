@@ -1,7 +1,7 @@
 # HANDOFF
 
-Version: 79
-Updated: 2026-10-19
+Version: 80
+Updated: 2026-10-22
 
 ## Session rule
 
@@ -16,9 +16,13 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 1. Read `AGENTS.md` and its required architecture contracts in order.
 2. Continue from `task/README.md`; responsive-image history is tracked in `task/002-responsive-images.md`.
-3. Prepare the full-site release on `release/vps-migration`; read `task/004-release-branch-audit.md`. Keep each new feature in its own `agent/<task>` branch.
+3. Production is on VPS/Caddy. Work from an up-to-date `main` into a separate task branch; `release/vps-migration` and `task/004-release-branch-audit.md` are historical migration context. Never deploy or change production as part of documentation maintenance.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Documentation status clarification — 2026-10-22
+
+The owner confirms VPS is the active production host and releases exist. Latest release *recorded in this repository* is `20261019-a1e18f7`; this documentation-only pass did not access the VPS or independently verify the live `current` symlink. Historical migration instructions remain for audit, not for new deployment. `main`, VPS, DNS, and releases were not changed by this pass.
 
 ## 1F916 agent record and current-main release published — 2026-10-19
 
