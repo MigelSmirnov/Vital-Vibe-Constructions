@@ -33,3 +33,4 @@ Keep `task/` in the repository only; never copy it into `site-next` or deploymen
 13. Run `node tools/checks/run.mjs` after content, route, builder, generated-output, or structural changes.
 14. Record completed work and verified results in `architecture/session-state.yaml`; keep `HANDOFF.md` concise and human-oriented.
 15. Use Termux as the local execution environment when connected GitHub tools cannot run repository commands; follow `TERMUX_WORKFLOW.md`.
+16. The VPS/Caddy production deployment is live according to owner confirmation and release records. Some architecture contract values retain historical migration states for compatibility; do not treat them as current hosting status or change them without checking their consumers. Refer to `architecture/session-state.yaml` and `HANDOFF.md` for recorded release evidence; verify the live VPS independently before claiming its active SHA.

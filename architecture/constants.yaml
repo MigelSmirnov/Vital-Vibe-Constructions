@@ -16,7 +16,7 @@ repository:
   default_branch: main
   working_branch_prefix: agent/
   release_branch_prefix: release/
-  active_migration_branch: release/vps-migration
+  active_migration_branch: release/vps-migration # Historical migration branch; not the active production/development branch.
 
 paths:
   architecture_root: architecture
