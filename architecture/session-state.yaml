@@ -1,5 +1,20 @@
-version: 83
-updated_at: 2026-10-19T00:00:00Z
+version: 84
+updated_at: 2026-10-22T00:00:00Z
+documentation_review_20261022:
+  status: documentation-only-review
+  production_host: vps-caddy
+  production_host_source: owner-confirmation-and-release-records
+  last_recorded_release_id: 20261019-a1e18f7
+  last_recorded_rollback_release_id: 20261010-7fbbe65
+  live_vps_current_symlink_verified: false
+  deployment_performed: false
+  historical_migration_branch: release/vps-migration
+  followups:
+    - verify-live-vps-current-release
+    - audit-active_branch-and-migration-contract-consumers-before-changing
+    - compare-live-caddy-redirects-with-repository-template
+    - confirm-documentation-pr-before-merging
+
 phase: vps-production
 stage_status: public-cutover-complete-operational-followups-open
 active_branch: release/vps-migration

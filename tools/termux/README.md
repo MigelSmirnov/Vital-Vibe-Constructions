@@ -4,12 +4,17 @@ Use Termux for commands that require a real local checkout, image files, shell t
 
 ## Update the working branch
 
+The old `release/vps-migration` branch was used for the initial VPS cutover and is not the default starting point for new work. First inspect local changes; then update `main` and create a task branch. Do not switch branches with uncommitted work unless it is safely preserved.
+
 ```bash
 git status -sb
 git fetch origin
-git switch release/vps-migration
-git pull --ff-only origin release/vps-migration
+git switch main
+git pull --ff-only origin main
+git switch -c agent/<task-name>
 ```
+
+Replace `<task-name>` with a meaningful new branch suffix; if that branch already exists, review it instead of recreating it.
 
 Do not use `reset --hard` or `clean -fd` unless local changes have been reviewed and are disposable.
 
