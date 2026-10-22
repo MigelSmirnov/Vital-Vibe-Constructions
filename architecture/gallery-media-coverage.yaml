@@ -6,7 +6,8 @@
     "curated_exclusions_allowed": false,
     "expected_project_media_counts": {"project-studio-renovation-barcelona": 16},
     "gallery_route_status": "blocked-on-media-migration",
-    "unlock_condition": "Every listed source image has one validated Media record and every project-owned image resolves to a Project."
+    "unlock_condition": "Every listed source image has one validated Media record and every project-owned image resolves to a Project.",
+    "historical_status_note": "Legacy migration gate retained for validator compatibility; gallery is published in VPS production according to release records. Do not interpret gallery_route_status as current production availability."
   },
   "sources": [
     {
