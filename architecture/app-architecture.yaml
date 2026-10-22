@@ -30,7 +30,7 @@ runtimes:
       editable: false
     role: Preserve current public behavior and provide migration source material.
   next:
-    status: generated-in-parallel
+    status: generated-in-parallel # Historical label; site-next output is now used for VPS production bundles.
     output_root: site-next
     role: Receive statically generated pages from validated Knowledge Repository records.
 
@@ -192,7 +192,7 @@ build_flow:
   - full checks run through tools/checks/run.mjs
 
 migration:
-  current_phase: service-page-generation
+  current_phase: service-page-generation # Historical content-generation phase, not production hosting status.
   rules:
     - preserve legacy runtime until replacement routes are generated and validated
     - migrate content through Knowledge Repository records rather than copying it into builders
