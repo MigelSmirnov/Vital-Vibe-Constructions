@@ -1,5 +1,14 @@
-version: 85
+version: 86
 updated_at: 2026-10-28T00:00:00Z
+future_content_backlog_20261028:
+  status: prepared-for-review
+  path: task/future-content.md
+  first_idea_id: FC-001
+  first_idea_status: idea-publication-undecided-repair-unconfirmed
+  navigation: [README.md, task/README.md]
+  scope: repository-documentation-only
+  canonical_checks: delegated-to-existing-pr-workflow-see-pr-result
+  deployment_performed: false
 project_tracking_article_20261028:
   status: prepared-not-deployed
   article_id: article-project-tracking

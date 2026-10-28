@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 81
+Version: 82
 Updated: 2026-10-28
 
 ## Session rule
@@ -19,6 +19,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Production is on VPS/Caddy. Work from an up-to-date `main` into a separate task branch; `release/vps-migration` and `task/004-release-branch-audit.md` are historical migration context. Never deploy or change production as part of documentation maintenance.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Future content backlog — 2026-10-28
+
+Added `task/future-content.md` with an idea index, reusable entry template and FC-001 (15 cm toilet relocation in a finished bathroom). Owner facts are separated from proposed actions; repair, costs, outcome and publication remain unconfirmed. Linked from both README entry points. Repository is public; no client identity, address or media added. Documentation only; application content, routes and deployment unchanged. Full project checks are delegated to the existing PR workflow; see the PR for the actual result.
 
 ## Project tracking article prepared — 2026-10-28
 
