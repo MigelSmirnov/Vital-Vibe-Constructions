@@ -764,6 +764,32 @@
       ],
       "before_after_state": "work",
       "published_at": "2026-10-03"
+    },
+    {
+      "id": "media-project-tracking-receipts",
+      "slug": "project-tracking-receipts",
+      "src": "assets/project-tracking/receipts.jpg",
+      "width": 1536,
+      "height": 1536,
+      "alt": "Tickets de tiendas de materiales y un albarán manuscrito sobre una mesa de trabajo",
+      "caption": "Cada ticket forma parte del coste de la reforma, también una compra de pocos euros.",
+      "service_ids": [
+        "integral-renovation"
+      ],
+      "published_at": "2026-10-28"
+    },
+    {
+      "id": "media-project-tracking-client-area",
+      "slug": "project-tracking-client-area",
+      "src": "assets/project-tracking/client-area-demo.jpg",
+      "width": 2280,
+      "height": 2430,
+      "alt": "Área de cliente de demostración con presupuesto, gastos, avance por fases, pagos y fotografías de obra",
+      "caption": "Ejemplo del área de cliente: avance, gastos, pagos y fotografías. Los datos mostrados son de demostración.",
+      "service_ids": [
+        "integral-renovation"
+      ],
+      "published_at": "2026-10-28"
     }
   ]
 }

@@ -3160,6 +3160,417 @@
           ]
         }
       }
+    },
+    {
+      "slug": "seguimiento-control-reforma-avance-gastos-cambios",
+      "language": "es",
+      "title": "Cómo seguir tu reforma y saber en qué se gasta el dinero",
+      "seo_title": "Tu reforma: gastos y seguimiento en un área de cliente gratuita",
+      "meta_description": "Acceso gratuito al área de cliente para seguir las obras, consultar fotos, compras y pagos, y entender cómo cambia el presupuesto de tu reforma.",
+      "category": "Gestión de proyecto",
+      "author": "Vital Vibe Construction",
+      "related_service_ids": [
+        "integral-renovation"
+      ],
+      "related_project_ids": [],
+      "id": "article-project-tracking",
+      "status": "published",
+      "published_at": "2026-10-28",
+      "modified_at": "2026-10-28",
+      "summary": "Durante una reforma quieres saber qué se ha hecho, en qué se ha gastado el dinero y cuánto falta para terminar.",
+      "body": [
+        {
+          "heading": "Tu reforma en un área de cliente gratuita",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Nuestros clientes tienen acceso gratuito a su área de cliente. Allí pueden seguir el avance de las obras, ver fotografías, consultar los gastos en materiales y los pagos realizados. La información se actualiza durante la reforma y los cambios de coste se pueden comparar con el presupuesto inicial."
+            },
+            {
+              "type": "paragraph",
+              "text": "Detrás de esas cifras hay compras y decisiones concretas. Veamos cómo se incorporan al cálculo en una reforma real."
+            }
+          ]
+        },
+        {
+          "heading": "Por qué no basta con sumar los tickets",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Cinco sacos de adhesivo para baldosas a 14 € son 70 €. Parece un gasto sencillo."
+            },
+            {
+              "type": "paragraph",
+              "text": "Pero en el presupuesto figuraba un fabricante y se compró otro. ¿Es una sustitución para el mismo trabajo? ¿Hizo falta más material? ¿O cambió la forma de colocación?"
+            },
+            {
+              "type": "paragraph",
+              "text": "La respuesta determina cómo revisar el presupuesto. Una sustitución actualiza la partida anterior. Si cambia el trabajo, hay que incluir lo nuevo y retirar lo que ya no hace falta. De lo contrario, una compra puede contarse dos veces y un material descartado puede seguir en el precio final."
+            },
+            {
+              "type": "paragraph",
+              "text": "En varios meses de reforma se acumulan decenas de cambios así."
+            }
+          ]
+        },
+        {
+          "heading": "El suelo está nivelado: toca actualizar el cálculo",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Para preparar el suelo se había previsto un mortero autonivelante. En la compra real se utilizaron dos productos Capafloor para distintos espesores: 16 sacos de uno y 6 del otro."
+            },
+            {
+              "type": "paragraph",
+              "text": "Los materiales de ese trabajo ya estaban incluidos en el presupuesto. Por eso hay que relacionar la compra con la partida anterior y recalcular el coste, conservando el cálculo inicial para compararlo."
+            },
+            {
+              "type": "paragraph",
+              "text": "Cada ticket se incorpora al seguimiento del proyecto: qué se compró, para qué trabajo y cuánto costó. Tanto las compras grandes como los pequeños gastos de imprimación, accesorios o consumibles."
+            },
+            {
+              "type": "paragraph",
+              "text": "La preparación del soporte y el desglose de costes se explican en nuestro artículo sobre preparación del suelo y colocación de parquet."
+            },
+            {
+              "type": "source_list",
+              "items": [
+                {
+                  "label": "Preparación del suelo y colocación de parquet: caso real y costes",
+                  "url": "https://vitalvibeconstruction.com/articulos/preparacion-suelo-parquet-barcelona-coste-real/"
+                }
+              ]
+            },
+            {
+              "type": "image",
+              "media_id": "media-project-tracking-receipts",
+              "alt": "Tickets de tiendas de materiales y un albarán manuscrito sobre una mesa de trabajo",
+              "caption": "Cada ticket forma parte del coste de la reforma, también una compra de pocos euros."
+            }
+          ]
+        },
+        {
+          "heading": "Las decisiones pueden subir o bajar el precio",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "En esta reforma se eligió parquet multicapa en lugar del SPC previsto inicialmente. El coste del pavimento aumentó en 1.847,72 €."
+            },
+            {
+              "type": "paragraph",
+              "text": "Otras decisiones redujeron el gasto. Descartar el circuito de calefacción anterior retiró 472,05 € de materiales del cálculo. Y los 400 € asignados a la preparación de paredes quedaron dentro del alcance inicial, sin convertirse en un cargo adicional."
+            },
+            {
+              "type": "paragraph",
+              "text": "El presupuesto evoluciona con el proyecto: incorpora nuevas partidas, descuenta las canceladas y sustituye previsiones por compras reales. En este caso pasó por cinco versiones. La historia permite volver a la primera y explicar la diferencia."
+            }
+          ]
+        },
+        {
+          "heading": "Cuando el cliente pide un informe detallado",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A petición del cliente preparamos un desglose del cambio de coste. El primer presupuesto era de 19.532,77 € y el cálculo provisional a 23 de septiembre de 2026 era de 23.144,40 €."
+            },
+            {
+              "type": "paragraph",
+              "text": "La diferencia de 3.611,63 € se desglosó por motivos: sustituciones de materiales, cambios de trabajo, entregas y ahorros. Los importes pendientes de comprobación o aprobación se señalaron por separado. Un cálculo provisional no se presenta como precio definitivo."
+            }
+          ]
+        },
+        {
+          "heading": "Qué te aporta este seguimiento",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "En tu área de cliente puedes consultar el estado de la reforma sin reconstruirlo a partir de mensajes: trabajos realizados, fotografías, gastos y pagos."
+            },
+            {
+              "type": "paragraph",
+              "text": "Si cambia el coste, la conversación parte de una compra concreta o de un cambio en el alcance. Cuando hace falta, esos mismos datos sirven para preparar un informe detallado."
+            },
+            {
+              "type": "paragraph",
+              "text": "El seguimiento también permite mirar hacia delante: los materiales comprados se contabilizan por su coste real y las compras y los trabajos pendientes forman la previsión de gasto. Así puedes entender cuánto se ha gastado y cuánto hará falta para terminar la reforma."
+            },
+            {
+              "type": "image",
+              "media_id": "media-project-tracking-client-area",
+              "alt": "Área de cliente de demostración con presupuesto, gastos, avance por fases, pagos y fotografías de obra",
+              "caption": "Ejemplo del área de cliente: avance, gastos, pagos y fotografías. Los datos mostrados son de demostración."
+            }
+          ]
+        }
+      ],
+      "translations": {
+        "en": {
+          "slug": "renovation-tracking-costs-client-area",
+          "title": "How to follow your renovation and see where the money goes",
+          "seo_title": "Renovation costs and progress in a free client area",
+          "category": "Project management",
+          "meta_description": "Free access to a client area to follow the works, check photos, purchases and payments, and understand how your renovation budget changes.",
+          "summary": "During a renovation you want to know what has been done, what the money has gone on and how much is still needed to finish.",
+          "body": [
+            {
+              "heading": "Your renovation in a free client area",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Our clients get free access to their own client area. There they can follow the progress of the works, see photographs, and check what has been spent on materials and which payments have been made. The information is updated as the renovation goes on, and cost changes can be compared with the original estimate."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Behind those figures are specific purchases and decisions. Here is how they find their way into the calculation on a real renovation."
+                }
+              ]
+            },
+            {
+              "heading": "Why adding up the receipts is not enough",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Five bags of tile adhesive at €14 each make €70. It looks like a simple expense."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "But the estimate named one manufacturer and a different one was bought. Is it a substitute for the same job? Was more material needed? Or did the installation method change?"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The answer decides how the estimate is revised. A substitute updates the original line. If the work changes, the new items have to be added and whatever is no longer needed removed. Otherwise a purchase can be counted twice, and a material that was dropped can stay in the final price."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Over several months of renovation, dozens of changes like this add up."
+                }
+              ]
+            },
+            {
+              "heading": "The floor is levelled: time to update the calculation",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "A self-levelling compound had been planned to prepare the floor. The actual purchase used two Capafloor products for different layer thicknesses: 16 bags of one and 6 of the other."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The materials for that job were already in the estimate. So the purchase has to be matched to the original line and the cost recalculated, keeping the first calculation for comparison."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Every receipt goes into the project records: what was bought, for which job and at what cost. That applies to large purchases and to small spending on primer, fittings or consumables alike."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Subfloor preparation and the cost breakdown are covered in our article on preparing a floor and laying parquet."
+                },
+                {
+                  "type": "source_list",
+                  "items": [
+                    {
+                      "label": "Preparing a floor for parquet: a real case and its costs",
+                      "url": "https://vitalvibeconstruction.com/en/articles/parquet-floor-preparation-barcelona-real-cost/"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-project-tracking-receipts",
+                  "alt": "Receipts from building supply stores and a handwritten delivery note on a work desk",
+                  "caption": "Every receipt is part of the renovation cost, including a purchase of a few euros."
+                }
+              ]
+            },
+            {
+              "heading": "Decisions can raise or lower the price",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "On this renovation the client chose engineered parquet instead of the SPC flooring planned at first. The flooring cost went up by €1,847.72."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Other decisions reduced spending. Dropping the old heating circuit removed €472.05 of materials from the calculation. And the €400 set aside for wall preparation stayed within the original scope instead of becoming an extra charge."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The estimate evolves with the project: new items are added, cancelled ones are taken out, and planned prices are replaced by actual purchases. In this case it went through five versions. The history makes it possible to go back to the first one and explain the difference."
+                }
+              ]
+            },
+            {
+              "heading": "When the client asks for a detailed report",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "At the client's request we prepared a breakdown of the cost change. The first estimate was €19,532.77, and the interim calculation on 23 September 2026 was €23,144.40."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The difference of €3,611.63 was broken down by cause: material substitutions, changes to the work, deliveries and savings. Amounts still awaiting verification or approval were marked separately. An interim calculation is never presented as the final price."
+                }
+              ]
+            },
+            {
+              "heading": "What this tracking gives you",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "In your client area you can check where the renovation stands without piecing it together from messages: work completed, photographs, expenses and payments."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "If the cost changes, the conversation starts from a specific purchase or a change in scope. When needed, the same data is used to prepare a detailed report."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The tracking also lets you look ahead: materials already bought are counted at their actual cost, and the remaining purchases and work make up the spending forecast. That way you can see both how much has been spent and how much will be needed to finish the renovation."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-project-tracking-client-area",
+                  "alt": "Demo client area showing the budget, expenses, progress by stage, payments and site photographs",
+                  "caption": "Example of the client area: progress, expenses, payments and photographs. The data shown is for demonstration only."
+                }
+              ]
+            }
+          ]
+        },
+        "ru": {
+          "slug": "kak-sledit-za-remontom-i-raskhodami",
+          "title": "Как следить за ремонтом и понимать, на что уходят деньги",
+          "seo_title": "Расходы и ход ремонта в бесплатном личном кабинете",
+          "category": "Управление проектом",
+          "meta_description": "Бесплатный личный кабинет: ход работ, фотографии, покупки и платежи. Как меняется смета ремонта и почему недостаточно просто сложить чеки.",
+          "summary": "Во время ремонта хочется понимать, что уже сделано, на что потрачены деньги и сколько ещё потребуется до завершения.",
+          "body": [
+            {
+              "heading": "Ваш ремонт в бесплатном личном кабинете",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Наши клиенты бесплатно получают доступ к личному кабинету. В нём можно следить за ходом работ, смотреть фотографии, расходы на материалы и внесённые платежи. По мере ремонта информация обновляется, а изменения стоимости можно сопоставить с первоначальной сметой."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "За этими цифрами стоят конкретные покупки и решения. Покажем на примере одного ремонта, как они попадают в расчёт."
+                }
+              ]
+            },
+            {
+              "heading": "Почему недостаточно просто сложить чеки",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "Пять мешков плиточного клея по 14 € — это 70 €. Казалось бы, понятный расход."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Но в смете был клей одного производителя, а купили другого. Это замена для той же работы? Понадобилось больше материала? Или изменился способ укладки?"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "От ответа зависит пересчёт. При замене нужно обновить прежнюю позицию. При изменении работ — учесть, что добавилось и что больше не потребуется. Иначе купленный материал может попасть в расчёт дважды, а отменённый — остаться в итоговой цене."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "За несколько месяцев ремонта таких изменений набираются десятки."
+                }
+              ]
+            },
+            {
+              "heading": "Пол залит — обновляем расчёт",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "При подготовке пола была предусмотрена одна выравнивающая смесь. Фактически купили два состава Capafloor для разной толщины слоя: 16 мешков одного и 6 другого."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Материалы для этой работы уже были заложены в смету. Поэтому закупку нужно сопоставить с прежней позицией и пересчитать стоимость, сохранив исходный расчёт для сравнения."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Каждый чек входит в учёт проекта: что купили, для какой работы и за сколько. Это касается и крупных закупок, и небольших расходов на грунтовку, фитинги или расходники."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Подробности подготовки основания и стоимость работ — в статье о подготовке пола и укладке паркета."
+                },
+                {
+                  "type": "source_list",
+                  "items": [
+                    {
+                      "label": "Подготовка пола под паркет: реальный случай и стоимость",
+                      "url": "https://vitalvibeconstruction.com/ru/articles/podgotovka-pola-parket-barselona-stoimost/"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-project-tracking-receipts",
+                  "alt": "Чеки магазинов строительных материалов и рукописная накладная на рабочем столе",
+                  "caption": "Каждый чек — часть стоимости ремонта. В том числе покупка на несколько евро."
+                }
+              ]
+            },
+            {
+              "heading": "Изменения могут увеличивать и уменьшать цену",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "В этом ремонте вместо первоначально предусмотренного SPC выбрали инженерный паркет. Стоимость покрытия выросла на 1 847,72 €."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Другие решения уменьшили расходы. Отказ от прежнего отопительного контура убрал из расчёта 472,05 € материалов. А подготовка стен на 400 € осталась внутри первоначального объёма и не стала дополнительной оплатой."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Смета меняется вместе с проектом: в неё входят новые позиции, из неё вычитаются отменённые, плановые цены уточняются по закупкам. В этом случае она прошла пять версий. При этом сохранилась возможность вернуться к первой и объяснить разницу."
+                }
+              ]
+            },
+            {
+              "heading": "Когда нужен подробный отчёт",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "По просьбе клиента мы подготовили разбор изменения стоимости. Первая смета составляла 19 532,77 €, а промежуточный расчёт на 23 сентября 2026 года — 23 144,40 €."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Разницу в 3 611,63 € разложили по причинам: замены материалов, изменения работ, доставки и экономия. Суммы, ещё требующие проверки или согласования, отметили отдельно. Промежуточный расчёт не выдаётся за окончательную цену."
+                }
+              ]
+            },
+            {
+              "heading": "Что это даёт вам",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "В личном кабинете можно следить за текущим состоянием ремонта, не собирая его историю из переписки: видеть выполненные работы, фотографии, расходы и платежи."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Если стоимость меняется, есть основа для предметного разговора — конкретная покупка или изменение объёма работ. При необходимости из этих данных готовится подробный отчёт."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Учёт помогает смотреть и вперёд: уже купленные материалы учитываются по фактической стоимости, оставшиеся закупки и работы — в расчёте предстоящих расходов. Поэтому вы можете понимать не только, сколько уже потрачено, но и сколько ещё потребуется для завершения ремонта."
+                },
+                {
+                  "type": "image",
+                  "media_id": "media-project-tracking-client-area",
+                  "alt": "Демонстрационный личный кабинет: бюджет, расходы, прогресс по этапам, платежи и фотографии с объекта",
+                  "caption": "Пример личного кабинета: ход работ, расходы, платежи и фотографии в одном месте. Данные демонстрационные."
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   ]
 }
