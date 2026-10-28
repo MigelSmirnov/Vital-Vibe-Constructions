@@ -7,7 +7,8 @@ future_content_backlog_20261028:
   first_idea_status: idea-publication-undecided-repair-unconfirmed
   navigation: [README.md, task/README.md]
   scope: repository-documentation-only
-  canonical_checks: delegated-to-existing-pr-workflow-see-pr-result
+  canonical_checks: pass-43-tests-0-errors-5-existing-warnings
+  generated_projections_changed: false
   deployment_performed: false
 project_tracking_article_20261028:
   status: prepared-not-deployed

@@ -22,7 +22,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 ## Future content backlog — 2026-10-28
 
-Added `task/future-content.md` with an idea index, reusable entry template and FC-001 (15 cm toilet relocation in a finished bathroom). Owner facts are separated from proposed actions; repair, costs, outcome and publication remain unconfirmed. Linked from both README entry points. Repository is public; no client identity, address or media added. Documentation only; application content, routes and deployment unchanged. Full project checks are delegated to the existing PR workflow; see the PR for the actual result.
+Added `task/future-content.md` with an idea index, reusable entry template and FC-001 (15 cm toilet relocation in a finished bathroom). Owner facts are separated from proposed actions; repair, costs, outcome and publication remain unconfirmed. Linked from both README entry points. Repository is public; no client identity, address or media added. Documentation only; application content, routes and deployment unchanged. Local `node tools/checks/run.mjs` passed: 43 tests, 0 audit errors / 5 existing warnings; generated projections unchanged. Existing PR workflows provide additional CI validation.
 
 ## Project tracking article prepared — 2026-10-28
 
