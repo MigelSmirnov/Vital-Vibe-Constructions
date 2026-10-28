@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 82
+Version: 83
 Updated: 2026-10-28
 
 ## Session rule
@@ -22,7 +22,7 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 
 ## Future content backlog — 2026-10-28
 
-Added `task/future-content.md` with an idea index, reusable entry template and FC-001 (15 cm toilet relocation in a finished bathroom). Owner facts are separated from proposed actions; repair, costs, outcome and publication remain unconfirmed. Linked from both README entry points. Repository is public; no client identity, address or media added. Documentation only; application content, routes and deployment unchanged. Local `node tools/checks/run.mjs` passed: 43 tests, 0 audit errors / 5 existing warnings; generated projections unchanged. Existing PR workflows provide additional CI validation.
+Added `task/future-content.md` with an idea index, reusable entry template and FC-001 (15 cm toilet relocation in a finished bathroom). Owner facts are separated from proposed actions; repair, costs, outcome and publication remain unconfirmed. Linked from both README entry points. Repository is public; no client identity or address added. Owner subsequently supplied two original JPEGs for FC-001, stored under `task/media/fc-001/` and embedded in the idea: a bathroom plan (revision unconfirmed) and a marked drain-outlet photo showing unfinished walls (stage/date unconfirmed). These do not establish the completed relocation. Both JPEGs decode and contain no EXIF fields. Documentation only; application content, routes and deployment unchanged. Local `node tools/checks/run.mjs` passed: 43 tests, 0 audit errors / 5 existing warnings; generated output excluded from this documentation commit. A repeat check regenerated the Spanish service page without its language links; that unrelated generated diff was not included. Existing PR workflows provide additional CI validation.
 
 ## Project tracking article prepared — 2026-10-28
 
