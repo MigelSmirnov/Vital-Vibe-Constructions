@@ -1,5 +1,22 @@
-version: 84
-updated_at: 2026-10-22T00:00:00Z
+version: 85
+updated_at: 2026-10-28T00:00:00Z
+project_tracking_article_20261028:
+  status: prepared-not-deployed
+  article_id: article-project-tracking
+  document_number: VVC-ART-004
+  source_draft_pull_request: 10
+  languages: [es, en, ru]
+  english_translation: added
+  media:
+    - media-project-tracking-receipts # supplier stamp blurred
+    - media-project-tracking-client-area # direct demo portal capture, Spanish UI
+  canonical_checks: pass
+  audit_errors: 0
+  existing_warnings: 5
+  sitemap_routes: 46
+  local_vps_bundle_build: not-run-missing-convert-and-cwebp
+  deployment_performed: false
+  record: architecture/project-tracking-publication-20261028.md
 documentation_review_20261022:
   status: documentation-only-review
   production_host: vps-caddy

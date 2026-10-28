@@ -823,6 +823,54 @@
       ],
       "generated_html_path": "site-next/ru/articles/podgotovka-pola-parket-barselona-stoimost/index.html",
       "sitemap_eligible": true
+    },
+    {
+      "id": "article-project-tracking-es",
+      "family_id": "article-detail",
+      "path": "/articulos/seguimiento-control-reforma-avance-gastos-cambios/",
+      "canonical_url": "https://vitalvibeconstruction.com/articulos/seguimiento-control-reforma-avance-gastos-cambios/",
+      "entity_type": "Article",
+      "entity_id": "article-project-tracking",
+      "language": "es",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/articulos/seguimiento-control-reforma-avance-gastos-cambios/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-project-tracking-en",
+      "family_id": "article-detail",
+      "path": "/en/articles/renovation-tracking-costs-client-area/",
+      "canonical_url": "https://vitalvibeconstruction.com/en/articles/renovation-tracking-costs-client-area/",
+      "entity_type": "Article",
+      "entity_id": "article-project-tracking",
+      "language": "en",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/en/articles/renovation-tracking-costs-client-area/index.html",
+      "sitemap_eligible": true
+    },
+    {
+      "id": "article-project-tracking-ru",
+      "family_id": "article-detail",
+      "path": "/ru/articles/kak-sledit-za-remontom-i-raskhodami/",
+      "canonical_url": "https://vitalvibeconstruction.com/ru/articles/kak-sledit-za-remontom-i-raskhodami/",
+      "entity_type": "Article",
+      "entity_id": "article-project-tracking",
+      "language": "ru",
+      "status": "generated",
+      "source_files": [
+        "content/tables/articles.yaml",
+        "content/tables/media.yaml"
+      ],
+      "generated_html_path": "site-next/ru/articles/kak-sledit-za-remontom-i-raskhodami/index.html",
+      "sitemap_eligible": true
     }
   ],
   "legacy_source_mappings": [
