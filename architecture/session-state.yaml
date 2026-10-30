@@ -1,5 +1,21 @@
-version: 85
+version: 87
 updated_at: 2026-10-28T00:00:00Z
+future_content_backlog_20261028:
+  status: prepared-for-review
+  path: task/future-content.md
+  first_idea_id: FC-001
+  first_idea_status: idea-publication-undecided-repair-unconfirmed
+  navigation: [README.md, task/README.md]
+  source_media:
+    - task/media/fc-001/bathroom-plan.jpg
+    - task/media/fc-001/drain-outlet-before.jpg
+  source_media_validation: both-jpegs-decode-no-exif-original-bytes-preserved
+  source_media_stage: plan-revision-and-photo-date-unconfirmed
+  scope: repository-documentation-and-source-media-only
+  canonical_checks: pass-43-tests-0-errors-5-existing-warnings
+  generated_projections_changed: false # No generated changes included in the commit.
+  repeat_check_note: spanish-service-language-link-regeneration-drift-observed-not-included
+  deployment_performed: false
 project_tracking_article_20261028:
   status: prepared-not-deployed
   article_id: article-project-tracking

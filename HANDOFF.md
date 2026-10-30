@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 81
+Version: 83
 Updated: 2026-10-28
 
 ## Session rule
@@ -19,6 +19,10 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 3. Production is on VPS/Caddy. Work from an up-to-date `main` into a separate task branch; `release/vps-migration` and `task/004-release-branch-audit.md` are historical migration context. Never deploy or change production as part of documentation maintenance.
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
+
+## Future content backlog — 2026-10-28
+
+Added `task/future-content.md` with an idea index, reusable entry template and FC-001 (15 cm toilet relocation in a finished bathroom). Owner facts are separated from proposed actions; repair, costs, outcome and publication remain unconfirmed. Linked from both README entry points. Repository is public; no client identity or address added. Owner subsequently supplied two original JPEGs for FC-001, stored under `task/media/fc-001/` and embedded in the idea: a bathroom plan (revision unconfirmed) and a marked drain-outlet photo showing unfinished walls (stage/date unconfirmed). These do not establish the completed relocation. Both JPEGs decode and contain no EXIF fields. Documentation only; application content, routes and deployment unchanged. Local `node tools/checks/run.mjs` passed: 43 tests, 0 audit errors / 5 existing warnings; generated output excluded from this documentation commit. A repeat check regenerated the Spanish service page without its language links; that unrelated generated diff was not included. Existing PR workflows provide additional CI validation.
 
 ## Project tracking article prepared — 2026-10-28
 
