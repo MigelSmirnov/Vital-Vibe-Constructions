@@ -1,8 +1,13 @@
-version: 85
+version: 86
 updated_at: 2026-10-28T00:00:00Z
 project_tracking_article_20261028:
-  status: prepared-not-deployed
+  status: published-and-verified
   article_id: article-project-tracking
+  release_id: 20261028-e798a74
+  release_sha: e798a74078bd838858fabec57f58cf0dae707a42
+  rollback_release_id: 20261019-a1e18f7
+  public_routes_exact_match: 46
+  release_record: architecture/project-tracking-vps-release-20261028.md
   document_number: VVC-ART-004
   source_draft_pull_request: 10
   languages: [es, en, ru]
@@ -15,7 +20,7 @@ project_tracking_article_20261028:
   existing_warnings: 5
   sitemap_routes: 46
   local_vps_bundle_build: not-run-missing-convert-and-cwebp
-  deployment_performed: false
+  deployment_performed: true
   record: architecture/project-tracking-publication-20261028.md
 documentation_review_20261022:
   status: documentation-only-review

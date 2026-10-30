@@ -1,6 +1,6 @@
 # HANDOFF
 
-Version: 81
+Version: 82
 Updated: 2026-10-28
 
 ## Session rule
@@ -20,7 +20,11 @@ This is a living handoff. Historical detail belongs in commits and architecture 
 4. Do not hand-edit generated `site-next` output instead of changing builders/reproducible release steps.
 5. Run `node tools/checks/run.mjs` after content, route, builder or generated-output changes.
 
-## Project tracking article prepared — 2026-10-28
+## Project tracking article published — 2026-10-28
+
+Production serves `20261028-e798a74` (`e798a74`, PR #31). All 46 public sitemap route bodies match the CI artifact. Rollback: `20261019-a1e18f7`. See `architecture/project-tracking-vps-release-20261028.md`.
+
+### Preparation
 
 Draft VVC-ART-004 from PR #10 is now a public article in ES, EN (new translation) and RU, with three generated routes (sitemap 46). The Facebook-post screenshot is replaced by a direct capture of the demo client area; the supplier stamp on the receipts photo is blurred. Canonical checks pass (0 errors / 5 existing warnings). Not deployed; CI builds the WebP variants and the bundle. PR #10 is superseded. See `architecture/project-tracking-publication-20261028.md`.
 
