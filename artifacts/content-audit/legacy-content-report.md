@@ -115,4 +115,4 @@ Document contains 28318 characters of inline JavaScript.
 
 ## External links
 
-- 📍 Ver en Google Maps: https://maps.app.goo.gl/9LcztAtyft5EzsqJ6?g_st=iw
+- 📍 Ver en Google Maps: https://g.page/r/Cf0M7nPD9-VLEBM
