@@ -1,0 +1,201 @@
+{
+  "manifest_version": "vvc.agent_service.v0",
+  "status": "experimental",
+  "compatibility": "cabinet_kernel adapter not implemented; not a CABINET_V0 executable box",
+  "service": {
+    "id": "vital-vibe.website-development",
+    "kind": "static-site-source-and-release-preparation",
+    "repository": "MigelSmirnov/Vital-Vibe-Constructions",
+    "production_origin": "https://vitalvibeconstruction.com"
+  },
+  "boundaries": {
+    "semantic_authority": "content/tables and architecture contracts",
+    "development_authority": "reviewed GitHub branch and PR",
+    "release_preparation": "CI-built validated immutable archive",
+    "production_activation": "external local operator only; outside manifest capabilities",
+    "remote_runtime": "nginx TLS edge -> private Caddy -> static release (historical evidence, verify live)",
+    "prohibited": [
+      "ssh",
+      "vps-deploy",
+      "production-release-activation",
+      "arbitrary-shell-from-agent-input",
+      "arbitrary-file-or-url-fetch",
+      "production-credentials"
+    ]
+  },
+  "sources": [
+    {
+      "id": "project",
+      "path": "content/tables/projects.yaml",
+      "collection": "projects",
+      "identity": "id",
+      "fields": {
+        "id": "string",
+        "slug": "string",
+        "title": "string",
+        "summary": "string",
+        "service_ids": "string[]"
+      },
+      "authority": "source-record"
+    },
+    {
+      "id": "service",
+      "path": "content/tables/services.yaml",
+      "collection": "services",
+      "identity": "id",
+      "fields": {
+        "id": "string",
+        "slug": "string",
+        "title": "string",
+        "summary": "string"
+      },
+      "authority": "source-record"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "website.project.list",
+      "status": "candidate",
+      "kind": "read",
+      "input": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "array",
+        "items": "project-public-projection"
+      },
+      "reads": [
+        "project"
+      ],
+      "effects": [],
+      "disclosure": "only approved public project projection",
+      "binding": null
+    },
+    {
+      "id": "website.content.validate",
+      "status": "implemented-cli",
+      "kind": "check",
+      "input": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "process-result"
+      },
+      "reads": [
+        "content/tables",
+        "architecture"
+      ],
+      "effects": [
+        "local-generated-projections-may-change"
+      ],
+      "binding": {
+        "runner": "node",
+        "argv": [
+          "tools/checks/run.mjs"
+        ],
+        "cwd": "repository-root"
+      },
+      "authorization": "trusted local checkout or CI"
+    },
+    {
+      "id": "website.release.prepare",
+      "status": "implemented-cli-sequence",
+      "kind": "artifact-create",
+      "input": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "validated-bundle-directory"
+      },
+      "reads": [
+        "site-next",
+        "content/tables",
+        "architecture"
+      ],
+      "effects": [
+        "local-build-output"
+      ],
+      "binding": {
+        "runner": "node",
+        "argv_sequence": [
+          [
+            "tools/checks/run.mjs"
+          ],
+          [
+            "tools/deploy/build-vps-bundle.mjs"
+          ],
+          [
+            "tools/deploy/validate-vps-bundle.mjs"
+          ]
+        ],
+        "cwd": "repository-root"
+      },
+      "authorization": "trusted local checkout or CI",
+      "preconditions": [
+        "clean checked-out intended commit",
+        "required image tools installed",
+        "verify DEPLOYMENT_COMMIT equals intended source SHA"
+      ],
+      "provenance": [
+        "source commit SHA",
+        "bundle archive SHA256 when packaged",
+        "CI workflow run ID"
+      ]
+    },
+    {
+      "id": "website.github.pr.create",
+      "status": "candidate",
+      "kind": "github-mutation",
+      "input": {
+        "type": "object",
+        "properties": {
+          "branch": {
+            "type": "string"
+          },
+          "base": {
+            "const": "main"
+          }
+        },
+        "required": [
+          "branch",
+          "base"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "github-pull-request"
+      },
+      "reads": [
+        "reviewed-branch"
+      ],
+      "effects": [
+        "github-pr-create"
+      ],
+      "binding": null,
+      "authorization": "explicit GitHub write grant"
+    }
+  ],
+  "policies": {
+    "default_deny": true,
+    "unknown_capability": "reject",
+    "candidate_capability_execution": "reject",
+    "input_data_never_selects_command": true,
+    "public_manifest_exposure": false,
+    "release_activation": "not-in-scope",
+    "agent_can_infer_field_semantics": false
+  },
+  "evidence": {
+    "architecture": "architecture/app-architecture.yaml",
+    "invariants": "architecture/invariants.yaml",
+    "release_builder": "tools/deploy/build-vps-bundle.mjs",
+    "release_validator": "tools/deploy/validate-vps-bundle.mjs",
+    "ci": ".github/workflows/vps-bundle-check.yml",
+    "operational_history": "HANDOFF.md"
+  }
+}
